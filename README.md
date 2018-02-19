@@ -5,6 +5,9 @@
 * Programmer: [Gerard Albarran](https://github.com/GAPIntoTheGame)
 * QA: [Dani Lorenzo](https://github.com/DLorenzoLaguno17)
 
+
+[![video](https://github.com/ofaura/Andro_Dunos/blob/master/team.jpg)](https://www.youtube.com/watch?v=FYyT9rK8hGw)
+
 <object width="425" height="350">
   <param name="movie" value="https://www.youtube.com/watch?v=FYyT9rK8hGw" />
   <param name="wmode" value="transparent" />
