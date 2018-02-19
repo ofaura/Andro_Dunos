@@ -5,6 +5,7 @@
 * Programmer: [Gerard Albarran](https://github.com/GAPIntoTheGame)
 * QA: [Dani Lorenzo](https://github.com/DLorenzoLaguno17)
 
+![Team photo https://github.com/ofaura/Andro_Dunos/blob/master/team.jpg?raw=true (https://github.com/ofaura/Andro_Dunos/blob/master/team.jpg?raw=true)
 
 ![video found at https://youtu.be/FYyT9rK8hGw](https://youtu.be/FYyT9rK8hGw)
 
