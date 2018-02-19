@@ -6,9 +6,8 @@
 * QA: [Dani Lorenzo](https://github.com/DLorenzoLaguno17)
 
 
-[![video](https://github.com/ofaura/Andro_Dunos/blob/master/team.jpg)](https://www.youtube.com/watch?v=FYyT9rK8hGw)
+![video found at https://youtu.be/FYyT9rK8hGw](https://youtu.be/FYyT9rK8hGw)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FYyT9rK8hGw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 # Project Name
 TODO: Write a project description
