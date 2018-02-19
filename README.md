@@ -7,7 +7,7 @@
 
 ![Team photo https://github.com/ofaura/Andro_Dunos/blob/master/team.jpg?raw=true](https://github.com/ofaura/Andro_Dunos/blob/master/team.jpg?raw=true)
 
-![video found at https://youtu.be/FYyT9rK8hGw](https://youtu.be/FYyT9rK8hGw)
+[![txt](https://github.com/ofaura/Andro_Dunos/blob/master/team.jpg?raw=true)](https://youtu.be/FYyT9rK8hGw)
 
 
 # Project Name
