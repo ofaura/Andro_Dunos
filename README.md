@@ -8,13 +8,7 @@
 
 [![video](https://github.com/ofaura/Andro_Dunos/blob/master/team.jpg)](https://www.youtube.com/watch?v=FYyT9rK8hGw)
 
-<object width="425" height="350">
-  <param name="movie" value="https://www.youtube.com/watch?v=FYyT9rK8hGw" />
-  <param name="wmode" value="transparent" />
-  <embed src="http://https://www.youtube.com/watch?v=FYyT9rK8hGw"
-         type="application/x-shockwave-flash"
-         wmode="transparent" width="425" height="350" />
-</object>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FYyT9rK8hGw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 # Project Name
 TODO: Write a project description
