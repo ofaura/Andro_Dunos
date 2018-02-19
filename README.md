@@ -5,8 +5,7 @@
 * Programmer: [Gerard Albarran](https://github.com/GAPIntoTheGame)
 * QA: [Dani Lorenzo](https://github.com/DLorenzoLaguno17)
 
-![Terrible foto](https://github.com/ofaura/Andro_Dunos/blob/master/team.png)
-
+[![video](https://github.com/ofaura/Andro_Dunos/blob/master/team.jpg)](https://www.youtube.com/watch?v=FYyT9rK8hGw)
 
 # Project Name
 TODO: Write a project description
