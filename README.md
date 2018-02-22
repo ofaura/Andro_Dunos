@@ -17,7 +17,8 @@ home, rear) weapon settings which the player can switch to at any moment of game
 of these weapons and of enemy ship dropped power-ups, must shoot their way through mobs of enemies and bosses
 to advance through levels and defeat the alien invaders of the Earth.
 
-#
+***
+
 # Project Name
 TODO: Write a project description
 ## Installation
