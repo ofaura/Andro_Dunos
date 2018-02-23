@@ -11,9 +11,12 @@
 
 [![txt](https://github.com/ofaura/Andro_Dunos/blob/master/androdun.png?raw=true)](https://youtu.be/FYyT9rK8hGw)
 
-<iframe width="420" height="315" src="https://youtu.be/FYyT9rK8hGw" frameborder="0" allowfullscreen></iframe>
 
-
+<table>
+    <tr>
+      <iframe width="420" height="315" src="https://youtu.be/FYyT9rK8hGw" frameborder="0" allowfullscreen></iframe>
+    </tr>
+</table>
 
 Andro Dunos is a side-scrolling shoot 'em up developed by Japan based Visco Games Corporation, set in the far future
 where you play the role of an ace pilot in a sci-fi combat ship designed with 4 (way, laser, 
