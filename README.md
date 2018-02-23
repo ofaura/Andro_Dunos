@@ -12,7 +12,7 @@
 [![txt](https://github.com/ofaura/Andro_Dunos/blob/master/androdun.png?raw=true)](https://youtu.be/FYyT9rK8hGw)
 
 <div align="center">
-   <iframe width="560" height="315" src="http://www.youtube.com/embed/zsYjsgm4Psg" frameborder="0" allowfullscreen>
+   <iframe width="560" height="315" src="https://youtu.be/FYyT9rK8hGw" frameborder="0" allowfullscreen>
    </iframe>
 </div>
 
