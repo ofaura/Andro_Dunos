@@ -5,11 +5,11 @@
 * Programmer: [Gerard Albarran](https://github.com/GAPIntoTheGame)
 * QA: [Dani Lorenzo](https://github.com/DLorenzoLaguno17)
 
-![Team photo](https://github.com/ofaura/Andro_Dunos/blob/master/images/team.jpg)
+![Team photo https://github.com/ofaura/Andro_Dunos/blob/master/images/team.jpg?raw=true](https://github.com/ofaura/Andro_Dunos/blob/master/images/team.jpg?raw=true)
 
 ### The Game
 
-[![txt](https://github.com/ofaura/Andro_Dunos/blob/master/androdun.png?raw=true)](https://youtu.be/FYyT9rK8hGw)
+[![txt](https://github.com/ofaura/Andro_Dunos/blob/master/images/androdun.png?raw=true)](https://youtu.be/FYyT9rK8hGw)
 
 
 Andro Dunos is a side-scrolling shoot 'em up developed by Japan based Visco Games Corporation, set in the far future
