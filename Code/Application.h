@@ -9,6 +9,7 @@ class ModuleWindow;
 class ModuleInput;
 class ModuleTextures;
 class ModuleRender;
+class ModuleAudio;
 class Module;
 
 class Application
@@ -20,6 +21,7 @@ public:
 	ModuleRender* render = nullptr;
 	ModuleInput* input = nullptr;
 	ModuleTextures* textures = nullptr;
+	ModuleAudio* audio = nullptr;
 
 public:
 

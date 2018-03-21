@@ -44,7 +44,7 @@ update_status ModuleRender::PreUpdate()
 	SDL_RenderClear(renderer);
 
 	SDL_Rect rect = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
-	Blit(tex, 0, 0, &rect);
+	Blit(tex, 0, 0, &rect);	
 
 	return update_status::UPDATE_CONTINUE;
 }
