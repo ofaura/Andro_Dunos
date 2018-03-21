@@ -7,7 +7,6 @@
 struct _Mix_Music;
 struct Mix_Chunk;
 
-
 class ModuleAudio : public Module
 {
 public:

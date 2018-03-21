@@ -3,13 +3,13 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 4
+#define NUM_MODULES 5
 
 class ModuleWindow;
 class ModuleInput;
 class ModuleTextures;
-class ModuleRender;
 class ModuleAudio;
+class ModuleRender;
 class Module;
 
 class Application

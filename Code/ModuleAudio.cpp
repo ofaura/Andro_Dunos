@@ -17,8 +17,7 @@ ModuleAudio::~ModuleAudio()
 bool ModuleAudio::Init()
 {
 	LOG("Init SDL audio system");
-	bool ret = true;
-	SDL_Init(0);
+	bool ret = true;	
 
 	if (SDL_Init(SDL_INIT_AUDIO) < 0)
 	{
@@ -26,17 +25,24 @@ bool ModuleAudio::Init()
 		ret = false;
 	}
 
-	App->audio->music = Mix_LoadMUS("Assets/Audio/level1.ogg");	
-	if(App->audio->music == NULL){
-		return false;
+	if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1) {
+		ret = false;
 	}
+
+	App->audio->music = Mix_LoadMUS("Assets/Audio/level1.ogg");	
+	Mix_PlayMusic(music, -1);
+	
+	if(App->audio->music == NULL){
+		LOG("File could not be found. SDL_Error: %s\n", SDL_GetError());
+		ret = false;
+	}
+
 	return ret;
 }
 
 // Called every audio update
 update_status ModuleAudio::Update()
-{
-	Mix_PlayMusic(music, -1);
+{	
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -48,6 +54,7 @@ bool ModuleAudio::CleanUp()
 	{
 		Mix_FreeMusic(music);
 	}
+	Mix_CloseAudio();
 	SDL_QuitSubSystem(SDL_INIT_AUDIO);
 	return true;
 }
