@@ -19,18 +19,20 @@ bool ModuleRender::Init()
 	bool ret = true;
 	Uint32 flags = 0;
 
-	if(REN_VSYNC == true)
+	if (REN_VSYNC == true)
 	{
 		flags |= SDL_RENDERER_PRESENTVSYNC;
 	}
 
 	renderer = SDL_CreateRenderer(App->window->window, -1, flags);
-	
-	if(renderer == NULL)
+
+	if (renderer == NULL)
 	{
 		LOG("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
 	}
+
+	tex = App->textures->Load("test.png");
 
 	return ret;
 }
@@ -38,17 +40,19 @@ bool ModuleRender::Init()
 // Called every draw update
 update_status ModuleRender::PreUpdate()
 {
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 225);
+	SDL_RenderClear(renderer);
 
-	SDL_SetRenderDrawColor(App->render->renderer, 0, 0, 0, 255);
-	SDL_RenderClear(App->render->renderer);
-	
-	
+	SDL_Rect rect = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+	Blit(tex, 0, 0, &rect);
+
 	return update_status::UPDATE_CONTINUE;
 }
 
 update_status ModuleRender::PostUpdate()
 {
 	SDL_RenderPresent(renderer);
+
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -58,7 +62,7 @@ bool ModuleRender::CleanUp()
 	LOG("Destroying renderer");
 
 	//Destroy window
-	if(renderer != nullptr)
+	if (renderer != nullptr)
 		SDL_DestroyRenderer(renderer);
 
 	return true;
@@ -72,7 +76,7 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
 	rect.x = x;
 	rect.y = y;
 
-	if(section != nullptr)
+	if (section != nullptr)
 	{
 		rect.w = section->w;
 		rect.h = section->h;
@@ -82,7 +86,7 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
 		SDL_QueryTexture(texture, nullptr, nullptr, &rect.w, &rect.h);
 	}
 
-	if(SDL_RenderCopy(renderer, texture, section, &rect) != 0)
+	if (SDL_RenderCopy(renderer, texture, section, &rect) != 0)
 	{
 		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
 		ret = false;
