@@ -21,7 +21,7 @@ to advance through levels and defeat the alien invaders of the Earth.
 ***
 
 # Project Name
-TODO: Write a project description
+Andro Dunos
 ## Installation
 TODO: Describe the installation process
 ## Usage
@@ -39,3 +39,5 @@ TODO: Write history
 TODO: Write credits
 ## License
 TODO: Write license
+
+https://github.com/ofaura/Andro_Dunos
