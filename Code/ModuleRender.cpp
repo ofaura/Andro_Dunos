@@ -32,7 +32,7 @@ bool ModuleRender::Init()
 		ret = false;
 	}
 
-	tex = App->textures->Load("test.png");
+	tex = App->textures->Load("Assets/Sprites/background1.png");
 
 	return ret;
 }
@@ -40,11 +40,16 @@ bool ModuleRender::Init()
 // Called every draw update
 update_status ModuleRender::PreUpdate()
 {
+	offset--;
+	offset--;
+	if (offset < -BACK_WIDTH) offset = 0;
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 225);
 	SDL_RenderClear(renderer);
 
-	SDL_Rect rect = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
-	Blit(tex, 0, 0, &rect);	
+	SDL_Rect rect = { 0, 0, BACK_WIDTH, BACK_HEIGHT };
+	
+	Blit(tex, offset, BACK_HEIGHT, &rect);
+	Blit(tex, offset + BACK_WIDTH, BACK_HEIGHT, &rect);
 
 	return update_status::UPDATE_CONTINUE;
 }

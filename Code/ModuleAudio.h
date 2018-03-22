@@ -14,7 +14,7 @@ public:
 	~ModuleAudio();
 
 	bool Init();
-	update_status Update();
+	//update_status Update();
 	bool CleanUp();
 
 public:
