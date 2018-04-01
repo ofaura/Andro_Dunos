@@ -6,7 +6,11 @@
 #include "SDL/include/SDL.h"
 
 ModuleRender::ModuleRender() : Module()
-{}
+{
+	camera.x = camera.y = 0;
+	camera.w = SCREEN_WIDTH;
+	camera.h = SCREEN_HEIGHT;
+}
 
 // Destructor
 ModuleRender::~ModuleRender()
@@ -32,25 +36,21 @@ bool ModuleRender::Init()
 		ret = false;
 	}
 
-	tex = App->textures->Load("Assets/Sprites/background1.png");
-
 	return ret;
 }
 
 // Called every draw update
 update_status ModuleRender::PreUpdate()
 {
-	offset--;
-	offset--;
-	if (offset < -BACK_WIDTH) offset = 0;
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 225);
+
 	SDL_RenderClear(renderer);
 
-	SDL_Rect rect = { 0, 0, BACK_WIDTH, BACK_HEIGHT };
-	
-	Blit(tex, offset, BACK_HEIGHT, &rect);
-	Blit(tex, offset + BACK_WIDTH, BACK_HEIGHT, &rect);
 
+	return update_status::UPDATE_CONTINUE;
+}
+update_status ModuleRender::Update()
+{
+	camera.x --;
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -74,22 +74,25 @@ bool ModuleRender::CleanUp()
 }
 
 // Blit to screen
-bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
+bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed)
 {
 	bool ret = true;
 	SDL_Rect rect;
-	rect.x = x;
-	rect.y = y;
+	rect.x = (int)(camera.x * speed) + x * SCREEN_SIZE;
+	rect.y = (int)(camera.y * speed) + y * SCREEN_SIZE;
 
-	if (section != nullptr)
+	if (section != NULL)
 	{
 		rect.w = section->w;
 		rect.h = section->h;
 	}
 	else
 	{
-		SDL_QueryTexture(texture, nullptr, nullptr, &rect.w, &rect.h);
+		SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
 	}
+
+	rect.w *= SCREEN_SIZE;
+	rect.h *= SCREEN_SIZE;
 
 	if (SDL_RenderCopy(renderer, texture, section, &rect) != 0)
 	{
