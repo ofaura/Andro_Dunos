@@ -2,15 +2,15 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
-#include "ModuleSceneKen.h"
+#include "ModuleIntroNeoGeo.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleSceneHonda.h"
+#include "ModuleSceneLevel1.h"
 #include "ModuleInput.h"
 #include "ModuleAudio.h"
 
 
-ModuleSceneKen::ModuleSceneKen()
+ModuleIntroNeoGeo::ModuleIntroNeoGeo()
 {
 	// ground
 	NeoGeo.x = 146;
@@ -20,11 +20,11 @@ ModuleSceneKen::ModuleSceneKen()
 
 }
 
-ModuleSceneKen::~ModuleSceneKen()
+ModuleIntroNeoGeo::~ModuleIntroNeoGeo()
 {}
 
 // Load assets
-bool ModuleSceneKen::Start()
+bool ModuleIntroNeoGeo::Start()
 {
 	LOG("Loading ken scene");
 	App->audio->PlayMusic("Assets/Audio/01_Neo_Geo_Logo.ogg", 1.0f);
@@ -33,7 +33,7 @@ bool ModuleSceneKen::Start()
 }
 
 // UnLoad assets
-bool ModuleSceneKen::CleanUp()
+bool ModuleIntroNeoGeo::CleanUp()
 {
 	LOG("Unloading ken scene");
 	App->textures->Unload(graphics);
@@ -41,7 +41,7 @@ bool ModuleSceneKen::CleanUp()
 }
 
 // Update: draw background
-update_status ModuleSceneKen::Update()
+update_status ModuleIntroNeoGeo::Update()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(graphics, 50, 90, &NeoGeo, 0.75f); // sea and sky
@@ -49,7 +49,7 @@ update_status ModuleSceneKen::Update()
 	// TODO 2: make so pressing SPACE the HONDA stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
-		App->fade->FadeToBlack(App->scene_ken, App->scene_honda, 1.0f);
+		App->fade->FadeToBlack(App->NeoGeo, App->level1, 1.0f);
 	}
 
 	return UPDATE_CONTINUE;

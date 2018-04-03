@@ -7,11 +7,11 @@
 
 struct SDL_Texture;
 
-class ModuleSceneHonda : public Module
+class ModuleSceneLevel1 : public Module
 {
 public:
-	ModuleSceneHonda();
-	~ModuleSceneHonda();
+	ModuleSceneLevel1();
+	~ModuleSceneLevel1();
 
 	bool Start();
 	update_status Update();

@@ -1,17 +1,17 @@
 #include "Globals.h"
 #include "Application.h"
-#include "ModuleSceneHonda.h"
+#include "ModuleSceneLevel1.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleSceneKen.h"
+#include "ModuleIntroNeoGeo.h"
 #include "ModuleAudio.h"
 
 // BACKGROUND
 
-ModuleSceneHonda::ModuleSceneHonda()
+ModuleSceneLevel1::ModuleSceneLevel1()
 {
 	// Background 
 	background.x = 0;
@@ -25,11 +25,11 @@ ModuleSceneHonda::ModuleSceneHonda()
 	ground.h = 563;
 }
 
-ModuleSceneHonda::~ModuleSceneHonda()
+ModuleSceneLevel1::~ModuleSceneLevel1()
 {}
 
 // Load assets
-bool ModuleSceneHonda::Start()
+bool ModuleSceneLevel1::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
@@ -46,7 +46,7 @@ bool ModuleSceneHonda::Start()
 }
 
 // Load assets
-bool ModuleSceneHonda::CleanUp()
+bool ModuleSceneLevel1::CleanUp()
 {
 	// TODO 5: Remove all memory leaks
 	LOG("Unloading honda stage");
@@ -58,7 +58,7 @@ bool ModuleSceneHonda::CleanUp()
 }
 
 // Update: draw background
-update_status ModuleSceneHonda::Update()
+update_status ModuleSceneLevel1::Update()
 {
 	// Draw everything --------------------------------------	
 	float speed_background = 2;
@@ -77,7 +77,7 @@ update_status ModuleSceneHonda::Update()
 	// TODO 2: make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) 
 	{
-		App->fade->FadeToBlack(App->scene_honda, App->scene_ken, 1.0f);
+		App->fade->FadeToBlack(App->level1, App->NeoGeo, 1.0f);
 	}
 	return UPDATE_CONTINUE;
 }

@@ -7,11 +7,11 @@
 
 struct SDL_Texture;
 
-class ModuleSceneKen : public Module
+class ModuleIntroNeoGeo : public Module
 {
 public:
-	ModuleSceneKen();
-	~ModuleSceneKen();
+	ModuleIntroNeoGeo();
+	~ModuleIntroNeoGeo();
 
 	bool Start();
 	update_status Update();
