@@ -5,25 +5,24 @@
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 
-// Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModulePlayer::ModulePlayer()
 {
 	position.x = 0;
 	position.y = SCREEN_HEIGHT / 2;
 
-	// idle animation (arcade sprite sheet)
+
 	idle.PushBack({ 94, 107, 27, 17 });
 
 	idle.speed = 0.2f;
 
-	// walk forward animation (arcade sprite sheet)
+
 	up.PushBack({ 94, 107, 27, 17 });
 	up.PushBack({ 94, 86, 27, 15 });
 	up.PushBack({ 94, 66, 27, 15 });
 	up.speed = 0.1f;
 
-	// TODO 4: Make ryu walk backwards with the correct animations
+
 	down.PushBack({ 94, 107, 27, 17 });
 	down.PushBack({ 94, 130, 27, 16 });
 	down.PushBack({ 94, 152, 27, 17 });
@@ -52,7 +51,7 @@ update_status ModulePlayer::Update()
 	bool going_vertical = false;
 
 	Animation* current_animation = &idle;
-	int speed = 1;
+	int speed = 2;
 
 	if (App->input->keyboard[SDL_SCANCODE_W] == 1)
 	{

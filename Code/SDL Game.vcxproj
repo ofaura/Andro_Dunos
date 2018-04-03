@@ -96,7 +96,7 @@
     <ClCompile Include="ModulePlayer.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleSceneLevel1.cpp" />
-    <ClCompile Include="ModuleSceneKen.cpp" />
+    <ClCompile Include="ModuleIntroNeoGeo.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
   </ItemGroup>

@@ -46,7 +46,6 @@ update_status ModuleIntroNeoGeo::Update()
 	// Draw everything --------------------------------------
 	App->render->Blit(graphics, 50, 90, &NeoGeo, 0.75f); // sea and sky
 
-	// TODO 2: make so pressing SPACE the HONDA stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
 		App->fade->FadeToBlack(App->NeoGeo, App->level1, 1.0f);

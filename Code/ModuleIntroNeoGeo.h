@@ -1,5 +1,5 @@
-#ifndef __MODULESCENEKEN_H__
-#define __MODULESCENEKEN_H__
+#ifndef __MODULEINTRONEOGEO_H__
+#define __MODULEINTRONEOGEO_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -27,4 +27,4 @@ public:
 	bool forward;
 };
 
-#endif // __MODULESCENEKEN_H__
+#endif // __MODULEINTRONEOGEO_H__
