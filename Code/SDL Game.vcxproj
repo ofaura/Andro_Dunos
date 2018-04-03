@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{746CC4C3-787F-4B0E-AA66-E388FE3FF4F6}</ProjectGuid>
     <RootNamespace>SDLGame</RootNamespace>
-    <ProjectName>SDL3 Handout</ProjectName>
+    <ProjectName>SDL5 Handout</ProjectName>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -75,11 +75,12 @@
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
-    <ClInclude Include="ModuleAudio.h" />
-    <ClInclude Include="ModuleBackground.h" />
+    <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleInput.h" />
+    <ClInclude Include="ModulePlayer.h" />
     <ClInclude Include="ModuleRender.h" />
-    <ClInclude Include="ModuleShip.h" />
+    <ClInclude Include="ModuleSceneHonda.h" />
+    <ClInclude Include="ModuleSceneKen.h" />
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="p2Point.h" />
@@ -88,11 +89,12 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="ModuleAudio.cpp" />
-    <ClCompile Include="ModuleBackground.cpp" />
+    <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
+    <ClCompile Include="ModulePlayer.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
-    <ClCompile Include="ModuleShip.cpp" />
+    <ClCompile Include="ModuleSceneHonda.cpp" />
+    <ClCompile Include="ModuleSceneKen.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
   </ItemGroup>

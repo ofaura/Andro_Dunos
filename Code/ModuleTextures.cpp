@@ -9,6 +9,8 @@
 
 ModuleTextures::ModuleTextures() : Module()
 {
+	for (uint i = 0; i < MAX_TEXTURES; ++i)
+		textures[i] = nullptr;
 }
 
 // Destructor
@@ -25,7 +27,7 @@ bool ModuleTextures::Init()
 	int flags = IMG_INIT_PNG;
 	int init = IMG_Init(flags);
 
-	if((init & flags) != flags)
+	if ((init & flags) != flags)
 	{
 		LOG("Could not initialize Image lib. IMG_Init: %s", IMG_GetError());
 		ret = false;
@@ -39,7 +41,7 @@ bool ModuleTextures::CleanUp()
 {
 	LOG("Freeing textures and Image library");
 
-	for (int i = 0; i < MAX_TEXTURES; ++i)
+	for (uint i = 0; i < MAX_TEXTURES; ++i)
 		if (textures[i] != nullptr)
 			SDL_DestroyTexture(textures[i]);
 
@@ -50,38 +52,60 @@ bool ModuleTextures::CleanUp()
 // Load new texture from file path
 SDL_Texture* const ModuleTextures::Load(const char* path)
 {
-	// Load and image from a path (must be a png) and check for errors
-	SDL_Texture* texture = nullptr;
-	gSurface = IMG_Load(path);
+	SDL_Texture* texture = NULL;
+	SDL_Surface* surface = IMG_Load(path);
 
-	if (gSurface == NULL) {
-		LOG("Could not load Image. IMG_Load: %s", IMG_GetError());
+	if (surface == NULL)
+	{
+		LOG("Could not load surface with path: %s. IMG_Load: %s", path, IMG_GetError());
 	}
-	
-	// create a texture from it to return it (check for errors again)
 	else
 	{
-		texture = SDL_CreateTextureFromSurface(App->render->renderer, gSurface);
+		texture = SDL_CreateTextureFromSurface(App->render->renderer, surface);
 
 		if (texture == NULL)
 		{
 			LOG("Unable to create texture from surface! SDL Error: %s\n", SDL_GetError());
 		}
-		// free the surface and add the texture to our own array so we can properly free them 
 		else
 		{
-			for (int i = 0; i < MAX_TEXTURES; ++i) {
-				textures[i] = SDL_CreateTextureFromSurface(App->render->renderer, gSurface);
-
-				if (textures[i] != nullptr) {
-					LOG("Could not create a texture. SDL_CreateTextureFromSurface: %s", IMG_GetError());
+			bool room = false;
+			for (int i = 0; i < MAX_TEXTURES; ++i)
+			{
+				if (textures[i] == nullptr)
+				{
+					textures[i] = texture;
+					room = true;
+					break;
 				}
-
 			}
+			if (room == false)
+				LOG("Texture buffer overflow");
 		}
 
-		SDL_FreeSurface(gSurface);
+		SDL_FreeSurface(surface);
 	}
 
 	return texture;
+}
+
+bool ModuleTextures::Unload(SDL_Texture * texture)
+{
+	bool ret = false;
+
+	if (texture != nullptr)
+	{
+		for (int i = 0; i < MAX_TEXTURES; ++i)
+		{
+			if (textures[i] == texture)
+			{
+				textures[i] = nullptr;
+				ret = true;
+				break;
+			}
+		}
+		SDL_DestroyTexture(texture);
+	}
+
+	return ret;
 }

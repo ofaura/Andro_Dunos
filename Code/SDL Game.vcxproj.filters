@@ -10,7 +10,7 @@
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Containers">
-      <UniqueIdentifier>{64c9b52e-a2f7-43b1-8eb2-bc4ec200f5ee}</UniqueIdentifier>
+      <UniqueIdentifier>{78a7f487-1d77-4fdc-9f51-f067eccd6239}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -38,19 +38,22 @@
     <ClInclude Include="ModuleTextures.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleAudio.h">
+    <ClInclude Include="ModulePlayer.h">
       <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleBackground.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Containers</Filter>
     </ClInclude>
     <ClInclude Include="p2Point.h">
       <Filter>Containers</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleShip.h">
+    <ClInclude Include="Animation.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleFadeToBlack.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneKen.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneHonda.h">
       <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
@@ -76,13 +79,16 @@
     <ClCompile Include="Globals.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleAudio.cpp">
+    <ClCompile Include="ModulePlayer.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleBackground.cpp">
+    <ClCompile Include="ModuleFadeToBlack.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleShip.cpp">
+    <ClCompile Include="ModuleSceneKen.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneHonda.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
