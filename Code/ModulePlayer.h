@@ -24,6 +24,8 @@ public:
 	Animation idle;
 	Animation up;
 	Animation down;
+	Animation up_static;
+	Animation down_static;
 	iPoint position;
 };
 

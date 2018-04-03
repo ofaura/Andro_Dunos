@@ -28,6 +28,10 @@ ModulePlayer::ModulePlayer()
 	down.PushBack({ 94, 130, 27, 16 });
 	down.PushBack({ 94, 152, 27, 17 });
 	down.speed = 0.1f;
+
+	up_static.PushBack({ 94, 86, 27, 15 });
+
+	down_static.PushBack({ 94, 130, 27, 16 });
 }
 
 ModulePlayer::~ModulePlayer()
@@ -45,17 +49,32 @@ bool ModulePlayer::Start()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
+	bool going_vertical = false;
+
 	Animation* current_animation = &idle;
 	int speed = 1;
 
 	if (App->input->keyboard[SDL_SCANCODE_W] == 1)
 	{
-		current_animation = &up;
+		if (going_vertical)
+		{
+			current_animation = &up;
+			position.y -= speed;
+			going_vertical = true;
+		}
+		current_animation = &up_static;
 		position.y -= speed;
+		
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == 1) {
-		current_animation = &down;
+		if (going_vertical)
+		{
+			current_animation = &down;
+			position.y += speed;
+			going_vertical = true;
+		}
+		current_animation = &down_static;
 		position.y += speed;
 	}
 	if (App->input->keyboard[SDL_SCANCODE_A] == 1)
