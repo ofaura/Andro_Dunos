@@ -27,7 +27,7 @@ ModuleIntroNeoGeo::~ModuleIntroNeoGeo()
 bool ModuleIntroNeoGeo::Start()
 {
 	LOG("Loading ken scene");
-	App->audio->PlayMusic("Assets/Audio/01_Neo_Geo_Logo.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/Audio/neoGeo.ogg", 1.0f);
 	graphics = App->textures->Load("Assets/Sprites/NeoGeo/Neogeo (47).png");
 	return true;
 }
