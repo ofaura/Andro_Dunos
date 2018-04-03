@@ -35,7 +35,7 @@ bool ModuleIntroNeoGeo::Start()
 // UnLoad assets
 bool ModuleIntroNeoGeo::CleanUp()
 {
-	LOG("Unloading ken scene");
+	LOG("Unloading Neo Geo logo scene");
 	App->textures->Unload(graphics);
 	return true;
 }
