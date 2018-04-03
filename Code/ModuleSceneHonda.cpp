@@ -7,7 +7,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleSceneKen.h"
-
+#include "ModuleAudio.h"
 
 // BACKGROUND
 
@@ -41,6 +41,7 @@ bool ModuleSceneHonda::Start()
 	if (App->player->IsEnabled()==false)
 	App->player->Enable();
 
+	App->audio->PlayMusic("Assets/Audio/level1.ogg", 1.0f);
 	return ret;
 }
 

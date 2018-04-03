@@ -7,8 +7,8 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleSceneHonda.h"
 #include "ModuleInput.h"
+#include "ModuleAudio.h"
 
-// Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModuleSceneKen::ModuleSceneKen()
 {
@@ -27,6 +27,7 @@ ModuleSceneKen::~ModuleSceneKen()
 bool ModuleSceneKen::Start()
 {
 	LOG("Loading ken scene");
+	App->audio->PlayMusic("Assets/Audio/01_Neo_Geo_Logo.ogg", 1.0f);
 	graphics = App->textures->Load("Assets/Sprites/NeoGeo/Neogeo (47).png");
 	return true;
 }
