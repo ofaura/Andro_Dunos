@@ -8,6 +8,7 @@
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
+#include "ModuleSceneLevel2.h"
 
 Application::Application()
 {
@@ -20,6 +21,7 @@ Application::Application()
 	modules[6] = player = new ModulePlayer();
 	modules[7] = fade = new ModuleFadeToBlack();
 	modules[8] = audio = new ModuleAudio();
+	modules[9] = level2 = new ModuleSceneLevel2();
 }	
 
 Application::~Application()
@@ -36,6 +38,7 @@ bool Application::Init()
 	player->Disable();
 	// Disable the map that you do not start with
 	level1->Disable();
+	level2->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

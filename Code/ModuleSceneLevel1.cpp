@@ -6,7 +6,7 @@
 #include "ModulePlayer.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleIntroNeoGeo.h"
+#include "ModuleSceneLevel2.h"
 #include "ModuleAudio.h"
 
 // BACKGROUND
@@ -49,7 +49,7 @@ bool ModuleSceneLevel1::Start()
 bool ModuleSceneLevel1::CleanUp()
 {
 	// TODO 5: Remove all memory leaks
-	LOG("Unloading honda stage");
+	LOG("Unloading textures");
 	App->textures->Unload(background_texture);
 	App->textures->Unload(ground_texture);
 	if (App->player->IsEnabled() == true)
@@ -77,7 +77,7 @@ update_status ModuleSceneLevel1::Update()
 	// TODO 2: make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) 
 	{
-		App->fade->FadeToBlack(App->level1, App->NeoGeo, 1.0f);
+		App->fade->FadeToBlack(App->level1, App->level2, 1.0f);
 	}
 	return UPDATE_CONTINUE;
 }
