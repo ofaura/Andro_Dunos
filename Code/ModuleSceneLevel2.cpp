@@ -6,7 +6,7 @@
 #include "ModulePlayer.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleIntroNeoGeo.h"
+#include "ModuleBonus.h"
 #include "ModuleAudio.h"
 
 // BACKGROUND
@@ -38,24 +38,14 @@ bool ModuleSceneLevel2::Start()
 	ground_texture = App->textures->Load("Assets/Sprites/lvl2/Floor 2.png");
 
 	// TODO 1: Enable (and properly disable) the player module
-	if (App->player->IsEnabled() == false)
-		App->player->Enable();
+//	if (App->player->IsEnabled() == false)
+	App->player->Enable();
 
 	App->audio->PlayMusic("Assets/Audio/level2.ogg", 1.0f);
 	return ret;
 }
 
-// Load assets
-bool ModuleSceneLevel2::CleanUp()
-{
-	// TODO 5: Remove all memory leaks
-	LOG("Unloading textures");
-	App->textures->Unload(background_texture);
-	App->textures->Unload(ground_texture);
-	if (App->player->IsEnabled() == true)
-		App->player->Disable();
-	return true;
-}
+
 
 // Update: draw background
 update_status ModuleSceneLevel2::Update()
@@ -68,7 +58,7 @@ update_status ModuleSceneLevel2::Update()
 	// TODO 2: make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
-		App->fade->FadeToBlack(App->level2, App->NeoGeo, 1.0f);
+		App->fade->FadeToBlack(App->level2, App->bonus, 1.0f);
 	}
 	return UPDATE_CONTINUE;
 }

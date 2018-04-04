@@ -38,23 +38,11 @@ bool ModuleSceneLevel1::Start()
 	ground_texture = App->textures->Load("Assets/Sprites/lvl1/Floor_all.png");
 
 	// TODO 1: Enable (and properly disable) the player module
-	if (App->player->IsEnabled()==false)
+	//if (App->player->IsEnabled()==false)
 	App->player->Enable();
 
 	App->audio->PlayMusic("Assets/Audio/level1.ogg", 1.0f);
 	return ret;
-}
-
-// Load assets
-bool ModuleSceneLevel1::CleanUp()
-{
-	// TODO 5: Remove all memory leaks
-	LOG("Unloading textures");
-	App->textures->Unload(background_texture);
-	App->textures->Unload(ground_texture);
-	if (App->player->IsEnabled() == true)
-	App->player->Disable();
-	return true;
 }
 
 // Update: draw background
@@ -80,4 +68,16 @@ update_status ModuleSceneLevel1::Update()
 		App->fade->FadeToBlack(App->level1, App->level2, 1.0f);
 	}
 	return UPDATE_CONTINUE;
+}
+
+// Load assets
+bool ModuleSceneLevel1::CleanUp()
+{
+	// TODO 5: Remove all memory leaks
+	LOG("Unloading textures");
+	App->textures->Unload(background_texture);
+	App->textures->Unload(ground_texture);
+	//if (App->player->IsEnabled() == true)
+	App->player->Disable();
+	return true;
 }

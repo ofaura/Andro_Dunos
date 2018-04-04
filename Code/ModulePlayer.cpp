@@ -102,7 +102,7 @@ update_status ModulePlayer::Update()
 bool ModulePlayer::CleanUp()
 {
 	// TODO 5: Remove all memory leaks
-	LOG("Unloading honda stage");
+	LOG("Unloading ship");
 	App->textures->Unload(graphics);
 
 	return true;

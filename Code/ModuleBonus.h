@@ -1,5 +1,5 @@
-#ifndef __MODULEINTRONEOGEO_H__
-#define __MODULEINTRONEOGEO_H__
+#ifndef __MODULEBONUS_H__
+#define __MODULEBONUS_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -7,21 +7,21 @@
 
 struct SDL_Texture;
 
-class ModuleIntroNeoGeo : public Module
+class ModuleBonus : public Module
 {
 public:
-	ModuleIntroNeoGeo();
-	~ModuleIntroNeoGeo();
+	ModuleBonus();
+	~ModuleBonus();
 
 	bool Start();
 	update_status Update();
 	bool CleanUp();
 
 public:
-	
+
 	SDL_Texture* graphics = nullptr;
-	SDL_Rect NeoGeo;
+	SDL_Rect Bonus;
 
 };
 
-#endif // __MODULEINTRONEOGEO_H__
+#endif // __MODULEBONUS_H__

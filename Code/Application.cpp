@@ -9,6 +9,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
 #include "ModuleSceneLevel2.h"
+#include "ModuleBonus.h"
 
 Application::Application()
 {
@@ -22,6 +23,7 @@ Application::Application()
 	modules[7] = fade = new ModuleFadeToBlack();
 	modules[8] = audio = new ModuleAudio();
 	modules[9] = level2 = new ModuleSceneLevel2();
+	modules[10] = bonus = new ModuleBonus();
 }	
 
 Application::~Application()
@@ -39,6 +41,7 @@ bool Application::Init()
 	// Disable the map that you do not start with
 	level1->Disable();
 	level2->Disable();
+	bonus->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
