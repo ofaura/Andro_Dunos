@@ -39,7 +39,20 @@ bool ModuleSceneLevel1::Start()
 
 	// TODO 1: Enable (and properly disable) the player module
 	//if (App->player->IsEnabled()==false)
-	App->player->Enable();
+	//App->player->Enable();
+
+	if (IsEnabled()) {
+		if (App->player->IsEnabled() == false) {
+			App->player->Enable();
+		}
+	}
+	if (IsEnabled() == false) {
+		if (App->player->IsEnabled() == true) {
+			App->player->Disable();
+		}
+	}
+
+
 
 	App->audio->PlayMusic("Assets/Audio/level1.ogg", 1.0f);
 	return ret;

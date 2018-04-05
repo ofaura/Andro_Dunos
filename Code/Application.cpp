@@ -19,10 +19,10 @@ Application::Application()
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = level1 = new ModuleSceneLevel1();
 	modules[5] = NeoGeo = new ModuleIntroNeoGeo();
-	modules[6] = player = new ModulePlayer();
+	modules[6] = level2 = new ModuleSceneLevel2();
 	modules[7] = fade = new ModuleFadeToBlack();
 	modules[8] = audio = new ModuleAudio();
-	modules[9] = level2 = new ModuleSceneLevel2();
+	modules[9] = player = new ModulePlayer();
 	modules[10] = bonus = new ModuleBonus();
 }	
 

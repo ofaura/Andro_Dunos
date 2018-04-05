@@ -39,7 +39,16 @@ bool ModuleSceneLevel2::Start()
 
 	// TODO 1: Enable (and properly disable) the player module
 //	if (App->player->IsEnabled() == false)
-	App->player->Enable();
+	if (IsEnabled()) {
+		if (App->player->IsEnabled()==false) {
+			App->player->Enable();
+		}
+	}
+	if (IsEnabled()==false) {
+		if (App->player->IsEnabled() ==true) {
+			App->player->Disable();
+		}
+	}
 
 	App->audio->PlayMusic("Assets/Audio/level2.ogg", 1.0f);
 	return ret;
@@ -61,4 +70,15 @@ update_status ModuleSceneLevel2::Update()
 		App->fade->FadeToBlack(App->level2, App->bonus, 1.0f);
 	}
 	return UPDATE_CONTINUE;
+}
+
+bool ModuleSceneLevel2::CleanUp()
+{
+	// TODO 5: Remove all memory leaks
+	LOG("Unloading textures");
+	App->textures->Unload(background_texture);
+	App->textures->Unload(ground_texture);
+	//if (App->player->IsEnabled() == true)
+	App->player->Disable();
+	return true;
 }
