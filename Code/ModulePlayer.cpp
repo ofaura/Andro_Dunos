@@ -4,6 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
+#include "ModuleParticles.h"
 
 
 ModulePlayer::ModulePlayer()
@@ -11,17 +12,14 @@ ModulePlayer::ModulePlayer()
 	position.x = 0;
 	position.y = SCREEN_HEIGHT / 2;
 
-
 	idle.PushBack({ 94, 107, 27, 17 });
 
 	idle.speed = 0.2f;
-
 
 	up.PushBack({ 94, 107, 27, 17 });
 	up.PushBack({ 94, 86, 27, 15 });
 	up.PushBack({ 94, 66, 27, 15 });
 	up.speed = 0.1f;
-
 
 	down.PushBack({ 94, 107, 27, 17 });
 	down.PushBack({ 94, 130, 27, 16 });
@@ -40,9 +38,8 @@ ModulePlayer::~ModulePlayer()
 bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
-	bool ret = true;
-	graphics = App->textures->Load("Assets/Sprites/lvl1/ships.png"); // arcade version
-	return ret;
+	graphics = App->textures->Load("Assets/Sprites/player/ships.png"); // arcade version
+	return true;
 }
 
 // Update: draw background
@@ -85,6 +82,12 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_D] == 1) {
 		current_animation = &idle;
 		position.x += speed;
+	}
+
+
+	if (App->input->keyboard[SDL_SCANCODE_O] == 1)
+	{
+		App->particles->AddParticle(App->particles->laser, position.x + 40, position.y + 2);
 	}
 
 	if (position.x <= 0) position.x = 0;

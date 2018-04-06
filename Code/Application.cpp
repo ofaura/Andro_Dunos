@@ -10,6 +10,7 @@
 #include "ModuleAudio.h"
 #include "ModuleSceneLevel2.h"
 #include "ModuleBonus.h"
+#include "ModuleParticles.h"
 
 Application::Application()
 {
@@ -24,6 +25,7 @@ Application::Application()
 	modules[8] = audio = new ModuleAudio();
 	modules[9] = player = new ModulePlayer();
 	modules[10] = bonus = new ModuleBonus();
+	modules[11] = particles = new ModuleParticles();
 }	
 
 Application::~Application()
