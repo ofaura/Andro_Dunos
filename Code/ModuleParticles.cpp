@@ -25,10 +25,10 @@ bool ModuleParticles::Start()
 
 	// Explosion particle
 
-	laser.anim.PushBack({ 200, 121, 32, 10 });
-	laser.anim.PushBack({ 233, 120, 32, 12 });
+	laser.anim.PushBack({ 21, 6, 16, 10 });
+	laser.anim.PushBack({ 22, 51, 16, 6 });
 	laser.anim.loop = true;
-	laser.anim.speed = 0.4f;
+	laser.anim.speed = 0.2f;
 	laser.speed.x = 4;
 	laser.life = 4000;
 

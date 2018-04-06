@@ -50,7 +50,7 @@ update_status ModulePlayer::Update()
 	Animation* current_animation = &idle;
 	int speed = 2;
 
-	if (App->input->keyboard[SDL_SCANCODE_W] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
 		if (going_vertical)
 		{
@@ -63,7 +63,7 @@ update_status ModulePlayer::Update()
 		
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_S] == 1) {
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) {
 		if (going_vertical)
 		{
 			current_animation = &down;
@@ -73,19 +73,19 @@ update_status ModulePlayer::Update()
 		current_animation = &down_static;
 		position.y += speed;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_A] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &idle;
 		position.x -= speed;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_D] == 1) {
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) {
 		current_animation = &idle;
 		position.x += speed;
 	}
 
 
-	if (App->input->keyboard[SDL_SCANCODE_O] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_O] == KEY_STATE::KEY_REPEAT)
 	{
 		App->particles->AddParticle(App->particles->laser, position.x + 40, position.y + 2);
 	}
