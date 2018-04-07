@@ -77,9 +77,10 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->laser, position.x + 40, position.y + 2);
+		App->particles->AddParticle(App->particles->laser, position.x + 25, position.y + 3);
+		App->particles->AddParticle(App->particles->laser, position.x + 25, position.y + 8);
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
