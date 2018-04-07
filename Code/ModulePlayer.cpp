@@ -39,7 +39,8 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	graphics = App->textures->Load("Assets/Sprites/player/ships.png"); // arcade version
-	music = App->audio->LoadFx("Assets/Audio/laser1.wav");
+	laser1 = App->audio->LoadFx("Assets/Audio/laser1.wav");
+	laser2 = App->audio->LoadFx("Assets/Audio/laser2.wav");
 	return true;
 }
 
@@ -91,14 +92,14 @@ update_status ModulePlayer::Update()
 	{
 		App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 3);
 		App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 8);
-		App->audio->PlayFx(music);
+		App->audio->PlayFx(laser1);
 	}
 
 	else if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == 1)
 	{
 		App->particles->AddParticle(App->particles->laser2_1, position.x + 15, position.y + 12);
 		App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 12);
-		App->audio->PlayFx(music);
+		App->audio->PlayFx(laser2);
 	}
 
 

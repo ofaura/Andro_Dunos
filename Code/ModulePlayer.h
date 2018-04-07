@@ -25,7 +25,8 @@ public:
 	Animation up;
 	Animation down;
 	iPoint position;
-	uint music;
+	uint laser1;
+	uint laser2;
 	uint type = 0;
 };
 
