@@ -46,7 +46,7 @@ update_status ModuleIntroNeoGeo::Update()
 	// Draw everything --------------------------------------
 	App->render->Blit(graphics, 50, 90, &NeoGeo, 0.75f); 
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1)
 	{
 		App->fade->FadeToBlack(App->NeoGeo, App->level1, 1.0f);
 	}

@@ -76,7 +76,7 @@ update_status ModuleSceneLevel1::Update()
 	App->render->Blit(ground_texture, (ground_pos_x) / 3.5, -115, &ground, 1.0f);
 
 	// TODO 2: make so pressing SPACE the KEN stage is loaded
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) 
+	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1) 
 	{
 		App->fade->FadeToBlack(App->level1, App->level2, 1.0f);
 	}
