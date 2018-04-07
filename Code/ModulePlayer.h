@@ -25,9 +25,7 @@ public:
 	Animation up;
 	Animation down;
 	iPoint position;
-	uint laser1;
-	uint laser2;
-	uint laser3;
+	uint laser1, laser2, laser3, laser4;
 	uint type = 0;
 };
 

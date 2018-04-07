@@ -42,6 +42,7 @@ bool ModulePlayer::Start()
 	laser1 = App->audio->LoadFx("Assets/Audio/laser1.wav");
 	laser2 = App->audio->LoadFx("Assets/Audio/laser2.wav");
 	laser3 = App->audio->LoadFx("Assets/Audio/laser3.wav");
+	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
 	return true;
 }
 
@@ -82,7 +83,7 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN)
 	{
-		if (type >= 0 && type < 2)
+		if (type >= 0 && type < 3)
 		{
 			type++;
 		}
@@ -109,6 +110,12 @@ update_status ModulePlayer::Update()
 		App->audio->PlayFx(laser3);
 	}
 
+	else if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == 3)
+	{
+		App->particles->AddParticle(App->particles->laser4_1, position.x + 19, position.y + 11);
+		App->particles->AddParticle(App->particles->laser4_2, position.x + 19, position.y + 11);
+		App->audio->PlayFx(laser4);
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)

@@ -49,6 +49,8 @@ public:
 	Particle laser2_1;
 	Particle laser2_2;
 	Particle laser3;
+	Particle laser4_1;
+	Particle laser4_2;
 
 };
 
