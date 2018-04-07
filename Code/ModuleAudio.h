@@ -11,8 +11,6 @@
 
 class ModuleAudio : public Module
 {
-	friend class ModuleSceneSpace;
-	friend class ModulePlayer;
 public:
 
 	ModuleAudio();

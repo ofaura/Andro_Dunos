@@ -12,23 +12,23 @@ ModulePlayer::ModulePlayer()
 	position.x = 0;
 	position.y = SCREEN_HEIGHT / 2;
 
+	current_animation = NULL;
+
 	idle.PushBack({ 94, 107, 27, 17 });
 
-	idle.speed = 0.2f;
 
 	up.PushBack({ 94, 107, 27, 17 });
 	up.PushBack({ 94, 86, 27, 15 });
 	up.PushBack({ 94, 66, 27, 15 });
+	up.loop = false;
 	up.speed = 0.1f;
 
 	down.PushBack({ 94, 107, 27, 17 });
 	down.PushBack({ 94, 130, 27, 16 });
 	down.PushBack({ 94, 152, 27, 17 });
+	down.loop = false;
 	down.speed = 0.1f;
 
-	up_static.PushBack({ 94, 86, 27, 15 });
-
-	down_static.PushBack({ 94, 130, 27, 16 });
 }
 
 ModulePlayer::~ModulePlayer()
@@ -45,50 +45,46 @@ bool ModulePlayer::Start()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	bool going_vertical = false;
-
-	Animation* current_animation = &idle;
 	int speed = 2;
 
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-	{
-		if (going_vertical)
-		{
-			current_animation = &up;
-			position.y -= speed;
-			going_vertical = true;
-		}
-		current_animation = &up_static;
-		position.y -= speed;
-		
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) {
-		if (going_vertical)
-		{
-			current_animation = &down;
-			position.y += speed;
-			going_vertical = true;
-		}
-		current_animation = &down_static;
-		position.y += speed;
-	}
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
-		current_animation = &idle;
-		position.x -= speed;
+		position.x -= speed + 1;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) {
-		current_animation = &idle;
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+	{
 		position.x += speed;
 	}
 
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+	{
+		position.y += speed;
+		if (current_animation != &down)
+		{
+			down.Reset();
+			current_animation = &down;
+		}
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+	{
+		position.y -= speed;
+		if (current_animation != &up)
+		{
+			up.Reset();
+			current_animation = &up;
+		}
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_O] == KEY_STATE::KEY_REPEAT)
 	{
 		App->particles->AddParticle(App->particles->laser, position.x + 40, position.y + 2);
 	}
+
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
+		current_animation = &idle;
 
 	if (position.x <= 0) position.x = 0;
 	else if (position.x >= SCREEN_WIDTH - 27) position.x = SCREEN_WIDTH - 27;

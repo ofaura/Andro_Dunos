@@ -29,7 +29,7 @@ bool ModuleParticles::Start()
 	laser.anim.PushBack({ 22, 51, 16, 6 });
 	laser.anim.loop = true;
 	laser.anim.speed = 0.2f;
-	laser.speed.x = 4;
+	laser.speed.x = 7;
 	laser.life = 4000;
 
 	return true;
