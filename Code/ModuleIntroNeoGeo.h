@@ -20,7 +20,8 @@ public:
 public:
 	
 	SDL_Texture* graphics = nullptr;
-	SDL_Rect NeoGeo;
+	Animation NeoGeo;
+	Animation* current_animation = nullptr;
 
 };
 
