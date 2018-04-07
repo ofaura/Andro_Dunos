@@ -27,6 +27,7 @@ public:
 	iPoint position;
 	uint laser1;
 	uint laser2;
+	uint laser3;
 	uint type = 0;
 };
 

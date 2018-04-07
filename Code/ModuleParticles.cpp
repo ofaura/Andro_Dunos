@@ -42,6 +42,11 @@ bool ModuleParticles::Start()
 	laser2_2.speed.x = -8;
 	laser2_2.life = 2500;
 
+	laser3.anim.PushBack({ 16, 101, 32, 3 });
+	laser3.anim.loop = false;
+	laser3.speed.x = 8;
+	laser3.life = 2500;
+
 	return true;
 }
 
