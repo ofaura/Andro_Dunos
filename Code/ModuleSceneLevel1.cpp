@@ -33,7 +33,6 @@ bool ModuleSceneLevel1::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
-	
 	background_texture = App->textures->Load("Assets/Sprites/lvl1/background1.png");
 	ground_texture = App->textures->Load("Assets/Sprites/lvl1/Floor_all.png");
 

@@ -78,12 +78,29 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->laser, position.x + 25, position.y + 3);
-		App->particles->AddParticle(App->particles->laser, position.x + 25, position.y + 8);
+		if (type >= 0 && type < 1)
+		{
+			type++;
+		}
+		else type = 0;
+	}
+	
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == 0)
+	{
+		App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 3);
+		App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 8);
 		App->audio->PlayFx(music);
 	}
+
+	else if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == 1)
+	{
+		App->particles->AddParticle(App->particles->laser2_1, position.x + 15, position.y + 12);
+		App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 12);
+		App->audio->PlayFx(music);
+	}
+
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)

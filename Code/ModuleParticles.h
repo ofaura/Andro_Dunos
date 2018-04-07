@@ -6,7 +6,7 @@
 #include "Globals.h"
 #include "p2Point.h"
 
-#define MAX_ACTIVE_PARTICLES 100
+#define MAX_ACTIVE_PARTICLES 300
 
 struct SDL_Texture;
 
@@ -45,7 +45,10 @@ private:
 
 public:
 
-	Particle laser;
+	Particle laser1;
+	Particle laser2_1;
+	Particle laser2_2;
+
 };
 
 #endif // __MODULEPARTICLES_H__

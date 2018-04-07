@@ -37,7 +37,6 @@ bool ModuleIntroNeoGeo::CleanUp()
 {
 	LOG("Unloading Neo Geo logo scene");
 	App->textures->Unload(graphics);
-	Mix_CloseAudio();
 	return true;
 }
 
