@@ -21,11 +21,11 @@ Application::Application()
 	modules[4] = level1 = new ModuleSceneLevel1();
 	modules[5] = NeoGeo = new ModuleIntroNeoGeo();
 	modules[6] = level2 = new ModuleSceneLevel2();
-	modules[7] = fade = new ModuleFadeToBlack();
+	modules[7] = particles = new ModuleParticles();
 	modules[8] = audio = new ModuleAudio();
 	modules[9] = player = new ModulePlayer();
 	modules[10] = bonus = new ModuleBonus();
-	modules[11] = particles = new ModuleParticles();
+	modules[11] = fade =  new ModuleFadeToBlack();
 }	
 
 Application::~Application()
