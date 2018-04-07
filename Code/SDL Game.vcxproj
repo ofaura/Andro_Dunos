@@ -85,6 +85,7 @@
     <ClInclude Include="ModuleSceneLevel1.h" />
     <ClInclude Include="ModuleIntroNeoGeo.h" />
     <ClInclude Include="ModuleSceneLevel2.h" />
+    <ClInclude Include="ModuleStartMenu.h" />
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="p2Point.h" />
@@ -103,6 +104,7 @@
     <ClCompile Include="ModuleSceneLevel1.cpp" />
     <ClCompile Include="ModuleIntroNeoGeo.cpp" />
     <ClCompile Include="ModuleSceneLevel2.cpp" />
+    <ClCompile Include="ModuleStartMenu.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
   </ItemGroup>

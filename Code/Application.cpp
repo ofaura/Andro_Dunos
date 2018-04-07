@@ -11,6 +11,7 @@
 #include "ModuleSceneLevel2.h"
 #include "ModuleBonus.h"
 #include "ModuleParticles.h"
+#include "ModuleStartMenu.h"
 
 Application::Application()
 {
@@ -21,11 +22,12 @@ Application::Application()
 	modules[4] = level1 = new ModuleSceneLevel1();
 	modules[5] = NeoGeo = new ModuleIntroNeoGeo();
 	modules[6] = level2 = new ModuleSceneLevel2();
-	modules[7] = particles = new ModuleParticles();
-	modules[8] = audio = new ModuleAudio();
-	modules[9] = player = new ModulePlayer();
-	modules[10] = bonus = new ModuleBonus();
-	modules[11] = fade =  new ModuleFadeToBlack();
+	modules[7] = start_menu = new ModuleStartMenu();
+	modules[8] = particles = new ModuleParticles();
+	modules[9] = audio = new ModuleAudio();
+	modules[10] = player = new ModulePlayer();
+	modules[11] = bonus = new ModuleBonus();
+	modules[12] = fade =  new ModuleFadeToBlack();
 }	
 
 Application::~Application()
@@ -44,6 +46,7 @@ bool Application::Init()
 	level1->Disable();
 	level2->Disable();
 	bonus->Disable();
+	start_menu->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

@@ -5,7 +5,7 @@
 #include "ModuleIntroNeoGeo.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleSceneLevel1.h"
+#include "ModuleStartMenu.h"
 #include "ModuleInput.h"
 #include "ModuleAudio.h"
 
@@ -26,7 +26,7 @@ ModuleIntroNeoGeo::~ModuleIntroNeoGeo()
 // Load assets
 bool ModuleIntroNeoGeo::Start()
 {
-	LOG("Loading ken scene");
+	LOG("Loading music and textures");
 	App->audio->PlayMusic("Assets/Audio/neoGeo.ogg", 1.0f);
 	graphics = App->textures->Load("Assets/Sprites/NeoGeo/Neogeo (47).png");
 	return true;
@@ -37,6 +37,7 @@ bool ModuleIntroNeoGeo::CleanUp()
 {
 	LOG("Unloading Neo Geo logo scene");
 	App->textures->Unload(graphics);
+	Mix_CloseAudio();
 	return true;
 }
 
@@ -48,7 +49,7 @@ update_status ModuleIntroNeoGeo::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1)
 	{
-		App->fade->FadeToBlack(App->NeoGeo, App->level1, 1.0f);
+		App->fade->FadeToBlack(App->NeoGeo, App->start_menu, 1.0f);
 	}
 
 	return UPDATE_CONTINUE;
