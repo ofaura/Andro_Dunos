@@ -5,7 +5,7 @@
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
-
+#include "ModuleAudio.h"
 
 ModulePlayer::ModulePlayer()
 {
@@ -39,6 +39,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	graphics = App->textures->Load("Assets/Sprites/player/ships.png"); // arcade version
+	music = App->audio->LoadFx("Assets/Audio/laser1.wav");
 	return true;
 }
 
@@ -81,6 +82,7 @@ update_status ModulePlayer::Update()
 	{
 		App->particles->AddParticle(App->particles->laser, position.x + 25, position.y + 3);
 		App->particles->AddParticle(App->particles->laser, position.x + 25, position.y + 8);
+		App->audio->PlayFx(music);
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE

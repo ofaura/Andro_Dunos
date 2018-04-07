@@ -25,6 +25,7 @@ public:
 	Animation up;
 	Animation down;
 	iPoint position;
+	uint music;
 };
 
 #endif

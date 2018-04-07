@@ -157,13 +157,3 @@ bool ModuleAudio::PlayFx(uint id, int repeat)
 
 	return ret;
 }
-
-uint ModuleAudio::Channel_PlayFx(uint id, int repeat)
-{
-
-	if (fx[id] != nullptr)
-	{
-		return Mix_PlayChannel(-1, fx[id], repeat);
-	}
-
-}

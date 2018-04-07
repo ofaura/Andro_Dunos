@@ -23,14 +23,13 @@ public:
 	uint LoadFx(const char* path);
 	bool UnLoadFx(uint id);
 
-	bool PlayFx(unsigned int fx, int repeat = 0);
-	uint Channel_PlayFx(unsigned int fx, int repeat = 0);
+	bool PlayFx(uint fx, int repeat = 0);
 
 private:
 
 	Mix_Music*	music = nullptr;
 	Mix_Chunk*	fx[MAX_FX];
-	uint			last_fx = 1;
+	uint last_fx = 1;
 };
 
 
