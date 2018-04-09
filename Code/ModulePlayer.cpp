@@ -51,6 +51,7 @@ update_status ModulePlayer::Update()
 {
 	int speed = 2;
 
+	// Move Player --------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x -= speed + 1;
@@ -80,8 +81,8 @@ update_status ModulePlayer::Update()
 			current_animation = &up;
 		}
 	}
-
-	if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN)
+	// Change weapon type --------------------------------------
+	if (App->input->keyboard[SDL_SCANCODE_E] == KEY_STATE::KEY_DOWN)
 	{
 		if (type >= 0 && type < 3)
 		{
@@ -89,7 +90,8 @@ update_status ModulePlayer::Update()
 		}
 		else type = 0;
 	}
-	
+
+	// Laser shot --------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == 0)
 	{
 		App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 3);
@@ -117,10 +119,12 @@ update_status ModulePlayer::Update()
 		App->audio->PlayFx(laser4);
 	}
 
+	// Player Idle position if not going up or down -------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
 		current_animation = &idle;
 
+	// Prevent Player from leaving bordrer -------------------------------------
 	if (position.x <= 0) position.x = 0;
 	else if (position.x >= SCREEN_WIDTH - 27) position.x = SCREEN_WIDTH - 27;
 	if (position.y <= 0) position.y = 0;
