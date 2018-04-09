@@ -12,6 +12,7 @@
 #include "ModuleBonus.h"
 #include "ModuleParticles.h"
 #include "ModuleStartMenu.h"
+#include "ModulePlayer2.h"
 
 Application::Application()
 {
@@ -26,8 +27,9 @@ Application::Application()
 	modules[8] = particles = new ModuleParticles();
 	modules[9] = audio = new ModuleAudio();
 	modules[10] = player = new ModulePlayer();
-	modules[11] = bonus = new ModuleBonus();
-	modules[12] = fade =  new ModuleFadeToBlack();
+	modules[11] = player2 = new ModulePlayer2();
+	modules[12] = bonus = new ModuleBonus();
+	modules[13] = fade =  new ModuleFadeToBlack();
 }	
 
 Application::~Application()
@@ -42,11 +44,13 @@ bool Application::Init()
 
 	// Player will be enabled on the first update of a new scene
 	player->Disable();
+	player2->Disable();
 	// Disable the map that you do not start with
 	level1->Disable();
 	level2->Disable();
 	bonus->Disable();
 	start_menu->Disable();
+	
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

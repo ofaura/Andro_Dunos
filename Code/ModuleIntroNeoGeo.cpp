@@ -93,7 +93,7 @@ update_status ModuleIntroNeoGeo::Update()
 	current_animation = &NeoGeo;
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	// Draw everything --------------------------------------
-	App->render->Blit(graphics, 56, 105, &r, 1);
+	App->render->Blit(graphics, 56, 80, &r, 1);
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1)
 	{

@@ -1,5 +1,6 @@
-#ifndef __ModulePlayer_H__
-#define __ModulePlayer_H__
+#pragma once
+#ifndef __ModulePlayer2_H__
+#define __ModulePlayer2_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -7,11 +8,11 @@
 
 struct SDL_Texture;
 
-class ModulePlayer : public Module
+class ModulePlayer2 : public Module
 {
 public:
-	ModulePlayer();
-	~ModulePlayer();
+	ModulePlayer2();
+	~ModulePlayer2();
 
 	bool Start();
 	update_status Update();
@@ -27,7 +28,6 @@ public:
 	iPoint position;
 	uint laser1, laser2, laser3, laser4;
 	uint type = 0;
-	uint y = 0;
 };
 
 #endif

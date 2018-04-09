@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
+#include "ModulePlayer2.h"
 
 ModuleInput::ModuleInput() : Module()
 {
@@ -57,6 +58,12 @@ update_status ModuleInput::PreUpdate()
 
 	if (keyboard[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
+
+	if (keyboard[SDL_SCANCODE_F1])
+		App->player2->Disable();
+
+	if (keyboard[SDL_SCANCODE_F2])
+		App->player2->Enable();
 
 	return update_status::UPDATE_CONTINUE;
 }
