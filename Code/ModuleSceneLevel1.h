@@ -27,6 +27,10 @@ public:
 
 	int background_pos_x = 0;
 	int ground_pos_x = 0;
+	float background_pos_y = 0;
+	float ground_pos_y = 0;
+
+
 };
 
 #endif // __MODULESCENELEVEL1_H__

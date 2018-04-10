@@ -60,10 +60,10 @@ bool ModuleStartMenu::CleanUp()
 update_status ModuleStartMenu::Update()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(background, 0, 0, &_background, 0.75f);
-	App->render->Blit(logo, 66, 72, &_blue, 0.75f);
-	App->render->Blit(logo, 50, 40, &_logo, 0.75f);
-	App->render->Blit(visco, 86, 168, &_visco, 0.75f);
+	App->render->Blit(background, -14, 0, &_background, 0.75f); // x_was = 0
+	App->render->Blit(logo, 52, 72, &_blue, 0.75f); // x_was = 66
+	App->render->Blit(logo, 44, 40, &_logo, 0.75f); // x_was = 50
+	App->render->Blit(visco, 70, 168, &_visco, 0.75f); // x_was = 86
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1)
 	{
