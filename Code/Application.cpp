@@ -13,6 +13,7 @@
 #include "ModuleParticles.h"
 #include "ModuleStartMenu.h"
 #include "ModulePlayer2.h"
+#include "ModuleCollision.h"
 
 Application::Application()
 {
@@ -30,6 +31,7 @@ Application::Application()
 	modules[11] = player2 = new ModulePlayer2();
 	modules[12] = bonus = new ModuleBonus();
 	modules[13] = fade =  new ModuleFadeToBlack();
+	modules[14] = collision = new ModuleCollision();
 }	
 
 Application::~Application()
