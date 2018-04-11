@@ -59,10 +59,25 @@ bool ModuleSceneLevel2::Start()
 // Update: draw background
 update_status ModuleSceneLevel2::Update()
 {
-	// Draw everything --------------------------------------	
+	// Draw everything --------------------------------------
+
+	int speed_background = 1;
+	int speed_ground = 2;
+
+		if (ground_pos_x <= 0 && ground_pos_x > -30718)
+		{
+			background_pos_x -= (speed_background);
+			ground_pos_x -= (speed_ground);
+		}
 	
+		App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y + 0, &background, 1.0f);
+		App->render->Blit(ground_texture, (ground_pos_x) / 3.5, ground_pos_y + 50, &ground, 1.0f);
+
+	/*
 	App->render->Blit(background_texture, 0, 0, &background, 1.0f);
 	App->render->Blit(ground_texture, 0, 118, &ground, 1.0f);
+
+	*/
 
 	// TODO 2: make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1)

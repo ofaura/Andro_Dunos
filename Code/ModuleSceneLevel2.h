@@ -23,6 +23,11 @@ public:
 	SDL_Texture* ground_texture = nullptr;
 	SDL_Rect ground;
 	SDL_Rect background;
+
+	int background_pos_x = 0;
+	int ground_pos_x = 0;
+	float background_pos_y = 0;
+	float ground_pos_y = 0;
 };
 
 #endif // __MODULESCENELEVEL2_H__
