@@ -4,6 +4,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
+#include "ModuleCollision.h"
 #include "ModuleAudio.h"
 
 #include "SDL/include/SDL_timer.h"
@@ -117,12 +118,38 @@ update_status ModuleParticles::Update()
 
 void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Uint32 delay)
 {
-	Particle* p = new Particle(particle);
-	p->born = SDL_GetTicks() + delay;
-	p->position.x = x;
-	p->position.y = y;
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		if (active[i] == nullptr)
+		{
+			Particle* p = new Particle(particle);
+			p->born = SDL_GetTicks() + delay;
+			p->position.x = x;
+			p->position.y = y;
+			if (collider_type != COLLIDER_NONE)
+				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+			active[i] = p;
+			break;
+		}
+	}
+}
 
- 	active[last_particle++] = p;
+// Every time a particle hits a wall it triggers an explosion particle
+void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
+{
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		if (active[i] != nullptr && active[i]->collider == c1)
+		{
+			if (c2->type == COLLIDER_WALL) {
+				AddParticle(explosion, active[i]->position.x, active[i]->position.y);
+			}
+			// Always destroy particles that collide
+			delete active[i];
+			active[i] = nullptr;
+			break;
+		}
+	}
 }
 
 // -------------------------------------------------------------
@@ -138,6 +165,12 @@ Particle::Particle(const Particle& p) :
 	anim(p.anim), position(p.position), speed(p.speed),
 	fx(p.fx), born(p.born), life(p.life)
 {}
+
+Particle::~Particle()
+{
+	if (collider != nullptr)
+		collider->to_delete = true;
+}
 
 bool Particle::Update()
 {
