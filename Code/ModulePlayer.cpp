@@ -3,6 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
+#include "ModuleCollision.h"
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
@@ -145,3 +146,9 @@ bool ModulePlayer::CleanUp()
 
 	return true;
 }
+
+// Detects collision with a wall. If so, go back to intro screen.
+void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2) {
+	/*if (col_1->type == COLLIDER_WALL || col_2->type == COLLIDER_WALL)
+		App->fade->FadeToBlack(App->scene_space, App->scene_intro);*/
+};
