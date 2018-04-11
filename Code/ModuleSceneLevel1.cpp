@@ -8,6 +8,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleSceneLevel2.h"
 #include "ModuleAudio.h"
+#include "ModuleCollision.h"
 
 // BACKGROUND
 
@@ -50,6 +51,8 @@ bool ModuleSceneLevel1::Start()
 			App->player->Disable();
 		}
 	}
+
+	App->collision->AddCollider({ 0, 0, 3930, 16 }, COLLIDER_WALL);
 
 	App->audio->PlayMusic("Assets/Audio/level1.ogg", 1.0f);
 	return ret;

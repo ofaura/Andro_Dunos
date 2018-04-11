@@ -10,9 +10,6 @@
 
 ModulePlayer::ModulePlayer()
 {
-	position.x = 0;
-	position.y = SCREEN_HEIGHT / 2;
-
 	current_animation = NULL;
 
 	idle.PushBack({ 94, 108, 27, 17 });
@@ -44,6 +41,12 @@ bool ModulePlayer::Start()
 	laser2 = App->audio->LoadFx("Assets/Audio/laser2.wav");
 	laser3 = App->audio->LoadFx("Assets/Audio/laser3.wav");
 	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
+	
+	position.x = 0;
+	position.y = SCREEN_HEIGHT / 2;
+
+	player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
+	
 	return true;
 }
 
@@ -133,7 +136,7 @@ update_status ModulePlayer::Update()
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
-
+	player->SetPos(position.x, position.y);
 	App->render->Blit(graphics, position.x, position.y, &r, 1);
 	
 	return UPDATE_CONTINUE;
