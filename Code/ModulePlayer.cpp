@@ -146,6 +146,7 @@ update_status ModulePlayer::Update()
 		if (GodMode == true)
 		{
 			player->to_delete = true;
+			
 			player = nullptr;
 		}
 		else if (GodMode == false)
@@ -179,6 +180,9 @@ bool ModulePlayer::CleanUp()
 // Detects collision with a wall. If so, go back to intro screen.
 void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2) {
 	if (col_1->type == COLLIDER_WALL || col_2->type == COLLIDER_WALL)
+	{
 		App->fade->FadeToBlack(App->level1, App->start_menu);
-		App->collision->CleanUp();	
+		App->collision->CleanUp();
+	}
+		
 };

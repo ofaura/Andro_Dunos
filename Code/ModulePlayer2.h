@@ -1,4 +1,3 @@
-#pragma once
 #ifndef __ModulePlayer2_H__
 #define __ModulePlayer2_H__
 
@@ -7,6 +6,7 @@
 #include "p2Point.h"
 
 struct SDL_Texture;
+struct Collider;
 
 class ModulePlayer2 : public Module
 {
@@ -17,6 +17,7 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
+	void OnCollision(Collider* col_1, Collider* col_2);
 
 public:
 
@@ -28,6 +29,8 @@ public:
 	iPoint position;
 	uint laser1, laser2, laser3, laser4;
 	uint type = 0;
+	Collider* player = nullptr;
+	bool GodMode = false;
 };
 
 #endif

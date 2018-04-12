@@ -6,6 +6,9 @@
 #include "ModulePlayer2.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
+#include "ModuleFadeToBlack.h"
+#include "ModuleSceneLevel1.h"
+#include "ModuleStartMenu.h"
 
 ModulePlayer2::ModulePlayer2()
 {
@@ -43,6 +46,9 @@ bool ModulePlayer2::Start()
 	laser2 = App->audio->LoadFx("Assets/Audio/laser2.wav");
 	laser3 = App->audio->LoadFx("Assets/Audio/laser3.wav");
 	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
+
+	player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
+
 	return true;
 }
 
@@ -131,6 +137,30 @@ update_status ModulePlayer2::Update()
 	else if (position.y >= SCREEN_HEIGHT - 17) position.y = SCREEN_HEIGHT - 17;
 
 	// Draw everything --------------------------------------
+	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)
+	{
+
+		GodMode = !GodMode;
+
+		if (GodMode == true)
+		{
+			player->to_delete = true;
+
+			player = nullptr;
+		}
+		else if (GodMode == false)
+		{
+			GodMode = false;
+			player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
+		}
+	}
+
+	// Update collider position to player position
+	if (GodMode == false)
+	{
+		player->SetPos(position.x, position.y);
+	}
+
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
 	App->render->Blit(graphics, position.x, position.y, &r, 1);
@@ -145,3 +175,12 @@ bool ModulePlayer2::CleanUp()
 
 	return true;
 }
+// Detects collision with a wall. If so, go back to intro screen.
+void ModulePlayer2::OnCollision(Collider* col_1, Collider* col_2) {
+	if (col_1->type == COLLIDER_WALL || col_2->type == COLLIDER_WALL)
+	{
+		App->fade->FadeToBlack(App->level1, App->start_menu);
+		App->collision->CleanUp();
+	}
+
+};
