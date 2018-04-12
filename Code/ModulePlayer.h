@@ -31,6 +31,7 @@ public:
 	uint type = 0;
 	uint y = 0;
 	Collider* player = nullptr;
+	bool GodMode = false;
 };
 
 #endif

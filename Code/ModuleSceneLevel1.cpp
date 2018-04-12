@@ -18,7 +18,7 @@ ModuleSceneLevel1::ModuleSceneLevel1()
 	background.x = 0;
 	background.y = 0;
 	background.w = 1654;
-	background.h = 85;
+	background.h = 208;
 
 	ground.x = 0;
 	ground.y = 0;
@@ -37,6 +37,7 @@ bool ModuleSceneLevel1::Start()
 	background_texture = App->textures->Load("Assets/Sprites/lvl1/background1.png");
 	ground_texture = App->textures->Load("Assets/Sprites/lvl1/Floor_all.png");
 
+//	App->collision->Enable();
 	// TODO 1: Enable (and properly disable) the player module
 	//if (App->player->IsEnabled()==false)
 	//App->player->Enable();
@@ -52,7 +53,7 @@ bool ModuleSceneLevel1::Start()
 		}
 	}
 
-	App->collision->AddCollider({ 0, 0, 3930, 16 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, 192, 2960, 32 }, COLLIDER_WALL);
 
 	App->audio->PlayMusic("Assets/Audio/level1.ogg", 1.0f);
 	return ret;
@@ -127,7 +128,7 @@ update_status ModuleSceneLevel1::Update()
 		ground_pos_x -= (speed_ground);
 	}
 
-	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y + 115, &background, 1.0f);
+	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 1.0f);
 	App->render->Blit(ground_texture, (ground_pos_x) / 3.5, ground_pos_y - 115, &ground, 1.0f);
 
 
@@ -135,6 +136,7 @@ update_status ModuleSceneLevel1::Update()
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1) 
 	{
 		App->fade->FadeToBlack(App->level1, App->level2, 1.0f);
+		App->collision->Disable();
 	}
 
 	return UPDATE_CONTINUE;

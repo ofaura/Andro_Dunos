@@ -8,6 +8,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleBonus.h"
 #include "ModuleAudio.h"
+#include "ModuleCollision.h"
 
 // BACKGROUND
 
@@ -33,6 +34,8 @@ bool ModuleSceneLevel2::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
+
+	App->collision->Enable();
 
 	background_texture = App->textures->Load("Assets/Sprites/lvl2/Background lvl 2.png");
 	ground_texture = App->textures->Load("Assets/Sprites/lvl2/Floor 2.png");
@@ -60,7 +63,7 @@ bool ModuleSceneLevel2::Start()
 update_status ModuleSceneLevel2::Update()
 {
 	// Draw everything --------------------------------------
-
+	/*
 	int speed_background = 1;
 	int speed_ground = 2;
 
@@ -69,9 +72,9 @@ update_status ModuleSceneLevel2::Update()
 			background_pos_x -= (speed_background);
 			ground_pos_x -= (speed_ground);
 		}
-	
-		App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y + 0, &background, 1.0f);
-		App->render->Blit(ground_texture, (ground_pos_x) / 3.5, ground_pos_y + 50, &ground, 1.0f);
+	*/
+	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y + 0, &background, 1.0f);
+	App->render->Blit(ground_texture, (ground_pos_x) / 3.5, ground_pos_y + 118, &ground, 1.0f);
 
 	/*
 	App->render->Blit(background_texture, 0, 0, &background, 1.0f);
@@ -82,6 +85,7 @@ update_status ModuleSceneLevel2::Update()
 	// TODO 2: make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1)
 	{
+		App->collision->Disable();
 		App->fade->FadeToBlack(App->level2, App->bonus, 1.0f);
 	}
 	return UPDATE_CONTINUE;

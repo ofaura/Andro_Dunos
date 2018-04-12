@@ -3,6 +3,7 @@
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
 #include "ModulePlayer2.h"
+#include "ModuleCollision.h"
 
 ModuleInput::ModuleInput() : Module()
 {
