@@ -181,8 +181,23 @@ bool ModulePlayer::CleanUp()
 void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2) {
 	if (col_1->type == COLLIDER_WALL || col_2->type == COLLIDER_WALL)
 	{
-		App->fade->FadeToBlack(App->level1, App->start_menu);
-		App->collision->CleanUp();
+	if (lives > 0)
+		{
+			lives--;
+			SDL_Rect r = current_animation->GetCurrentFrame();
+
+			position.x = 0;
+			position.y = SCREEN_HEIGHT / 2;
+			App->render->Blit(graphics, 0, SCREEN_HEIGHT / 2, &r, 1);
+
+		}
+		else
+		{
+			App->fade->FadeToBlack(App->level1, App->start_menu);
+			App->collision->CleanUp();
+			lives = 2;
+		}
+
 	}
 		
 };

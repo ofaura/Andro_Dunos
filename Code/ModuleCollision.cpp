@@ -73,7 +73,7 @@ update_status ModuleCollision::PreUpdate()
 			// skip empty colliders
 			if (colliders[k] == nullptr)
 				continue;
-
+			
 			c2 = colliders[k];
 
 			if (c1->CheckCollision(c2->rect) == true)

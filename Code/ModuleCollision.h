@@ -24,10 +24,10 @@ struct Collider
 	COLLIDER_TYPE type;
 	Module* callback = nullptr;
 
-	Collider(SDL_Rect rectangle, COLLIDER_TYPE type, Module* callback = nullptr) :
-		rect(rectangle),
-		type(type),
-		callback(callback)
+	Collider(SDL_Rect _rectangle, COLLIDER_TYPE _type, Module* _callback = nullptr) :
+		rect(_rectangle),
+		type(_type),
+		callback(_callback)
 	{}
 
 	void SetPos(int x, int y)
