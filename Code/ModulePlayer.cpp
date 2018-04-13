@@ -44,7 +44,9 @@ bool ModulePlayer::Start()
 	laser2 = App->audio->LoadFx("Assets/Audio/laser2.wav");
 	laser3 = App->audio->LoadFx("Assets/Audio/laser3.wav");
 	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
-	
+
+	lives = 2;
+
 	position.x = 0;
 	position.y = SCREEN_HEIGHT / 2;
 
@@ -58,78 +60,83 @@ update_status ModulePlayer::Update()
 {
 	int speed = 2;
 
-	// Move Player --------------------------------------
-	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	if (lives >= 0)
 	{
-		position.x -= speed;
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-	{
-		position.x += speed;
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-	{
-		position.y += speed;
-		if (current_animation != &down)
+		// Move Player --------------------------------------
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 		{
-			down.Reset();
-			current_animation = &down;
+			position.x -= speed;
 		}
-	}
 
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-	{
-		position.y -= speed;
-		if (current_animation != &up)
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
-			up.Reset();
-			current_animation = &up;
+			position.x += speed;
 		}
-	}
-	// Change weapon type --------------------------------------
-	if (App->input->keyboard[SDL_SCANCODE_E] == KEY_STATE::KEY_DOWN)
-	{
-		if (type >= 0 && type < 3)
+
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 		{
-			type++;
+			position.y += speed;
+			if (current_animation != &down)
+			{
+				down.Reset();
+				current_animation = &down;
+			}
 		}
-		else type = 0;
-	}
 
-	// Laser shot --------------------------------------
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == 0)
-	{
-		App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 4);
-		App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 9);
-		App->audio->PlayFx(laser1);
-	}
+		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+		{
+			position.y -= speed;
+			if (current_animation != &up)
+			{
+				up.Reset();
+				current_animation = &up;
+			}
+		}
+		// Change weapon type --------------------------------------
+		if (App->input->keyboard[SDL_SCANCODE_E] == KEY_STATE::KEY_DOWN)
+		{
+			if (type >= 0 && type < 3)
+			{
+				type++;
+			}
+			else type = 0;
+		}
 
-	else if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == 1)
-	{
-		App->particles->AddParticle(App->particles->laser2_1, position.x + 15, position.y + 12);
-		App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 12);
-		App->audio->PlayFx(laser2);
-	}
+		// Laser shot --------------------------------------
+		if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == 0)
+		{
+			App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 4);
+			App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 9);
+			App->audio->PlayFx(laser1);
+		}
 
-	else if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == 2)
-	{
-		App->particles->AddParticle(App->particles->laser3, position.x + 19, position.y + 11);
-		App->audio->PlayFx(laser3);
-	}
+		else if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == 1)
+		{
+			App->particles->AddParticle(App->particles->laser2_1, position.x + 15, position.y + 12);
+			App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 12);
+			App->audio->PlayFx(laser2);
+		}
 
-	else if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == 3)
-	{
-		App->particles->AddParticle(App->particles->laser4_1, position.x + 19, position.y + 11);
-		App->particles->AddParticle(App->particles->laser4_2, position.x + 19, position.y + 11);
-		App->audio->PlayFx(laser4);
-	}
+		else if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == 2)
+		{
+			App->particles->AddParticle(App->particles->laser3, position.x + 19, position.y + 11);
+			App->audio->PlayFx(laser3);
+		}
 
-	// Player Idle position if not going up or down -------------------------------------
-	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
+		else if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == 3)
+		{
+			App->particles->AddParticle(App->particles->laser4_1, position.x + 19, position.y + 11);
+			App->particles->AddParticle(App->particles->laser4_2, position.x + 19, position.y + 11);
+			App->audio->PlayFx(laser4);
+		}
+
+		// Player Idle position if not going up or down -------------------------------------
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
+		{
 		current_animation = &idle;
+		}
+	}
 
 	// Prevent Player from leaving bordrer -------------------------------------
 	if (position.x <= 0) position.x = 0;
@@ -137,34 +144,42 @@ update_status ModulePlayer::Update()
 	if (position.y <= 0) position.y = 0;
 	else if (position.y >= SCREEN_HEIGHT - 17) position.y = SCREEN_HEIGHT - 17;
 
-	
-	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)
+	if (lives >= 0)
 	{
-		
-		GodMode = !GodMode;
-	
-		if (GodMode == true)
+		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)
 		{
-			player->to_delete = true;
-			
-			player = nullptr;
+
+			GodMode = !GodMode;
+
+			if (GodMode == true)
+			{
+				player->to_delete = true;
+
+				player = nullptr;
+			}
+			else if (GodMode == false)
+			{
+				GodMode = false;
+				player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
+			}
 		}
-		else if (GodMode == false)
+
+		// Update collider position to player position
+		if (GodMode == false)
 		{
-			GodMode = false;
-			player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
+			player->SetPos(position.x, position.y);
 		}
 	}
 
-	// Update collider position to player position
-	if (GodMode == false)
-	{
-		player->SetPos(position.x, position.y);
-	}
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	
 	App->render->Blit(graphics, position.x, position.y, &r, 1);
+	if (lives < 0)
+	{
+		App->fade->FadeToBlack(App->level1, App->start_menu);
+	}
+
 	
 	return UPDATE_CONTINUE;
 }
@@ -181,21 +196,16 @@ bool ModulePlayer::CleanUp()
 void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2) {
 	if (col_1->type == COLLIDER_WALL || col_2->type == COLLIDER_WALL)
 	{
-	if (lives > 0)
+		if (lives >= 0)
 		{
 			lives--;
-			SDL_Rect r = current_animation->GetCurrentFrame();
-
-			position.x = 0;
-			position.y = SCREEN_HEIGHT / 2;
-			App->render->Blit(graphics, 0, SCREEN_HEIGHT / 2, &r, 1);
-
-		}
-		else
-		{
-			App->fade->FadeToBlack(App->level1, App->start_menu);
-			App->collision->CleanUp();
-			lives = 2;
+			/*SDL_Rect r = current_animation->GetCurrentFrame();
+			App->render->Blit(graphics, position.x, position.y, &r, 1);*/ // for the explosion, biatch
+			if (lives >= 0)
+			{
+				position.x = 0;
+				position.y = SCREEN_HEIGHT / 2;
+			}
 		}
 
 	}

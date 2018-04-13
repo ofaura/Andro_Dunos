@@ -145,6 +145,10 @@ update_status ModuleSceneLevel1::Update()
 // Load assets
 bool ModuleSceneLevel1::CleanUp()
 {
+
+
+	App->collision->CleanUp();
+
 	// TODO 5: Remove all memory leaks
 	LOG("Unloading textures");
 	App->textures->Unload(background_texture);
