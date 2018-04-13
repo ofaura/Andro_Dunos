@@ -29,7 +29,7 @@ public:
 	iPoint position;
 	uint laser1, laser2, laser3, laser4;
 	uint type = 0;
-	int lives = 2; // acrual lives are if lives = n, are n+1;
+	int lives = 2; // acrual lives are, if lives = n, n+1;
 	uint y = 0;
 	Collider* player = nullptr;
 	bool GodMode = false;
