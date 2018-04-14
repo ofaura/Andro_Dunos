@@ -14,24 +14,27 @@
 #include "ModuleStartMenu.h"
 #include "ModulePlayer2.h"
 #include "ModuleCollision.h"
+#include "ModuleEnemies.h"
 
 Application::Application()
 {
-	modules[0] = window = new ModuleWindow();
-	modules[1] = render = new ModuleRender();
-	modules[2] = input = new ModuleInput();
-	modules[3] = textures = new ModuleTextures();
-	modules[4] = level1 = new ModuleSceneLevel1();
-	modules[5] = NeoGeo = new ModuleIntroNeoGeo();
-	modules[6] = level2 = new ModuleSceneLevel2();
-	modules[7] = start_menu = new ModuleStartMenu();
-	modules[8] = particles = new ModuleParticles();
-	modules[9] = audio = new ModuleAudio();
-	modules[10] = player = new ModulePlayer();
-	modules[11] = player2 = new ModulePlayer2();
-	modules[12] = bonus = new ModuleBonus();
-	modules[13] = fade =  new ModuleFadeToBlack();
-	modules[14] = collision = new ModuleCollision();
+	int i = 0;
+	modules[i++] = window = new ModuleWindow();
+	modules[i++] = render = new ModuleRender();
+	modules[i++] = input = new ModuleInput();
+	modules[i++] = textures = new ModuleTextures();
+	modules[i++] = level1 = new ModuleSceneLevel1();
+	modules[i++] = NeoGeo = new ModuleIntroNeoGeo();
+	modules[i++] = level2 = new ModuleSceneLevel2();
+	modules[i++] = start_menu = new ModuleStartMenu();
+	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = audio = new ModuleAudio();
+	modules[i++] = enemies = new ModuleEnemies();
+	modules[i++] = player = new ModulePlayer();
+	modules[i++] = player2 = new ModulePlayer2();
+	modules[i++] = bonus = new ModuleBonus();
+	modules[i++] = fade =  new ModuleFadeToBlack();
+	modules[i++] = collision = new ModuleCollision();
 }	
 
 Application::~Application()
