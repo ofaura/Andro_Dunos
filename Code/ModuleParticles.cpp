@@ -87,7 +87,7 @@ bool ModuleParticles::Start()
 	explosion.anim.PushBack({ 144, 138, 2, 1 });
 	explosion.anim.loop = false;
 	explosion.anim.speed = 0.3f;
-	explosion.life = 1200;
+	explosion.life = 400;
 
 	return true;
 }

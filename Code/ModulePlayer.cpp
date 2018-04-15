@@ -200,8 +200,6 @@ void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2) {
 		App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 		App->audio->PlayFx(player_death);
 
-		//App->player->Disable();
-
 		if (lives >= 0)
 		{
 			lives--;
@@ -211,8 +209,6 @@ void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2) {
 			
 			if (lives >= 0)
 			{
-
-				//App->player->Enable();
 				position.x = 0;
 				position.y = SCREEN_HEIGHT / 2;
 				
