@@ -15,6 +15,7 @@
 #include "ModulePlayer2.h"
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
+#include "ModuleGameOver.h"
 
 Application::Application()
 {
@@ -35,6 +36,7 @@ Application::Application()
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
+	modules[i++] = game_over = new ModuleGameOver();
 }	
 
 Application::~Application()
@@ -56,6 +58,7 @@ bool Application::Init()
 	bonus->Disable();
 	start_menu->Disable();
 	enemies->Disable();
+	game_over->Disable();
 	
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

@@ -9,14 +9,13 @@
 #include "ModuleAudio.h"
 #include "ModuleSceneLevel1.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleStartMenu.h"
+#include "ModuleGameOver.h"
 
 ModulePlayer::ModulePlayer()
 {
 	current_animation = NULL;
 
 	idle.PushBack({ 94, 108, 27, 17 });
-
 
 	up.PushBack({ 94, 108, 27, 17 });
 	up.PushBack({ 94, 87, 27, 15 });
@@ -174,10 +173,11 @@ update_status ModulePlayer::Update()
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	
+	// Check player's lives
 	App->render->Blit(graphics, position.x, position.y, &r, 1);
 	if (lives < 0)
 	{
-		App->fade->FadeToBlack(App->level1, App->start_menu);
+		App->fade->FadeToBlack(App->level1, App->game_over);
 	}
 
 	
@@ -195,7 +195,7 @@ bool ModulePlayer::CleanUp()
 // Detects collision with a wall. If so, go back to intro screen.
 void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2) {
 	if (col_1->type == COLLIDER_WALL || col_2->type == COLLIDER_WALL)
-	{
+	{		
 		if (lives >= 0)
 		{
 			lives--;
