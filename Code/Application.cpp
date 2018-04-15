@@ -27,14 +27,14 @@ Application::Application()
 	modules[i++] = NeoGeo = new ModuleIntroNeoGeo();
 	modules[i++] = level2 = new ModuleSceneLevel2();
 	modules[i++] = start_menu = new ModuleStartMenu();
-	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = bonus = new ModuleBonus();
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = player2 = new ModulePlayer2();
-	modules[i++] = bonus = new ModuleBonus();
-	modules[i++] = fade =  new ModuleFadeToBlack();
+	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = collision = new ModuleCollision();
+	modules[i++] = fade = new ModuleFadeToBlack();
 }	
 
 Application::~Application()
@@ -55,6 +55,7 @@ bool Application::Init()
 	level2->Disable();
 	bonus->Disable();
 	start_menu->Disable();
+	enemies->Disable();
 	
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

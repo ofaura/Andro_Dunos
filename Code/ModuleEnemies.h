@@ -8,8 +8,7 @@
 enum ENEMY_TYPES
 {
 	NO_TYPE,
-	REDBIRD,
-	BROWN_COOKIES,
+	FIRST_ENEMY,
 };
 
 class Enemy;

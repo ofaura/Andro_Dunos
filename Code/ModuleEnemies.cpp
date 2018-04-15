@@ -5,6 +5,7 @@
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
 #include "Enemy.h"
+#include "Enemy_FirstEnemy.h"
 
 #define SPAWN_MARGIN 50
 
@@ -22,7 +23,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprites = App->textures->Load("rtype/enemies.png");
+	sprites = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
 
 	return true;
 }
@@ -122,19 +123,20 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 	for (; enemies[i] != nullptr && i < MAX_ENEMIES; ++i);
 
 	if (i != MAX_ENEMIES)
-	{/*
+	{
 		switch (info.type)
 		{
 		
-		case ENEMY_TYPES::REDBIRD:
-			enemies[i] = new Enemy_RedBird(info.x, info.y);
+		case ENEMY_TYPES::FIRST_ENEMY:
+			enemies[i] = new Enemy_FirstEnemy(info.x, info.y);
 			break;
-
+		/*
 		case ENEMY_TYPES::BROWN_COOKIES:
 			enemies[i] = new Enemy_BrownCookies(info.x, info.y);
 			break;
+			*/
 		}
-		*/
+		
 	}
 }
 

@@ -24,10 +24,10 @@ struct Collider
 	COLLIDER_TYPE type;
 	Module* callback = nullptr;
 
-	Collider(SDL_Rect _rectangle, COLLIDER_TYPE _type, Module* _callback = nullptr) :
-		rect(_rectangle),
-		type(_type),
-		callback(_callback)
+	Collider(SDL_Rect rectangle, COLLIDER_TYPE type, Module* callback = nullptr) :
+		rect(rectangle),
+		type(type),
+		callback(callback)
 	{}
 
 	void SetPos(int x, int y)
@@ -46,18 +46,17 @@ public:
 	ModuleCollision();
 	~ModuleCollision();
 
-	update_status PreUpdate() override;
-	update_status Update() override;
-	bool CleanUp() override;
+	update_status PreUpdate();
+	update_status Update();
+	bool CleanUp();
 
 	Collider* AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* callback = nullptr);
-	void DebugDraw();
 
 private:
 
-	Collider * colliders[MAX_COLLIDERS];
+	Collider * colliders[MAX_COLLIDERS] = { nullptr };
 	bool matrix[COLLIDER_MAX][COLLIDER_MAX];
-	bool debug = true;
+	bool debug = false;
 };
 
 #endif // __ModuleCollision_H__

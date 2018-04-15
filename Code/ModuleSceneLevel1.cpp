@@ -9,8 +9,8 @@
 #include "ModuleSceneLevel2.h"
 #include "ModuleAudio.h"
 #include "ModuleCollision.h"
+#include "ModuleEnemies.h"
 
-// BACKGROUND
 
 ModuleSceneLevel1::ModuleSceneLevel1()
 {
@@ -36,11 +36,9 @@ bool ModuleSceneLevel1::Start()
 	bool ret = true;
 	background_texture = App->textures->Load("Assets/Sprites/lvl1/background1.png");
 	ground_texture = App->textures->Load("Assets/Sprites/lvl1/Floor_all.png");
-
-//	App->collision->Enable();
-	// TODO 1: Enable (and properly disable) the player module
-	//if (App->player->IsEnabled()==false)
-	//App->player->Enable();
+	App->player->Enable();
+	App->collision->Enable();
+	App->enemies->Enable();
 
 	if (IsEnabled()) {
 		if (App->player->IsEnabled() == false) {
@@ -52,10 +50,18 @@ bool ModuleSceneLevel1::Start()
 			App->player->Disable();
 		}
 	}
-
+	// Colliders ---
 	App->collision->AddCollider({ 0, 192, 2960, 32 }, COLLIDER_WALL);
 
+	//Audio ---
 	App->audio->PlayMusic("Assets/Audio/level1.ogg", 1.0f);
+
+	//Enemies ---
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 340, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 640, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 680, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 720, 80);
+
 	return ret;
 }
 
@@ -65,6 +71,7 @@ update_status ModuleSceneLevel1::Update()
 	// Draw everything --------------------------------------	
 	float speed_background = 1;
 	float speed_ground = 2;
+	
 	// Moving Background
 
 	// diagonal up --------------------------------------	
@@ -136,7 +143,6 @@ update_status ModuleSceneLevel1::Update()
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1) 
 	{
 		App->fade->FadeToBlack(App->level1, App->level2, 1.0f);
-		App->collision->Disable();
 	}
 
 	return UPDATE_CONTINUE;
@@ -153,7 +159,8 @@ bool ModuleSceneLevel1::CleanUp()
 	LOG("Unloading textures");
 	App->textures->Unload(background_texture);
 	App->textures->Unload(ground_texture);
-	//if (App->player->IsEnabled() == true)
+	App->enemies->Disable();
+	App->collision->Disable();
 	App->player->Disable();
 	return true;
 }
