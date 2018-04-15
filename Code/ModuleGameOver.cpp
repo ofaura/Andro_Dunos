@@ -3,7 +3,6 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleGameOver.h"
-#include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleStartMenu.h"
 #include "ModuleInput.h"
