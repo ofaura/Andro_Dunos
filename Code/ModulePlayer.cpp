@@ -28,7 +28,6 @@ ModulePlayer::ModulePlayer()
 	down.PushBack({ 94, 153, 27, 17 });
 	down.loop = false;
 	down.speed = 0.1f;
-
 }
 
 ModulePlayer::~ModulePlayer()
@@ -43,6 +42,8 @@ bool ModulePlayer::Start()
 	laser2 = App->audio->LoadFx("Assets/Audio/laser2.wav");
 	laser3 = App->audio->LoadFx("Assets/Audio/laser3.wav");
 	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
+	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
+	player_death = App->audio->LoadFx("Assets/Audio/player_death.wav");
 
 	lives = 2;
 
@@ -163,23 +164,23 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		// Update collider position to player position
-		if (GodMode == false)
+	// Update collider position to player position
+	if (GodMode == false)
 		{
 			player->SetPos(position.x, position.y);
 		}
 	}
 
 	// Draw everything --------------------------------------
-	SDL_Rect r = current_animation->GetCurrentFrame();
-	
+	SDL_Rect r = current_animation->GetCurrentFrame();	
+
 	// Check player's lives
-	App->render->Blit(graphics, position.x, position.y, &r, 1);
 	if (lives < 0)
 	{
 		App->fade->FadeToBlack(App->level1, App->game_over);
 	}
 
+	App->render->Blit(graphics, position.x, position.y, &r, 1);
 	
 	return UPDATE_CONTINUE;
 }
@@ -196,15 +197,25 @@ bool ModulePlayer::CleanUp()
 void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2) {
 	if ((col_1->type == COLLIDER_WALL || col_1->type == COLLIDER_ENEMY) || (col_2->type == COLLIDER_WALL ||col_2->type == COLLIDER_ENEMY))
 	{		
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+		App->audio->PlayFx(player_death);
+
+		//App->player->Disable();
+
 		if (lives >= 0)
 		{
 			lives--;
-			/*SDL_Rect r = current_animation->GetCurrentFrame();
-			App->render->Blit(graphics, position.x, position.y, &r, 1);*/ // for the explosion, biatch
+
+			SDL_Rect r = current_animation->GetCurrentFrame();
+			App->render->Blit(graphics, position.x, position.y, &r, 1); // for the explosion, biatch
+			
 			if (lives >= 0)
 			{
+
+				//App->player->Enable();
 				position.x = 0;
 				position.y = SCREEN_HEIGHT / 2;
+				
 			}
 		}
 

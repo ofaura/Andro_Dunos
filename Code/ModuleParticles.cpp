@@ -23,9 +23,11 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("Assets/Sprites/player/lasers.png");
+	player_death = App->textures->Load("Assets/Sprites/player/deaths.png");
 
 	// Explosion particle
 
+	// Lasers
 	laser1.anim.PushBack({ 22, 51, 15, 6 });
 	//laser1.anim.PushBack({ 24, 39, 11, 4 });
 	laser1.anim.loop = false;
@@ -66,6 +68,27 @@ bool ModuleParticles::Start()
 	laser4_2.anim.speed = 0.5f;
 	laser4_2.life = 2000;
 
+	// Player death
+	explosion.anim.PushBack({ 49, 34, 27, 17});
+	explosion.anim.PushBack({ 86, 33, 28, 18 });
+	explosion.anim.PushBack({ 124, 30, 30, 21 });
+	explosion.anim.PushBack({ 164, 25, 31, 26 });
+	explosion.anim.PushBack({ 49, 62, 32, 26 });
+	explosion.anim.PushBack({ 91, 58, 32, 31 });
+	explosion.anim.PushBack({ 133, 56, 32, 32 });
+	explosion.anim.PushBack({ 49, 94, 30, 30 });
+	explosion.anim.PushBack({ 91, 104, 28, 20 });
+	explosion.anim.PushBack({ 131, 109, 24, 15 });
+	explosion.anim.PushBack({ 167, 113, 19, 11 });
+	explosion.anim.PushBack({ 198, 115, 9, 32 });
+	explosion.anim.PushBack({ 49, 131, 17, 13 });
+	explosion.anim.PushBack({ 78, 129, 15, 15 });
+	explosion.anim.PushBack({ 114, 136, 7, 3 });
+	explosion.anim.PushBack({ 144, 138, 2, 1 });
+	explosion.anim.loop = false;
+	explosion.anim.speed = 0.3f;
+	explosion.life = 1200;
+
 	return true;
 }
 
@@ -74,6 +97,7 @@ bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
 	App->textures->Unload(graphics);
+	App->textures->Unload(player_death);
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -105,6 +129,7 @@ update_status ModuleParticles::Update()
 		else if (SDL_GetTicks() >= p->born)
 		{
 			App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+			App->render->Blit(player_death, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 			if (p->fx_played == false)
 			{
 				p->fx_played = true;
