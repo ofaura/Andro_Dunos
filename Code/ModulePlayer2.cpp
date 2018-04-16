@@ -47,7 +47,7 @@ bool ModulePlayer2::Start()
 	laser3 = App->audio->LoadFx("Assets/Audio/laser3.wav");
 	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
 
-	player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
+	player = App->p2collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
 
 	return true;
 }
@@ -180,6 +180,7 @@ void ModulePlayer2::OnCollision(Collider* col_1, Collider* col_2) {
 	if (col_1->type == COLLIDER_WALL || col_2->type == COLLIDER_WALL)
 	{
 		App->fade->FadeToBlack(App->level1, App->start_menu);
+		App->p2collision->CleanUp();
 		App->collision->CleanUp();
 	}
 
