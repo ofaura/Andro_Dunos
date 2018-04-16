@@ -69,10 +69,10 @@ bool ModuleSceneLevel1::Start()
 update_status ModuleSceneLevel1::Update()
 {
 	// Draw everything --------------------------------------	
-	float speed_ground = 2;
+	int speed_ground = 2;
+	int speed_background = 1;
+
 	
-
-
 	// diagonal up --------------------------------------	
 	if (App->render->camera.x <= -14056 && App->render->camera.x > -14476 || App->render->camera.x <= -17523 && App->render->camera.x > -18357)
 	{
@@ -114,10 +114,12 @@ update_status ModuleSceneLevel1::Update()
 	{
 		App->render->camera.y += speed_ground / 3;
 	}
+
 	// sideways --------------------------------------	
 	else if (App->render->camera.x <= 0 && App->render->camera.x > -30718)
 	{
 		App->render->camera.x -= speed_ground;
+		background_pos_x -= speed_background;
 	}
 
 	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 1.0f);
