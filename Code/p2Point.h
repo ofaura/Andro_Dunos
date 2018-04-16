@@ -105,6 +105,11 @@ public:
 		return(*this);
 	}
 
+	p2Point createUVec(p2Point* A, p2Point* B) const {
+		x = (B.x - A.x) / A->DistanceTo(B);
+		y = (B.y - A.y) / A->DistanceTo(B);
+	}
+
 	// Distances ---------------------------------------------
 	TYPE DistanceTo(const p2Point& v) const
 	{
