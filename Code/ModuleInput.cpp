@@ -60,6 +60,15 @@ update_status ModuleInput::PreUpdate()
 	if (keyboard[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
 
+	while (SDL_PollEvent(&e))
+	{
+		if (e.type == SDL_QUIT)
+		{
+			return update_status::UPDATE_STOP;
+		}
+	}
+
+	return update_status::UPDATE_CONTINUE;
 	if (keyboard[SDL_SCANCODE_F1]) {
 		App->player2->Disable();
 		App->p2collision->CleanUp();
