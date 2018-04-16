@@ -7,6 +7,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleSceneLevel1.h"
 #include "ModuleInput.h"
+#include "ModuleAudio.h"
 
 ModuleStartMenu::ModuleStartMenu()
 {
@@ -43,6 +44,9 @@ bool ModuleStartMenu::Start()
 	background = App->textures->Load("Assets/Sprites/StartMenu/background.png");
 	logo = App->textures->Load("Assets/Sprites/StartMenu/logo.png");
 	visco = App->textures->Load("Assets/Sprites/StartMenu/visco_games.png");
+	App->audio->PlayMusic("Assets/Audio/", 1.0f);
+	App->render->camera.x = 0;
+	App->render->camera.y = 0;
 	return true;
 }
 

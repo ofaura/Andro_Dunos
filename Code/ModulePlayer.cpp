@@ -62,6 +62,7 @@ update_status ModulePlayer::Update()
 
 	if (lives >= 0)
 	{
+
 		// Move Player --------------------------------------
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 		{
@@ -169,11 +170,12 @@ update_status ModulePlayer::Update()
 	SDL_Rect r = current_animation->GetCurrentFrame();	
 
 	// Check player's lives
+	/*
 	if (lives < 0)
 	{
 		App->fade->FadeToBlack(App->level1, App->game_over);
 	}
-
+	*/
 	App->render->Blit(graphics, position.x, position.y, &r, 1);
 	
 	return UPDATE_CONTINUE;
@@ -191,9 +193,11 @@ bool ModulePlayer::CleanUp()
 void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2) {
 	if ((col_1->type == COLLIDER_WALL || col_1->type == COLLIDER_ENEMY) || (col_2->type == COLLIDER_WALL ||col_2->type == COLLIDER_ENEMY))
 	{		
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+		//App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 		App->audio->PlayFx(player_death);
+		App->fade->FadeToBlack(App->level1, App->game_over);
 
+		/*
 		if (lives >= 0)
 		{
 			lives--;
@@ -208,7 +212,7 @@ void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2) {
 				
 			}
 		}
-
+		*/
 	}
 		
 };
