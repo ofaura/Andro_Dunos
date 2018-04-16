@@ -56,7 +56,7 @@ bool ModuleSceneLevel1::Start()
 
 	//Enemies ---
 	App->enemies->Enable();
-	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 350, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 600, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 640, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 680, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 720, 80);

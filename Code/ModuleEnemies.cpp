@@ -35,7 +35,7 @@ update_status ModuleEnemies::PreUpdate()
 	{
 		if (queue[i].type != ENEMY_TYPES::NO_TYPE)
 		{
-			if (queue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
+			if (queue[i].x > App->render->camera.x)
 			{
 				SpawnEnemy(queue[i]);
 				queue[i].type = ENEMY_TYPES::NO_TYPE;
@@ -46,6 +46,8 @@ update_status ModuleEnemies::PreUpdate()
 
 	return UPDATE_CONTINUE;
 }
+
+
 
 // Called before render is available
 update_status ModuleEnemies::Update()
