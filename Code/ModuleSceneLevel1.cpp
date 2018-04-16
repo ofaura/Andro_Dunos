@@ -69,70 +69,55 @@ bool ModuleSceneLevel1::Start()
 update_status ModuleSceneLevel1::Update()
 {
 	// Draw everything --------------------------------------	
-	float speed_background = 1;
 	float speed_ground = 2;
 	
-	// Moving Background
+
 
 	// diagonal up --------------------------------------	
-	if (ground_pos_x <= -14056 && ground_pos_x > - 14476 || ground_pos_x <= -17523 && ground_pos_x > -18357) 
+	if (App->render->camera.x <= -14056 && App->render->camera.x > -14476 || App->render->camera.x <= -17523 && App->render->camera.x > -18357)
 	{
-		if (ground_pos_x <= -14056 && ground_pos_x > -14476)
+		if (App->render->camera.x <= -14056 && App->render->camera.x > -14476)
 		{
-			background_pos_x -= (speed_background);
-			ground_pos_x -= (speed_ground);
-			ground_pos_y += (speed_ground / 3.5);
-			//background_pos_y += speed_background / 2;
+			App->render->camera.x += speed_ground;
+			App->render->camera.y -= speed_ground / 3.5;
 		}
 
 		else
 		{
-			background_pos_x -= (speed_background);
-			ground_pos_x -= (speed_ground);
-			ground_pos_y += (speed_ground / 3.85);
-			//background_pos_y += speed_background / 2;
+			App->render->camera.x += speed_ground;
+			App->render->camera.y -= speed_ground / 3.85;
 		}
-
-
 	}
 	// diagonal down --------------------------------------	
-	else if (ground_pos_x <= -15833 && ground_pos_x > (-16300) || ground_pos_x <= -21154 && ground_pos_x > -22343)
+	else if (App->render->camera.x <= -15833 && App->render->camera.x > (-16300) || App->render->camera.x <= -21154 && App->render->camera.x > -22343)
 	{
 
-		if (ground_pos_x <= -15833 && ground_pos_x > (-16300))
+		if (App->render->camera.x <= -15833 && App->render->camera.x > (-16300))
 		{
-			background_pos_x -= (speed_background);
-			ground_pos_x -= (speed_ground);
-			ground_pos_y -= (speed_ground / 4);
-			//background_pos_y += speed_background / 2;
-
+			App->render->camera.x += speed_ground;
+			App->render->camera.y += speed_ground / 4;
 		}
 
 		else
 		{
-			background_pos_x -= (speed_background);
-			ground_pos_x -= (speed_ground);
-			ground_pos_y -= (speed_ground / 5.3);
-			//background_pos_y += speed_background / 2;
+			App->render->camera.x += speed_ground;
+			App->render->camera.y += speed_ground / 5.3;
 		}
 	}
 	// down --------------------------------------	
-	else if (ground_pos_x <= -10245 && ground_pos_x > -11245 && ground_pos_y > -223)
+	else if (App->render->camera.x <= -10245 && App->render->camera.x > -11245 && App->render->camera.y > -223)
 	{
-		ground_pos_y -= (speed_ground / 6);
-		background_pos_y -= (speed_background / 3);
+		App->render->camera.y -= speed_ground / 3;
 	}
 	// up --------------------------------------	
-	else if (ground_pos_x <= -25000 && ground_pos_x > -26000 && ground_pos_y <= 0)
+	else if (App->render->camera.x <= -25000 && App->render->camera.x > -26000 && App->render->camera.y <= 0)
 	{
-		ground_pos_y += (speed_ground / 6);
-		background_pos_y += (speed_background / 3);
+		App->render->camera.y += speed_ground / 3;
 	}
 	// sideways --------------------------------------	
-	else if (ground_pos_x <= 0 && ground_pos_x > -30718)
+	else if (App->render->camera.x <= 0 && App->render->camera.x > -30718)
 	{
-		background_pos_x -= (speed_background);
-		ground_pos_x -= (speed_ground);
+		App->render->camera.x -= speed_ground;
 	}
 
 	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 1.0f);
