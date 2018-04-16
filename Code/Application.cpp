@@ -30,10 +30,10 @@ Application::Application()
 	modules[i++] = start_menu = new ModuleStartMenu();
 	modules[i++] = bonus = new ModuleBonus();
 	modules[i++] = audio = new ModuleAudio();
-	modules[i++] = enemies = new ModuleEnemies();
+	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = player2 = new ModulePlayer2();
-	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = p2collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
@@ -53,13 +53,16 @@ bool Application::Init()
 	// Player will be enabled on the first update of a new scene
 	player->Disable();
 	player2->Disable();
+	enemies->Disable();
+
 	// Disable the map that you do not start with
 	level1->Disable();
 	level2->Disable();
 	bonus->Disable();
 	start_menu->Disable();
-	enemies->Disable();
 	game_over->Disable();
+
+	collision->Disable();
 	
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

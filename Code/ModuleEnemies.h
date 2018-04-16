@@ -2,6 +2,7 @@
 #define __ModuleEnemies_H__
 
 #include "Module.h"
+#include "Enemy_FirstEnemy.h"
 
 #define MAX_ENEMIES 100
 

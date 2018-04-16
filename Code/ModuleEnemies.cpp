@@ -130,11 +130,6 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::FIRST_ENEMY:
 			enemies[i] = new Enemy_FirstEnemy(info.x, info.y);
 			break;
-		/*
-		case ENEMY_TYPES::BROWN_COOKIES:
-			enemies[i] = new Enemy_BrownCookies(info.x, info.y);
-			break;
-			*/
 		}
 		
 	}

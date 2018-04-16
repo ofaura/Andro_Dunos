@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
+#include <string.h>
 
 #include "SDL/include/SDL.h"
 #include "SDL_image/include/SDL_image.h"
@@ -36,14 +37,16 @@ bool ModuleTextures::Init()
 	return ret;
 }
 
-// Called before quitting
+// Called before q	uitting
 bool ModuleTextures::CleanUp()
 {
 	LOG("Freeing textures and Image library");
 
 	for (uint i = 0; i < MAX_TEXTURES; ++i)
+	{
 		if (textures[i] != nullptr)
 			SDL_DestroyTexture(textures[i]);
+	}
 
 	IMG_Quit();
 	return true;
@@ -52,10 +55,12 @@ bool ModuleTextures::CleanUp()
 // Load new texture from file path
 SDL_Texture* const ModuleTextures::Load(const char* path)
 {
-	SDL_Texture* texture = NULL;
+	SDL_Texture* texture = nullptr;
+
+	// It is a new texture, let's load it !
 	SDL_Surface* surface = IMG_Load(path);
 
-	if (surface == NULL)
+	if (surface == nullptr)
 	{
 		LOG("Could not load surface with path: %s. IMG_Load: %s", path, IMG_GetError());
 	}
@@ -63,24 +68,20 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 	{
 		texture = SDL_CreateTextureFromSurface(App->render->renderer, surface);
 
-		if (texture == NULL)
+		if (texture == nullptr)
 		{
 			LOG("Unable to create texture from surface! SDL Error: %s\n", SDL_GetError());
 		}
 		else
 		{
-			bool room = false;
-			for (int i = 0; i < MAX_TEXTURES; ++i)
+			for (uint i = 0; i < MAX_TEXTURES; ++i)
 			{
 				if (textures[i] == nullptr)
 				{
 					textures[i] = texture;
-					room = true;
 					break;
 				}
 			}
-			if (room == false)
-				LOG("Texture buffer overflow");
 		}
 
 		SDL_FreeSurface(surface);
@@ -89,22 +90,20 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 	return texture;
 }
 
-bool ModuleTextures::Unload(SDL_Texture * texture)
+// Load new texture from file path
+bool ModuleTextures::Unload(SDL_Texture* texture)
 {
 	bool ret = false;
 
-	if (texture != nullptr)
+	for (uint i = 0; i < MAX_TEXTURES; ++i)
 	{
-		for (int i = 0; i < MAX_TEXTURES; ++i)
+		if (texture == textures[i])
 		{
-			if (textures[i] == texture)
-			{
-				textures[i] = nullptr;
-				ret = true;
-				break;
-			}
+			SDL_DestroyTexture(textures[i]);
+			textures[i] = nullptr;
+			ret = true;
+			break;
 		}
-		SDL_DestroyTexture(texture);
 	}
 
 	return ret;

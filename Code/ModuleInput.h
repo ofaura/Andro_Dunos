@@ -25,7 +25,6 @@ public:
 	bool Init();
 	update_status PreUpdate();
 	bool CleanUp();
-	uint a = 0;
 
 public:
 	KEY_STATE keyboard[MAX_KEYS];

@@ -5,6 +5,7 @@
 #include "Globals.h"
 
 #define MAX_TEXTURES 50
+#define MAX_TEXTURE_PATH 100
 
 struct SDL_Texture;
 
@@ -18,7 +19,7 @@ public:
 	bool CleanUp();
 
 	SDL_Texture* const Load(const char* path);
-	bool Unload(SDL_Texture * texture);
+	bool Unload(SDL_Texture* texture);
 
 public:
 	SDL_Texture* textures[MAX_TEXTURES];

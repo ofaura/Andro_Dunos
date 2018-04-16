@@ -10,6 +10,7 @@
 #include "ModuleAudio.h"
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
+#include "ModuleParticles.h"
 
 
 ModuleSceneLevel1::ModuleSceneLevel1()
@@ -36,9 +37,6 @@ bool ModuleSceneLevel1::Start()
 	bool ret = true;
 	background_texture = App->textures->Load("Assets/Sprites/lvl1/background1.png");
 	ground_texture = App->textures->Load("Assets/Sprites/lvl1/Floor_all.png");
-	App->player->Enable();
-	App->collision->Enable();
-	App->enemies->Enable();
 
 	if (IsEnabled()) {
 		if (App->player->IsEnabled() == false) {
@@ -50,17 +48,20 @@ bool ModuleSceneLevel1::Start()
 			App->player->Disable();
 		}
 	}
+
+	//Enemies ---
+	App->enemies->Enable();
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 350, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 640, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 680, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 720, 80);
+
 	// Colliders ---
+	App->collision->Enable();
 	App->collision->AddCollider({ 0, 192, 2960, 32 }, COLLIDER_WALL);
 
 	//Audio ---
 	App->audio->PlayMusic("Assets/Audio/level1.ogg", 1.0f);
-
-	//Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 340, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 640, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 680, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 720, 80);
 
 	return ret;
 }

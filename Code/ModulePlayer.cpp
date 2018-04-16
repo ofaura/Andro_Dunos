@@ -138,12 +138,6 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	// Prevent Player from leaving bordrer -------------------------------------
-	if (position.x <= 0) position.x = 0;
-	else if (position.x >= SCREEN_WIDTH - 27) position.x = SCREEN_WIDTH - 27;
-	if (position.y <= 0) position.y = 0;
-	else if (position.y >= SCREEN_HEIGHT - 17) position.y = SCREEN_HEIGHT - 17;
-
 	if (lives >= 0)
 	{
 		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)
