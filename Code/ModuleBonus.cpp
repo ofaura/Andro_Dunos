@@ -62,8 +62,14 @@ ModuleBonus::~ModuleBonus()
 bool ModuleBonus::Start()
 {
 	LOG("Loading clear bonus");
-	App->audio->PlayMusic("Assets/Audio/18_Game_Over.ogg", 1.0f);
-	graphics = App->textures->Load("Assets/Sprites/bonus/stage_clear.png");
+	App->audio->PlayMusic("Assets/Audio/gameOver.ogg", 1.0f);
+	graphics = App->textures->Load("Assets/Sprites/bonus/stage_clear.png");	
+
+	// Reseting the camera
+	App->render->camera.x = App->render->camera.y = 0;
+	App->render->camera.w = SCREEN_WIDTH;
+	App->render->camera.h = SCREEN_HEIGHT;
+
 	return true;
 }
 
@@ -82,7 +88,7 @@ update_status ModuleBonus::Update()
 	current_animation = &bonus;
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
-	App->render->Blit(graphics, 9, 80, &r, 1);
+	App->render->Blit(graphics, 9, 75, &r, 1);
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1)
 	{

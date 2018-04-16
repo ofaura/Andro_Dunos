@@ -48,7 +48,7 @@ bool ModulePlayer2::Start()
 	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
 
 	player = App->p2collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
-
+	
 	return true;
 }
 

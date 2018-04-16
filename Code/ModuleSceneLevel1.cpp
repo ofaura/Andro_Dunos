@@ -47,7 +47,12 @@ bool ModuleSceneLevel1::Start()
 		if (App->player->IsEnabled() == true) {
 			App->player->Disable();
 		}
-	}
+	}	
+
+	// Reseting the camera to the start of the level
+	App->render->camera.x = App->render->camera.y = 0;
+	App->render->camera.w = SCREEN_WIDTH;
+	App->render->camera.h = SCREEN_HEIGHT;
 
 	//Enemies ---
 	App->enemies->Enable();
@@ -71,8 +76,7 @@ update_status ModuleSceneLevel1::Update()
 {
 	// Draw everything --------------------------------------	
 	int speed_ground = 1;
-	int speed_background = 1;
-
+	int speed_background = 1;	
 	
 	// diagonal up --------------------------------------	
 	if (App->render->camera.x <= -14056 && App->render->camera.x > -14476 || App->render->camera.x <= -17523 && App->render->camera.x > -18357)

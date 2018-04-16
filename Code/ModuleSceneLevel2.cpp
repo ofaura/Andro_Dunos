@@ -39,9 +39,13 @@ bool ModuleSceneLevel2::Start()
 
 	background_texture = App->textures->Load("Assets/Sprites/lvl2/Background lvl 2.png");
 	ground_texture = App->textures->Load("Assets/Sprites/lvl2/Floor 2.png");
+	
+	// Reseting the camera to the start of the level
+	App->render->camera.x = App->render->camera.y = 0;
+	App->render->camera.w = SCREEN_WIDTH;
+	App->render->camera.h = SCREEN_HEIGHT;
 
-	// TODO 1: Enable (and properly disable) the player module
-//	if (App->player->IsEnabled() == false)
+	//	if (App->player->IsEnabled() == false)
 	if (IsEnabled()) {
 		if (App->player->IsEnabled()==false) {
 			App->player->Enable();
