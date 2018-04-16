@@ -82,7 +82,7 @@ update_status ModuleBonus::Update()
 	current_animation = &bonus;
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
-	App->render->Blit(graphics, 18, 80, &r, 1);
+	App->render->Blit(graphics, 9, 80, &r, 1);
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1)
 	{
