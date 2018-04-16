@@ -60,8 +60,10 @@ update_status ModuleInput::PreUpdate()
 	if (keyboard[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
 
-	if (keyboard[SDL_SCANCODE_F1])
+	if (keyboard[SDL_SCANCODE_F1]) {
 		App->player2->Disable();
+		App->p2collision->CleanUp();
+	}
 
 	if (keyboard[SDL_SCANCODE_F2])
 		App->player2->Enable();
