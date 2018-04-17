@@ -138,30 +138,32 @@ update_status ModulePlayer::Update()
 		{
 		current_animation = &idle;
 		}
+
+		// Prevent Player from leaving bordrer -------------------------------------
+		//x lim
+		if (position.x <= abs(App->render->camera.x) / SCREEN_SIZE)
+		{
+			position.x = 1 + (abs(App->render->camera.x) / SCREEN_SIZE);
+		}
+		else if (position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH - 27)))
+		{
+			position.x = -1 + ((abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH - 27));
+		}
+
+		//y lim
+
+		if (position.y <= abs(App->render->camera.y) / SCREEN_SIZE)
+		{
+			position.y = 1 + abs(App->render->camera.y) / SCREEN_SIZE;
+		}
+		else if (position.y >= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 17) // the -50 just showcases that the camera limit on the lower end works, it stopps player before they touch the ground and crash
+		{
+			position.y = -1 + (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 17;
+		}
 	}
 
 
-	// Prevent Player from leaving bordrer -------------------------------------
-	//x lim
-	if (position.x <= abs(App->render->camera.x) / SCREEN_SIZE)
-	{
-		position.x = 1 + (abs(App->render->camera.x) / SCREEN_SIZE);
-	}
-	else if (position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH - 27)))
-	{
-		position.x = -1 + ((abs(App->render->camera.x)/SCREEN_SIZE + SCREEN_WIDTH - 27));
-	}
 
-	//y lim
-
-	if (position.y <= abs(App->render->camera.y) / SCREEN_SIZE)
-	{
-		position.y = 1+abs(App->render->camera.y) / SCREEN_SIZE;
-	}
-	else if (position.y >= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 50) // the -50 just showcases that the camera limit on the lower end works, it stopps player before they touch the ground and crash
-	{
-		position.y = -1 + (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 50;
-	}
 
 	if (lives >= 0)
 
@@ -215,26 +217,29 @@ bool ModulePlayer::CleanUp()
 }
 
 // Detects collision with a wall. If so, go back to intro screen.
-void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2) {
-	if ((col_1->type == COLLIDER_WALL || col_1->type == COLLIDER_ENEMY) || (col_2->type == COLLIDER_WALL ||col_2->type == COLLIDER_ENEMY))
-	{		
+void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2)
+{
+	if ((col_1->type == COLLIDER_WALL || col_1->type == COLLIDER_ENEMY) || (col_2->type == COLLIDER_WALL || col_2->type == COLLIDER_ENEMY))
+	{
 		App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 		App->audio->PlayFx(player_death);
-		App->fade->FadeToBlack(App->level1, App->game_over);
+		SDL_Delay(30);
 
-		
+
 		if (lives >= 0)
 		{
 			lives--;
-			
-			if (lives >= 0)
-			{
-				position.x = App->render->camera.x;
-				position.y = App->render->camera.y + (SCREEN_HEIGHT / 2);
-				
-			}
+
+			position.x = App->render->camera.x;
+			position.y = App->render->camera.y + (SCREEN_HEIGHT / 2);
+
 		}
-		
+		else
+		{
+			position.x = 0;
+
+			App->fade->FadeToBlack(App->level1, App->game_over);
+		}
+
 	}
-		
 };
