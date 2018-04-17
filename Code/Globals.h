@@ -11,6 +11,9 @@ void log(const char file[], int line, const char* format, ...);
 
 #define MIN( a, b ) ( ((a) < (b)) ? (a) : (b) )
 #define MAX( a, b ) ( ((a) > (b)) ? (a) : (b) )
+#define PIXEL_TO_DISTANCE_X(a) (-a*3800/2985)
+#define PIXEL_TO_DISTANCE_Y(a) (-a*440/336)
+
 
 enum update_status
 {

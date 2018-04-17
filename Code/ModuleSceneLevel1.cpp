@@ -77,7 +77,7 @@ update_status ModuleSceneLevel1::Update()
 	// Draw everything --------------------------------------	
 	int speed_ground = 2;
 	int speed_background = 2;	
-	
+
 	// diagonal up --------------------------------------	
 	if (App->render->camera.x <= -14056 && App->render->camera.x > -14476 || App->render->camera.x <= -17523 && App->render->camera.x > -18357)
 	{
@@ -110,9 +110,11 @@ update_status ModuleSceneLevel1::Update()
 		}
 	}
 	// down --------------------------------------	
-	else if (App->render->camera.x <= -10245 && App->render->camera.x > -11245 && App->render->camera.y > -223)
+	else if (App->render->camera.x <= PIXEL_TO_DISTANCE_X(2927) && App->render->camera.x > PIXEL_TO_DISTANCE_X(3000) && App->render->camera.y > PIXEL_TO_DISTANCE_Y(336))
 	{
-		App->render->camera.y -= speed_ground / 3;
+		App->render->camera.y -= speed_ground;
+		//ground_pos_y -= speed_background;
+		App->player->position.y += speed_ground / 2;
 	}
 	// up --------------------------------------	
 	else if (App->render->camera.x <= -25000 && App->render->camera.x > -26000 && App->render->camera.y <= 0)
@@ -121,11 +123,11 @@ update_status ModuleSceneLevel1::Update()
 	}
 
 	// sideways --------------------------------------	
-	else if (App->render->camera.x <= 0 && App->render->camera.x > -30718)
+	else if (App->render->camera.x <= PIXEL_TO_DISTANCE_X(0) && App->render->camera.x > PIXEL_TO_DISTANCE_X(8985))
 	{
 		App->render->camera.x -= speed_ground;
 		ground_pos_x -= speed_background;
-		App->player->position.x += 1;
+		App->player->position.x += speed_ground / 2;
 	}
 
 	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 1.0f);

@@ -65,9 +65,9 @@ update_status ModuleStartMenu::Update()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(background, -14, 0, &_background, 0.75f);
-	App->render->Blit(logo, (SCREEN_WIDTH - _blue.w)/(2.3865), 60, &_blue, 0.75f);
-	App->render->Blit(logo, (SCREEN_WIDTH - _logo.w) / (2.67), 38, &_logo, 0.75f);
-	App->render->Blit(visco, 75, 168, &_visco, 0.75f);
+	App->render->Blit(logo, (SCREEN_WIDTH - _blue.w)/(2.3865), 66, &_blue, 0.75f);
+	App->render->Blit(logo, (SCREEN_WIDTH - _logo.w) / (2.67), 34, &_logo, 0.75f);
+	App->render->Blit(visco, 75, 158, &_visco, 0.75f);
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1)
 	{

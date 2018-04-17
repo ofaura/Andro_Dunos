@@ -49,6 +49,8 @@ bool ModulePlayer::Start()
 
 	position.x = 0;
 	position.y = SCREEN_HEIGHT / 2;
+	App->render->camera.x = 0;
+	App->level1->ground_pos_x = 0;
 
 	player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
 	
@@ -223,16 +225,13 @@ void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2)
 	{
 		App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 		App->audio->PlayFx(player_death);
-		SDL_Delay(30);
 
 
 		if (lives >= 0)
 		{
 			lives--;
-
-			position.x = App->render->camera.x;
-			position.y = App->render->camera.y + (SCREEN_HEIGHT / 2);
-
+			position.x = 1 + abs(App->render->camera.x) / SCREEN_SIZE;
+			position.y = (abs(App->render->camera.y) / SCREEN_SIZE) + (SCREEN_HEIGHT / 2);
 		}
 		else
 		{
