@@ -60,6 +60,7 @@ update_status ModulePlayer::Update()
 {
 	int speed = 2;
 
+
 	if (lives >= 0)
 	{
 
@@ -139,7 +140,31 @@ update_status ModulePlayer::Update()
 		}
 	}
 
+
+	// Prevent Player from leaving bordrer -------------------------------------
+	//x lim
+	if (position.x <= abs(App->render->camera.x) / SCREEN_SIZE)
+	{
+		position.x = 1 + (abs(App->render->camera.x) / SCREEN_SIZE);
+	}
+	else if (position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH - 27)))
+	{
+		position.x = -1 + ((abs(App->render->camera.x)/SCREEN_SIZE + SCREEN_WIDTH - 27));
+	}
+
+	//y lim
+
+	if (position.y <= abs(App->render->camera.y) / SCREEN_SIZE)
+	{
+		position.y = 1+abs(App->render->camera.y) / SCREEN_SIZE;
+	}
+	else if (position.y >= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 50) // the -50 just showcases that the camera limit on the lower end works, it stopps player before they touch the ground and crash
+	{
+		position.y = -1 + (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 50;
+	}
+
 	if (lives >= 0)
+
 	{
 		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)
 		{
@@ -170,12 +195,12 @@ update_status ModulePlayer::Update()
 	SDL_Rect r = current_animation->GetCurrentFrame();	
 
 	// Check player's lives
-	/*
+	
 	if (lives < 0)
 	{
 		App->fade->FadeToBlack(App->level1, App->game_over);
 	}
-	*/
+	
 	App->render->Blit(graphics, position.x, position.y, &r, 1);
 	
 	return UPDATE_CONTINUE;
@@ -193,26 +218,23 @@ bool ModulePlayer::CleanUp()
 void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2) {
 	if ((col_1->type == COLLIDER_WALL || col_1->type == COLLIDER_ENEMY) || (col_2->type == COLLIDER_WALL ||col_2->type == COLLIDER_ENEMY))
 	{		
-		//App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 		App->audio->PlayFx(player_death);
 		App->fade->FadeToBlack(App->level1, App->game_over);
 
-		/*
+		
 		if (lives >= 0)
 		{
 			lives--;
-
-			SDL_Rect r = current_animation->GetCurrentFrame();
-			App->render->Blit(graphics, position.x, position.y, &r, 1); // for the explosion, biatch
 			
 			if (lives >= 0)
 			{
-				position.x = 0;
-				position.y = SCREEN_HEIGHT / 2;
+				position.x = App->render->camera.x;
+				position.y = App->render->camera.y + (SCREEN_HEIGHT / 2);
 				
 			}
 		}
-		*/
+		
 	}
 		
 };

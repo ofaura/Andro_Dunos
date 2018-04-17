@@ -131,10 +131,26 @@ update_status ModulePlayer2::Update()
 		current_animation = &idle;
 
 	// Prevent Player from leaving bordrer -------------------------------------
-	if (position.x <= 0) position.x = 0;
-	else if (position.x >= SCREEN_WIDTH - 27) position.x = SCREEN_WIDTH - 27;
-	if (position.y <= 0) position.y = 0;
-	else if (position.y >= SCREEN_HEIGHT - 17) position.y = SCREEN_HEIGHT - 17;
+	//x lim
+	if (position.x <= abs(App->render->camera.x) / SCREEN_SIZE)
+	{
+		position.x = 1 + (abs(App->render->camera.x) / SCREEN_SIZE);
+	}
+	else if (position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH - 27)))
+	{
+		position.x = -1 + ((abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH - 27));
+	}
+
+	//y lim
+
+	if (position.y <= abs(App->render->camera.y) / SCREEN_SIZE)
+	{
+		position.y = 1 + abs(App->render->camera.y) / SCREEN_SIZE;
+	}
+	else if (position.y >= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 50) // the -50 just showcases that the camera limit on the lower end works, it stopps player before they touch the ground and crash
+	{
+		position.y = -1 + (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 50;
+	}
 
 	// Draw everything --------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)

@@ -128,6 +128,13 @@ update_status ModuleSceneLevel1::Update()
 		App->player->position.x += 1;
 	}
 
+	//x lim
+	if (App->player->position.x >= abs(App->render->camera.x)) App->player->position.x = abs(App->render->camera.x);
+	//else if (App->player->position.x >= App->render->camera.x + SCREEN_WIDTH - 27) App->player->position.x = App->render->camera.x + SCREEN_WIDTH - 27;
+	//y lim
+	if (App->player->position.y <= App->render->camera.y) App->player->position.y = App->render->camera.y;
+	else if (App->player->position.y >= App->render->camera.y + SCREEN_HEIGHT - 17) App->player->position.y = App->render->camera.y + SCREEN_HEIGHT - 17;
+
 	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 1.0f);
 	App->render->Blit(ground_texture, (ground_pos_x) / 3.5, ground_pos_y - 115, &ground, 1.0f);
 
