@@ -163,9 +163,8 @@ update_status ModuleSceneLevel1::Update()
 		App->render->camera.y += 1 * SCREEN_SIZE;
 		App->player->position.y += 1;
 
-
-
 	}
+
 	//Horizontal
 	else if (App->render->camera.x >= 0 && App->render->camera.x <= 8800 * SCREEN_SIZE)
 	{
@@ -184,11 +183,7 @@ update_status ModuleSceneLevel1::Update()
 		}
 
 	}
-
-	
-	
-
-	
+		
 	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 0.5f, true);
 	App->render->Blit(ground_texture, (ground_pos_x) / 3.5, ground_pos_y - 115, &ground, 1.0f, true);
 

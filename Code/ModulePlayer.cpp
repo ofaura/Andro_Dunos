@@ -166,12 +166,10 @@ update_status ModulePlayer::Update()
 			position.y = -1 + (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 17;
 		}
 	}
+	
 
-
-
-
+	// God mode
 	if (lives >= 0)
-
 	{
 		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)
 		{
@@ -201,8 +199,7 @@ update_status ModulePlayer::Update()
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();	
 
-	// Check player's lives
-	
+	// Check player's lives	
 	if (lives < 0)
 	{
 		App->fade->FadeToBlack(App->level1, App->game_over);
@@ -227,11 +224,15 @@ bool ModulePlayer::CleanUp()
 // Detects collision with a wall. If so, go back to intro screen.
 void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2)
 {
+	if ((col_1->type == COLLIDER_PLAYER_SHOT && col_2->type == COLLIDER_ENEMY) || (col_2->type == COLLIDER_PLAYER_SHOT && col_1->type == COLLIDER_ENEMY)) {
+		App->audio->PlayFx(player_death);
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+	}
+
 	if ((col_1->type == COLLIDER_WALL || col_1->type == COLLIDER_ENEMY) || (col_2->type == COLLIDER_WALL || col_2->type == COLLIDER_ENEMY))
 	{
 		App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 		App->audio->PlayFx(player_death);
-
 
 		if (lives >= 0)
 		{
