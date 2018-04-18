@@ -62,9 +62,6 @@
     <ClInclude Include="ModuleIntroNeoGeo.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleSceneLevel2.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleBonus.h">
       <Filter>Modules</Filter>
     </ClInclude>
@@ -131,9 +128,6 @@
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleIntroNeoGeo.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleSceneLevel2.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleBonus.cpp">

@@ -8,7 +8,6 @@
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
-#include "ModuleSceneLevel2.h"
 #include "ModuleBonus.h"
 #include "ModuleParticles.h"
 #include "ModuleStartMenu.h"
@@ -26,7 +25,6 @@ Application::Application()
 	modules[i++] = textures = new ModuleTextures();
 	modules[i++] = level1 = new ModuleSceneLevel1();
 	modules[i++] = NeoGeo = new ModuleIntroNeoGeo();
-	modules[i++] = level2 = new ModuleSceneLevel2();
 	modules[i++] = start_menu = new ModuleStartMenu();
 	modules[i++] = bonus = new ModuleBonus();
 	modules[i++] = audio = new ModuleAudio();
@@ -57,7 +55,6 @@ bool Application::Init()
 
 	// Disable the map that you do not start with
 	level1->Disable();
-	level2->Disable();
 	bonus->Disable();
 	start_menu->Disable();
 	game_over->Disable();

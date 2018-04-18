@@ -6,7 +6,7 @@
 #include "ModulePlayer.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleSceneLevel2.h"
+#include "ModuleBonus.h"
 #include "ModuleAudio.h"
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
@@ -137,7 +137,7 @@ update_status ModuleSceneLevel1::Update()
 	// TODO 2: make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1) 
 	{
-		App->fade->FadeToBlack(App->level1, App->level2, 1.0f);
+		App->fade->FadeToBlack(App->level1, App->bonus, 1.0f);
 	}
 
 	return UPDATE_CONTINUE;
