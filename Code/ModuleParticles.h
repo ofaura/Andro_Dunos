@@ -46,7 +46,6 @@ public:
 private:
 
 	SDL_Texture* graphics = nullptr;
-	SDL_Texture* player_death = nullptr;
 	Particle* active[MAX_ACTIVE_PARTICLES];
 
 public:
