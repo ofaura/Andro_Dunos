@@ -30,6 +30,8 @@ public:
 	float background_pos_y = 0;
 	float ground_pos_y = 0;
 	long int pos_x = 0;
+	int t = 0;
+	bool to_do;
 
 };
 

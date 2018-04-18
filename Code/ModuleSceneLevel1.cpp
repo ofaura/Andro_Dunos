@@ -74,6 +74,8 @@ bool ModuleSceneLevel1::Start()
 // Update: draw background
 update_status ModuleSceneLevel1::Update()
 {
+	
+	/*
 	if (App->render->camera.y == 2 && App->render->camera.x > 10500 && App->render->camera.x < 12100)
 	{
 		App->render->camera.x += 1 * SCREEN_SIZE;
@@ -121,72 +123,71 @@ update_status ModuleSceneLevel1::Update()
 	{
 		App->render->camera.x += 2921.5 * SCREEN_SIZE;
 	}
-
-
 	
-	
-	
-	
-	
-	
-	
-	/*
-	// Draw everything --------------------------------------	
-	int speed_ground = 2;
-	int speed_background = 3;	
-	
-	// diagonal up --------------------------------------	
-	if (App->render->camera.x <= -14056 && App->render->camera.x > -14476 || App->render->camera.x <= -17523 && App->render->camera.x > -18357)
-	{
-		if (App->render->camera.x <= -14056 && App->render->camera.x > -14476)
-		{
-			App->render->camera.x += speed_ground;
-			App->render->camera.y -= speed_ground / 3.5;
-		}
-
-		else
-		{
-			App->render->camera.x += speed_ground;
-			App->render->camera.y -= speed_ground / 3.85;
-		}
-	}
-	// diagonal down --------------------------------------	
-	else if (App->render->camera.x <= -15833 && App->render->camera.x > (-16300) || App->render->camera.x <= -21154 && App->render->camera.x > -22343)
-	{
-
-		if (App->render->camera.x <= -15833 && App->render->camera.x > (-16300))
-		{
-			App->render->camera.x += speed_ground;
-			App->render->camera.y += speed_ground / 4;
-		}
-
-		else
-		{
-			App->render->camera.x += speed_ground;
-			App->render->camera.y += speed_ground / 5.3;
-		}
-	}
-	// down --------------------------------------	
-	else if (App->render->camera.x <= PIXEL_TO_DISTANCE_X(2927) && App->render->camera.x > PIXEL_TO_DISTANCE_X(3000) && App->render->camera.y > PIXEL_TO_DISTANCE_Y(336))
-	{
-		App->render->camera.y -= speed_ground;
-		//ground_pos_y -= speed_background;
-		App->player->position.y += speed_ground / 2;
-	}
-	// up --------------------------------------	
-	else if (App->render->camera.x <= -25000 && App->render->camera.x > -26000 && App->render->camera.y <= 0)
-	{
-		App->render->camera.y += speed_ground / 3;
-	}
-
-	// sideways --------------------------------------	
-	else if (App->render->camera.x <= PIXEL_TO_DISTANCE_X(0) && App->render->camera.x > PIXEL_TO_DISTANCE_X(8985))
-	{
-		App->render->camera.x -= speed_ground;
-		ground_pos_x -= speed_background;
-		App->player->position.x += speed_ground / 2;
-	}
 	*/
+	
+	
+	
+	//Up
+	if (App->render->camera.x >= 14300 && App->render->camera.x <= 14400 && App->render->camera.y >= 0)
+	{
+		App->render->camera.y -= 1 * SCREEN_SIZE;
+		App->player->position.y -= 1;
+
+	}
+
+	// Diagonal up
+	else if (App->render->camera.x >= 8010 && App->render->camera.x < 8260 || App->render->camera.x >= 10149 && App->render->camera.x < 10580)
+	{
+		App->render->camera.x += SCREEN_SIZE / 2;
+		App->render->camera.y -= SCREEN_SIZE / 2;
+		App->player->position.y -= 1;
+		App->player->position.x += 1;
+
+
+	}
+
+	// Diagonal down
+	else if (App->render->camera.y >= 193 && App->render->camera.x >= 9060 && App->render->camera.y < 449 || App->render->camera.x >= 12250 && App->render->camera.x < 12525)
+	{
+		App->render->camera.x += 0.5 * SCREEN_SIZE;
+		App->render->camera.y += 0.5* SCREEN_SIZE;
+		App->player->position.y += 1;
+		App->player->position.x += 1;
+	}
+
+	//Down
+	else if (App->render->camera.x >= 5843 && App->render->camera.x <= 5943 && App->render->camera.y < 449)
+	{
+		App->render->camera.y += 1 * SCREEN_SIZE;
+		App->player->position.y += 1;
+
+
+
+	}
+
+	//Horizontal
+	else if (App->render->camera.x >= 0 && App->render->camera.x <= 17600)
+	{
+		if (t == 0) // if you wanna start the ship at a certain point in the map
+		{
+
+			App->render->camera.x += 0 * SCREEN_SIZE;
+			App->player->position.x += 0;
+
+			t++;
+		}
+		else
+		{
+			App->render->camera.x += 1 * SCREEN_SIZE;
+			App->player->position.x += 1;
+		}
+
+	}
+
+	
+	
+
 	
 	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 0.5f, true);
 	App->render->Blit(ground_texture, (ground_pos_x) / 3.5, ground_pos_y - 115, &ground, 1.0f, true);
