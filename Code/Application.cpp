@@ -15,6 +15,7 @@
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
 #include "ModuleGameOver.h"
+#include "ModuleFonts.h"
 
 Application::Application()
 {
@@ -23,6 +24,7 @@ Application::Application()
 	modules[i++] = render = new ModuleRender();
 	modules[i++] = input = new ModuleInput();
 	modules[i++] = textures = new ModuleTextures();
+	modules[i++] = fonts = new ModuleFonts();
 	modules[i++] = level1 = new ModuleSceneLevel1();
 	modules[i++] = NeoGeo = new ModuleIntroNeoGeo();
 	modules[i++] = start_menu = new ModuleStartMenu();

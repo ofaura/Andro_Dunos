@@ -76,8 +76,8 @@ update_status ModuleSceneLevel1::Update()
 {
 	// Draw everything --------------------------------------	
 	int speed_ground = 2;
-	int speed_background = 2;	
-
+	int speed_background = 3;	
+	/*
 	// diagonal up --------------------------------------	
 	if (App->render->camera.x <= -14056 && App->render->camera.x > -14476 || App->render->camera.x <= -17523 && App->render->camera.x > -18357)
 	{
@@ -129,9 +129,10 @@ update_status ModuleSceneLevel1::Update()
 		ground_pos_x -= speed_background;
 		App->player->position.x += speed_ground / 2;
 	}
-
-	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 1.0f);
-	App->render->Blit(ground_texture, (ground_pos_x) / 3.5, ground_pos_y - 115, &ground, 1.0f);
+	*/
+	App->render->camera.x += 1 * SCREEN_SIZE;
+	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 0.5f, true);
+	App->render->Blit(ground_texture, (ground_pos_x) / 3.5, ground_pos_y - 115, &ground, 1.0f, true);
 
 
 	// TODO 2: make so pressing SPACE the KEN stage is loaded

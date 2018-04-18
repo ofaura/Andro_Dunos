@@ -60,6 +60,7 @@ bool ModulePlayer::Start()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
+	position.x += 1;
 	int speed = 2;
 
 
@@ -205,7 +206,7 @@ update_status ModulePlayer::Update()
 		App->fade->FadeToBlack(App->level1, App->game_over);
 	}
 	
-	App->render->Blit(graphics, position.x, position.y, &r, 1);
+	App->render->Blit(graphics, position.x, position.y, &r);
 	
 	return UPDATE_CONTINUE;
 }
