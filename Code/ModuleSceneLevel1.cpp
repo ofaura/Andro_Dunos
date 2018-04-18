@@ -74,10 +74,67 @@ bool ModuleSceneLevel1::Start()
 // Update: draw background
 update_status ModuleSceneLevel1::Update()
 {
+	if (App->render->camera.y == 2 && App->render->camera.x > 10500 && App->render->camera.x < 12100)
+	{
+		App->render->camera.x += 1 * SCREEN_SIZE;
+	}
+	
+	else if (App->render->camera.x >= 10149 && App->render->camera.y >= 2 && App->render->camera.x < 11000)
+	{
+		App->render->camera.x += 0.5 * SCREEN_SIZE;
+		App->render->camera.y -= 0.5 * SCREEN_SIZE;
+	}
+
+	else if (App->render->camera.y == 448 && App->render->camera.x < 10150 && App->render->camera.x > 9100)
+	{
+		App->render->camera.x += 10 * SCREEN_SIZE;
+	}
+
+	else if (App->render->camera.y >= 193 && App->render->camera.x >= 9060 && App->render->camera.y < 449)
+	{
+		App->render->camera.x += 0.5 * SCREEN_SIZE;
+		App->render->camera.y += 0.5 * SCREEN_SIZE;
+	}
+
+	else if (App->render->camera.y == 193 && App->render->camera.x < 9060)
+	{
+		App->render->camera.x += 10 * SCREEN_SIZE;
+	}
+
+	else if (App->render->camera.x >= 8010 && App->render->camera.y >= 193 && App->render->camera.x < 9000)
+	{
+		App->render->camera.x += 0.5 * SCREEN_SIZE;
+		App->render->camera.y -= 0.5 * SCREEN_SIZE;
+	}
+
+	else if (App->render->camera.y == 448 && App->render->camera.x >= 5843 && App->render->camera.x < 8011)
+	{
+		App->render->camera.x += 224 * SCREEN_SIZE;
+	}
+
+	else if (App->render->camera.x == 5843 && App->render->camera.y < 449)
+	{
+		App->render->camera.y += 224 * SCREEN_SIZE;
+	}
+
+	else if (App->render->camera.x < 5844 && App->render->camera.y == 0)
+	{
+		App->render->camera.x += 2921.5 * SCREEN_SIZE;
+	}
+
+
+	
+	
+	
+	
+	
+	
+	
+	/*
 	// Draw everything --------------------------------------	
 	int speed_ground = 2;
 	int speed_background = 3;	
-	/*
+	
 	// diagonal up --------------------------------------	
 	if (App->render->camera.x <= -14056 && App->render->camera.x > -14476 || App->render->camera.x <= -17523 && App->render->camera.x > -18357)
 	{
@@ -130,10 +187,9 @@ update_status ModuleSceneLevel1::Update()
 		App->player->position.x += speed_ground / 2;
 	}
 	*/
-	App->render->camera.x += 1 * SCREEN_SIZE;
+	
 	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 0.5f, true);
 	App->render->Blit(ground_texture, (ground_pos_x) / 3.5, ground_pos_y - 115, &ground, 1.0f, true);
-
 
 	// TODO 2: make so pressing SPACE the KEN stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1) 

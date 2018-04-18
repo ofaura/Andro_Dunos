@@ -60,7 +60,26 @@ bool ModulePlayer::Start()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	position.x += 1;
+	
+
+	if (App->render->camera.x < 5839)
+	{
+		position.x += 1;
+	}
+	else if (App->render->camera.x == 5843 && App->render->camera.y < 449)
+	{
+		position.y += 1;
+	}
+
+	else if (App->render->camera.y == 448 && App->render->camera.x >= 5843 && App->render->camera.x < 8011)
+	{
+		position.x += 1;
+	}
+
+	else if (App->render->camera.x >= 8010 && App->render->camera.y >= 193)
+	{
+	}
+
 	int speed = 2;
 
 

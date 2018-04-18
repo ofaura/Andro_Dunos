@@ -4,6 +4,8 @@
 #include "SDL/include/SDL.h"
 #include "ModulePlayer2.h"
 #include "ModuleCollision.h"
+#include "ModuleRender.h"
+#include "ModuleTextures.h"
 
 ModuleInput::ModuleInput() : Module()
 {
