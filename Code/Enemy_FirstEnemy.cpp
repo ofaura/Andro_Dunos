@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Enemy_FirstEnemy.h"
 #include "ModuleCollision.h"
+#include "ModuleParticles.h"
 
 Enemy_FirstEnemy::Enemy_FirstEnemy(int x, int y) : Enemy(x, y)
 {
@@ -23,6 +24,8 @@ Enemy_FirstEnemy::Enemy_FirstEnemy(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 18, 17 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
+
+	App->particles->AddParticle(App->particles->enemy_shot, position.x + 25, position.y + 4, COLLIDER_ENEMY_SHOT);
 }
 
 void Enemy_FirstEnemy::Move()
@@ -40,7 +43,7 @@ void Enemy_FirstEnemy::Move()
 			going_up = true;
 		else
 			wave -= 0.05f;
-	}
+	}	
 
 	position.y = int(float(original_y) + (10.0f * sinf(wave)));
 	position.x -= 2;

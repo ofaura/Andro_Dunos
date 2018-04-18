@@ -26,9 +26,15 @@ bool ModuleParticles::Start()
 
 	// Explosion particle
 
-	// Lasers
+	// Enemy shots
+	enemy_shot.anim.PushBack({ 22, 51, 15, 6 });	
+	enemy_shot.anim.loop = false;
+	enemy_shot.anim.speed = 0.1f;
+	enemy_shot.speed.x = -3;
+	enemy_shot.life = 4000;
+
+	// Player lasers
 	laser1.anim.PushBack({ 22, 51, 15, 6 });
-	//laser1.anim.PushBack({ 24, 39, 11, 4 });
 	laser1.anim.loop = false;
 	laser1.anim.speed = 0.1f;
 	laser1.speed.x = 7;

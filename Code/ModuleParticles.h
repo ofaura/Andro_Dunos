@@ -57,6 +57,7 @@ public:
 	Particle laser4_1;
 	Particle laser4_2;
 	Particle explosion;
+	Particle enemy_shot;
 };
 
 #endif // __MODULEPARTICLES_H__
