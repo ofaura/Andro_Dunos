@@ -48,7 +48,7 @@ bool ModulePlayer::Start()
 
 
 	// The font is loaded 
-	font_score = App->fonts->Load("Assets/Sprites/Fonts/font1.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 2);
+	font_score = App->fonts->Load("Assets/Sprites/Fonts/font_score.png", "1234567890P", 1);
 
 	lives = 2;
 
@@ -211,7 +211,7 @@ update_status ModulePlayer::Update()
 	App->render->Blit(graphics, position.x, position.y, &r);
 	
 	// Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(10, 10, font_score, "no readme go to gulag");
+	App->fonts->BlitText(10, 10, font_score, "3200P");
 
 	return UPDATE_CONTINUE;
 }
