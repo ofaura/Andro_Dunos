@@ -13,6 +13,8 @@
 #include "ModuleFonts.h"
 #include "ModuleEnemies.h"
 
+#include <stdio.h>
+
 ModulePlayer::ModulePlayer()
 {
 	current_animation = NULL;
@@ -208,20 +210,13 @@ update_status ModulePlayer::Update()
 	
 	App->render->Blit(graphics, position.x, position.y, &r);
 	
-	// Blit the text of the score in at the bottom of the screen
-	
-	if (App->enemies->score == 0) {
-		App->fonts->BlitText(10, 10, font_score, "0000P");
-	}else if (App->enemies->score == 100) {
-		App->fonts->BlitText(10, 10, font_score, "0100P");
-	}else if (App->enemies->score == 200) {
-		App->fonts->BlitText(10, 10, font_score, "0200P");
-	}else if (App->enemies->score == 300) {
-		App->fonts->BlitText(10, 10, font_score, "0300P");
-	}else if (App->enemies->score == 400) {
-		App->fonts->BlitText(10, 10, font_score, "0400P");
-	}
-	
+	// Draw UI (score) --------------------------------------
+	sprintf_s(score_text, 10, "%7d", App->enemies->score);
+
+	// Blit the text of the score in at the bottom of the screen	
+	App->fonts->BlitText(10, 10, font_score, score_text);
+	App->fonts->BlitText(73, 10, font_score, "P");
+
 	return UPDATE_CONTINUE;
 }
 bool ModulePlayer::CleanUp()
