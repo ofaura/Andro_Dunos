@@ -48,7 +48,7 @@ bool ModulePlayer::Start()
 
 
 	// The font is loaded 
-	font_score = App->fonts->Load("fonts/rtype_font3.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 2);
+	font_score = App->fonts->Load("Assets/Sprites/Fonts/font1.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 2);
 
 	lives = 2;
 
