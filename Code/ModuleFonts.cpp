@@ -4,7 +4,7 @@
 #include "ModuleRender.h"
 #include "ModuleFonts.h"
 
-#include<cstring>
+#include <string.h>
 
 // Constructor
 ModuleFonts::ModuleFonts() : Module()
@@ -46,17 +46,17 @@ int ModuleFonts::Load(const char* texture_path, const char* characters, uint row
 
 	fonts[id].graphic = tex; // graphic: pointer to the texture
 	fonts[id].rows = rows; // rows: rows of characters in the texture
-	fonts[id].len = 0; // len: length of the table
-	App->textures->GetSize(tex, fonts[id].len, h);
-	// TODO 1: Finish storing font data
-	// table: array of chars to have the list of characters
+	fonts[id].len = strlen(characters); // len: length of the table
+
+										// table: array of chars to have the list of characters
 	strcpy_s(fonts[id].table, characters);
-	// row_chars: amount of chars per row of the 
-	fonts[id].row_chars = strlen(characters);
-	// char_w: width of each 
-	fonts[id].char_w = fonts[id].len / fonts[id].row_chars;
+	// row_chars: amount of chars per row of the texture
+	fonts[id].row_chars = strlen(characters) / rows;
+	// char_w: width of each character
 	// char_h: height of each character
-	fonts[id].char_h = h / rows;
+	App->textures->GetSize(tex, fonts[id].char_w, fonts[id].char_h);
+	fonts[id].char_w /= fonts[id].row_chars;
+	fonts[id].char_h /= rows;
 
 	LOG("Successfully loaded BMP font from %s", texture_path);
 
@@ -89,20 +89,22 @@ void ModuleFonts::BlitText(int x, int y, int font_id, const char* text) const
 	rect.w = font->char_w;
 	rect.h = font->char_h;
 
-	uint pos_x = 0;
-	uint pos_y = 0;
 	for (uint i = 0; i < len; ++i)
 	{
-		// TODO 2: Find the character in the table and its position in the texture, then Blit
-		for (int j = 0; j < font->row_chars; ++j)
-		{
-			if (text[i] == font->table[j])
-			{
-				rect.x = font->char_w * (j + 1);
-				rect.y = 0;
-				App->render->Blit(App->fonts->fonts->graphic, pos_x, pos_y, &rect, 0.0f, false);
-			}
-			pos_x += font->char_w;
+		// Finds the character in the table and its position in the texture, then Blit
+		uint c = 0;
+
+		for (; c < fonts[font_id].len; ++c) {
+			if (text[i] == fonts[font_id].table[c])
+				break;
 		}
+
+		uint col = c % font->row_chars;
+		uint row = c / font->row_chars;
+
+		rect.x = col * font->char_w;
+		rect.y = row * font->char_h;
+
+		App->render->Blit(font->graphic, x + i * font->char_w, y, &rect, 1.0f, false);
 	}
 }

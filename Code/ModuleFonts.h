@@ -32,8 +32,7 @@ public:
 
 private:
 
-	Font	 fonts[MAX_FONTS];
-	uint h;
+	Font fonts[MAX_FONTS];
 };
 
 

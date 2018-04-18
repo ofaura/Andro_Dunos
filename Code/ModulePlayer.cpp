@@ -10,6 +10,7 @@
 #include "ModuleSceneLevel1.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleGameOver.h"
+#include "ModuleFonts.h"
 
 ModulePlayer::ModulePlayer()
 {
@@ -44,6 +45,10 @@ bool ModulePlayer::Start()
 	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
 	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
 	player_death = App->audio->LoadFx("Assets/Audio/player_death.wav");
+
+
+	// The font is loaded 
+	font_score = App->fonts->Load("fonts/rtype_font3.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 2);
 
 	lives = 2;
 
@@ -227,6 +232,9 @@ update_status ModulePlayer::Update()
 	
 	App->render->Blit(graphics, position.x, position.y, &r);
 	
+	// Blit the text of the score in at the bottom of the screen
+	App->fonts->BlitText(10, 10, font_score, "no readme go to gulag");
+
 	return UPDATE_CONTINUE;
 }
 bool ModulePlayer::CleanUp()
