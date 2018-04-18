@@ -129,7 +129,7 @@ update_status ModuleSceneLevel1::Update()
 	
 	
 	//Up
-	if (App->render->camera.x >= 7150*SCREEN_SIZE && App->render->camera.x <= 7200* SCREEN_SIZE && App->render->camera.y >= 0)
+	if (App->render->camera.x >= 14300 && App->render->camera.x <= 14400 && App->render->camera.y >= 0)
 	{
 		App->render->camera.y -= 1 * SCREEN_SIZE;
 		App->player->position.y -= 1;
@@ -137,7 +137,7 @@ update_status ModuleSceneLevel1::Update()
 	}
 
 	// Diagonal up
-	else if (App->render->camera.x >= 4005*SCREEN_SIZE && App->render->camera.x < 4130*SCREEN_SIZE || App->render->camera.x >= 5074* SCREEN_SIZE && App->render->camera.x < 5290*SCREEN_SIZE)
+	else if (App->render->camera.x >= 8010 && App->render->camera.x < 8260 || App->render->camera.x >= 10149 && App->render->camera.x < 10580)
 	{
 		App->render->camera.x += SCREEN_SIZE / 2;
 		App->render->camera.y -= SCREEN_SIZE / 2;
@@ -148,8 +148,7 @@ update_status ModuleSceneLevel1::Update()
 	}
 
 	// Diagonal down
-	else if (App->render->camera.y >= 96* SCREEN_SIZE && App->render->camera.x >= 4530*SCREEN_SIZE && App->render->camera.y < 224 * SCREEN_SIZE ||
-		App->render->camera.x >= 6125 * SCREEN_SIZE && App->render->camera.x < 6262 * SCREEN_SIZE)
+	else if (App->render->camera.y >= 193 && App->render->camera.x >= 9060 && App->render->camera.y < 449 || App->render->camera.x >= 12250 && App->render->camera.x < 12525)
 	{
 		App->render->camera.x += 0.5 * SCREEN_SIZE;
 		App->render->camera.y += 0.5* SCREEN_SIZE;
@@ -158,7 +157,7 @@ update_status ModuleSceneLevel1::Update()
 	}
 
 	//Down
-	else if (App->render->camera.x >= 2921 * SCREEN_SIZE && App->render->camera.x <= 2971*SCREEN_SIZE && App->render->camera.y < 224 * SCREEN_SIZE)
+	else if (App->render->camera.x >= 5843 && App->render->camera.x <= 5943 && App->render->camera.y < 449)
 	{
 		App->render->camera.y += 1 * SCREEN_SIZE;
 		App->player->position.y += 1;
@@ -166,8 +165,9 @@ update_status ModuleSceneLevel1::Update()
 
 
 	}
+
 	//Horizontal
-	else if (App->render->camera.x >= 0 && App->render->camera.x <= 8800 * SCREEN_SIZE)
+	else if (App->render->camera.x >= 0 && App->render->camera.x <= 17600)
 	{
 		if (t == 0) // if you wanna start the ship at a certain point in the map
 		{
