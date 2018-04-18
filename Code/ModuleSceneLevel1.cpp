@@ -108,7 +108,6 @@ update_status ModuleSceneLevel1::Update()
 	{
 		App->render->camera.y += 1 * SCREEN_SIZE;
 		App->player->position.y += 1;
-
 	}
 
 	//Horizontal
