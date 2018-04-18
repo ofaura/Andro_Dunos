@@ -145,7 +145,8 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		{
 			enemies[i]->OnCollision(c2);
 			delete enemies[i];
-			enemies[i] = nullptr;
+			score += 100;
+  			enemies[i] = nullptr;
 			break;
 		}
 	}
