@@ -23,11 +23,19 @@ ModulePlayer::ModulePlayer()
 
 	idle.PushBack({ 94, 108, 27, 17 });
 
+	fire_idle.PushBack({ 80 , 123, 5 , 8 });
+	fire_idle.PushBack({ 63, 123, 8, 8 });
+	fire_idle.PushBack({ 42, 123, 12, 8 });
+
 	up.PushBack({ 94, 108, 27, 17 });
 	up.PushBack({ 94, 87, 27, 15 });
 	up.PushBack({ 94, 66, 27, 15 });
 	up.loop = false;
 	up.speed = 0.1f;
+
+	fire_up1.PushBack({ 80, 91, 5, 8});
+	fire_up1.PushBack({ 80, 91, 5, 8 });
+	fire_up1.PushBack({ 80, 91, 5, 8 });
 
 	down.PushBack({ 94, 108, 27, 17 });
 	down.PushBack({ 94, 131, 27, 16 });

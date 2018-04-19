@@ -22,6 +22,7 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
+	SDL_Texture* backflame = nullptr;
 	Animation* current_animation = nullptr;
 
 	int font_score = -1;
@@ -30,6 +31,12 @@ public:
 	Animation idle;
 	Animation up;
 	Animation down;
+
+	Animation fire_idle;
+	Animation fire_up1;
+	Animation fire_up2;
+	Animation fire_down1;
+	Animation fire_down2;
 
 	iPoint position;
 	uint laser1, laser2, laser3, laser4, player_death;
