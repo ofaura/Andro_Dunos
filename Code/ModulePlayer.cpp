@@ -59,6 +59,7 @@ bool ModulePlayer::Start()
 	position.y = SCREEN_HEIGHT / 2;
 	App->render->camera.x = 0;
 	App->level1->ground_pos_x = 0;
+	type = 0;
 
 	player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
 	

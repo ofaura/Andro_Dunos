@@ -147,9 +147,9 @@ update_status ModulePlayer2::Update()
 	{
 		position.y = 1 + abs(App->render->camera.y) / SCREEN_SIZE;
 	}
-	else if (position.y >= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 50) // the -50 just showcases that the camera limit on the lower end works, it stopps player before they touch the ground and crash
+	else if (position.y >= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 17)
 	{
-		position.y = -1 + (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 50;
+		position.y = -1 + (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 17;
 	}
 
 	// Draw everything --------------------------------------
@@ -195,7 +195,6 @@ bool ModulePlayer2::CleanUp()
 void ModulePlayer2::OnCollision(Collider* col_1, Collider* col_2) {
 	if (col_1->type == COLLIDER_WALL || col_2->type == COLLIDER_WALL)
 	{
-		App->fade->FadeToBlack(App->level1, App->start_menu);
 		App->p2collision->CleanUp();
 		App->collision->CleanUp();
 	}

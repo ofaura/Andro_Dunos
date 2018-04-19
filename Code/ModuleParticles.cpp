@@ -23,7 +23,6 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("Assets/Sprites/player/particles.png");
-
 	// Explosion particle
 
 	// Enemy shots
@@ -90,8 +89,28 @@ bool ModuleParticles::Start()
 	explosion.anim.PushBack({ 80, 233, 7, 3 });
 	explosion.anim.PushBack({ 140, 235, 2, 1 });
 	explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;
-	explosion.life = 1000;
+	explosion.anim.speed = 0.6f;
+	explosion.life = 800;
+
+
+	// Enemy death
+
+	enemy_explosion.anim.PushBack({ 130, 270, 4, 4 });
+	enemy_explosion.anim.PushBack({ 137, 262, 12, 12 });
+	enemy_explosion.anim.PushBack({ 153, 242, 32, 32 });
+	enemy_explosion.anim.PushBack({ 188, 243, 30, 30 });
+	enemy_explosion.anim.PushBack({ 222, 244, 30, 30 });
+	enemy_explosion.anim.PushBack({ 143, 282, 30, 30 });
+	enemy_explosion.anim.PushBack({ 177, 283, 30, 30 });
+	enemy_explosion.anim.PushBack({ 212, 281, 32, 32 });
+	enemy_explosion.anim.PushBack({ 149, 318, 32, 32 });
+	enemy_explosion.anim.PushBack({ 196, 318, 32, 23 });
+
+
+	enemy_explosion.anim.loop = false;
+	enemy_explosion.anim.speed = 0.3f;
+	enemy_explosion.life = 1000;
+
 
 	return true;
 }

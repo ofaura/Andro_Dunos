@@ -4,6 +4,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleBonus.h"
@@ -92,8 +93,10 @@ update_status ModuleSceneLevel1::Update()
 	if (App->render->camera.x >= 7150*SCREEN_SIZE && App->render->camera.x <= 7200* SCREEN_SIZE && App->render->camera.y >= 0)
 	{
 		App->render->camera.y -= 1 * SCREEN_SIZE;
+
 		App->player->position.y -= 1;
 
+		App->player2->position.y -= 1;
 	}
 
 	// Diagonal up
@@ -101,9 +104,12 @@ update_status ModuleSceneLevel1::Update()
 	{
 		App->render->camera.x += SCREEN_SIZE / 2;
 		App->render->camera.y -= SCREEN_SIZE / 2;
+
 		App->player->position.y -= 1;
 		App->player->position.x += 1;
 
+		App->player2->position.y -= 1;
+		App->player2->position.x += 1;
 
 	}
 
@@ -113,35 +119,34 @@ update_status ModuleSceneLevel1::Update()
 	{
 		App->render->camera.x += 0.5 * SCREEN_SIZE;
 		App->render->camera.y += 0.5* SCREEN_SIZE;
+
 		App->player->position.y += 1;
 		App->player->position.x += 1;
+
+		App->player2->position.y += 1;
+		App->player2->position.x += 1;
 	}
 
 	//Down
 	else if (App->render->camera.x >= 2921 * SCREEN_SIZE && App->render->camera.x <= 2971*SCREEN_SIZE && App->render->camera.y < 224 * SCREEN_SIZE)
 	{
 		App->render->camera.y += 1 * SCREEN_SIZE;
+
 		App->player->position.y += 1;
+
+		App->player2->position.y += 1;
 
 	}
 
 	//Horizontal
 	else if (App->render->camera.x >= 0 && App->render->camera.x <= 8800 * SCREEN_SIZE)
 	{
-		if (t == 0) // If you wanna start the ship at a certain point in the map
-		{
 
-			App->render->camera.x += 0 * SCREEN_SIZE;
-			App->player->position.x += 0;
+		App->render->camera.x += 1 * SCREEN_SIZE;
 
-			t++;
-		}
-		else
-		{
-			App->render->camera.x += 1 * SCREEN_SIZE;
-			App->player->position.x += 1;
-		}
+		App->player->position.x += 1;
 
+		App->player2->position.x += 1;
 	}
 		
 	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 0.5f, true);
