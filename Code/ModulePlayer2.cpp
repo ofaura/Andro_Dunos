@@ -88,7 +88,7 @@ update_status ModulePlayer2::Update()
 		}
 	}
 	// Change weapon type --------------------------------------
-	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_RSHIFT] == KEY_STATE::KEY_DOWN)
 	{
 		if (type >= 0 && type < 3)
 		{
@@ -98,27 +98,27 @@ update_status ModulePlayer2::Update()
 	}
 
 	// Laser shot --------------------------------------
-	if (App->input->keyboard[SDL_SCANCODE_N] == KEY_STATE::KEY_DOWN && type == 0)
+	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type == 0)
 	{
 		App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 4);
 		App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 9);
 		App->audio->PlayFx(laser1);
 	}
 
-	else if (App->input->keyboard[SDL_SCANCODE_N] == KEY_STATE::KEY_DOWN && type == 1)
+	else if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type == 1)
 	{
 		App->particles->AddParticle(App->particles->laser2_1, position.x + 15, position.y + 12);
 		App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 12);
 		App->audio->PlayFx(laser2);
 	}
 
-	else if (App->input->keyboard[SDL_SCANCODE_N] == KEY_STATE::KEY_DOWN && type == 2)
+	else if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type == 2)
 	{
 		App->particles->AddParticle(App->particles->laser3, position.x + 19, position.y + 11);
 		App->audio->PlayFx(laser3);
 	}
 
-	else if (App->input->keyboard[SDL_SCANCODE_N] == KEY_STATE::KEY_DOWN && type == 3)
+	else if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type == 3)
 	{
 		App->particles->AddParticle(App->particles->laser4_1, position.x + 19, position.y + 11);
 		App->particles->AddParticle(App->particles->laser4_2, position.x + 19, position.y + 11);
