@@ -3,6 +3,7 @@
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "ModuleCollision.h"
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
@@ -70,16 +71,13 @@ update_status ModuleInput::PreUpdate()
 		}
 	}
 
-	return update_status::UPDATE_CONTINUE;
+	if (App->input->keyboard[SDL_SCANCODE_F8])
+		App->player2->Enable();
 	
-	if (keyboard[SDL_SCANCODE_F6]) {
-		App->player->Disable();
+	if (keyboard[SDL_SCANCODE_F7]) {
+		App->player2->Disable();
 		App->p2collision->CleanUp();
-	}
-	
-	/*if (keyboard[SDL_SCANCODE_F9])
-		App->player2->Enable();*/
-		
+	}		
 	
 	return update_status::UPDATE_CONTINUE;
 }
