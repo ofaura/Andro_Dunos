@@ -12,6 +12,7 @@
 #include "ModuleStartMenu.h"
 #include "ModuleGameOver.h"
 #include "ModuleFonts.h"
+#include "ModuleEnemies.h"
 
 #include <stdio.h>
 
@@ -210,11 +211,11 @@ update_status ModulePlayer2::Update()
 	App->render->Blit(graphics, position.x, position.y, &r);
 
 	// Draw UI (score) --------------------------------------
-	/*sprintf_s(score_text, 10, "%7d", App->enemies->score);
+	sprintf_s(score_text, 10, "%7d", App->enemies->score);
 
 	// Blit the text of the score in at the bottom of the screen	
-	App->fonts->BlitText(30, 6, font_score, score_text);
-	App->fonts->BlitText(10, 6, font_score, "P1");*/
+	App->fonts->BlitText(230, 6, font_score, score_text);
+	App->fonts->BlitText(200, 6, font_score, "P2");
 
 	return UPDATE_CONTINUE;
 }
