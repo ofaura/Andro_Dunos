@@ -61,20 +61,43 @@ bool ModuleSceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 415, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 430, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 445, 60);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 475, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 490, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 505, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 520, 140);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 580, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 595, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 610, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 625, 60);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 655, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 670, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 685, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 700, 140);
 
-	//App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 7500, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 715, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 730, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 745, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 760, 60);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 790, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 805, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 820, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 835, 140);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 865, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 880, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 895, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 910, 60);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 940, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 955, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 970, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 985, 140);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 1020, 140);
 
 	// Colliders ---
 	App->collision->Enable();
