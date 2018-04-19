@@ -26,6 +26,8 @@ ModulePlayer::ModulePlayer()
 	fire_idle.PushBack({ 80 , 123, 5 , 8 });
 	fire_idle.PushBack({ 63, 123, 8, 8 });
 	fire_idle.PushBack({ 42, 123, 12, 8 });
+	fire_idle.loop = true;
+	fire_idle.speed = 1.0f;
 
 	up.PushBack({ 94, 108, 27, 17 });
 	up.PushBack({ 94, 87, 27, 15 });
