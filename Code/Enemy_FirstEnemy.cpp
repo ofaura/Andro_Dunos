@@ -2,6 +2,7 @@
 #include "Enemy_FirstEnemy.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
+#include "ModulePlayer.h"
 
 Enemy_FirstEnemy::Enemy_FirstEnemy(int x, int y) : Enemy(x, y)
 {
@@ -17,15 +18,13 @@ Enemy_FirstEnemy::Enemy_FirstEnemy(int x, int y) : Enemy(x, y)
 	fly.PushBack({ 67,26,19,13 });
 	fly.PushBack({ 92,27,18,12 });
 //	fly.loop = true;
-	fly.speed = 0.3f;
+	fly.speed = 0.4f;
 
 	animation = &fly;
 
 	collider = App->collision->AddCollider({ 0, 0, 18, 17 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
-
-	App->particles->AddParticle(App->particles->enemy_shot, position.x + 25, position.y + 4, COLLIDER_ENEMY_SHOT);
 }
 
 void Enemy_FirstEnemy::Move()
@@ -43,8 +42,37 @@ void Enemy_FirstEnemy::Move()
 			going_up = true;
 		else
 			wave -= 0.05f;
-	}	
+	}
 
-	position.y = int(float(original_y) + (10.0f * sinf(wave)));
-	position.x -= 2;
+	position.y = int(float(original_y) + (20.0f * sinf(wave)));
+	position.x -= 1;
+	/*
+	wave += 0.1f;
+	position.y = original_y + sinf(wave) * 40;
+	position.x -= 1;
+
+	shootTimer++;
+	Particle part;
+
+	if (shootTimer == 80) {
+		float vx = App->player->position.x + 5 - position.x;
+		float vy = App->player->position.y - position.y;
+		App->particles->enemy_shot.speed.x = -3;
+		if (App->player->position.y < 81)
+		{
+			App->particles->enemy_shot.speed.y = -2;
+		}
+		else if (App->player->position.y >= 81 && App->player->position.y < 162)
+		{
+			App->particles->enemy_shot.speed.y = 0;
+		}
+		else if (App->player->position.y >= 163 && App->player->position.y <= 244)
+		{
+			App->particles->enemy_shot.speed.y = 2;
+		}
+		
+		App->particles->AddParticle(App->particles->enemy_shot, position.x, position.y, COLLIDER_ENEMY_SHOT, 15);
+		shootTimer = 0;
+	}
+	*/
 }

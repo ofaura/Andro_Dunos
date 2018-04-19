@@ -75,10 +75,10 @@ update_status ModuleInput::PreUpdate()
 		App->player2->Disable();
 		App->p2collision->CleanUp();
 	}
-
+	/*
 	if (keyboard[SDL_SCANCODE_F2])
 		App->player2->Enable();
-
+	*/
 	return update_status::UPDATE_CONTINUE;
 }
 

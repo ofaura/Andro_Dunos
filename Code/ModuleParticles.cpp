@@ -30,7 +30,6 @@ bool ModuleParticles::Start()
 	enemy_shot.anim.PushBack({ 22, 51, 15, 6 });	
 	enemy_shot.anim.loop = false;
 	enemy_shot.anim.speed = 0.1f;
-	enemy_shot.speed.x = -3;
 	enemy_shot.life = 4000;
 
 	// Player lasers

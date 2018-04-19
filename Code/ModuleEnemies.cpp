@@ -6,8 +6,9 @@
 #include "ModuleTextures.h"
 #include "Enemy.h"
 #include "Enemy_FirstEnemy.h"
+#include "Enemy_SpaceShip.h"
 
-#define SPAWN_MARGIN 50
+#define SPAWN_MARGIN 25
 
 ModuleEnemies::ModuleEnemies()
 {
@@ -35,7 +36,7 @@ update_status ModuleEnemies::PreUpdate()
 	{
 		if (queue[i].type != ENEMY_TYPES::NO_TYPE)
 		{
-			if (queue[i].x > App->render->camera.x)
+			if (queue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)//if (queue[i].x > App->render->camera.x)
 			{
 				SpawnEnemy(queue[i]);
 				queue[i].type = ENEMY_TYPES::NO_TYPE;
@@ -132,6 +133,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::FIRST_ENEMY:
 			enemies[i] = new Enemy_FirstEnemy(info.x, info.y);
 			break;
+
+		case ENEMY_TYPES::SPACE_SHIP:
+			enemies[i] = new Enemy_SpaceShip(info.x, info.y);
+			break;
 		}
 		
 	}
@@ -145,8 +150,11 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		{
 			enemies[i]->OnCollision(c2);
 			delete enemies[i];
-			score += 100;
-  			enemies[i] = nullptr;
+			if (c1->type == COLLIDER_TYPE::COLLIDER_ENEMY && c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT)
+			{
+				score += 100;
+			}
+			enemies[i] = nullptr;
 			break;
 		}
 	}

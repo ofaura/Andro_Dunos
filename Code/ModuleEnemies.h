@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Enemy_FirstEnemy.h"
+#include "Enemy_SpaceShip.h"
 
 #define MAX_ENEMIES 100
 
@@ -10,6 +11,7 @@ enum ENEMY_TYPES
 {
 	NO_TYPE,
 	FIRST_ENEMY,
+	SPACE_SHIP,
 };
 
 class Enemy;
