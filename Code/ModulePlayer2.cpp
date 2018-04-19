@@ -51,6 +51,7 @@ bool ModulePlayer2::Start()
 	laser2 = App->audio->LoadFx("Assets/Audio/laser2.wav");
 	laser3 = App->audio->LoadFx("Assets/Audio/laser3.wav");
 	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
+	player_death = App->audio->LoadFx("Assets/Audio/player_death.wav");
 
 	// The font is loaded 
 	font_score = App->fonts->Load("Assets/Sprites/Fonts/font_score.png", "1234567890P", 1);
@@ -228,17 +229,17 @@ bool ModulePlayer2::CleanUp()
 	return true;
 }
 
-// Detects collision with a wall. If so, go back to intro screen.
+// Detects collision with a wall. If so, go back to game over screen.
 void ModulePlayer2::OnCollision(Collider* col_1, Collider* col_2)
 {
 	if ((col_1->type == COLLIDER_ENEMY_SHOT || col_1->type == COLLIDER_ENEMY) || (col_2->type == COLLIDER_ENEMY_SHOT || col_2->type == COLLIDER_WALL)
 		|| (col_2->type == COLLIDER_ENEMY || col_1->type == COLLIDER_WALL))
 	{
-		App->particles->AddParticle(App->particles->explosionP2, position.x, position.y);
-		App->audio->PlayFx(player_death);
+		App->particles->AddParticle(App->particles->explosionP2, position.x, position.y);		
 
 		if (App->player2->lives >= 0)
 		{
+			App->audio->PlayFx(player_death);
 			App->player2->lives--;
 
 			position.x = 1 + abs(App->render->camera.x) / SCREEN_SIZE;

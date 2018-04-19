@@ -5,7 +5,6 @@
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
-#include "ModulePlayer2.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleSceneLevel1.h"
@@ -196,7 +195,7 @@ update_status ModulePlayer::Update()
 	}	
 
 	// God mode
-	if (lives >= 0)
+	if (App->player->lives >= 0)
 	{
 		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)
 		{
@@ -227,7 +226,7 @@ update_status ModulePlayer::Update()
 	SDL_Rect r = current_animation->GetCurrentFrame();	
 
 	// Check player's lives	
-	if (lives < 0)
+	if (App->player->lives < 0)
 	{
 		App->fade->FadeToBlack(App->level1, App->game_over);
 	}
@@ -252,18 +251,19 @@ bool ModulePlayer::CleanUp()
 	return true;
 }
 
-// Detects collision with a wall. If so, go back to intro screen.
+// Detects collision with a wall. If so, go back to game over screen.
 void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2)
 {
 	if ((col_1->type == COLLIDER_ENEMY_SHOT || col_1->type == COLLIDER_ENEMY) || (col_2->type == COLLIDER_ENEMY_SHOT || col_2->type == COLLIDER_WALL)
 		|| (col_2->type == COLLIDER_ENEMY || col_1->type == COLLIDER_WALL))
 	{
 		App->particles->AddParticle(App->particles->explosionP1, position.x, position.y);
-		App->audio->PlayFx(player_death);
 
-		if (lives >= 0)
+		if (App->player->lives >= 0)
 		{
-			lives--;
+			App->audio->PlayFx(player_death);
+			App->player->lives--;
+
 			position.x = 1 + abs(App->render->camera.x) / SCREEN_SIZE;
 			position.y = (abs(App->render->camera.y) / SCREEN_SIZE) + (SCREEN_HEIGHT / 2);
 		}
