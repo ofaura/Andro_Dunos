@@ -2,7 +2,7 @@
 #include "Application.h"
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
-#include "ModulePlayer2.h"
+#include "ModulePlayer.h"
 #include "ModuleCollision.h"
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
@@ -71,8 +71,9 @@ update_status ModuleInput::PreUpdate()
 	}
 
 	return update_status::UPDATE_CONTINUE;
-	if (keyboard[SDL_SCANCODE_F8]) {
-		App->player2->Disable();
+	
+	if (keyboard[SDL_SCANCODE_F6]) {
+		App->player->Disable();
 		App->p2collision->CleanUp();
 	}
 	

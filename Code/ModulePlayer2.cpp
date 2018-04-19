@@ -3,6 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
+#include "ModulePlayer.h"
 #include "ModulePlayer2.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
@@ -10,6 +11,9 @@
 #include "ModuleSceneLevel1.h"
 #include "ModuleStartMenu.h"
 #include "ModuleGameOver.h"
+#include "ModuleFonts.h"
+
+#include <stdio.h>
 
 ModulePlayer2::ModulePlayer2()
 {
@@ -47,8 +51,17 @@ bool ModulePlayer2::Start()
 	laser3 = App->audio->LoadFx("Assets/Audio/laser3.wav");
 	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
 
-	player = App->p2collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
-	
+	// The font is loaded 
+	font_score = App->fonts->Load("Assets/Sprites/Fonts/font_score.png", "1234567890P", 1);
+
+	lives = 2;
+
+	position.x = App->player->position.x;
+	position.y = (SCREEN_HEIGHT / 2) - 100;
+	type = 0;
+
+	player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
+
 	return true;
 }
 

@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleSceneLevel1.h"
@@ -125,6 +126,10 @@ update_status ModulePlayer::Update()
 		{
 			App->fade->FadeToBlack(App->level1, App->game_over);
 		}
+
+		// Makes player 2 appaer
+		if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
+			App->player2->Enable();
 
 		// Laser shot --------------------------------------
 		if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == 0)
