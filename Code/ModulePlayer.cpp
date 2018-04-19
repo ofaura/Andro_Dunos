@@ -128,7 +128,7 @@ update_status ModulePlayer::Update()
 		}
 
 		// Makes player 2 appaer
-		if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
+		if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN)
 			App->player2->Enable();
 
 		// Laser shot --------------------------------------
