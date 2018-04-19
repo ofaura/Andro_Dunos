@@ -23,27 +23,47 @@ ModulePlayer::ModulePlayer()
 
 	idle.PushBack({ 94, 108, 27, 17 });
 
-	fire_idle.PushBack({ 80 , 123, 5 , 8 });
-	fire_idle.PushBack({ 63, 123, 8, 8 });
-	fire_idle.PushBack({ 42, 123, 12, 8 });
+	fire_idle.PushBack({ 73 , 111, 12 , 10 });
+	fire_idle.PushBack({ 59, 111, 12, 10 });
+	fire_idle.PushBack({ 42, 111, 12, 10 });
 	fire_idle.loop = true;
 	fire_idle.speed = 1.0f;
 
 	up.PushBack({ 94, 108, 27, 17 });
-	up.PushBack({ 94, 87, 27, 15 });
-	up.PushBack({ 94, 66, 27, 15 });
+	up.PushBack(up1);
+	up.PushBack(up2);
 	up.loop = false;
 	up.speed = 0.1f;
 
-	fire_up1.PushBack({ 80, 91, 5, 8});
-	fire_up1.PushBack({ 80, 91, 5, 8 });
-	fire_up1.PushBack({ 80, 91, 5, 8 });
+	fire_up1.PushBack({ 73, 89, 5, 10});
+	fire_up1.PushBack({ 59, 89, 8, 10 });
+	fire_up1.PushBack({ 42, 89, 12, 10 });
+	fire_up1.loop = true;
+	fire_up1.speed = 1.0f;
+
+	fire_up2.PushBack({ 73, 91, 12, 10 });
+	fire_up2.PushBack({ 59, 91, 12, 10 });
+	fire_up2.PushBack({ 42, 91, 12, 10 });
+	fire_up2.loop = true;
+	fire_up2.speed = 1.0f;
 
 	down.PushBack({ 94, 108, 27, 17 });
-	down.PushBack({ 94, 131, 27, 16 });
-	down.PushBack({ 94, 153, 27, 17 });
+	down.PushBack(down1);
+	down.PushBack(down2);
 	down.loop = false;
 	down.speed = 0.1f;
+
+	fire_down1.PushBack({ 73, 138, 12, 8 });
+	fire_down1.PushBack({ 59, 138, 12, 8 });
+	fire_down1.PushBack({ 42, 138, 12, 8 });
+	fire_down1.loop = true;
+	fire_down1.speed = 1.0f;
+
+	fire_down2.PushBack({ 73, 156, 12, 10 });
+	fire_down2.PushBack({ 59, 156, 12, 10 });
+	fire_down2.PushBack({ 42, 156, 12, 10 });
+	fire_down2.loop = true;
+	fire_down2.speed = 1.0f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -115,6 +135,29 @@ update_status ModulePlayer::Update()
 				current_animation = &up;
 			}
 		}
+
+		if (current_animation != nullptr) { // Determines animation of fire
+			if (current_animation->GetCurrentFrame().h == down1.h) {
+				fire_current = &fire_down1;
+			}
+
+			else if (current_animation->GetCurrentFrame().h == down2.h) {
+				fire_current = &fire_down2;
+			}
+
+			else if (current_animation->GetCurrentFrame().h == up1.h) {
+				fire_current = &fire_up1;
+			}
+
+			else if (current_animation->GetCurrentFrame().h == up2.h) {
+				fire_current = &fire_up2;
+			}
+
+			fire_position.y = position.y + 3;
+			fire_position.x = position.x - 14;
+		}
+
+
 		// Change weapon type --------------------------------------
 		if (App->input->keyboard[SDL_SCANCODE_E] == KEY_STATE::KEY_DOWN)
 		{
@@ -170,6 +213,7 @@ update_status ModulePlayer::Update()
 			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
 		{
 		current_animation = &idle;
+		fire_current = &fire_idle;
 		}
 
 		// Prevent Player from leaving bordrer -------------------------------------
@@ -224,7 +268,8 @@ update_status ModulePlayer::Update()
 	}
 
 	// Draw everything --------------------------------------
-	SDL_Rect r = current_animation->GetCurrentFrame();	
+	SDL_Rect r = current_animation->GetCurrentFrame();
+	SDL_Rect fire = fire_current->GetCurrentFrame();
 
 	// Check player's lives	
 	if (lives < 0)
@@ -233,6 +278,7 @@ update_status ModulePlayer::Update()
 	}
 	
 	App->render->Blit(graphics, position.x, position.y, &r);
+	App->render->Blit(graphics, fire_position.x, fire_position.y, &fire);
 	
 	// Draw UI (score) --------------------------------------
 	sprintf_s(score_text, 10, "%7d", App->enemies->score);
