@@ -49,6 +49,9 @@ public:
 	uint laser1, laser2, laser3, laser4, player_death;
 	uint type = 0;
 
+	Uint32 startTime = 0, currentTime;
+	bool activatedChange; //Tells if the player is changing of weapon
+
 	int lives = 2;
 
 	uint y = 0;
