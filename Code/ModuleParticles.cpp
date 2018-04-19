@@ -89,7 +89,7 @@ bool ModuleParticles::Start()
 	explosionP1.anim.PushBack({ 80, 233, 7, 3 });
 	explosionP1.anim.PushBack({ 140, 235, 2, 1 });
 	explosionP1.anim.loop = false;
-	explosionP1.anim.speed = 0.6f;
+	explosionP1.anim.speed = 0.3f;
 	explosionP1.life = 500;
 
 	// Player 2 death
