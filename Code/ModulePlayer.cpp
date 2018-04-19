@@ -12,6 +12,7 @@
 #include "ModuleGameOver.h"
 #include "ModuleFonts.h"
 #include "ModuleEnemies.h"
+#include "ModuleBonus.h"
 
 #include <stdio.h>
 
@@ -111,6 +112,18 @@ update_status ModulePlayer::Update()
 				type++;
 			}
 			else type = 0;
+		}
+
+		// Autowin key
+		if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
+		{
+			App->fade->FadeToBlack(App->level1, App->bonus);
+		}
+
+		// Autolose key
+		if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
+		{
+			App->fade->FadeToBlack(App->level1, App->game_over);
 		}
 
 		// Laser shot --------------------------------------

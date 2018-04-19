@@ -71,14 +71,15 @@ update_status ModuleInput::PreUpdate()
 	}
 
 	return update_status::UPDATE_CONTINUE;
-	if (keyboard[SDL_SCANCODE_F1]) {
+	if (keyboard[SDL_SCANCODE_F8]) {
 		App->player2->Disable();
 		App->p2collision->CleanUp();
 	}
-	/*
-	if (keyboard[SDL_SCANCODE_F2])
-		App->player2->Enable();
-	*/
+	
+	/*if (keyboard[SDL_SCANCODE_F9])
+		App->player2->Enable();*/
+		
+	
 	return update_status::UPDATE_CONTINUE;
 }
 
