@@ -182,8 +182,7 @@ update_status ModulePlayer::Update()
 		{
 			position.y = -1 + (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 17;
 		}
-	}
-	
+	}	
 
 	// God mode
 	if (lives >= 0)
@@ -228,8 +227,8 @@ update_status ModulePlayer::Update()
 	sprintf_s(score_text, 10, "%7d", App->enemies->score);
 
 	// Blit the text of the score in at the bottom of the screen	
-	App->fonts->BlitText(10, 10, font_score, score_text);
-	App->fonts->BlitText(73, 10, font_score, "P");
+	App->fonts->BlitText(30, 6, font_score, score_text);
+	App->fonts->BlitText(10, 6, font_score, "P1");
 
 	return UPDATE_CONTINUE;
 }
