@@ -99,7 +99,7 @@ bool ModuleSceneLevel1::Start()
 
 	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 1020, 140);
 
-	// Colliders ---
+	// Colliders ----
 	App->collision->Enable();
 	App->collision->AddCollider({ 0, 192, 2960, 32 }, COLLIDER_WALL);
 

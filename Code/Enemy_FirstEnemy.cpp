@@ -6,6 +6,7 @@
 
 Enemy_FirstEnemy::Enemy_FirstEnemy(int x, int y) : Enemy(x, y)
 {
+	
 	fly.PushBack({ 0,3,18,12 });
 	fly.PushBack({ 19,3,18,12 });
 	fly.PushBack({ 39,3,18,13 });
@@ -17,6 +18,7 @@ Enemy_FirstEnemy::Enemy_FirstEnemy(int x, int y) : Enemy(x, y)
 	fly.PushBack({ 44,24,18,17 });
 	fly.PushBack({ 67,26,19,13 });
 	fly.PushBack({ 92,27,18,12 });
+	
 //	fly.loop = true;
 	fly.speed = 0.4f;
 
