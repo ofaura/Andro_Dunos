@@ -23,6 +23,7 @@ private:
 		none,
 		fade_to_black,
 		fade_from_black
+
 	} current_step = fade_step::none;
 
 	Uint32 start_time = 0;

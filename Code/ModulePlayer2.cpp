@@ -240,6 +240,7 @@ void ModulePlayer2::OnCollision(Collider* col_1, Collider* col_2)
 		if (App->player2->lives >= 0)
 		{
 			App->player2->lives--;
+
 			position.x = 1 + abs(App->render->camera.x) / SCREEN_SIZE;
 			position.y = (abs(App->render->camera.y) / SCREEN_SIZE) + (SCREEN_HEIGHT / 2);
 		}

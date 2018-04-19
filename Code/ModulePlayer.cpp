@@ -137,10 +137,6 @@ update_status ModulePlayer::Update()
 			App->fade->FadeToBlack(App->level1, App->game_over);
 		}
 
-		// Makes player 2 appaer
-		if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN)
-			App->player2->Enable();
-
 		// Laser shot --------------------------------------
 		if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == 0)
 		{
