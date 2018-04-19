@@ -172,7 +172,7 @@ update_status ModulePlayer2::Update()
 	}
 
 	// God mode
-	if (lives >= 0)
+	if (App->player2->lives >= 0)
 	{
 		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)
 		{
@@ -203,7 +203,7 @@ update_status ModulePlayer2::Update()
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
 	// Check player's lives	
-	if (lives < 0)
+	if (App->player2->lives < 0)
 	{
 		App->fade->FadeToBlack(App->level1, App->game_over);
 	}
@@ -234,12 +234,12 @@ void ModulePlayer2::OnCollision(Collider* col_1, Collider* col_2)
 	if ((col_1->type == COLLIDER_ENEMY_SHOT || col_1->type == COLLIDER_ENEMY) || (col_2->type == COLLIDER_ENEMY_SHOT || col_2->type == COLLIDER_WALL)
 		|| (col_2->type == COLLIDER_ENEMY || col_1->type == COLLIDER_WALL))
 	{
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+		App->particles->AddParticle(App->particles->explosionP2, position.x, position.y);
 		App->audio->PlayFx(player_death);
 
-		if (lives >= 0)
+		if (App->player2->lives >= 0)
 		{
-			lives--;
+			App->player2->lives--;
 			position.x = 1 + abs(App->render->camera.x) / SCREEN_SIZE;
 			position.y = (abs(App->render->camera.y) / SCREEN_SIZE) + (SCREEN_HEIGHT / 2);
 		}
