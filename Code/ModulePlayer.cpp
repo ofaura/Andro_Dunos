@@ -82,7 +82,8 @@ bool ModulePlayer::Start()
 
 
 	// The font is loaded 
-	font_score = App->fonts->Load("Assets/Sprites/Fonts/font_score.png", "1234567890P", 1);
+	font_score = App->fonts->Load("Assets/Sprites/UI/Fonts/score_font.png", "1234567890P", 1);
+	type_score = App->fonts->Load("Assets/Sprites/UI/Fonts/type_font.png", "1234-TYPE ", 2);
 
 	lives = 2;
 
@@ -165,6 +166,15 @@ update_status ModulePlayer::Update()
 				type++;
 			}
 			else type = 0;
+
+			if (type == 0)
+			App->fonts->BlitText(8, 15, type_score, "TYPE-1");
+			else if (type == 1)
+				App->fonts->BlitText(8, 15, type_score, "TYPE-2");
+			else if (type == 2)
+				App->fonts->BlitText(8, 15, type_score, "TYPE-3");
+			else if (type == 3)
+				App->fonts->BlitText(8, 15, type_score, "TYPE-4");
 		}
 
 		// Autowin key

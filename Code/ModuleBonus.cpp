@@ -63,7 +63,7 @@ bool ModuleBonus::Start()
 {
 	LOG("Loading clear bonus");
 	App->audio->PlayMusic("Assets/Audio/stageClear.ogg", 1.0f);
-	graphics = App->textures->Load("Assets/Sprites/bonus/stage_clear.png");	
+	graphics = App->textures->Load("Assets/Sprites/Bonus/stage_clear.png");	
 
 	// Reseting the camera
 	App->render->camera.x = App->render->camera.y = 0;

@@ -27,6 +27,7 @@ public:
 	Animation* fire_current = nullptr;
 
 	int font_score = -1;
+	int type_score = -1;
 	char score_text[10];
 
 	SDL_Rect up1 = { 94, 87, 27, 15 };
