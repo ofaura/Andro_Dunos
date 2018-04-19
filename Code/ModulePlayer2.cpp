@@ -153,28 +153,33 @@ update_status ModulePlayer2::Update()
 	}
 
 	// Draw everything --------------------------------------
-	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)
+	
+	// God mode
+	if (lives >= 0)
 	{
-
-		GodMode = !GodMode;
-
-		if (GodMode == true)
+		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)
 		{
-			player->to_delete = true;
 
-			player = nullptr;
+			GodMode = !GodMode;
+
+			if (GodMode == true)
+			{
+				player->to_delete = true;
+
+				player = nullptr;
+			}
+			else if (GodMode == false)
+			{
+				GodMode = false;
+				player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
+			}
 		}
-		else if (GodMode == false)
+
+		// Update collider position to player position
+		if (GodMode == false)
 		{
-			GodMode = false;
-			player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
+			player->SetPos(position.x, position.y);
 		}
-	}
-
-	// Update collider position to player position
-	if (GodMode == false)
-	{
-		player->SetPos(position.x, position.y);
 	}
 
 	SDL_Rect r = current_animation->GetCurrentFrame();

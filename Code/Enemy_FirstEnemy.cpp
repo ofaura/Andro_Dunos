@@ -46,33 +46,4 @@ void Enemy_FirstEnemy::Move()
 
 	position.y = int(float(original_y) + (20.0f * sinf(wave)));
 	position.x -= 1;
-	/*
-	wave += 0.1f;
-	position.y = original_y + sinf(wave) * 40;
-	position.x -= 1;
-
-	shootTimer++;
-	Particle part;
-
-	if (shootTimer == 80) {
-		float vx = App->player->position.x + 5 - position.x;
-		float vy = App->player->position.y - position.y;
-		App->particles->enemy_shot.speed.x = -3;
-		if (App->player->position.y < 81)
-		{
-			App->particles->enemy_shot.speed.y = -2;
-		}
-		else if (App->player->position.y >= 81 && App->player->position.y < 162)
-		{
-			App->particles->enemy_shot.speed.y = 0;
-		}
-		else if (App->player->position.y >= 163 && App->player->position.y <= 244)
-		{
-			App->particles->enemy_shot.speed.y = 2;
-		}
-		
-		App->particles->AddParticle(App->particles->enemy_shot, position.x, position.y, COLLIDER_ENEMY_SHOT, 15);
-		shootTimer = 0;
-	}
-	*/
 }

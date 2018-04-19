@@ -29,6 +29,9 @@ public:
 	iPoint position;
 	uint laser1, laser2, laser3, laser4;
 	uint type = 0;
+
+	int lives = 2;
+
 	Collider* player = nullptr;
 	bool GodMode = false;
 };

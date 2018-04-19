@@ -94,7 +94,6 @@ bool ModuleParticles::Start()
 
 
 	// Enemy death
-
 	enemy_explosion.anim.PushBack({ 130, 270, 4, 4 });
 	enemy_explosion.anim.PushBack({ 137, 262, 12, 12 });
 	enemy_explosion.anim.PushBack({ 153, 242, 32, 32 });
@@ -106,11 +105,9 @@ bool ModuleParticles::Start()
 	enemy_explosion.anim.PushBack({ 149, 318, 32, 32 });
 	enemy_explosion.anim.PushBack({ 196, 318, 32, 23 });
 
-
 	enemy_explosion.anim.loop = false;
 	enemy_explosion.anim.speed = 0.3f;
 	enemy_explosion.life = 1000;
-
 
 	return true;
 }
