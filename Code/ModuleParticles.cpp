@@ -71,27 +71,47 @@ bool ModuleParticles::Start()
 	laser4_2.anim.speed = 0.5f;
 	laser4_2.life = 2000;
 
-	// Player death
-	explosion.anim.PushBack({ 11, 146, 27, 17});
-	explosion.anim.PushBack({ 48, 145, 28, 18 });
-	explosion.anim.PushBack({ 86, 142, 30, 21 });
-	explosion.anim.PushBack({ 126, 138, 31, 26 });
-	explosion.anim.PushBack({ 168, 137, 32, 26 });
-	explosion.anim.PushBack({ 210, 135, 32, 31 });
-	explosion.anim.PushBack({ 11, 180, 32, 32 });
-	explosion.anim.PushBack({ 55, 179, 30, 30 });
-	explosion.anim.PushBack({ 97, 189, 28, 20 });
-	explosion.anim.PushBack({ 137, 194, 24, 15 }); 
-	explosion.anim.PushBack({ 198, 173, 19, 11 });
-	explosion.anim.PushBack({ 204, 200, 9, 32 });
-	explosion.anim.PushBack({ 15, 228, 17, 13 });
-	explosion.anim.PushBack({ 44, 226, 15, 15 });
-	explosion.anim.PushBack({ 80, 233, 7, 3 });
-	explosion.anim.PushBack({ 140, 235, 2, 1 });
-	explosion.anim.loop = false;
-	explosion.anim.speed = 0.6f;
-	explosion.life = 800;
+	// Player 1 death
+	explosionP1.anim.PushBack({ 11, 146, 27, 17});
+	explosionP1.anim.PushBack({ 48, 145, 28, 18 });
+	explosionP1.anim.PushBack({ 86, 142, 30, 21 });
+	explosionP1.anim.PushBack({ 126, 138, 31, 26 });
+	explosionP1.anim.PushBack({ 168, 137, 32, 26 });
+	explosionP1.anim.PushBack({ 210, 135, 32, 31 });
+	explosionP1.anim.PushBack({ 11, 180, 32, 32 });
+	explosionP1.anim.PushBack({ 55, 179, 30, 30 });
+	explosionP1.anim.PushBack({ 97, 189, 28, 20 });
+	explosionP1.anim.PushBack({ 137, 194, 24, 15 });
+	explosionP1.anim.PushBack({ 198, 173, 19, 11 });
+	explosionP1.anim.PushBack({ 204, 200, 9, 32 });
+	explosionP1.anim.PushBack({ 15, 228, 17, 13 });
+	explosionP1.anim.PushBack({ 44, 226, 15, 15 });
+	explosionP1.anim.PushBack({ 80, 233, 7, 3 });
+	explosionP1.anim.PushBack({ 140, 235, 2, 1 });
+	explosionP1.anim.loop = false;
+	explosionP1.anim.speed = 0.6f;
+	explosionP1.life = 500;
 
+	// Player 2 death
+	explosionP2.anim.PushBack({ 137, 18, 27, 17 });
+	explosionP2.anim.PushBack({ 174, 17, 28, 18 });
+	explosionP2.anim.PushBack({ 212, 14, 30, 21 });
+	explosionP2.anim.PushBack({ 140, 44, 31, 26 });
+	explosionP2.anim.PushBack({ 183, 45, 32, 26 });
+	explosionP2.anim.PushBack({ 139, 83, 32, 31 });
+	explosionP2.anim.PushBack({ 181, 83, 32, 32 });
+	explosionP2.anim.PushBack({ 55, 179, 30, 30 });
+	explosionP2.anim.PushBack({ 97, 189, 28, 20 });
+	explosionP2.anim.PushBack({ 137, 194, 24, 15 });
+	explosionP2.anim.PushBack({ 198, 173, 19, 11 });
+	explosionP2.anim.PushBack({ 204, 200, 9, 32 });
+	explosionP2.anim.PushBack({ 15, 228, 17, 13 });
+	explosionP2.anim.PushBack({ 44, 226, 15, 15 });
+	explosionP2.anim.PushBack({ 80, 233, 7, 3 });
+	explosionP2.anim.PushBack({ 140, 235, 2, 1 });
+	explosionP2.anim.loop = false;
+	explosionP2.anim.speed = 0.3f;
+	explosionP2.life = 500;
 
 	// Enemy death
 	enemy_explosion.anim.PushBack({ 130, 270, 4, 4 });
@@ -107,7 +127,7 @@ bool ModuleParticles::Start()
 
 	enemy_explosion.anim.loop = false;
 	enemy_explosion.anim.speed = 0.3f;
-	enemy_explosion.life = 1000;
+	enemy_explosion.life = 500;
 
 	return true;
 }
@@ -186,7 +206,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
 			if (c2->type == COLLIDER_WALL) {
-				AddParticle(explosion, active[i]->position.x, active[i]->position.y);
+				AddParticle(explosionP1, active[i]->position.x, active[i]->position.y);
 			}
 			// Always destroy particles that collide
 			delete active[i];

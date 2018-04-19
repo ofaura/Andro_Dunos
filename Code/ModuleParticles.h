@@ -57,7 +57,8 @@ public:
 	Particle laser3;
 	Particle laser4_1;
 	Particle laser4_2;
-	Particle explosion;
+	Particle explosionP1;
+	Particle explosionP2;
 	Particle enemy_explosion;
 	Particle enemy_shot;
 };
