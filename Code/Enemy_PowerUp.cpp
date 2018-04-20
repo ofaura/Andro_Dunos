@@ -76,87 +76,82 @@ Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 	*/
 	//	fly.loop = true;
 
-	fly_1.PushBack({ 0, 271, 26, 26 }); // left - iddle
-	fly_1.PushBack({ 26, 271, 26, 26 }); //  left - move
+	fly_1.PushBack({ 1,270,18,26 }); // left - iddle
+	fly_1.PushBack({ 27,270,18,26 }); //  left - move
 	fly_1.speed = 0.4f;
 
 	act[LEFT] = &fly_1;
 
-	fly_1.PushBack({ 26, 271, 26, 26 });// 1st turn
-	fly_2.PushBack({ 52, 271, 26, 26 }); 
-	fly_2.PushBack({ 78, 271, 26, 26 });
-	fly_3.PushBack({ 104, 271, 26, 26 });
+	fly_2.PushBack({ 53,270,18,25 }); // 1st turn
+	fly_2.PushBack({ 79,270,18,26 });
 	fly_2.speed = 0.1f;
-	fly_2.loop = false;
+	fly_2.loop = 0.1f;
 
 	act[TURN_1] = &fly_2;
 
-	fly_3.PushBack({ 78, 271, 26, 26 }); // (left, down) - idle
-	//fly_3.PushBack({ 78, 271, 26, 26 }); // (left, down) - idle
-	//fly_3.PushBack({ 104, 271, 26, 26 }); // (left, down) - move
-	fly_3.speed = 1.0f;
-	fly_3.loop = true;
+	fly_3.PushBack({ 79, 270, 18, 25 }); // (left, down) - idle
+	fly_3.PushBack({ 104,271,20,26 }); // (left, down) - move
+	fly_3.speed = 0.4f;
 
 	act[LEFT_DOWN] = &fly_3;
 
 
-	fly_4.PushBack({ 0, 302, 26, 26 }); // 2nd turn
-	fly_4.PushBack({ 26, 302, 26, 26 });
-	fly_4.PushBack({ 52, 302, 26, 26 });
-	fly_5.PushBack({ 78, 302, 26, 26 });
+	fly_4.PushBack({ 1,315,18,26 }); // 2nd turn
+	fly_4.PushBack({ 27,315,18,25 });
+	fly_4.PushBack({ 53,315,18,25 });
 	fly_4.speed = 0.1f;
 	fly_4.loop = false;
 
 	act[TURN_2] = &fly_4;
 
-	fly_5.PushBack({ 78, 302, 26, 26 }); // (left, up) - idle
-	fly_5.PushBack({ 103, 303, 26, 26 }); // (left,up) - move
+	fly_5.PushBack({ 105,315,20,26 }); // (left, up) - idle
+	fly_5.PushBack({ 79,315,18,25 }); // (left,up) - move
 	fly_5.speed = 0.4f;
-	fly_5.loop = false;
+	fly_5.loop = true;
 
 	act[LEFT_UP] = &fly_5;
 
-	fly_6.PushBack({ 0, 332, 26, 26 }); // 3rd turn
-	fly_6.PushBack({ 26, 332, 26, 26 });
-	fly_6.PushBack({ 52, 332, 26, 26 });
-	fly_6.PushBack({ 78, 332, 26, 26 });
-	fly_6.PushBack({ 0, 358, 26, 26 });
-	fly_6.PushBack({ 26, 358, 26, 26 });
-	fly_6.PushBack({ 52, 358, 26, 26 });
-	fly_6.PushBack({ 78, 358, 26, 26 });
-	fly_6.PushBack({ 104, 358, 26, 26 });
-	fly_6.PushBack({ 0, 390, 26, 26 });
-	fly_6.PushBack({ 26, 390, 26, 26 });
-	fly_6.PushBack({ 52, 390, 26, 26 });
-	fly_6.PushBack({ 78, 390, 26, 26 });
+	fly_6.PushBack({ 1,359,21,21 }); // 3rd turn
+	fly_6.PushBack({ 24,359,26,18 });
+	fly_6.PushBack({ 49,359,26,18 });
+	fly_6.PushBack({ 76,359,25,19 });
+	fly_6.PushBack({ 102,359,26,18 });
+	fly_6.PushBack({ 1,387,21,21 });
+	fly_6.PushBack({ 25,387,21,21 });
+	fly_6.PushBack({ 53,384,18,25 });
+	fly_6.PushBack({ 81,384,18,25 });
+	fly_6.PushBack({ 107,383,18,26 });
+	fly_6.PushBack({ 1,413,18,26 });
+	fly_6.PushBack({ 29,413,18,26 });
+	fly_6.PushBack({ 54,413,18,26 });
 	fly_6.speed = 0.25f;
 	fly_6.loop = false;
 
 	act[TURN_3] = &fly_6;
 
-	fly_6.PushBack({ 104, 390, 26, 26 }); // right - idle
-	fly_7.PushBack({ 0, 416, 26, 26 }); // right - move
+	fly_7.PushBack({ 80,413,18,26 }); // right - idle
+	fly_7.PushBack({ 106,413,18,26 }); // right - move
 	fly_7.speed = 0.4f;
-	fly_7.loop = true;
 
 	act[RIGHT] = &fly_7;
 
-	fly_8.PushBack({ 0, 447, 26, 26 }); // 4th turn
-	fly_8.PushBack({ 52, 447, 26, 26 });
-	fly_8.PushBack({ 78, 447, 26, 26 });
-	fly_8.PushBack({ 102, 473, 26, 26 });
-	fly_8.PushBack({ 0, 473, 26,26 });
-	fly_8.PushBack({ 26, 473, 26, 26 });
-	fly_8.PushBack({ 52, 473, 26, 26 });
-	fly_8.PushBack({ 78, 473, 24, 26 });
-	fly_8.PushBack({ 0, 499, 26, 26 });
-	fly_8.PushBack({ 26, 499, 26, 26 });
-	fly_8.PushBack({ 52, 499, 26, 26 });
-	fly_8.PushBack({ 78, 499, 26, 26 });
-	fly_8.PushBack({ 104, 499, 26, 26 });
-	fly_8.PushBack({ 0, 525, 26, 26 });
-	fly_1.PushBack({ 0, 271, 26, 26 });
-	fly_8.speed = 0.25f;
+
+	fly_8.PushBack({ 6,451,18,24 }); // 4th turn
+	fly_8.PushBack({ 28,454,21,21 });
+	fly_8.PushBack({ 52,455,22,18 });
+	fly_8.PushBack({ 75,455,26,17 });
+	fly_8.PushBack({ 101,455,26,18 });
+	fly_8.PushBack({ 0,480,25,18 });
+	fly_8.PushBack({ 25,480,25,18 });
+	fly_8.PushBack({ 51,476,21,21 });
+	fly_8.PushBack({ 78,476,21,21 });
+	fly_8.PushBack({ 105,477,18,25 });
+	fly_8.PushBack({ 5,502,18,25 });
+	fly_8.PushBack({ 29,501,18,26 });
+	fly_8.PushBack({ 55,501,18,26 });
+	fly_8.PushBack({ 80,502,18,26 });
+	fly_8.PushBack({ 106,502,18,26 });
+	fly_8.speed = 0.4f;
 	fly_8.loop = false;
 
 	act[TURN_4] = &fly_8;
