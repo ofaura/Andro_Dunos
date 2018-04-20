@@ -168,30 +168,39 @@ update_status ModulePlayer::Update()
 			}
 			else type = 0;
 
-			activatedChange = true;			
-			
-		}
+			activatedChange = true;
 
-		currentTime = SDL_GetTicks();
-
-		if (activatedChange = true) {
-			App->fonts->BlitText(8, 15, type_score, "TYPE-1");
-			startTime = currentTime;
-
-			if (currentTime < startTime + 500) {
-				activatedChange = false;
-			}
-		}
-			
 			// Printing it on the screen
-			/*if (type == 0)
+			if (type == 0)
 				App->fonts->BlitText(8, 15, type_score, "TYPE-1");
 			else if (type == 1)
 				App->fonts->BlitText(8, 15, type_score, "TYPE-2");
 			else if (type == 2)
 				App->fonts->BlitText(8, 15, type_score, "TYPE-3");
 			else if (type == 3)
-				App->fonts->BlitText(8, 15, type_score, "TYPE-4");*/		
+				App->fonts->BlitText(8, 15, type_score, "TYPE-4");
+
+			startTime = currentTime;
+			
+		}
+
+		currentTime = SDL_GetTicks();
+
+		if (activatedChange = true) {
+			if (currentTime - startTime <= 1000) {
+
+				if (type == 0)
+					App->fonts->BlitText(8, 15, type_score, "TYPE-1");
+				else if (type == 1)
+					App->fonts->BlitText(8, 15, type_score, "TYPE-2");
+				else if (type == 2)
+					App->fonts->BlitText(8, 15, type_score, "TYPE-3");
+				else if (type == 3)
+					App->fonts->BlitText(8, 15, type_score, "TYPE-4");
+
+				activatedChange = false;
+			}
+		}
 
 		// Autowin key
 		if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
