@@ -73,17 +73,20 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	graphics = App->textures->Load("Assets/Sprites/player/ships.png"); // arcade version
+	
+	// Audios are loaded
 	laser1 = App->audio->LoadFx("Assets/Audio/laser1.wav");
 	laser2 = App->audio->LoadFx("Assets/Audio/laser2.wav");
 	laser3 = App->audio->LoadFx("Assets/Audio/laser3.wav");
 	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
 	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
 	player_death = App->audio->LoadFx("Assets/Audio/player_death.wav");
-
+	type_change = App->audio->LoadFx("Assets/Audio/type_change.wav");
 
 	// The font is loaded 
 	font_score = App->fonts->Load("Assets/Sprites/UI/Fonts/score_font.png", "1234567890P", 1);
 	type_score = App->fonts->Load("Assets/Sprites/UI/Fonts/type_font.png", "1234-TYPE ", 2);
+	p2_title = App->fonts->Load("Assets/Sprites/UI/Fonts/player2_start_font.png", "12BENOPRSTU ", 1);
 
 	lives = 2;
 
@@ -168,6 +171,7 @@ update_status ModulePlayer::Update()
 			}
 			else type = 0;
 
+			App->audio->PlayFx(type_change);
 			activatedChange = true;
 
 			// Printing it on the screen
@@ -180,26 +184,7 @@ update_status ModulePlayer::Update()
 			else if (type == 3)
 				App->fonts->BlitText(8, 15, type_score, "TYPE-4");
 
-			startTime = currentTime;
-			
-		}
-
-		currentTime = SDL_GetTicks();
-
-		if (activatedChange = true) {
-			if (currentTime - startTime <= 1000) {
-
-				if (type == 0)
-					App->fonts->BlitText(8, 15, type_score, "TYPE-1");
-				else if (type == 1)
-					App->fonts->BlitText(8, 15, type_score, "TYPE-2");
-				else if (type == 2)
-					App->fonts->BlitText(8, 15, type_score, "TYPE-3");
-				else if (type == 3)
-					App->fonts->BlitText(8, 15, type_score, "TYPE-4");
-
-				activatedChange = false;
-			}
+			startTime = currentTime;			
 		}
 
 		// Autowin key
@@ -313,13 +298,42 @@ update_status ModulePlayer::Update()
 	
 	App->render->Blit(graphics, position.x, position.y, &r);
 	App->render->Blit(graphics, fire_position.x, fire_position.y, &fire);
-	
-	// Draw UI (score) --------------------------------------
+
+	// ------------------------------------------------
+	// DRAWING THE UI
+	// ------------------------------------------------
+
+	currentTime = SDL_GetTicks();
+
+	if (activatedChange = true) {
+		if (currentTime - startTime <= 1000) {
+
+			if (type == 0)
+				App->fonts->BlitText(8, 15, type_score, "TYPE-1");
+			else if (type == 1)
+				App->fonts->BlitText(8, 15, type_score, "TYPE-2");
+			else if (type == 2)
+				App->fonts->BlitText(8, 15, type_score, "TYPE-3");
+			else if (type == 3)
+				App->fonts->BlitText(8, 15, type_score, "TYPE-4");
+
+			activatedChange = false;
+		}
+	}
+
 	sprintf_s(score_text, 10, "%7d", App->enemies->score);
 
 	// Blit the text of the score in at the bottom of the screen	
-	App->fonts->BlitText(30, 6, font_score, score_text);
-	App->fonts->BlitText(10, 6, font_score, "P1");
+	// Player 1 
+	App->fonts->BlitText(35, 6, font_score, score_text);
+	App->fonts->BlitText(10, 6, font_score, "1P");
+
+	// Player 2 
+	App->fonts->BlitText(242, 6, font_score, score_text);
+	App->fonts->BlitText(212, 6, font_score, "2P");
+
+	// Title remembering you can have a second player	
+	App->fonts->BlitText(180, 15, p2_title, "PRESS 2P BUTTON");
 
 	return UPDATE_CONTINUE;
 }

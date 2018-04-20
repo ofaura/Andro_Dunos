@@ -28,6 +28,7 @@ public:
 
 	int font_score = -1;
 	int type_score = -1;
+	int p2_title = -1;
 	char score_text[10];
 
 	SDL_Rect up1 = { 94, 87, 27, 15 };
@@ -46,7 +47,8 @@ public:
 	Animation fire_down2;
 
 	iPoint position, fire_position;
-	uint laser1, laser2, laser3, laser4, player_death;
+	uint laser1, laser2, laser3, laser4;
+	uint player_death, type_change;
 	uint type = 0;
 
 	Uint32 startTime = 0, currentTime;

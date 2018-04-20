@@ -211,13 +211,6 @@ update_status ModulePlayer2::Update()
 
 	App->render->Blit(graphics, position.x, position.y, &r);
 
-	// Draw UI (score) --------------------------------------
-	sprintf_s(score_text, 10, "%7d", App->enemies->score);
-
-	// Blit the text of the score in at the bottom of the screen	
-	App->fonts->BlitText(230, 6, font_score, score_text);
-	App->fonts->BlitText(200, 6, font_score, "P2");
-
 	return UPDATE_CONTINUE;
 }
 bool ModulePlayer2::CleanUp()
