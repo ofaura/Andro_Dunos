@@ -166,7 +166,7 @@ void Enemy_PowerUp::Move()
 
 
 
-	if (position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE + (SCREEN_WIDTH - 35))))
+	if (position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE + (SCREEN_WIDTH - 30))))
 	{
 		position.x -= 1;
 		App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[LEFT]->GetCurrentFrame()));
@@ -182,7 +182,6 @@ void Enemy_PowerUp::Move()
 				act[TURN_3]->Reset();
 				act[TURN_4]->Reset();
 				time = 0;
-				loop--;
 			}
 
 			if (time >= 0 && time < 75)
@@ -222,18 +221,18 @@ void Enemy_PowerUp::Move()
 			{
 				App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[TURN_3]->GetCurrentFrame()));
 			}
-			else if (time >= 325 && time < 525)
+			else if (time >= 325 && time < 470)
 			{
 				App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[RIGHT]->GetCurrentFrame()));
 				position.x += 1;
 			}
-			else if (time >= 525 && time < 610)
+			else if (time >= 470 && time < 520)
 			{
 				App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[TURN_4]->GetCurrentFrame()));
 				
 			}
 
-			else if (time >= 610)
+			else if (time >= 520)
 			{
 				loop--;
 			}
