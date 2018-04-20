@@ -189,16 +189,18 @@ update_status ModuleSceneLevel1::Update()
 // Load assets
 bool ModuleSceneLevel1::CleanUp()
 {
-
-
 	App->collision->CleanUp();
 
-	// TODO 5: Remove all memory leaks
+	// Remove all memory leaks
 	LOG("Unloading textures");
 	App->textures->Unload(background_texture);
 	App->textures->Unload(ground_texture);
 	App->enemies->Disable();
 	App->collision->Disable();
 	App->player->Disable();
+
+	if (App->player2->IsEnabled() == true)
+		App->player2->Disable();
+
 	return true;
 }
