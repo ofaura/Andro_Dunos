@@ -64,6 +64,37 @@ ModulePlayer::ModulePlayer()
 	fire_down2.PushBack({ 42, 156, 12, 10 });
 	fire_down2.loop = true;
 	fire_down2.speed = 1.0f;
+
+	// Weapon HUD
+	HUD1.x = 1;
+	HUD1.y = 13;
+	HUD1.w = 31;
+	HUD1.h = 7;
+
+	HUD2.x = 1;
+	HUD2.y = 58;
+	HUD2.w = 31;
+	HUD2.h = 7;
+
+	HUD3.x = 1;
+	HUD3.y = 103;
+	HUD3.w = 31;
+	HUD3.h = 7;
+
+	HUD4.x = 34;
+	HUD4.y = 13;
+	HUD4.w = 31;
+	HUD4.h = 7;
+
+	Life.x = 2;
+	Life.y = 2;
+	Life.w = 7;
+	Life.h = 7;
+
+	beamCharger.x = 29;
+	beamCharger.y = 28;
+	beamCharger.w = 64;
+	beamCharger.h = 6;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -74,6 +105,8 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	graphics = App->textures->Load("Assets/Sprites/player/ships.png"); // arcade version
+	weaponHud = App->textures->Load("Assets/Sprites/UI/laser_types.png");
+	super = App->textures->Load("Assets/Sprites/UI/beam_charge.png");
 	
 	// Audios are loaded
 	laser1 = App->audio->LoadFx("Assets/Audio/laser1.wav");
@@ -295,9 +328,6 @@ update_status ModulePlayer::Update()
 	{
 		App->fade->FadeToBlack(App->level1, App->game_over);
 	}
-	
-	App->render->Blit(graphics, position.x, position.y, &r);
-	App->render->Blit(graphics, fire_position.x, fire_position.y, &fire);
 
 	// ------------------------------------------------
 	// DRAWING THE UI
@@ -341,12 +371,33 @@ update_status ModulePlayer::Update()
 	if (App->player2->IsEnabled() == false) 
 		App->fonts->BlitText(180, 15, p2_title, "PRESS 2P BUTTON");	
 
+	// Weapon characteristics UI
+	if (activatedChange == true) {
+		App->render->Blit(weaponHud, 8, 15, &HUD1, 1, false);
+		App->render->Blit(weaponHud, 41, 15, &HUD2, 1, false);
+		App->render->Blit(weaponHud, 74, 15, &HUD3, 1, false);
+		App->render->Blit(weaponHud, 107, 15, &HUD4, 1, false);
+	}
+
+	// Player's lives
+	if (App->player->lives == 2)
+		App->render->Blit(weaponHud, 17, 24, &Life, 1, false);
+	if (App->player->lives >= 1)
+		App->render->Blit(weaponHud, 24, 24, &Life, 1, false);
+
+	// Beam charger
+	App->render->Blit(super, 74, 24, &beamCharger, 1, false);
+
+	// Blitting the player
+	App->render->Blit(graphics, position.x, position.y, &r);
+	App->render->Blit(graphics, fire_position.x, fire_position.y, &fire);
+
 	return UPDATE_CONTINUE;
 }
 
 bool ModulePlayer::CleanUp()
 {
-	// TODO 5: Remove all memory leaks
+	// Remove all memory leaks
 	LOG("Unloading ship");
 	App->textures->Unload(graphics);
 

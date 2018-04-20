@@ -23,6 +23,9 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* backflame = nullptr;
+	SDL_Texture* weaponHud = nullptr;
+	SDL_Texture* super = nullptr;
+
 	Animation* current_animation = nullptr;
 	Animation* fire_current = nullptr;
 
@@ -36,6 +39,13 @@ public:
 	SDL_Rect up2 = { 94, 66, 27, 15 };
 	SDL_Rect down1 = { 94, 131, 27, 16 };
 	SDL_Rect down2 = { 94, 153, 27, 17 };
+	
+	SDL_Rect HUD1;
+	SDL_Rect HUD2;
+	SDL_Rect HUD3;
+	SDL_Rect HUD4;
+	SDL_Rect Life;
+	SDL_Rect beamCharger;
 
 	Animation idle;
 	Animation up;
