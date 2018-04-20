@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleSceneLevel1.h"
@@ -87,6 +88,7 @@ bool ModulePlayer::Start()
 	font_score = App->fonts->Load("Assets/Sprites/UI/Fonts/score_font.png", "1234567890P", 1);
 	type_score = App->fonts->Load("Assets/Sprites/UI/Fonts/type_font.png", "1234-TYPE ", 2);
 	p2_title = App->fonts->Load("Assets/Sprites/UI/Fonts/player2_start_font.png", "12BENOPRSTU ", 1);
+	highscore_font = App->fonts->Load("Assets/Sprites/UI/Fonts/highscore_font.png", "1234567890HI- ", 2);
 
 	lives = 2;
 
@@ -158,9 +160,7 @@ update_status ModulePlayer::Update()
 
 			fire_position.y = position.y + 3;
 			fire_position.x = position.x - 14;
-		}
-
-		
+		}		
 
 		// Change weapon type --------------------------------------
 		if (App->input->keyboard[SDL_SCANCODE_E] == KEY_STATE::KEY_DOWN)
@@ -305,8 +305,9 @@ update_status ModulePlayer::Update()
 
 	currentTime = SDL_GetTicks();
 
+	// Printing it on the screen
 	if (activatedChange = true) {
-		if (currentTime - startTime <= 1000) {
+		if (currentTime - startTime <= 700) {
 
 			if (type == 0)
 				App->fonts->BlitText(8, 15, type_score, "TYPE-1");
@@ -325,18 +326,24 @@ update_status ModulePlayer::Update()
 
 	// Blit the text of the score in at the bottom of the screen	
 	// Player 1 
-	App->fonts->BlitText(35, 6, font_score, score_text);
-	App->fonts->BlitText(10, 6, font_score, "1P");
+	App->fonts->BlitText(33, 6, font_score, score_text);
+	App->fonts->BlitText(8, 6, font_score, "1P");
 
 	// Player 2 
-	App->fonts->BlitText(242, 6, font_score, score_text);
-	App->fonts->BlitText(212, 6, font_score, "2P");
+	App->fonts->BlitText(244, 6, font_score, score_text);
+	App->fonts->BlitText(214, 6, font_score, "2P");
+
+	// High score
+	App->fonts->BlitText(147, 6, highscore_font, "100000");
+	App->fonts->BlitText(107, 6, highscore_font, "HI-");
 
 	// Title remembering you can have a second player	
-	App->fonts->BlitText(180, 15, p2_title, "PRESS 2P BUTTON");
+	if (App->player2->IsEnabled() == false) 
+		App->fonts->BlitText(180, 15, p2_title, "PRESS 2P BUTTON");	
 
 	return UPDATE_CONTINUE;
 }
+
 bool ModulePlayer::CleanUp()
 {
 	// TODO 5: Remove all memory leaks

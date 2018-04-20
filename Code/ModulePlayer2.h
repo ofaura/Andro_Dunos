@@ -25,6 +25,7 @@ public:
 	Animation* current_animation = nullptr;
 	
 	int font_score = -1;
+	int type_score = -1;
 	char score_text[10];
 
 	Animation idle;
@@ -32,8 +33,12 @@ public:
 	Animation down;
 
 	iPoint position;
-	uint laser1, laser2, laser3, laser4, player_death;
+	uint laser1, laser2, laser3, laser4;
+	uint player_death, type_change;
 	uint type = 0;
+
+	Uint32 startTime = 0, currentTime;
+	bool activatedChange; //Tells if the player is changing of weapon
 
 	int lives = 2;
 

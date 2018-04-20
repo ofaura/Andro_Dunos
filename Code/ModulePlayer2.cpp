@@ -47,19 +47,23 @@ bool ModulePlayer2::Start()
 {
 	LOG("Loading player textures");
 	graphics = App->textures->Load("Assets/Sprites/player/ships.png"); // arcade version
+
+	// Audios are loaded
 	laser1 = App->audio->LoadFx("Assets/Audio/laser1.wav");
 	laser2 = App->audio->LoadFx("Assets/Audio/laser2.wav");
 	laser3 = App->audio->LoadFx("Assets/Audio/laser3.wav");
 	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
 	player_death = App->audio->LoadFx("Assets/Audio/player_death.wav");
+	type_change = App->audio->LoadFx("Assets/Audio/type_change.wav");
 
 	// The font is loaded 
 	font_score = App->fonts->Load("Assets/Sprites/Fonts/font_score.png", "1234567890P", 1);
+	type_score = App->fonts->Load("Assets/Sprites/UI/Fonts/type_font.png", "1234-TYPE ", 2);
 
 	lives = 2;
 
 	position.x = App->player->position.x;
-	position.y = (SCREEN_HEIGHT / 2) - 100;
+	position.y = (SCREEN_HEIGHT / 2) - 50;
 	type = 0;
 
 	player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
@@ -112,6 +116,21 @@ update_status ModulePlayer2::Update()
 				type++;
 			}
 			else type = 0;
+
+			App->audio->PlayFx(type_change);
+			activatedChange = true;
+
+			// Printing it on the screen
+			if (type == 0)
+				App->fonts->BlitText(214, 15, type_score, "TYPE-1");
+			else if (type == 1)
+				App->fonts->BlitText(214, 15, type_score, "TYPE-2");
+			else if (type == 2)
+				App->fonts->BlitText(214, 15, type_score, "TYPE-3");
+			else if (type == 3)
+				App->fonts->BlitText(214, 15, type_score, "TYPE-4");
+
+			startTime = currentTime;
 		}
 
 		// Laser shot --------------------------------------
@@ -210,6 +229,29 @@ update_status ModulePlayer2::Update()
 	}
 
 	App->render->Blit(graphics, position.x, position.y, &r);
+
+	// ------------------------------------------------
+	// DRAWING THE UI
+	// ------------------------------------------------
+
+	currentTime = SDL_GetTicks();
+
+	// Printing it on the screen
+	if (activatedChange = true) {
+		if (currentTime - startTime <= 700) {
+
+			if (type == 0)
+				App->fonts->BlitText(214, 15, type_score, "TYPE-1");
+			else if (type == 1)
+				App->fonts->BlitText(214, 15, type_score, "TYPE-2");
+			else if (type == 2)
+				App->fonts->BlitText(214, 15, type_score, "TYPE-3");
+			else if (type == 3)
+				App->fonts->BlitText(214, 15, type_score, "TYPE-4");
+
+			activatedChange = false;
+		}
+	}
 
 	return UPDATE_CONTINUE;
 }
