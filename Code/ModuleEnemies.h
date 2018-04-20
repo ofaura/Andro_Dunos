@@ -12,6 +12,7 @@ enum ENEMY_TYPES
 	NO_TYPE,
 	FIRST_ENEMY,
 	SPACE_SHIP,
+	ENEMY_POWERUP
 };
 
 class Enemy;

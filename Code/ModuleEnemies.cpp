@@ -7,6 +7,8 @@
 #include "Enemy.h"
 #include "Enemy_FirstEnemy.h"
 #include "Enemy_SpaceShip.h"
+#include "Enemy_PowerUp.h"
+
 
 #define SPAWN_MARGIN 25
 
@@ -129,7 +131,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 	{
 		switch (info.type)
 		{
-		
+
 		case ENEMY_TYPES::FIRST_ENEMY:
 			enemies[i] = new Enemy_FirstEnemy(info.x, info.y);
 			break;
@@ -137,8 +139,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::SPACE_SHIP:
 			enemies[i] = new Enemy_SpaceShip(info.x, info.y);
 			break;
+		case ENEMY_TYPES::ENEMY_POWERUP:
+			enemies[i] = new Enemy_PowerUp(info.x, info.y);
+			break;
 		}
-		
 	}
 }
 
