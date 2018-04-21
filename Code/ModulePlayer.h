@@ -32,6 +32,7 @@ public:
 	int font_score = -1;
 	int type_score = -1;
 	int p2_title = -1;
+	int hud_characteristics = -1;
 	int highscore_font = -1;
 	char score_text[10];
 
