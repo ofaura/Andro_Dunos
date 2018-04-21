@@ -66,28 +66,28 @@ ModulePlayer::ModulePlayer()
 	fire_down2.speed = 1.0f;
 
 	// Weapon HUD
-	HUD1.x = 1;
-	HUD1.y = 13;
-	HUD1.w = 31;
+	HUD1.x = 14;
+	HUD1.y = 35;
+	HUD1.w = 127;
 	HUD1.h = 7;
 
-	HUD2.x = 1;
-	HUD2.y = 58;
-	HUD2.w = 31;
+	HUD2.x = 14;
+	HUD2.y = 46;
+	HUD2.w = 127;
 	HUD2.h = 7;
 
-	HUD3.x = 1;
-	HUD3.y = 103;
-	HUD3.w = 31;
+	HUD3.x = 14;
+	HUD3.y = 69;
+	HUD3.w = 127;
 	HUD3.h = 7;
 
-	HUD4.x = 34;
-	HUD4.y = 13;
-	HUD4.w = 31;
+	HUD4.x = 14;
+	HUD4.y = 57;
+	HUD4.w = 127;
 	HUD4.h = 7;
 
-	Life.x = 2;
-	Life.y = 2;
+	Life.x = 15;
+	Life.y = 24;
 	Life.w = 7;
 	Life.h = 7;
 
@@ -373,20 +373,24 @@ update_status ModulePlayer::Update()
 
 	// Weapon characteristics UI
 	if (activatedChange == true) {
-		App->render->Blit(weaponHud, 8, 15, &HUD1, 1, false);
-		App->render->Blit(weaponHud, 41, 15, &HUD2, 1, false);
-		App->render->Blit(weaponHud, 74, 15, &HUD3, 1, false);
-		App->render->Blit(weaponHud, 107, 15, &HUD4, 1, false);
+		if (type == 0)
+			App->render->Blit(weaponHud, 8, 16, &HUD1, 1, false);
+		else if (type == 1)
+			App->render->Blit(weaponHud, 8, 16, &HUD2, 1, false);
+		else if (type == 2)
+			App->render->Blit(weaponHud, 8, 16, &HUD3, 1, false);
+		else if (type == 3)
+			App->render->Blit(weaponHud, 8, 16, &HUD4, 1, false);
 	}
 
 	// Player's lives
 	if (App->player->lives == 2)
-		App->render->Blit(weaponHud, 17, 24, &Life, 1, false);
+		App->render->Blit(weaponHud, 17, 25, &Life, 1, false);
 	if (App->player->lives >= 1)
-		App->render->Blit(weaponHud, 24, 24, &Life, 1, false);
+		App->render->Blit(weaponHud, 24, 25, &Life, 1, false);
 
 	// Beam charger
-	App->render->Blit(super, 74, 24, &beamCharger, 1, false);
+	App->render->Blit(super, 74, 25, &beamCharger, 1, false);
 
 	// Blitting the player
 	App->render->Blit(graphics, position.x, position.y, &r);
@@ -399,6 +403,8 @@ bool ModulePlayer::CleanUp()
 {
 	// Remove all memory leaks
 	LOG("Unloading ship");
+	App->textures->Unload(super);
+	App->textures->Unload(weaponHud);
 	App->textures->Unload(graphics);
 
 	return true;
