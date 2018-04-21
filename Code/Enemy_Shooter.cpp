@@ -2,7 +2,10 @@
 #include "Enemy_Shooter.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
+#include "ModuleTextures.h"
+#include "ModuleRender.h"
 #include "ModulePlayer.h"
+
 
 Enemy_Shooter::Enemy_Shooter(int x, int y) : Enemy(x, y)
 {
@@ -22,21 +25,6 @@ Enemy_Shooter::Enemy_Shooter(int x, int y) : Enemy(x, y)
 
 void Enemy_Shooter::Move()
 {
-	if (going_up)
-	{
-		if (wave > 1.0f)
-			going_up = false;
-		else
-			wave += 0.05f;
-	}
-	else
-	{
-		if (wave < -1.0f)
-			going_up = true;
-		else
-			wave -= 0.05f;
-	}
-
-	position.y = int(float(original_y) + (20.0f * sinf(wave)));
+	position.y;
 	position.x -= 1;
 }
