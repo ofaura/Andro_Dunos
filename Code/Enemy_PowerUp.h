@@ -29,7 +29,8 @@ public:
 		//delete[] act;
 	}
 
-	virtual void Enemy_PowerUp::OnCollision(Collider* collider);
+	void Enemy_PowerUp::OnCollision(Collider* collider);
+	void Enemy_PowerUp::Draw(SDL_Texture* sprites);
 
 	void Move();
 };

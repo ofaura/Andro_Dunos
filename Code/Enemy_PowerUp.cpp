@@ -226,9 +226,15 @@ void Enemy_PowerUp::Move()
 
 }
 
+
+void Enemy_PowerUp::Draw(SDL_Texture* sprites)
+{
+	collider->SetPos(position.x, position.y);
+}
+
 void Enemy_PowerUp::OnCollision(Collider* collider)
 {
-	if (collider->type == COLLIDER_PLAYER_SHOT || (collider->type == COLLIDER_PLAYER))
+	if (collider->type == COLLIDER_PLAYER_SHOT || (collider->type == COLLIDER_PLAYER) || (collider->type == COLLIDER_PLAYER_2))
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, position.x, position.y);
 		App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y);
