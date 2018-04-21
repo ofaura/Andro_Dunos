@@ -53,10 +53,10 @@ public:
 	bool CleanUp();
 
 	Collider* AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* callback = nullptr);
-	Collider * colliders[MAX_COLLIDERS] = { nullptr };
+
 
 private:
-
+	Collider * colliders[MAX_COLLIDERS] = { nullptr };
 	bool matrix[COLLIDER_MAX][COLLIDER_MAX];
 	bool debug = false;
 };
