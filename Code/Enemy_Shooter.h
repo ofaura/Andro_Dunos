@@ -9,6 +9,8 @@ private:
 
 	int original_y = 0;
 	Animation fly;
+	Animation* shot = nullptr;
+
 
 public:
 

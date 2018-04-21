@@ -18,6 +18,8 @@ Enemy_Shooter::Enemy_Shooter(int x, int y) : Enemy(x, y)
 
 	animation = &fly;
 
+
+
 	collider = App->collision->AddCollider({ 0, 0, 31, 27 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
