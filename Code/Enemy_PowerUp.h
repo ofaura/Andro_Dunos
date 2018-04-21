@@ -23,10 +23,7 @@ public:
 
 	Enemy_PowerUp(int x, int y);
 
-	~Enemy_PowerUp()
-	{
-		//delete[] act;
-	}
+	
 
 	void Enemy_PowerUp::OnCollision(Collider* collider);
 	void Enemy_PowerUp::Draw(SDL_Texture* sprites);

@@ -95,6 +95,7 @@ bool ModuleSceneLevel1::Start()
 
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 475, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 490, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 500, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 505, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 520, 140);
 
@@ -138,7 +139,6 @@ bool ModuleSceneLevel1::Start()
 	// Colliders ----
 	App->collision->Enable();
 	App->collision->AddCollider({ 0, 192, 2960, 32 }, COLLIDER_WALL);
-
 
 
 	//Audio ---

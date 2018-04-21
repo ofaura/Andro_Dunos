@@ -18,6 +18,7 @@ Enemy_SpaceShip::Enemy_SpaceShip(int x, int y) : Enemy(x, y)
 
 	collider = App->collision->AddCollider({ 0, 0, 32, 17 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
+
 	original_y = y;
 }
 

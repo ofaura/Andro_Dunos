@@ -22,17 +22,16 @@ enum Stages
 
 PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 {
-	srand(3);
+	srand(1); // doesn't let me do time(NULL)
 
-	//int random = rand() % 4;
 
-	int random = 0;
+	int random = rand() % 2;
 
 	if (random == 0)
 	{
 		S_B = true;
 
-		fly_4.PushBack({ 10, 540, 16, 16 }); // still
+		fly_1.PushBack({ 10, 558, 16, 16 }); // still
 		fly_1.loop = true;
 		act[0] = &fly_1;
 
@@ -82,6 +81,63 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 		act[5] = &fly_6;
 	}
 
+	else if (random == 1)
+	{
+
+		B_M = true;
+
+		fly_1.PushBack({ 10, 540, 16, 16 }); // still
+		fly_1.loop = true;
+		act[0] = &fly_1;
+
+		fly_2.PushBack({ 29, 540, 16, 16 }); // reflection
+		fly_2.PushBack({ 47, 540, 16, 16 });
+		fly_2.PushBack({ 65, 540, 16, 16 });
+		fly_2.PushBack({ 10, 540, 16, 16 });
+
+		fly_2.speed = 0.15f;
+		fly_2.loop = false;
+
+		act[1] = &fly_2;
+
+		fly_3.PushBack({ 83, 540, 16, 16 }); // Change
+		fly_3.PushBack({ 101, 540, 16, 16 });
+		fly_3.PushBack({ 101, 622, 16, 16 }); ///
+		fly_3.PushBack({ 83, 594, 16, 16 });
+		fly_3.PushBack({ 101, 594, 16, 16 });
+		fly_3.PushBack({ 10, 594, 16, 16 });
+
+		fly_3.speed = 0.6f;
+		fly_3.loop = false;
+
+		act[2] = &fly_3;
+
+
+		fly_4.PushBack({ 10, 594, 16, 16 }); // still
+		fly_4.loop = true;
+		act[3] = &fly_4;
+
+		fly_5.PushBack({ 29, 594, 16, 16 }); // reflection
+		fly_5.PushBack({ 47, 594, 16, 16 });
+		fly_5.PushBack({ 65, 594, 16, 16 });
+		fly_5.PushBack({ 10, 594, 16, 16 });
+		fly_5.speed = 0.15f;
+		fly_5.loop = false;
+		act[4] = &fly_5;
+
+		fly_6.PushBack({ 83, 594, 16, 16 }); // Change
+		fly_6.PushBack({ 101, 594, 16, 16 });
+		fly_6.PushBack({ 101, 622, 16, 16 }); ///
+		fly_6.PushBack({ 83, 594, 16, 16 });
+		fly_6.PushBack({ 101, 594, 16, 16 });
+		fly_6.PushBack({ 10, 594, 16, 16 });
+		fly_6.speed = 0.6f;
+		fly_6.loop = false;
+		act[5] = &fly_6;
+
+
+
+	}
 
 
 	collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_POWER_UP, (Module*)App->enemies);
