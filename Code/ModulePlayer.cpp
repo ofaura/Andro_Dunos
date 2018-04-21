@@ -230,9 +230,9 @@ update_status ModulePlayer::Update()
 
 		//y lim
 
-		if (position.y <= abs(App->render->camera.y) / SCREEN_SIZE)
+		if (position.y <= abs(App->render->camera.y) / SCREEN_SIZE +35)
 		{
-			position.y = 1 + abs(App->render->camera.y) / SCREEN_SIZE;
+			position.y = 1 + abs(App->render->camera.y) / SCREEN_SIZE +35;
 		}
 		else if (position.y >= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 17) // the -50 just showcases that the camera limit on the lower end works, it stopps player before they touch the ground and crash
 		{
