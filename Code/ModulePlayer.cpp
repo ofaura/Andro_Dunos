@@ -300,17 +300,17 @@ void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2)
 	if ((col_1->type == COLLIDER_ENEMY_SHOT || col_1->type == COLLIDER_ENEMY) || (col_2->type == COLLIDER_ENEMY_SHOT || col_2->type == COLLIDER_WALL)
 		|| (col_2->type == COLLIDER_ENEMY || col_1->type == COLLIDER_WALL))
 	{
-		App->particles->AddParticle(App->particles->explosionP1, position.x, position.y);
 
 		if (App->player->lives >= 0)
 		{
-			App->audio->PlayFx(player_death);
 			App->player->lives--;
+			App->particles->AddParticle(App->particles->explosionP1, position.x, position.y);
+			App->audio->PlayFx(player_death);
 
 			position.x = 1 + abs(App->render->camera.x) / SCREEN_SIZE;
 			position.y = (abs(App->render->camera.y) / SCREEN_SIZE) + (SCREEN_HEIGHT / 2);
 		}
-		else
+		else if (App->player->lives == 0)
 		{
 			position.x = 0;
 			App->user_interface->Disable();
