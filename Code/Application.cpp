@@ -16,6 +16,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleGameOver.h"
 #include "ModuleFonts.h"
+#include "ModuleShield.h"
 
 Application::Application()
 {
@@ -29,6 +30,7 @@ Application::Application()
 	modules[i++] = NeoGeo = new ModuleIntroNeoGeo();
 	modules[i++] = start_menu = new ModuleStartMenu();
 	modules[i++] = bonus = new ModuleBonus();
+	modules[i++] = shield = new ModuleShield();
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = enemies = new ModuleEnemies();
