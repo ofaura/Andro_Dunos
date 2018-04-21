@@ -154,7 +154,6 @@ update_status ModuleUserInterface::Update()
 	{
 		activatedChange = true;
 
-		// Printing it on the screen
 		if (App->player->type == 0)
 			App->fonts->BlitText(8, 15, type_score, "TYPE-1");
 		else if (App->player->type == 1)
@@ -167,13 +166,13 @@ update_status ModuleUserInterface::Update()
 		startTime = currentTime;
 	}
 
-	// ------------------------------------------------
-	// DRAWING THE UI
-	// ------------------------------------------------
-
 	currentTime = SDL_GetTicks();
 
-	// Printing it on the screen
+	// ------------------------------------------------
+	// DRAWING THE UI
+	// ------------------------------------------------	
+
+	// Printing weapons' HUD on the screen
 	if (activatedChange = true) {
 		if (currentTime - startTime <= 700) {
 

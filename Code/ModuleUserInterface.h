@@ -38,6 +38,7 @@ public:
 	Animation beamCharged; // Showed while charged
 	Animation beamNoCharged; // Showed while not pressing space
 
+	bool powerUp = true;
 	bool charging;
 	uint chargingSound, chargedSound;
 
