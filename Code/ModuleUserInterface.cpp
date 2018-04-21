@@ -40,10 +40,79 @@ ModuleUserInterface::ModuleUserInterface()
 	Life.w = 7;
 	Life.h = 7;
 
-	beamCharger.x = 29;
-	beamCharger.y = 28;
-	beamCharger.w = 64;
-	beamCharger.h = 6;
+	// Beam charger
+	beamCharger.PushBack({ 29, 28, 64, 6 });
+	beamCharger.PushBack({ 29, 35, 64, 6 });
+	beamCharger.PushBack({ 29, 42, 64, 6 });
+	beamCharger.PushBack({ 29, 49, 64, 6 });
+	beamCharger.PushBack({ 29, 56, 64, 6 });
+	beamCharger.PushBack({ 29, 63, 64, 6 });
+	beamCharger.PushBack({ 29, 70, 64, 6 });
+	beamCharger.PushBack({ 29, 77, 64, 6 });
+	beamCharger.PushBack({ 29, 84, 64, 6 });
+	beamCharger.PushBack({ 29, 91, 64, 6 });
+	beamCharger.PushBack({ 29, 98, 64, 6 });
+	beamCharger.PushBack({ 29, 105, 64, 6 });
+	beamCharger.PushBack({ 29, 112, 64, 6 });
+	beamCharger.PushBack({ 29, 119, 64, 6 });
+	beamCharger.PushBack({ 29, 126, 64, 6 });
+	beamCharger.PushBack({ 29, 133, 64, 6 });
+	beamCharger.PushBack({ 29, 140, 64, 6 });
+	beamCharger.PushBack({ 29, 147, 64, 6 });
+	beamCharger.PushBack({ 29, 154, 64, 6 });
+	beamCharger.PushBack({ 29, 161, 64, 6 });
+	beamCharger.PushBack({ 29, 168, 64, 6 });
+	beamCharger.PushBack({ 29, 175, 64, 6 });
+	beamCharger.PushBack({ 29, 182, 64, 6 });
+	beamCharger.PushBack({ 29, 189, 64, 6 });
+	beamCharger.PushBack({ 29, 196, 64, 6 });
+	beamCharger.PushBack({ 29, 203, 64, 6 });
+	beamCharger.PushBack({ 29, 210, 64, 6 });
+	beamCharger.PushBack({ 29, 217, 64, 6 });
+	beamCharger.PushBack({ 29, 224, 64, 6 });
+	beamCharger.PushBack({ 97, 28, 64, 6 });
+	beamCharger.PushBack({ 97, 35, 64, 6 });
+	beamCharger.PushBack({ 97, 42, 64, 6 });
+	beamCharger.PushBack({ 97, 49, 64, 6 });
+	beamCharger.PushBack({ 97, 56, 64, 6 });
+	beamCharger.PushBack({ 97, 63, 64, 6 });
+	beamCharger.PushBack({ 97, 70, 64, 6 });
+	beamCharger.PushBack({ 97, 77, 64, 6 });
+	beamCharger.PushBack({ 97, 84, 64, 6 });
+	beamCharger.PushBack({ 97, 91, 64, 6 });
+	beamCharger.PushBack({ 97, 98, 64, 6 });
+	beamCharger.PushBack({ 97, 105, 64, 6 });
+	beamCharger.PushBack({ 97, 112, 64, 6 });
+	beamCharger.PushBack({ 97, 119, 64, 6 });
+	beamCharger.PushBack({ 97, 126, 64, 6 });
+	beamCharger.PushBack({ 97, 133, 64, 6 });
+	beamCharger.PushBack({ 97, 140, 64, 6 });
+	beamCharger.PushBack({ 97, 147, 64, 6 });
+	beamCharger.PushBack({ 97, 154, 64, 6 });
+	beamCharger.PushBack({ 97, 161, 64, 6 });
+	beamCharger.PushBack({ 97, 168, 64, 6 });
+	beamCharger.PushBack({ 97, 175, 64, 6 });
+	beamCharger.PushBack({ 97, 182, 64, 6 });
+	beamCharger.PushBack({ 97, 189, 64, 6 });
+	beamCharger.PushBack({ 97, 196, 64, 6 });
+	beamCharger.PushBack({ 97, 203, 64, 6 });
+	beamCharger.PushBack({ 97, 210, 64, 6 });
+	beamCharger.PushBack({ 165, 28, 64, 6 });
+	beamCharger.PushBack({ 165, 35, 64, 6 });
+	beamCharger.PushBack({ 165, 42, 64, 6 });
+	beamCharger.PushBack({ 165, 49, 64, 6 });
+	beamCharger.PushBack({ 165, 56, 64, 6 });
+	beamCharger.PushBack({ 165, 63, 64, 6 });	
+	beamCharger.PushBack({ 165, 73, 64, 6 });
+	beamCharger.PushBack({ 165, 80, 64, 7 });
+	beamCharger.PushBack({ 165, 86, 64, 7 });
+	beamCharger.PushBack({ 165, 96, 64, 7 });
+	beamCharger.PushBack({ 165, 107, 64, 7 });
+	beamCharger.PushBack({ 165, 116, 64, 7 });
+	beamCharger.PushBack({ 165, 126, 64, 7 });
+
+	beamCharger.loop = false;
+	beamCharger.speed = 0.5f;
 }
 
 ModuleUserInterface::~ModuleUserInterface()
@@ -151,8 +220,8 @@ update_status ModuleUserInterface::Update()
 		App->render->Blit(weaponHud, 24, 25, &Life, 1, false);
 
 	// Beam charger
-	App->render->Blit(super, 74, 25, &beamCharger, 1, false);
-
+	//if(App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		App->render->Blit(super, 74, 25, &(beamCharger.GetCurrentFrame()), 1, false);
 
 	return UPDATE_CONTINUE;
 }

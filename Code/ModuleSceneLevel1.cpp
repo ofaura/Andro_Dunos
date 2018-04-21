@@ -12,7 +12,7 @@
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
-#include "ModuleUserInterface.h"
+
 
 ModuleSceneLevel1::ModuleSceneLevel1()
 {
@@ -74,8 +74,6 @@ bool ModuleSceneLevel1::Start()
 		}
 	}	
 
-	App->user_interface->Enable();
-
 	// Reseting the camera to the start of the level
 	App->render->camera.x = App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
@@ -85,6 +83,9 @@ bool ModuleSceneLevel1::Start()
 	App->enemies->Enable();
 	
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 400, (SCREEN_HEIGHT / 2) - 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 400, SCREEN_HEIGHT - 52);
+	
+
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 400, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 415, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 430, 60);
@@ -135,6 +136,8 @@ bool ModuleSceneLevel1::Start()
 	// Colliders ----
 	App->collision->Enable();
 	App->collision->AddCollider({ 0, 192, 2960, 32 }, COLLIDER_WALL);
+
+
 
 	//Audio ---
 	App->audio->PlayMusic("Assets/Audio/level1.ogg", 1.0f);

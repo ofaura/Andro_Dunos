@@ -20,7 +20,6 @@ private:
 public:
 	
 	int time = 0, loop = 3;
-	bool live = true;
 
 	Enemy_PowerUp(int x, int y);
 

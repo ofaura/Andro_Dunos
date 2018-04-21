@@ -121,9 +121,10 @@ void Enemy_PowerUp::Move()
 
 			if (time >= 521)
 			{
-				act[TURN_3]->Reset();
-				act[TURN_4]->Reset();
-				time = 0;
+				for(int counter = 0; counter < TURN_4+1; counter++)
+				{
+					act[counter]->Reset();
+				}
 			}
 
 			if (time >= 0 && time < 75)
@@ -225,7 +226,6 @@ void Enemy_PowerUp::Move()
 
 
 }
-
 
 void Enemy_PowerUp::Draw(SDL_Texture* sprites)
 {

@@ -6,10 +6,11 @@
 class Enemy_Shooter : public Enemy
 {
 private:
-	float wave = -1.0f;
-	bool going_up = true;
+
 	int original_y = 0;
 	Animation fly;
+	Animation* shot = nullptr;
+
 
 public:
 
