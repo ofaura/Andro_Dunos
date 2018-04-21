@@ -203,9 +203,13 @@ void PowerUp::Move()
 
 void PowerUp::OnCollision(Collider* collider)
 {
-	if ((collider->type == COLLIDER_PLAYER) || collider->type == COLLIDER_PLAYER_2)
+	if ((collider->type == COLLIDER_PLAYER))
 	{
 		//App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y);
+	}
+	else if (collider->type == COLLIDER_PLAYER_2)
+	{
+
 	}
 }
 
