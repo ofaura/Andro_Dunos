@@ -12,7 +12,7 @@
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
-
+#include "ModuleUserInterface.h"
 
 ModuleSceneLevel1::ModuleSceneLevel1()
 {
@@ -73,6 +73,8 @@ bool ModuleSceneLevel1::Start()
 			App->player->Disable();
 		}
 	}	
+
+	App->user_interface->Enable();
 
 	// Reseting the camera to the start of the level
 	App->render->camera.x = App->render->camera.y = 0;
@@ -252,6 +254,7 @@ bool ModuleSceneLevel1::CleanUp()
 	App->enemies->Disable();
 	App->collision->Disable();
 	App->player->Disable();
+	App->user_interface->Disable();
 
 	if (App->player2->IsEnabled() == true)
 		App->player2->Disable();
