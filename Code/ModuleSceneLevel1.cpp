@@ -36,6 +36,16 @@ ModuleSceneLevel1::ModuleSceneLevel1()
 	background3.y = 0;
 	background3.w = 2206;
 	background3.h = 208;
+
+	moon.x = 29;
+	moon.y = 20;
+	moon.w = 106;
+	moon.h = 106;
+
+	mars.x = 0;
+	mars.y = 0;
+	mars.w = 62;
+	mars.h = 62;
 }
 
 ModuleSceneLevel1::~ModuleSceneLevel1()
@@ -50,6 +60,8 @@ bool ModuleSceneLevel1::Start()
 	background3_texture = App->textures->Load("Assets/Sprites/lvl1/background1.png");
 	ground_texture = App->textures->Load("Assets/Sprites/lvl1/Floor_all.png");
 	background2_texture = App->textures->Load("Assets/Sprites/lvl1/background2.png");
+	moon_tex = App->textures->Load("Assets/Sprites/lvl1/Moon.png");
+	mars_tex = App->textures->Load("Assets/Sprites/lvl1/mars.png");
 
 	if (IsEnabled()) {
 		if (App->player->IsEnabled() == false) {
@@ -213,6 +225,8 @@ update_status ModuleSceneLevel1::Update()
 	App->render->Blit(background2_texture, 1450, -235, &background2, 0.5f, true);
 	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 0.5f, true);
 	App->render->Blit(ground_texture, (ground_pos_x) / 3.5, ground_pos_y - 115, &ground, 1.0f, true);
+	App->render->Blit(moon_tex, 750, 15, &moon, 0.3f);
+	App->render->Blit(mars_tex, 2600, 15, &mars, 0.3f);
 
 	// Pressing space the next stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1) 
