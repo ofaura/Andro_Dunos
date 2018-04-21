@@ -32,15 +32,16 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 	{
 		S_B = true;
 
-		fly_1.PushBack({ 10, 558, 16, 16 }); // still
+		fly_4.PushBack({ 10, 540, 16, 16 }); // still
 		fly_1.loop = true;
 		act[0] = &fly_1;
 
 		fly_2.PushBack({ 29, 558, 16, 16 }); // reflection
 		fly_2.PushBack({ 47, 558, 16, 16 });
 		fly_2.PushBack({ 65, 558, 16, 16 });
-		fly_2.speed = 0.1f;
-		fly_2.loop = true;
+		fly_1.PushBack({ 10, 558, 16, 16 });
+		fly_2.speed = 0.15f;
+		fly_2.loop = false;
 		act[1] = &fly_2;
 
 		fly_3.PushBack({ 83, 558, 16, 16 }); // Change
@@ -48,6 +49,7 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 		fly_3.PushBack({ 101, 622, 16, 16 });
 		fly_3.PushBack({ 83, 540, 16, 16 });
 		fly_3.PushBack({ 101, 540, 16, 16 });
+		fly_4.PushBack({ 10, 540, 16, 16 });
 		fly_3.speed = 0.6f;
 		fly_3.loop = false;
 		act[2] = &fly_3;
@@ -60,9 +62,10 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 		fly_5.PushBack({ 29, 540, 16, 16 }); // reflection
 		fly_5.PushBack({ 47, 540, 16, 16 });
 		fly_5.PushBack({ 65, 540, 16, 16 });
+		fly_4.PushBack({ 10, 540, 16, 16 });
 
-		fly_5.speed = 0.1f;
-		fly_5.loop = true;
+		fly_5.speed = 0.15f;
+		fly_5.loop = false;
 
 		act[4] = &fly_5;
 
@@ -71,6 +74,7 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 		fly_6.PushBack({ 101, 622, 16, 16 });
 		fly_6.PushBack({ 83, 558, 16, 16 });
 		fly_6.PushBack({ 101, 558, 16, 16 });
+		fly_4.PushBack({ 10, 540, 16, 16 });
 
 		fly_6.speed = 0.6f;
 		fly_6.loop = false;
@@ -282,12 +286,10 @@ void PowerUp::Move()
 	if (position.x < abs(App->render->camera.x) / SCREEN_SIZE)
 	{
 		vel_x = -1 * vel_x;
-		position.x += 1;
 	}
-	else if (position.x > ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 27))
+	else if (position.x > ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 16))
 	{
 		vel_x = -1 * vel_x;
-		position.x += 1;
 	}
 
 	//y lim
@@ -296,13 +298,46 @@ void PowerUp::Move()
 	{
 		vel_y = -1 * vel_y;
 	}
-	else if (position.y > (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 17)
+	else if (position.y > (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 16)
 	{
 		vel_y = -1 * vel_y;
 	}
 
 	position.y += vel_y;
 	position.x += vel_x;
+
+	//Up
+	if (App->render->camera.x >= 7150 * SCREEN_SIZE && App->render->camera.x <= 7200 * SCREEN_SIZE && App->render->camera.y >= 0)
+	{
+		position.y -= 1;
+	}
+
+	// Diagonal up
+	else if (App->render->camera.x >= 4005 * SCREEN_SIZE && App->render->camera.x < 4130 * SCREEN_SIZE || App->render->camera.x >= 5074 * SCREEN_SIZE && App->render->camera.x < 5290 * SCREEN_SIZE)
+	{
+		position.y -= 1;
+		position.x += 1;
+	}
+
+	// Diagonal down
+	else if (App->render->camera.y >= 96 * SCREEN_SIZE && App->render->camera.x >= 4530 * SCREEN_SIZE && App->render->camera.y < 224 * SCREEN_SIZE ||
+		App->render->camera.x >= 6125 * SCREEN_SIZE && App->render->camera.x < 6262 * SCREEN_SIZE)
+	{
+		position.y += 1;
+		position.x += 1;
+	}
+
+	//Down
+	else if (App->render->camera.x >= 2921 * SCREEN_SIZE && App->render->camera.x <= 2971 * SCREEN_SIZE && App->render->camera.y < 224 * SCREEN_SIZE)
+	{
+		position.y += 1;
+	}
+
+	//Horizontal
+	else if (App->render->camera.x >= 0 && App->render->camera.x <= 8800 * SCREEN_SIZE)
+	{
+		position.x += 1;
+	}
 }
 
 void PowerUp::OnCollision(Collider* collider)

@@ -22,8 +22,6 @@ public:
 	int time = 0, loop = 3;
 	bool live = true;
 
-	SDL_Rect size = { 0,0,26,26 };
-
 	Enemy_PowerUp(int x, int y);
 
 	~Enemy_PowerUp()
