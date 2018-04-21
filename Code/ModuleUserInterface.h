@@ -38,8 +38,8 @@ public:
 	Animation beamCharged; // Showed while charged
 	Animation beamNoCharged; // Showed while not pressing space
 
-
 	bool charging;
+	uint chargingSound, chargedSound;
 
 	Uint32 startTime = 0, currentTime;
 	bool activatedChange; //Tells if the player is changing of weapon
