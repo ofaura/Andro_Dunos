@@ -146,6 +146,7 @@ void PowerUp::Move()
 	if (position.x < abs(App->render->camera.x) / SCREEN_SIZE)
 	{
 		vel_x = -1 * vel_x;
+		position.x = App->render->camera.x / SCREEN_SIZE;
 	}
 	else if (position.x > ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 16))
 	{

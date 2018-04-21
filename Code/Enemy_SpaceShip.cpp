@@ -12,7 +12,7 @@ Enemy_SpaceShip::Enemy_SpaceShip(int x, int y) : Enemy(x, y)
 	fly.PushBack({ 90,104,29,14 });
 
 	//	fly.loop = true;
-	fly.speed = 0.4f;
+	fly.speed = 0.1f;
 
 	animation = &fly;
 
