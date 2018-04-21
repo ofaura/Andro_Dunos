@@ -33,7 +33,8 @@ public:
 	SDL_Rect HUD3;
 	SDL_Rect HUD4;
 	SDL_Rect Life;
-	SDL_Rect beamCharger;
+
+	Animation beamCharger;
 
 	Uint32 startTime = 0, currentTime;
 	bool activatedChange; //Tells if the player is changing of weapon
