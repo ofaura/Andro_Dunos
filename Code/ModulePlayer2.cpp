@@ -162,8 +162,8 @@ update_status ModulePlayer2::Update()
 		}
 
 		// Player Idle position if not going up or down -------------------------------------
-		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
+		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 		{
 			current_animation = &idle;
 		}
