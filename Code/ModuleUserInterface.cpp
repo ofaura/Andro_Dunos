@@ -232,15 +232,16 @@ update_status ModuleUserInterface::Update()
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT) {
 		if (beamCharger.Finished()) {
 			App->render->Blit(super, 74, 25, &(beamCharged.GetCurrentFrame()), 1, false);
+			//charged = true;
 		}
 		else {
 			App->render->Blit(super, 74, 25, &(beamCharger.GetCurrentFrame()), 1, false);
 		}
 	}
-	else {
+	else if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_UP){
 		App->render->Blit(super, 74, 25, &(beamNoCharged.GetCurrentFrame()), 1, false);
 		beamCharger.Reset();
-	}	
+	}
 
 	return UPDATE_CONTINUE;
 }
