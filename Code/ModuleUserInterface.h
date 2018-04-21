@@ -34,11 +34,16 @@ public:
 	SDL_Rect HUD4;
 	SDL_Rect Life;
 
-	Animation beamCharger;
+	Animation beamCharger; // Showe while charging
+	Animation beamCharged; // Showed while charged
+	Animation beamNoCharged; // Showed while not pressing space
+
+
+	bool charging;
 
 	Uint32 startTime = 0, currentTime;
 	bool activatedChange; //Tells if the player is changing of weapon
-		
+
 };
 
 #endif

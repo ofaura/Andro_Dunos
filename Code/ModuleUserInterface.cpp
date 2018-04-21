@@ -41,6 +41,15 @@ ModuleUserInterface::ModuleUserInterface()
 	Life.h = 7;
 
 	// Beam charger
+	beamNoCharged.PushBack({ 29, 28, 64, 6 });
+
+	beamCharged.PushBack({ 165, 96, 64, 7 });
+	beamCharged.PushBack({ 165, 107, 64, 7 });
+	beamCharged.PushBack({ 165, 116, 64, 7 });
+	beamCharged.PushBack({ 165, 126, 64, 7 });
+	beamCharged.loop = true;
+	beamCharged.speed = 0.5f;
+
 	beamCharger.PushBack({ 29, 28, 64, 6 });
 	beamCharger.PushBack({ 29, 35, 64, 6 });
 	beamCharger.PushBack({ 29, 42, 64, 6 });
@@ -176,10 +185,10 @@ update_status ModuleUserInterface::Update()
 			activatedChange = false;
 		}
 	}
-
+	
+	// Blit the text of the score in at the bottom of the screen	
 	sprintf_s(score_text, 10, "%7d", App->enemies->score);
 
-	// Blit the text of the score in at the bottom of the screen	
 	// Player 1 
 	App->fonts->BlitText(33, 6, font_score, score_text);
 	App->fonts->BlitText(8, 6, font_score, "1P");
@@ -220,8 +229,18 @@ update_status ModuleUserInterface::Update()
 		App->render->Blit(weaponHud, 24, 25, &Life, 1, false);
 
 	// Beam charger
-	//if(App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-		App->render->Blit(super, 74, 25, &(beamCharger.GetCurrentFrame()), 1, false);
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT) {
+		if (beamCharger.Finished()) {
+			App->render->Blit(super, 74, 25, &(beamCharged.GetCurrentFrame()), 1, false);
+		}
+		else {
+			App->render->Blit(super, 74, 25, &(beamCharger.GetCurrentFrame()), 1, false);
+		}
+	}
+	else {
+		App->render->Blit(super, 74, 25, &(beamNoCharged.GetCurrentFrame()), 1, false);
+		beamCharger.Reset();
+	}	
 
 	return UPDATE_CONTINUE;
 }
