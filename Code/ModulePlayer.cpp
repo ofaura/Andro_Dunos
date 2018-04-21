@@ -14,6 +14,7 @@
 #include "ModuleFonts.h"
 #include "ModuleEnemies.h"
 #include "ModuleBonus.h"
+#include "ModuleUserInterface.h"
 
 #include <stdio.h>
 
@@ -312,7 +313,7 @@ void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2)
 		else
 		{
 			position.x = 0;
-
+			App->user_interface->Disable();
 			App->fade->FadeToBlack(App->level1, App->game_over);
 		}
 
