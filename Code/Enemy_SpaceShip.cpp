@@ -12,7 +12,7 @@ Enemy_SpaceShip::Enemy_SpaceShip(int x, int y) : Enemy(x, y)
 	fly.PushBack({ 90,104,29,14 });
 
 	//	fly.loop = true;
-	fly.speed = 0.07f;
+	fly.speed = 0.08f;
 
 	animation = &fly;
 
@@ -39,5 +39,5 @@ void Enemy_SpaceShip::Move()
 	}
 
 	position.y = int(float(original_y) + (10.0f * sinf(wave)));
-	position.x -= 1;
+	position.x -= 2;
 }
