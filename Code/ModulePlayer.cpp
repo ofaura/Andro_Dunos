@@ -122,6 +122,7 @@ bool ModulePlayer::Start()
 	type_score = App->fonts->Load("Assets/Sprites/UI/Fonts/type_font.png", "1234-TYPE ", 2);
 	p2_title = App->fonts->Load("Assets/Sprites/UI/Fonts/player2_start_font.png", "12BENOPRSTU ", 1);
 	highscore_font = App->fonts->Load("Assets/Sprites/UI/Fonts/highscore_font.png", "1234567890HI- ", 2);
+	hud_characteristics = App->fonts->Load("Assets/Sprites/UI/Fonts/numbers_powerup.png", "012345678", 1);
 
 	lives = 2;
 
@@ -381,6 +382,11 @@ update_status ModulePlayer::Update()
 			App->render->Blit(weaponHud, 8, 16, &HUD3, 1, false);
 		else if (type == 3)
 			App->render->Blit(weaponHud, 8, 16, &HUD4, 1, false);
+
+		App->fonts->BlitText(34, 17, hud_characteristics, "1");
+		App->fonts->BlitText(66, 17, hud_characteristics, "0");
+		App->fonts->BlitText(98, 17, hud_characteristics, "0");
+		App->fonts->BlitText(130, 17, hud_characteristics, "0");
 	}
 
 	// Player's lives
