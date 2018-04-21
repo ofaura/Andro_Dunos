@@ -19,13 +19,23 @@ ModuleSceneLevel1::ModuleSceneLevel1()
 	// Background 
 	background.x = 0;
 	background.y = 0;
-	background.w = 1654;
+	background.w = 2206;
 	background.h = 208;
 
 	ground.x = 0;
 	ground.y = 0;
 	ground.w = 9305;
 	ground.h = 563;
+
+	background2.x = 0;
+	background2.y = 0;
+	background2.w = 2513;
+	background2.h = 563;
+
+	background3.x = 0;
+	background3.y = 0;
+	background3.w = 2206;
+	background3.h = 208;
 }
 
 ModuleSceneLevel1::~ModuleSceneLevel1()
@@ -37,7 +47,9 @@ bool ModuleSceneLevel1::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 	background_texture = App->textures->Load("Assets/Sprites/lvl1/background1.png");
+	background3_texture = App->textures->Load("Assets/Sprites/lvl1/background1.png");
 	ground_texture = App->textures->Load("Assets/Sprites/lvl1/Floor_all.png");
+	background2_texture = App->textures->Load("Assets/Sprites/lvl1/background2.png");
 
 	if (IsEnabled()) {
 		if (App->player->IsEnabled() == false) {
@@ -130,12 +142,14 @@ update_status ModuleSceneLevel1::Update()
 		App->render->camera.x += SCREEN_SIZE / 2;
 		App->render->camera.y -= SCREEN_SIZE / 2;
 
-		App->player->position.y -= 1;
-		App->player->position.x += 1;
+		if (App->render->camera.x % 2 == 0 && App->render->camera.y % 2 == 0)
+		{
+			App->player->position.y -= 1;
+			App->player->position.x += 1;
 
-		App->player2->position.y -= 1;
-		App->player2->position.x += 1;
-
+			App->player2->position.y -= 1;
+			App->player2->position.x += 1;
+		}
 	}
 
 	// Diagonal down
@@ -145,11 +159,15 @@ update_status ModuleSceneLevel1::Update()
 		App->render->camera.x += 0.5 * SCREEN_SIZE;
 		App->render->camera.y += 0.5* SCREEN_SIZE;
 
-		App->player->position.y += 1;
-		App->player->position.x += 1;
+		if (App->render->camera.x % 2 == 0 && App->render->camera.y % 2 == 0)
+		{
+			App->player->position.y += 1;
+			App->player->position.x += 1;
 
-		App->player2->position.y += 1;
-		App->player2->position.x += 1;
+			App->player2->position.y += 1;
+			App->player2->position.x += 1;
+		}
+		
 	}
 
 	//Down
@@ -173,7 +191,19 @@ update_status ModuleSceneLevel1::Update()
 
 		App->player2->position.x += 1;
 	}
-		
+	
+	
+	
+	if (App->render->camera.y < 400 && App->render->camera.x > 4000)
+	{
+		App->render->Blit(background3_texture, 3500, 0, &background3, 0.5f, true);
+	}
+
+	if (App->render->camera.y > 400)
+	{
+		App->textures->Unload(background_texture);
+	}
+	App->render->Blit(background2_texture, 1450, -235, &background2, 0.5f, true);
 	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 0.5f, true);
 	App->render->Blit(ground_texture, (ground_pos_x) / 3.5, ground_pos_y - 115, &ground, 1.0f, true);
 
