@@ -13,29 +13,27 @@ private:
 
 	*/
 
-	Animation fly_1;
-	Animation fly_2;
-	Animation fly_3;
-	Animation fly_4;
-	Animation fly_5;
-	Animation fly_6;
-	Animation fly_7;
-	Animation fly_8;
+	Animation fly_1, fly_2, fly_3, fly_4, fly_5, fly_6, fly_7, fly_8;
 	
 	Animation* act[8];
-	
-	int time = 0, loop = 3;
 
 public:
+	
+	int time = 0, loop = 3;
+	bool live = true;
 
 	SDL_Rect size = { 0,0,26,26 };
+
 	Enemy_PowerUp(int x, int y);
+
 	~Enemy_PowerUp()
 	{
-		//delete[] fly;
+		//delete[] act;
 	}
+
+	virtual void Enemy_PowerUp::OnCollision(Collider* collider);
 
 	void Move();
 };
 
-#endif // __ENEMY_SPACESHIP_H__
+#endif // __ENEMY_POWERUP_H__

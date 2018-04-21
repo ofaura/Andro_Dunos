@@ -77,137 +77,109 @@
     <ClInclude Include="ModuleCollision.h">
       <Filter>Modules</Filter>
     </ClInclude>
-
     <ClInclude Include="Path.h">
       <Filter>Containers</Filter>
     </ClInclude>
-
     <ClInclude Include="Enemy.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-
     <ClInclude Include="ModuleEnemies.h">
       <Filter>Modules</Filter>
     </ClInclude>
-
     <ClInclude Include="Enemy_FirstEnemy.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-
     <ClInclude Include="ModuleGameOver.h">
       <Filter>Modules</Filter>
     </ClInclude>
-
     <ClInclude Include="ModuleFonts.h">
       <Filter>Modules</Filter>
     </ClInclude>
-
     <ClInclude Include="Enemy_SpaceShip.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-
     <ClInclude Include="Enemy_PowerUp.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-
+    <ClInclude Include="PowerUp.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-
     <ClCompile Include="Main.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-
     <ClCompile Include="Application.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-
     <ClCompile Include="ModuleWindow.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-
     <ClCompile Include="ModuleInput.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-
     <ClCompile Include="ModuleRender.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-
     <ClCompile Include="ModuleTextures.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-
     <ClCompile Include="Globals.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-
     <ClCompile Include="ModulePlayer.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-
     <ClCompile Include="ModuleFadeToBlack.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-
     <ClCompile Include="ModuleAudio.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-
     <ClCompile Include="ModuleSceneLevel1.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-
     <ClCompile Include="ModuleIntroNeoGeo.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-
     <ClCompile Include="ModuleBonus.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-
     <ClCompile Include="ModuleParticles.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-
     <ClCompile Include="ModuleStartMenu.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-
     <ClCompile Include="ModulePlayer2.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-
     <ClCompile Include="ModuleCollision.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-
     <ClCompile Include="Enemy.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-
     <ClCompile Include="ModuleEnemies.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-
     <ClCompile Include="Enemy_FirstEnemy.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-
     <ClCompile Include="ModuleGameOver.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-
     <ClCompile Include="ModuleFonts.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-
     <ClCompile Include="Enemy_SpaceShip.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-
     <ClCompile Include="Enemy_PowerUp.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-
+    <ClCompile Include="PowerUp.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

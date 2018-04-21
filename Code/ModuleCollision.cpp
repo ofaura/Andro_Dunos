@@ -34,6 +34,12 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_ENEMY] = false;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_PLAYER_SHOT] = false;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_ENEMY_SHOT] = false;
+
+	matrix[COLLIDER_POWER_UP][COLLIDER_WALL] = false;
+	matrix[COLLIDER_POWER_UP][COLLIDER_PLAYER] = false;
+	matrix[COLLIDER_POWER_UP][COLLIDER_ENEMY] = false;
+	matrix[COLLIDER_POWER_UP][COLLIDER_PLAYER_SHOT] = false;
+	matrix[COLLIDER_POWER_UP][COLLIDER_ENEMY_SHOT] = false;
 }
 
 // Destructor
@@ -112,6 +118,9 @@ update_status ModuleCollision::Update()
 			App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
 			break;
 		case COLLIDER_PLAYER: // green
+			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
+			break;
+		case COLLIDER_PLAYER_2: // green
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
 			break;
 		case COLLIDER_ENEMY: // red

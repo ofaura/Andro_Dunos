@@ -10,9 +10,11 @@ enum COLLIDER_TYPE
 	COLLIDER_NONE = -1,
 	COLLIDER_WALL,
 	COLLIDER_PLAYER,
+	COLLIDER_PLAYER_2,
 	COLLIDER_ENEMY,
 	COLLIDER_PLAYER_SHOT,
 	COLLIDER_ENEMY_SHOT,
+	COLLIDER_POWER_UP,
 
 	COLLIDER_MAX
 };
@@ -51,10 +53,10 @@ public:
 	bool CleanUp();
 
 	Collider* AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* callback = nullptr);
+	Collider * colliders[MAX_COLLIDERS] = { nullptr };
 
 private:
 
-	Collider * colliders[MAX_COLLIDERS] = { nullptr };
 	bool matrix[COLLIDER_MAX][COLLIDER_MAX];
 	bool debug = false;
 };
