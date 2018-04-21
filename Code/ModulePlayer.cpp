@@ -64,37 +64,6 @@ ModulePlayer::ModulePlayer()
 	fire_down2.PushBack({ 42, 156, 12, 10 });
 	fire_down2.loop = true;
 	fire_down2.speed = 1.0f;
-
-	// Weapon HUD
-	HUD1.x = 14;
-	HUD1.y = 35;
-	HUD1.w = 127;
-	HUD1.h = 7;
-
-	HUD2.x = 14;
-	HUD2.y = 46;
-	HUD2.w = 127;
-	HUD2.h = 7;
-
-	HUD3.x = 14;
-	HUD3.y = 69;
-	HUD3.w = 127;
-	HUD3.h = 7;
-
-	HUD4.x = 14;
-	HUD4.y = 57;
-	HUD4.w = 127;
-	HUD4.h = 7;
-
-	Life.x = 15;
-	Life.y = 24;
-	Life.w = 7;
-	Life.h = 7;
-
-	beamCharger.x = 29;
-	beamCharger.y = 28;
-	beamCharger.w = 64;
-	beamCharger.h = 6;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -105,8 +74,6 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	graphics = App->textures->Load("Assets/Sprites/player/ships.png"); // arcade version
-	weaponHud = App->textures->Load("Assets/Sprites/UI/laser_types.png");
-	super = App->textures->Load("Assets/Sprites/UI/beam_charge.png");
 	
 	// Audios are loaded
 	laser1 = App->audio->LoadFx("Assets/Audio/laser1.wav");
@@ -116,13 +83,6 @@ bool ModulePlayer::Start()
 	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
 	player_death = App->audio->LoadFx("Assets/Audio/player_death.wav");
 	type_change = App->audio->LoadFx("Assets/Audio/type_change.wav");
-
-	// The font is loaded 
-	font_score = App->fonts->Load("Assets/Sprites/UI/Fonts/score_font.png", "1234567890P", 1);
-	type_score = App->fonts->Load("Assets/Sprites/UI/Fonts/type_font.png", "1234-TYPE ", 2);
-	p2_title = App->fonts->Load("Assets/Sprites/UI/Fonts/player2_start_font.png", "12BENOPRSTU ", 1);
-	highscore_font = App->fonts->Load("Assets/Sprites/UI/Fonts/highscore_font.png", "1234567890HI- ", 2);
-	hud_characteristics = App->fonts->Load("Assets/Sprites/UI/Fonts/numbers_powerup.png", "012345678", 1);
 
 	lives = 2;
 
@@ -206,19 +166,6 @@ update_status ModulePlayer::Update()
 			else type = 0;
 
 			App->audio->PlayFx(type_change);
-			activatedChange = true;
-
-			// Printing it on the screen
-			if (type == 0)
-				App->fonts->BlitText(8, 15, type_score, "TYPE-1");
-			else if (type == 1)
-				App->fonts->BlitText(8, 15, type_score, "TYPE-2");
-			else if (type == 2)
-				App->fonts->BlitText(8, 15, type_score, "TYPE-3");
-			else if (type == 3)
-				App->fonts->BlitText(8, 15, type_score, "TYPE-4");
-
-			startTime = currentTime;			
 		}
 
 		// Autowin key
@@ -330,74 +277,6 @@ update_status ModulePlayer::Update()
 		App->fade->FadeToBlack(App->level1, App->game_over);
 	}
 
-	// ------------------------------------------------
-	// DRAWING THE UI
-	// ------------------------------------------------
-
-	currentTime = SDL_GetTicks();
-
-	// Printing it on the screen
-	if (activatedChange = true) {
-		if (currentTime - startTime <= 700) {
-
-			if (type == 0)
-				App->fonts->BlitText(8, 15, type_score, "TYPE-1");
-			else if (type == 1)
-				App->fonts->BlitText(8, 15, type_score, "TYPE-2");
-			else if (type == 2)
-				App->fonts->BlitText(8, 15, type_score, "TYPE-3");
-			else if (type == 3)
-				App->fonts->BlitText(8, 15, type_score, "TYPE-4");
-
-			activatedChange = false;
-		}
-	}
-
-	sprintf_s(score_text, 10, "%7d", App->enemies->score);
-
-	// Blit the text of the score in at the bottom of the screen	
-	// Player 1 
-	App->fonts->BlitText(33, 6, font_score, score_text);
-	App->fonts->BlitText(8, 6, font_score, "1P");
-
-	// Player 2 
-	App->fonts->BlitText(244, 6, font_score, score_text);
-	App->fonts->BlitText(214, 6, font_score, "2P");
-
-	// High score
-	App->fonts->BlitText(147, 6, highscore_font, "100000");
-	App->fonts->BlitText(107, 6, highscore_font, "HI-");
-
-	// Title remembering you can have a second player	
-	if (App->player2->IsEnabled() == false) 
-		App->fonts->BlitText(180, 15, p2_title, "PRESS 2P BUTTON");	
-
-	// Weapon characteristics UI
-	if (activatedChange == true) {
-		if (type == 0)
-			App->render->Blit(weaponHud, 8, 16, &HUD1, 1, false);
-		else if (type == 1)
-			App->render->Blit(weaponHud, 8, 16, &HUD2, 1, false);
-		else if (type == 2)
-			App->render->Blit(weaponHud, 8, 16, &HUD3, 1, false);
-		else if (type == 3)
-			App->render->Blit(weaponHud, 8, 16, &HUD4, 1, false);
-
-		App->fonts->BlitText(34, 17, hud_characteristics, "1");
-		App->fonts->BlitText(66, 17, hud_characteristics, "0");
-		App->fonts->BlitText(98, 17, hud_characteristics, "0");
-		App->fonts->BlitText(130, 17, hud_characteristics, "0");
-	}
-
-	// Player's lives
-	if (App->player->lives == 2)
-		App->render->Blit(weaponHud, 17, 25, &Life, 1, false);
-	if (App->player->lives >= 1)
-		App->render->Blit(weaponHud, 24, 25, &Life, 1, false);
-
-	// Beam charger
-	App->render->Blit(super, 74, 25, &beamCharger, 1, false);
-
 	// Blitting the player
 	App->render->Blit(graphics, position.x, position.y, &r);
 	App->render->Blit(graphics, fire_position.x, fire_position.y, &fire);
@@ -409,8 +288,6 @@ bool ModulePlayer::CleanUp()
 {
 	// Remove all memory leaks
 	LOG("Unloading ship");
-	App->textures->Unload(super);
-	App->textures->Unload(weaponHud);
 	App->textures->Unload(graphics);
 
 	return true;
