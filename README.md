@@ -52,6 +52,8 @@ Press ESC or click on the red cross to close the application.
 
 CHANGELIST:
 
+v0.1 - Added a moving screen with music. No ship.
+
 v0.2 - Implemented FadeToBlack along with user controls and parallax movement in map, loads 4 different screens
 
 v0.3 - Implemented animations and player 2 with animations as well as bullet particles for all 4 bullet types, improvements to parallax
