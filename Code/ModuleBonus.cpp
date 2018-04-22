@@ -10,9 +10,18 @@
 #include "ModuleInput.h"
 #include "ModuleAudio.h"
 #include "ModuleFonts.h"
+#include "ModuleUserInterface.h"
+
+#include <cstdio>
 
 ModuleBonus::ModuleBonus()
 {
+	// Background
+	bonusBackground.x = 0;
+	bonusBackground.y = 0;
+	bonusBackground.w = SCREEN_WIDTH;
+	bonusBackground.h = SCREEN_HEIGHT;
+
 	// Player score
 	scorePlayer.x = 2;
 	scorePlayer.y = 23;
@@ -74,11 +83,12 @@ bool ModuleBonus::Start()
 
 	// Textures are loaded
 	graphics = App->textures->Load("Assets/Sprites/Bonus/stage_clear.png");
-	graphics = App->textures->Load("Assets/Sprites/Bonus/stage_clear.png");
+	background = App->textures->Load("Assets/Sprites/StartMenu/background.png");
 	scoreRect = App->textures->Load("Assets/Sprites/Bonus/score_small_screen.png");
 
 	// Fonts are loaded
 	bonus_font = App->fonts->Load("Assets/Sprites/UI/Fonts/bonus_font.png", "12AELPRY-", 1);
+	font_score = App->fonts->Load("Assets/Sprites/UI/Fonts/score_font.png", "1234567890P", 1);
 
 	// Reseting the camera
 	App->render->camera.x = App->render->camera.y = 0;
@@ -94,6 +104,7 @@ bool ModuleBonus::CleanUp()
 	LOG("Unloading bonus scene");
 	App->fonts->UnLoad(bonus_font);
 	App->textures->Unload(scoreRect);
+	App->textures->Unload(background);
 	App->textures->Unload(graphics);
 	return true;
 }
@@ -101,9 +112,15 @@ bool ModuleBonus::CleanUp()
 // Update: draw background
 update_status ModuleBonus::Update()
 {
+	sprintf_s(App->user_interface->score_text1, 10, "%7d", App->user_interface->score1);
+	sprintf_s(App->user_interface->score_text2, 10, "%7d", App->user_interface->score2);
+
 	// Draw everything --------------------------------------
 	current_animation = &bonus;
 	SDL_Rect r = current_animation->GetCurrentFrame();
+
+	//Background
+	App->render->Blit(background, 0, 0, &bonusBackground);
 
 	// Bonus clear animation
 	App->render->Blit(graphics, 9, 30, &r, 1);
@@ -115,6 +132,14 @@ update_status ModuleBonus::Update()
 	// Names
 	App->fonts->BlitText(47, 84, bonus_font, "PLAYER-1");
 	App->fonts->BlitText(192, 84, bonus_font, "PLAYER-2");
+
+	// Points
+	App->fonts->BlitText(60, 115, font_score, App->user_interface->score_text1);
+	App->fonts->BlitText(125, 115, font_score, "P");
+	App->fonts->BlitText(205, 115, font_score, App->user_interface->score_text2);
+	App->fonts->BlitText(270, 115, font_score, "P");
+
+	// Joined points
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1)
 	{

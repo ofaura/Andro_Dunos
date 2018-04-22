@@ -20,11 +20,14 @@ public:
 public:
 
 	int bonus_font = -1;
+	int font_score = -1;
 
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* scoreRect = nullptr;
+	SDL_Texture* background = nullptr;
 
 	SDL_Rect scorePlayer;
+	SDL_Rect bonusBackground;
 
 	Animation bonus;
 	Animation* current_animation = nullptr;
