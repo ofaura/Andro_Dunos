@@ -340,9 +340,15 @@ bool ModuleUserInterface::CleanUp()
 	LOG("Unloading UI");
 	App->audio->UnLoadFx(chargingSound);
 	App->audio->UnLoadFx(chargedSound);
+
+	App->fonts->UnLoad(hud_characteristics);
+	App->fonts->UnLoad(highscore_font);
+	App->fonts->UnLoad(p2_title);
+	App->fonts->UnLoad(type_score);
+	App->fonts->UnLoad(font_score);
+
 	App->textures->Unload(super);
-	App->textures->Unload(weaponHud);
-	
+	App->textures->Unload(weaponHud);	
 
 	return true;
 }
