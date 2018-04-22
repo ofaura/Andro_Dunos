@@ -32,21 +32,21 @@ ModuleShield::ModuleShield() {
 	lvl1.loop = true;
 	lvl1.speed = 0.5f;
 
-	// ---- Animation for lvl2 LaserShield (Yellow)
-	lvl2.PushBack({ 46, 18, 5, 14 });
-	lvl2.PushBack({ 30, 18, 5, 14 });
-	lvl2.PushBack({ 36, 18, 5, 14 });
-	lvl2.PushBack({ 30, 18, 5, 14 });
-	lvl2.loop = true;
-	lvl2.speed = 0.5f;
+	//// ---- Animation for lvl2 LaserShield (Yellow)
+	//lvl2.PushBack({ 46, 18, 5, 14 });
+	//lvl2.PushBack({ 30, 18, 5, 14 });
+	//lvl2.PushBack({ 36, 18, 5, 14 });
+	//lvl2.PushBack({ 30, 18, 5, 14 });
+	//lvl2.loop = true;
+	//lvl2.speed = 0.5f;
 
-	// ---- Animation for lvl3 LaserShield (Green)
-	lvl3.PushBack({ 46, 18, 5, 14 });
-	lvl3.PushBack({ 15, 18, 5, 14 });
-	lvl3.PushBack({ 22, 18, 5, 14 });
-	lvl3.PushBack({ 15, 18, 5, 14 });
-	lvl3.loop = true;
-	lvl3.speed = 0.5f;
+	//// ---- Animation for lvl3 LaserShield (Green)
+	//lvl3.PushBack({ 46, 18, 5, 14 });
+	//lvl3.PushBack({ 15, 18, 5, 14 });
+	//lvl3.PushBack({ 22, 18, 5, 14 });
+	//lvl3.PushBack({ 15, 18, 5, 14 });
+	//lvl3.loop = true;
+	//lvl3.speed = 0.5f;
 }
 
 ModuleShield::~ModuleShield() {}
@@ -103,9 +103,10 @@ bool ModuleShield::Start() {
 
 update_status ModuleShield::Update() {
 
-	if (life == 1) current_lvl = &lvl1;
+	/*if (life == 1) current_lvl = &lvl1;
 	else if (life == 2)	current_lvl = &lvl2;
-	else if (life == 3)	current_lvl = &lvl3;
+	else if (life == 3)	current_lvl = &lvl3;*/
+	current_lvl = &lvl1;
 
 	// ---- Keeps realtive position to the ship
 	switch (App->player->type) {
@@ -159,6 +160,12 @@ update_status ModuleShield::Update() {
 	return update_status::UPDATE_CONTINUE;
 }
 
+void ModuleShield::OnCollision(Collider* col_1, Collider* col_2) {
+	if (collider1 == col_1 || collider2 == col_1)
+		if(IsEnabled())
+			Disable();
+}
+
 bool ModuleShield::CleanUp() {
 
 	// Remove all memory leaks
@@ -170,16 +177,4 @@ bool ModuleShield::CleanUp() {
 	collider2 = nullptr;
 
 	return true;
-}
-
-void ModuleShield::OnCollision(Collider* col_1, Collider* col_2)
-{
-	if (col_1->type == COLLIDER_ENEMY && col_2->type == COLLIDER_SHIELD_1 || col_2->type == COLLIDER_ENEMY && col_1->type == COLLIDER_SHIELD_1)
-	{
-		life--;
-	}
-	if (col_1->type == COLLIDER_ENEMY_SHOT && col_2->type == COLLIDER_SHIELD_1 || col_2->type == COLLIDER_ENEMY_SHOT && col_1->type == COLLIDER_SHIELD_1)
-	{
-		life--;
-	}
 }

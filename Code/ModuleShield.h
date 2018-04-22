@@ -27,7 +27,7 @@ public:
 	Collider* collider2;
 
 	iPoint position1, position2;
-	int life = 3;
+	//int life = 3;
 };
 
 #endif // !_MODULE_SHIELD_

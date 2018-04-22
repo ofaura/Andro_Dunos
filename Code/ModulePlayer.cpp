@@ -262,11 +262,6 @@ update_status ModulePlayer::Update()
 		}
 	}	
 
-	// Shield's live
-	if (App->shield->life == 0) {
-		App->shield->Disable();
-	}
-
 	// God mode
 	if (App->player->lives >= 0)
 	{

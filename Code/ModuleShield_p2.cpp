@@ -103,10 +103,10 @@ bool ModuleShield_p2::Start() {
 
 update_status ModuleShield_p2::Update() {
 
-	if (life == 0) {}
-	else if (life == 1) current_lvl = &lvl1;
+	/*if (life == 1) current_lvl = &lvl1;
 	else if (life == 2)	current_lvl = &lvl2;
-	else if (life == 3)	current_lvl = &lvl3;
+	else if (life == 3)	current_lvl = &lvl3;*/
+	current_lvl = &lvl1;
 
 	// ---- Keeps realtive position to the ship
 	switch (App->player->type) {
@@ -160,6 +160,12 @@ update_status ModuleShield_p2::Update() {
 	return update_status::UPDATE_CONTINUE;
 }
 
+void ModuleShield_p2::OnCollision(Collider* col_1, Collider* col_2) {
+	if (collider1 == col_1 || collider2 == col_1)
+		if (IsEnabled())
+			Disable();
+}
+
 bool ModuleShield_p2::CleanUp() {
 
 	// Remove all memory leaks
@@ -171,12 +177,4 @@ bool ModuleShield_p2::CleanUp() {
 	collider2 = nullptr;
 
 	return true;
-}
-
-void ModuleShield_p2::OnCollision(Collider* col_1, Collider* col_2)
-{
-	if (col_1->type == COLLIDER_ENEMY && col_2->type == COLLIDER_SHIELD_2 || col_2->type == COLLIDER_ENEMY && col_1->type == COLLIDER_SHIELD_2)
-	{
-		life--;
-	}
 }
