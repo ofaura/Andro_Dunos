@@ -71,13 +71,13 @@ update_status ModuleShield::Update() {
 	collider2->SetPos(position2.x, position2.y);
 
 	SDL_Rect base = base_anim.GetCurrentFrame();
-	SDL_Rect laser = current_lvl->GetCurrentFrame();
+	SDL_Rect light = current_lvl->GetCurrentFrame();
 
 	// ---- Draw Everything
 	App->render->Blit(graphics, position1.x, position1.y, &base);
 	App->render->Blit(graphics, position2.x, position2.y, &base);
-	App->render->Blit(graphics, position1.x + 8, position1.y + 1, &laser);
-	App->render->Blit(graphics, position2.x + 8, position2.y + 1, &laser);
+	App->render->Blit(graphics, position1.x + 8, position1.y + 1, &light);
+	App->render->Blit(graphics, position2.x + 8, position2.y + 1, &light);
 
 	return update_status::UPDATE_CONTINUE; 
 }
@@ -85,7 +85,7 @@ update_status ModuleShield::Update() {
 bool ModuleShield::CleanUp() { 
 
 	// Remove all memory leaks
-	LOG("Unloading ship");
+	LOG("Unloading shield");
 	App->textures->Unload(graphics);
 
 	return true;
