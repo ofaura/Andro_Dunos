@@ -89,6 +89,7 @@ bool ModuleBonus::Start()
 	// Fonts are loaded
 	bonus_font = App->fonts->Load("Assets/Sprites/UI/Fonts/bonus_font.png", "12AELPRY-", 1);
 	font_score = App->fonts->Load("Assets/Sprites/UI/Fonts/score_font.png", "1234567890P", 1);
+	joined_score = App->fonts->Load("Assets/Sprites/UI/Fonts/final_credits_font.png", "ABCDEGHIJKLMNOPRSTUWXYZ,!", 5);
 
 	// Reseting the camera
 	App->render->camera.x = App->render->camera.y = 0;
@@ -140,6 +141,10 @@ update_status ModuleBonus::Update()
 	App->fonts->BlitText(270, 115, font_score, "P");
 
 	// Joined points
+	joinedScore = App->user_interface->score1 + App->user_interface->score2;
+	sprintf_s(joinedScore_text, 10, "%7d", joinedScore);
+	App->fonts->BlitText(220, 183, font_score, joinedScore_text);
+	App->fonts->BlitText(30, 180, joined_score, "JOINED SCORE");
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1)
 	{

@@ -19,8 +19,12 @@ public:
 
 public:
 
+	uint joinedScore; // Score of both player 1 and 2
+
 	int bonus_font = -1;
 	int font_score = -1;
+	int joined_score = -1;
+	char joinedScore_text[10];
 
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* scoreRect = nullptr;
