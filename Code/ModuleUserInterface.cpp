@@ -10,6 +10,8 @@
 #include "ModuleInput.h"
 #include "ModuleEnemies.h"
 #include "ModuleUserInterface.h"
+#include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 
 #include <stdio.h>
 
@@ -325,7 +327,11 @@ update_status ModuleUserInterface::Update()
 		else if (App->player->type == 3)
 			App->render->Blit(weaponHud, 8, 16, &HUD4, 1, false);
 
-		App->fonts->BlitText(34, 17, hud_characteristics, "1");
+		if (App->player->ShootPowerUpLevel == 1) {
+			App->fonts->BlitText(34, 17, hud_characteristics, "1");
+		} else if (App->player->ShootPowerUpLevel == 2) {
+			App->fonts->BlitText(34, 17, hud_characteristics, "2");
+		}
 		App->fonts->BlitText(66, 17, hud_characteristics, "0");
 		App->fonts->BlitText(98, 17, hud_characteristics, "0");
 		App->fonts->BlitText(130, 17, hud_characteristics, "0");
@@ -384,8 +390,12 @@ update_status ModuleUserInterface::Update()
 				App->render->Blit(weaponHud, 185, 16, &HUD3, 1, false);
 			else if (App->player2->type == 3)
 				App->render->Blit(weaponHud, 185, 16, &HUD4, 1, false);
-
-			App->fonts->BlitText(211, 17, hud_characteristics, "1");
+			if (App->player->ShootPowerUpLevel == 1) {
+				App->fonts->BlitText(211, 17, hud_characteristics, "1");
+			}
+			else if (App->player->ShootPowerUpLevel == 2) {
+				App->fonts->BlitText(211, 17, hud_characteristics, "2");
+			}
 			App->fonts->BlitText(243, 17, hud_characteristics, "0");
 			App->fonts->BlitText(275, 17, hud_characteristics, "0");
 			App->fonts->BlitText(307, 17, hud_characteristics, "0");

@@ -52,17 +52,28 @@ bool ModuleParticles::Start()
 	laser2_2.speed.x = -8;
 	laser2_2.life = 2000;
 
-	laser3.anim.PushBack({ 16, 101, 32, 3 });
-	laser3.anim.loop = false;
-	laser3.speed.x = 8;
-	laser3.life = 2000;
+	laser3_1.anim.PushBack({ 16, 101, 32, 3 });
+	laser3_1.anim.loop = false;
+	laser3_1.speed.x = 8;
+	laser3_1.life = 2000;
+
+	laser3_2.anim.PushBack({ 16, 101, 32, 3 });
+	laser3_2.anim.loop = false;
+	laser3_2.speed.x = 8;
+	laser3_2.speed.y = 8;
+	laser3_2.life = 2000;
+
+	laser3_3.anim.PushBack({ 16, 101, 32, 3 });
+	laser3_3.anim.loop = false;
+	laser3_3.speed.x = 8;
+	laser3_3.speed.y = -8;
+	laser3_3.life = 2000;
 
 	laser4_1.anim.PushBack({ 41, 11, 13, 1 });
 	laser4_1.anim.PushBack({ 41, 11, 13, 2 });
 	laser4_1.anim.PushBack({ 41, 23, 13, 6 });
 	laser4_1.anim.loop = false;
 	laser4_1.speed.x = 8;
-	laser4_1.speed.y = 1;
 	laser4_1.anim.speed = 0.5f;
 	laser4_1.life = 2000;
 
@@ -71,9 +82,18 @@ bool ModuleParticles::Start()
 	laser4_2.anim.PushBack({ 41, 23, 13, 6 });
 	laser4_2.anim.loop = false;
 	laser4_2.speed.x = 8;
-	laser4_2.speed.y = -1;
+	laser4_2.speed.y = 1;
 	laser4_2.anim.speed = 0.5f;
 	laser4_2.life = 2000;
+
+	laser4_3.anim.PushBack({ 41, 11, 13, 1 });
+	laser4_3.anim.PushBack({ 41, 11, 13, 2 });
+	laser4_3.anim.PushBack({ 41, 23, 13, 6 });
+	laser4_3.anim.loop = false;
+	laser4_3.speed.x = 8;
+	laser4_3.speed.y = -1;
+	laser4_3.anim.speed = 0.5f;
+	laser4_3.life = 2000;
 
 	// Player 1 death
 	explosionP1.anim.PushBack({ 11, 146, 27, 17});

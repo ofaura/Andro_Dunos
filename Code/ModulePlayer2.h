@@ -55,6 +55,7 @@ public:
 	bool activatedChange; //Tells if the player is changing of weapon
 
 	int lives = 2;
+	int ShootPowerUpLevel2 = 1;
 
 	uint y = 0;
 	Collider* player = nullptr;
