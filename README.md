@@ -19,34 +19,34 @@ F8 - To enable player 2 |
 
 PLAYER 1:
 
-	W - Move up.
+	W - Move up
 
-	A - Move left.
+	A - Move left
 
-	S - Move down.
+	S - Move down
 
-	D - Move right.
+	D - Move right
 
-	SPACE - Shoot.
-	
-	E - Change weapon type.
+	SPACE - Shoot
+
+	E - Change weapon type
 
 PLAYER 2:
 
-	UP - Move up.
+	UP - Move up
 
-	LEFT - Move left.
+	LEFT - Move left
 
-	DOWN - Move down.
+	DOWN - Move down
 
-	RIGHT - Move right.
+	RIGHT - Move right
 
-	RIGHT CONTROL - Shoot.
-	
-	RIGHT SHIFT - Change weapon type.
+	RIGHT CONTROL - Shoot
+
+	RIGHT SHIFT - Change weapon type
 
 
-ENTER - Go to next stage.
+ENTER - Go to next stage
 
 Press ESC or click on the red cross to close the application.
 
