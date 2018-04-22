@@ -266,7 +266,7 @@ update_status ModulePlayer2::Update()
 		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)
 		{
 
-			GodMode = !GodMode;
+			GodMode = App->player->GodMode;
 
 			if (GodMode == true)
 			{
