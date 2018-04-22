@@ -15,6 +15,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <time.h>
+#include <iostream>
+#include <string>
 
 enum Stages
 {
@@ -28,12 +30,12 @@ enum Stages
 
 PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 {
-	srand(1); // doesn't let me do time(NULL)
+	srand(time(NULL)); // doesn't let me do time(NULL)
 
 	powerup_picked = App->audio->LoadFx("Assets/Audio/powerup_picked.wav");
 	graphics = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
 
-	int random = rand() % 2;
+	random = rand() % 2;
 
 	if (random == 0)
 	{
@@ -151,9 +153,9 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 
 void PowerUp::Draw(SDL_Texture* sprites)
 {
-	if (time >= 0 && time < 400)
+	if (milliseconds >= 0 && milliseconds < 400)
 	{
-		if (time >= 200 && time < 225)
+		if (milliseconds >= 200 && milliseconds < 225)
 		{
 			App->render->Blit(graphics, position.x, position.y, &(act[REFLECTION_1]->GetCurrentFrame()));
 		}
@@ -163,14 +165,14 @@ void PowerUp::Draw(SDL_Texture* sprites)
 		}
 	}
 
-	else if (time >= 400 && time < 425)
+	else if (milliseconds >= 400 && milliseconds < 425)
 	{
 		App->render->Blit(graphics, position.x, position.y, &(act[CHANGE_1]->GetCurrentFrame()));
 	}
 
-	else if (time >= 425 && time < 825)
+	else if (milliseconds >= 425 && milliseconds < 825)
 	{
-		if (time >= 625 && time < 650)
+		if (milliseconds >= 625 && milliseconds < 650)
 		{
 			App->render->Blit(graphics, position.x, position.y, &(act[REFLECTION_2]->GetCurrentFrame()));
 		}
@@ -180,24 +182,24 @@ void PowerUp::Draw(SDL_Texture* sprites)
 		}
 	}
 
-	else if (time >= 825 && time < 850)
+	else if (milliseconds >= 825 && milliseconds < 850)
 	{
 		App->render->Blit(graphics, position.x, position.y, &(act[CHANGE_2]->GetCurrentFrame()));
 	}
 
-	else if (time >= 850)
+	else if (milliseconds >= 850)
 	{
 		for (int counter = 0; counter < CHANGE_2 + 1; counter++)
 		{
 			act[counter]->Reset();
 		}
 
-		time = -1;
+		milliseconds = -1;
 	}
 
 	collider->SetPos(position.x, position.y);
 
-	time++;
+	milliseconds++;
 }
 
 void PowerUp::Move()
@@ -263,18 +265,30 @@ void PowerUp::Move()
 
 void PowerUp::OnCollision(Collider* collider)
 {
-	if ((collider->type == COLLIDER_PLAYER))
-	{
-		App->shield->Enable();
-		App->audio->PlayFx(powerup_picked);
-		App->player->ShootPowerUpLevel = 2;
+	if (random == 0) {
+		if ((collider->type == COLLIDER_PLAYER))
+		{
+			App->audio->PlayFx(powerup_picked);
+			App->player->ShootPowerUpLevel = 2;
 
-	}
-	else if (collider->type == COLLIDER_PLAYER_2)
-	{
-		App->shield_p2->Enable();
-		App->audio->PlayFx(powerup_picked);
-		App->player2->ShootPowerUpLevel2 = 2;
+		}
+		else if (collider->type == COLLIDER_PLAYER_2)
+		{			
+			App->audio->PlayFx(powerup_picked);
+			App->player2->ShootPowerUpLevel2 = 2;
+		}
+	}else if (random == 1) {
+		if ((collider->type == COLLIDER_PLAYER))
+		{
+			App->shield->Enable();
+			App->audio->PlayFx(powerup_picked);
+
+		}
+		else if (collider->type == COLLIDER_PLAYER_2)
+		{
+			App->shield_p2->Enable();
+			App->audio->PlayFx(powerup_picked);
+		}
 	}
 }
 
