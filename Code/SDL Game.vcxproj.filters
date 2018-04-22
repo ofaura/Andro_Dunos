@@ -125,6 +125,9 @@
     <ClInclude Include="ModuleParticles.h">
       <Filter>Modules\Others</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleShield_p2.h">
+      <Filter>Modules\Others</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -209,6 +212,9 @@
       <Filter>Modules\Others</Filter>
     </ClCompile>
     <ClCompile Include="ModuleShield.cpp">
+      <Filter>Modules\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleShield_p2.cpp">
       <Filter>Modules\Others</Filter>
     </ClCompile>
   </ItemGroup>

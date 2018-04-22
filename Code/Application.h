@@ -19,6 +19,7 @@ class ModuleAudio;
 class ModuleParticles;
 class ModuleBonus;
 class ModuleShield;
+class ModuleShield_p2;
 class ModuleStartMenu;
 class ModulePlayer2;
 class ModuleCollision;
@@ -43,6 +44,7 @@ public:
 	ModuleAudio* audio;
 	ModuleBonus* bonus;
 	ModuleShield* shield;
+	ModuleShield_p2* shield_p2;
 	ModuleParticles* particles;
 	ModuleStartMenu* start_menu;
 	ModulePlayer2* player2;
