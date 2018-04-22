@@ -144,6 +144,92 @@ bool ModuleSceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 1600, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 1600, 130);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 5000, 360);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 5050, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 5050, 380);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 5100, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 5100, 380);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 6540, 410);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 6590, 350);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 6590, 430);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 6640, 350);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 6640, 430);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 5600, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 5610, 105);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 5630, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 5630, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 5640, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 5640, 60);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 2000, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 2015, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 2030, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 2045, 60);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 2075, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 2090, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 2105, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 2120, 140);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 2180, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 2195, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 2210, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 2225, 60);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 2255, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 2270, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 2285, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 2300, 140);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3300, 310);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3315, 310);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3330, 310);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3345, 310);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3375, 380);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3390, 380);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3405, 380);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3420, 380);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3480, 310);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3495, 310);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3510, 310);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3525, 310);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3555, 380);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3570, 380);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3585, 380);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3600, 380);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7600, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7615, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7630, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7645, 60);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7675, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7690, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7705, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7720, 140);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7780, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7795, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7810, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7825, 60);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7855, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7870, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7885, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7900, 140);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 8300, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 8310, 105);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 8330, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 8330, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 8340, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 8340, 60);
+
 	// Colliders ----
 	App->collision->Enable();
 	App->collision->AddCollider({ 0, 210, 2960, 20 }, COLLIDER_WALL);
