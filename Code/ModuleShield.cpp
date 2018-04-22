@@ -32,6 +32,21 @@ ModuleShield::ModuleShield() {
 	lvl1.loop = true;
 	lvl1.speed = 0.5f;
 
+	// ---- Animation for lvl2 LaserShield (Yellow)
+	lvl2.PushBack({ 46, 18, 5, 14 });
+	lvl2.PushBack({ 0, 18, 5, 14 });
+	lvl2.PushBack({ 7, 18, 5, 14 });
+	lvl2.PushBack({ 0, 18, 5, 14 });
+	lvl2.loop = true;
+	lvl2.speed = 0.5f;
+
+	// ---- Animation for lvl3 LaserShield (Green)
+	lvl3.PushBack({ 46, 18, 5, 14 });
+	lvl3.PushBack({ 0, 18, 5, 14 });
+	lvl3.PushBack({ 7, 18, 5, 14 });
+	lvl3.PushBack({ 0, 18, 5, 14 });
+	lvl3.loop = true;
+	lvl3.speed = 0.5f;
 }
 
 ModuleShield::~ModuleShield() {}
@@ -78,6 +93,8 @@ bool ModuleShield::Start() {
 		break;
 	}
 
+	life = 1;
+
 	// ---- Declares colliders for shield parts individually
 	collider1 = App->collision->AddCollider({ position1.x, position1.y, 14, 16 }, COLLIDER_SHIELD_1, this);
 	collider2 = App->collision->AddCollider({ position2.x, position2.y, 14, 16 }, COLLIDER_SHIELD_1, this);
@@ -87,7 +104,19 @@ bool ModuleShield::Start() {
 
 update_status ModuleShield::Update() { 
 	
-	current_lvl = &lvl1;
+	switch (life) {
+	case 0:
+		CleanUp();
+	case 1:
+		current_lvl = &lvl1;
+		break;
+	case 2:
+		current_lvl = &lvl2;
+		break;
+	case 3:
+		current_lvl = &lvl3;
+
+	}
 
 	// ---- Keeps realtive position to the ship
 	switch (App->player->type) {
@@ -147,6 +176,10 @@ bool ModuleShield::CleanUp() {
 	// Remove all memory leaks
 	LOG("Unloading shield");
 	App->textures->Unload(graphics);
+
+	//Get rid of colliders;
+	collider1 = nullptr;
+	collider2 = nullptr;
 
 	return true;
 }
