@@ -297,8 +297,13 @@ bool ModuleSceneLevel1::CleanUp()
 
 	// Remove all memory leaks
 	LOG("Unloading textures");
-	App->textures->Unload(background_texture);
+	App->textures->Unload(mars_tex);
+	App->textures->Unload(moon_tex);
+	App->textures->Unload(background2_texture);
 	App->textures->Unload(ground_texture);
+	App->textures->Unload(background3_texture);
+	App->textures->Unload(background_texture);
+
 	App->enemies->Disable();
 	App->collision->Disable();
 	App->player->Disable();
