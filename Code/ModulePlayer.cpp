@@ -75,6 +75,8 @@ bool ModulePlayer::Start()
 	LOG("Loading player textures");
 	graphics = App->textures->Load("Assets/Sprites/player/ships.png"); // arcade version
 	
+	ShootPowerUpLevel = 1;
+
 	// Audios are loaded
 	laser1 = App->audio->LoadFx("Assets/Audio/laser1.wav");
 	laser2 = App->audio->LoadFx("Assets/Audio/laser2.wav");
