@@ -103,6 +103,8 @@ bool ModuleBonus::Start()
 bool ModuleBonus::CleanUp()
 {
 	LOG("Unloading bonus scene");
+	App->fonts->UnLoad(joined_score);
+	App->fonts->UnLoad(font_score);
 	App->fonts->UnLoad(bonus_font);
 	App->textures->Unload(scoreRect);
 	App->textures->Unload(background);
