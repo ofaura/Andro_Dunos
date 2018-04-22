@@ -5,6 +5,8 @@
 #include "Animation.h"
 #include "Globals.h"
 
+struct SDL_Texture;
+
 class ModuleShield : public Module{
 public:
 	ModuleShield();
@@ -15,6 +17,8 @@ public:
 	bool CleanUp();
 
 public:
+	SDL_Texture* graphics = nullptr;
+
 	Collider* collider1;
 	Collider* collider2;
 
