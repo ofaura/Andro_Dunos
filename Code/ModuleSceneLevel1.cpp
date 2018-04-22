@@ -367,8 +367,11 @@ update_status ModuleSceneLevel1::Update()
 		App->player2->position.x += 1;
 	}
 	
-	
-	
+	if (App->render->camera.x == 8800 * SCREEN_SIZE)
+	{
+		App->fade->FadeToBlack(App->level1, App->bonus, 1.0f);
+	}
+
 	if (App->render->camera.y < 400 && App->render->camera.x > 4000)
 	{
 		App->render->Blit(background3_texture, 3500, 0, &background3, 0.5f, true);

@@ -7,7 +7,7 @@
 
 
 #define DEFAULT_MUSIC_FADE_TIME 2.0f
-#define MAX_FX 100
+#define MAX_FX 200
 
 class ModuleAudio : public Module
 {
