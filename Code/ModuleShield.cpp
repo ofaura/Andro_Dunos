@@ -43,11 +43,40 @@ bool ModuleShield::Start() {
 
 	if (graphics == nullptr) ret = false; //failsafe for wrong address
 
-	// ---- Declares initial position, surrounding p1
-	position1.x = App->player->position.x + 29; 
-	position1.y = App->player->position.y -2;
-	position2.x = App->player->position.x + 29;
-	position2.y = App->player->position.y + 22;
+	switch (App->player->type) {
+
+		// ---- Stays in front of ship
+	case bullet_type::TYPE_1:
+		position1.x = App->player->position.x + 29;
+		position1.y = App->player->position.y - 8;
+		position2.x = App->player->position.x + 29;
+		position2.y = App->player->position.y + 10;
+		break;
+
+		// ---- Stays on either side of the ship
+	case bullet_type::TYPE_2:
+		position1.x = App->player->position.x + 5;
+		position1.y = App->player->position.y - 8;
+		position2.x = App->player->position.x + 5;
+		position2.y = App->player->position.y + 10;
+		break;
+
+		// ---- Stays in front of ship
+	case bullet_type::TYPE_3:
+		position1.x = App->player->position.x + 29;
+		position1.y = App->player->position.y - 8;
+		position2.x = App->player->position.x + 29;
+		position2.y = App->player->position.y + 10;
+		break;
+
+		// ---- Stays behind ship
+	case bullet_type::TYPE_4:
+		position1.x = App->player->position.x + 29;
+		position1.y = App->player->position.y - 8;
+		position2.x = App->player->position.x + 29;
+		position2.y = App->player->position.y + 10;
+		break;
+	}
 
 	// ---- Declares colliders for shield parts individually
 	collider1 = App->collision->AddCollider({ position1.x, position1.y, 14, 16 }, COLLIDER_SHIELD_1, this);
@@ -60,11 +89,42 @@ update_status ModuleShield::Update() {
 	
 	current_lvl = &lvl1;
 
-	// ---- Keeps realtive position to the ship constant
-	position1.x = App->player->position.x + 29;
-	position1.y = App->player->position.y -8;
-	position2.x = App->player->position.x + 29;
-	position2.y = App->player->position.y + 10;
+	// ---- Keeps realtive position to the ship
+	switch (App->player->type) {
+
+		// ---- Stays in front of ship
+	case bullet_type::TYPE_1:
+		position1.x = App->player->position.x + 29;
+		position1.y = App->player->position.y - 8;
+		position2.x = App->player->position.x + 29;
+		position2.y = App->player->position.y + 10;
+		break;
+
+		// ---- Stays on either side of the ship
+	case bullet_type::TYPE_2:
+		position1.x = App->player->position.x + 5;
+		position1.y = App->player->position.y - 15;
+		position2.x = App->player->position.x + 5;
+		position2.y = App->player->position.y + 17;
+		break;
+
+		// ---- Stays in front of ship
+	case bullet_type::TYPE_3:
+		position1.x = App->player->position.x + 29;
+		position1.y = App->player->position.y - 8;
+		position2.x = App->player->position.x + 29;
+		position2.y = App->player->position.y + 10;
+		break;
+
+		// ---- Stays behind ship
+	case bullet_type::TYPE_4:
+		position1.x = App->player->position.x -16;
+		position1.y = App->player->position.y - 8;
+		position2.x = App->player->position.x -16;
+		position2.y = App->player->position.y + 10;
+		break;
+	}
+	
 
 	// ---- Updates colliders
 	collider1->SetPos(position1.x, position1.y);
