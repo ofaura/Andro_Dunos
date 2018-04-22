@@ -1,43 +1,45 @@
-﻿### The Team
-* Management: [Òscar Faura](https://github.com/ofaura)
-* Art/Design: [Jacobo Galofre](https://github.com/sherzock)
-* Programmer: [Sam Davidson](https://github.com/samuelkurtdavidson)
-* Programmer: [Gerard Albarran](https://github.com/GAPIntoTheGame)
-* QA: [Dani Lorenzo](https://github.com/DLorenzoLaguno17)
+Andro Dunos v.0.5
 
-![Team photo https://github.com/ofaura/Andro_Dunos/blob/master/images/team.jpg?raw=true](https://github.com/ofaura/Andro_Dunos/blob/master/images/team.jpg?raw=true)
+github: https://github.com/ofaura/Andro_Dunos
 
-### The Game
+Controls:
 
-[![txt](https://github.com/ofaura/Andro_Dunos/blob/master/images/androdun.png?raw=true)](https://youtu.be/FYyT9rK8hGw)
+F1 - To see colliison boxes
+F2 - Autowin
+F3 - Aulose
+F5 - GodMode
+
+PLAYER 1:
+
+	W - Move up.
+
+	A - Move left.
+
+	S - Move down.
+
+	D - Move right.
+
+	SPACE - Shoot.
+	
+	E - Change weapon type.
+
+PLAYER 2:
+
+	UP - Move up.
+
+	LEFT - Move left.
+
+	DOWN - Move down.
+
+	RIGHT - Move right.
+
+	RIGHT CONTROL - Shoot.
+	
+	RIGHT SHIFT - Change weapon type.
 
 
-Andro Dunos is a side-scrolling shoot 'em up developed by Japan based Visco Games Corporation, set in the far future
-where you play the role of an ace pilot in a sci-fi combat ship designed with 4 (way, laser, 
-home, rear) weapon settings which the player can switch to at any moment of gameplay. The player, with the help 
-of these weapons and of enemy ship dropped power-ups, must shoot their way through mobs of enemies and bosses
-to advance through levels and defeat the alien invaders of the Earth.
+ENTER - Go to next stage.
 
-***
+ESC / Click in the red cross - Close application.
 
-# Project Name
-Andro Dunos
-## Installation
-TODO: Describe the installation process
-## Usage
-TODO: Write usage instructions
-## Contributing
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-newfeature`
-3. Commit your changes: `git commit -am 'Add some
-feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
-## History
-TODO: Write history
-## Credits
-TODO: Write credits
-## License
-TODO: Write license
-
-https://github.com/ofaura/Andro_Dunos
+Licensed under the [MIT License](LICENSE).
