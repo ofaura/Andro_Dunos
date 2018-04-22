@@ -75,8 +75,10 @@ update_status ModuleInput::PreUpdate()
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_F8])
-		App->player2->Enable();
+	if (App->input->keyboard[SDL_SCANCODE_F8]){
+		if (App->level1->IsEnabled())
+			App->player2->Enable();
+	}
 	
 	if (keyboard[SDL_SCANCODE_F7]) {
 		App->player2->Disable();
