@@ -338,8 +338,11 @@ bool ModuleUserInterface::CleanUp()
 {
 	// Remove all memory leaks
 	LOG("Unloading UI");
+	App->audio->UnLoadFx(chargingSound);
+	App->audio->UnLoadFx(chargedSound);
 	App->textures->Unload(super);
 	App->textures->Unload(weaponHud);
+	
 
 	return true;
 }
