@@ -34,7 +34,7 @@ public:
 	SDL_Rect HUD2;
 	SDL_Rect HUD3;
 	SDL_Rect HUD4;
-	SDL_Rect Life;
+	SDL_Rect Life1, Life2; // Lives remaining of p1 and p2
 
 	Animation beamCharger; // Showe while charging
 	Animation beamCharged; // Showed while charged

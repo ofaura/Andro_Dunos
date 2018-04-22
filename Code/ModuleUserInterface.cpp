@@ -35,10 +35,15 @@ ModuleUserInterface::ModuleUserInterface()
 	HUD4.w = 127;
 	HUD4.h = 7;
 
-	Life.x = 15;
-	Life.y = 24;
-	Life.w = 7;
-	Life.h = 7;
+	Life1.x = 15;
+	Life1.y = 24;
+	Life1.w = 7;
+	Life1.h = 7;
+
+	Life2.x = 27;
+	Life2.y = 24;
+	Life2.w = 7;
+	Life2.h = 7;
 
 	// Beam charger
 	beamNoCharged.PushBack({ 29, 28, 64, 6 });
@@ -175,13 +180,13 @@ update_status ModuleUserInterface::Update()
 
 			// Printing it on the screen
 			if (App->player2->type == 0)
-				App->fonts->BlitText(214, 15, type_score, "TYPE-1");
+				App->fonts->BlitText(217, 15, type_score, "TYPE-1");
 			else if (App->player2->type == 1)
-				App->fonts->BlitText(214, 15, type_score, "TYPE-2");
+				App->fonts->BlitText(217, 15, type_score, "TYPE-2");
 			else if (App->player2->type == 2)
-				App->fonts->BlitText(214, 15, type_score, "TYPE-3");
+				App->fonts->BlitText(217, 15, type_score, "TYPE-3");
 			else if (App->player2->type == 3)
-				App->fonts->BlitText(214, 15, type_score, "TYPE-4");
+				App->fonts->BlitText(217, 15, type_score, "TYPE-4");
 
 			startTime2 = currentTime2;
 		}
@@ -245,46 +250,86 @@ update_status ModuleUserInterface::Update()
 
 	// Player's lives
 	if (App->player->lives == 2)
-		App->render->Blit(weaponHud, 17, 25, &Life, 1, false);
+		App->render->Blit(weaponHud, 17, 25, &Life1, 1, false);
 	if (App->player->lives >= 1)
-		App->render->Blit(weaponHud, 24, 25, &Life, 1, false);
+		App->render->Blit(weaponHud, 24, 25, &Life1, 1, false);
 
 	// Beam charger
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT) {
 		if (beamCharger.Finished()) {
-			App->render->Blit(super, 74, 25, &(beamCharged.GetCurrentFrame()), 1, false);
+			App->render->Blit(super, 72, 25, &(beamCharged.GetCurrentFrame()), 1, false);
 		}
 		else {
-			App->render->Blit(super, 74, 25, &(beamCharger.GetCurrentFrame()), 1, false);
+			App->render->Blit(super, 72, 25, &(beamCharger.GetCurrentFrame()), 1, false);
 		}
 	}
 	else 
 	{
-		App->render->Blit(super, 74, 25, &(beamNoCharged.GetCurrentFrame()), 1, false);
+		App->render->Blit(super, 72, 25, &(beamNoCharged.GetCurrentFrame()), 1, false);
 		beamCharger.Reset();
 	}
 
 	// PLAYER 2 -------------------------------------------------
-	App->fonts->BlitText(244, 6, font_score, score_text2);
-	App->fonts->BlitText(214, 6, font_score, "2P");
+	App->fonts->BlitText(249, 6, font_score, score_text2);
+	App->fonts->BlitText(219, 6, font_score, "2P");
 
+	// Printing weapons' HUD on the screen
 	if (App->player2->IsEnabled()) {
 		if (activatedChange2 = true) {
 			if (currentTime2 - startTime2 <= 700) {
 
 				if (App->player2->type == 0)
-					App->fonts->BlitText(214, 15, type_score, "TYPE-1");
+					App->fonts->BlitText(217, 15, type_score, "TYPE-1");
 				else if (App->player2->type == 1)
-					App->fonts->BlitText(214, 15, type_score, "TYPE-2");
+					App->fonts->BlitText(217, 15, type_score, "TYPE-2");
 				else if (App->player2->type == 2)
-					App->fonts->BlitText(214, 15, type_score, "TYPE-3");
+					App->fonts->BlitText(217, 15, type_score, "TYPE-3");
 				else if (App->player2->type == 3)
-					App->fonts->BlitText(214, 15, type_score, "TYPE-4");
+					App->fonts->BlitText(217, 15, type_score, "TYPE-4");
 
 				activatedChange2 = false;
 			}
 		}
+
+	// Weapon characteristics UI
+		if (activatedChange2 == true) {
+			if (App->player2->type == 0)
+				App->render->Blit(weaponHud, 185, 16, &HUD1, 1, false);
+			else if (App->player2->type == 1)
+				App->render->Blit(weaponHud, 185, 16, &HUD2, 1, false);
+			else if (App->player2->type == 2)
+				App->render->Blit(weaponHud, 185, 16, &HUD3, 1, false);
+			else if (App->player2->type == 3)
+				App->render->Blit(weaponHud, 185, 16, &HUD4, 1, false);
+
+			App->fonts->BlitText(211, 17, hud_characteristics, "1");
+			App->fonts->BlitText(243, 17, hud_characteristics, "0");
+			App->fonts->BlitText(275, 17, hud_characteristics, "0");
+			App->fonts->BlitText(307, 17, hud_characteristics, "0");
+		}
+
+	// Player's lives
+		if (App->player2->lives == 2)
+			App->render->Blit(weaponHud, 197, 25, &Life2, 1, false);
+		if (App->player2->lives >= 1)
+			App->render->Blit(weaponHud, 204, 25, &Life2, 1, false);
+
+	// Beam charger
+		if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_REPEAT) {
+			if (beamCharger.Finished()) {
+				App->render->Blit(super, 249, 25, &(beamCharged.GetCurrentFrame()), 1, false);
+			}
+			else {
+				App->render->Blit(super, 249, 25, &(beamCharger.GetCurrentFrame()), 1, false);
+			}
+		}
+		else
+		{
+			App->render->Blit(super, 249, 25, &(beamNoCharged.GetCurrentFrame()), 1, false);
+			beamCharger.Reset();
+		}
 	}
+	
 
 	return UPDATE_CONTINUE;
 }
