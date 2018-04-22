@@ -3,6 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
+#include "ModuleUserInterface.h"
 
 Enemy_FirstEnemy::Enemy_FirstEnemy(int x, int y) : Enemy(x, y)
 {
@@ -48,4 +49,24 @@ void Enemy_FirstEnemy::Move()
 
 	position.y = int(float(original_y) + (20.0f * sinf(wave)));
 	position.x -= 1;
+}
+
+void Enemy_FirstEnemy::OnCollision(Collider* collider)
+{
+	App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
+
+	if (dead == false)
+	{
+	
+		if (collider->type == COLLIDER_PLAYER_SHOT)
+		{
+			App->user_interface->score1 += score;
+		}
+		if (collider->type == COLLIDER_PLAYER2_SHOT)
+		{
+			App->user_interface->score2 += score;
+		}
+	}
+
+	dead = true;
 }

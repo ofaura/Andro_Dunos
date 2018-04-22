@@ -164,10 +164,6 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		{
 			enemies[i]->OnCollision(c2);
 			delete enemies[i];
-			if (c1->type == COLLIDER_TYPE::COLLIDER_ENEMY && c2->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT)
-			{	
-				score += 100;
-			}
 			enemies[i] = nullptr;
 			break;
 		}

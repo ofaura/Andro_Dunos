@@ -8,6 +8,7 @@
 #include "SDL\include\SDL_timer.h"
 #include "Globals.h"
 #include <cmath>
+#include "ModuleUserInterface.h"
 
 Enemy_Shooter::Enemy_Shooter(int x, int y) : Enemy(x, y)
 {
@@ -69,4 +70,24 @@ void Enemy_Shooter::Move()
 	}
 	
 	collider->SetPos(position.x, position.y);
+}
+
+void Enemy_Shooter::OnCollision(Collider* collider)
+{
+	App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
+
+	if (dead == false)
+	{
+
+		if (collider->type == COLLIDER_PLAYER_SHOT)
+		{
+			App->user_interface->score1 += score;
+		}
+		if (collider->type == COLLIDER_PLAYER2_SHOT)
+		{
+			App->user_interface->score2 += score;
+		}
+	}
+
+	dead = true;
 }

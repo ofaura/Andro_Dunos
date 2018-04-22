@@ -40,7 +40,6 @@ public:
 	void OnCollision(Collider* c1, Collider* c2);
 
 	//Score counter
-	uint score = 0;
 
 	bool AddEnemy(ENEMY_TYPES type, int x, int y);
 

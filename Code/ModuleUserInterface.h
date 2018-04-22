@@ -26,7 +26,9 @@ public:
 	int p2_title = -1;
 	int hud_characteristics = -1;
 	int highscore_font = -1;
-	char score_text[10];
+	int score1 = 0, score2 = 0;
+	char score_text1[10];
+	char score_text2[10];
 
 	SDL_Rect HUD1;
 	SDL_Rect HUD2;

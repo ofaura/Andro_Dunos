@@ -50,6 +50,15 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_POWER_UP] = false;
 	//matrix[COLLIDER_PLAYER_SHOT][COLLIDER_SHIELD] = false;
 
+	matrix[COLLIDER_PLAYER2_SHOT][COLLIDER_WALL] = true;
+	matrix[COLLIDER_PLAYER2_SHOT][COLLIDER_PLAYER] = true;
+	matrix[COLLIDER_PLAYER2_SHOT][COLLIDER_PLAYER_2] = false;
+	matrix[COLLIDER_PLAYER2_SHOT][COLLIDER_ENEMY] = true;
+	matrix[COLLIDER_PLAYER2_SHOT][COLLIDER_PLAYER2_SHOT] = false;
+	matrix[COLLIDER_PLAYER2_SHOT][COLLIDER_ENEMY_SHOT] = false;
+	matrix[COLLIDER_PLAYER2_SHOT][COLLIDER_POWER_UP] = false;
+	//matrix[COLLIDER_PLAYER2_SHOT][COLLIDER_SHIELD] = false;
+
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_WALL] = true;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_PLAYER] = true;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_PLAYER_2] = true;
@@ -163,6 +172,9 @@ update_status ModuleCollision::Update()
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
 			break;
 		case COLLIDER_PLAYER_SHOT: // yellow
+			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
+			break;
+		case COLLIDER_PLAYER2_SHOT: // yellow
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
 			break;
 		case COLLIDER_ENEMY_SHOT: // magenta

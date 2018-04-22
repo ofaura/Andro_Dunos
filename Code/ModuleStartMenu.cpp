@@ -48,7 +48,6 @@ bool ModuleStartMenu::Start()
 	App->audio->PlayMusic("Assets/Audio/", 1.0f);
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
-	App->enemies->score = 0;
 	return true;
 }
 

@@ -14,8 +14,10 @@ private:
 public:
 
 	Enemy_FirstEnemy(int x, int y);
-
+	virtual void OnCollision(Collider* collider) override;
 	void Move();
+	bool dead = false;
+	int score = 100;
 };
 
 #endif // __ENEMY_FIRSTENEMY_H__

@@ -15,8 +15,11 @@ private:
 public:
 
 	Enemy_Shooter(int x, int y);
-	void Move();
 	uint lastTime = 0, currentTime;
+	virtual void OnCollision(Collider* collider) override;
+	void Move();
+	bool dead = false;
+	int score = 150;
 };
 
 #endif // __ENEMY_FIRSTENEMY_H__

@@ -190,14 +190,14 @@ update_status ModuleUserInterface::Update()
 	}
 	
 	// Blit the text of the score in at the bottom of the screen	
-	sprintf_s(score_text, 10, "%7d", App->enemies->score);
-
+	sprintf_s(score_text1, 10, "%7d", score1);
+	sprintf_s(score_text2, 10, "%7d", score2);
 	// Player 1 
-	App->fonts->BlitText(33, 6, font_score, score_text);
+	App->fonts->BlitText(33, 6, font_score, score_text1);
 	App->fonts->BlitText(8, 6, font_score, "1P");
 
 	// Player 2 
-	App->fonts->BlitText(244, 6, font_score, score_text);
+	App->fonts->BlitText(244, 6, font_score, score_text2);
 	App->fonts->BlitText(214, 6, font_score, "2P");
 
 	// High score

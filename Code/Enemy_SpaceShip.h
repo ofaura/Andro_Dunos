@@ -14,8 +14,10 @@ private:
 public:
 
 	Enemy_SpaceShip(int x, int y);
-
+	virtual void OnCollision(Collider* collider) override;
 	void Move();
+	bool dead = false;
+	int score = 100;
 };
 
 #endif // __ENEMY_SPACESHIP_H__
