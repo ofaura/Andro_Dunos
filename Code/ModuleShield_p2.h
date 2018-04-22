@@ -12,11 +12,10 @@ public:
 	ModuleShield_p2();
 	~ModuleShield_p2();
 
+	void ModuleShield_p2::OnCollision(Collider* col_1, Collider* col_2);
 	bool Start();
 	update_status Update();
 	bool CleanUp();
-
-	void OnCollision(Collider* col_1, Collider* col_2);
 
 public:
 	SDL_Texture* graphics = nullptr;
@@ -29,7 +28,6 @@ public:
 
 	iPoint position1, position2;
 	int life = 3;
-
 };
 
-#endif // !_MODULE_SHIELD_H_
+#endif // !_MODULE_SHIELD_

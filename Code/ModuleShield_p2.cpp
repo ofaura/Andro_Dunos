@@ -58,7 +58,7 @@ bool ModuleShield_p2::Start() {
 
 	if (graphics == nullptr) ret = false; //failsafe for wrong address
 
-	switch (App->player2->type) {
+	switch (App->player->type) {
 
 		// ---- Stays in front of ship
 	case bullet_type::TYPE_1:
@@ -95,20 +95,21 @@ bool ModuleShield_p2::Start() {
 
 
 	// ---- Declares colliders for shield parts individually
-	collider1 = App->collision->AddCollider({ position1.x, position1.y, 14, 16 }, COLLIDER_SHIELD_1, this);
-	collider2 = App->collision->AddCollider({ position2.x, position2.y, 14, 16 }, COLLIDER_SHIELD_1, this);
+	collider1 = App->collision->AddCollider({ position1.x, position1.y, 14, 16 }, COLLIDER_SHIELD_2, this);
+	collider2 = App->collision->AddCollider({ position2.x, position2.y, 14, 16 }, COLLIDER_SHIELD_2, this);
 
 	return ret;
 }
 
 update_status ModuleShield_p2::Update() {
 
-	if (life == 1) current_lvl = &lvl1;
+	if (life == 0) {}
+	else if (life == 1) current_lvl = &lvl1;
 	else if (life == 2)	current_lvl = &lvl2;
 	else if (life == 3)	current_lvl = &lvl3;
 
 	// ---- Keeps realtive position to the ship
-	switch (App->player2->type) {
+	switch (App->player->type) {
 
 		// ---- Stays in front of ship
 	case bullet_type::TYPE_1:
@@ -174,11 +175,7 @@ bool ModuleShield_p2::CleanUp() {
 
 void ModuleShield_p2::OnCollision(Collider* col_1, Collider* col_2)
 {
-	if (col_1->type == COLLIDER_ENEMY && col_2->type == COLLIDER_SHIELD_1 || col_2->type == COLLIDER_ENEMY && col_1->type == COLLIDER_SHIELD_1)
-	{
-		life--;
-	}
-	if (col_1->type == COLLIDER_ENEMY_SHOT && col_2->type == COLLIDER_SHIELD_1 || col_2->type == COLLIDER_ENEMY_SHOT && col_1->type == COLLIDER_SHIELD_1)
+	if (col_1->type == COLLIDER_ENEMY && col_2->type == COLLIDER_SHIELD_2 || col_2->type == COLLIDER_ENEMY && col_1->type == COLLIDER_SHIELD_2)
 	{
 		life--;
 	}

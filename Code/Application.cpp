@@ -33,6 +33,7 @@ Application::Application()
 	modules[i++] = start_menu = new ModuleStartMenu();
 	modules[i++] = bonus = new ModuleBonus();
 	modules[i++] = shield = new ModuleShield();
+	modules[i++] = shield_p2 = new ModuleShield_p2();
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = enemies = new ModuleEnemies();
@@ -66,6 +67,7 @@ bool Application::Init()
 	start_menu->Disable();
 	game_over->Disable();
 	shield->Disable();
+	shield_p2->Disable();
 
 	collision->Disable();
 	user_interface->Disable();

@@ -7,6 +7,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleShield.h"
+#include "ModuleShield_p2.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
@@ -266,12 +267,12 @@ void PowerUp::OnCollision(Collider* collider)
 	{
 		App->shield->Enable();
 		App->audio->PlayFx(powerup_picked);
-		App->player->ShootPowerUpLevel =2;
+		App->player->ShootPowerUpLevel = 2;
 
 	}
 	else if (collider->type == COLLIDER_PLAYER_2)
 	{
-		App->shield->Enable();
+		App->shield_p2->Enable();
 		App->audio->PlayFx(powerup_picked);
 		App->player2->ShootPowerUpLevel2 = 2;
 	}
