@@ -39,6 +39,7 @@ public:
 	float ground_pos_y = 0;
 	long int pos_x = 0;
 	int t = 0;
+	bool GodMode = false;
 };
 
 #endif // __MODULESCENELEVEL1_H__
