@@ -7,6 +7,10 @@
 #include "ModuleCollision.h"
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
+#include "ModuleFadeToBlack.h"
+#include "ModuleBonus.h"
+#include "ModuleSceneLevel1.h"
+#include "ModuleGameOver.h"
 
 ModuleInput::ModuleInput() : Module()
 {
@@ -78,6 +82,18 @@ update_status ModuleInput::PreUpdate()
 		App->player2->Disable();
 		App->p2collision->CleanUp();
 	}		
+
+	// Autowin key
+	if (App->input->keyboard[SDL_SCANCODE_F2])
+	{
+		App->fade->FadeToBlack(App->level1, App->bonus);
+	}
+
+	// Autolose key
+	if (App->input->keyboard[SDL_SCANCODE_F3])
+	{
+		App->fade->FadeToBlack(App->level1, App->game_over);
+	}
 	
 	return update_status::UPDATE_CONTINUE;
 }

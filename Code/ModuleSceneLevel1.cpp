@@ -297,12 +297,6 @@ update_status ModuleSceneLevel1::Update()
 	App->render->Blit(moon_tex, 750, 15, &moon, 0.3f);
 	App->render->Blit(mars_tex, 2600, 15, &mars, 0.3f);
 
-	// Pressing space the next stage is loaded
-	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1) 
-	{
-		App->fade->FadeToBlack(App->level1, App->bonus, 1.0f);
-	}
-
 	return UPDATE_CONTINUE;
 }
 

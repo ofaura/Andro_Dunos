@@ -166,18 +166,6 @@ update_status ModulePlayer::Update()
 			App->audio->PlayFx(type_change);
 		}
 
-		// Autowin key
-		if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
-		{
-			App->fade->FadeToBlack(App->level1, App->bonus);
-		}
-
-		// Autolose key
-		if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
-		{
-			App->fade->FadeToBlack(App->level1, App->game_over);
-		}
-
 		// Laser shot --------------------------------------
 		if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == 0)
 		{

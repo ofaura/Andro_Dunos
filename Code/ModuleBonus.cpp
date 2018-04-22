@@ -4,14 +4,22 @@
 #include "ModuleRender.h"
 #include "ModuleIntroNeoGeo.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleBonus.h"
 #include "ModuleInput.h"
 #include "ModuleAudio.h"
-
+#include "ModuleFonts.h"
 
 ModuleBonus::ModuleBonus()
 {
+	// Player score
+	scorePlayer.x = 2;
+	scorePlayer.y = 23;
+	scorePlayer.w = 124;
+	scorePlayer.h = 75;
+
+	// Animations
 	current_animation = NULL;
 
 	bonus.PushBack({ 0, 0, 304, 48 });
@@ -63,7 +71,14 @@ bool ModuleBonus::Start()
 {
 	LOG("Loading clear bonus");
 	App->audio->PlayMusic("Assets/Audio/stageClear.ogg", 1.0f);
-	graphics = App->textures->Load("Assets/Sprites/Bonus/stage_clear.png");	
+
+	// Textures are loaded
+	graphics = App->textures->Load("Assets/Sprites/Bonus/stage_clear.png");
+	graphics = App->textures->Load("Assets/Sprites/Bonus/stage_clear.png");
+	scoreRect = App->textures->Load("Assets/Sprites/Bonus/score_small_screen.png");
+
+	// Fonts are loaded
+	bonus_font = App->fonts->Load("Assets/Sprites/UI/Fonts/bonus_font.png", "12AELPRY-", 1);
 
 	// Reseting the camera
 	App->render->camera.x = App->render->camera.y = 0;
@@ -76,7 +91,9 @@ bool ModuleBonus::Start()
 // UnLoad assets
 bool ModuleBonus::CleanUp()
 {
-	LOG("Unloading Neo Geo logo scene");
+	LOG("Unloading bonus scene");
+	App->fonts->UnLoad(bonus_font);
+	App->textures->Unload(scoreRect);
 	App->textures->Unload(graphics);
 	return true;
 }
@@ -88,7 +105,16 @@ update_status ModuleBonus::Update()
 	current_animation = &bonus;
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
-	App->render->Blit(graphics, 9, 75, &r, 1);
+	// Bonus clear animation
+	App->render->Blit(graphics, 9, 30, &r, 1);
+
+	// Rectangles
+	App->render->Blit(scoreRect, 25, 80, &scorePlayer);
+	App->render->Blit(scoreRect, 170, 80, &scorePlayer);
+
+	// Names
+	App->fonts->BlitText(47, 84, bonus_font, "PLAYER-1");
+	App->fonts->BlitText(192, 84, bonus_font, "PLAYER-2");
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1)
 	{

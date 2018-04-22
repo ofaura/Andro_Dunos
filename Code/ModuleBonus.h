@@ -19,7 +19,13 @@ public:
 
 public:
 
+	int bonus_font = -1;
+
 	SDL_Texture* graphics = nullptr;
+	SDL_Texture* scoreRect = nullptr;
+
+	SDL_Rect scorePlayer;
+
 	Animation bonus;
 	Animation* current_animation = nullptr;
 };
