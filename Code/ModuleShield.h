@@ -12,7 +12,7 @@ public:
 	ModuleShield();
 	~ModuleShield();
 
-	void ModuleShield::OnCollision(Collider* col_1, Collider* col_2);
+	void OnCollision(Collider* col_1, Collider* col_2);
 	bool Start();
 	update_status Update();
 	bool CleanUp();
