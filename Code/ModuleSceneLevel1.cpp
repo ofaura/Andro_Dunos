@@ -293,61 +293,6 @@ update_status ModuleSceneLevel1::Update()
 		App->textures->Unload(background_texture);
 	}
 
-	// God mode
-	if (App->player->lives >= 0 && App->player2->lives >= 0)
-	{
-		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN && App->player2->IsEnabled() == false)
-		{
-
-			GodMode = !GodMode;
-
-			if (GodMode == true)
-			{
-				App->player->player->to_delete = true;
-
-				App->player->player = nullptr;
-			}
-			else if (GodMode == false)
-			{
-				GodMode = false;
-				App->player->player = App->collision->AddCollider({ App->player->position.x, App->player->position.y, 27, 17 }, COLLIDER_PLAYER, this);
-			}
-		}
-
-
-		else if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN && App->player2->IsEnabled() == true)
-		{
-
-			GodMode = !GodMode;
-
-			if (GodMode == true)
-			{
-				App->player->player->to_delete = true;
-				App->player2->player->to_delete = true;
-
-				App->player->player = nullptr;
-				App->player2->player = nullptr;
-			}
-			else if (GodMode == false)
-			{
-				GodMode = false;
-				App->player->player = App->collision->AddCollider({ App->player->position.x, App->player->position.y, 27, 17 }, COLLIDER_PLAYER, this);
-				App->player2->player = App->collision->AddCollider({ App->player2->position.x, App->player2->position.y, 27, 17 }, COLLIDER_PLAYER_2, this);
-			}
-		}
-
-		// Update collider position to player position
-		if (GodMode == false && App->player2->IsEnabled() == false)
-		{
-			App->player->player->SetPos(App->player->position.x, App->player->position.y);
-		}
-		else if (GodMode == false && App->player2->IsEnabled() == true)
-		{
-			App->player->player->SetPos(App->player->position.x, App->player->position.y);
-			App->player2->player->SetPos(App->player2->position.x, App->player2->position.y);
-		}
-	}
-
 	App->render->Blit(background2_texture, 1450, -235, &background2, 0.5f, true);
 	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 0.5f, true);
 	App->render->Blit(ground_texture, (ground_pos_x) / 3.5, ground_pos_y - 115, &ground, 1.0f, true);

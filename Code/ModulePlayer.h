@@ -54,7 +54,7 @@ public:
 	uint player_death, type_change;
 	uint type = bullet_type::TYPE_1;
 
-	int lives = 2;
+	int lives;
 
 	uint y = 0;
 	Collider* player = nullptr;
