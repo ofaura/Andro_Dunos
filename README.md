@@ -2,12 +2,20 @@ Andro Dunos v.0.5
 
 github: https://github.com/ofaura/Andro_Dunos
 
+Specifications of the game:
+
+	1. Both players have three lives.
+	2. You win if you manage to survive the whole level without dying.
+	3. If one of the two players dies, the game is over.
+
 Controls:
 
 F1 - To see colliison boxes
 F2 - Autowin
 F3 - Aulose
 F5 - GodMode
+F7 - To disable player 2.
+F8 - To enable player 2.
 
 PLAYER 1:
 
@@ -42,4 +50,5 @@ ENTER - Go to next stage.
 
 ESC / Click in the red cross - Close application.
 
-Licensed under the [MIT License](LICENSE).
+
+This game is licensed under the [MIT License](LICENSE).
