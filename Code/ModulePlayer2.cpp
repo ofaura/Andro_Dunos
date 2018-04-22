@@ -271,6 +271,12 @@ bool ModulePlayer2::CleanUp()
 {
 	// Remove all memory leaks
 	LOG("Unloading ship");
+	App->audio->UnLoadFx(type_change);
+	App->audio->UnLoadFx(player_death);
+	App->audio->UnLoadFx(laser4);
+	App->audio->UnLoadFx(laser3);
+	App->audio->UnLoadFx(laser2);
+	App->audio->UnLoadFx(laser1);
 	App->textures->Unload(graphics);
 
 	return true;
