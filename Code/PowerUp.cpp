@@ -274,6 +274,7 @@ void PowerUp::OnCollision(Collider* collider)
 
 bool PowerUp::CleanUp() {
 	LOG("Unloading Powerup");
+	App->textures->Unload(graphics);
 	App->audio->UnLoadFx(powerup_picked);
 
 	return true;
