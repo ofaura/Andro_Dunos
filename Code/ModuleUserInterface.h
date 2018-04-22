@@ -40,6 +40,10 @@ public:
 	Animation beamCharged; // Showed while charged
 	Animation beamNoCharged; // Showed while not pressing space
 
+	Animation beamCharger2; // Showe while charging
+	Animation beamCharged2; // Showed while charged
+	Animation beamNoCharged2; // Showed while not pressing space
+
 	bool powerUp = true;
 	bool charging;
 	uint chargingSound, chargedSound;

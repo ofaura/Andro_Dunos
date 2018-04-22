@@ -127,6 +127,89 @@ ModuleUserInterface::ModuleUserInterface()
 
 	beamCharger.loop = false;
 	beamCharger.speed = 0.5f;
+
+	// Beam charger player 2
+	beamNoCharged2.PushBack({ 29, 28, 64, 6 });
+
+	beamCharged2.PushBack({ 165, 96, 64, 7 });
+	beamCharged2.PushBack({ 165, 107, 64, 7 });
+	beamCharged2.PushBack({ 165, 116, 64, 7 });
+	beamCharged2.PushBack({ 165, 126, 64, 7 });
+	beamCharged2.loop = true;
+	beamCharged2.speed = 0.5f;
+
+	beamCharger2.PushBack({ 29, 28, 64, 6 });
+	beamCharger2.PushBack({ 29, 35, 64, 6 });
+	beamCharger2.PushBack({ 29, 42, 64, 6 });
+	beamCharger2.PushBack({ 29, 49, 64, 6 });
+	beamCharger2.PushBack({ 29, 56, 64, 6 });
+	beamCharger2.PushBack({ 29, 63, 64, 6 });
+	beamCharger2.PushBack({ 29, 70, 64, 6 });
+	beamCharger2.PushBack({ 29, 77, 64, 6 });
+	beamCharger2.PushBack({ 29, 84, 64, 6 });
+	beamCharger2.PushBack({ 29, 91, 64, 6 });
+	beamCharger2.PushBack({ 29, 98, 64, 6 });
+	beamCharger2.PushBack({ 29, 105, 64, 6 });
+	beamCharger2.PushBack({ 29, 112, 64, 6 });
+	beamCharger2.PushBack({ 29, 119, 64, 6 });
+	beamCharger2.PushBack({ 29, 126, 64, 6 });
+	beamCharger2.PushBack({ 29, 133, 64, 6 });
+	beamCharger2.PushBack({ 29, 140, 64, 6 });
+	beamCharger2.PushBack({ 29, 147, 64, 6 });
+	beamCharger2.PushBack({ 29, 154, 64, 6 });
+	beamCharger2.PushBack({ 29, 161, 64, 6 });
+	beamCharger2.PushBack({ 29, 168, 64, 6 });
+	beamCharger2.PushBack({ 29, 175, 64, 6 });
+	beamCharger2.PushBack({ 29, 182, 64, 6 });
+	beamCharger2.PushBack({ 29, 189, 64, 6 });
+	beamCharger2.PushBack({ 29, 196, 64, 6 });
+	beamCharger2.PushBack({ 29, 203, 64, 6 });
+	beamCharger2.PushBack({ 29, 210, 64, 6 });
+	beamCharger2.PushBack({ 29, 217, 64, 6 });
+	beamCharger2.PushBack({ 29, 224, 64, 6 });
+	beamCharger2.PushBack({ 97, 28, 64, 6 });
+	beamCharger2.PushBack({ 97, 35, 64, 6 });
+	beamCharger2.PushBack({ 97, 42, 64, 6 });
+	beamCharger2.PushBack({ 97, 49, 64, 6 });
+	beamCharger2.PushBack({ 97, 56, 64, 6 });
+	beamCharger2.PushBack({ 97, 63, 64, 6 });
+	beamCharger2.PushBack({ 97, 70, 64, 6 });
+	beamCharger2.PushBack({ 97, 77, 64, 6 });
+	beamCharger2.PushBack({ 97, 84, 64, 6 });
+	beamCharger2.PushBack({ 97, 91, 64, 6 });
+	beamCharger2.PushBack({ 97, 98, 64, 6 });
+	beamCharger2.PushBack({ 97, 105, 64, 6 });
+	beamCharger2.PushBack({ 97, 112, 64, 6 });
+	beamCharger2.PushBack({ 97, 119, 64, 6 });
+	beamCharger2.PushBack({ 97, 126, 64, 6 });
+	beamCharger2.PushBack({ 97, 133, 64, 6 });
+	beamCharger2.PushBack({ 97, 140, 64, 6 });
+	beamCharger2.PushBack({ 97, 147, 64, 6 });
+	beamCharger2.PushBack({ 97, 154, 64, 6 });
+	beamCharger2.PushBack({ 97, 161, 64, 6 });
+	beamCharger2.PushBack({ 97, 168, 64, 6 });
+	beamCharger2.PushBack({ 97, 175, 64, 6 });
+	beamCharger2.PushBack({ 97, 182, 64, 6 });
+	beamCharger2.PushBack({ 97, 189, 64, 6 });
+	beamCharger2.PushBack({ 97, 196, 64, 6 });
+	beamCharger2.PushBack({ 97, 203, 64, 6 });
+	beamCharger2.PushBack({ 97, 210, 64, 6 });
+	beamCharger2.PushBack({ 165, 28, 64, 6 });
+	beamCharger2.PushBack({ 165, 35, 64, 6 });
+	beamCharger2.PushBack({ 165, 42, 64, 6 });
+	beamCharger2.PushBack({ 165, 49, 64, 6 });
+	beamCharger2.PushBack({ 165, 56, 64, 6 });
+	beamCharger2.PushBack({ 165, 63, 64, 6 });
+	beamCharger2.PushBack({ 165, 73, 64, 6 });
+	beamCharger2.PushBack({ 165, 80, 64, 7 });
+	beamCharger2.PushBack({ 165, 86, 64, 7 });
+	beamCharger2.PushBack({ 165, 96, 64, 7 });
+	beamCharger2.PushBack({ 165, 107, 64, 7 });
+	beamCharger2.PushBack({ 165, 116, 64, 7 });
+	beamCharger2.PushBack({ 165, 126, 64, 7 });
+
+	beamCharger2.loop = false;
+	beamCharger2.speed = 0.5f;
 }
 
 ModuleUserInterface::~ModuleUserInterface()
@@ -316,17 +399,17 @@ update_status ModuleUserInterface::Update()
 
 	// Beam charger
 		if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_REPEAT) {
-			if (beamCharger.Finished()) {
-				App->render->Blit(super, 249, 25, &(beamCharged.GetCurrentFrame()), 1, false);
+			if (beamCharger2.Finished()) {
+				App->render->Blit(super, 249, 25, &(beamCharged2.GetCurrentFrame()), 1, false);
 			}
 			else {
-				App->render->Blit(super, 249, 25, &(beamCharger.GetCurrentFrame()), 1, false);
+				App->render->Blit(super, 249, 25, &(beamCharger2.GetCurrentFrame()), 1, false);
 			}
 		}
 		else
 		{
-			App->render->Blit(super, 249, 25, &(beamNoCharged.GetCurrentFrame()), 1, false);
-			beamCharger.Reset();
+			App->render->Blit(super, 249, 25, &(beamNoCharged2.GetCurrentFrame()), 1, false);
+			beamCharger2.Reset();
 		}
 	}
 	
