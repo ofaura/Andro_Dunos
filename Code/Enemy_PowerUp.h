@@ -8,10 +8,8 @@ class Enemy_PowerUp : public Enemy
 private:
 
 	int original_y = 0;
-	//Animation* fly;
-	/*
 
-	*/
+	bool CleanUp();
 
 	Animation fly_1, fly_2, fly_3, fly_4, fly_5, fly_6, fly_7, fly_8;
 	
@@ -23,7 +21,7 @@ public:
 
 	Enemy_PowerUp(int x, int y);
 
-	
+	SDL_Texture* graphics = nullptr;
 
 	void Enemy_PowerUp::OnCollision(Collider* collider);
 	void Enemy_PowerUp::Draw(SDL_Texture* sprites);

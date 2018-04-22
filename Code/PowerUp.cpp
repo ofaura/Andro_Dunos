@@ -28,6 +28,7 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 	srand(1); // doesn't let me do time(NULL)
 
 	powerup_picked = App->audio->LoadFx("Assets/Audio/powerup_picked.wav");
+	graphics = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
 
 	int random = rand() % 2;
 
@@ -151,34 +152,34 @@ void PowerUp::Draw(SDL_Texture* sprites)
 	{
 		if (time >= 200 && time < 225)
 		{
-			App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[REFLECTION_1]->GetCurrentFrame()));
+			App->render->Blit(graphics, position.x, position.y, &(act[REFLECTION_1]->GetCurrentFrame()));
 		}
 		else
 		{
-			App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[STILL_1]->GetCurrentFrame()));
+			App->render->Blit(graphics, position.x, position.y, &(act[STILL_1]->GetCurrentFrame()));
 		}
 	}
 
 	else if (time >= 400 && time < 425)
 	{
-		App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[CHANGE_1]->GetCurrentFrame()));
+		App->render->Blit(graphics, position.x, position.y, &(act[CHANGE_1]->GetCurrentFrame()));
 	}
 
 	else if (time >= 425 && time < 825)
 	{
 		if (time >= 625 && time < 650)
 		{
-			App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[REFLECTION_2]->GetCurrentFrame()));
+			App->render->Blit(graphics, position.x, position.y, &(act[REFLECTION_2]->GetCurrentFrame()));
 		}
 		else
 		{
-			App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[STILL_2]->GetCurrentFrame()));
+			App->render->Blit(graphics, position.x, position.y, &(act[STILL_2]->GetCurrentFrame()));
 		}
 	}
 
 	else if (time >= 825 && time < 850)
 	{
-		App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[CHANGE_2]->GetCurrentFrame()));
+		App->render->Blit(graphics, position.x, position.y, &(act[CHANGE_2]->GetCurrentFrame()));
 	}
 
 	else if (time >= 850)
@@ -273,6 +274,7 @@ void PowerUp::OnCollision(Collider* collider)
 
 bool PowerUp::CleanUp() {
 	LOG("Unloading Powerup");
+	App->textures->Unload(graphics);
 	App->audio->UnLoadFx(powerup_picked);
 
 	return true;

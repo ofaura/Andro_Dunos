@@ -21,6 +21,8 @@ enum SHIP_ACT
 
 Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 {
+	graphics = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
+
 	fly_1.PushBack({ 1,270,18,26 }); // left - iddle
 	fly_1.PushBack({ 27,270,18,26 }); //  left - move
 	fly_1.speed = 0.4f;
@@ -111,7 +113,7 @@ void Enemy_PowerUp::Move()
 	if (position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE + (SCREEN_WIDTH - 30))))
 	{
 		position.x -= 1;
-		App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[LEFT]->GetCurrentFrame()));
+		App->render->Blit(graphics, position.x, position.y, &(act[LEFT]->GetCurrentFrame()));
 	}
 
 	else
@@ -129,49 +131,49 @@ void Enemy_PowerUp::Move()
 
 			if (time >= 0 && time < 75)
 			{
-				App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[LEFT]->GetCurrentFrame()));
+				App->render->Blit(graphics, position.x, position.y, &(act[LEFT]->GetCurrentFrame()));
 			}
 
 			else if (time >= 75 && time < 125)
 			{
-				App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[LEFT]->GetCurrentFrame()));
+				App->render->Blit(graphics, position.x, position.y, &(act[LEFT]->GetCurrentFrame()));
 				position.x -= 1;
 			}
 			else if (time >= 125 && time < 150)
 			{
-				App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[TURN_1]->GetCurrentFrame()));
+				App->render->Blit(graphics, position.x, position.y, &(act[TURN_1]->GetCurrentFrame()));
 
 			}
 			else if (time >= 150 && time < 200)
 			{
-				App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[LEFT_DOWN]->GetCurrentFrame()));
+				App->render->Blit(graphics, position.x, position.y, &(act[LEFT_DOWN]->GetCurrentFrame()));
 				position.x -= 1;
 				position.y += 1;
 			}
 
 			else if (time >= 200 && time < 225)
 			{
-				App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[TURN_2]->GetCurrentFrame()));
+				App->render->Blit(graphics, position.x, position.y, &(act[TURN_2]->GetCurrentFrame()));
 			}
 			else if (time >= 225 && time < 275)
 			{
 				act[TURN_2]->Reset();
-				App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[LEFT_UP]->GetCurrentFrame()));
+				App->render->Blit(graphics, position.x, position.y, &(act[LEFT_UP]->GetCurrentFrame()));
 				position.x -= 1;
 				position.y -= 1;
 			}
 			else if (time >= 275 && time < 325)
 			{
-				App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[TURN_3]->GetCurrentFrame()));
+				App->render->Blit(graphics, position.x, position.y, &(act[TURN_3]->GetCurrentFrame()));
 			}
 			else if (time >= 325 && time < 470)
 			{
-				App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[RIGHT]->GetCurrentFrame()));
+				App->render->Blit(graphics, position.x, position.y, &(act[RIGHT]->GetCurrentFrame()));
 				position.x += 1;
 			}
 			else if (time >= 470 && time < 520)
 			{
-				App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[TURN_4]->GetCurrentFrame()));
+				App->render->Blit(graphics, position.x, position.y, &(act[TURN_4]->GetCurrentFrame()));
 				
 			}
 
@@ -185,7 +187,7 @@ void Enemy_PowerUp::Move()
 
 		else
 		{
-			App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(act[LEFT]->GetCurrentFrame()));
+			App->render->Blit(graphics, position.x, position.y, &(act[LEFT]->GetCurrentFrame()));
 			position.x -= 1;
 		}
 
@@ -221,10 +223,7 @@ void Enemy_PowerUp::Move()
 		{
 			position.x += 1;
 		}
-
 	}
-
-
 }
 
 void Enemy_PowerUp::Draw(SDL_Texture* sprites)
@@ -240,4 +239,11 @@ void Enemy_PowerUp::OnCollision(Collider* collider)
 		App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y);
 	}
 	
+}
+
+bool Enemy_PowerUp::CleanUp() {
+	LOG("Unloading Powerup");
+	App->textures->Unload(graphics);
+
+	return true;
 }
