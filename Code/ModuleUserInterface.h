@@ -44,8 +44,9 @@ public:
 	bool charging;
 	uint chargingSound, chargedSound;
 
-	Uint32 startTime = 0, currentTime;
-	bool activatedChange; //Tells if the player is changing of weapon
+	Uint32 startTime1 = 0, currentTime1;
+	Uint32 startTime2 = 0, currentTime2;
+	bool activatedChange1, activatedChange2; //Tells if the players are changing of weapon
 
 };
 

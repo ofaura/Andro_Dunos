@@ -152,7 +152,7 @@ update_status ModuleUserInterface::Update()
 {
 	if (App->input->keyboard[SDL_SCANCODE_E] == KEY_STATE::KEY_DOWN)
 	{
-		activatedChange = true;
+		activatedChange1 = true;
 
 		if (App->player->type == 0)
 			App->fonts->BlitText(8, 15, type_score, "TYPE-1");
@@ -163,18 +163,47 @@ update_status ModuleUserInterface::Update()
 		else if (App->player->type == 3)
 			App->fonts->BlitText(8, 15, type_score, "TYPE-4");
 
-		startTime = currentTime;
+		startTime1 = currentTime1;
 	}
 
-	currentTime = SDL_GetTicks();
+	currentTime1 = SDL_GetTicks();
+
+	if (App->player2->IsEnabled()) {
+		if (App->input->keyboard[SDL_SCANCODE_RSHIFT] == KEY_STATE::KEY_DOWN)
+		{
+			activatedChange2 = true;
+
+			// Printing it on the screen
+			if (App->player2->type == 0)
+				App->fonts->BlitText(214, 15, type_score, "TYPE-1");
+			else if (App->player2->type == 1)
+				App->fonts->BlitText(214, 15, type_score, "TYPE-2");
+			else if (App->player2->type == 2)
+				App->fonts->BlitText(214, 15, type_score, "TYPE-3");
+			else if (App->player2->type == 3)
+				App->fonts->BlitText(214, 15, type_score, "TYPE-4");
+
+			startTime2 = currentTime2;
+		}
+
+		currentTime2 = SDL_GetTicks();
+	}
 
 	// ------------------------------------------------
 	// DRAWING THE UI
 	// ------------------------------------------------	
+		
+	// Blit the text of the score in at the bottom of the screen	
+	sprintf_s(score_text1, 10, "%7d", score1);
+	sprintf_s(score_text2, 10, "%7d", score2);
+
+	// PLAYER 1 -------------------------------------------------
+	App->fonts->BlitText(33, 6, font_score, score_text1);
+	App->fonts->BlitText(8, 6, font_score, "1P");
 
 	// Printing weapons' HUD on the screen
-	if (activatedChange = true) {
-		if (currentTime - startTime <= 700) {
+	if (activatedChange1 = true) {
+		if (currentTime1 - startTime1 <= 700) {
 
 			if (App->player->type == 0)
 				App->fonts->BlitText(8, 15, type_score, "TYPE-1");
@@ -185,20 +214,9 @@ update_status ModuleUserInterface::Update()
 			else if (App->player->type == 3)
 				App->fonts->BlitText(8, 15, type_score, "TYPE-4");
 
-			activatedChange = false;
+			activatedChange1 = false;
 		}
 	}
-	
-	// Blit the text of the score in at the bottom of the screen	
-	sprintf_s(score_text1, 10, "%7d", score1);
-	sprintf_s(score_text2, 10, "%7d", score2);
-	// Player 1 
-	App->fonts->BlitText(33, 6, font_score, score_text1);
-	App->fonts->BlitText(8, 6, font_score, "1P");
-
-	// Player 2 
-	App->fonts->BlitText(244, 6, font_score, score_text2);
-	App->fonts->BlitText(214, 6, font_score, "2P");
 
 	// High score
 	App->fonts->BlitText(147, 6, highscore_font, "100000");
@@ -209,7 +227,7 @@ update_status ModuleUserInterface::Update()
 		App->fonts->BlitText(180, 15, p2_title, "PRESS 2P BUTTON");
 
 	// Weapon characteristics UI
-	if (activatedChange == true) {
+	if (activatedChange1 == true) {
 		if (App->player->type == 0)
 			App->render->Blit(weaponHud, 8, 16, &HUD1, 1, false);
 		else if (App->player->type == 1)
@@ -244,6 +262,28 @@ update_status ModuleUserInterface::Update()
 	{
 		App->render->Blit(super, 74, 25, &(beamNoCharged.GetCurrentFrame()), 1, false);
 		beamCharger.Reset();
+	}
+
+	// PLAYER 2 -------------------------------------------------
+	App->fonts->BlitText(244, 6, font_score, score_text2);
+	App->fonts->BlitText(214, 6, font_score, "2P");
+
+	if (App->player2->IsEnabled()) {
+		if (activatedChange2 = true) {
+			if (currentTime2 - startTime2 <= 700) {
+
+				if (App->player2->type == 0)
+					App->fonts->BlitText(214, 15, type_score, "TYPE-1");
+				else if (App->player2->type == 1)
+					App->fonts->BlitText(214, 15, type_score, "TYPE-2");
+				else if (App->player2->type == 2)
+					App->fonts->BlitText(214, 15, type_score, "TYPE-3");
+				else if (App->player2->type == 3)
+					App->fonts->BlitText(214, 15, type_score, "TYPE-4");
+
+				activatedChange2 = false;
+			}
+		}
 	}
 
 	return UPDATE_CONTINUE;

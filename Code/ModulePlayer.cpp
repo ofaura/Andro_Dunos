@@ -16,8 +16,6 @@
 #include "ModuleBonus.h"
 #include "ModuleUserInterface.h"
 
-#include <stdio.h>
-
 ModulePlayer::ModulePlayer()
 {
 	current_animation = NULL;
@@ -80,7 +78,6 @@ bool ModulePlayer::Start()
 	laser1 = App->audio->LoadFx("Assets/Audio/laser1.wav");
 	laser2 = App->audio->LoadFx("Assets/Audio/laser2.wav");
 	laser3 = App->audio->LoadFx("Assets/Audio/laser3.wav");
-	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
 	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
 	player_death = App->audio->LoadFx("Assets/Audio/player_death.wav");
 	type_change = App->audio->LoadFx("Assets/Audio/type_change.wav");
