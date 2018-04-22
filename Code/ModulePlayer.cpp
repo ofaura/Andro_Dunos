@@ -15,6 +15,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleBonus.h"
 #include "ModuleUserInterface.h"
+#include "ModuleShield.h"
 
 ModulePlayer::ModulePlayer()
 {
@@ -224,6 +225,11 @@ update_status ModulePlayer::Update()
 			position.y = -1 + (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 17;
 		}
 	}	
+
+	// Shield's live
+	if (App->shield->life == 0) {
+		App->shield->Disable();
+	}
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
