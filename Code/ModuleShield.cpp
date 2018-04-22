@@ -14,13 +14,34 @@
 
 ModuleShield::ModuleShield() {
 
+	// ---- Animation for the base od the shield
+	base_anim.PushBack({ 0, 0, 9, 16 });
+	base_anim.PushBack({ 11, 0, 9, 16 });
+	base_anim.PushBack({ 22, 0, 9, 16 });
+	base_anim.PushBack({ 33, 0, 9, 16 });
+	base_anim.PushBack({ 44, 0, 9, 16 });
+	base_anim.PushBack({ 55, 0, 9, 16 });
+	base_anim.loop = true;
+	base_anim.speed = 0.2f;
+
+	// ---- Animation for lvl1 LaserShield (Red)
+	lvl1.PushBack({ 46, 18, 5, 14 });
+	lvl1.PushBack({ 0, 18, 5, 14 });
+	lvl1.PushBack({ 7, 18, 5, 14 });
+	lvl1.PushBack({ 0, 18, 5, 14 });
+	lvl1.loop = true;
+	lvl1.speed = 0.5f;
+
 }
 
 ModuleShield::~ModuleShield() {}
 
 bool ModuleShield::Start() { 
-	//graphics = App->textures->Load("Assets/Sprites/player/shield.png"); //Loads shield image bank
+	bool ret = true;
 
+	graphics = App->textures->Load("Assets/Sprites/player/shield.png"); //Loads shield image bank
+
+	if (graphics == nullptr) ret = false; //failsafe for wrong address
 
 	// ---- Declares initial position, surrounding p1
 	position1.x = App->player->position.x + 29; 
@@ -32,11 +53,13 @@ bool ModuleShield::Start() {
 	collider1 = App->collision->AddCollider({ position1.x, position1.y, 14, 16 }, COLLIDER_SHIELD_1, this);
 	collider2 = App->collision->AddCollider({ position2.x, position2.y, 14, 16 }, COLLIDER_SHIELD_1, this);
 
-	return true; 
+	return ret; 
 }
 
 update_status ModuleShield::Update() { 
 	
+	current_lvl = &lvl1;
+
 	// ---- Keeps realtive position to the ship constant
 	position1.x = App->player->position.x + 29;
 	position1.y = App->player->position.y -8;
@@ -47,10 +70,23 @@ update_status ModuleShield::Update() {
 	collider1->SetPos(position1.x, position1.y);
 	collider2->SetPos(position2.x, position2.y);
 
+	SDL_Rect base = base_anim.GetCurrentFrame();
+	SDL_Rect laser = current_lvl->GetCurrentFrame();
+
+	// ---- Draw Everything
+	App->render->Blit(graphics, position1.x, position1.y, &base);
+	App->render->Blit(graphics, position2.x, position2.y, &base);
+	App->render->Blit(graphics, position1.x + 8, position1.y + 1, &laser);
+	App->render->Blit(graphics, position2.x + 8, position2.y + 1, &laser);
+
 	return update_status::UPDATE_CONTINUE; 
 }
 
 bool ModuleShield::CleanUp() { 
-	
+
+	// Remove all memory leaks
+	LOG("Unloading ship");
+	App->textures->Unload(graphics);
+
 	return true;
 }

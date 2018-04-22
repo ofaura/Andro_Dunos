@@ -19,6 +19,9 @@ public:
 public:
 	SDL_Texture* graphics = nullptr;
 
+	Animation base_anim, lvl1, lvl2, lvl3;
+	Animation* current_lvl;
+
 	Collider* collider1;
 	Collider* collider2;
 
