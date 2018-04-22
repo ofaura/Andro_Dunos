@@ -150,11 +150,11 @@ bool ModuleSceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 5100, 300);
 	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 5100, 380);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 6540, 410);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 6590, 350);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 6590, 430);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 6640, 350);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 6640, 430);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 6540, 410);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 6590, 350);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 6590, 430);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 6640, 350);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 6640, 430);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 5600, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 5610, 105);
