@@ -19,7 +19,7 @@ ModuleShield::~ModuleShield() {}
 bool ModuleShield::Start() { 
 	
 	position1.x = App->player->position.x + 29;
-	position1.y = App->player->position.y + 5;
+	position1.y = App->player->position.y -2;
 	position2.x = App->player->position.x + 29;
 	position2.y = App->player->position.y + 22;
 
@@ -32,9 +32,9 @@ bool ModuleShield::Start() {
 update_status ModuleShield::Update() { 
 	
 	position1.x = App->player->position.x + 29;
-	position1.y = App->player->position.y + 5;
+	position1.y = App->player->position.y -8;
 	position2.x = App->player->position.x + 29;
-	position2.y = App->player->position.y + 22;
+	position2.y = App->player->position.y + 10;
 
 	collider1->SetPos(position1.x, position1.y);
 	collider2->SetPos(position2.x, position2.y);
