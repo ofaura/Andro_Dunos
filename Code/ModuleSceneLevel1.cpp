@@ -85,9 +85,7 @@ bool ModuleSceneLevel1::Start()
 	//Enemies ---
 	App->enemies->Enable();
 	
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 400, (SCREEN_HEIGHT / 2) - 20);
-	
-	
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 400, (SCREEN_HEIGHT / 2) - 20);	
 
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 400, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 415, 60);
@@ -150,6 +148,8 @@ bool ModuleSceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 5100, 300);
 	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 5100, 380);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 6570, (SCREEN_HEIGHT / 2) - 20);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 6540, 410);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 6590, 350);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 6590, 430);
@@ -203,6 +203,8 @@ bool ModuleSceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3585, 380);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 3600, 380);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 6570, (SCREEN_HEIGHT / 2) - 20);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7600, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7615, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7630, 60);
@@ -222,6 +224,8 @@ bool ModuleSceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7870, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7885, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 7900, 140);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 7870, (SCREEN_HEIGHT / 2) - 20);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 8300, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 8310, 105);
