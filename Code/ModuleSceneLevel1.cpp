@@ -85,7 +85,7 @@ bool ModuleSceneLevel1::Start()
 	App->enemies->Enable();
 	
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 400, (SCREEN_HEIGHT / 2) - 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 400, SCREEN_HEIGHT - 52);
+	
 	
 
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 400, 60);
@@ -135,6 +135,13 @@ bool ModuleSceneLevel1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 1140, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 1150, 115);
 	App->enemies->AddEnemy(ENEMY_TYPES::SPACE_SHIP, 1160, 130);
+
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 1500, 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 1550, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 1550, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 1600, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHOOTER, 1600, 130);
 
 	// Colliders ----
 	App->collision->Enable();

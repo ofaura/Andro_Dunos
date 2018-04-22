@@ -5,7 +5,9 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
-
+#include "SDL\include\SDL_timer.h"
+#include "Globals.h"
+#include <cmath>
 
 Enemy_Shooter::Enemy_Shooter(int x, int y) : Enemy(x, y)
 {
@@ -14,68 +16,57 @@ Enemy_Shooter::Enemy_Shooter(int x, int y) : Enemy(x, y)
 	fly.PushBack({ 31,233,31,27 });
 
 	fly.loop = true;
-	fly.speed = 0.01f;
+	fly.speed = 0.5f;
 
 	animation = &fly;
 
-	//shot.PushBack({});
 
+	if (abs(position.y - App->player->position.y) < 20)
+	{
+		path.PushBack({ -0.5f, 0.4f }, 60);
+		path.PushBack({ -0.5f, -0.4f }, 60);
+		path.PushBack({ 1.0f, 0.0f }, 100);
+		path.PushBack({ -0.5f, 0.0f }, 300);
+		path.loop = false;
+	}
+	
+	else if (position.y < App->player->position.y)
+	{
+		path.PushBack({ -0.5f, 0.4f }, 60);
+		path.PushBack({ 1.0f, 0.0f }, 100);
+		path.PushBack({ -0.5f, 0.0f }, 300);
+		path.loop = false;
+	}
 
-	Animation* shot_a = nullptr;
+	else if (position.y > App->player->position.y)
+	{
+		path.PushBack({ -0.5f, -0.4f }, 60);
+		path.PushBack({ 1.0f, 0.0f }, 100);
+		path.PushBack({ -0.5f, 0.0f }, 300);
+		path.loop = false;
+	}
+
 
 	collider = App->collision->AddCollider({ 0, 0, 31, 27 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	original_y = y;
+	original_pos.x = x;
+	original_pos.y = y;
+	
 }
 
 void Enemy_Shooter::Move()
 {
 
+	position = original_pos + path.GetCurrentPosition();
+	
+	currentTime = SDL_GetTicks();
 
-	//Up
-	if (App->render->camera.x >= 7150 * SCREEN_SIZE && App->render->camera.x <= 7200 * SCREEN_SIZE && App->render->camera.y >= 0)
+	if (currentTime > lastTime + 5000) //shot every 5 seconds
 	{
-		position.y -= 1;
+		
+		App->particles->AddParticle(App->particles->enemy_shot, position.x, position.y + 15, COLLIDER_ENEMY_SHOT);
+		lastTime = currentTime;
 	}
-
-	// Diagonal up
-	else if (App->render->camera.x >= 4005 * SCREEN_SIZE && App->render->camera.x < 4130 * SCREEN_SIZE || App->render->camera.x >= 5074 * SCREEN_SIZE && App->render->camera.x < 5290 * SCREEN_SIZE)
-	{
-		position.y -= 1;
-		position.x += 1;
-	}
-
-	// Diagonal down
-	else if (App->render->camera.y >= 96 * SCREEN_SIZE && App->render->camera.x >= 4530 * SCREEN_SIZE && App->render->camera.y < 224 * SCREEN_SIZE ||
-		App->render->camera.x >= 6125 * SCREEN_SIZE && App->render->camera.x < 6262 * SCREEN_SIZE)
-	{
-		position.y += 1;
-		position.x += 1;
-	}
-
-	//Down
-	else if (App->render->camera.x >= 2921 * SCREEN_SIZE && App->render->camera.x <= 2971 * SCREEN_SIZE && App->render->camera.y < 224 * SCREEN_SIZE)
-	{
-		position.y += 1;
-	}
-
-	//Horizontal
-	else if (App->render->camera.x >= 0 && App->render->camera.x <= 8800 * SCREEN_SIZE)
-	{
-		position.x += 1;
-	}
-
-	position.y;
-	position.x -= 1;
-
-	time++;
-}
-
-void Enemy_Shooter::Draw()
-{
-	if (collider != nullptr)
-		collider->SetPos(position.x, position.y);
-
-	if (animation != nullptr)
-		App->render->Blit(App->textures->Load("Assets/Sprites/Enemies/enemies.png"), position.x, position.y, &(animation->GetCurrentFrame()));
+	
+	collider->SetPos(position.x, position.y);
 }
