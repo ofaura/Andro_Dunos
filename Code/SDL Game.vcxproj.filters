@@ -125,6 +125,9 @@
     <ClInclude Include="ModuleParticles.h">
       <Filter>Modules\Others</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleSceneScore.h">
+      <Filter>Modules\Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -210,6 +213,9 @@
     </ClCompile>
     <ClCompile Include="ModuleShield.cpp">
       <Filter>Modules\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneScore.cpp">
+      <Filter>Modules\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

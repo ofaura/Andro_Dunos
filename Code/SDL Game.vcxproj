@@ -94,6 +94,7 @@
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleSceneLevel1.h" />
     <ClInclude Include="ModuleIntroNeoGeo.h" />
+    <ClInclude Include="ModuleSceneScore.h" />
     <ClInclude Include="ModuleShield.h" />
     <ClInclude Include="ModuleStartMenu.h" />
     <ClInclude Include="ModuleTextures.h" />
@@ -126,6 +127,7 @@
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleSceneLevel1.cpp" />
     <ClCompile Include="ModuleIntroNeoGeo.cpp" />
+    <ClCompile Include="ModuleSceneScore.cpp" />
     <ClCompile Include="ModuleShield.cpp" />
     <ClCompile Include="ModuleStartMenu.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />

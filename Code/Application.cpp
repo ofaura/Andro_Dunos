@@ -18,6 +18,7 @@
 #include "ModuleGameOver.h"
 #include "ModuleFonts.h"
 #include "ModuleShield.h"
+#include "ModuleSceneScore.h"
 
 Application::Application()
 {
@@ -42,6 +43,7 @@ Application::Application()
 	modules[i++] = p2collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = game_over = new ModuleGameOver();
+	modules[i++] = score = new ModuleSceneScore();
 }	
 
 Application::~Application()
@@ -64,6 +66,7 @@ bool Application::Init()
 	bonus->Disable();
 	start_menu->Disable();
 	game_over->Disable();
+	score->Disable();
 
 	collision->Disable();
 	user_interface->Disable();
