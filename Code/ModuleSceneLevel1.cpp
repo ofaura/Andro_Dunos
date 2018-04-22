@@ -181,6 +181,7 @@ bool ModuleSceneLevel1::Start()
 	App->collision->AddCollider({ 5355, 270, 50, 70 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 5385, 240, 50, 70 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 5435, 210, 785, 30 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6220, 240, 50, 30 }, COLLIDER_WALL);
 
 	//Audio ---
 	App->audio->PlayMusic("Assets/Audio/level1.ogg", 1.0f);
@@ -282,7 +283,7 @@ update_status ModuleSceneLevel1::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_K] == 1)
 	{
-		App->render->camera.x = 15000;
+		App->render->camera.x = 16000;
 		App->render->camera.y = 700;
 	}
 
