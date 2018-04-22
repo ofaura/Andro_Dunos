@@ -10,12 +10,17 @@ private:
 	Animation fly;
 	Path path;
 
+	bool CleanUp();
+
 	iPoint original_pos;
 
 public:
 
 	Enemy_Shooter(int x, int y);
+
 	uint lastTime = 0, currentTime;
+	uint death_sound;
+
 	virtual void OnCollision(Collider* collider) override;
 	void Move();
 	bool dead = false;

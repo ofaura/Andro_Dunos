@@ -5,13 +5,16 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
-#include "SDL\include\SDL_timer.h"
 #include "Globals.h"
-#include <cmath>
 #include "ModuleUserInterface.h"
+#include "ModuleAudio.h"
+
+#include "SDL\include\SDL_timer.h"
+#include <cmath>
 
 Enemy_Shooter::Enemy_Shooter(int x, int y) : Enemy(x, y)
 {
+	death_sound = App->audio->LoadFx("Assets/Audio/enemy_small_explosion.wav");
 
 	fly.PushBack({ 0,233,31,27 });
 	fly.PushBack({ 31,233,31,27 });
@@ -75,6 +78,7 @@ void Enemy_Shooter::Move()
 void Enemy_Shooter::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
+	App->audio->PlayFx(death_sound);
 
 	if (dead == false)
 	{
@@ -90,4 +94,11 @@ void Enemy_Shooter::OnCollision(Collider* collider)
 	}
 
 	dead = true;
+}
+
+bool Enemy_Shooter::CleanUp() {
+	LOG("Unloading spaceship enemy");
+	App->audio->UnLoadFx(death_sound);
+
+	return true;
 }

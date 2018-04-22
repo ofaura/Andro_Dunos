@@ -12,6 +12,7 @@ public:
 	ModuleShield();
 	~ModuleShield();
 
+	void ModuleShield::OnCollision(Collider* col_1, Collider* col_2);
 	bool Start();
 	update_status Update();
 	bool CleanUp();
@@ -26,7 +27,7 @@ public:
 	Collider* collider2;
 
 	iPoint position1, position2;
-	int life;
+	int life = 3;
 };
 
 #endif // !_MODULE_SHIELD_

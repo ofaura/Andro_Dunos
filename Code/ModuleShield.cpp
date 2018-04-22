@@ -51,7 +51,7 @@ ModuleShield::ModuleShield() {
 
 ModuleShield::~ModuleShield() {}
 
-bool ModuleShield::Start() { 
+bool ModuleShield::Start() {
 	bool ret = true;
 
 	graphics = App->textures->Load("Assets/Sprites/player/shield.png"); //Loads shield image bank
@@ -93,30 +93,20 @@ bool ModuleShield::Start() {
 		break;
 	}
 
-	life = 3;
 
 	// ---- Declares colliders for shield parts individually
 	collider1 = App->collision->AddCollider({ position1.x, position1.y, 14, 16 }, COLLIDER_SHIELD_1, this);
 	collider2 = App->collision->AddCollider({ position2.x, position2.y, 14, 16 }, COLLIDER_SHIELD_1, this);
 
-	return ret; 
+	return ret;
 }
 
-update_status ModuleShield::Update() { 
-	
-	switch (life) {
-	case 0:
-		CleanUp();
-	case 1:
-		current_lvl = &lvl1;
-		break;
-	case 2:
-		current_lvl = &lvl2;
-		break;
-	case 3:
-		current_lvl = &lvl3;
+update_status ModuleShield::Update() {
 
-	}
+	if (life == 0) {}
+	else if (life == 1) current_lvl = &lvl1;
+	else if (life == 2)	current_lvl = &lvl2;
+	else if (life == 3)	current_lvl = &lvl3;
 
 	// ---- Keeps realtive position to the ship
 	switch (App->player->type) {
@@ -147,13 +137,12 @@ update_status ModuleShield::Update() {
 
 		// ---- Stays behind ship
 	case bullet_type::TYPE_4:
-		position1.x = App->player->position.x -16;
+		position1.x = App->player->position.x - 16;
 		position1.y = App->player->position.y - 8;
-		position2.x = App->player->position.x -16;
+		position2.x = App->player->position.x - 16;
 		position2.y = App->player->position.y + 10;
 		break;
 	}
-	
 
 	// ---- Updates colliders
 	collider1->SetPos(position1.x, position1.y);
@@ -168,10 +157,10 @@ update_status ModuleShield::Update() {
 	App->render->Blit(graphics, position1.x + 8, position1.y + 1, &light);
 	App->render->Blit(graphics, position2.x + 8, position2.y + 1, &light);
 
-	return update_status::UPDATE_CONTINUE; 
+	return update_status::UPDATE_CONTINUE;
 }
 
-bool ModuleShield::CleanUp() { 
+bool ModuleShield::CleanUp() {
 
 	// Remove all memory leaks
 	LOG("Unloading shield");
@@ -182,4 +171,12 @@ bool ModuleShield::CleanUp() {
 	collider2 = nullptr;
 
 	return true;
+}
+
+void ModuleShield::OnCollision(Collider* col_1, Collider* col_2)
+{
+	if (col_1->type == COLLIDER_ENEMY && col_2->type == COLLIDER_SHIELD_1 || col_2->type == COLLIDER_ENEMY && col_1->type == COLLIDER_SHIELD_1)
+	{
+		life--;
+	}
 }
