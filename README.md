@@ -10,7 +10,7 @@ Specifications of the game:
 
 Controls:
 
-F1 - To see colliison boxes |
+| F1 - To see colliison boxes |
 F2 - Autowin |
 F3 - Aulose |
 F5 - GodMode |
