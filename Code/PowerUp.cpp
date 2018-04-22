@@ -6,6 +6,8 @@
 #include "ModulePlayer.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
+#include "ModuleShield.h"
+
 #include <cstdio>
 #include <cstdlib>
 #include <time.h>
@@ -134,11 +136,7 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 		fly_6.speed = 0.6f;
 		fly_6.loop = false;
 		act[5] = &fly_6;
-
-
-
 	}
-
 
 	collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_POWER_UP, (Module*)App->enemies);
 
@@ -261,6 +259,7 @@ void PowerUp::OnCollision(Collider* collider)
 {
 	if ((collider->type == COLLIDER_PLAYER))
 	{
+		App->shield->Enable();
 		//App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y);
 	}
 	else if (collider->type == COLLIDER_PLAYER_2)

@@ -13,6 +13,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
 #include "ModuleUserInterface.h"
+#include "ModuleShield.h"
 
 ModuleSceneLevel1::ModuleSceneLevel1()
 {
@@ -374,6 +375,7 @@ bool ModuleSceneLevel1::CleanUp()
 	App->collision->Disable();
 	App->player->Disable();
 	App->user_interface->Disable();
+	App->shield->Disable();
 
 	if (App->player2->IsEnabled() == true)
 		App->player2->Disable();

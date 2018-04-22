@@ -65,6 +65,7 @@ bool Application::Init()
 	bonus->Disable();
 	start_menu->Disable();
 	game_over->Disable();
+	shield->Disable();
 
 	collision->Disable();
 	user_interface->Disable();
