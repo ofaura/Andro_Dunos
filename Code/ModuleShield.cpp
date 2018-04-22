@@ -162,8 +162,14 @@ update_status ModuleShield::Update() {
 
 void ModuleShield::OnCollision(Collider* col_1, Collider* col_2) {
 	if (collider1 == col_1 || collider2 == col_1)
-		if(IsEnabled())
+		if (IsEnabled()) {
+			collider1->to_delete = true;
+			collider2->to_delete = true;
+			collider1 = nullptr;
+			collider2 = nullptr;
 			Disable();
+		}
+	
 }
 
 bool ModuleShield::CleanUp() {
