@@ -10,16 +10,15 @@ public:
 	ModuleShield();
 	~ModuleShield();
 
-	bool Init() { return true; }
-	bool Start() { return true; }
-	update_status Update() { return update_status::UPDATE_CONTINUE; }
-	bool CleanUp() { return true; }
+	bool Start();
+	update_status Update();
+	bool CleanUp();
 
 public:
-	SDL_Rect* shield1;
-	SDL_Rect* shield2;
-	SDL_Rect* shield3;
-	SDL_Rect* shield4;
+	Collider* collider1;
+	Collider* collider2;
+
+
 
 };
 
