@@ -8,6 +8,13 @@
 struct SDL_Texture;
 struct Collider;
 
+enum bullet_type {
+	TYPE_1,
+	TYPE_2,
+	TYPE_3,
+	TYPE_4
+};
+
 class ModulePlayer : public Module
 {
 public:
@@ -45,7 +52,7 @@ public:
 	iPoint position, fire_position;
 	uint laser1, laser2, laser3, laser4;
 	uint player_death, type_change;
-	uint type = 0;
+	uint type = bullet_type::TYPE_1;
 
 	int lives = 2;
 
