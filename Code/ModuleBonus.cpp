@@ -147,6 +147,7 @@ update_status ModuleBonus::Update()
 	sprintf_s(joinedScore_text, 10, "%7d", joinedScore);
 	App->fonts->BlitText(220, 183, font_score, joinedScore_text);
 	App->fonts->BlitText(30, 180, joined_score, "JOINED SCORE");
+	App->fonts->BlitText(285, 183, font_score, "P");
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1)
 	{
