@@ -34,17 +34,17 @@ ModuleShield::ModuleShield() {
 
 	// ---- Animation for lvl2 LaserShield (Yellow)
 	lvl2.PushBack({ 46, 18, 5, 14 });
-	lvl2.PushBack({ 0, 18, 5, 14 });
-	lvl2.PushBack({ 7, 18, 5, 14 });
-	lvl2.PushBack({ 0, 18, 5, 14 });
+	lvl2.PushBack({ 30, 18, 5, 14 });
+	lvl2.PushBack({ 36, 18, 5, 14 });
+	lvl2.PushBack({ 30, 18, 5, 14 });
 	lvl2.loop = true;
 	lvl2.speed = 0.5f;
 
 	// ---- Animation for lvl3 LaserShield (Green)
 	lvl3.PushBack({ 46, 18, 5, 14 });
-	lvl3.PushBack({ 0, 18, 5, 14 });
-	lvl3.PushBack({ 7, 18, 5, 14 });
-	lvl3.PushBack({ 0, 18, 5, 14 });
+	lvl3.PushBack({ 15, 18, 5, 14 });
+	lvl3.PushBack({ 22, 18, 5, 14 });
+	lvl3.PushBack({ 15, 18, 5, 14 });
 	lvl3.loop = true;
 	lvl3.speed = 0.5f;
 }
@@ -93,7 +93,7 @@ bool ModuleShield::Start() {
 		break;
 	}
 
-	life = 1;
+	life = 3;
 
 	// ---- Declares colliders for shield parts individually
 	collider1 = App->collision->AddCollider({ position1.x, position1.y, 14, 16 }, COLLIDER_SHIELD_1, this);
