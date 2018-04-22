@@ -18,6 +18,7 @@
 #include "ModuleGameOver.h"
 #include "ModuleFonts.h"
 #include "ModuleShield.h"
+#include "ModuleShield_p2.h"
 
 Application::Application()
 {
