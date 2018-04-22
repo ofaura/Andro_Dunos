@@ -93,8 +93,6 @@ bool ModuleShield::Start() {
 		break;
 	}
 
-	life = 3;
-
 	// ---- Declares colliders for shield parts individually
 	collider1 = App->collision->AddCollider({ position1.x, position1.y, 14, 16 }, COLLIDER_SHIELD_1, this);
 	collider2 = App->collision->AddCollider({ position2.x, position2.y, 14, 16 }, COLLIDER_SHIELD_1, this);
@@ -105,8 +103,6 @@ bool ModuleShield::Start() {
 update_status ModuleShield::Update() { 
 	
 	switch (life) {
-	case 0:
-		CleanUp();
 	case 1:
 		current_lvl = &lvl1;
 		break;
@@ -115,6 +111,10 @@ update_status ModuleShield::Update() {
 		break;
 	case 3:
 		current_lvl = &lvl3;
+	default:
+		current_lvl = &lvl3;
+		life = 3;
+		break;
 
 	}
 
