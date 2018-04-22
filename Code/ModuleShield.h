@@ -1,5 +1,5 @@
-#ifndef _MODULE_SHIELD_
-#define _MODULE_SHIELD_
+#ifndef _MODULE_SHIELD_H_
+#define _MODULE_SHIELD_H_
 
 #include "Module.h"
 #include "Animation.h"
@@ -18,7 +18,7 @@ public:
 	Collider* collider1;
 	Collider* collider2;
 
-
+	iPoint position1, position2;
 
 };
 
