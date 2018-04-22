@@ -60,13 +60,13 @@ bool ModuleParticles::Start()
 	laser3_2.anim.PushBack({ 16, 101, 32, 3 });
 	laser3_2.anim.loop = false;
 	laser3_2.speed.x = 8;
-	laser3_2.speed.y = 8;
+	laser3_2.speed.y = 2;
 	laser3_2.life = 2000;
 
 	laser3_3.anim.PushBack({ 16, 101, 32, 3 });
 	laser3_3.anim.loop = false;
 	laser3_3.speed.x = 8;
-	laser3_3.speed.y = -8;
+	laser3_3.speed.y = -2;
 	laser3_3.life = 2000;
 
 	laser4_1.anim.PushBack({ 41, 11, 13, 1 });
