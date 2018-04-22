@@ -102,27 +102,11 @@ bool ModuleShield::Start() {
 }
 
 update_status ModuleShield::Update() {
-	/*
-	switch (life) {
-	case 0:
-	CleanUp();
-	case 1:
-	current_lvl = &lvl1;
-	break;
-	case 2:
-	current_lvl = &lvl2;
-	break;
-	case 3:
-	current_lvl = &lvl3;
 
-	}
-	*/
 	if (life == 0) {}
 	else if (life == 1) current_lvl = &lvl1;
 	else if (life == 2)	current_lvl = &lvl2;
 	else if (life == 3)	current_lvl = &lvl3;
-
-
 
 	// ---- Keeps realtive position to the ship
 	switch (App->player->type) {
@@ -159,7 +143,6 @@ update_status ModuleShield::Update() {
 		position2.y = App->player->position.y + 10;
 		break;
 	}
-
 
 	// ---- Updates colliders
 	collider1->SetPos(position1.x, position1.y);

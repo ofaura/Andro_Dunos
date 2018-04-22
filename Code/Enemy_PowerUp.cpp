@@ -237,7 +237,7 @@ void Enemy_PowerUp::OnCollision(Collider* collider)
 {
 	App->audio->PlayFx(death_sound);
 
-	if (collider->type == COLLIDER_PLAYER_SHOT || (collider->type == COLLIDER_PLAYER) || (collider->type == COLLIDER_PLAYER_2))
+	if (collider->type == COLLIDER_PLAYER_SHOT || (collider->type == COLLIDER_PLAYER) || (collider->type == COLLIDER_PLAYER_2) || (collider->type == COLLIDER_PLAYER2_SHOT))
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, position.x, position.y);
 		App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y);
