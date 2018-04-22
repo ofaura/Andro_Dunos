@@ -4,10 +4,12 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "ModuleUserInterface.h"
+#include "ModuleAudio.h"
 
 Enemy_FirstEnemy::Enemy_FirstEnemy(int x, int y) : Enemy(x, y)
 {
-	
+	death_sound = App->audio->LoadFx("Assets/Audio/enemy_small_explosion.wav");
+
 	fly.PushBack({ 0,3,18,12 });
 	fly.PushBack({ 19,3,18,12 });
 	fly.PushBack({ 39,3,18,13 });
@@ -20,7 +22,6 @@ Enemy_FirstEnemy::Enemy_FirstEnemy(int x, int y) : Enemy(x, y)
 	fly.PushBack({ 67,26,19,13 });
 	fly.PushBack({ 92,27,18,12 });
 	
-//	fly.loop = true;
 	fly.speed = 0.4f;
 
 	animation = &fly;
@@ -54,6 +55,7 @@ void Enemy_FirstEnemy::Move()
 void Enemy_FirstEnemy::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
+	App->audio->PlayFx(death_sound);
 
 	if (dead == false)
 	{
@@ -69,4 +71,11 @@ void Enemy_FirstEnemy::OnCollision(Collider* collider)
 	}
 
 	dead = true;
+}
+
+bool Enemy_FirstEnemy::CleanUp() {
+	LOG("Unloading first enemy");
+	App->audio->UnLoadFx(death_sound);
+
+	return true;
 }

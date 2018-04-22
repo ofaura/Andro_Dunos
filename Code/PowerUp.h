@@ -20,15 +20,14 @@ public:
 
 	SDL_Rect size = { 0,0,26,26 };
 	PowerUp(int x, int y);
-	~PowerUp()
-	{
-		//delete[] act;
-	}
+	~PowerUp() {}
 
 	void OnCollision(Collider* collider);
 	void Draw(SDL_Texture* sprites);
 
 	uint powerup_picked;
+
+	SDL_Texture* graphics = nullptr;
 
 	bool S_B = false, B_M = false, M_U = false, U_S = false;
 
