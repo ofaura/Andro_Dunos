@@ -10,12 +10,12 @@ Specifications of the game:
 
 Controls:
 
-F1 - To see colliison boxes
-F2 - Autowin
-F3 - Aulose
-F5 - GodMode
-F7 - To disable player 2.
-F8 - To enable player 2.
+F1 - To see colliison boxes |
+F2 - Autowin |
+F3 - Aulose |
+F5 - GodMode |
+F7 - To disable player 2 |
+F8 - To enable player 2 |
 
 PLAYER 1:
 
