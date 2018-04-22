@@ -145,7 +145,7 @@ bool ModuleSceneLevel1::Start()
 
 	// Colliders ----
 	App->collision->Enable();
-	App->collision->AddCollider({ 0, 192, 2960, 32 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, 210, 2960, 20 }, COLLIDER_WALL);
 	
 	App->collision->AddCollider({ 2960, 192, 49, 250 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 3000, 400, 50, 20 }, COLLIDER_WALL);
@@ -182,6 +182,28 @@ bool ModuleSceneLevel1::Start()
 	App->collision->AddCollider({ 5385, 240, 50, 70 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 5435, 210, 785, 30 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 6220, 240, 50, 30 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6270, 270, 30, 30 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6300, 305, 30, 60 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6330, 355, 55, 60 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6360, 385, 55, 60 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6390, 415, 55, 30 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6445, 435, 833, 15 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7278, 425, 60, 20 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6285, 0, 30, 35 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6315, 35, 30, 35 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6345, 70, 50, 30 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6395, 100, 30, 50 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6430, 150, 30, 30 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6455, 180, 50, 30 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6505, 210, 500, 32 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7005, 210, 70, 50 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7075, 210, 70, 60 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7145, 210, 60, 80 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7165, 190, 30, 110 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7320, 420, 50, 50 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7350, 400, 50, 50 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7400, 200, 50, 250 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7410, 210, 1895, 20 }, COLLIDER_WALL);
 
 	//Audio ---
 	App->audio->PlayMusic("Assets/Audio/level1.ogg", 1.0f);
@@ -279,12 +301,6 @@ update_status ModuleSceneLevel1::Update()
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1) 
 	{
 		App->fade->FadeToBlack(App->level1, App->bonus, 1.0f);
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_K] == 1)
-	{
-		App->render->camera.x = 16000;
-		App->render->camera.y = 700;
 	}
 
 	return UPDATE_CONTINUE;

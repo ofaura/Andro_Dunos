@@ -209,9 +209,6 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
-			if (c2->type == COLLIDER_WALL) {
-				AddParticle(explosionP1, active[i]->position.x, active[i]->position.y);
-			}
 			// Always destroy particles that collide
 			delete active[i];
 			active[i] = nullptr;
