@@ -54,10 +54,10 @@ bool ModuleStartMenu::Start()
 // UnLoad assets
 bool ModuleStartMenu::CleanUp()
 {
-	LOG("Unloading Neo Geo logo scene");
-	App->textures->Unload(background);
-	App->textures->Unload(logo);
+	LOG("Unloading Neo Geo logo scene");	
 	App->textures->Unload(visco);
+	App->textures->Unload(logo);
+	App->textures->Unload(background);
 	return true;
 }
 
