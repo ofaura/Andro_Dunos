@@ -7,6 +7,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleShield.h"
+#include "ModuleAudio.h"
 
 #include <cstdio>
 #include <cstdlib>
@@ -26,6 +27,7 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 {
 	srand(1); // doesn't let me do time(NULL)
 
+	powerup_picked = App->audio->LoadFx("Assets/Audio/powerup_picked.wav");
 
 	int random = rand() % 2;
 
@@ -260,11 +262,19 @@ void PowerUp::OnCollision(Collider* collider)
 	if ((collider->type == COLLIDER_PLAYER))
 	{
 		App->shield->Enable();
-		//App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y);
+		App->audio->PlayFx(powerup_picked);
+
 	}
 	else if (collider->type == COLLIDER_PLAYER_2)
 	{
 
 	}
+}
+
+bool PowerUp::CleanUp() {
+	LOG("Unloading Powerup");
+	App->audio->UnLoadFx(powerup_picked);
+
+	return true;
 }
 
