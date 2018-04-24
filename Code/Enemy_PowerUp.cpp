@@ -8,7 +8,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 
-enum SHIP_ACT
+enum ENEMY_POWERUP_ACT
 {
 	LEFT = 0,
 	TURN_1,
@@ -129,6 +129,7 @@ void Enemy_PowerUp::Move()
 				{
 					act[counter]->Reset();
 				}
+				time = 0;
 			}
 
 			if (time >= 0 && time < 75)
