@@ -1,6 +1,6 @@
-Andro Dunos v.0.5
+Andro Dunos v.0.55
 
-github: https://github.com/ofaura/Andro_Dunos
+GitHub: https://github.com/ofaura/Andro_Dunos
 
 Specifications of the game:
 
@@ -17,9 +17,22 @@ F5 - GodMode |
 F7 - To disable player 2 |
 F8 - To enable player 2 |
 
+Controller gameplay (XBox controller):
+---------------------------------------------
+
+	LEFT JOYSTICK - Move
+
+	A - Shoot
+
+	B - Change weapon
+	
+	START - Go to next stage
+
+Keybord gameplay:
+---------------------------------------------
 PLAYER 1:
 
-	W - Move up
+	L - Move up
 
 	A - Move left
 
@@ -50,6 +63,7 @@ ENTER - Go to next stage
 
 Press ESC or click on the red cross to close the application.
 
+---------------------------------------------
 CHANGELIST:
 
 v0.1 - Added a moving screen with music. No ship.
