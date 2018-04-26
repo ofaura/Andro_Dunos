@@ -16,6 +16,9 @@ ModuleInput::ModuleInput() : Module()
 {
 	for (uint i = 0; i < MAX_KEYS; ++i)
 		keyboard[i] = KEY_IDLE;
+
+	for (uint i = 0; i < MAX_BUTTONS; ++i)
+		gamepad[i] = BUTTON_IDLE;
 }
 
 // Destructor
@@ -36,6 +39,15 @@ bool ModuleInput::Init()
 		ret = false;
 	}
 
+	controller = SDL_GameControllerOpen(0);
+	joystick = SDL_JoystickOpen(0);
+
+	/*if (joystick == nullptr)
+	{
+		LOG("Joystick could not initialize! SDL_Error: %s\n", SDL_GetError());
+		ret = false;
+	}*/
+
 	return ret;
 }
 
@@ -45,6 +57,8 @@ update_status ModuleInput::PreUpdate()
 	SDL_PumpEvents();
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
+	//axis = SDL_GameControllerGetAxis();
+	button = SDL_GameControllerButton();
 
 	for (int i = 0; i < MAX_KEYS; ++i)
 	{
@@ -67,9 +81,9 @@ update_status ModuleInput::PreUpdate()
 	if (keyboard[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
 
-	while (SDL_PollEvent(&e))
+	while (SDL_PollEvent(&keyboardEvent))
 	{
-		if (e.type == SDL_QUIT)
+		if (keyboardEvent.type == SDL_QUIT)
 		{
 			return update_status::UPDATE_STOP;
 		}
@@ -103,7 +117,13 @@ update_status ModuleInput::PreUpdate()
 // Called before quitting
 bool ModuleInput::CleanUp()
 {
-	LOG("Quitting SDL input event subsystem");
+	LOG("Quitting SDL input event subsystem");	
+	SDL_GameControllerClose(controller);
+	controller = nullptr;
+	SDL_JoystickClose(joystick);
+	joystick = nullptr;
+
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
+
 	return true;
 }

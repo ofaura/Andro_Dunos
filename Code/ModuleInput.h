@@ -8,6 +8,7 @@
 
 #define MAX_KEYS 300
 #define MAX_BUTTONS 100
+#define DEAD_ZONE 0.2f
 
 enum KEY_STATE
 {
@@ -39,7 +40,13 @@ public:
 public:
 	KEY_STATE keyboard[MAX_KEYS];
 	BUTTON_STATE gamepad[MAX_BUTTONS];
-	SDL_Event e;
+	SDL_GameController* controller = nullptr;
+	SDL_Joystick* joystick = nullptr;
+
+	Sint16 axis;
+	Uint8 button;
+
+	SDL_Event keyboardEvent;
 };
 
 #endif // __ModuleInput_H__
