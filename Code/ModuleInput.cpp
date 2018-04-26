@@ -39,14 +39,13 @@ bool ModuleInput::Init()
 		ret = false;
 	}
 
-	controller = SDL_GameControllerOpen(0);
-	joystick = SDL_JoystickOpen(0);
+	for (int i = 0; i < SDL_NumJoysticks(); ++i) {
+		if (SDL_IsGameController(i)) {
+			controller = SDL_GameControllerOpen(i);
+			joystick = SDL_GameControllerGetJoystick(controller);
+		}
 
-	/*if (joystick == nullptr)
-	{
-		LOG("Joystick could not initialize! SDL_Error: %s\n", SDL_GetError());
-		ret = false;
-	}*/
+	}
 
 	return ret;
 }
