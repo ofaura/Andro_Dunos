@@ -20,7 +20,7 @@
 ModulePlayer::ModulePlayer()
 {
 	current_animation = NULL;
-
+	
 	idle.PushBack({ 94, 108, 27, 17 });
 
 	fire_idle.PushBack({ 73 , 111, 12 , 10 });
