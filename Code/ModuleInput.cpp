@@ -18,7 +18,7 @@ ModuleInput::ModuleInput() : Module()
 		keyboard[i] = KEY_IDLE;
 
 	for (uint i = 0; i < MAX_BUTTONS; ++i)
-		gamepad[i] = BUTTON_IDLE;
+		gamepad[i] = KEY_IDLE;
 }
 
 // Destructor
@@ -32,6 +32,7 @@ bool ModuleInput::Init()
 	LOG("Init SDL input event system");
 	bool ret = true;
 	SDL_Init(0);
+	SDL_Init(SDL_INIT_GAMECONTROLLER);
 
 	if (SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
 	{
@@ -39,12 +40,19 @@ bool ModuleInput::Init()
 		ret = false;
 	}
 
-	for (int i = 0; i < SDL_NumJoysticks(); ++i) {
-		if (SDL_IsGameController(i)) {
-			controller = SDL_GameControllerOpen(i);
-			joystick = SDL_GameControllerGetJoystick(controller);
+	if (SDL_Init(SDL_INIT_JOYSTICK)< 0) {
+		LOG("SDL_INIT_JOYSTICK could not initialize , SDL Error: %s\n", SDL_GetError())
+	}
+	if (SDL_NumJoysticks() < 1) {
+		LOG(" No joysticks connected!\n");
+	}
+	else {
+		controller = SDL_GameControllerOpen(controller_index);
+		use_controller = true;
+		if (controller == NULL) {
+			LOG(" Unable to open game controller! SDL Error: %s\n", SDL_GetError());
+			use_controller = false;
 		}
-
 	}
 
 	return ret;
@@ -56,8 +64,15 @@ update_status ModuleInput::PreUpdate()
 	SDL_PumpEvents();
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
-	//axis = SDL_GameControllerGetAxis();
-	button = SDL_GameControllerButton();
+	
+	buttons[0] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_UP);
+	buttons[1] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+	buttons[2] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+	buttons[3] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+	buttons[4] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A);
+	buttons[5] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_B);
+	buttons[6] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_START);
+
 
 	for (int i = 0; i < MAX_KEYS; ++i)
 	{
@@ -74,6 +89,24 @@ update_status ModuleInput::PreUpdate()
 				keyboard[i] = KEY_UP;
 			else
 				keyboard[i] = KEY_IDLE;
+		}
+	}
+
+	for (int i = 0; i < MAX_BUTTONS; ++i)
+	{
+		if (buttons[i] == 1)
+		{
+			if (gamepad[i] == KEY_IDLE)
+				gamepad[i] = KEY_DOWN;
+			else
+				gamepad[i] = KEY_REPEAT;
+		}
+		else
+		{
+			if (gamepad[i] == KEY_REPEAT || keyboard[i] == KEY_DOWN)
+				gamepad[i] = KEY_UP;
+			else
+				gamepad[i] = KEY_IDLE;
 		}
 	}
 
@@ -119,9 +152,6 @@ bool ModuleInput::CleanUp()
 	LOG("Quitting SDL input event subsystem");	
 	SDL_GameControllerClose(controller);
 	controller = nullptr;
-	SDL_JoystickClose(joystick);
-	joystick = nullptr;
-
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
 
 	return true;

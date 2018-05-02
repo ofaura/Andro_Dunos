@@ -18,14 +18,6 @@ enum KEY_STATE
 	KEY_UP
 };
 
-enum BUTTON_STATE
-{
-	BUTTON_IDLE = 0,
-	BUTTON_DOWN,
-	BUTTON_REPEAT,
-	BUTTON_UP
-};
-
 class ModuleInput : public Module
 {
 public:
@@ -39,12 +31,13 @@ public:
 
 public:
 	KEY_STATE keyboard[MAX_KEYS];
-	BUTTON_STATE gamepad[MAX_BUTTONS];
-	SDL_GameController* controller = nullptr;
-	SDL_Joystick* joystick = nullptr;
+	KEY_STATE gamepad[MAX_BUTTONS];
+	SDL_GameController* controller = NULL;
 
-	Sint16 axis;
-	Uint8 button;
+	bool use_controller = false;
+	int controller_index = 0;
+
+	Uint8 buttons[MAX_BUTTONS];
 
 	SDL_Event keyboardEvent;
 };

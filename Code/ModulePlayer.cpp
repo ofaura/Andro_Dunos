@@ -106,17 +106,17 @@ update_status ModulePlayer::Update()
 	{
 
 		// Move Player --------------------------------------
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT || App->input->gamepad[3] == KEY_STATE::KEY_REPEAT)
 		{
 			position.x -= speed;
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT || App->input->gamepad[2] == KEY_STATE::KEY_REPEAT)
 		{
 			position.x += speed;
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || App->input->gamepad[1] == KEY_STATE::KEY_REPEAT)
 		{
 			position.y += speed;
 			if (current_animation != &down)
@@ -126,7 +126,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || App->input->gamepad[0] == KEY_STATE::KEY_REPEAT)
 		{
 			position.y -= speed;
 			if (current_animation != &up)
@@ -158,7 +158,7 @@ update_status ModulePlayer::Update()
 		}		
 
 		// Change weapon type --------------------------------------
-		if (App->input->keyboard[SDL_SCANCODE_E] == KEY_STATE::KEY_DOWN)
+		if (App->input->keyboard[SDL_SCANCODE_E] == KEY_STATE::KEY_DOWN || App->input->gamepad[5] == KEY_STATE::KEY_DOWN)
 		{
 			if (type >= 0 && type < 3)
 			{
@@ -170,7 +170,7 @@ update_status ModulePlayer::Update()
 		}
 
 		// Laser shot --------------------------------------
-		if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == bullet_type::TYPE_1)
+		if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->gamepad[4] == KEY_STATE::KEY_DOWN) && type == bullet_type::TYPE_1)
 		{
 			if(ShootPowerUpLevel == 1){
 				App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 4, COLLIDER_PLAYER_SHOT);
@@ -186,7 +186,7 @@ update_status ModulePlayer::Update()
 				
 		}
 
-		else if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == bullet_type::TYPE_2)
+		else if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->gamepad[4] == KEY_STATE::KEY_DOWN) && type == bullet_type::TYPE_2)
 		{
 			if (ShootPowerUpLevel == 1) {
 				App->particles->AddParticle(App->particles->laser2_1, position.x + 15, position.y + 12, COLLIDER_PLAYER_SHOT);
@@ -201,7 +201,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		else if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == bullet_type::TYPE_3)
+		else if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->gamepad[4] == KEY_STATE::KEY_DOWN) && type == bullet_type::TYPE_3)
 		{
 			if (ShootPowerUpLevel == 1) {
 				App->particles->AddParticle(App->particles->laser3_1, position.x + 19, position.y + 11, COLLIDER_PLAYER_SHOT);
@@ -215,7 +215,7 @@ update_status ModulePlayer::Update()
 			
 		}
 
-		else if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type == bullet_type::TYPE_4)
+		else if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->gamepad[4] == KEY_STATE::KEY_DOWN) && type == bullet_type::TYPE_4)
 		{
 			if (ShootPowerUpLevel == 1) {
 				App->particles->AddParticle(App->particles->laser4_2, position.x + 19, position.y + 11, COLLIDER_PLAYER_SHOT);
@@ -232,8 +232,8 @@ update_status ModulePlayer::Update()
 		}
 
 		// Player Idle position if not going up or down -------------------------------------
-		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
+		if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE || App->input->gamepad[1] == KEY_STATE::KEY_REPEAT)
+			&& (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE || App->input->gamepad[0] == KEY_STATE::KEY_REPEAT))
 		{
 		current_animation = &idle;
 		fire_current = &fire_idle;
