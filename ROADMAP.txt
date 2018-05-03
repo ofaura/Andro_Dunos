@@ -1,0 +1,20 @@
+1st: WTF is the crash
+
+for 0.5.5: finsih controller movements for p2
+
+for 0.6: moving background
+for 0.6.5: wall collisions
+
+for 0.7: 8 basic enemies 
+for 0.7.5: implement 2 lvls of each power-up
+for 0.7.6: add all enemy paths
+
+for 0.8: implement enemy hp system
+for 0.8.5: finish respawn
+
+for 0.9: implement boss
+for 0.9.5: finish all scene animations
+
+
+0.9.9: ready for debugging
+1.0 ALL FINSIHED!!
