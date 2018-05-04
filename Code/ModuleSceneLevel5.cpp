@@ -37,7 +37,9 @@ bool ModuleSceneLevel5::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
-	
+	//Textures are loaded
+	background_texture = App->textures->Load("Assets/Sprites/lvl5/background5.png");
+
 	//Audios are loaded
 	small_enemy_death = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_small_explosion.wav");
 
@@ -82,6 +84,7 @@ bool ModuleSceneLevel5::Start()
 update_status ModuleSceneLevel5::Update()
 {
 	
+	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 1.0f, true);
 
 	return UPDATE_CONTINUE;
 }
@@ -93,7 +96,7 @@ bool ModuleSceneLevel5::CleanUp()
 
 	// Remove all memory leaks
 	LOG("Unloading textures");
-	App->audio->UnLoadFx(small_enemy_death);
+	//App->audio->UnLoadFx(small_enemy_death);
 
 	App->enemies->Disable();
 	App->collision->Disable();
