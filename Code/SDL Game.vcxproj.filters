@@ -131,6 +131,9 @@
     <ClInclude Include="ModuleSceneLevel5.h">
       <Filter>Modules\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_Meteorite.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -222,6 +225,9 @@
     </ClCompile>
     <ClCompile Include="ModuleSceneLevel5.cpp">
       <Filter>Modules\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Meteorite.cpp">
+      <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

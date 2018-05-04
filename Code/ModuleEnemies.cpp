@@ -9,6 +9,7 @@
 #include "Enemy_SpaceShip.h"
 #include "Enemy_PowerUp.h"
 #include "Enemy_Shooter.h"
+#include "Enemy_Meteorite.h"
 #include "PowerUp.h"
 
 
@@ -51,8 +52,6 @@ update_status ModuleEnemies::PreUpdate()
 
 	return UPDATE_CONTINUE;
 }
-
-
 
 // Called before render is available
 update_status ModuleEnemies::Update()
@@ -151,6 +150,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 		case ENEMY_TYPES::ENEMY_SHOOTER:
 			enemies[i] = new Enemy_Shooter(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::ENEMY_METEORITE:
+			enemies[i] = new Enemy_Meteorite(info.x, info.y);
 			break;
 		}
 	}

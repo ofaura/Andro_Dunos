@@ -86,16 +86,10 @@ update_status ModuleSceneLevel5::Update()
 
 	if (App->render->camera.x >= 0 && App->render->camera.x <= 8800 * SCREEN_SIZE)
 	{
-
 		App->render->camera.x += 1 * SCREEN_SIZE;
-
 		App->player->position.x += 1;
-
 		App->player2->position.x += 1;
 	}
-
-
-	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 1.0f, true);
 
 	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 0.5f, true);
 

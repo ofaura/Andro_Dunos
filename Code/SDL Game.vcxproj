@@ -74,6 +74,7 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_FirstEnemy.h" />
+    <ClInclude Include="Enemy_Meteorite.h" />
     <ClInclude Include="Enemy_PowerUp.h" />
     <ClInclude Include="Enemy_Shooter.h" />
     <ClInclude Include="Enemy_SpaceShip.h" />
@@ -109,6 +110,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_FirstEnemy.cpp" />
+    <ClCompile Include="Enemy_Meteorite.cpp" />
     <ClCompile Include="Enemy_PowerUp.cpp" />
     <ClCompile Include="Enemy_Shooter.cpp" />
     <ClCompile Include="Enemy_SpaceShip.cpp" />
