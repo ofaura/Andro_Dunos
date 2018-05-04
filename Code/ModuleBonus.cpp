@@ -79,7 +79,7 @@ ModuleBonus::~ModuleBonus()
 bool ModuleBonus::Start()
 {
 	LOG("Loading clear bonus");
-	App->audio->PlayMusic("Assets/Audio/stageClear.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/Audio/Music/stageClear.ogg", 1.0f);
 
 	// Textures are loaded
 	graphics = App->textures->Load("Assets/Sprites/Bonus/stage_clear.png");

@@ -32,7 +32,7 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 {
 	srand(time(NULL)); // doesn't let me do time(NULL)
 
-	powerup_picked = App->audio->LoadFx("Assets/Audio/powerup_picked.wav");
+	powerup_picked = App->audio->LoadFx("Assets/Audio/Sound FX/powerup_picked.wav");
 	graphics = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
 
 	random = rand() % 2;

@@ -30,7 +30,7 @@ bool ModuleGameOver::Start()
 	App->render->camera.h = SCREEN_HEIGHT;
 
 	LOG("Loading textures");
-	App->audio->PlayMusic("Assets/Audio/gameOver.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/Audio/Music/gameOver.ogg", 1.0f);
 	background = App->textures->Load("Assets/Sprites/GameOver/game_over2.png");
 	return true;
 	

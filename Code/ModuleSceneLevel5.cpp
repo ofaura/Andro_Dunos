@@ -77,7 +77,7 @@ bool ModuleSceneLevel5::Start()
 	App->render->camera.h = SCREEN_HEIGHT;
 
 	//Audio ---
-	App->audio->PlayMusic("Assets/Audio/level1.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/Audio/Music/level5.ogg", 1.0f);
 
 	return ret;
 }
@@ -85,92 +85,7 @@ bool ModuleSceneLevel5::Start()
 // Update: draw background
 update_status ModuleSceneLevel5::Update()
 {
-	//Up
-	if (App->render->camera.x >= 7150 * SCREEN_SIZE && App->render->camera.x <= 7200 * SCREEN_SIZE && App->render->camera.y >= 0)
-	{
-		App->render->camera.y -= 1 * SCREEN_SIZE;
-
-		App->player->position.y -= 1;
-
-		App->player2->position.y -= 1;
-	}
-
-	// Diagonal up
-	else if (App->render->camera.x >= 4005 * SCREEN_SIZE && App->render->camera.x < 4130 * SCREEN_SIZE || App->render->camera.x >= 5074 * SCREEN_SIZE && App->render->camera.x < 5290 * SCREEN_SIZE)
-	{
-		App->render->camera.x += SCREEN_SIZE / 2;
-		App->render->camera.y -= SCREEN_SIZE / 2;
-
-		if (App->render->camera.x % 2 == 0 && App->render->camera.y % 2 == 0)
-		{
-			App->player->position.y -= 1;
-			App->player->position.x += 1;
-
-			App->player2->position.y -= 1;
-			App->player2->position.x += 1;
-		}
-	}
-
-	// Diagonal down
-	else if (App->render->camera.y >= 96 * SCREEN_SIZE && App->render->camera.x >= 4530 * SCREEN_SIZE && App->render->camera.y < 224 * SCREEN_SIZE ||
-		App->render->camera.x >= 6125 * SCREEN_SIZE && App->render->camera.x < 6262 * SCREEN_SIZE)
-	{
-		App->render->camera.x += 0.5 * SCREEN_SIZE;
-		App->render->camera.y += 0.5* SCREEN_SIZE;
-
-		if (App->render->camera.x % 2 == 0 && App->render->camera.y % 2 == 0)
-		{
-			App->player->position.y += 1;
-			App->player->position.x += 1;
-
-			App->player2->position.y += 1;
-			App->player2->position.x += 1;
-		}
-
-	}
-
-	//Down
-	else if (App->render->camera.x >= 2921 * SCREEN_SIZE && App->render->camera.x <= 2971 * SCREEN_SIZE && App->render->camera.y < 224 * SCREEN_SIZE)
-	{
-		App->render->camera.y += 1 * SCREEN_SIZE;
-
-		App->player->position.y += 1;
-
-		App->player2->position.y += 1;
-
-	}
-
-	//Horizontal
-	else if (App->render->camera.x >= 0 && App->render->camera.x <= 8800 * SCREEN_SIZE)
-	{
-
-		App->render->camera.x += 1 * SCREEN_SIZE;
-
-		App->player->position.x += 1;
-
-		App->player2->position.x += 1;
-	}
-
-	if (App->render->camera.x == 8800 * SCREEN_SIZE)
-	{
-		App->fade->FadeToBlack(App->level5, App->bonus, 1.0f);
-	}
-
-	if (App->render->camera.y < 400 && App->render->camera.x > 4000)
-	{
-		App->render->Blit(background3_texture, 3500, 0, &background3, 0.5f, true);
-	}
-
-	if (App->render->camera.y > 400)
-	{
-		App->textures->Unload(background_texture);
-	}
-
-	App->render->Blit(background2_texture, 1450, -235, &background2, 0.5f, true);
-	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 0.5f, true);
-	App->render->Blit(ground_texture, (ground_pos_x) / 3.5, ground_pos_y - 115, &ground, 1.0f, true);
-	App->render->Blit(moon_tex, 750, 15, &moon, 0.3f);
-	App->render->Blit(mars_tex, 2600, 15, &mars, 0.3f);
+	
 
 	return UPDATE_CONTINUE;
 }

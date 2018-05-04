@@ -297,7 +297,7 @@ bool ModuleSceneLevel1::Start()
 	App->collision->AddCollider({ 7410, 210, 1895, 20 }, COLLIDER_WALL);
 
 	//Audio ---
-	App->audio->PlayMusic("Assets/Audio/level1.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/Audio/Music/level1.ogg", 1.0f);
 
 	return ret;
 }
