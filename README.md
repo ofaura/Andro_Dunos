@@ -1,4 +1,4 @@
-Andro Dunos v.0.55
+Andro Dunos v.0.6
 
 GitHub: https://github.com/ofaura/Andro_Dunos
 
@@ -12,7 +12,7 @@ Controls:
 
 | F1 - To see collison boxes |
 F2 - Autowin |
-F3 - Aulose |
+F3 - Autolose |
 F5 - GodMode |
 F7 - To disable player 2 |
 F8 - To enable player 2 |
