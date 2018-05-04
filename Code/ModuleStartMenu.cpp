@@ -5,7 +5,7 @@
 #include "ModuleStartMenu.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleSceneLevel1.h"
+#include "ModuleSceneLevel5.h"
 #include "ModuleInput.h"
 #include "ModuleAudio.h"
 #include "ModuleEnemies.h"
@@ -72,7 +72,7 @@ update_status ModuleStartMenu::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1 || App->input->gamepad[6] == KEY_STATE::KEY_REPEAT)
 	{
-		App->fade->FadeToBlack(App->start_menu, App->level1, 1.0f);
+		App->fade->FadeToBlack(App->start_menu, App->level5, 1.0f);
 	}
 
 	return UPDATE_CONTINUE;

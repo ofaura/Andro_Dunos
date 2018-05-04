@@ -128,6 +128,9 @@
     <ClInclude Include="ModuleShield_p2.h">
       <Filter>Modules\Others</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleSceneLevel5.h">
+      <Filter>Modules\Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -216,6 +219,9 @@
     </ClCompile>
     <ClCompile Include="ModuleShield_p2.cpp">
       <Filter>Modules\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneLevel5.cpp">
+      <Filter>Modules\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -9,7 +9,7 @@
 #include "ModuleTextures.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleBonus.h"
-#include "ModuleSceneLevel1.h"
+#include "ModuleSceneLevel5.h"
 #include "ModuleGameOver.h"
 
 ModuleInput::ModuleInput() : Module()
@@ -122,7 +122,7 @@ update_status ModuleInput::PreUpdate()
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_F8]){
-		if (App->level1->IsEnabled())
+		if (App->level5->IsEnabled())
 			App->player2->Enable();
 	}
 	
@@ -134,13 +134,13 @@ update_status ModuleInput::PreUpdate()
 	// Autowin key
 	if (App->input->keyboard[SDL_SCANCODE_F2])
 	{
-		App->fade->FadeToBlack(App->level1, App->bonus);
+		App->fade->FadeToBlack(App->level5, App->bonus);
 	}
 
 	// Autolose key
 	if (App->input->keyboard[SDL_SCANCODE_F3])
 	{
-		App->fade->FadeToBlack(App->level1, App->game_over);
+		App->fade->FadeToBlack(App->level5, App->game_over);
 	}
 	
 	return update_status::UPDATE_CONTINUE;
