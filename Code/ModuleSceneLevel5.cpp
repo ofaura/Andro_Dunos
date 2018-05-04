@@ -18,10 +18,10 @@
 ModuleSceneLevel5::ModuleSceneLevel5()
 {
 	// Background 
-	background.x = 0;
+	background.x = 10;
 	background.y = 0;
-	background.w = 2206;
-	background.h = 208;
+	background.w = 3970;
+	background.h = 199;
 
 	ground.x = 0;
 	ground.y = 0;
@@ -83,8 +83,17 @@ bool ModuleSceneLevel5::Start()
 // Update: draw background
 update_status ModuleSceneLevel5::Update()
 {
-	
-	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 1.0f, true);
+	if (App->render->camera.x >= 0 && App->render->camera.x <= 8800 * SCREEN_SIZE)
+	{
+
+		App->render->camera.x += 1 * SCREEN_SIZE;
+
+		App->player->position.x += 1;
+
+		App->player2->position.x += 1;
+	}
+
+	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 0.5f, true);
 
 	return UPDATE_CONTINUE;
 }
