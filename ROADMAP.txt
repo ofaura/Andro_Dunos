@@ -1,5 +1,3 @@
-1st: WTF is the crash
-
 for 0.5.5: finsih controller movements for p2
 
 for 0.6: moving background
