@@ -11,14 +11,10 @@ private:
 	int original_y = 0;
 	Animation fly;
 
-	bool CleanUp();
-
 public:
 
 	Enemy_SpaceShip(int x, int y);
 	virtual void OnCollision(Collider* collider) override;
-
-	uint death_sound;
 
 	void Move();
 	bool dead = false;

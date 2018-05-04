@@ -6,6 +6,7 @@
 #include "ModulePlayer.h"
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
+#include "ModuleSceneLevel5.h"
 #include "ModuleAudio.h"
 
 enum ENEMY_POWERUP_ACT
@@ -23,7 +24,6 @@ enum ENEMY_POWERUP_ACT
 Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 {
 	graphics = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
-	death_sound = App->audio->LoadFx("Assets/Audio/enemy_small_explosion.wav");
 
 	fly_1.PushBack({ 1,270,18,26 }); // left - iddle
 	fly_1.PushBack({ 27,270,18,26 }); //  left - move
@@ -236,7 +236,7 @@ void Enemy_PowerUp::Draw(SDL_Texture* sprites)
 
 void Enemy_PowerUp::OnCollision(Collider* collider)
 {
-	App->audio->PlayFx(death_sound);
+	App->audio->PlayFx(App->level5->small_enemy_death);
 
 	if (collider->type == COLLIDER_PLAYER_SHOT || (collider->type == COLLIDER_PLAYER) || (collider->type == COLLIDER_PLAYER_2) || (collider->type == COLLIDER_PLAYER2_SHOT))
 	{
@@ -248,7 +248,6 @@ void Enemy_PowerUp::OnCollision(Collider* collider)
 
 bool Enemy_PowerUp::CleanUp() {
 	LOG("Unloading Powerup");
-	App->audio->UnLoadFx(death_sound);
 	App->textures->Unload(graphics);
 
 	return true;

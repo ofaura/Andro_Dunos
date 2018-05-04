@@ -4,12 +4,11 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "ModuleUserInterface.h"
+#include "ModuleSceneLevel5.h"
 #include "ModuleAudio.h"
 
 Enemy_SpaceShip::Enemy_SpaceShip(int x, int y) : Enemy(x, y)
 {
-	death_sound = App->audio->LoadFx("Assets/Audio/enemy_small_explosion.wav");
-
 	fly.PushBack({ 0,104,29,13 });
 	fly.PushBack({ 30,103,29,16 });
 	fly.PushBack({ 60,104,29,17 });
@@ -50,7 +49,7 @@ void Enemy_SpaceShip::Move()
 void Enemy_SpaceShip::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
-	App->audio->PlayFx(death_sound);
+	App->audio->PlayFx(App->level5->small_enemy_death);
 
 	if (dead == false)
 	{
@@ -66,11 +65,4 @@ void Enemy_SpaceShip::OnCollision(Collider* collider)
 	}
 
 	dead = true;
-}
-
-bool Enemy_SpaceShip::CleanUp() {
-	LOG("Unloading spaceship enemy");
-	App->audio->UnLoadFx(death_sound);
-
-	return true;
 }

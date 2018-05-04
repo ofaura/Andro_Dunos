@@ -11,13 +11,9 @@ private:
 	int original_y = 0;
 	Animation fly;
 
-	bool CleanUp();
-
 public:
 
 	Enemy_FirstEnemy(int x, int y);
-
-	uint death_sound;
 
 	virtual void OnCollision(Collider* collider) override;
 	void Move();

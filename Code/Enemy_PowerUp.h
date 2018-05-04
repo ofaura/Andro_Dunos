@@ -23,8 +23,6 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 
-	uint death_sound;
-
 	void Enemy_PowerUp::OnCollision(Collider* collider);
 	void Enemy_PowerUp::Draw(SDL_Texture* sprites);
 

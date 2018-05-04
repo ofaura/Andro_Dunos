@@ -27,26 +27,6 @@ ModuleSceneLevel5::ModuleSceneLevel5()
 	ground.y = 0;
 	ground.w = 9305;
 	ground.h = 563;
-
-	background2.x = 0;
-	background2.y = 0;
-	background2.w = 2513;
-	background2.h = 563;
-
-	background3.x = 0;
-	background3.y = 0;
-	background3.w = 2206;
-	background3.h = 208;
-
-	moon.x = 29;
-	moon.y = 20;
-	moon.w = 106;
-	moon.h = 106;
-
-	mars.x = 0;
-	mars.y = 0;
-	mars.w = 62;
-	mars.h = 62;
 }
 
 ModuleSceneLevel5::~ModuleSceneLevel5()
@@ -57,6 +37,9 @@ bool ModuleSceneLevel5::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
+	
+	//Audios are loaded
+	small_enemy_death = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_small_explosion.wav");
 
 	if (IsEnabled()) {
 		if (App->player->IsEnabled() == false) {
@@ -75,6 +58,19 @@ bool ModuleSceneLevel5::Start()
 	App->render->camera.x = App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
 	App->render->camera.h = SCREEN_HEIGHT;
+
+	//Enemies ---
+	App->enemies->Enable();
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 300, (SCREEN_HEIGHT / 2) - 20);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 200, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 215, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 230, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 245, 60);
+
+	// Colliders ----
+	App->collision->Enable();
 
 	//Audio ---
 	App->audio->PlayMusic("Assets/Audio/Music/level5.ogg", 1.0f);
@@ -97,6 +93,7 @@ bool ModuleSceneLevel5::CleanUp()
 
 	// Remove all memory leaks
 	LOG("Unloading textures");
+	App->audio->UnLoadFx(small_enemy_death);
 
 	App->enemies->Disable();
 	App->collision->Disable();
