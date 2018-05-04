@@ -77,12 +77,12 @@ bool ModulePlayer2::Start()
 
 	ShootPowerUpLevel2 = 1;
 	// Audios are loaded
-	laser1 = App->audio->LoadFx("Assets/Audio/laser1.wav");
-	laser2 = App->audio->LoadFx("Assets/Audio/laser2.wav");
-	laser3 = App->audio->LoadFx("Assets/Audio/laser3.wav");
-	laser4 = App->audio->LoadFx("Assets/Audio/laser4.wav");
-	player_death = App->audio->LoadFx("Assets/Audio/player_death.wav");
-	type_change = App->audio->LoadFx("Assets/Audio/type_change.wav");
+	laser1 = App->audio->LoadFx("Assets/Audio/Sound FX/laser1.wav");
+	laser2 = App->audio->LoadFx("Assets/Audio/Sound FX/laser2.wav");
+	laser3 = App->audio->LoadFx("Assets/Audio/Sound FX/laser3.wav");
+	laser4 = App->audio->LoadFx("Assets/Audio/Sound FX/laser4.wav");
+	player_death = App->audio->LoadFx("Assets/Audio/Sound FX/player_death.wav");
+	type_change = App->audio->LoadFx("Assets/Audio/Sound FX/type_change.wav");
 
 	lives = 2;
 

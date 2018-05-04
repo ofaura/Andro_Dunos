@@ -92,20 +92,6 @@ update_status ModuleSceneLevel5::Update()
 // Load assets
 bool ModuleSceneLevel5::CleanUp()
 {
-	App->collision->CleanUp();
-
-	// Remove all memory leaks
-	LOG("Unloading textures");
-	//App->audio->UnLoadFx(small_enemy_death);
-
-	App->enemies->Disable();
-	App->collision->Disable();
-	App->player->Disable();
-	App->user_interface->Disable();
-	App->shield->Disable();
-
-	if (App->player2->IsEnabled() == true)
-		App->player2->Disable();
 
 	return true;
 }
