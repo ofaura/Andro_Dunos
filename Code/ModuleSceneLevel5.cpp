@@ -83,10 +83,7 @@ bool ModuleSceneLevel5::Start()
 // Update: draw background
 update_status ModuleSceneLevel5::Update()
 {
-<<<<<<< HEAD
-	
-=======
->>>>>>> 2bb85505c93c8286273ff1e3e264233abb329404
+
 	if (App->render->camera.x >= 0 && App->render->camera.x <= 8800 * SCREEN_SIZE)
 	{
 
@@ -97,11 +94,11 @@ update_status ModuleSceneLevel5::Update()
 		App->player2->position.x += 1;
 	}
 
-<<<<<<< HEAD
+
 	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 1.0f, true);
-=======
+
 	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 0.5f, true);
->>>>>>> 2bb85505c93c8286273ff1e3e264233abb329404
+
 
 	return UPDATE_CONTINUE;
 }
