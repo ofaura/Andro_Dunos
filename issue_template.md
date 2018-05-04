@@ -20,4 +20,4 @@
 
 ### Specifications
 - Version of the build reproduced:
-- OS where the build was reproduced: .
+- OS where the build was reproduced:
