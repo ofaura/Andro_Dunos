@@ -165,7 +165,7 @@ void ModuleShield_p2::OnCollision(Collider* col_1, Collider* col_2) {
 		if (IsEnabled())
 			Disable();
 }
-
+	
 bool ModuleShield_p2::CleanUp() {
 
 	// Remove all memory leaks
