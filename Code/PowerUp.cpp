@@ -244,13 +244,13 @@ void PowerUp::OnCollision(Collider* collider)
 			if ((collider->type == COLLIDER_PLAYER))
 			{
 				App->audio->PlayFx(powerup_picked);
-				App->player->ShootPowerUpLevel = 2;
+				App->player->ShootPowerUpLevel++;
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2)
 			{
 				App->audio->PlayFx(powerup_picked);
-				App->player2->ShootPowerUpLevel2 = 2;
+				App->player2->ShootPowerUpLevel2++;
 			}
 		}
 
@@ -259,31 +259,50 @@ void PowerUp::OnCollision(Collider* collider)
 			if ((collider->type == COLLIDER_PLAYER))
 			{
 				App->audio->PlayFx(powerup_picked);
-				App->player->ShootPowerUpLevel_2 = 2;
+				App->player->ShootPowerUpLevel_2++;
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2)
 			{
 				App->audio->PlayFx(powerup_picked);
-				//App->player2->ShootPowerUpLevel2_2 = 2;
+				//App->player2->ShootPowerUpLevel2_2++;
 			}
 		}
 
 	}
 	
-	else if (B_M == true) {
-		if ((collider->type == COLLIDER_PLAYER))
+	else if (B_M == true)
+	{
+		if (milliseconds < 412)
 		{
-			App->player->Shield++;
-			App->audio->PlayFx(powerup_picked);
+			if ((collider->type == COLLIDER_PLAYER))
+			{
+				App->audio->PlayFx(powerup_picked);
+				App->player->ShootPowerUpLevel_2++;
 
+			}
+			else if (collider->type == COLLIDER_PLAYER_2)
+			{
+				App->audio->PlayFx(powerup_picked);
+				//App->player2->ShootPowerUpLevel2_2++;
+			}
 		}
-		else if (collider->type == COLLIDER_PLAYER_2)
+		else
 		{
-			//App->shield_p2->Enable();
-			// App->player2->Shield++;
-			App->audio->PlayFx(powerup_picked);
+			if ((collider->type == COLLIDER_PLAYER))
+			{
+				App->player->Shield++;
+				App->audio->PlayFx(powerup_picked);
+
+			}
+			else if (collider->type == COLLIDER_PLAYER_2)
+			{
+				//App->shield_p2->Enable();
+				// App->player2->Shield++;
+				App->audio->PlayFx(powerup_picked);
+			}
 		}
+
 	}
 }
 

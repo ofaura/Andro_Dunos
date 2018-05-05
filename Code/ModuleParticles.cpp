@@ -104,7 +104,7 @@ bool ModuleParticles::Start()
 	missile1_1.anim.loop = true;
 	missile1_1.speed.x = 3;
 	missile1_1.speed.y = 2;
-	missile1_1.anim.speed = 0.01f;
+	missile1_1.anim.speed = 0.f;
 	missile1_1.life = 2000;
 
 

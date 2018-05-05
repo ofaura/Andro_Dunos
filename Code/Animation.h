@@ -23,6 +23,7 @@ public:
 		frames[last_frame++] = rect;
 	}
 
+
 	SDL_Rect& GetCurrentFrame()
 	{
 		current_frame += speed;
