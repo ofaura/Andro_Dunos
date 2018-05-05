@@ -21,6 +21,7 @@ ModulePlayer::ModulePlayer()
 {
 	current_animation = NULL;
 	
+
 	idle.PushBack({ 94, 108, 27, 17 });
 
 	fire_idle.PushBack({ 73 , 111, 12 , 10 });
@@ -75,6 +76,8 @@ bool ModulePlayer::Start()
 	LOG("Loading player textures");
 	graphics = App->textures->Load("Assets/Sprites/player/ships.png"); // arcade version
 	
+	t = 200;
+
 	ShootPowerUpLevel = 1; // Primary Weap
 	ShootPowerUpLevel_2 = 0; // Secondary WEap
 	HomingMissile = 0; // Selfevident
@@ -171,8 +174,8 @@ update_status ModulePlayer::Update()
 
 			App->audio->PlayFx(type_change);
 		}
-
-		// Laser shot --------------------------------------
+		t++;
+		// shoot --------------------------------------
 		if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->gamepad[4] == KEY_STATE::KEY_DOWN) && type == bullet_type::TYPE_1)
 		{
 			if(ShootPowerUpLevel == 1){
@@ -186,9 +189,21 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + -1, COLLIDER_PLAYER_SHOT);
 				App->audio->PlayFx(laser1);
 			}
+			
+			if (ShootPowerUpLevel_2 >= 0)
+			{
 				
-		}
+				if (t > 100)
+				{
+					App->particles->AddParticle(App->particles->missile1_1, position.x + 5, position.y + 20, COLLIDER_PLAYER_SHOT);
+					App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
+					t = 0;
+				}
 
+			}
+
+		}
+		
 		else if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->gamepad[4] == KEY_STATE::KEY_DOWN) && type == bullet_type::TYPE_2)
 		{
 			if (ShootPowerUpLevel == 1) {

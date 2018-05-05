@@ -35,7 +35,7 @@ bool ModuleParticles::Start()
 	enemy_shot.speed.x -= 2;
 	enemy_shot.life = 4000;
 
-	// Player lasers
+	// Player main weapon
 	laser1.anim.PushBack({ 22, 51, 15, 6 });
 	laser1.anim.loop = false;
 	laser1.anim.speed = 0.1f;
@@ -94,6 +94,16 @@ bool ModuleParticles::Start()
 	laser4_3.speed.y = -1;
 	laser4_3.anim.speed = 0.5f;
 	laser4_3.life = 2000;
+
+	//PLayer scond weapon
+
+	missile1_1.anim.PushBack({ 22, 51, 15, 6 });
+	missile1_1.anim.loop = false;
+	missile1_1.speed.x = 4;
+	missile1_1.speed.y = 2;
+	missile1_1.anim.speed = 0.5f;
+	missile1_1.life = 2000;
+
 
 	// Player 1 death
 	explosionP1.anim.PushBack({ 11, 146, 27, 17});

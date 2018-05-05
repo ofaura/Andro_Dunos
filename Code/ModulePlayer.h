@@ -49,8 +49,11 @@ public:
 	Animation fire_down1;
 	Animation fire_down2;
 
+	int t = 0;
+
 	iPoint position, fire_position;
-	uint laser1, laser2, laser3, laser4;
+	uint laser1, laser2, laser3, laser4; // main weap of each type
+	uint missile1, missile2, missile3, missile4; // second weap of each type
 	uint player_death, type_change;
 	uint type = bullet_type::TYPE_1;
 
