@@ -18,6 +18,16 @@ enum KEY_STATE
 	KEY_UP
 };
 
+enum GAMEPAD_BUTTONS{
+	ARROW_UP = 0,
+	ARROW_DOWN,
+	ARROW_RIGHT,
+	ARROW_LEFT,
+	BUTTON_A,
+	BUTTON_B,
+	BUTTON_START
+};
+
 class ModuleInput : public Module
 {
 public:

@@ -65,13 +65,13 @@ update_status ModuleInput::PreUpdate()
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
 	
-	buttons[0] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_UP);
-	buttons[1] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
-	buttons[2] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
-	buttons[3] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
-	buttons[4] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A);
-	buttons[5] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_B);
-	buttons[6] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_START);
+	buttons[ARROW_UP] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_UP);
+	buttons[ARROW_DOWN] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+	buttons[ARROW_RIGHT] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+	buttons[ARROW_LEFT] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+	buttons[BUTTON_A] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A);
+	buttons[BUTTON_B] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_B);
+	buttons[BUTTON_START] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_START);
 
 
 	for (int i = 0; i < MAX_KEYS; ++i)

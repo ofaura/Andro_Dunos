@@ -12,7 +12,7 @@ Enemy_Meteorite::Enemy_Meteorite(int x, int y) : Enemy(x, y)
 	//Idle meteorite
 	idle.PushBack({ 52, 180, 32, 24});
 
-	//Destroting meteorite
+	//Destroying meteorite
 	destroyed.PushBack({ 0,3,18,12 });
 	destroyed.speed = 0.4f;
 

@@ -109,17 +109,17 @@ update_status ModulePlayer::Update()
 	{
 
 		// Move Player --------------------------------------
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT || App->input->gamepad[3] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT || App->input->gamepad[ARROW_LEFT] == KEY_STATE::KEY_REPEAT)
 		{
 			position.x -= speed;
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT || App->input->gamepad[2] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT || App->input->gamepad[ARROW_RIGHT] == KEY_STATE::KEY_REPEAT)
 		{
 			position.x += speed;
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || App->input->gamepad[1] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || App->input->gamepad[ARROW_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
 			position.y += speed;
 			if (current_animation != &down)
@@ -129,7 +129,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || App->input->gamepad[0] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || App->input->gamepad[ARROW_UP] == KEY_STATE::KEY_REPEAT)
 		{
 			position.y -= speed;
 			if (current_animation != &up)
