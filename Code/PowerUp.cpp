@@ -255,7 +255,7 @@ void PowerUp::OnCollision(Collider* collider)
 	else if (B_M == true) {
 		if ((collider->type == COLLIDER_PLAYER))
 		{
-			App->shield->Enable();
+			App->player->Shield++;
 			App->audio->PlayFx(powerup_picked);
 
 		}

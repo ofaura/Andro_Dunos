@@ -55,7 +55,8 @@ public:
 	uint type = bullet_type::TYPE_1;
 
 	int lives = 2;
-	int ShootPowerUpLevel = 1;
+	int ShootPowerUpLevel = 1, ShootPowerUpLevel_2 = 0, HomingMissile = 0, Shield = 0;
+
 
 	uint y = 0;
 	Collider* player = nullptr;

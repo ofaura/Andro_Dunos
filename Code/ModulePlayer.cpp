@@ -75,7 +75,10 @@ bool ModulePlayer::Start()
 	LOG("Loading player textures");
 	graphics = App->textures->Load("Assets/Sprites/player/ships.png"); // arcade version
 	
-	ShootPowerUpLevel = 1;
+	ShootPowerUpLevel = 1; // Primary Weap
+	ShootPowerUpLevel_2 = 0; // Secondary WEap
+	HomingMissile = 0; // Selfevident
+	Shield = 0; // Selfevident
 
 	// Audios are loaded
 	laser1 = App->audio->LoadFx("Assets/Audio/Sound FX/laser1.wav");
@@ -229,6 +232,13 @@ update_status ModulePlayer::Update()
 				App->audio->PlayFx(laser4);
 			}
 			
+		}
+
+		if (Shield != 0)
+		{
+
+			App->shield->Enable();
+
 		}
 
 		// Player Idle position if not going up or down -------------------------------------
