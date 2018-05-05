@@ -99,7 +99,7 @@ bool ModuleParticles::Start()
 
 	missile1_1.anim.PushBack({ 22, 51, 15, 6 });
 	missile1_1.anim.loop = false;
-	missile1_1.speed.x = 4;
+	missile1_1.speed.x = 3;
 	missile1_1.speed.y = 2;
 	missile1_1.anim.speed = 0.5f;
 	missile1_1.life = 2000;
