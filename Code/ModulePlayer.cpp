@@ -8,7 +8,7 @@
 #include "ModulePlayer2.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
-#include "ModuleSceneLevel1.h"
+#include "ModuleSceneLevel5.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleGameOver.h"
 #include "ModuleFonts.h"
@@ -93,7 +93,7 @@ bool ModulePlayer::Start()
 	position.x = 0;
 	position.y = SCREEN_HEIGHT / 2;
 	App->render->camera.x = 0;
-	App->level1->ground_pos_x = 0;
+	App->level5->ground_pos_x = 0;
 	type = 0;
 
 	player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
@@ -307,7 +307,7 @@ update_status ModulePlayer::Update()
 	// Check player's lives	
 	if (App->player->lives < 0)
 	{
-		App->fade->FadeToBlack(App->level1, App->game_over);
+		App->fade->FadeToBlack(App->level5, App->game_over);
 	}
 
 	// Blitting the player
@@ -352,7 +352,7 @@ void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2)
 		{
 			position.x = 0;
 			App->user_interface->Disable();
-			App->fade->FadeToBlack(App->level1, App->game_over);
+			App->fade->FadeToBlack(App->level5, App->game_over);
 		}
 
 	}

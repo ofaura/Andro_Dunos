@@ -8,7 +8,7 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleSceneLevel1.h"
+#include "ModuleSceneLevel5.h"
 #include "ModuleStartMenu.h"
 #include "ModuleGameOver.h"
 #include "ModuleFonts.h"
@@ -295,7 +295,7 @@ update_status ModulePlayer2::Update()
 	// Check player's lives	
 	if (App->player2->lives < 0)
 	{
-		App->fade->FadeToBlack(App->level1, App->game_over);
+		App->fade->FadeToBlack(App->level5, App->game_over);
 	}
 
 	App->render->Blit(graphics, position.x, position.y, &r);
@@ -338,7 +338,7 @@ void ModulePlayer2::OnCollision(Collider* col_1, Collider* col_2)
 		{
 			position.x = 0;
 
-			App->fade->FadeToBlack(App->level1, App->game_over);
+			App->fade->FadeToBlack(App->level5, App->game_over);
 		}
 
 	}
