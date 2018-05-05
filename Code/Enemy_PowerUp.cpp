@@ -224,7 +224,8 @@ void Enemy_PowerUp::Move()
 
 		//Horizontal
 		else 
-		*/ if (App->render->camera.x >= 0 && App->render->camera.x <= 8800 * SCREEN_SIZE)
+		*/
+		if (App->render->camera.x >= 0 && App->render->camera.x <= 8800 * SCREEN_SIZE)
 		{
 			position.x += 1;
 		}

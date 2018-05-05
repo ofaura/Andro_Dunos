@@ -210,7 +210,7 @@ void PowerUp::Move()
 		vel_x = -1 * vel_x;
 		position.x = App->render->camera.x / SCREEN_SIZE;
 	}
-	else if (position.x > ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 16))
+	else if (position.x >((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 16))
 	{
 		vel_x = -1 * vel_x;
 	}
@@ -221,7 +221,7 @@ void PowerUp::Move()
 	{
 		vel_y = -1 * vel_y;
 	}
-	else if (position.y > (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 16)
+	else if (position.y >(abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 16)
 	{
 		vel_y = -1 * vel_y;
 	}
@@ -229,35 +229,7 @@ void PowerUp::Move()
 	position.y += vel_y;
 	position.x += vel_x;
 
-	//Up
-	if (App->render->camera.x >= 7150 * SCREEN_SIZE && App->render->camera.x <= 7200 * SCREEN_SIZE && App->render->camera.y >= 0)
-	{
-		position.y -= 1;
-	}
-
-	// Diagonal up
-	else if (App->render->camera.x >= 4005 * SCREEN_SIZE && App->render->camera.x < 4130 * SCREEN_SIZE || App->render->camera.x >= 5074 * SCREEN_SIZE && App->render->camera.x < 5290 * SCREEN_SIZE)
-	{
-		position.y -= 1;
-		position.x += 1;
-	}
-
-	// Diagonal down
-	else if (App->render->camera.y >= 96 * SCREEN_SIZE && App->render->camera.x >= 4530 * SCREEN_SIZE && App->render->camera.y < 224 * SCREEN_SIZE ||
-		App->render->camera.x >= 6125 * SCREEN_SIZE && App->render->camera.x < 6262 * SCREEN_SIZE)
-	{
-		position.y += 1;
-		position.x += 1;
-	}
-
-	//Down
-	else if (App->render->camera.x >= 2921 * SCREEN_SIZE && App->render->camera.x <= 2971 * SCREEN_SIZE && App->render->camera.y < 224 * SCREEN_SIZE)
-	{
-		position.y += 1;
-	}
-
-	//Horizontal
-	else if (App->render->camera.x >= 0 && App->render->camera.x <= 8800 * SCREEN_SIZE)
+	if (App->render->camera.x >= 0 && App->render->camera.x <= 8800 * SCREEN_SIZE)
 	{
 		position.x += 1;
 	}
@@ -265,7 +237,8 @@ void PowerUp::Move()
 
 void PowerUp::OnCollision(Collider* collider)
 {
-	if (random == 0) {
+	if (S_B == true) {
+
 		if ((collider->type == COLLIDER_PLAYER))
 		{
 			App->audio->PlayFx(powerup_picked);
@@ -277,7 +250,9 @@ void PowerUp::OnCollision(Collider* collider)
 			App->audio->PlayFx(powerup_picked);
 			App->player2->ShootPowerUpLevel2 = 2;
 		}
-	}else if (random == 1) {
+	}
+	
+	else if (B_M == true) {
 		if ((collider->type == COLLIDER_PLAYER))
 		{
 			App->shield->Enable();
