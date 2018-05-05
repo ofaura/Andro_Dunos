@@ -190,16 +190,21 @@ update_status ModulePlayer::Update()
 				App->audio->PlayFx(laser1);
 			}
 			
-			if (ShootPowerUpLevel_2 == 1)
+			if (ShootPowerUpLevel_2 == 1 || ShootPowerUpLevel_2 >= 2)
 			{
-				
+				if (ShootPowerUpLevel_2 >= 2 && t > 100)
+				{
+					App->particles->AddParticle(App->particles->missile1_2, position.x + 5, position.y - 3, COLLIDER_PLAYER_SHOT);
+					App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
+
+				}
+
 				if (t > 100)
 				{
 					App->particles->AddParticle(App->particles->missile1_1, position.x + 5, position.y + 15, COLLIDER_PLAYER_SHOT);
 					App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
 					t = 0;
 				}
-
 			}
 			
 		}

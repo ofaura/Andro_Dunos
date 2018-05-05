@@ -107,7 +107,13 @@ bool ModuleParticles::Start()
 	missile1_1.anim.speed = 0.f;
 	missile1_1.life = 2000;
 
-
+	missile1_2.anim.PushBack({ 297, 75, 12, 8 });
+	missile1_2.anim.PushBack({ 297, 90, 12, 8 });
+	missile1_2.anim.loop = true;
+	missile1_2.speed.x = 3;
+	missile1_2.speed.y = -2;
+	missile1_2.anim.speed = 0.f;
+	missile1_2.life = 2000;
 
 	// Player 1 death
 	explosionP1.anim.PushBack({ 11, 146, 27, 17});

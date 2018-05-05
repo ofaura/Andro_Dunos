@@ -66,6 +66,9 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->Enable();
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 300, (SCREEN_HEIGHT / 2) - 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 400, (SCREEN_HEIGHT / 2) - 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 500, (SCREEN_HEIGHT / 2) - 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 600, (SCREEN_HEIGHT / 2) - 20);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 200, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 215, 60);
