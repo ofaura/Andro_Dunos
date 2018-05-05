@@ -4,7 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleIntroNeoGeo.h"
-#include "ModuleSceneLevel1.h"
+//#include "ModuleSceneLevel1.h"
 #include "ModuleSceneLevel5.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
@@ -29,7 +29,7 @@ Application::Application()
 	modules[i++] = input = new ModuleInput();
 	modules[i++] = textures = new ModuleTextures();
 	modules[i++] = fonts = new ModuleFonts();
-	modules[i++] = level1 = new ModuleSceneLevel1();
+	//modules[i++] = level1 = new ModuleSceneLevel1();
 	modules[i++] = level5 = new ModuleSceneLevel5();
 	modules[i++] = NeoGeo = new ModuleIntroNeoGeo();
 	modules[i++] = start_menu = new ModuleStartMenu();
@@ -64,7 +64,7 @@ bool Application::Init()
 	enemies->Disable();
 
 	// Disable the map that you do not start with
-	level1->Disable();
+	//level1->Disable();
 	level5->Disable();
 	bonus->Disable();
 	start_menu->Disable();

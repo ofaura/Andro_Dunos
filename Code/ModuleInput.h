@@ -42,9 +42,11 @@ public:
 public:
 	KEY_STATE keyboard[MAX_KEYS];
 	KEY_STATE gamepad[MAX_BUTTONS];
-	SDL_GameController* controller = NULL;
+	SDL_GameController* controller = nullptr;
+	SDL_GameController* controller2 = nullptr;
 
 	bool use_controller = false;
+	bool use_controller2 = false;
 	int controller_index = 0;
 
 	Uint8 buttons[MAX_BUTTONS];

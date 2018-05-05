@@ -43,17 +43,26 @@ bool ModuleInput::Init()
 	if (SDL_Init(SDL_INIT_JOYSTICK)< 0) {
 		LOG("SDL_INIT_JOYSTICK could not initialize , SDL Error: %s\n", SDL_GetError())
 	}
-	if (SDL_NumJoysticks() < 1) {
-		LOG(" No joysticks connected!\n");
+
+
+	for (int i = 0; i < SDL_NumJoysticks(); ++i) {
+		if (SDL_IsGameController(i)) {
+			controller = SDL_GameControllerOpen(i);
+			use_controller = true;
+		}
+		if (SDL_IsGameController(i) && controller != NULL) {
+			controller2 = SDL_GameControllerOpen(i);
+			use_controller2 = true;
+			break;
+		}
+
 	}
-	else {
-		controller = SDL_GameControllerOpen(controller_index);
-		use_controller = true;
+	
 		if (controller == NULL) {
 			LOG(" Unable to open game controller! SDL Error: %s\n", SDL_GetError());
 			use_controller = false;
 		}
-	}
+	
 
 	return ret;
 }

@@ -1,4 +1,4 @@
-#include "Globals.h"
+/*#include "Globals.h"
 #include "Application.h"
 #include "ModuleSceneLevel1.h"
 #include "ModuleTextures.h"
@@ -419,4 +419,4 @@ bool ModuleSceneLevel1::CleanUp()
 		App->player2->Disable();
 
 	return true;
-}
+}*/
