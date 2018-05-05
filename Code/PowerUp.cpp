@@ -35,8 +35,8 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 	powerup_picked = App->audio->LoadFx("Assets/Audio/Sound FX/powerup_picked.wav");
 	graphics = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
 
-	random = rand() % 2;
-
+	//random = rand() % 3;
+	random = 3;
 	if (random == 0)
 	{
 		S_B = true;
@@ -48,7 +48,7 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 		fly_2.PushBack({ 29, 558, 16, 16 }); // reflection
 		fly_2.PushBack({ 47, 558, 16, 16 });
 		fly_2.PushBack({ 65, 558, 16, 16 });
-		fly_1.PushBack({ 10, 558, 16, 16 });
+		fly_2.PushBack({ 10, 558, 16, 16 });
 		fly_2.speed = 0.15f;
 		fly_2.loop = false;
 		act[1] = &fly_2;
@@ -58,7 +58,7 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 		fly_3.PushBack({ 101, 622, 16, 16 });
 		fly_3.PushBack({ 83, 540, 16, 16 });
 		fly_3.PushBack({ 101, 540, 16, 16 });
-		fly_4.PushBack({ 10, 540, 16, 16 });
+		fly_3.PushBack({ 10, 540, 16, 16 });
 		fly_3.speed = 0.6f;
 		fly_3.loop = false;
 		act[2] = &fly_3;
@@ -80,10 +80,10 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 
 		fly_6.PushBack({ 83, 540, 16, 16 }); // Change
 		fly_6.PushBack({ 101, 540, 16, 16 });
-		fly_6.PushBack({ 101, 622, 16, 16 });
+		fly_6.PushBack({ 101, 622, 16, 16 }); //
 		fly_6.PushBack({ 83, 558, 16, 16 });
 		fly_6.PushBack({ 101, 558, 16, 16 });
-		fly_4.PushBack({ 10, 540, 16, 16 });
+		fly_6.PushBack({ 10, 558, 16, 16 });
 
 		fly_6.speed = 0.6f;
 		fly_6.loop = false;
@@ -138,9 +138,109 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 		fly_6.PushBack({ 83, 594, 16, 16 }); // Change
 		fly_6.PushBack({ 101, 594, 16, 16 });
 		fly_6.PushBack({ 101, 622, 16, 16 }); ///
-		fly_6.PushBack({ 83, 594, 16, 16 });
+		fly_6.PushBack({ 83, 540, 16, 16 });
+		fly_6.PushBack({ 101, 540, 16, 16 });
+		fly_6.PushBack({ 10, 540, 16, 16 });
+		fly_6.speed = 0.6f;
+		fly_6.loop = false;
+		act[5] = &fly_6;
+	}
+
+	else if (random == 2)
+	{
+		M_U = true;
+
+		fly_1.PushBack({ 10, 594, 16, 16 }); // still
+		fly_1.loop = true;
+		act[0] = &fly_1;
+
+		fly_2.PushBack({ 29, 594, 16, 16 }); // reflection
+		fly_2.PushBack({ 47, 594, 16, 16 });
+		fly_2.PushBack({ 65, 594, 16, 16 });
+		fly_2.PushBack({ 10, 594, 16, 16 });
+		fly_2.speed = 0.15f;
+		fly_2.loop = false;
+		act[1] = &fly_2;
+
+		fly_3.PushBack({ 83, 594, 16, 16 }); // Change
+		fly_3.PushBack({ 101, 594, 16, 16 });
+		fly_3.PushBack({ 101, 622, 16, 16 }); ///
+		fly_3.PushBack({ 101, 576, 16, 16 });
+		fly_3.PushBack({ 83, 576, 16, 16 });
+		fly_3.PushBack({ 10, 576, 16, 16 });
+		fly_3.speed = 0.6f;
+		fly_3.loop = false;
+		act[2] = &fly_3;
+
+		fly_4.PushBack({ 10, 576, 16, 16 }); // still
+		fly_4.loop = true;
+		act[3] = &fly_4;
+
+		fly_5.PushBack({ 29, 576, 16, 16 }); // reflection
+		fly_5.PushBack({ 47, 576, 16, 16 });
+		fly_5.PushBack({ 65, 576, 16, 16 });
+		fly_5.PushBack({ 10, 576, 16, 16 });
+		fly_5.speed = 0.15f;
+		fly_5.loop = false;
+		act[4] = &fly_5;
+
+
+		fly_6.PushBack({ 101, 576, 16, 16 }); // Change
+		fly_6.PushBack({ 83, 576, 16, 16 });
+		fly_6.PushBack({ 101, 622, 16, 16 }); ///
 		fly_6.PushBack({ 101, 594, 16, 16 });
+		fly_6.PushBack({ 83, 594, 16, 16 });
 		fly_6.PushBack({ 10, 594, 16, 16 });
+		fly_6.speed = 0.6f;
+		fly_6.loop = false;
+		act[5] = &fly_6;
+
+	}
+
+	else if (random == 3)
+	{
+		U_S = true;
+
+		fly_1.PushBack({ 10, 576, 16, 16 }); // still
+		fly_1.loop = true;
+		act[0] = &fly_1;
+
+		fly_2.PushBack({ 29, 576, 16, 16 }); // reflection
+		fly_2.PushBack({ 47, 576, 16, 16 });
+		fly_2.PushBack({ 65, 576, 16, 16 });
+		fly_2.PushBack({ 10, 576, 16, 16 });
+		fly_2.speed = 0.15f;
+		fly_2.loop = false;
+		act[1] = &fly_2;
+
+		fly_3.PushBack({ 101, 576, 16, 16 }); // Change
+		fly_3.PushBack({ 83, 576, 16, 16 });
+		fly_3.PushBack({ 101, 622, 16, 16 }); ///
+		fly_3.PushBack({ 83, 558, 16, 16 });
+		fly_3.PushBack({ 101, 558, 16, 16 });
+		fly_3.PushBack({ 10, 558, 16, 16 });
+		fly_3.speed = 0.6f;
+		fly_3.loop = false;
+		act[2] = &fly_3;
+
+		fly_4.PushBack({ 10, 558, 16, 16 }); // still
+		fly_4.loop = true;
+		act[3] = &fly_4;
+
+		fly_5.PushBack({ 29, 558, 16, 16 }); // reflection
+		fly_5.PushBack({ 47, 558, 16, 16 });
+		fly_5.PushBack({ 65, 558, 16, 16 });
+		fly_5.PushBack({ 10, 558, 16, 16 });
+		fly_5.speed = 0.15f;
+		fly_5.loop = false;
+		act[4] = &fly_5;
+
+		fly_6.PushBack({ 83, 558, 16, 16 }); // Change
+		fly_6.PushBack({ 101, 558, 16, 16 });
+		fly_6.PushBack({ 101, 622, 16, 16 }); ///
+		fly_6.PushBack({ 101, 576, 16, 16 });
+		fly_6.PushBack({ 83, 576, 16, 16 });
+		fly_6.PushBack({ 10, 576, 16, 16 });
 		fly_6.speed = 0.6f;
 		fly_6.loop = false;
 		act[5] = &fly_6;
@@ -291,18 +391,86 @@ void PowerUp::OnCollision(Collider* collider)
 		{
 			if ((collider->type == COLLIDER_PLAYER))
 			{
-				App->player->Shield++;
 				App->audio->PlayFx(powerup_picked);
+				App->player->Shield;
+
+			}
+			else if (collider->type == COLLIDER_PLAYER_2)
+			{
+				App->audio->PlayFx(powerup_picked);
+				App->shield_p2->Enable();
+				//App->player2->Shield2;
+			}
+		}
+
+	}
+
+	if (M_U == true)
+	{
+		if (milliseconds < 412)
+		{
+			if ((collider->type == COLLIDER_PLAYER))
+			{
+				App->audio->PlayFx(powerup_picked);
+				// it's a homing missile, it ain't even started yet
+
+			}
+			else if (collider->type == COLLIDER_PLAYER_2)
+			{
+				App->audio->PlayFx(powerup_picked);
+				// it's a homing missile, it ain't even started yet
+			}
+		}
+		else
+		{
+			if ((collider->type == COLLIDER_PLAYER))
+			{
+				App->audio->PlayFx(powerup_picked);
+				App->shield->Enable();
+				App->player->Shield;
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2)
 			{
 				//App->shield_p2->Enable();
-				// App->player2->Shield++;
+				//App->player2->Shield2;
 				App->audio->PlayFx(powerup_picked);
 			}
 		}
+	}
 
+	if (U_S == true)
+	{
+		if (milliseconds < 412)
+		{
+			if ((collider->type == COLLIDER_PLAYER))
+			{
+				App->audio->PlayFx(powerup_picked);
+				App->shield->Enable();
+				App->player->Shield;
+
+			}
+			else if (collider->type == COLLIDER_PLAYER_2)
+			{
+				//App->shield_p2->Enable();
+				//App->player2->Shield2;
+				App->audio->PlayFx(powerup_picked);
+			}
+		}
+		else
+		{
+			if ((collider->type == COLLIDER_PLAYER))
+			{
+				App->audio->PlayFx(powerup_picked);
+				App->player->ShootPowerUpLevel++;
+
+			}
+			else if (collider->type == COLLIDER_PLAYER_2)
+			{
+				App->audio->PlayFx(powerup_picked);
+				App->player2->ShootPowerUpLevel2++;
+			}
+		}
 	}
 }
 
