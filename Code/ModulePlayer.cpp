@@ -189,7 +189,7 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + -1, COLLIDER_PLAYER_SHOT);
 				App->audio->PlayFx(laser1);
 			}
-			
+			/*
 			if (ShootPowerUpLevel_2 >= 0)
 			{
 				
@@ -201,7 +201,7 @@ update_status ModulePlayer::Update()
 				}
 
 			}
-
+			*/
 		}
 		
 		else if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->gamepad[4] == KEY_STATE::KEY_DOWN) && type == bullet_type::TYPE_2)
@@ -226,8 +226,8 @@ update_status ModulePlayer::Update()
 				App->audio->PlayFx(laser3);
 			}
 			else if (ShootPowerUpLevel == 2) {
-				App->particles->AddParticle(App->particles->laser3_2, position.x + 19, position.y + 11, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser3_3, position.x + 19, position.y + 11, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser3_2, position.x + 19, position.y + 1, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser3_3, position.x + 19, position.y + 5, COLLIDER_PLAYER_SHOT);
 				App->audio->PlayFx(laser3);
 			}
 			
