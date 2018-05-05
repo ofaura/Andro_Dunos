@@ -23,10 +23,10 @@ ModuleSceneLevel5::ModuleSceneLevel5()
 	background.w = 3970;
 	background.h = 199;
 
-	ground.x = 0;
-	ground.y = 0;
-	ground.w = 9305;
-	ground.h = 563;
+	meteorites1.x = 200;
+	meteorites1.y = 38;
+	meteorites1.w = 1554;
+	meteorites1.h = 240;
 }
 
 ModuleSceneLevel5::~ModuleSceneLevel5()
@@ -38,7 +38,8 @@ bool ModuleSceneLevel5::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 	//Textures are loaded
-	background_texture = App->textures->Load("Assets/Sprites/lvl5/background5.png");
+	background_texture = App->textures->Load("Assets/Sprites/lvl5/Background/background5.png");
+	meteorites_texture1 = App->textures->Load("Assets/Sprites/lvl5/Background/meteorites1.png");
 
 	//Audios are loaded
 	small_enemy_death = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_small_explosion.wav");
@@ -91,8 +92,8 @@ update_status ModuleSceneLevel5::Update()
 		App->player2->position.x += 1;
 	}
 
-	App->render->Blit(background_texture, (background_pos_x) / 3.5, background_pos_y, &background, 0.5f, true);
-
+	App->render->Blit(background_texture, ((background_pos_x) / 3.5), background_pos_y, &background, 0.5f, true);	
+	App->render->Blit(meteorites_texture1, 1100, background_pos_y, &meteorites1, 0.8f, true);
 
 	return UPDATE_CONTINUE;
 }
@@ -103,6 +104,7 @@ bool ModuleSceneLevel5::CleanUp()
 	// Remove all memory leaks
 	LOG("Unloading textures");
 	App->audio->UnLoadFx(small_enemy_death);
+	App->textures->Unload(meteorites_texture1);
 	App->textures->Unload(background_texture);
 
 	App->collision->CleanUp();

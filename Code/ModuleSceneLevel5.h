@@ -20,10 +20,10 @@ public:
 public:
 
 	SDL_Texture* background_texture = nullptr;
-	SDL_Texture* ground_texture = nullptr;
+	SDL_Texture* meteorites_texture1 = nullptr;
 
-	SDL_Rect ground;
 	SDL_Rect background;
+	SDL_Rect meteorites1;
 
 	uint small_enemy_death;
 
