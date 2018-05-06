@@ -65,7 +65,8 @@ bool ModuleSceneLevel5::Start()
 	App->user_interface->Enable();
 
 	// Reseting the camera to the start of the level
-	App->render->camera.x =	App->render->camera.y = 0;
+	App->render->camera.x = 4000;
+	App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
 	App->render->camera.h = SCREEN_HEIGHT;
 
@@ -136,6 +137,19 @@ bool ModuleSceneLevel5::Start()
 	App->collision->AddCollider({ 3298, 192, 109, 11 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 3047, 186, 65, 6 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 3303, 186, 65, 6 }, COLLIDER_WALL);
+	
+	App->collision->AddCollider({ 4272, 0, 177, 6 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4275, 6, 166, 18 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4303, 24, 69, 23 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4372, 24, 35, 13 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 6176, 0, 177, 6 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6178, 6, 166, 18 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6206, 24, 69, 23 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6275, 24, 35, 13 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 4852, 87, 57, 14 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4840, 101, 79, 41 }, COLLIDER_WALL);
 
 	//Audio ---
 	App->audio->PlayMusic("Assets/Audio/Music/level5.ogg", 1.0f);
