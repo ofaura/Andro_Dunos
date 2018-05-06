@@ -310,8 +310,8 @@ update_status ModulePlayer::Update()
 		// Part of Type-1
 		if (t_ani >= 1 && t_ani < 11)
 		{
-			App->particles->missile1_1.speed.x = position.x;
-			App->particles->missile1_1.speed.y = position.y;
+			App->particles->missile1_1.speed.x = position.x;//4;
+			App->particles->missile1_1.speed.y = position.y;//4;
 			t_ani++;
 		}
 		else if (t_ani >= 10)
