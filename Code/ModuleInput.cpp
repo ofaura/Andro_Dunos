@@ -137,7 +137,6 @@ update_status ModuleInput::PreUpdate()
 	
 	if (keyboard[SDL_SCANCODE_F7]) {
 		App->player2->Disable();
-		App->p2collision->CleanUp();
 	}		
 
 	// Autowin key

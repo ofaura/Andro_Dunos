@@ -14,6 +14,7 @@
 #include "ModuleParticles.h"
 #include "ModuleUserInterface.h"
 #include "ModuleShield.h"
+#include "ModuleShield_p2.h"
 
 ModuleSceneLevel5::ModuleSceneLevel5()
 {
@@ -190,7 +191,12 @@ bool ModuleSceneLevel5::CleanUp()
 	App->enemies->Disable();
 	App->collision->Disable();
 	App->player->Disable();
-	App->shield->Disable();
+	
+	if(App->shield->IsEnabled() == true)
+		App->shield->Disable();
+
+	if (App->shield_p2->IsEnabled() == true)
+		App->shield_p2->Disable();
 
 	if (App->player2->IsEnabled() == true)
 		App->player2->Disable();
