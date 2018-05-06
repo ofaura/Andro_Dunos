@@ -32,7 +32,7 @@ Keybord gameplay:
 ---------------------------------------------
 PLAYER 1:
 
-	L - Move up
+	W - Move up
 
 	A - Move left
 
