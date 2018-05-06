@@ -347,8 +347,8 @@ update_status ModulePlayer::Update()
 		}
 
 		// Player Idle position if not going up or down -------------------------------------
-		if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE || App->input->gamepad[1] == KEY_STATE::KEY_REPEAT)
-			&& (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE || App->input->gamepad[0] == KEY_STATE::KEY_REPEAT))
+		if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE && App->input->gamepad[1] == KEY_STATE::KEY_IDLE)
+			&& (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && App->input->gamepad[0] == KEY_STATE::KEY_IDLE))
 		{
 		current_animation = &idle;
 		fire_current = &fire_idle;
