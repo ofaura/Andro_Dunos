@@ -104,7 +104,7 @@ bool ModuleParticles::Start()
 	missile1_1.anim.loop = true;
 	missile1_1.speed.x = 4;
 	missile1_1.speed.y = 2;
-	missile1_1.anim.speed = 0.f;
+	missile1_1.anim.speed = 0.5f;
 	missile1_1.life = 2000;
 
 	missile1_2.anim.PushBack({ 297, 75, 12, 8 });
@@ -112,24 +112,36 @@ bool ModuleParticles::Start()
 	missile1_2.anim.loop = true;
 	missile1_2.speed.x = 4;
 	missile1_2.speed.y = -2;
-	missile1_2.anim.speed = 0.f;
+	missile1_2.anim.speed = 0.5f;
 	missile1_2.life = 2000;
 
 	//
-	missile2_1.anim.PushBack({ 297, 30, 12, 8 });
-	missile2_1.anim.PushBack({ 297, 16, 12, 8 });
+	//missile2_1.anim.PushBack({ 269, 119, 15, 9});
+	//missile2_1.anim.PushBack({ 268, 105, 12, 9});
+	//missile2_1.anim.PushBack({ 267, 90, 12, 9 });
+	//missile2_1.anim.PushBack({ 268, 75, 12, 9 });
+	missile2_1.anim.PushBack({ 268, 59, 12, 9 });
+	missile2_1.anim.PushBack({ 268, 46, 12, 9 });
+	//missile2_1.anim.PushBack({ 268, 30, 12, 9 });
+	//missile2_1.anim.PushBack({ 268, 16, 12, 9 });
 	missile2_1.anim.loop = true;
 	missile2_1.speed.x = 1;
 	missile2_1.speed.y = 2;
-	missile2_1.anim.speed = 0.f;
+	missile2_1.anim.speed = 0.15f;
 	missile2_1.life = 2000;
 
-	missile2_2.anim.PushBack({ 297, 75, 12, 8 });
-	missile2_2.anim.PushBack({ 297, 90, 12, 8 });
+	//missile2_2.anim.PushBack({ 269, 119, 15, 9 });
+	//missile2_2.anim.PushBack({ 268, 105, 12, 9 });
+	//missile2_2.anim.PushBack({ 267, 90, 12, 9 });
+	//missile2_2.anim.PushBack({ 268, 75, 12, 9 });
+	missile2_2.anim.PushBack({ 268, 59, 12, 9 });
+	missile2_2.anim.PushBack({ 268, 46, 12, 9 });
+	//missile2_2.anim.PushBack({ 268, 30, 12, 9 });
+	//missile2_2.anim.PushBack({ 268, 16, 12, 9 });
 	missile2_2.anim.loop = true;
 	missile2_2.speed.x = 1;
 	missile2_2.speed.y = -2;
-	missile2_2.anim.speed = 0.f;
+	missile2_2.anim.speed = 0.15f;
 	missile2_2.life = 2000;
 
 	// Player 1 death
