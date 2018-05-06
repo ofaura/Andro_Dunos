@@ -97,17 +97,18 @@ bool ModuleParticles::Start()
 
 	//PLayer scond weapon
 
-	//missile1_1.anim.PushBack({ 298, 46, 10, 5});
+	
 
-	missile1_1.anim.PushBack({ 297, 30, 12, 8});
-	missile1_1.anim.PushBack({ 297, 16, 12, 8 });
-	missile1_1.anim.loop = true;
-	missile1_1.speed.x = 4;
-	missile1_1.speed.y = 2;
-	missile1_1.anim.speed = 0.3f;
+	//missile1_1.anim.PushBack({ 296, 66, 12, 8});
+	//missile1_1.anim.PushBack({ 296, 63, 12, 8});
+	//missile1_1.anim.PushBack({ 296, 61, 12, 8 });
+	missile1_1.anim.PushBack({ 297, 105, 12, 9 }); //
+	missile1_1.anim.loop = true; // false;
+	missile1_1.speed.x = 4;//1;
+	missile1_1.speed.y = 2;//0;
+	missile1_1.anim.speed = 0.1f;
 	missile1_1.life = 2000;
 
-	missile1_2.anim.PushBack({ 297, 75, 12, 8 });
 	missile1_2.anim.PushBack({ 297, 90, 12, 8 });
 	missile1_2.anim.loop = true;
 	missile1_2.speed.x = 4;
@@ -336,6 +337,7 @@ bool Particle::Update()
 
 	position.x += speed.x;
 	position.y += speed.y;
+
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);

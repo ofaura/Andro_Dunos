@@ -28,6 +28,7 @@ struct Particle
 	Particle(const Particle& p);
 	~Particle();
 	bool Update();
+	bool go;
 };
 
 class ModuleParticles : public Module

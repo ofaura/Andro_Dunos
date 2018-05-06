@@ -78,10 +78,11 @@ bool ModulePlayer::Start()
 	
 	t = 0;
 	t_2 = 0;
+	t_ani = 0;
 	enable = false;
 
 	ShootPowerUpLevel = 1; // Primary Weap
-	ShootPowerUpLevel_2 = 0; // Secondary WEap
+	ShootPowerUpLevel_2 = 0; // Secondary Weap
 	HomingMissile = 0; // Selfevident
 	Shield = 0; // Selfevident
 
@@ -176,8 +177,14 @@ update_status ModulePlayer::Update()
 
 			App->audio->PlayFx(type_change);
 		}
+
 		t++;
-		// shoot -------------------------------------- KEY_REPEAT
+
+
+
+		// shoot -------------------------------------- 
+
+		// TYPE-1, PRIMARY WEAP
 		if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->gamepad[4] == KEY_STATE::KEY_DOWN
 			|| App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT || App->input->gamepad[4] == KEY_STATE::KEY_REPEAT) && type == bullet_type::TYPE_1)
 		{
@@ -195,9 +202,9 @@ update_status ModulePlayer::Update()
 					App->audio->PlayFx(laser1);
 				}
 
-			} // missile1_3b
+			} 
 
-
+			// TYPE-1, SECONDARY WEAP
 			if (ShootPowerUpLevel_2 >= 3 && t > 100)
 			{
 				App->particles->AddParticle(App->particles->missile1_2, position.x + 5, position.y - 3, COLLIDER_PLAYER_SHOT);
@@ -219,17 +226,20 @@ update_status ModulePlayer::Update()
 				t = 0;
 
 			}
-
 			else if (ShootPowerUpLevel_2 == 1 && t > 100)
 			{
-				App->particles->AddParticle(App->particles->missile1_1, position.x + 5, position.y + 15, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->missile1_1, position.x + 5, position.y + 20, COLLIDER_PLAYER_SHOT);
 				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
+				App->particles->missile1_1.speed.x = 1;
+				App->particles->missile1_1.speed.y = 0;
+				t_ani = 1;
 				t = 0;
 			}
 
 			
 		}
 		
+		// TYPE-2, PRIMARY WEAP
 		else if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->gamepad[4] == KEY_STATE::KEY_DOWN
 			|| App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT || App->input->gamepad[4] == KEY_STATE::KEY_REPEAT) && type == bullet_type::TYPE_2)
 		{
@@ -296,20 +306,39 @@ update_status ModulePlayer::Update()
 			
 		}
 
+
+		// Part of Type-1
+		if (t_ani >= 1 && t_ani < 11)
+		{
+			App->particles->missile1_1.speed.x = position.x;//4;
+			App->particles->missile1_1.speed.y = position.y;//4;
+			t_ani++;
+		}
+		else if (t_ani >= 10)
+		{
+			App->particles->missile1_1.speed.x = 4;
+			App->particles->missile1_1.speed.y = 2;
+
+			t_ani = 0;
+		}
+
 		if (enable == true)
 		{
 			t_2++;
-		}
-		if (t_2 >= 15)
-		{
-			App->particles->AddParticle(App->particles->missile1_3b, position.x + 5, position.y - 3, COLLIDER_PLAYER_SHOT);
-			App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
-			App->particles->AddParticle(App->particles->missile1_3a, position.x + 5, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
-			enable = false;
-			t_2 = 0;
+			if (t_2 >= 15)
+			{
+				App->particles->AddParticle(App->particles->missile1_3b, position.x + 5, position.y - 3, COLLIDER_PLAYER_SHOT);
+				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
+				App->particles->AddParticle(App->particles->missile1_3a, position.x + 5, position.y + 15, COLLIDER_PLAYER_SHOT);
+				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
+				enable = false;
+				t_2 = 0;
+			}
 		}
 
+
+
+		// Shield
 		if (Shield != 0)
 		{
 
