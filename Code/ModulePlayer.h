@@ -49,7 +49,7 @@ public:
 	Animation fire_down1;
 	Animation fire_down2;
 
-	int t = 0, t_2 = 0;
+	int t = 0, t_2 = 0, t_ani;
 	bool enable;
 
 	iPoint position, fire_position;
