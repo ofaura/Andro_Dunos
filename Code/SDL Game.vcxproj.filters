@@ -83,9 +83,6 @@
     <ClInclude Include="ModuleStartMenu.h">
       <Filter>Modules\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleSceneLevel1.h">
-      <Filter>Modules\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleUserInterface.h">
       <Filter>Modules\Players</Filter>
     </ClInclude>
@@ -179,9 +176,6 @@
       <Filter>Modules\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="ModuleStartMenu.cpp">
-      <Filter>Modules\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleSceneLevel1.cpp">
       <Filter>Modules\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="ModuleUserInterface.cpp">

@@ -10,7 +10,6 @@ class ModuleInput;
 class ModuleTextures;
 class ModuleRender;
 class ModuleIntroNeoGeo;
-//class ModuleSceneLevel1;
 class ModuleSceneLevel5;
 class ModulePlayer;
 class ModuleUserInterface;
@@ -38,7 +37,6 @@ public:
 	ModuleInput* input;
 	ModuleTextures* textures;
 	ModuleIntroNeoGeo* NeoGeo;
-	//ModuleSceneLevel1* level1;
 	ModuleSceneLevel5* level5;
 	ModulePlayer* player;
 	ModuleUserInterface* user_interface;

@@ -109,6 +109,7 @@ bool ModuleSceneLevel5::Start()
 	App->collision->AddCollider({ 1725, 0, 191, 41 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 1767, 41, 55, 22 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 1822, 41, 40, 10 }, COLLIDER_WALL);
+
 	App->collision->AddCollider({ 2155, 214, 24, 18 }, COLLIDER_WALL); //same meteorite
 	App->collision->AddCollider({ 2179, 195, 36, 37 }, COLLIDER_WALL); //same meteorite
 	App->collision->AddCollider({ 2215, 176, 70, 56 }, COLLIDER_WALL); //same meteorite
@@ -120,9 +121,13 @@ bool ModuleSceneLevel5::Start()
 	App->collision->AddCollider({ 2464, 213, 5, 19 }, COLLIDER_WALL);  //same meteorite
 	App->collision->AddCollider({ 2469, 216, 11, 16 }, COLLIDER_WALL); //same meteorite
 	App->collision->AddCollider({ 2480, 223, 10, 9 }, COLLIDER_WALL);  //same meteorite
+
 	App->collision->AddCollider({ 2363, 0, 191, 49 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 2405, 49, 55, 22 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 2460, 49, 40, 10 }, COLLIDER_WALL);
+	
+	App->collision->AddCollider({ 3005, 218, 551, 6 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3008, 208, 525, 10 }, COLLIDER_WALL);
 
 	//Audio ---
 	App->audio->PlayMusic("Assets/Audio/Music/level5.ogg", 1.0f);
