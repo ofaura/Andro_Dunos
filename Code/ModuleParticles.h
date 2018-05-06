@@ -62,6 +62,7 @@ public:
 	Particle laser4_3;
 
 	Particle missile1_1, missile1_2;
+	Particle missile2_1, missile2_2;
 
 	Particle explosionP1;
 	Particle explosionP2;
