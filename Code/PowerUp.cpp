@@ -35,7 +35,8 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 	powerup_picked = App->audio->LoadFx("Assets/Audio/Sound FX/powerup_picked.wav");
 	graphics = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
 
-	random = rand() % 4;
+	//random = rand() % 4;
+	random = 1;
 
 	if (random == 0)
 	{

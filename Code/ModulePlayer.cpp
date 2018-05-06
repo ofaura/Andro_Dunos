@@ -76,7 +76,9 @@ bool ModulePlayer::Start()
 	LOG("Loading player textures");
 	graphics = App->textures->Load("Assets/Sprites/player/ships.png"); // arcade version
 	
-	t = 200;
+	t = 0;
+	t_2 = 0;
+	enable = false;
 
 	ShootPowerUpLevel = 1; // Primary Weap
 	ShootPowerUpLevel_2 = 0; // Secondary WEap
@@ -193,24 +195,38 @@ update_status ModulePlayer::Update()
 					App->audio->PlayFx(laser1);
 				}
 
-			}
+			} // missile1_3b
 
-			if (ShootPowerUpLevel_2 == 1 || ShootPowerUpLevel_2 >= 2) // 
+
+			if (ShootPowerUpLevel_2 >= 3 && t > 100)
 			{
-				if (ShootPowerUpLevel_2 >= 2 && t > 100)
-				{
-					App->particles->AddParticle(App->particles->missile1_2, position.x + 5, position.y - 3, COLLIDER_PLAYER_SHOT);
-					App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
+				App->particles->AddParticle(App->particles->missile1_2, position.x + 5, position.y - 3, COLLIDER_PLAYER_SHOT);
+				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
+				App->particles->AddParticle(App->particles->missile1_1, position.x + 5, position.y + 15, COLLIDER_PLAYER_SHOT);
+				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
 
-				}
+				enable = true;
+				t = 0;
 
-				if (t > 100)
-				{
-					App->particles->AddParticle(App->particles->missile1_1, position.x + 5, position.y + 15, COLLIDER_PLAYER_SHOT);
-					App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
-					t = 0;
-				}
 			}
+
+			else if (ShootPowerUpLevel_2 == 2 && t > 100)
+			{
+				App->particles->AddParticle(App->particles->missile1_2, position.x + 5, position.y - 3, COLLIDER_PLAYER_SHOT);
+				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
+				App->particles->AddParticle(App->particles->missile1_1, position.x + 5, position.y + 15, COLLIDER_PLAYER_SHOT);
+				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
+				t = 0;
+
+			}
+
+			else if (ShootPowerUpLevel_2 == 1 && t > 100)
+			{
+				App->particles->AddParticle(App->particles->missile1_1, position.x + 5, position.y + 15, COLLIDER_PLAYER_SHOT);
+				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
+				t = 0;
+			}
+
 			
 		}
 		
@@ -278,6 +294,20 @@ update_status ModulePlayer::Update()
 				App->audio->PlayFx(laser4);
 			}
 			
+		}
+
+		if (enable == true)
+		{
+			t_2++;
+		}
+		if (t_2 >= 15)
+		{
+			App->particles->AddParticle(App->particles->missile1_3b, position.x + 5, position.y - 3, COLLIDER_PLAYER_SHOT);
+			App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
+			App->particles->AddParticle(App->particles->missile1_3a, position.x + 5, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
+			enable = false;
+			t_2 = 0;
 		}
 
 		if (Shield != 0)

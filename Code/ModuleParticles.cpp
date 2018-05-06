@@ -104,7 +104,7 @@ bool ModuleParticles::Start()
 	missile1_1.anim.loop = true;
 	missile1_1.speed.x = 4;
 	missile1_1.speed.y = 2;
-	missile1_1.anim.speed = 0.5f;
+	missile1_1.anim.speed = 0.3f;
 	missile1_1.life = 2000;
 
 	missile1_2.anim.PushBack({ 297, 75, 12, 8 });
@@ -112,9 +112,24 @@ bool ModuleParticles::Start()
 	missile1_2.anim.loop = true;
 	missile1_2.speed.x = 4;
 	missile1_2.speed.y = -2;
-	missile1_2.anim.speed = 0.5f;
+	missile1_2.anim.speed = 0.3f;
 	missile1_2.life = 2000;
 
+	missile1_3a.anim.PushBack({ 297, 30, 12, 8 });
+	missile1_3a.anim.PushBack({ 297, 16, 12, 8 });
+	missile1_3a.anim.loop = true;
+	missile1_3a.speed.x = 2;
+	missile1_3a.speed.y = 2;
+	missile1_3a.anim.speed = 0.3f;
+	missile1_3a.life = 2000;
+
+	missile1_3b.anim.PushBack({ 297, 75, 12, 8 });
+	missile1_3b.anim.PushBack({ 297, 90, 12, 8 });
+	missile1_3b.anim.loop = true;
+	missile1_3b.speed.x = 2;
+	missile1_3b.speed.y = -2;
+	missile1_3b.anim.speed = 0.3f;
+	missile1_3b.life = 2000;
 	//
 	//missile2_1.anim.PushBack({ 269, 119, 15, 9});
 	//missile2_1.anim.PushBack({ 268, 105, 12, 9});

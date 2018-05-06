@@ -49,7 +49,8 @@ public:
 	Animation fire_down1;
 	Animation fire_down2;
 
-	int t = 0;
+	int t = 0, t_2 = 0;
+	bool enable;
 
 	iPoint position, fire_position;
 	uint laser1, laser2, laser3, laser4; // main weap of each type
