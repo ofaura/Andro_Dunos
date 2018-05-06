@@ -77,6 +77,27 @@ bool ModuleSceneLevel5::Start()
 
 	// Colliders ----
 	App->collision->Enable();
+	App->collision->AddCollider({ 1105, 85, 78, 69 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1297, 5, 110, 72 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1473, 181, 110, 59 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1681, 52, 48, 40 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1825, 0, 191, 41 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1867, 41, 55, 22 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1922, 41, 40, 10 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2255, 214, 24, 18 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2279, 195, 36, 37 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2315, 176, 70, 56 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2385, 186, 50, 46 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2435, 199, 46, 33 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2481, 193, 27, 39 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2508, 202, 42, 30 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2550, 209, 14, 23 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2564, 213, 5, 19 }, COLLIDER_WALL);  //same meteorite
+	App->collision->AddCollider({ 2569, 216, 11, 16 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2580, 223, 10, 9 }, COLLIDER_WALL);  //same meteorite
+	App->collision->AddCollider({ 2463, 0, 191, 49 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2505, 49, 55, 22 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2560, 49, 40, 10 }, COLLIDER_WALL);
 
 	//Audio ---
 	App->audio->PlayMusic("Assets/Audio/Music/level5.ogg", 1.0f);
@@ -95,8 +116,8 @@ update_status ModuleSceneLevel5::Update()
 		App->player2->position.x += 1;
 	}
 
-	App->render->Blit(background_texture, ((background_pos_x) / 3.5), background_pos_y, &background, 0.5f, true);	
-	App->render->Blit(meteorites_texture1, 1100, background_pos_y, &meteorites1, 0.8f, true);
+	App->render->Blit(background_texture, ((background_pos_x) / 3.5), 0, &background, 0.5f, true);	
+	App->render->Blit(meteorites_texture1, 1100, background_pos_y, &meteorites1, 1.0f, true);
 
 	return UPDATE_CONTINUE;
 }
