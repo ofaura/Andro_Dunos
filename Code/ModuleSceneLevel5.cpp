@@ -42,6 +42,7 @@ bool ModuleSceneLevel5::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
+
 	//Textures are loaded
 	background_texture = App->textures->Load("Assets/Sprites/lvl5/Background/background5.png");
 	meteorites_texture1 = App->textures->Load("Assets/Sprites/lvl5/Background/meteorites1.png");
@@ -81,11 +82,29 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 230, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 245, 60);
 
-	// Colliders ----
+	// Colliders ---
 	App->collision->Enable();
-	App->collision->AddCollider({ 1005, 85, 78, 69 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 1197, 5, 110, 72 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 1373, 181, 110, 59 }, COLLIDER_WALL);
+
+	// Meteorite 1
+	App->collision->AddCollider({ 1028, 86, 38, 6 }, COLLIDER_WALL);	
+	App->collision->AddCollider({ 1013, 92, 67, 20 }, COLLIDER_WALL);	
+	App->collision->AddCollider({ 1005, 112, 78, 20 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1012, 132, 60, 5 }, COLLIDER_WALL);	
+	App->collision->AddCollider({ 1017, 137, 52, 7 }, COLLIDER_WALL);	
+	App->collision->AddCollider({ 1028, 144, 35, 8 }, COLLIDER_WALL);	
+	
+	// Meteorite 2
+	App->collision->AddCollider({ 1220, 6, 72, 9 }, COLLIDER_WALL);		
+	App->collision->AddCollider({ 1205, 15, 102, 20 }, COLLIDER_WALL);	
+	App->collision->AddCollider({ 1197, 35, 108, 22 }, COLLIDER_WALL);	
+	App->collision->AddCollider({ 1207, 57, 89, 8 }, COLLIDER_WALL);	
+	App->collision->AddCollider({ 1220, 65, 69, 11 }, COLLIDER_WALL);	
+
+	// Meteorite 3
+	App->collision->AddCollider({ 1396, 182, 72, 9 }, COLLIDER_WALL);		
+	App->collision->AddCollider({ 1381, 191, 102, 20 }, COLLIDER_WALL);	
+	App->collision->AddCollider({ 1373, 211, 108, 30 }, COLLIDER_WALL);	
+		
 	App->collision->AddCollider({ 1581, 52, 48, 40 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 1725, 0, 191, 41 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 1767, 41, 55, 22 }, COLLIDER_WALL);
