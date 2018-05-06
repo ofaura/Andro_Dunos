@@ -27,6 +27,11 @@ ModuleSceneLevel5::ModuleSceneLevel5()
 	meteorites1.y = 38;
 	meteorites1.w = 1554;
 	meteorites1.h = 240;
+
+	meteorites2.x = 9;
+	meteorites2.y = 15;
+	meteorites2.w = 3766;
+	meteorites2.h = 224;
 }
 
 ModuleSceneLevel5::~ModuleSceneLevel5()
@@ -40,6 +45,7 @@ bool ModuleSceneLevel5::Start()
 	//Textures are loaded
 	background_texture = App->textures->Load("Assets/Sprites/lvl5/Background/background5.png");
 	meteorites_texture1 = App->textures->Load("Assets/Sprites/lvl5/Background/meteorites1.png");
+	meteorites_texture2 = App->textures->Load("Assets/Sprites/lvl5/Background/meteorites2.png");
 
 	//Audios are loaded
 	small_enemy_death = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_small_explosion.wav");
@@ -77,27 +83,27 @@ bool ModuleSceneLevel5::Start()
 
 	// Colliders ----
 	App->collision->Enable();
-	App->collision->AddCollider({ 1105, 85, 78, 69 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 1297, 5, 110, 72 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 1473, 181, 110, 59 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 1681, 52, 48, 40 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 1825, 0, 191, 41 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 1867, 41, 55, 22 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 1922, 41, 40, 10 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 2255, 214, 24, 18 }, COLLIDER_WALL); //same meteorite
-	App->collision->AddCollider({ 2279, 195, 36, 37 }, COLLIDER_WALL); //same meteorite
-	App->collision->AddCollider({ 2315, 176, 70, 56 }, COLLIDER_WALL); //same meteorite
-	App->collision->AddCollider({ 2385, 186, 50, 46 }, COLLIDER_WALL); //same meteorite
-	App->collision->AddCollider({ 2435, 199, 46, 33 }, COLLIDER_WALL); //same meteorite
-	App->collision->AddCollider({ 2481, 193, 27, 39 }, COLLIDER_WALL); //same meteorite
-	App->collision->AddCollider({ 2508, 202, 42, 30 }, COLLIDER_WALL); //same meteorite
-	App->collision->AddCollider({ 2550, 209, 14, 23 }, COLLIDER_WALL); //same meteorite
-	App->collision->AddCollider({ 2564, 213, 5, 19 }, COLLIDER_WALL);  //same meteorite
-	App->collision->AddCollider({ 2569, 216, 11, 16 }, COLLIDER_WALL); //same meteorite
-	App->collision->AddCollider({ 2580, 223, 10, 9 }, COLLIDER_WALL);  //same meteorite
-	App->collision->AddCollider({ 2463, 0, 191, 49 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 2505, 49, 55, 22 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 2560, 49, 40, 10 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1005, 85, 78, 69 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1197, 5, 110, 72 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1373, 181, 110, 59 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1581, 52, 48, 40 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1725, 0, 191, 41 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1767, 41, 55, 22 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1822, 41, 40, 10 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2155, 214, 24, 18 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2179, 195, 36, 37 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2215, 176, 70, 56 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2285, 186, 50, 46 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2335, 199, 46, 33 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2381, 193, 27, 39 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2408, 202, 42, 30 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2450, 209, 14, 23 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2464, 213, 5, 19 }, COLLIDER_WALL);  //same meteorite
+	App->collision->AddCollider({ 2469, 216, 11, 16 }, COLLIDER_WALL); //same meteorite
+	App->collision->AddCollider({ 2480, 223, 10, 9 }, COLLIDER_WALL);  //same meteorite
+	App->collision->AddCollider({ 2363, 0, 191, 49 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2405, 49, 55, 22 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2460, 49, 40, 10 }, COLLIDER_WALL);
 
 	//Audio ---
 	App->audio->PlayMusic("Assets/Audio/Music/level5.ogg", 1.0f);
@@ -116,8 +122,9 @@ update_status ModuleSceneLevel5::Update()
 		App->player2->position.x += 1;
 	}
 
-	App->render->Blit(background_texture, ((background_pos_x) / 3.5), 0, &background, 0.5f, true);	
-	App->render->Blit(meteorites_texture1, 1100, background_pos_y, &meteorites1, 1.0f, true);
+	App->render->Blit(background_texture, ((background_pos_x) / 3.5), 20, &background, 0.5f, true);	
+	App->render->Blit(meteorites_texture1, 1000, background_pos_y, &meteorites1, 1.0f, true);
+	App->render->Blit(meteorites_texture2, 3000, background_pos_y, &meteorites2, 1.0f, true);
 
 	return UPDATE_CONTINUE;
 }
@@ -128,6 +135,7 @@ bool ModuleSceneLevel5::CleanUp()
 	// Remove all memory leaks
 	LOG("Unloading textures");
 	App->audio->UnLoadFx(small_enemy_death);
+	App->textures->Unload(meteorites_texture2);
 	App->textures->Unload(meteorites_texture1);
 	App->textures->Unload(background_texture);
 
