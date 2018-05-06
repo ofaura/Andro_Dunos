@@ -175,21 +175,26 @@ update_status ModulePlayer::Update()
 			App->audio->PlayFx(type_change);
 		}
 		t++;
-		// shoot --------------------------------------
-		if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->gamepad[4] == KEY_STATE::KEY_DOWN) && type == bullet_type::TYPE_1)
+		// shoot -------------------------------------- KEY_REPEAT
+		if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->gamepad[4] == KEY_STATE::KEY_DOWN
+			|| App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT || App->input->gamepad[4] == KEY_STATE::KEY_REPEAT) && type == bullet_type::TYPE_1)
 		{
-			if(ShootPowerUpLevel == 1){
-				App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 4, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 9, COLLIDER_PLAYER_SHOT);
-				App->audio->PlayFx(laser1);
+			if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->gamepad[4] == KEY_STATE::KEY_DOWN)
+			{
+				if (ShootPowerUpLevel == 1) {
+					App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 4, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 9, COLLIDER_PLAYER_SHOT);
+					App->audio->PlayFx(laser1);
+				}
+				else if (ShootPowerUpLevel == 2 || ShootPowerUpLevel > 2) {
+					App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 19, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->laser1, position.x + 32, position.y + 9, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + -1, COLLIDER_PLAYER_SHOT);
+					App->audio->PlayFx(laser1);
+				}
+
 			}
-			else if (ShootPowerUpLevel == 2 || ShootPowerUpLevel > 2) {
-				App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + 19, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser1, position.x + 32, position.y + 9, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser1, position.x + 25, position.y + -1, COLLIDER_PLAYER_SHOT);
-				App->audio->PlayFx(laser1);
-			}
-			
+
 			if (ShootPowerUpLevel_2 == 1 || ShootPowerUpLevel_2 >= 2) // 
 			{
 				if (ShootPowerUpLevel_2 >= 2 && t > 100)
