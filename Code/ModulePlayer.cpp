@@ -115,7 +115,7 @@ update_status ModulePlayer::Update()
 		if (current_time < 4000) 
 		{
 			player->type = COLLIDER_NONE;
-			if (position.x <= position.x + 1 && current_time < 750)
+			if (current_time < 750)
 			{
 				position.x++;
 			}			
