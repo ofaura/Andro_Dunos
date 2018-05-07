@@ -248,10 +248,10 @@ update_status ModulePlayer::Update()
 			}
 			else if (ShootPowerUpLevel_2 == 1 && t > 100)
 			{
+				vel_missile_x = 1;
+				vel_missile_y = 0;
 				App->particles->AddParticle(App->particles->missile1_1, position.x + 5, position.y + 20, COLLIDER_PLAYER_SHOT);
 				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
-				App->particles->missile1_1.speed.x = 1;
-				App->particles->missile1_1.speed.y = 0;
 				t_ani = 1;
 				t = 0;
 			}
@@ -329,14 +329,14 @@ update_status ModulePlayer::Update()
 		// Part of Type-1
 		if (t_ani >= 1 && t_ani < 11)
 		{
-			App->particles->missile1_1.speed.x = position.x;//4;
-			App->particles->missile1_1.speed.y = position.y;//4;
+			vel_missile_x = 4;//4;
+			vel_missile_y = 2;//4;
 			t_ani++;
 		}
 		else if (t_ani >= 10)
 		{
-			App->particles->missile1_1.speed.x = 4;
-			App->particles->missile1_1.speed.y = 2;
+			vel_missile_x = 4;;
+			vel_missile_y = 2;
 
 			t_ani = 0;
 		}
@@ -438,6 +438,8 @@ update_status ModulePlayer::Update()
 	// Blitting the player
 	App->render->Blit(graphics, position.x, position.y, &r);
 	App->render->Blit(graphics, fire_position.x, fire_position.y, &fire);
+
+	App->particles->missile1_1.Update_2(vel_missile_x, vel_missile_y); // secondary missile
 
 	return UPDATE_CONTINUE;
 }

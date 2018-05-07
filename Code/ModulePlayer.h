@@ -62,6 +62,7 @@ public:
 
 	int current_time = 0;
 	int first_time = 0;
+	int vel_missile_x = 0, vel_missile_y = 0;
 	bool dead = false;
 	
 	uint y = 0;

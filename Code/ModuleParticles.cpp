@@ -6,6 +6,7 @@
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModuleAudio.h"
+#include "ModulePlayer.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -99,13 +100,14 @@ bool ModuleParticles::Start()
 
 	
 
-	//missile1_1.anim.PushBack({ 296, 66, 12, 8});
-	//missile1_1.anim.PushBack({ 296, 63, 12, 8});
-	//missile1_1.anim.PushBack({ 296, 61, 12, 8 });
+	missile1_1.anim.PushBack({ 296, 66, 12, 8});
+	missile1_1.anim.PushBack({ 296, 63, 12, 8});
+	missile1_1.anim.PushBack({ 296, 61, 12, 8 });
 	missile1_1.anim.PushBack({ 297, 105, 12, 9 }); //
 	missile1_1.anim.loop = true; // false;
-	missile1_1.speed.x = 4;//1;
-	missile1_1.speed.y = 2;//0;
+	//missile1_1.speed.x = 0;//1;
+	//missile1_1.speed.y = 0;//0;
+
 	missile1_1.anim.speed = 0.1f;
 	missile1_1.life = 2000;
 
@@ -335,12 +337,31 @@ bool Particle::Update()
 		if (anim.Finished())
 			ret = false;
 
-	position.x += speed.x;
-	position.y += speed.y;
-
+		position.x += speed.x;
+		position.y += speed.y;
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
 
 	return ret;
+}
+
+void Particle::Update_2(int vel_x, int vel_y)
+{
+	bool ret = true;
+
+	if (life > 0)
+	{
+		if ((SDL_GetTicks() - born) > life)
+			ret = false;
+	}
+	else
+		if (anim.Finished())
+			ret = false;
+
+	position.x = App->player->position.x + vel_x;
+	position.y = App->player->position.y + vel_y;
+
+	if (collider != nullptr)
+		collider->SetPos(position.x, position.y);
 }

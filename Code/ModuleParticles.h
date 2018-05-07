@@ -28,6 +28,7 @@ struct Particle
 	Particle(const Particle& p);
 	~Particle();
 	bool Update();
+	void Update_2(int pos_x, int pos_y);
 	bool go;
 };
 
