@@ -158,12 +158,42 @@ bool ModuleSceneLevel5::Start()
 	App->collision->AddCollider({ 4635, 166, 41, 60 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 4676, 170, 19, 54 }, COLLIDER_WALL);
 
-	App->collision->AddCollider({ 4943, 204, 32, 20 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4934, 204, 32, 20 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 4966, 186, 68, 38 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 5034, 193, 44, 31 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 5078, 200, 76, 24 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 5154, 208, 44, 16 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 5198, 218, 19, 6 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 5080, 72, 9, 22 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5089, 69, 7, 31 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5096, 60, 58, 41 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5117, 52, 19, 7 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5092, 100, 46, 4 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5154, 67, 4, 30 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 5235, 0, 29, 41 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5264, 0, 64, 61 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5328, 0, 36, 48 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5364, 0, 34, 39 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5398, 0, 14, 24 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 5481, 112, 75, 16 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5483, 127, 62, 18 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5489, 92, 66, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5503, 146, 27, 7 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5510, 86, 28, 7 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 5580, 211, 14, 13 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5594, 200, 14, 24 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5608, 187, 32, 37 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5640, 172, 66, 52 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5706, 187, 53, 42 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5759, 190, 40, 34 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5799, 186, 91, 38 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5890, 196, 44, 33 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5934, 204, 29, 20 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5963, 215, 12, 9 }, COLLIDER_WALL);
 
 
 	//Audio ---
