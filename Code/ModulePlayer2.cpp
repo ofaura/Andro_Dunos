@@ -103,17 +103,17 @@ update_status ModulePlayer2::Update()
 	{
 
 		// Move Player --------------------------------------
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_LEFT)) == 1)
 		{
 			position.x -= speed;
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_RIGHT)) == 1)
 		{
 			position.x += speed;
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_DOWN)) == 1)
 		{
 			position.y += speed;
 			if (current_animation != &down)
@@ -123,7 +123,7 @@ update_status ModulePlayer2::Update()
 			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_UP)) == 1)
 		{
 			position.y -= speed;
 			if (current_animation != &up)
@@ -230,8 +230,8 @@ update_status ModulePlayer2::Update()
 		}
 
 		// Player Idle position if not going up or down -------------------------------------
-		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
+		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE && (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_UP)) == 0
+			&& App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE && (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_DOWN)) == 0)
 		{
 			current_animation = &idle;
 			fire_current = &fire_idle;

@@ -17,8 +17,8 @@ ModuleInput::ModuleInput() : Module()
 	for (uint i = 0; i < MAX_KEYS; ++i)
 		keyboard[i] = KEY_IDLE;
 
-	for (uint i = 0; i < MAX_BUTTONS; ++i)
-		gamepad[i] = KEY_IDLE;
+	//for (uint i = 0; i < MAX_BUTTONS; ++i)
+		//gamepad[i] = KEY_IDLE;
 }
 
 // Destructor
@@ -46,13 +46,12 @@ bool ModuleInput::Init()
 
 
 	for (int i = 0; i < SDL_NumJoysticks(); ++i) {
-		if (SDL_IsGameController(i)) {
-			controller = SDL_GameControllerOpen(i);
-			use_controller = true;
+		if (SDL_IsGameController(0)) 
+		{
+			controller = SDL_GameControllerOpen(0);
 		}
-		if (SDL_IsGameController(i) && controller != NULL) {
-			controller2 = SDL_GameControllerOpen(i);
-			use_controller2 = true;
+		if (SDL_IsGameController(1)) {
+			controller2 = SDL_GameControllerOpen(1);
 			break;
 		}
 
@@ -73,7 +72,7 @@ update_status ModuleInput::PreUpdate()
 	SDL_PumpEvents();
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
-	
+	/*
 	buttons[ARROW_UP] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_UP);
 	buttons[ARROW_DOWN] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
 	buttons[ARROW_RIGHT] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
@@ -81,7 +80,7 @@ update_status ModuleInput::PreUpdate()
 	buttons[BUTTON_A] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A);
 	buttons[BUTTON_B] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_B);
 	buttons[BUTTON_START] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_START);
-
+	*/
 
 	for (int i = 0; i < MAX_KEYS; ++i)
 	{
@@ -100,7 +99,7 @@ update_status ModuleInput::PreUpdate()
 				keyboard[i] = KEY_IDLE;
 		}
 	}
-
+	/*
 	for (int i = 0; i < MAX_BUTTONS; ++i)
 	{
 		if (buttons[i] == 1)
@@ -118,7 +117,7 @@ update_status ModuleInput::PreUpdate()
 				gamepad[i] = KEY_IDLE;
 		}
 	}
-
+	*/
 	if (keyboard[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
 

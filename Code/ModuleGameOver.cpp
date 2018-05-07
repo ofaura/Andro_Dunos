@@ -50,7 +50,7 @@ update_status ModuleGameOver::Update()
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, 0, &_background, 0.75f); 
 
-	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1 || App->input->gamepad[6] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1 || (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_START)) == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(App->game_over, App->start_menu, 1.0f);
 	}

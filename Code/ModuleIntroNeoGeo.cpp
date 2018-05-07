@@ -95,7 +95,7 @@ update_status ModuleIntroNeoGeo::Update()
 	// Draw everything --------------------------------------
 	App->render->Blit(graphics, 44, 80, &r, 1);
 
-	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1 || App->input->gamepad[6] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1 || (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_START)) == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(App->NeoGeo, App->start_menu, 1.0f);
 	}

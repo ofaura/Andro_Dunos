@@ -240,7 +240,7 @@ bool ModuleUserInterface::Start()
 
 update_status ModuleUserInterface::Update()
 {
-	if (App->input->keyboard[SDL_SCANCODE_E] == KEY_STATE::KEY_DOWN || App->input->gamepad[BUTTON_B] == KEY_STATE::KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_E] == KEY_STATE::KEY_DOWN)// || (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_B)) == KEY_STATE::KEY_DOWN)
 	{
 		activatedChange1 = true;
 

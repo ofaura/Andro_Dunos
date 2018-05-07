@@ -70,7 +70,7 @@ update_status ModuleStartMenu::Update()
 	App->render->Blit(logo, (SCREEN_WIDTH - _logo.w) / (2.67), 34, &_logo, 0.75f);
 	App->render->Blit(visco, 75, 158, &_visco, 0.75f);
 
-	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1 || App->input->gamepad[6] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1 || (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_START)) == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(App->start_menu, App->level5, 1.0f);
 	}

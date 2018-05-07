@@ -57,7 +57,6 @@ public:
 	uint missile1, missile2, missile3, missile4; // second weap of each type
 	uint player_death, type_change;
 	uint type = bullet_type::TYPE_1;
-
 	int lives = 2;
 	int ShootPowerUpLevel = 1, ShootPowerUpLevel_2 = 0, HomingMissile = 0, Shield = 0;
 

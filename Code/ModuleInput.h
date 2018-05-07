@@ -41,7 +41,7 @@ public:
 
 public:
 	KEY_STATE keyboard[MAX_KEYS];
-	KEY_STATE gamepad[MAX_BUTTONS];
+	//KEY_STATE gamepad[MAX_BUTTONS];
 	SDL_GameController* controller = nullptr;
 	SDL_GameController* controller2 = nullptr;
 
