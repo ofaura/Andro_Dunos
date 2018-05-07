@@ -151,6 +151,21 @@ bool ModuleSceneLevel5::Start()
 	App->collision->AddCollider({ 4852, 87, 57, 14 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 4840, 101, 79, 41 }, COLLIDER_WALL);
 
+	App->collision->AddCollider({ 4504, 199, 15, 25 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4519, 190, 14, 34 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4533, 171, 34, 53 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4567, 156, 68, 68 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4635, 166, 41, 60 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4676, 170, 19, 54 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 4943, 204, 32, 20 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4966, 186, 68, 38 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5034, 193, 44, 31 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5078, 200, 76, 24 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5154, 208, 44, 16 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5198, 218, 19, 6 }, COLLIDER_WALL);
+
+
 	//Audio ---
 	App->audio->PlayMusic("Assets/Audio/Music/level5.ogg", 1.0f);
 
