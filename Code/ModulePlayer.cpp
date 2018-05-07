@@ -325,6 +325,7 @@ update_status ModulePlayer::Update()
 		}
 
 		if (enable == true)
+
 		{
 			t_2++;
 			if (t_2 >= 15)
