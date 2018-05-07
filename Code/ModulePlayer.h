@@ -60,7 +60,10 @@ public:
 	int lives = 2;
 	int ShootPowerUpLevel = 1, ShootPowerUpLevel_2 = 0, HomingMissile = 0, Shield = 0;
 
-
+	int current_time = 0;
+	int first_time = 0;
+	bool dead = false;
+	
 	uint y = 0;
 	Collider* player = nullptr;
 	bool GodMode = false;

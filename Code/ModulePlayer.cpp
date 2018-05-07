@@ -109,6 +109,24 @@ bool ModulePlayer::Start()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
+	current_time = SDL_GetTicks() - first_time;
+	if (dead == true) 
+	{
+		if (current_time < 4000) 
+		{
+			player->type = COLLIDER_NONE;
+			if (position.x <= position.x + 1 && current_time < 750)
+			{
+				position.x++;
+			}			
+		}
+
+		else 
+		{
+			player->type = COLLIDER_PLAYER;
+			dead = false;
+		}
+	}
 	int speed = 2;
 	if (lives >= 0)
 	{
@@ -288,8 +306,7 @@ update_status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->laser3_2, position.x + 19, position.y + 1, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser3_3, position.x + 19, position.y + 5, COLLIDER_PLAYER_SHOT);
 				App->audio->PlayFx(laser3);
-			}
-			
+			}		
 		}
 
 		else if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) /*|| (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A)) == 1)*/ && type == bullet_type::TYPE_4)
@@ -449,6 +466,8 @@ void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2)
 
 		if (App->player->lives >= 0)
 		{
+			dead = true;
+			first_time = SDL_GetTicks();
 			App->player->lives--;
 			App->particles->AddParticle(App->particles->explosionP1, position.x, position.y);
 			App->audio->PlayFx(player_death);

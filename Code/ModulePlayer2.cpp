@@ -98,6 +98,25 @@ bool ModulePlayer2::Start()
 // Update: draw background
 update_status ModulePlayer2::Update()
 {
+	current_time = SDL_GetTicks() - first_time;
+	if (dead == true) 
+	{
+		if (current_time < 4000) 
+		{
+			player->type = COLLIDER_NONE;
+			if (position.x <= position.x + 1 && current_time < 750)
+			{
+				position.x++;
+			}
+				
+		}
+
+		else 
+		{
+			player->type = COLLIDER_PLAYER_2;
+			dead = false;
+		}
+	}
 	int speed = 2;
 	if (lives >= 0)
 	{
@@ -277,7 +296,7 @@ update_status ModulePlayer2::Update()
 			else if (GodMode == false)
 			{
 				GodMode = false;
-				player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
+				player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER_2, this);
 			}
 		}
 
@@ -328,6 +347,8 @@ void ModulePlayer2::OnCollision(Collider* col_1, Collider* col_2)
 
 		if (App->player2->lives >= 0)
 		{
+			dead = true;
+			first_time = SDL_GetTicks();
 			App->audio->PlayFx(player_death);
 			App->player2->lives--;
 

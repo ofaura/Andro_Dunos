@@ -180,7 +180,7 @@ bool ModuleSceneLevel5::CleanUp()
 {
 	// Remove all memory leaks
 	LOG("Unloading textures");
-	App->audio->UnLoadFx(small_enemy_death);
+	//App->audio->UnLoadFx(small_enemy_death);
 	App->textures->Unload(meteorites_texture2);
 	App->textures->Unload(meteorites_texture1);
 	App->textures->Unload(background_texture);
