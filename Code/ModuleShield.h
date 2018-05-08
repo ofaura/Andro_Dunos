@@ -5,6 +5,8 @@
 #include "Animation.h"
 #include "Globals.h"
 
+#define CAP_ROT (4)
+
 struct SDL_Texture;
 
 class ModuleShield : public Module{
@@ -27,6 +29,9 @@ public:
 	Collider* collider2;
 
 	iPoint position1, position2;
+	iPoint position1_type1[CAP_ROT], position2_type1[CAP_ROT];
+	int circ;
+	int t;
 	//int life = 3;
 };
 
