@@ -75,11 +75,29 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	graphics = App->textures->Load("Assets/Sprites/player/ships.png"); // arcade version
-	
+	missile_graphics = App->textures->Load("Assets/Sprites/player/particles.png");
 	t = 0;
 	t_2 = 0;
 	t_ani = 0;
-	enable = false;
+	ini_down = 9;
+	ini_up = 0;
+	ini_down_prime = 9;
+	ini_up_prime = 0;
+	enable_missile1 = false;
+
+	ani_miss_down.PushBack({ 296, 61, 12, 8 });
+	ani_miss_down.PushBack({ 297, 105, 12, 9 });
+	ani_miss_down.loop = false;
+	ani_miss_down.speed = 0.1f;
+
+	missile[0] = &ani_miss_down;
+
+	ani_miss_up.PushBack({ 296, 61, 12, 8 });
+	ani_miss_up.PushBack({ 297, 90, 12, 8 });
+	ani_miss_up.loop = false;
+	ani_miss_up.speed = 0.1f;
+
+	missile[1] = &ani_miss_up;
 
 	ShootPowerUpLevel = 1; // Primary Weap
 	ShootPowerUpLevel_2 = 0; // Secondary Weap
@@ -200,8 +218,6 @@ update_status ModulePlayer::Update()
 
 		t++;
 
-
-
 		// shoot -------------------------------------- 
 
 		// TYPE-1, PRIMARY WEAP
@@ -227,31 +243,18 @@ update_status ModulePlayer::Update()
 			// TYPE-1, SECONDARY WEAP
 			if (ShootPowerUpLevel_2 >= 3 && t > 100)
 			{
-				App->particles->AddParticle(App->particles->missile1_2, position.x + 5, position.y - 3, COLLIDER_PLAYER_SHOT);
-				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
-				App->particles->AddParticle(App->particles->missile1_1, position.x + 5, position.y + 15, COLLIDER_PLAYER_SHOT);
-				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
-
-				enable = true;
+				enable_missile1 = true;
+				t_ani = 1;
 				t = 0;
-
 			}
 
 			else if (ShootPowerUpLevel_2 == 2 && t > 100)
-			{
-				App->particles->AddParticle(App->particles->missile1_2, position.x + 5, position.y - 3, COLLIDER_PLAYER_SHOT);
-				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
-				App->particles->AddParticle(App->particles->missile1_1, position.x + 5, position.y + 15, COLLIDER_PLAYER_SHOT);
-				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
+			{	
+				t_ani = 1;
 				t = 0;
-
 			}
 			else if (ShootPowerUpLevel_2 == 1 && t > 100)
 			{
-				App->particles->AddParticle(App->particles->missile1_1, position.x + 5, position.y + 20, COLLIDER_PLAYER_SHOT);
-				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
-				App->particles->missile1_1.speed.x = 1;
-				App->particles->missile1_1.speed.y = 0;
 				t_ani = 1;
 				t = 0;
 			}
@@ -327,35 +330,68 @@ update_status ModulePlayer::Update()
 
 
 		// Part of Type-1
-		if (t_ani >= 1 && t_ani < 11)
+		if (t_ani >= 1 && t_ani < 16)
 		{
-			App->particles->missile1_1.speed.x = position.x;//4;
-			App->particles->missile1_1.speed.y = position.y;//4;
+			ini_down++;
+			App->render->Blit(missile_graphics, position.x + 5, position.y + ini_down, &(missile[0]->GetCurrentFrame()));
+			if (ShootPowerUpLevel_2 >= 2)
+			{
+				ini_up--;
+				App->render->Blit(missile_graphics, position.x + 5, position.y + ini_up, &(missile[1]->GetCurrentFrame()));
+			}
 			t_ani++;
 		}
-		else if (t_ani >= 10)
+		else if (t_ani >= 16)
 		{
-			App->particles->missile1_1.speed.x = 4;
-			App->particles->missile1_1.speed.y = 2;
-
+			if (ShootPowerUpLevel_2 >= 2)
+			{
+				App->particles->AddParticle(App->particles->missile1_2, position.x + 5, position.y - 7, COLLIDER_PLAYER_SHOT);
+				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
+				missile[1]->Reset();
+				ini_up = 0;
+			}
+			App->particles->AddParticle(App->particles->missile1_1, position.x + 5, position.y + 20, COLLIDER_PLAYER_SHOT);
+			App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
+			missile[0]->Reset();
+			ini_down = 9;
+			
 			t_ani = 0;
 		}
 
-		if (enable == true)
-
+		if (enable_missile1 == true)
 		{
 			t_2++;
-			if (t_2 >= 15)
+			if (t_2 >= 20)
 			{
-				App->particles->AddParticle(App->particles->missile1_3b, position.x + 5, position.y - 3, COLLIDER_PLAYER_SHOT);
-				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
-				App->particles->AddParticle(App->particles->missile1_3a, position.x + 5, position.y + 15, COLLIDER_PLAYER_SHOT);
-				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
-				enable = false;
-				t_2 = 0;
+				if (t_2 >= 20 && t_2 < 35)
+				{
+					ini_down_prime++;
+					App->render->Blit(missile_graphics, position.x + 5, position.y + ini_down_prime, &(missile[0]->GetCurrentFrame()));
+					ini_up_prime--;
+					App->render->Blit(missile_graphics, position.x + 5, position.y + ini_up_prime, &(missile[1]->GetCurrentFrame()));
+		
+				}
+
+				else if (t_2 >= 35)
+				{
+
+					App->particles->AddParticle(App->particles->missile1_3b, position.x + 5, position.y - 7, COLLIDER_PLAYER_SHOT);
+					App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
+					missile[1]->Reset();
+					
+					
+					App->particles->AddParticle(App->particles->missile1_3a, position.x + 5, position.y + 20, COLLIDER_PLAYER_SHOT);
+					App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
+					missile[0]->Reset();
+
+					enable_missile1 = false;
+
+					ini_up_prime = 0;
+					ini_down_prime = 9;
+					t_2 = 0;
+				}
 			}
 		}
-
 
 
 		// Shield

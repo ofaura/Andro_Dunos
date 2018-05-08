@@ -29,6 +29,7 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
+	SDL_Texture* missile_graphics = nullptr;
 	SDL_Texture* backflame = nullptr;
 
 	Animation* current_animation = nullptr;
@@ -49,12 +50,19 @@ public:
 	Animation fire_down1;
 	Animation fire_down2;
 
-	int t = 0, t_2 = 0, t_ani;
-	bool enable;
+
 
 	iPoint position, fire_position;
 	uint laser1, laser2, laser3, laser4; // main weap of each type
+
 	uint missile1, missile2, missile3, missile4; // second weap of each type
+	Animation ani_miss_down, ani_miss_up;
+	Animation* missile[2];
+	int t, t_2, t_ani, ini_up, ini_down;
+	int  ini_up_prime, ini_down_prime, t_ani_prime;
+	bool enable_missile1;
+
+
 	uint player_death, type_change;
 	uint type = bullet_type::TYPE_1;
 	int lives = 2;
