@@ -85,6 +85,8 @@ bool ModuleSceneLevel5::Start()
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 500, 60);
 	
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_CIRCLE, 500, 180);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 700, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 720, 30);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 800, 20);
