@@ -9,14 +9,10 @@
 
 Enemy_Meteorite::Enemy_Meteorite(int x, int y) : Enemy(x, y)
 {
-	//Idle meteorite
-	idle.PushBack({ 52, 180, 32, 24});
+	// Meteorite 1
+	idle1.PushBack({ 9, 50, 32, 29});
 
-	//Destroying meteorite
-	destroyed.PushBack({ 0,3,18,12 });
-	destroyed.speed = 0.4f;
-
-	animation = &idle;
+	animation = &idle1;
 
 	collider = App->collision->AddCollider({ 0, 0, 18, 17 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
