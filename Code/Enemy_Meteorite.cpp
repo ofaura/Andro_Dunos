@@ -22,13 +22,13 @@ Enemy_Meteorite::Enemy_Meteorite(int x, int y) : Enemy(x, y)
 		idle1.PushBack({ 9, 50, 30, 29 });
 		animation = &idle1;
 		collider = App->collision->AddCollider({ 0, 0, 30, 29 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
-	} 
-	else if(random == 1) {
+	}
+	else if (random == 1) {
 		// Meteorite 2
 		idle2.PushBack({ 45, 50, 32, 30 });
 		animation = &idle2;
 		collider = App->collision->AddCollider({ 0, 0, 32, 30 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
-	} 
+	}
 	else {
 		// Meteorite 3
 		idle3.PushBack({ 83, 52, 32, 24 });
