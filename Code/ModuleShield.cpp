@@ -14,9 +14,6 @@
 
 ModuleShield::ModuleShield() {
 
-	circ = 1;
-	t = 0;
-
 	// ---- Animation for the base od the shield
 	base_anim.PushBack({ 0, 0, 9, 16 });
 	base_anim.PushBack({ 11, 0, 9, 16 });
@@ -63,35 +60,12 @@ bool ModuleShield::Start() {
 
 	switch (App->player->type) {
 
-		// ---- Rotation
+		// ---- Stays in front of ship
 	case bullet_type::TYPE_1:
-
-		position1_type1[0].x = App->player->position.x + 30;
-		position1_type1[0].y = App->player->position.y + 8;
-		position2_type1[0].x = App->player->position.x - 4;
-		position2_type1[0].y = App->player->position.y + 8;
-
-		position1_type1[1].x = App->player->position.x + 25;
-		position1_type1[1].y = App->player->position.y + -4;
-		position2_type1[1].x = App->player->position.x + 1;
-		position2_type1[1].y = App->player->position.y + 20;
-
-
-		position1_type1[2].x = App->player->position.x + 13;
-		position1_type1[2].y = App->player->position.y - 9;
-		position2_type1[2].x = App->player->position.x + 13;
-		position2_type1[2].y = App->player->position.y + 25;
-
-		position1_type1[3].x = App->player->position.x + 1;
-		position1_type1[3].y = App->player->position.y + -4;
-		position2_type1[3].x = App->player->position.x + 25;
-		position2_type1[3].y = App->player->position.y + 20;
-
-		position1.x = position1_type1[0].x;
-		position1.y = position1_type1[0].y;
-		position2.x = position2_type1[0].x;
-		position2.y = position1_type1[0].y;
-
+		position1.x = App->player->position.x + 29;
+		position1.y = App->player->position.y - 8;
+		position2.x = App->player->position.x + 29;
+		position2.y = App->player->position.y + 10;
 		break;
 
 		// ---- Stays on either side of the ship
@@ -139,45 +113,10 @@ update_status ModuleShield::Update() {
 
 		// ---- Stays in front of ship
 	case bullet_type::TYPE_1:
-
-		position1_type1[0].x = App->player->position.x + 30;
-		position1_type1[0].y = App->player->position.y + 8;
-		position2_type1[0].x = App->player->position.x - 4;
-		position2_type1[0].y = App->player->position.y + 8;
-
-		position1_type1[1].x = App->player->position.x + 25;
-		position1_type1[1].y = App->player->position.y + -4;
-		position2_type1[1].x = App->player->position.x + 1;
-		position2_type1[1].y = App->player->position.y + 20;
-
-		position1_type1[2].x = App->player->position.x + 13;
-		position1_type1[2].y = App->player->position.y - 9;
-		position2_type1[2].x = App->player->position.x + 13;
-		position2_type1[2].y = App->player->position.y + 25;
-
-		position1_type1[3].x = App->player->position.x + 1;
-		position1_type1[3].y = App->player->position.y + -4;
-		position2_type1[3].x = App->player->position.x + 25;
-		position2_type1[3].y = App->player->position.y + 20;
-
-		position1.x = position1_type1[circ].x;
-		position1.y = position1_type1[circ].y;
-		position2.x = position2_type1[circ].x;
-		position2.y = position1_type1[circ].y;
-
-		if (t == 10 || t == 20 || t == 30 || t == 40 || t == 50)
-		{
-			circ++;
-		}
-
-		if (circ > 4)
-		{
-			circ = 0;
-			t = 0;
-		}
-
-		t++;
-
+		position1.x = App->player->position.x + 29;
+		position1.y = App->player->position.y - 8;
+		position2.x = App->player->position.x + 29;
+		position2.y = App->player->position.y + 10;
 		break;
 
 		// ---- Stays on either side of the ship
