@@ -6,13 +6,11 @@
 #include "ModuleTextures.h"
 #include "Enemy.h"
 #include "Enemy_FirstEnemy.h"
-#include "Enemy_SpaceShip.h"
 #include "Enemy_PowerUp.h"
 #include "Enemy_Shooter.h"
 #include "Enemy_Shuttle.h"
 #include "Enemy_Meteorite.h"
 #include "PowerUp.h"
-
 
 #define SPAWN_MARGIN 25
 
@@ -138,9 +136,6 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_FirstEnemy(info.x, info.y);
 			break;
 
-		case ENEMY_TYPES::SPACE_SHIP:
-			enemies[i] = new Enemy_SpaceShip(info.x, info.y);
-			break;
 		case ENEMY_TYPES::ENEMY_POWERUP:
 			enemies[i] = new Enemy_PowerUp(info.x, info.y);
 			break;

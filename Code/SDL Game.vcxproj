@@ -78,7 +78,6 @@
     <ClInclude Include="Enemy_PowerUp.h" />
     <ClInclude Include="Enemy_Shooter.h" />
     <ClInclude Include="Enemy_Shuttle.h" />
-    <ClInclude Include="Enemy_SpaceShip.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
@@ -114,7 +113,6 @@
     <ClCompile Include="Enemy_PowerUp.cpp" />
     <ClCompile Include="Enemy_Shooter.cpp" />
     <ClCompile Include="Enemy_Shuttle.cpp" />
-    <ClCompile Include="Enemy_SpaceShip.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
