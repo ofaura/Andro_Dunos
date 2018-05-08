@@ -83,6 +83,8 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 230, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 245, 60);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 500, 60);
+
 	// Colliders ---
 	App->collision->Enable();
 

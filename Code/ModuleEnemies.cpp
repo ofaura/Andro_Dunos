@@ -9,6 +9,7 @@
 #include "Enemy_SpaceShip.h"
 #include "Enemy_PowerUp.h"
 #include "Enemy_Shooter.h"
+#include "Enemy_Shuttle.h"
 #include "Enemy_Meteorite.h"
 #include "PowerUp.h"
 
@@ -154,6 +155,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 		case ENEMY_TYPES::ENEMY_METEORITE:
 			enemies[i] = new Enemy_Meteorite(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::ENEMY_SHUTTLE:
+			enemies[i] = new Enemy_Shuttle(info.x, info.y);
 			break;
 		}
 	}
