@@ -84,6 +84,19 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 245, 60);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 500, 60);
+	
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 700, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 720, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 800, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 830, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 900, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 950, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 1000, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 1020, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 1100, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 1130, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 1200, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 1250, 120);
 
 	// Colliders ---
 	App->collision->Enable();

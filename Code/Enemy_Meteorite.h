@@ -20,6 +20,7 @@ public:
 	void Move();
 	bool dead = false;
 	int score = 300;
+	int random;
 };
 
 #endif // __ENEMY_METEORITE_H__

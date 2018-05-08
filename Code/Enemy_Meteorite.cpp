@@ -7,14 +7,34 @@
 #include "ModuleSceneLevel5.h"
 #include "ModuleAudio.h"
 
+#include <cstdlib>
+#include <time.h>
+
+
 Enemy_Meteorite::Enemy_Meteorite(int x, int y) : Enemy(x, y)
 {
-	// Meteorite 1
-	idle1.PushBack({ 9, 50, 32, 29});
+	srand(time(NULL));
 
-	animation = &idle1;
+	random = rand() % 3;
 
-	collider = App->collision->AddCollider({ 0, 0, 18, 17 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	if (random == 0) {
+		// Meteorite 1
+		idle1.PushBack({ 9, 50, 30, 29 });
+		animation = &idle1;
+		collider = App->collision->AddCollider({ 0, 0, 30, 29 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	} 
+	else if(random == 1) {
+		// Meteorite 2
+		idle2.PushBack({ 45, 50, 32, 30 });
+		animation = &idle2;
+		collider = App->collision->AddCollider({ 0, 0, 32, 30 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	} 
+	else {
+		// Meteorite 3
+		idle3.PushBack({ 83, 52, 32, 24 });
+		animation = &idle3;
+		collider = App->collision->AddCollider({ 0, 0, 32, 24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	}
 
 	original_y = y;
 }
@@ -22,8 +42,18 @@ Enemy_Meteorite::Enemy_Meteorite(int x, int y) : Enemy(x, y)
 void Enemy_Meteorite::Move()
 {
 	//Meteorites move forward in a rect line
-	position.y = original_y;
-	position.x -= 1;
+	if (random == 0) {
+		position.y = original_y;
+		position.x -= 1;
+	}
+	else if (random == 1) {
+		position.y = original_y;
+		position.x -= 2;
+	}
+	else {
+		position.y = original_y;
+		position.x -= 3;
+	}
 }
 
 void Enemy_Meteorite::OnCollision(Collider* collider)
