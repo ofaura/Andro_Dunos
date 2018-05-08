@@ -8,8 +8,9 @@ class Enemy_Meteorite : public Enemy
 private:
 	int original_y = 0;
 
-	Animation destroyed;
-	Animation idle;
+	Animation idle1;
+	Animation idle2;
+	Animation idle3;
 
 public:
 
@@ -18,7 +19,7 @@ public:
 	virtual void OnCollision(Collider* collider) override;
 	void Move();
 	bool dead = false;
-	int score = 100;
+	int score = 300;
 };
 
 #endif // __ENEMY_METEORITE_H__
