@@ -7,7 +7,9 @@
 class Enemy_MissileThrower : public Enemy
 {
 private:
-	Animation fly;
+	Animation fly_left;
+	Animation fly_turn;
+	Animation fly_right;
 	Path path;
 
 	iPoint original_pos;
