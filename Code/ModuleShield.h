@@ -26,8 +26,7 @@ public:
 	Collider* collider1;
 	Collider* collider2;
 
-	int circular;
-	iPoint position1[6], position2[6];
+	iPoint position1, position2;
 	//int life = 3;
 };
 
