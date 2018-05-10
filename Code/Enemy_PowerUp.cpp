@@ -84,8 +84,7 @@ Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 	fly_7.speed = 0.4f;
 
 	act[RIGHT] = &fly_7;
-
-
+	
 	fly_8.PushBack({ 6,451,18,24 }); // 4th turn
 	fly_8.PushBack({ 28,454,21,21 });
 	fly_8.PushBack({ 52,455,22,18 });

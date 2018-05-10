@@ -13,20 +13,32 @@
 #include "SDL\include\SDL_timer.h"
 #include <cmath>
 
+enum MOVEMENT
+{
+	LEFT = 0,
+	TURN,
+	RIGHT
+};
+
+
 Enemy_MissileThrower::Enemy_MissileThrower(int x, int y) : Enemy(x, y)
 {
-	fly.PushBack({ 1, 131, 27, 18 });
-	fly.PushBack({ 33, 131, 23, 17 });
-	fly.PushBack({ 61, 131, 18, 17 });
-	fly.PushBack({ 84, 131, 20, 17 });
-	fly.PushBack({ 3, 151, 18, 17 });
-	fly.PushBack({ 26, 151, 23, 17 });
-	fly.PushBack({ 54, 151, 27, 18 });
+	// Left
+	fly_left.PushBack({ 1, 131, 27, 18 });
 
-	fly.loop = true;
-	fly.speed = 0.5f;
+	// Turn
+	fly_turn.PushBack({ 33, 131, 23, 17 });
+	fly_turn.PushBack({ 61, 131, 18, 17 });
+	fly_turn.PushBack({ 84, 131, 20, 17 });
+	fly_turn.PushBack({ 3, 151, 18, 17 });
+	fly_turn.PushBack({ 26, 151, 23, 17 });
+	fly_turn.loop = false;
+	fly_turn.speed = 0.2f;
 
-	animation = &fly;
+	// Right
+	fly_right.PushBack({ 54, 151, 27, 18 });
+
+	animation = &fly_left;
 
 
 	/*if (abs(position.y - App->player->position.y) < 20)

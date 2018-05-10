@@ -40,7 +40,7 @@ bool ModuleParticles::Start()
 	enemy_missile1.anim.PushBack({ 284, 188, 20, 10 });
 	enemy_missile1.anim.PushBack({ 308, 188, 31, 10 });
 	enemy_missile1.anim.loop = true;
-	enemy_missile1.anim.speed = 0.7f;
+	enemy_missile1.anim.speed = 0.2f;
 	enemy_missile1.speed.x -= 2;
 	enemy_missile1.life = 2000;
 
@@ -48,7 +48,7 @@ bool ModuleParticles::Start()
 	enemy_missile2.anim.PushBack({ 282, 200, 13, 12 });
 	enemy_missile2.anim.PushBack({ 298, 200, 16, 12 });
 	enemy_missile2.anim.loop = true;
-	enemy_missile2.anim.speed = 0.7f;
+	enemy_missile2.anim.speed = 0.2f;
 	enemy_missile2.speed.x -= 2;
 	enemy_missile2.life = 2000;
 
