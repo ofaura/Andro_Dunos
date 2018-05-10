@@ -20,7 +20,6 @@ enum MOVEMENT
 	RIGHT
 };
 
-
 Enemy_MissileThrower::Enemy_MissileThrower(int x, int y) : Enemy(x, y)
 {
 	// Left
@@ -40,51 +39,34 @@ Enemy_MissileThrower::Enemy_MissileThrower(int x, int y) : Enemy(x, y)
 
 	animation = &fly_left;
 
-
-	/*if (abs(position.y - App->player->position.y) < 20)
-	{
-		path.PushBack({ -0.5f, 0.4f }, 60);
-		path.PushBack({ -0.5f, -0.4f }, 60);
-		path.PushBack({ 1.0f, 0.0f }, 100);
-		path.PushBack({ -0.5f, 0.0f }, 300);
-		path.loop = false;
-	}
-
-	else if (position.y < App->player->position.y)
-	{
-		path.PushBack({ -0.5f, 0.4f }, 60);
-		path.PushBack({ 1.0f, 0.0f }, 100);
-		path.PushBack({ -0.5f, 0.0f }, 300);
-		path.loop = false;
-	}
-
-	else if (position.y > App->player->position.y)
-	{
-		path.PushBack({ -0.5f, -0.4f }, 60);
-		path.PushBack({ 1.0f, 0.0f }, 100);
-		path.PushBack({ -0.5f, 0.0f }, 300);
-		path.loop = false;
-	}*/
-
-
 	collider = App->collision->AddCollider({ 0, 0, 27, 18 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	original_pos.x = x;
-	original_pos.y = y;
+	original_x = x;
+	original_y = y;
 
 }
 
 void Enemy_MissileThrower::Move()
 {
-	position = original_pos + path.GetCurrentPosition();
+	if (missileFired == false) {
+		position.x--;
+	}
 
-	currentTime = SDL_GetTicks();
+	/*currentTime = SDL_GetTicks();
 
 	if (currentTime > lastTime + 1000) //Fires a missile every second
 	{
 		App->particles->AddParticle(App->particles->enemy_missile1, position.x, position.y + 15, COLLIDER_ENEMY_SHOT);
 		App->particles->AddParticle(App->particles->enemy_missile2, position.x + 12, position.y + 14, COLLIDER_ENEMY_SHOT);
+		missileFired = true;
 		lastTime = currentTime;
+	}*/
+
+	if ((original_x - position.x) < 1500 && missileFired == false) //Fires a missile every second
+	{
+		App->particles->AddParticle(App->particles->enemy_missile1, position.x, position.y + 15, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemy_missile2, position.x + 12, position.y + 14, COLLIDER_ENEMY_SHOT);
+		missileFired = true;
 	}
 
 	collider->SetPos(position.x, position.y);

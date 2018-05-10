@@ -10,9 +10,9 @@ private:
 	Animation fly_left;
 	Animation fly_turn;
 	Animation fly_right;
-	Path path;
 
-	iPoint original_pos;
+	int original_x = 0;
+	int original_y = 0;
 
 public:
 
@@ -23,6 +23,7 @@ public:
 	virtual void OnCollision(Collider* collider) override;
 	void Move();
 	bool dead = false;
+	bool missileFired = false;
 	int score = 150;
 };
 

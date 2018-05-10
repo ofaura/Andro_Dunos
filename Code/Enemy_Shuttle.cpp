@@ -86,7 +86,7 @@ void Enemy_Shuttle::Move()
 		else
 		{
 			animation = &go_back;
-			position.x += 5;
+			position.x += 4;
 		}
 	}
 }
