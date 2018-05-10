@@ -5,6 +5,8 @@
 #include "Animation.h"
 #include "Globals.h"
 
+#define ROT_STEPS (8)
+
 struct SDL_Texture;
 
 class ModuleShield : public Module{
@@ -21,13 +23,17 @@ public:
 	SDL_Texture* graphics = nullptr;
 
 	Animation base_anim, lvl1, lvl2, lvl3;
+	Animation rotation_lvl1[ROT_STEPS];
+	Animation rotation_level[ROT_STEPS];
+
 	Animation* current_lvl;
+	int timer;
 
 	Collider* collider1;
 	Collider* collider2;
 
 	iPoint position1, position2;
-	iPoint pos1_t1[4], pos2_t1[4];
+	iPoint pos1_t1[9], pos2_t1[9];
 	int circ;
 	//int life = 3;
 };

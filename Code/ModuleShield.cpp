@@ -14,7 +14,7 @@
 
 ModuleShield::ModuleShield() {
 
-	circ = 1;
+	circ = 0;
 
 	// ---- Animation for the base od the shield
 	base_anim.PushBack({ 0, 0, 9, 16 });
@@ -33,6 +33,77 @@ ModuleShield::ModuleShield() {
 	lvl1.PushBack({ 0, 18, 5, 14 });
 	lvl1.loop = true;
 	lvl1.speed = 0.5f;
+
+
+	rotation_lvl1[0].PushBack({ 0,0,9,16 });
+	rotation_lvl1[0].PushBack({ 11,0,9,16 });
+	rotation_lvl1[0].PushBack({ 22,0,9,16 });
+	rotation_lvl1[0].PushBack({ 33,0,9,16 });
+	rotation_lvl1[0].PushBack({ 44,0,9,16 });
+	rotation_lvl1[0].PushBack({ 57,0,9,16 });
+	rotation_lvl1[0].loop = true;
+	rotation_lvl1[0].speed = 0.25f;
+
+	rotation_lvl1[1].PushBack({ 128,16,9,16 });
+	rotation_lvl1[1].PushBack({ 117,16,9,16 });
+	rotation_lvl1[1].PushBack({ 106,16,9,16 });
+	rotation_lvl1[1].PushBack({ 95,16,9,16 });
+	rotation_lvl1[1].PushBack({ 84,16,9,16 });
+	rotation_lvl1[1].PushBack({ 72,16,9,16 });
+	rotation_lvl1[1].loop = true;
+	rotation_lvl1[1].speed = 0.25f;
+
+	rotation_lvl1[2].PushBack({ 109,52,14,16 });
+	rotation_lvl1[2].PushBack({ 109,75,15,14 });
+	rotation_lvl1[2].PushBack({ 109,98,14,16 });
+	rotation_lvl1[2].PushBack({ 107,16,16,15 });
+	rotation_lvl1[2].loop = true;
+	rotation_lvl1[2].speed = 0.25f;
+
+	rotation_lvl1[3].PushBack({ 87,50,14,16 });
+	rotation_lvl1[3].PushBack({ 84,73,15,14 });
+	rotation_lvl1[3].PushBack({ 86,95,14,16 });
+	rotation_lvl1[3].PushBack({ 86,117,16,15 });
+	rotation_lvl1[3].loop = true;
+	rotation_lvl1[3].speed = 0.25f;
+
+	rotation_lvl1[4].PushBack({ 56,45,9,16 });
+	rotation_lvl1[4].PushBack({ 56,56,9,16 });
+	rotation_lvl1[4].PushBack({ 56,67,9,16 });
+	rotation_lvl1[4].PushBack({ 56,78,9,16 });
+	rotation_lvl1[4].PushBack({ 56,89,9,16 });
+	rotation_lvl1[4].PushBack({ 56,102,9,16 });
+	rotation_lvl1[4].loop = true;
+	rotation_lvl1[4].speed = 0.25f;
+
+	rotation_lvl1[5].PushBack({ 3,98,16,9 });
+	rotation_lvl1[5].PushBack({ 3,87,16,9 });
+	rotation_lvl1[5].PushBack({ 3,76,16,9 });
+	rotation_lvl1[5].PushBack({ 3,67,16,9 });
+	rotation_lvl1[5].PushBack({ 3,54,16,9 });
+	rotation_lvl1[5].PushBack({ 3,42,16,9 });
+	rotation_lvl1[5].loop = true;
+	rotation_lvl1[5].speed = 0.25f;
+
+	rotation_lvl1[6].PushBack({ 109,52,14,16 });
+	rotation_lvl1[6].PushBack({ 109,75,15,14 });
+	rotation_lvl1[6].PushBack({ 109,98,14,16 });
+	rotation_lvl1[6].PushBack({ 107,16,16,15 });
+	rotation_lvl1[6].loop = true;
+	rotation_lvl1[6].speed = 0.25f;
+
+	rotation_lvl1[7].PushBack({ 87,50,14,16 });
+	rotation_lvl1[7].PushBack({ 84,73,15,14 });
+	rotation_lvl1[7].PushBack({ 86,95,14,16 });
+	rotation_lvl1[7].PushBack({ 86,117,16,15 });
+	rotation_lvl1[7].loop = true;
+	rotation_lvl1[7].speed = 0.25f;
+
+	for (int counter = 0; counter < ROT_STEPS; counter++)
+	{
+		rotation_level[counter] = rotation_lvl1[counter];
+	}
+
 
 	//// ---- Animation for lvl2 LaserShield (Yellow)
 	//lvl2.PushBack({ 46, 18, 5, 14 });
@@ -59,6 +130,8 @@ bool ModuleShield::Start() {
 	graphics = App->textures->Load("Assets/Sprites/player/shield.png"); //Loads shield image bank
 
 	if (graphics == nullptr) ret = false; //failsafe for wrong address
+	
+	timer = 0;
 
 	switch (App->player->type) {
 
@@ -66,24 +139,24 @@ bool ModuleShield::Start() {
 	case bullet_type::TYPE_1:
 		
 		pos1_t1[0].x = App->player->position.x + 30;
-		pos1_t1[0].y = App->player->position.y + 8;
+		pos1_t1[0].y = App->player->position.y + 1;
 		pos2_t1[0].x = App->player->position.x - 25;
-		pos2_t1[0].y = App->player->position.y + 8;
-		
-		pos1_t1[1].x = App->player->position.x + 25;
-		pos1_t1[1].y = App->player->position.y - 4;
-		pos2_t1[1].x = App->player->position.x + 1;
-		pos2_t1[1].y = App->player->position.y + 20;
+		pos2_t1[0].y = App->player->position.y + 1;
+
+		pos1_t1[1].x = App->player->position.x + 30;
+		pos1_t1[1].y = App->player->position.y + 25;
+		pos2_t1[1].x = App->player->position.x - 30;
+		pos2_t1[1].y = App->player->position.y - 25;
 
 		pos1_t1[2].x = App->player->position.x + 13;
 		pos1_t1[2].y = App->player->position.y + -9;
 		pos2_t1[2].x = App->player->position.x + 13;
 		pos2_t1[2].y = App->player->position.y + 25;
 
-		pos1_t1[3].x = App->player->position.x + 1;
-		pos1_t1[3].y = App->player->position.y - 4;
-		pos2_t1[3].x = App->player->position.x + 25;
-		pos2_t1[3].y = App->player->position.y + 20;
+		pos1_t1[3].x = App->player->position.x - 30;
+		pos1_t1[3].y = App->player->position.y + 25;
+		pos2_t1[3].x = App->player->position.x + 30;
+		pos2_t1[3].y = App->player->position.y - 25;
 
 		position1.x = pos1_t1[0].x;
 		position1.y = pos1_t1[0].y;
@@ -121,6 +194,7 @@ bool ModuleShield::Start() {
 	// ---- Declares colliders for shield parts individually
 	collider1 = App->collision->AddCollider({ position1.x, position1.y, 14, 16 }, COLLIDER_SHIELD_1, this);
 	collider2 = App->collision->AddCollider({ position2.x, position2.y, 14, 16 }, COLLIDER_SHIELD_1, this);
+
 
 	return ret;
 }
@@ -164,31 +238,29 @@ update_status ModuleShield::Update() {
 	case bullet_type::TYPE_1:
 
 		pos1_t1[0].x = App->player->position.x + 30;
-		pos1_t1[0].y = App->player->position.y + 8;
+		pos1_t1[0].y = App->player->position.y + 1;
 		pos2_t1[0].x = App->player->position.x - 25;
-		pos2_t1[0].y = App->player->position.y + 8;
+		pos2_t1[0].y = App->player->position.y + 1;
 
-		pos1_t1[1].x = App->player->position.x + 25;
-		pos1_t1[1].y = App->player->position.y - 4;
-		pos2_t1[1].x = App->player->position.x + 1;
-		pos2_t1[1].y = App->player->position.y + 20;
+		pos1_t1[1].x = App->player->position.x + 30;
+		pos1_t1[1].y = App->player->position.y + 25;
+		pos2_t1[1].x = App->player->position.x - 30;
+		pos2_t1[1].y = App->player->position.y - 25;
 
 		pos1_t1[2].x = App->player->position.x + 13;
 		pos1_t1[2].y = App->player->position.y + -9;
 		pos2_t1[2].x = App->player->position.x + 13;
 		pos2_t1[2].y = App->player->position.y + 25;
 
-		pos1_t1[3].x = App->player->position.x + 1;
-		pos1_t1[3].y = App->player->position.y - 4;
-		pos2_t1[3].x = App->player->position.x + 25;
-		pos2_t1[3].y = App->player->position.y + 20;
+		pos1_t1[3].x = App->player->position.x - 30;
+		pos1_t1[3].y = App->player->position.y + 25;
+		pos2_t1[3].x = App->player->position.x + 30;
+		pos2_t1[3].y = App->player->position.y - 25;
 
-		position1.x = pos1_t1[0].x;
-		position1.y = pos1_t1[0].y;
-		position2.x = pos2_t1[0].x;
-		position2.y = pos2_t1[0].y;
-
-		circ++;
+		position1.x = pos1_t1[circ].x;
+		position1.y = pos1_t1[circ].y;
+		position2.x = pos2_t1[circ].x;
+		position2.y = pos2_t1[circ].y;
 
 		break;
 
@@ -224,11 +296,34 @@ update_status ModuleShield::Update() {
 	SDL_Rect base = base_anim.GetCurrentFrame();
 	SDL_Rect light = current_lvl->GetCurrentFrame();
 
+	timer++;
+
 	// ---- Draw Everything
-	App->render->Blit(graphics, position1.x, position1.y, &base);
-	App->render->Blit(graphics, position2.x, position2.y, &base);
-	App->render->Blit(graphics, position1.x + 8, position1.y + 1, &light);
-	App->render->Blit(graphics, position2.x + 8, position2.y + 1, &light);
+	if(App->player->type == bullet_type::TYPE_1)
+	{
+		App->render->Blit(graphics, position1.x, position1.y, &rotation_level[0].GetCurrentFrame());
+		App->render->Blit(graphics, position2.x, position2.y, &rotation_level[1].GetCurrentFrame());
+
+		if (timer >= 100)
+		{
+			circ++;
+			timer = 0;
+		}
+
+
+		if (circ > 4)
+		{
+			circ = 0;
+		}
+	}
+
+	else
+	{
+		App->render->Blit(graphics, position1.x, position1.y, &base);
+		App->render->Blit(graphics, position2.x, position2.y, &base);
+		App->render->Blit(graphics, position1.x + 8, position1.y + 1, &light);
+		App->render->Blit(graphics, position2.x + 8, position2.y + 1, &light);
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }
