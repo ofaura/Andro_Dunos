@@ -22,7 +22,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("Assets/Sprites/player/particles.png");
+	graphics = App->textures->Load("Assets/Sprites/Particles/particles.png");
 	// Explosion particle
 
 	// Enemy shots
@@ -33,7 +33,24 @@ bool ModuleParticles::Start()
 	enemy_shot.anim.loop = true;
 	enemy_shot.anim.speed = 0.2f;
 	enemy_shot.speed.x -= 2;
-	enemy_shot.life = 4000;
+	enemy_shot.life = 2000;
+
+	// Enemy missiles
+	enemy_missile1.anim.PushBack({ 264, 188, 15, 10 });
+	enemy_missile1.anim.PushBack({ 284, 188, 20, 10 });
+	enemy_missile1.anim.PushBack({ 308, 188, 31, 10 });
+	enemy_missile1.anim.loop = true;
+	enemy_missile1.anim.speed = 0.7f;
+	enemy_missile1.speed.x -= 2;
+	enemy_missile1.life = 2000;
+
+	enemy_missile2.anim.PushBack({ 267, 200, 11, 12 });
+	enemy_missile2.anim.PushBack({ 282, 200, 13, 12 });
+	enemy_missile2.anim.PushBack({ 298, 200, 16, 12 });
+	enemy_missile2.anim.loop = true;
+	enemy_missile2.anim.speed = 0.7f;
+	enemy_missile2.speed.x -= 2;
+	enemy_missile2.life = 2000;
 
 	// Player main weapon
 	laser1.anim.PushBack({ 22, 51, 15, 6 });

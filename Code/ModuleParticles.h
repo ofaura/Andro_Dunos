@@ -68,7 +68,10 @@ public:
 	Particle explosionP1;
 	Particle explosionP2;
 	Particle enemy_explosion;
+
 	Particle enemy_shot;
+	Particle enemy_missile1;
+	Particle enemy_missile2;
 };
 
 #endif // __MODULEPARTICLES_H__
