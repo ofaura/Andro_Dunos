@@ -53,7 +53,7 @@ ModuleShield::~ModuleShield() {}
 
 bool ModuleShield::Start() {
 	bool ret = true;
-
+	int circular = 0;
 	graphics = App->textures->Load("Assets/Sprites/player/shield.png"); //Loads shield image bank
 
 	if (graphics == nullptr) ret = false; //failsafe for wrong address
@@ -62,41 +62,46 @@ bool ModuleShield::Start() {
 
 		// ---- Stays in front of ship
 	case bullet_type::TYPE_1:
-		position1.x = App->player->position.x + 29;
-		position1.y = App->player->position.y - 8;
-		position2.x = App->player->position.x + 29;
-		position2.y = App->player->position.y + 10;
+		position1[0].x = App->player->position.x + 40;
+		position1[0].y = App->player->position.y + 2;
+		position2[0].x = App->player->position.x - 13;
+		position2[0].y = App->player->position.y + 2;
+
+		position1[1].x = App->player->position.x + 35;
+		position1[1].y = App->player->position.y + 2;
+		position2[1].x = App->player->position.x - 8;
+		position2[1].y = App->player->position.y + 2;
 		break;
 
 		// ---- Stays on either side of the ship
 	case bullet_type::TYPE_2:
-		position1.x = App->player->position.x + 5;
-		position1.y = App->player->position.y - 8;
-		position2.x = App->player->position.x + 5;
-		position2.y = App->player->position.y + 10;
+		position1[0].x = App->player->position.x + 5;
+		position1[0].y = App->player->position.y - 8;
+		position2[0].x = App->player->position.x + 5;
+		position2[0].y = App->player->position.y + 10;
 		break;
 
 		// ---- Stays in front of ship
 	case bullet_type::TYPE_3:
-		position1.x = App->player->position.x + 29;
-		position1.y = App->player->position.y - 8;
-		position2.x = App->player->position.x + 29;
-		position2.y = App->player->position.y + 10;
+		position1[0].x = App->player->position.x + 29;
+		position1[0].y = App->player->position.y - 8;
+		position2[0].x = App->player->position.x + 29;
+		position2[0].y = App->player->position.y + 10;
 		break;
 
 		// ---- Stays behind ship
 	case bullet_type::TYPE_4:
-		position1.x = App->player->position.x + 29;
-		position1.y = App->player->position.y - 8;
-		position2.x = App->player->position.x + 29;
-		position2.y = App->player->position.y + 10;
+		position1[0].x = App->player->position.x + 29;
+		position1[0].y = App->player->position.y - 8;
+		position2[0].x = App->player->position.x + 29;
+		position2[0].y = App->player->position.y + 10;
 		break;
 	}
 
 
 	// ---- Declares colliders for shield parts individually
-	collider1 = App->collision->AddCollider({ position1.x, position1.y, 14, 16 }, COLLIDER_SHIELD_1, this);
-	collider2 = App->collision->AddCollider({ position2.x, position2.y, 14, 16 }, COLLIDER_SHIELD_1, this);
+	collider1 = App->collision->AddCollider({ position1[0].x, position1[0].y, 14, 16 }, COLLIDER_SHIELD_1, this);
+	collider2 = App->collision->AddCollider({ position2[0].x, position2[0].y, 14, 16 }, COLLIDER_SHIELD_1, this);
 
 	return ret;
 }
@@ -113,49 +118,64 @@ update_status ModuleShield::Update() {
 
 		// ---- Stays in front of ship
 	case bullet_type::TYPE_1:
-		position1.x = App->player->position.x + 29;
-		position1.y = App->player->position.y - 8;
-		position2.x = App->player->position.x + 29;
-		position2.y = App->player->position.y + 10;
+		position1[0].x = App->player->position.x + 35;
+		position1[0].y = App->player->position.y + 2;
+		position2[0].x = App->player->position.x - 8;
+		position2[0].y = App->player->position.y + 2;
 		break;
 
 		// ---- Stays on either side of the ship
 	case bullet_type::TYPE_2:
-		position1.x = App->player->position.x + 5;
-		position1.y = App->player->position.y - 15;
-		position2.x = App->player->position.x + 5;
-		position2.y = App->player->position.y + 17;
+		position1[0].x = App->player->position.x + 5;
+		position1[0].y = App->player->position.y - 15;
+		position2[0].x = App->player->position.x + 5;
+		position2[0].y = App->player->position.y + 17;
 		break;
 
 		// ---- Stays in front of ship
 	case bullet_type::TYPE_3:
-		position1.x = App->player->position.x + 29;
-		position1.y = App->player->position.y - 8;
-		position2.x = App->player->position.x + 29;
-		position2.y = App->player->position.y + 10;
+		position1[0].x = App->player->position.x + 29;
+		position1[0].y = App->player->position.y - 8;
+		position2[0].x = App->player->position.x + 29;
+		position2[0].y = App->player->position.y + 10;
 		break;
 
 		// ---- Stays behind ship
 	case bullet_type::TYPE_4:
-		position1.x = App->player->position.x - 16;
-		position1.y = App->player->position.y - 8;
-		position2.x = App->player->position.x - 16;
-		position2.y = App->player->position.y + 10;
+		position1[0].x = App->player->position.x - 16;
+		position1[0].y = App->player->position.y - 8;
+		position2[0].x = App->player->position.x - 16;
+		position2[0].y = App->player->position.y + 10;
 		break;
 	}
 
 	// ---- Updates colliders
-	collider1->SetPos(position1.x, position1.y);
-	collider2->SetPos(position2.x, position2.y);
+	/*if (App->player->type == bullet_type::TYPE_1)
+	{
+		if (circular > 6 )
+		{
+			circular = 0;
+		}
+		
+		position1[0].x = position1[circular].x;
+		position1[0].y = position1[circular].y;
+		position2[0].x = position2[circular].x;
+		position2[0].y = position2[circular].y;
+		circular++;
+
+	}*/
+
+		collider1->SetPos(position1[0].x, position1[0].y);
+		collider2->SetPos(position2[0].x, position2[0].y);
 
 	SDL_Rect base = base_anim.GetCurrentFrame();
 	SDL_Rect light = current_lvl->GetCurrentFrame();
 
 	// ---- Draw Everything
-	App->render->Blit(graphics, position1.x, position1.y, &base);
-	App->render->Blit(graphics, position2.x, position2.y, &base);
-	App->render->Blit(graphics, position1.x + 8, position1.y + 1, &light);
-	App->render->Blit(graphics, position2.x + 8, position2.y + 1, &light);
+	App->render->Blit(graphics, position1[0].x, position1[0].y, &base);
+	App->render->Blit(graphics, position2[0].x, position2[0].y, &base);
+	App->render->Blit(graphics, position1[0].x + 8, position1[0].y + 1, &light);
+	App->render->Blit(graphics, position2[0].x + 8, position2[0].y + 1, &light);
 
 	return update_status::UPDATE_CONTINUE;
 }
