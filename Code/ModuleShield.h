@@ -33,7 +33,7 @@ public:
 	Collider* collider2;
 
 	iPoint position1, position2;
-	iPoint pos1_t1[9], pos2_t1[9];
+	iPoint pos1_t1[8], pos2_t1[8];
 	int circ;
 	//int life = 3;
 };

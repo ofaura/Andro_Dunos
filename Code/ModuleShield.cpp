@@ -12,6 +12,24 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 
+int give_position_y(int radius, float angle_deg) // preparations for later
+{
+	int center_x = 0; // to be determined
+	int center_y = 0; // to be determined
+	float rad = (angle_deg * PI) / 180;
+
+	return radius * asin(rad)*(-1);
+
+}
+int give_position_x(int radius, float angle_deg) // preparations for later
+{
+	int center_x = 0; // to be determined
+	int center_y = 0; // to be determined
+	float rad = (angle_deg * PI) / 180;
+
+	return radius * acos(rad);
+}
+
 ModuleShield::ModuleShield() {
 
 	circ = 0;
@@ -138,25 +156,13 @@ bool ModuleShield::Start() {
 		// ---- Stays in front of ship
 	case bullet_type::TYPE_1:
 		
+		//give_position_x(radius, deg);
+		//give_position_x(radius, deg);
+
 		pos1_t1[0].x = App->player->position.x + 30;
 		pos1_t1[0].y = App->player->position.y + 1;
 		pos2_t1[0].x = App->player->position.x - 25;
 		pos2_t1[0].y = App->player->position.y + 1;
-
-		pos1_t1[1].x = App->player->position.x + 30;
-		pos1_t1[1].y = App->player->position.y + 25;
-		pos2_t1[1].x = App->player->position.x - 30;
-		pos2_t1[1].y = App->player->position.y - 25;
-
-		pos1_t1[2].x = App->player->position.x + 13;
-		pos1_t1[2].y = App->player->position.y + -9;
-		pos2_t1[2].x = App->player->position.x + 13;
-		pos2_t1[2].y = App->player->position.y + 25;
-
-		pos1_t1[3].x = App->player->position.x - 30;
-		pos1_t1[3].y = App->player->position.y + 25;
-		pos2_t1[3].x = App->player->position.x + 30;
-		pos2_t1[3].y = App->player->position.y - 25;
 
 		position1.x = pos1_t1[0].x;
 		position1.y = pos1_t1[0].y;
@@ -237,25 +243,34 @@ update_status ModuleShield::Update() {
 		// ---- Stays in front of ship
 	case bullet_type::TYPE_1:
 
+
+
 		pos1_t1[0].x = App->player->position.x + 30;
 		pos1_t1[0].y = App->player->position.y + 1;
 		pos2_t1[0].x = App->player->position.x - 25;
 		pos2_t1[0].y = App->player->position.y + 1;
 
-		pos1_t1[1].x = App->player->position.x + 30;
-		pos1_t1[1].y = App->player->position.y + 25;
-		pos2_t1[1].x = App->player->position.x - 30;
-		pos2_t1[1].y = App->player->position.y - 25;
 
-		pos1_t1[2].x = App->player->position.x + 13;
-		pos1_t1[2].y = App->player->position.y + -9;
-		pos2_t1[2].x = App->player->position.x + 13;
-		pos2_t1[2].y = App->player->position.y + 25;
+		pos1_t1[1].x = App->player->position.x + 19;
+		pos1_t1[1].y = App->player->position.y + 19;
+		pos2_t1[1].x = App->player->position.x - 19;
+		pos2_t1[1].y = App->player->position.y - 18;
 
-		pos1_t1[3].x = App->player->position.x - 30;
-		pos1_t1[3].y = App->player->position.y + 25;
-		pos2_t1[3].x = App->player->position.x + 30;
-		pos2_t1[3].y = App->player->position.y - 25;
+
+
+		pos1_t1[2].x = App->player->position.x + 0;
+		pos1_t1[2].y = App->player->position.y + -25;
+		pos2_t1[2].x = App->player->position.x + 0;
+		pos2_t1[2].y = App->player->position.y + 30;
+		
+
+
+		pos1_t1[3].x = App->player->position.x - 19;
+		pos1_t1[3].y = App->player->position.y + 19;
+		pos2_t1[3].x = App->player->position.x + 19;
+		pos2_t1[3].y = App->player->position.y - 19;
+
+
 
 		position1.x = pos1_t1[circ].x;
 		position1.y = pos1_t1[circ].y;
@@ -304,12 +319,11 @@ update_status ModuleShield::Update() {
 		App->render->Blit(graphics, position1.x, position1.y, &rotation_level[0].GetCurrentFrame());
 		App->render->Blit(graphics, position2.x, position2.y, &rotation_level[1].GetCurrentFrame());
 
-		if (timer >= 100)
+		if (timer >= 10)
 		{
 			circ++;
 			timer = 0;
 		}
-
 
 		if (circ > 4)
 		{
@@ -331,6 +345,7 @@ update_status ModuleShield::Update() {
 void ModuleShield::OnCollision(Collider* col_1, Collider* col_2) {
 	if (collider1 == col_1 || collider2 == col_1)
 		if (IsEnabled()) {
+			circ = 0;
 			collider1->to_delete = true;
 			collider2->to_delete = true;
 			collider1 = nullptr;

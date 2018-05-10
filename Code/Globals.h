@@ -12,7 +12,7 @@ void log(const char file[], int line, const char* format, ...);
 #define MIN( a, b ) ( ((a) < (b)) ? (a) : (b) )
 #define MAX( a, b ) ( ((a) > (b)) ? (a) : (b) )
 #define PIXEL_TO_DISTANCE_y(a) (192/307)
-
+#define PI (3.141592)
 
 enum update_status
 {
