@@ -14,6 +14,8 @@
 
 ModuleShield::ModuleShield() {
 
+	circ = 1;
+
 	// ---- Animation for the base od the shield
 	base_anim.PushBack({ 0, 0, 9, 16 });
 	base_anim.PushBack({ 11, 0, 9, 16 });
@@ -62,10 +64,32 @@ bool ModuleShield::Start() {
 
 		// ---- Stays in front of ship
 	case bullet_type::TYPE_1:
-		position1.x = App->player->position.x + 29;
-		position1.y = App->player->position.y - 8;
-		position2.x = App->player->position.x + 29;
-		position2.y = App->player->position.y + 10;
+		
+		pos1_t1[0].x = App->player->position.x + 30;
+		pos1_t1[0].y = App->player->position.y + 8;
+		pos2_t1[0].x = App->player->position.x - 25;
+		pos2_t1[0].y = App->player->position.y + 8;
+		
+		pos1_t1[1].x = App->player->position.x + 25;
+		pos1_t1[1].y = App->player->position.y - 4;
+		pos2_t1[1].x = App->player->position.x + 1;
+		pos2_t1[1].y = App->player->position.y + 20;
+
+		pos1_t1[2].x = App->player->position.x + 13;
+		pos1_t1[2].y = App->player->position.y + -9;
+		pos2_t1[2].x = App->player->position.x + 13;
+		pos2_t1[2].y = App->player->position.y + 25;
+
+		pos1_t1[3].x = App->player->position.x + 1;
+		pos1_t1[3].y = App->player->position.y - 4;
+		pos2_t1[3].x = App->player->position.x + 25;
+		pos2_t1[3].y = App->player->position.y + 20;
+
+		position1.x = pos1_t1[0].x;
+		position1.y = pos1_t1[0].y;
+		position2.x = pos2_t1[0].x;
+		position2.y = pos2_t1[0].y;
+
 		break;
 
 		// ---- Stays on either side of the ship
@@ -105,7 +129,32 @@ update_status ModuleShield::Update() {
 
 	/*if (life == 1) current_lvl = &lvl1;
 	else if (life == 2)	current_lvl = &lvl2;
-	else if (life == 3)	current_lvl = &lvl3;*/
+	else if (life == 3)	current_lvl = &lvl3;
+			pos1_t1[0].x = App->player->position.x + 30;
+		pos1_t1[0].y = App->player->position.y + 8;
+		pos2_t1[0].x = App->player->position.x + - 4;
+		pos2_t1[0].y = App->player->position.y + 8;
+		
+		pos1_t1[1].x = App->player->position.x + 25;
+		pos1_t1[1].y = App->player->position.y - 4;
+		pos2_t1[1].x = App->player->position.x + 1;
+		pos2_t1[1].y = App->player->position.y + 20;
+
+		pos1_t1[2].x = App->player->position.x + 13;
+		pos1_t1[2].y = App->player->position.y + -9;
+		pos2_t1[2].x = App->player->position.x + 13;
+		pos2_t1[2].y = App->player->position.y + 25;
+
+		pos1_t1[3].x = App->player->position.x + 1;
+		pos1_t1[3].y = App->player->position.y - 4;
+		pos2_t1[3].x = App->player->position.x + 25;
+		pos2_t1[3].y = App->player->position.y + 20;
+
+		position1.x = pos1_t1[0].x;
+		position1.y = pos1_t1[0].y;
+		position2.x = pos2_t1[0].x;
+		position2.y = pos2_t1[0].y;
+	*/
 	current_lvl = &lvl1;
 
 	// ---- Keeps realtive position to the ship
@@ -113,10 +162,34 @@ update_status ModuleShield::Update() {
 
 		// ---- Stays in front of ship
 	case bullet_type::TYPE_1:
-		position1.x = App->player->position.x + 29;
-		position1.y = App->player->position.y - 8;
-		position2.x = App->player->position.x + 29;
-		position2.y = App->player->position.y + 10;
+
+		pos1_t1[0].x = App->player->position.x + 30;
+		pos1_t1[0].y = App->player->position.y + 8;
+		pos2_t1[0].x = App->player->position.x - 25;
+		pos2_t1[0].y = App->player->position.y + 8;
+
+		pos1_t1[1].x = App->player->position.x + 25;
+		pos1_t1[1].y = App->player->position.y - 4;
+		pos2_t1[1].x = App->player->position.x + 1;
+		pos2_t1[1].y = App->player->position.y + 20;
+
+		pos1_t1[2].x = App->player->position.x + 13;
+		pos1_t1[2].y = App->player->position.y + -9;
+		pos2_t1[2].x = App->player->position.x + 13;
+		pos2_t1[2].y = App->player->position.y + 25;
+
+		pos1_t1[3].x = App->player->position.x + 1;
+		pos1_t1[3].y = App->player->position.y - 4;
+		pos2_t1[3].x = App->player->position.x + 25;
+		pos2_t1[3].y = App->player->position.y + 20;
+
+		position1.x = pos1_t1[0].x;
+		position1.y = pos1_t1[0].y;
+		position2.x = pos2_t1[0].x;
+		position2.y = pos2_t1[0].y;
+
+		circ++;
+
 		break;
 
 		// ---- Stays on either side of the ship
