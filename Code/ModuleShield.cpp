@@ -161,10 +161,10 @@ bool ModuleShield::Start() {
 		//give_position_x(radius, deg);
 		//give_position_x(radius, deg);
 
-		pos1_t1[0].x = App->player->position.x + 30;
-		pos1_t1[0].y = App->player->position.y + 1;
-		pos2_t1[0].x = App->player->position.x - 25;
-		pos2_t1[0].y = App->player->position.y + 1;
+		pos1_t1[0].x = App->player->position.x + give_position_x(RADIUS, 0.0);
+		pos1_t1[0].y = App->player->position.y + give_position_y(RADIUS, 0.0);
+		pos2_t1[0].x = App->player->position.x + give_position_x(RADIUS, 180.0);
+		pos2_t1[0].y = App->player->position.y + give_position_y(RADIUS, 180.0);
 
 		position1.x = pos1_t1[0].x;
 		position1.y = pos1_t1[0].y;
@@ -360,7 +360,11 @@ update_status ModuleShield::Update() {
 
 void ModuleShield::OnCollision(Collider* col_1, Collider* col_2) {
 	if (collider1 == col_1 || collider2 == col_1)
-		if (IsEnabled() && collider1->type != COLLIDER_TYPE::COLLIDER_WALL && collider2->type != COLLIDER_TYPE::COLLIDER_WALL) {
+		if (IsEnabled() && collider1->type != COLLIDER_TYPE::COLLIDER_WALL && collider2->type != COLLIDER_TYPE::COLLIDER_WALL
+			&& collider1->type != COLLIDER_TYPE::COLLIDER_PLAYER && collider1->type != COLLIDER_TYPE::COLLIDER_PLAYER_2
+			&& collider2->type != COLLIDER_TYPE::COLLIDER_PLAYER && collider2->type != COLLIDER_TYPE::COLLIDER_PLAYER_2
+			&& collider1->type != COLLIDER_TYPE::COLLIDER_PLAYER_SHOT && collider1->type != COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT
+			&& collider2->type != COLLIDER_TYPE::COLLIDER_PLAYER_SHOT && collider2->type != COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
 			circ = 0;
 			collider1->to_delete = true;
 			collider2->to_delete = true;
