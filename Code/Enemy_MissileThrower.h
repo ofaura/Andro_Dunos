@@ -24,7 +24,7 @@ public:
 	void Move();
 	bool dead = false;
 	bool missileFired = false;
-	int score = 150;
+	int score = 250;
 };
 
 #endif // __ENEMY_MISSILETHROWER_H__
