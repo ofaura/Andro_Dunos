@@ -12,22 +12,24 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 
+#define RADIUS (30)
+
 int give_position_y(int radius, float angle_deg) // preparations for later
 {
-	int center_x = 0; // to be determined
 	int center_y = 0; // to be determined
-	float rad = (angle_deg * PI) / 180;
 
-	return radius * asin(rad)*(-1);
+	float rad = ((angle_deg * PI) / 180);
+
+	return radius * sinf(rad)*(1) + center_y;
 
 }
 int give_position_x(int radius, float angle_deg) // preparations for later
 {
-	int center_x = 0; // to be determined
-	int center_y = 0; // to be determined
-	float rad = (angle_deg * PI) / 180;
+	int center_x = 5; // to be determined
 
-	return radius * acos(rad);
+	float rad = ((angle_deg * PI) / 180);
+
+	return radius * cosf(rad)*(-1) + center_x;
 }
 
 ModuleShield::ModuleShield() {
@@ -243,34 +245,48 @@ update_status ModuleShield::Update() {
 		// ---- Stays in front of ship
 	case bullet_type::TYPE_1:
 
+		//give_position_y(rad, angle_deg)
+		//give_position_x(rad, angle_deg)
 
+		pos1_t1[0].x = App->player->position.x + give_position_x(RADIUS, 0.0);
+		pos1_t1[0].y = App->player->position.y + give_position_y(RADIUS, 0.0);
+		pos2_t1[0].x = App->player->position.x  + give_position_x(RADIUS, 180.0);
+		pos2_t1[0].y = App->player->position.y + give_position_y(RADIUS, 180.0);
 
-		pos1_t1[0].x = App->player->position.x + 30;
-		pos1_t1[0].y = App->player->position.y + 1;
-		pos2_t1[0].x = App->player->position.x - 25;
-		pos2_t1[0].y = App->player->position.y + 1;
+		pos1_t1[1].x = App->player->position.x + give_position_x(RADIUS, 22.5);
+		pos1_t1[1].y = App->player->position.y + give_position_y(RADIUS, 22.5);
+		pos2_t1[1].x = App->player->position.x + give_position_x(RADIUS, 180.0 + 22.5);
+		pos2_t1[1].y = App->player->position.y + give_position_y(RADIUS, 180.0 + 22.5);
 
+		pos1_t1[2].x = App->player->position.x + give_position_x(RADIUS, 45.0);
+		pos1_t1[2].y = App->player->position.y + give_position_y(RADIUS, 45.0);
+		pos2_t1[2].x = App->player->position.x + give_position_x(RADIUS, 180 + 45.0);
+		pos2_t1[2].y = App->player->position.y + give_position_y(RADIUS, 180.0 + 45.0);
 
-		pos1_t1[1].x = App->player->position.x + 19;
-		pos1_t1[1].y = App->player->position.y + 19;
-		pos2_t1[1].x = App->player->position.x - 19;
-		pos2_t1[1].y = App->player->position.y - 18;
+		pos1_t1[3].x = App->player->position.x + give_position_x(RADIUS, 67.5);
+		pos1_t1[3].y = App->player->position.y + give_position_y(RADIUS, 67.5);
+		pos2_t1[3].x = App->player->position.x + give_position_x(RADIUS, 180.0 + 67.5);
+		pos2_t1[3].y = App->player->position.y + give_position_y(RADIUS, 180.0 + 67.5);
 
+		pos1_t1[4].x = App->player->position.x + give_position_x(RADIUS, 90.0);
+		pos1_t1[4].y = App->player->position.y + give_position_y(RADIUS, 90.0);
+		pos2_t1[4].x = App->player->position.x + give_position_x(RADIUS, 270.0);
+		pos2_t1[4].y = App->player->position.y + give_position_y(RADIUS, 270.0);
 
+		pos1_t1[5].x = App->player->position.x + give_position_x(RADIUS, 90 + 22.5);
+		pos1_t1[5].y = App->player->position.y + give_position_y(RADIUS, 90 + 22.5);
+		pos2_t1[5].x = App->player->position.x + give_position_x(RADIUS, 270 + 22.5);
+		pos2_t1[5].y = App->player->position.y + give_position_y(RADIUS, 270 + 22.5);
 
-		pos1_t1[2].x = App->player->position.x + 0;
-		pos1_t1[2].y = App->player->position.y + -25;
-		pos2_t1[2].x = App->player->position.x + 0;
-		pos2_t1[2].y = App->player->position.y + 30;
-		
+		pos1_t1[6].x = App->player->position.x + give_position_x(RADIUS, 90 + 45.0);
+		pos1_t1[6].y = App->player->position.y + give_position_y(RADIUS, 90 + 45.0);
+		pos2_t1[6].x = App->player->position.x + give_position_x(RADIUS, 270 + 45.0);
+		pos2_t1[6].y = App->player->position.y + give_position_y(RADIUS, 270 + 45.0);
 
-
-		pos1_t1[3].x = App->player->position.x - 19;
-		pos1_t1[3].y = App->player->position.y + 19;
-		pos2_t1[3].x = App->player->position.x + 19;
-		pos2_t1[3].y = App->player->position.y - 19;
-
-
+		pos1_t1[7].x = App->player->position.x + give_position_x(RADIUS, 90 + 67.5);
+		pos1_t1[7].y = App->player->position.y + give_position_y(RADIUS, 90 + 67.5);
+		pos2_t1[7].x = App->player->position.x + give_position_x(RADIUS, 270 + 67.5);
+		pos2_t1[7].y = App->player->position.y + give_position_y(RADIUS, 270 + 67.5);
 
 		position1.x = pos1_t1[circ].x;
 		position1.y = pos1_t1[circ].y;
@@ -319,13 +335,13 @@ update_status ModuleShield::Update() {
 		App->render->Blit(graphics, position1.x, position1.y, &rotation_level[0].GetCurrentFrame());
 		App->render->Blit(graphics, position2.x, position2.y, &rotation_level[1].GetCurrentFrame());
 
-		if (timer >= 10)
+		if (timer >= 5)
 		{
 			circ++;
 			timer = 0;
 		}
 
-		if (circ > 4)
+		if (circ > 7)
 		{
 			circ = 0;
 		}
