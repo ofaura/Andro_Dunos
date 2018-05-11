@@ -34,7 +34,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_PLAYER_2][COLLIDER_ENEMY_SHOT] = true;
 	matrix[COLLIDER_PLAYER_2][COLLIDER_POWER_UP] = true;
 	matrix[COLLIDER_PLAYER_2][COLLIDER_SHIELD_1] = false;
-	matrix[COLLIDER_PLAYER_2][COLLIDER_SHIELD_2] = false;
+	matrix[COLLIDER_PLAYER_2][COLLIDER_SHIELD_2] = false; 
 
 	matrix[COLLIDER_ENEMY][COLLIDER_WALL] = false;
 	matrix[COLLIDER_ENEMY][COLLIDER_PLAYER] = true;

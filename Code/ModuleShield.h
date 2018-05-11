@@ -25,7 +25,7 @@ public:
 	Animation base_anim, lvl1, lvl2, lvl3;
 	Animation rotation_lvl1[ROT_STEPS];
 	Animation rotation_level[ROT_STEPS];
-
+	
 	Animation* current_lvl;
 	int timer;
 
