@@ -335,7 +335,7 @@ update_status ModuleShield::Update() {
 		App->render->Blit(graphics, position1.x, position1.y, &rotation_level[0].GetCurrentFrame());
 		App->render->Blit(graphics, position2.x, position2.y, &rotation_level[1].GetCurrentFrame());
 
-		if (timer >= 5)
+		if (timer >= 3)
 		{
 			circ++;
 			timer = 0;
