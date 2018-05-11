@@ -235,13 +235,16 @@ bool ModuleSceneLevel5::Start()
 
 	App->collision->AddCollider({ 6573, 213, 15, 10 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 6588, 200, 9, 23 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 6597, 182, 30, 35 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6597, 189, 30, 35 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 6627, 189, 81, 42 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 6631, 176, 58, 6 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 6633, 171, 43, 5 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 6655, 164, 16, 7 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 6708, 185, 51, 99 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 6716, 178, 19, 7 }, COLLIDER_WALL);
+
+
+	App->collision->AddCollider({ 6620, 182, 100, 7 }, COLLIDER_WALL);
 
 
 	//Audio ---
