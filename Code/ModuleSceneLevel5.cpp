@@ -66,7 +66,8 @@ bool ModuleSceneLevel5::Start()
 	App->user_interface->Enable();
 
 	// Reseting the camera to the start of the level
-	App->render->camera.x =	App->render->camera.y = 0;
+	App->render->camera.x = 1500;
+	App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
 	App->render->camera.h = SCREEN_HEIGHT;
 
@@ -90,6 +91,9 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_CIRCLE, 500, 180);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1750, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1796, 63);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1835, 49);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1875, 38);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 700, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 720, 30);
@@ -258,7 +262,6 @@ bool ModuleSceneLevel5::Start()
 // Update: draw background
 update_status ModuleSceneLevel5::Update()
 {
-
 	if (App->render->camera.x >= 0 && App->render->camera.x <= 8800 * SCREEN_SIZE)
 	{
 		App->render->camera.x += 1 * SCREEN_SIZE;
