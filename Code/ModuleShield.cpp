@@ -20,7 +20,7 @@ int give_position_y(int radius, float angle_deg) // preparations for later
 
 	float rad = ((angle_deg * PI) / 180);
 
-	return radius * sinf(rad)*(1) + center_y;
+	return radius * sinf(rad)*(-1) + center_y;
 
 }
 int give_position_x(int radius, float angle_deg) // preparations for later
@@ -29,7 +29,7 @@ int give_position_x(int radius, float angle_deg) // preparations for later
 
 	float rad = ((angle_deg * PI) / 180);
 
-	return radius * cosf(rad)*(-1) + center_x;
+	return radius * cosf(rad)*(1) + center_x;
 }
 
 ModuleShield::ModuleShield() {
@@ -212,31 +212,7 @@ update_status ModuleShield::Update() {
 	/*if (life == 1) current_lvl = &lvl1;
 	else if (life == 2)	current_lvl = &lvl2;
 	else if (life == 3)	current_lvl = &lvl3;
-			pos1_t1[0].x = App->player->position.x + 30;
-		pos1_t1[0].y = App->player->position.y + 8;
-		pos2_t1[0].x = App->player->position.x + - 4;
-		pos2_t1[0].y = App->player->position.y + 8;
-		
-		pos1_t1[1].x = App->player->position.x + 25;
-		pos1_t1[1].y = App->player->position.y - 4;
-		pos2_t1[1].x = App->player->position.x + 1;
-		pos2_t1[1].y = App->player->position.y + 20;
-
-		pos1_t1[2].x = App->player->position.x + 13;
-		pos1_t1[2].y = App->player->position.y + -9;
-		pos2_t1[2].x = App->player->position.x + 13;
-		pos2_t1[2].y = App->player->position.y + 25;
-
-		pos1_t1[3].x = App->player->position.x + 1;
-		pos1_t1[3].y = App->player->position.y - 4;
-		pos2_t1[3].x = App->player->position.x + 25;
-		pos2_t1[3].y = App->player->position.y + 20;
-
-		position1.x = pos1_t1[0].x;
-		position1.y = pos1_t1[0].y;
-		position2.x = pos2_t1[0].x;
-		position2.y = pos2_t1[0].y;
-	*/
+*/
 	current_lvl = &lvl1;
 
 	// ---- Keeps realtive position to the ship
@@ -248,45 +224,60 @@ update_status ModuleShield::Update() {
 		//give_position_y(rad, angle_deg)
 		//give_position_x(rad, angle_deg)
 
+		/*
+					- -	-
+				-	  -		-
+			-		  -			-
+			-		  - 		-
+			--------------------- 0º/360º
+			-		  -			-
+			-		  -			-
+				-	  -		-
+					- -	-	
+		
+		
+		*/
+
+
 		pos1_t1[0].x = App->player->position.x + give_position_x(RADIUS, 0.0);
 		pos1_t1[0].y = App->player->position.y + give_position_y(RADIUS, 0.0);
 		pos2_t1[0].x = App->player->position.x  + give_position_x(RADIUS, 180.0);
 		pos2_t1[0].y = App->player->position.y + give_position_y(RADIUS, 180.0);
 
-		pos1_t1[1].x = App->player->position.x + give_position_x(RADIUS, 22.5);
-		pos1_t1[1].y = App->player->position.y + give_position_y(RADIUS, 22.5);
-		pos2_t1[1].x = App->player->position.x + give_position_x(RADIUS, 180.0 + 22.5);
-		pos2_t1[1].y = App->player->position.y + give_position_y(RADIUS, 180.0 + 22.5);
+		pos1_t1[1].x = App->player->position.x + give_position_x(RADIUS, 90 + 67.5);
+		pos1_t1[1].y = App->player->position.y + give_position_y(RADIUS, 90 + 67.5);
+		pos2_t1[1].x = App->player->position.x + give_position_x(RADIUS, 270 + 67.5);
+		pos2_t1[1].y = App->player->position.y + give_position_y(RADIUS, 270 + 67.5);
 
-		pos1_t1[2].x = App->player->position.x + give_position_x(RADIUS, 45.0);
-		pos1_t1[2].y = App->player->position.y + give_position_y(RADIUS, 45.0);
-		pos2_t1[2].x = App->player->position.x + give_position_x(RADIUS, 180 + 45.0);
-		pos2_t1[2].y = App->player->position.y + give_position_y(RADIUS, 180.0 + 45.0);
+		pos1_t1[2].x = App->player->position.x + give_position_x(RADIUS, 90 + 45.0);
+		pos1_t1[2].y = App->player->position.y + give_position_y(RADIUS, 90 + 45.0);
+		pos2_t1[2].x = App->player->position.x + give_position_x(RADIUS, 270 + 45.0);
+		pos2_t1[2].y = App->player->position.y + give_position_y(RADIUS, 270 + 45.0);
 
-		pos1_t1[3].x = App->player->position.x + give_position_x(RADIUS, 67.5);
-		pos1_t1[3].y = App->player->position.y + give_position_y(RADIUS, 67.5);
-		pos2_t1[3].x = App->player->position.x + give_position_x(RADIUS, 180.0 + 67.5);
-		pos2_t1[3].y = App->player->position.y + give_position_y(RADIUS, 180.0 + 67.5);
+		pos1_t1[3].x = App->player->position.x + give_position_x(RADIUS, 90 + 22.5);
+		pos1_t1[3].y = App->player->position.y + give_position_y(RADIUS, 90 + 22.5);
+		pos2_t1[3].x = App->player->position.x + give_position_x(RADIUS, 270 + 22.5);
+		pos2_t1[3].y = App->player->position.y + give_position_y(RADIUS, 270 + 22.5);
 
 		pos1_t1[4].x = App->player->position.x + give_position_x(RADIUS, 90.0);
 		pos1_t1[4].y = App->player->position.y + give_position_y(RADIUS, 90.0);
 		pos2_t1[4].x = App->player->position.x + give_position_x(RADIUS, 270.0);
 		pos2_t1[4].y = App->player->position.y + give_position_y(RADIUS, 270.0);
 
-		pos1_t1[5].x = App->player->position.x + give_position_x(RADIUS, 90 + 22.5);
-		pos1_t1[5].y = App->player->position.y + give_position_y(RADIUS, 90 + 22.5);
-		pos2_t1[5].x = App->player->position.x + give_position_x(RADIUS, 270 + 22.5);
-		pos2_t1[5].y = App->player->position.y + give_position_y(RADIUS, 270 + 22.5);
+		pos1_t1[5].x = App->player->position.x + give_position_x(RADIUS, 67.5);
+		pos1_t1[5].y = App->player->position.y + give_position_y(RADIUS, 67.5);
+		pos2_t1[5].x = App->player->position.x + give_position_x(RADIUS, 180.0 + 67.5);
+		pos2_t1[5].y = App->player->position.y + give_position_y(RADIUS, 180.0 + 67.5);
 
-		pos1_t1[6].x = App->player->position.x + give_position_x(RADIUS, 90 + 45.0);
-		pos1_t1[6].y = App->player->position.y + give_position_y(RADIUS, 90 + 45.0);
-		pos2_t1[6].x = App->player->position.x + give_position_x(RADIUS, 270 + 45.0);
-		pos2_t1[6].y = App->player->position.y + give_position_y(RADIUS, 270 + 45.0);
+		pos1_t1[6].x = App->player->position.x + give_position_x(RADIUS, 45.0);
+		pos1_t1[6].y = App->player->position.y + give_position_y(RADIUS, 45.0);
+		pos2_t1[6].x = App->player->position.x + give_position_x(RADIUS, 180 + 45.0);
+		pos2_t1[6].y = App->player->position.y + give_position_y(RADIUS, 180.0 + 45.0);
 
-		pos1_t1[7].x = App->player->position.x + give_position_x(RADIUS, 90 + 67.5);
-		pos1_t1[7].y = App->player->position.y + give_position_y(RADIUS, 90 + 67.5);
-		pos2_t1[7].x = App->player->position.x + give_position_x(RADIUS, 270 + 67.5);
-		pos2_t1[7].y = App->player->position.y + give_position_y(RADIUS, 270 + 67.5);
+		pos1_t1[7].x = App->player->position.x + give_position_x(RADIUS, 22.5);
+		pos1_t1[7].y = App->player->position.y + give_position_y(RADIUS, 22.5);
+		pos2_t1[7].x = App->player->position.x + give_position_x(RADIUS, 180.0 + 22.5);
+		pos2_t1[7].y = App->player->position.y + give_position_y(RADIUS, 180.0 + 22.5);
 
 		position1.x = pos1_t1[circ].x;
 		position1.y = pos1_t1[circ].y;
