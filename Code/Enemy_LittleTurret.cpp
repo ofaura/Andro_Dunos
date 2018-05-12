@@ -41,30 +41,51 @@ void Enemy_LittleTurret::Move()
 {	
 	currentTime = SDL_GetTicks();
 
-	if (currentTime > lastTime + 2000) //shot every 5 seconds
+	if (currentTime > lastTime + 2500) //shot every 2.5 seconds
 	{
 		turretShoot = true;		
 		lastTime = currentTime;
+
+		// If the player passes the turrets 110 units they stop shooting
+		if (base < - 110) {
+			turretShoot = false;
+		}
 	}
 
 	if (AngleCalculator() > -20 && AngleCalculator() <= 20) {
 		animation = &attack1;
 		if (turretShoot == true && base < 150) {
-			App->particles->AddParticle(App->particles->enemy_shot_orange1, position.x, position.y + 15, COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(App->particles->enemy_shot_orange1, position.x - 3, position.y + 6, COLLIDER_ENEMY_SHOT);
 			turretShoot = false;
 		}
 	}
 	else if (AngleCalculator() > 20 && AngleCalculator() <= 40) {
 		animation = &attack2;
+		if (turretShoot == true && base < 150) {
+			App->particles->AddParticle(App->particles->enemy_shot_orange2, position.x - 2, position.y + 10, COLLIDER_ENEMY_SHOT);
+			turretShoot = false;
+		}
 	}
 	else if (AngleCalculator() > 40 && AngleCalculator() <= 60) {
 		animation = &attack3;
+		if (turretShoot == true && base < 150) {
+			App->particles->AddParticle(App->particles->enemy_shot_orange3, position.x - 1, position.y + 12, COLLIDER_ENEMY_SHOT);
+			turretShoot = false;
+		}
 	}
 	else if (AngleCalculator() > 60 && AngleCalculator() <= 80) {
 		animation = &attack4;
+		if (turretShoot == true && base < 150) {
+			App->particles->AddParticle(App->particles->enemy_shot_orange4, position.x + 3, position.y + 12, COLLIDER_ENEMY_SHOT);
+			turretShoot = false;
+		}
 	}
 	else if (AngleCalculator() > 80 && AngleCalculator() <= 100) {
 		animation = &attack5;
+		if (turretShoot == true && base < 150) {
+			App->particles->AddParticle(App->particles->enemy_shot_orange5, position.x + 3, position.y + 16, COLLIDER_ENEMY_SHOT);
+			turretShoot = false;
+		}
 	}/*
 	else if (AngleCalculator() > 100 && AngleCalculator() <= 120) {
 		animation = &attack6;
@@ -77,6 +98,10 @@ void Enemy_LittleTurret::Move()
 	}*/
 	else {
 		animation = &attack7;
+		if (turretShoot == true && base < 150) {
+			App->particles->AddParticle(App->particles->enemy_shot_orange6, position.x + 9, position.y + 12, COLLIDER_ENEMY_SHOT);
+			turretShoot = false;
+		}
 	}
 }
 

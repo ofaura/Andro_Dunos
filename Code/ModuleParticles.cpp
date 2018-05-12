@@ -35,12 +35,63 @@ bool ModuleParticles::Start()
 	enemy_shot_blue.speed.x -= 2;
 	enemy_shot_blue.life = 2000;
 
-	enemy_shot_orange1.anim.PushBack({ 385, 74, 10, 10 });
-	enemy_shot_orange1.anim.PushBack({ 57, 115, 12, 12 });
+	enemy_shot_orange1.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange1.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange1.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange1.anim.PushBack({ 296, 220, 6, 6 });
 	enemy_shot_orange1.anim.loop = true;
 	enemy_shot_orange1.anim.speed = 0.5f;
 	enemy_shot_orange1.speed.x -= 2;
 	enemy_shot_orange1.life = 2000;
+
+	enemy_shot_orange2.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange2.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange2.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange2.anim.PushBack({ 296, 220, 6, 6 });
+	enemy_shot_orange2.anim.loop = true;
+	enemy_shot_orange2.anim.speed = 0.5f;
+	enemy_shot_orange2.speed.x -= 2;
+	enemy_shot_orange2.speed.y += 1;
+	enemy_shot_orange2.life = 2000;
+
+	enemy_shot_orange3.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange3.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange3.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange3.anim.PushBack({ 296, 220, 6, 6 });
+	enemy_shot_orange3.anim.loop = true;
+	enemy_shot_orange3.anim.speed = 0.5f;
+	enemy_shot_orange3.speed.x -= 2;
+	enemy_shot_orange3.speed.y += 2;
+	enemy_shot_orange3.life = 2000;
+
+	enemy_shot_orange4.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange4.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange4.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange4.anim.PushBack({ 296, 220, 6, 6 });
+	enemy_shot_orange4.anim.loop = true;
+	enemy_shot_orange4.anim.speed = 0.5f;
+	enemy_shot_orange4.speed.x -= 1;
+	enemy_shot_orange4.speed.y += 2;
+	enemy_shot_orange4.life = 2000;
+
+	enemy_shot_orange5.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange5.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange5.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange5.anim.PushBack({ 296, 220, 6, 6 });
+	enemy_shot_orange5.anim.loop = true;
+	enemy_shot_orange5.anim.speed = 0.5f;
+	enemy_shot_orange5.speed.y += 2;
+	enemy_shot_orange5.life = 2000;
+
+	enemy_shot_orange6.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange6.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange6.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange6.anim.PushBack({ 296, 220, 6, 6 });
+	enemy_shot_orange6.anim.loop = true;
+	enemy_shot_orange6.anim.speed = 0.5f;
+	enemy_shot_orange6.speed.x += 2;
+	enemy_shot_orange6.speed.y += 2;
+	enemy_shot_orange6.life = 2000;
 
 	// Enemy missiles
 	enemy_missile1.anim.PushBack({ 264, 188, 15, 10 });

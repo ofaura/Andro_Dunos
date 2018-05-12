@@ -438,19 +438,20 @@ update_status ModulePlayer::Update()
 	{
 		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)
 		{
+			if (player->type != COLLIDER_NONE) {
+				GodMode = !GodMode;
 
-			GodMode = !GodMode;
+				if (GodMode == true)
+				{
+					player->to_delete = true;
 
-			if (GodMode == true)
-			{
-				player->to_delete = true;
-
-				player = nullptr;
-			}
-			else if (GodMode == false)
-			{
-				GodMode = false;
-				player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
+					player = nullptr;
+				}
+				else if (GodMode == false)
+				{
+					GodMode = false;
+					player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
+				}
 			}
 		}
 
