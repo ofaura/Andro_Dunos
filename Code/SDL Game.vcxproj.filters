@@ -59,9 +59,6 @@
     <ClInclude Include="PowerUp.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_Shooter.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="ModulePlayer2.h">
       <Filter>Modules\Players</Filter>
     </ClInclude>
@@ -164,9 +161,6 @@
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="PowerUp.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_Shooter.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="ModulePlayer.cpp">

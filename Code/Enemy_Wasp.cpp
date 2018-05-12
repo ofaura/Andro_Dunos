@@ -4,6 +4,7 @@
 #include "ModuleParticles.h"
 #include "ModuleUserInterface.h"
 #include "ModuleSceneLevel5.h"
+#include "ModulePlayer.h"
 #include "ModuleAudio.h"
 
 #include "SDL\include\SDL_timer.h"
@@ -22,10 +23,10 @@ void Enemy_Wasp::Move()
 {
 	currentTime = SDL_GetTicks();
 
-	if (currentTime > lastTime + 2000) //shot every 2 seconds
+	if (currentTime > lastTime + 1200) // Shoots every 1.2 seconds
 	{
-
-		App->particles->AddParticle(App->particles->enemy_shot_yellow, position.x, position.y + 8, COLLIDER_ENEMY_SHOT);
+		if(abs(position.x - App->player->position.x) < 200)
+			App->particles->AddParticle(App->particles->enemy_shot_yellow, position.x - 7, position.y + 4, COLLIDER_ENEMY_SHOT);
 		lastTime = currentTime;
 	}
 
