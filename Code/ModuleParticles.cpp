@@ -35,6 +35,10 @@ bool ModuleParticles::Start()
 	enemy_shot_blue.speed.x -= 2;
 	enemy_shot_blue.life = 2000;
 
+	enemy_shot_yellow.anim.PushBack({ 266, 232, 16, 3 });
+	enemy_shot_yellow.speed.x -= 2;
+	enemy_shot_yellow.life = 2000;
+
 	enemy_shot_orange1.anim.PushBack({ 280, 220, 6, 6 });
 	enemy_shot_orange1.anim.PushBack({ 288, 220, 6, 6 });
 	enemy_shot_orange1.anim.PushBack({ 280, 220, 6, 6 });

@@ -70,6 +70,7 @@ public:
 	Particle enemy_explosion;
 
 	Particle enemy_shot_blue;
+	Particle enemy_shot_yellow;
 	Particle enemy_shot_orange1;
 	Particle enemy_shot_orange2;
 	Particle enemy_shot_orange3;

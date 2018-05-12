@@ -1,4 +1,3 @@
-
 #ifndef __ENEMY_METEORITE_H__
 #define __ENEMY_METEORITE_H__
 
