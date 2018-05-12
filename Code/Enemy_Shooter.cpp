@@ -67,7 +67,7 @@ void Enemy_Shooter::Move()
 	if (currentTime > lastTime + 5000) //shot every 5 seconds
 	{
 		
-		App->particles->AddParticle(App->particles->enemy_shot, position.x, position.y + 15, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemy_shot_blue, position.x, position.y + 15, COLLIDER_ENEMY_SHOT);
 		lastTime = currentTime;
 	}
 	

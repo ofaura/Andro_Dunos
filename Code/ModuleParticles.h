@@ -69,7 +69,13 @@ public:
 	Particle explosionP2;
 	Particle enemy_explosion;
 
-	Particle enemy_shot;
+	Particle enemy_shot_blue;
+	Particle enemy_shot_orange1;
+	Particle enemy_shot_orange2;
+	Particle enemy_shot_orange3;
+	Particle enemy_shot_orange4;
+	Particle enemy_shot_orange5;
+	Particle enemy_shot_orange6;
 	Particle enemy_missile1;
 	Particle enemy_missile2;
 };

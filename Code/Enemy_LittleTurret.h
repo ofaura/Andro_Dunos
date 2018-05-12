@@ -20,6 +20,8 @@ private:
 	float base = 0;		// X distance between player and turret
 	float height = 0;	// Y distance between player and turret
 
+	uint lastTime = 0, currentTime;
+
 public:
 
 	Enemy_LittleTurret(int x, int y);
@@ -27,6 +29,8 @@ public:
 	virtual void OnCollision(Collider* collider) override;
 	void Move();
 	float AngleCalculator();
+
+	bool turretShoot;
 	bool dead = false;
 	int score = 200;
 };

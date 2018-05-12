@@ -7,6 +7,7 @@
 #include "ModuleSceneLevel5.h"
 #include "ModuleAudio.h"
 
+#include "SDL\include\SDL_timer.h"
 #include <math.h>
 
 Enemy_LittleTurret::Enemy_LittleTurret(int x, int y) : Enemy(x, y)
@@ -38,8 +39,20 @@ float Enemy_LittleTurret::AngleCalculator() {
 
 void Enemy_LittleTurret::Move()
 {	
-	if (AngleCalculator() > 0 && AngleCalculator() <= 20) {
+	currentTime = SDL_GetTicks();
+
+	if (currentTime > lastTime + 2000) //shot every 5 seconds
+	{
+		turretShoot = true;		
+		lastTime = currentTime;
+	}
+
+	if (AngleCalculator() > -20 && AngleCalculator() <= 20) {
 		animation = &attack1;
+		if (turretShoot == true && base < 150) {
+			App->particles->AddParticle(App->particles->enemy_shot_orange1, position.x, position.y + 15, COLLIDER_ENEMY_SHOT);
+			turretShoot = false;
+		}
 	}
 	else if (AngleCalculator() > 20 && AngleCalculator() <= 40) {
 		animation = &attack2;

@@ -26,14 +26,21 @@ bool ModuleParticles::Start()
 	// Explosion particle
 
 	// Enemy shots
-	enemy_shot.anim.PushBack({ 9, 115, 6, 8 });	
-	enemy_shot.anim.PushBack({ 19, 116, 6, 6 });
-	enemy_shot.anim.PushBack({ 29, 116, 8, 6 });
-	enemy_shot.anim.PushBack({ 41, 116, 6, 6 });
-	enemy_shot.anim.loop = true;
-	enemy_shot.anim.speed = 0.2f;
-	enemy_shot.speed.x -= 2;
-	enemy_shot.life = 2000;
+	enemy_shot_blue.anim.PushBack({ 9, 115, 6, 8 });	
+	enemy_shot_blue.anim.PushBack({ 19, 116, 6, 6 });
+	enemy_shot_blue.anim.PushBack({ 29, 116, 8, 6 });
+	enemy_shot_blue.anim.PushBack({ 41, 116, 6, 6 });
+	enemy_shot_blue.anim.loop = true;
+	enemy_shot_blue.anim.speed = 0.2f;
+	enemy_shot_blue.speed.x -= 2;
+	enemy_shot_blue.life = 2000;
+
+	enemy_shot_orange1.anim.PushBack({ 385, 74, 10, 10 });
+	enemy_shot_orange1.anim.PushBack({ 57, 115, 12, 12 });
+	enemy_shot_orange1.anim.loop = true;
+	enemy_shot_orange1.anim.speed = 0.5f;
+	enemy_shot_orange1.speed.x -= 2;
+	enemy_shot_orange1.life = 2000;
 
 	// Enemy missiles
 	enemy_missile1.anim.PushBack({ 264, 188, 15, 10 });
