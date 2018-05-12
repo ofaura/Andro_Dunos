@@ -17,12 +17,16 @@ private:
 	Animation attack8;
 	Animation attack9;
 
+	float base = 0;		// X distance between player and turret
+	float height = 0;	// Y distance between player and turret
+
 public:
 
 	Enemy_LittleTurret(int x, int y);
 
 	virtual void OnCollision(Collider* collider) override;
 	void Move();
+	float AngleCalculator();
 	bool dead = false;
 	int score = 200;
 };

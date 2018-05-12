@@ -21,25 +21,50 @@ Enemy_LittleTurret::Enemy_LittleTurret(int x, int y) : Enemy(x, y)
 	attack8.PushBack({ 91, 724, 15, 14 });
 	attack9.PushBack({ 111, 724, 15, 14 });
 
-	collider = App->collision->AddCollider({ 0, 0, 14, 14 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 14, 14 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);	
+}
+
+float Enemy_LittleTurret::AngleCalculator() {
+	
+	base = position.x - App->player->position.x;
+	height = App->player->position.y - position.y;
+
+	//float hipotenuse = sqrt(base * base + height * height);
+
+	float angle = (atan(height / base) * 180) / PI;
+
+	return angle;
 }
 
 void Enemy_LittleTurret::Move()
-{
-	float base = position.x- App->player->position.x;
-	float height = App->player->position.y - position.y;
-
-	//float hipotenuse = sqrt(base * base + height * height);
-	
-	if (atan (height / base) > 0 && atan(height / base) <= 20) {
+{	
+	if (AngleCalculator() > 0 && AngleCalculator() <= 20) {
 		animation = &attack1;
 	}
-	else if (atan(base / height) > -20 && atan(base / height) <= 0) {
+	else if (AngleCalculator() > 20 && AngleCalculator() <= 40) {
 		animation = &attack2;
 	}
-	/*else {
-		animation = &attack9;
+	else if (AngleCalculator() > 40 && AngleCalculator() <= 60) {
+		animation = &attack3;
+	}
+	else if (AngleCalculator() > 60 && AngleCalculator() <= 80) {
+		animation = &attack4;
+	}
+	else if (AngleCalculator() > 80 && AngleCalculator() <= 100) {
+		animation = &attack5;
+	}/*
+	else if (AngleCalculator() > 100 && AngleCalculator() <= 120) {
+		animation = &attack6;
+	}
+	else if (AngleCalculator() > 120 && AngleCalculator() <= 140) {
+		animation = &attack7;
+	}
+	else if (AngleCalculator() > 140 && AngleCalculator() <= 160) {
+		animation = &attack8;
 	}*/
+	else {
+		animation = &attack7;
+	}
 }
 
 void Enemy_LittleTurret::OnCollision(Collider* collider)
