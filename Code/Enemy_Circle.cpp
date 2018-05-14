@@ -10,7 +10,7 @@
 Enemy_Circle::Enemy_Circle(int x, int y) : Enemy(x, y)
 {
 	fly.PushBack({ 3, 197, 19, 20 });
-	fly.PushBack({ 23, 197, 20, 19 });
+	/*fly.PushBack({ 23, 197, 20, 19 });
 	fly.PushBack({ 44, 197, 19, 20 });
 	fly.PushBack({ 64, 197, 20, 19 });
 	fly.PushBack({ 85, 197, 19, 20 });
@@ -20,7 +20,7 @@ Enemy_Circle::Enemy_Circle(int x, int y) : Enemy(x, y)
 	fly.PushBack({ 44, 219, 19, 20 });
 	fly.PushBack({ 64, 220, 20, 19 });
 	fly.PushBack({ 85, 219, 19, 20 });
-	fly.PushBack({ 105, 220, 20, 19 });
+	fly.PushBack({ 105, 220, 20, 19 });*/
 	fly.speed = 0.4f;
 
 	animation = &fly;

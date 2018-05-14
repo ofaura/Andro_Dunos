@@ -57,7 +57,7 @@ void Enemy_Shuttle::Move()
 		}
 
 		position.y = int(float(original_y) + (30.0f * sinf(wave)));
-		position.x -= 1;
+		position.x -= 2;
 		current_y = position.y;
 	}
 	

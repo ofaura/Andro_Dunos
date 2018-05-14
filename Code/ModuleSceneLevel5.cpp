@@ -66,7 +66,7 @@ bool ModuleSceneLevel5::Start()
 	App->user_interface->Enable();
 
 	// Reseting the camera to the start of the level
-	App->render->camera.x =	App->render->camera.y = 0;
+	App->render->camera.x = App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
 	App->render->camera.h = SCREEN_HEIGHT;
 
@@ -79,35 +79,65 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 600, (SCREEN_HEIGHT / 2) - 20);
 	
 	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 700, 100);
-
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 400, 120);
-
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 500, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 515, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 530, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 545, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 560, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 575, 60);
 	
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_CIRCLE, 500, 180);
+	// Shuttle
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 1250, 70);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 1265, 70);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 1280, 70);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 1295, 70);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 1310, 70);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 1325, 70);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 1500, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 1515, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 1530, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 1545, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 1560, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 1575, 120);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 2600, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 2615, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 2630, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 2645, 60);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1700, 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1750, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1800, 220);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1850, 120);
+	
+	// Littl turret
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1750, 40);
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1796, 63);
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1835, 49);
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1875, 38);
 
+	//App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 3050, 180);
+	
+	// Meteorites
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 340, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 390, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 400, 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 400, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 430, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 350, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 500, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 500, 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 530, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 560, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 510, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 560, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 600, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 680, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 600, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 630, 90);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 700, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 700, 120);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 720, 30);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 800, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 800, 30);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 830, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 900, 90);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 950, 120);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 1000, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 1020, 30);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 1100, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 1130, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 1200, 90);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 1250, 120);
 
 	// Colliders ---
 	App->collision->Enable();
