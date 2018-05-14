@@ -112,6 +112,9 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1875, 38);
 
 	//App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 3050, 180);
+
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 340, 120);
 	
 	// Meteorites
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 340, 20);

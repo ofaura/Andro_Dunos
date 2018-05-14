@@ -9,6 +9,7 @@
 #include "Enemy_PowerUp.h"
 #include "Enemy_Shuttle.h"
 #include "Enemy_MissileThrower.h"
+#include "Enemy_Spinner.h"
 #include "Enemy_Meteorite.h"
 #include "Enemy_LittleTurret.h"
 #include "Enemy_Circle.h"
@@ -169,6 +170,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 		case ENEMY_TYPES::ENEMY_WASP:
 			enemies[i] = new Enemy_Wasp(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::ENEMY_SPINNER:
+			enemies[i] = new Enemy_Spinner(info.x, info.y);
 			break;
 		}
 	}
