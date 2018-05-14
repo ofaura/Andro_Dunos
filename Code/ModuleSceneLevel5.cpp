@@ -80,14 +80,14 @@ bool ModuleSceneLevel5::Start()
 	
 	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 700, 100);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 200, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 215, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 230, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::FIRST_ENEMY, 245, 60);
-
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 400, 120);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 500, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 520, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 540, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 560, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 580, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 600, 60);
 	
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_CIRCLE, 500, 180);
 
