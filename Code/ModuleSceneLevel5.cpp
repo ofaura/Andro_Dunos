@@ -66,7 +66,8 @@ bool ModuleSceneLevel5::Start()
 	App->user_interface->Enable();
 
 	// Reseting the camera to the start of the level
-	App->render->camera.x = App->render->camera.y = 0;
+	App->render->camera.x = 2000;
+	App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
 	App->render->camera.h = SCREEN_HEIGHT;
 
@@ -105,7 +106,7 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1800, 220);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1850, 120);
 	
-	// Littl turret
+	// Littel turret
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1750, 40);
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1796, 63);
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1835, 49);
@@ -113,8 +114,10 @@ bool ModuleSceneLevel5::Start()
 
 	//App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 3050, 180);
 
-
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 340, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2650, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2750, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2750, 160);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2850, 100);
 	
 	// Meteorites
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 340, 20);

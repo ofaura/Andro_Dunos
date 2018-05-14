@@ -14,18 +14,19 @@ Enemy_Spinner::Enemy_Spinner(int x, int y) : Enemy(x, y)
 	fly.PushBack({ 132, 89, 41, 36 });
 	fly.PushBack({ 195, 89, 41, 36 });
 	fly.PushBack({ 258, 90, 41, 36 });
-	/*fly.PushBack({ 132, 119, 41, 36 });
-	fly.PushBack({ 195, 119, 41, 36 });
-	fly.PushBack({ 258, 48, 41, 36 });
-	fly.PushBack({ 132, 48, 41, 36 });
-	fly.PushBack({ 195, 48, 41, 36 });
-	fly.PushBack({ 258, 48, 41, 36 });*/
+	fly.PushBack({ 132, 131, 41, 36 });
+	fly.PushBack({ 195, 129, 41, 36 });
+	fly.PushBack({ 258, 129, 41, 36 });
+	fly.PushBack({ 132, 169, 41, 36 });
+	fly.PushBack({ 195, 168, 41, 36 });
+	fly.PushBack({ 258, 168, 41, 36 });
+
 	fly.loop = true;
-	fly.speed = 0.2f;
+	fly.speed = 0.3f;
 
 	animation = &fly;
 
-	collider = App->collision->AddCollider({ 0, 0, 18, 17 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 41, 36 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_Spinner::Move()
