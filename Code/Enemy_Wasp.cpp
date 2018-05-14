@@ -21,13 +21,25 @@ Enemy_Wasp::Enemy_Wasp(int x, int y) : Enemy(x, y)
 
 void Enemy_Wasp::Move()
 {
-	currentTime = SDL_GetTicks();
+	currentTime = SDL_GetTicks();	
 
-	if (currentTime > lastTime + 1200) // Shoots every 1.2 seconds
+	if (currentTime > lastTimeUp + 800) {
+		going_up = !going_up;
+		lastTimeUp = currentTime;
+	}
+
+	if (going_up) {
+		position.y -= 2;
+	}
+	else {
+		position.y += 2;
+	}	
+
+	if (currentTime > lastTimeShoot + 1200) // Shoots every 1.2 seconds
 	{
 		if(abs(position.x - App->player->position.x) < 200)
 			App->particles->AddParticle(App->particles->enemy_shot_yellow, position.x - 7, position.y + 4, COLLIDER_ENEMY_SHOT);
-		lastTime = currentTime;
+		lastTimeShoot = currentTime;
 	}
 
 	collider->SetPos(position.x, position.y);
