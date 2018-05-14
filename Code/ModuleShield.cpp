@@ -12,7 +12,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 
-#define RADIUS (20)
+#define RADIUS (27)
 
 int give_position_y(int radius, float angle_deg) // preparations for later
 {
