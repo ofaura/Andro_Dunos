@@ -1,9 +1,9 @@
-#ifndef __ENEMY_LITTLETURRET_H__
-#define __ENEMY_LITTLETURRET_H__
+#ifndef __ENEMY_LITTLETURRETDOWN_H__
+#define __ENEMY_LITTLETURRETDOWN_H__
 
 #include "Enemy.h"
 
-class Enemy_LittleTurret : public Enemy
+class Enemy_LittleTurretDown : public Enemy
 {
 private:
 
@@ -24,7 +24,7 @@ private:
 
 public:
 
-	Enemy_LittleTurret(int x, int y);
+	Enemy_LittleTurretDown(int x, int y);
 
 	virtual void OnCollision(Collider* collider) override;
 	void Move();
@@ -35,4 +35,4 @@ public:
 	int score = 200;
 };
 
-#endif // __ENEMY_LITTLETURRET_H__
+#endif // __ENEMY_LITTLETURRETUP_H__

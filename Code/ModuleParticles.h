@@ -9,6 +9,8 @@
 
 #define MAX_ACTIVE_PARTICLES 1000
 
+
+
 struct SDL_Texture;
 struct Collider;
 enum COLLIDER_TYPE;
@@ -20,6 +22,7 @@ struct Particle
 	uint fx = 0;
 	iPoint position;
 	iPoint speed;
+	int damage;
 	Uint32 born = 0;
 	Uint32 life = 0;
 	bool fx_played = false;
@@ -52,13 +55,21 @@ private:
 
 public:
 
-	Particle laser1;
-	Particle laser2_1;
+	Particle laser1; // 1
+	Particle laser1_2;
+	Particle laser1_3;
+	Particle laser2_1; // 2
 	Particle laser2_2;
-	Particle laser3_1;
+	Particle laser2_3a;
+	Particle laser2_3b;
+	Particle laser2_4a;
+	Particle laser2_4b;
+	Particle laser2_5;
+	Particle laser2_6;
+	Particle laser3_1; // 3
 	Particle laser3_2;
 	Particle laser3_3;
-	Particle laser4_1;
+	Particle laser4_1; // 4
 	Particle laser4_2;
 	Particle laser4_3;
 
@@ -77,6 +88,9 @@ public:
 	Particle enemy_shot_orange4;
 	Particle enemy_shot_orange5;
 	Particle enemy_shot_orange6;
+	Particle enemy_shot_orange7;
+	Particle enemy_shot_orange8;
+	Particle enemy_shot_orange9;
 
 	Particle enemy_missile1;
 	Particle enemy_missile2;

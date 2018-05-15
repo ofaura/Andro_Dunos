@@ -134,10 +134,25 @@
     <ClInclude Include="Enemy_MissileThrower.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_LittleTurret.h">
+    <ClInclude Include="Enemy_Wasp.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_Wasp.h">
+    <ClInclude Include="Enemy_Spinner.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Mine.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Xwing.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_LittleTurretUp.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_LittleTurretDown.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Beyblade.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
@@ -235,10 +250,25 @@
     <ClCompile Include="Enemy_MissileThrower.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_LittleTurret.cpp">
+    <ClCompile Include="Enemy_Wasp.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_Wasp.cpp">
+    <ClCompile Include="Enemy_Spinner.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Mine.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Xwing.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_LittleTurretUp.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_LittleTurretDown.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Beyblade.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>

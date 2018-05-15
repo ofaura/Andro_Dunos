@@ -101,9 +101,38 @@ bool ModuleParticles::Start()
 	enemy_shot_orange6.anim.PushBack({ 296, 220, 6, 6 });
 	enemy_shot_orange6.anim.loop = true;
 	enemy_shot_orange6.anim.speed = 0.5f;
-	enemy_shot_orange6.speed.x += 2;
+	enemy_shot_orange6.speed.x += 1;
 	enemy_shot_orange6.speed.y += 2;
 	enemy_shot_orange6.life = 2000;
+
+	enemy_shot_orange7.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange7.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange7.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange7.anim.PushBack({ 296, 220, 6, 6 });
+	enemy_shot_orange7.anim.loop = true;
+	enemy_shot_orange7.anim.speed = 0.5f;
+	enemy_shot_orange7.speed.x += 2;
+	enemy_shot_orange7.speed.y += 2;
+	enemy_shot_orange7.life = 2000;
+
+	enemy_shot_orange8.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange8.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange8.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange8.anim.PushBack({ 296, 220, 6, 6 });
+	enemy_shot_orange8.anim.loop = true;
+	enemy_shot_orange8.anim.speed = 0.5f;
+	enemy_shot_orange8.speed.x += 2;
+	enemy_shot_orange8.speed.y += 1;
+	enemy_shot_orange8.life = 2000;
+
+	enemy_shot_orange9.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange9.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange9.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange9.anim.PushBack({ 296, 220, 6, 6 });
+	enemy_shot_orange9.anim.loop = true;
+	enemy_shot_orange9.anim.speed = 0.5f;
+	enemy_shot_orange9.speed.x += 2;
+	enemy_shot_orange9.life = 2000;
 
 	// Enemy missiles
 	enemy_missile1.anim.PushBack({ 264, 188, 15, 10 });
@@ -123,11 +152,24 @@ bool ModuleParticles::Start()
 	enemy_missile2.life = 2000;
 
 	// Player main weapon
-	laser1.anim.PushBack({ 22, 51, 15, 6 });
+	laser1.anim.PushBack({ 24, 39, 11, 4 });
 	laser1.anim.loop = false;
 	laser1.anim.speed = 0.1f;
 	laser1.speed.x = 7;
 	laser1.life = 2000;
+
+	laser1_2.anim.PushBack({ 22, 51, 15, 6 });
+	laser1_2.anim.loop = false;
+	laser1_2.anim.speed = 0.1f;
+	laser1_2.speed.x = 7;
+	laser1_2.life = 2000;
+
+	laser1_3.anim.PushBack({ 21, 6, 16, 10 });
+	laser1_3.anim.loop = false;
+	laser1_3.anim.speed = 0.1f;
+	laser1_3.speed.x = 7;
+	laser1_3.life = 2000;
+	
 
 	laser2_1.anim.PushBack({ 6, 69, 10, 3 });
 	laser2_1.anim.loop = false;
@@ -138,6 +180,40 @@ bool ModuleParticles::Start()
 	laser2_2.anim.loop = false;
 	laser2_2.speed.x = -8;
 	laser2_2.life = 2000;
+
+	laser2_3a.anim.PushBack({ 23, 69, 10, 8 });
+	laser2_3a.anim.loop = false;
+	laser2_3a.speed.x = -8;
+	laser2_3a.speed.y = 5;
+	laser2_3a.life = 2000;
+
+	laser2_3b.anim.PushBack({ 23, 78, 10, 8 });
+	laser2_3b.anim.loop = false;
+	laser2_3b.speed.x = -8;
+	laser2_3b.speed.y = -5;
+	laser2_3b.life = 2000;
+	
+	laser2_4a.anim.PushBack({ 5, 37, 11, 8 });
+	laser2_4a.anim.loop = false;
+	laser2_4a.speed.x = -8;
+	laser2_4a.speed.y = 5;
+	laser2_4a.life = 2000;
+
+	laser2_4b.anim.PushBack({ 5, 50, 11, 8 });
+	laser2_4b.anim.loop = false;
+	laser2_4b.speed.x = -8;
+	laser2_4b.speed.y = -5;
+	laser2_4b.life = 2000;
+
+	laser2_5.anim.PushBack({ 3, 23, 15, 5 });
+	laser2_5.anim.loop = false;
+	laser2_5.speed.x = -8;
+	laser2_5.life = 2000;
+
+	laser2_6.anim.PushBack({ 3, 8, 15, 5 });
+	laser2_6.anim.loop = false;
+	laser2_6.speed.x = 8;
+	laser2_6.life = 2000;
 
 	laser3_1.anim.PushBack({ 16, 101, 32, 3 });
 	laser3_1.anim.loop = false;

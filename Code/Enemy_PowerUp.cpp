@@ -7,7 +7,7 @@
 #include "ModuleUserInterface.h"
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
-#include "ModuleSceneLevel5.h"
+#include "ModuleEnemies.h"
 #include "ModuleAudio.h"
 
 enum ENEMY_POWERUP_ACT
@@ -239,7 +239,7 @@ void Enemy_PowerUp::Draw(SDL_Texture* sprites)
 
 void Enemy_PowerUp::OnCollision(Collider* collider)
 {
-	App->audio->PlayFx(App->level5->small_enemy_death);
+	App->audio->PlayFx(App->enemies->medium_enemy_death);
 
 	if (collider->type == COLLIDER_PLAYER_SHOT || (collider->type == COLLIDER_PLAYER) || (collider->type == COLLIDER_PLAYER_2) || (collider->type == COLLIDER_PLAYER2_SHOT))
 	{

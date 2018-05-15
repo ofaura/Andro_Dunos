@@ -4,7 +4,7 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "ModuleUserInterface.h"
-#include "ModuleSceneLevel5.h"
+#include "ModuleEnemies.h"
 #include "ModuleAudio.h"
 
 Enemy_FirstEnemy::Enemy_FirstEnemy(int x, int y) : Enemy(x, y)
@@ -55,7 +55,7 @@ void Enemy_FirstEnemy::Move()
 void Enemy_FirstEnemy::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
-	App->audio->PlayFx(App->level5->small_enemy_death);
+	App->audio->PlayFx(App->enemies->medium_enemy_death);
 
 	if (dead == false)
 	{

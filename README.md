@@ -1,4 +1,4 @@
-Andro Dunos v.0.6
+Andro Dunos v.0.7
 
 GitHub: https://github.com/ofaura/Andro_Dunos
 

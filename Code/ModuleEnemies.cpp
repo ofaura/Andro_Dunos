@@ -4,15 +4,20 @@
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
+#include "ModuleAudio.h"
 #include "Enemy.h"
 #include "Enemy_FirstEnemy.h"
 #include "Enemy_PowerUp.h"
 #include "Enemy_Shuttle.h"
 #include "Enemy_MissileThrower.h"
+#include "Enemy_Spinner.h"
 #include "Enemy_Meteorite.h"
-#include "Enemy_LittleTurret.h"
+#include "Enemy_LittleTurretUp.h"
+#include "Enemy_LittleTurretDown.h"
 #include "Enemy_Circle.h"
+#include "Enemy_Xwing.h"
 #include "Enemy_Wasp.h"
+#include "Enemy_Mine.h"
 #include "PowerUp.h"
 
 #define SPAWN_MARGIN 25
@@ -32,6 +37,10 @@ bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
 	sprites = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
+
+	//Audios are loaded
+	small_enemy_death = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_small_explosion.wav");
+	medium_enemy_death = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_medium_explosion.wav");
 
 	return true;
 }
@@ -90,7 +99,8 @@ update_status ModuleEnemies::PostUpdate()
 bool ModuleEnemies::CleanUp()
 {
 	LOG("Freeing all enemies");
-
+	App->audio->UnLoadFx(medium_enemy_death);
+	App->audio->UnLoadFx(small_enemy_death);
 	App->textures->Unload(sprites);
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
@@ -163,12 +173,28 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_MissileThrower(info.x, info.y);
 			break;
 
-		case ENEMY_TYPES::LITTLE_TURRET:
-			enemies[i] = new Enemy_LittleTurret(info.x, info.y);
+		case ENEMY_TYPES::LITTLE_TURRET_UP:
+			enemies[i] = new Enemy_LittleTurretUp(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::LITTLE_TURRET_DOWN:
+			enemies[i] = new Enemy_LittleTurretDown(info.x, info.y);
 			break;
 
 		case ENEMY_TYPES::ENEMY_WASP:
 			enemies[i] = new Enemy_Wasp(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::ENEMY_SPINNER:
+			enemies[i] = new Enemy_Spinner(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::ENEMY_MINE:
+			enemies[i] = new Enemy_Mine(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::ENEMY_XWING:
+			enemies[i] = new Enemy_Xwing(info.x, info.y);
 			break;
 		}
 	}

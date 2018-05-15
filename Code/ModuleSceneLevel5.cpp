@@ -49,9 +49,6 @@ bool ModuleSceneLevel5::Start()
 	meteorites_texture1 = App->textures->Load("Assets/Sprites/lvl5/Background/meteorites1.png");
 	meteorites_texture2 = App->textures->Load("Assets/Sprites/lvl5/Background/meteorites2.png");
 
-	//Audios are loaded
-	small_enemy_death = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_small_explosion.wav");
-
 	if (IsEnabled()) {
 		if (App->player->IsEnabled() == false) {
 			App->player->Enable();
@@ -78,8 +75,14 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 500, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 600, (SCREEN_HEIGHT / 2) - 20);
 	
-	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 700, 100);
-	
+	// Mines
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 760, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 800, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 860, 10);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 900, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 960, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 1000, 150);
+		
 	// Shuttle
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 1250, 70);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 1265, 70);
@@ -105,13 +108,31 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1800, 220);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1850, 120);
 	
-	// Littl turret
-	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1750, 40);
-	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1796, 63);
-	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1835, 49);
-	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1875, 38);
+	// Little turret
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 1750, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 1796, 63);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 1835, 49);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 1875, 38);
 
-	//App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 3050, 180);
+	// Enemy Xwing
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2275, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2300, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2325, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2350, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2375, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2450, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2475, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2500, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2525, 90);
+
+	// Enemy spinner
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2650, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2750, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2750, 160);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2850, 100);
+
+	// Missile thrower
+	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 700, 100);
 	
 	// Meteorites
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 340, 20);
@@ -280,9 +301,7 @@ bool ModuleSceneLevel5::Start()
 	App->collision->AddCollider({ 6708, 185, 51, 99 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 6716, 178, 19, 7 }, COLLIDER_WALL);
 
-
 	App->collision->AddCollider({ 6620, 182, 100, 7 }, COLLIDER_WALL);
-
 
 	//Audio ---
 	App->audio->PlayMusic("Assets/Audio/Music/level5.ogg", 1.0f);
@@ -311,8 +330,7 @@ update_status ModuleSceneLevel5::Update()
 bool ModuleSceneLevel5::CleanUp()
 {
 	// Remove all memory leaks
-	LOG("Unloading textures");
-	//App->audio->UnLoadFx(small_enemy_death);
+	LOG("Unloading textures");	
 	App->textures->Unload(meteorites_texture2);
 	App->textures->Unload(meteorites_texture1);
 	App->textures->Unload(background_texture);

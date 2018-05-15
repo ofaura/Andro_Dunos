@@ -3,7 +3,7 @@
 
 #include "Module.h"
 
-#define MAX_ENEMIES 100
+#define MAX_ENEMIES 200
 
 enum ENEMY_TYPES
 {
@@ -15,8 +15,12 @@ enum ENEMY_TYPES
 	ENEMY_SHUTTLE,
 	ENEMY_CIRCLE,
 	MISSILE_THROWER,
-	LITTLE_TURRET,
-	ENEMY_WASP
+	LITTLE_TURRET_UP,
+	LITTLE_TURRET_DOWN,
+	ENEMY_WASP,
+	ENEMY_SPINNER,
+	ENEMY_MINE,
+	ENEMY_XWING
 };
 
 class Enemy;
@@ -41,7 +45,8 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	//Score counter
+	uint small_enemy_death;
+	uint medium_enemy_death;
 
 	bool AddEnemy(ENEMY_TYPES type, int x, int y);
 
