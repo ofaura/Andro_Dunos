@@ -13,6 +13,7 @@
 #include "Enemy_Meteorite.h"
 #include "Enemy_LittleTurret.h"
 #include "Enemy_Circle.h"
+#include "Enemy_Xwing.h"
 #include "Enemy_Wasp.h"
 #include "Enemy_Mine.h"
 #include "PowerUp.h"
@@ -179,6 +180,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 		case ENEMY_TYPES::ENEMY_MINE:
 			enemies[i] = new Enemy_Mine(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::ENEMY_XWING:
+			enemies[i] = new Enemy_Xwing(info.x, info.y);
 			break;
 		}
 	}

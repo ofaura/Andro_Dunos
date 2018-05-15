@@ -85,9 +85,7 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 900, 90);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 960, 30);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 1000, 150);
-
-	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 700, 100);
-	
+		
 	// Shuttle
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 1250, 70);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 1265, 70);
@@ -113,7 +111,7 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1800, 220);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1850, 120);
 	
-	// Littel turret
+	// Little turret
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1750, 40);
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1796, 63);
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1835, 49);
@@ -121,10 +119,25 @@ bool ModuleSceneLevel5::Start()
 
 	//App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 3050, 180);
 
+	// Enemy Xwing
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2275, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2300, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2325, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2350, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2375, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2450, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2475, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2500, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2525, 90);
+
+	// Enemy spinner
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2650, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2750, 40);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2750, 160);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2850, 100);
+
+	// Missile thrower
+	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 700, 100);
 	
 	// Meteorites
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 340, 20);
