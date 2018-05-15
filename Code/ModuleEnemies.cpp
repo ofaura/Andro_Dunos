@@ -12,7 +12,8 @@
 #include "Enemy_MissileThrower.h"
 #include "Enemy_Spinner.h"
 #include "Enemy_Meteorite.h"
-#include "Enemy_LittleTurret.h"
+#include "Enemy_LittleTurretUp.h"
+#include "Enemy_LittleTurretDown.h"
 #include "Enemy_Circle.h"
 #include "Enemy_Xwing.h"
 #include "Enemy_Wasp.h"
@@ -172,8 +173,12 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_MissileThrower(info.x, info.y);
 			break;
 
-		case ENEMY_TYPES::LITTLE_TURRET:
-			enemies[i] = new Enemy_LittleTurret(info.x, info.y);
+		case ENEMY_TYPES::LITTLE_TURRET_UP:
+			enemies[i] = new Enemy_LittleTurretUp(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::LITTLE_TURRET_DOWN:
+			enemies[i] = new Enemy_LittleTurretDown(info.x, info.y);
 			break;
 
 		case ENEMY_TYPES::ENEMY_WASP:

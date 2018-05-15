@@ -134,9 +134,6 @@
     <ClInclude Include="Enemy_MissileThrower.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_LittleTurret.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy_Wasp.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
@@ -147,6 +144,12 @@
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_Xwing.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_LittleTurretUp.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_LittleTurretDown.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
@@ -244,9 +247,6 @@
     <ClCompile Include="Enemy_MissileThrower.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_LittleTurret.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy_Wasp.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
@@ -257,6 +257,12 @@
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_Xwing.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_LittleTurretUp.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_LittleTurretDown.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>

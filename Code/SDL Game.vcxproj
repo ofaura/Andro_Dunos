@@ -73,11 +73,12 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy_LittleTurretDown.h" />
     <ClInclude Include="Enemy_Mine.h" />
     <ClInclude Include="Enemy_Spinner.h" />
     <ClInclude Include="Enemy_Wasp.h" />
     <ClInclude Include="Enemy_FirstEnemy.h" />
-    <ClInclude Include="Enemy_LittleTurret.h" />
+    <ClInclude Include="Enemy_LittleTurretUp.h" />
     <ClInclude Include="Enemy_Meteorite.h" />
     <ClInclude Include="Enemy_Circle.h" />
     <ClInclude Include="Enemy_MissileThrower.h" />
@@ -114,11 +115,12 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Enemy_LittleTurretDown.cpp" />
     <ClCompile Include="Enemy_Mine.cpp" />
     <ClCompile Include="Enemy_Spinner.cpp" />
     <ClCompile Include="Enemy_Wasp.cpp" />
     <ClCompile Include="Enemy_FirstEnemy.cpp" />
-    <ClCompile Include="Enemy_LittleTurret.cpp" />
+    <ClCompile Include="Enemy_LittleTurretUp.cpp" />
     <ClCompile Include="Enemy_Meteorite.cpp" />
     <ClCompile Include="Enemy_Circle.cpp" />
     <ClCompile Include="Enemy_MissileThrower.cpp" />

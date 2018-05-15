@@ -109,10 +109,10 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1850, 120);
 	
 	// Little turret
-	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1750, 40);
-	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1796, 63);
-	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1835, 49);
-	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 1875, 38);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 1750, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 1796, 63);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 1835, 49);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 1875, 38);
 
 	//App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET, 3050, 180);
 
