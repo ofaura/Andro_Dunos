@@ -28,6 +28,7 @@ public:
 	SDL_Rect meteorites2;
 
 	uint small_enemy_death;
+	uint medium_enemy_death;
 
 	int background_pos_x = 0;
 	int ground_pos_x = 0;

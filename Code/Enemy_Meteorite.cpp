@@ -59,7 +59,7 @@ void Enemy_Meteorite::Move()
 void Enemy_Meteorite::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
-	App->audio->PlayFx(App->level5->small_enemy_death);
+	App->audio->PlayFx(App->level5->medium_enemy_death);
 
 	if (dead == false)
 	{

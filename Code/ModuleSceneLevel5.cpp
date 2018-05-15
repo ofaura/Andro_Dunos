@@ -51,6 +51,7 @@ bool ModuleSceneLevel5::Start()
 
 	//Audios are loaded
 	small_enemy_death = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_small_explosion.wav");
+	medium_enemy_death = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_medium_explosion.wav");
 
 	if (IsEnabled()) {
 		if (App->player->IsEnabled() == false) {
