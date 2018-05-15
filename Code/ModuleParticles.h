@@ -9,8 +9,6 @@
 
 #define MAX_ACTIVE_PARTICLES 1000
 
-
-
 struct SDL_Texture;
 struct Collider;
 enum COLLIDER_TYPE;
@@ -82,15 +80,27 @@ public:
 
 	Particle enemy_shot_blue;
 	Particle enemy_shot_yellow;
-	Particle enemy_shot_orange1;
-	Particle enemy_shot_orange2;
-	Particle enemy_shot_orange3;
-	Particle enemy_shot_orange4;
-	Particle enemy_shot_orange5;
-	Particle enemy_shot_orange6;
-	Particle enemy_shot_orange7;
-	Particle enemy_shot_orange8;
-	Particle enemy_shot_orange9;
+
+	// Shoots of the little turrets
+	Particle enemy_shot_orange1u;
+	Particle enemy_shot_orange2u;
+	Particle enemy_shot_orange3u;
+	Particle enemy_shot_orange4u;
+	Particle enemy_shot_orange5u;
+	Particle enemy_shot_orange6u;
+	Particle enemy_shot_orange7u;
+	Particle enemy_shot_orange8u;
+	Particle enemy_shot_orange9u;
+
+	Particle enemy_shot_orange1d;
+	Particle enemy_shot_orange2d;
+	Particle enemy_shot_orange3d;
+	Particle enemy_shot_orange4d;
+	Particle enemy_shot_orange5d;
+	Particle enemy_shot_orange6d;
+	Particle enemy_shot_orange7d;
+	Particle enemy_shot_orange8d;
+	Particle enemy_shot_orange9d;
 
 	Particle enemy_missile1;
 	Particle enemy_missile2;

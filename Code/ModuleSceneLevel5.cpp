@@ -63,7 +63,8 @@ bool ModuleSceneLevel5::Start()
 	App->user_interface->Enable();
 
 	// Reseting the camera to the start of the level
-	App->render->camera.x = App->render->camera.y = 0;
+	App->render->camera.x = 2000;
+	App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
 	App->render->camera.h = SCREEN_HEIGHT;
 
@@ -113,6 +114,8 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 1796, 63);
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 1835, 49);
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 1875, 38);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 2300, 180);
 
 	// Enemy Xwing
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2275, 130);
