@@ -16,6 +16,7 @@
 #include "Enemy_LittleTurretDown.h"
 #include "Enemy_Circle.h"
 #include "Enemy_Xwing.h"
+#include "Enemy_Beyblade.h"
 #include "Enemy_Wasp.h"
 #include "Enemy_Mine.h"
 #include "PowerUp.h"
