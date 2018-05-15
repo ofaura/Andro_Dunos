@@ -78,6 +78,14 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 500, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 600, (SCREEN_HEIGHT / 2) - 20);
 	
+	// Mines
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 760, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 800, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 860, 10);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 900, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 960, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 1000, 150);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 700, 100);
 	
 	// Shuttle
@@ -285,9 +293,7 @@ bool ModuleSceneLevel5::Start()
 	App->collision->AddCollider({ 6708, 185, 51, 99 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 6716, 178, 19, 7 }, COLLIDER_WALL);
 
-
 	App->collision->AddCollider({ 6620, 182, 100, 7 }, COLLIDER_WALL);
-
 
 	//Audio ---
 	App->audio->PlayMusic("Assets/Audio/Music/level5.ogg", 1.0f);

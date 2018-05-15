@@ -14,6 +14,7 @@
 #include "Enemy_LittleTurret.h"
 #include "Enemy_Circle.h"
 #include "Enemy_Wasp.h"
+#include "Enemy_Mine.h"
 #include "PowerUp.h"
 
 #define SPAWN_MARGIN 25
@@ -174,6 +175,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 		case ENEMY_TYPES::ENEMY_SPINNER:
 			enemies[i] = new Enemy_Spinner(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::ENEMY_MINE:
+			enemies[i] = new Enemy_Mine(info.x, info.y);
 			break;
 		}
 	}
