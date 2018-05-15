@@ -27,16 +27,15 @@ Enemy_LittleTurretUp::Enemy_LittleTurretUp(int x, int y) : Enemy(x, y)
 
 float Enemy_LittleTurretUp::AngleCalculator() {
 	
-	base = position.x - App->player->position.x;
-	height = App->player->position.y - position.y;
-
-	float angle = (atan(height / base) * 180) / PI;
-
+	float angle = (atan2(App->player->position.y - position.y, position.x - App->player->position.x) * 180) / PI;
 	return angle;
 }
 
 void Enemy_LittleTurretUp::Move()
 {	
+	base = position.x - App->player->position.x;
+	height = App->player->position.y - position.y;
+
 	currentTime = SDL_GetTicks();
 
 	if (currentTime > lastTime + 2500) //shot every 2.5 seconds
@@ -52,52 +51,64 @@ void Enemy_LittleTurretUp::Move()
 
 	if (AngleCalculator() > -20 && AngleCalculator() <= 20) {
 		animation = &attack1;
-		if (turretShoot == true && base < 150) {
+		if (turretShoot == true && base < 200) {
 			App->particles->AddParticle(App->particles->enemy_shot_orange1, position.x - 3, position.y + 6, COLLIDER_ENEMY_SHOT);
 			turretShoot = false;
 		}
 	}
 	else if (AngleCalculator() > 20 && AngleCalculator() <= 40) {
 		animation = &attack2;
-		if (turretShoot == true && base < 150) {
+		if (turretShoot == true && base < 200) {
 			App->particles->AddParticle(App->particles->enemy_shot_orange2, position.x - 2, position.y + 10, COLLIDER_ENEMY_SHOT);
 			turretShoot = false;
 		}
 	}
 	else if (AngleCalculator() > 40 && AngleCalculator() <= 60) {
 		animation = &attack3;
-		if (turretShoot == true && base < 150) {
+		if (turretShoot == true && base < 200) {
 			App->particles->AddParticle(App->particles->enemy_shot_orange3, position.x - 1, position.y + 12, COLLIDER_ENEMY_SHOT);
 			turretShoot = false;
 		}
 	}
 	else if (AngleCalculator() > 60 && AngleCalculator() <= 80) {
 		animation = &attack4;
-		if (turretShoot == true && base < 150) {
+		if (turretShoot == true && base < 200) {
 			App->particles->AddParticle(App->particles->enemy_shot_orange4, position.x + 3, position.y + 12, COLLIDER_ENEMY_SHOT);
 			turretShoot = false;
 		}
 	}
 	else if (AngleCalculator() > 80 && AngleCalculator() <= 100) {
 		animation = &attack5;
-		if (turretShoot == true && base < 150) {
+		if (turretShoot == true && base < 200) {
 			App->particles->AddParticle(App->particles->enemy_shot_orange5, position.x + 3, position.y + 16, COLLIDER_ENEMY_SHOT);
 			turretShoot = false;
 		}
-	}/*
+	}
 	else if (AngleCalculator() > 100 && AngleCalculator() <= 120) {
 		animation = &attack6;
+		if (turretShoot == true && base < 200) {
+			App->particles->AddParticle(App->particles->enemy_shot_orange6, position.x + 6, position.y + 12, COLLIDER_ENEMY_SHOT);
+			turretShoot = false;
+		}
 	}
 	else if (AngleCalculator() > 120 && AngleCalculator() <= 140) {
 		animation = &attack7;
+		if (turretShoot == true && base < 200) {
+			App->particles->AddParticle(App->particles->enemy_shot_orange7, position.x + 9, position.y + 12, COLLIDER_ENEMY_SHOT);
+			turretShoot = false;
+		}
 	}
 	else if (AngleCalculator() > 140 && AngleCalculator() <= 160) {
-		animation = &attack8;
-	}*/
+		animation = &attack8; 
+		if (turretShoot == true && base < 200) {
+			App->particles->AddParticle(App->particles->enemy_shot_orange8, position.x + 9, position.y + 10, COLLIDER_ENEMY_SHOT);
+			turretShoot = false;
+		}
+	}
 	else {
-		animation = &attack7;
-		if (turretShoot == true && base < 150) {
-			App->particles->AddParticle(App->particles->enemy_shot_orange6, position.x + 9, position.y + 12, COLLIDER_ENEMY_SHOT);
+		animation = &attack9; 
+		if (turretShoot == true && base < 200) {
+			App->particles->AddParticle(App->particles->enemy_shot_orange9, position.x + 12, position.y + 6, COLLIDER_ENEMY_SHOT);
 			turretShoot = false;
 		}
 	}
