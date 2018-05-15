@@ -123,11 +123,24 @@ bool ModuleParticles::Start()
 	enemy_missile2.life = 2000;
 
 	// Player main weapon
-	laser1.anim.PushBack({ 22, 51, 15, 6 });
+	laser1.anim.PushBack({ 24, 39, 11, 4 });
 	laser1.anim.loop = false;
 	laser1.anim.speed = 0.1f;
 	laser1.speed.x = 7;
 	laser1.life = 2000;
+
+	laser1_2.anim.PushBack({ 22, 51, 15, 6 });
+	laser1_2.anim.loop = false;
+	laser1_2.anim.speed = 0.1f;
+	laser1_2.speed.x = 7;
+	laser1_2.life = 2000;
+
+	laser1_3.anim.PushBack({ 21, 6, 16, 10 });
+	laser1_3.anim.loop = false;
+	laser1_3.anim.speed = 0.1f;
+	laser1_3.speed.x = 7;
+	laser1_3.life = 2000;
+	
 
 	laser2_1.anim.PushBack({ 6, 69, 10, 3 });
 	laser2_1.anim.loop = false;

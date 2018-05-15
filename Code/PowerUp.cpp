@@ -36,7 +36,7 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 	graphics = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
 
 	//random = rand() % 4;
-	random = 3;
+	random = 0;
 
 	if (random == 0)
 	{
@@ -309,11 +309,12 @@ void PowerUp::Move()
 	if (position.x < abs(App->render->camera.x) / SCREEN_SIZE)
 	{
 		vel_x = -1 * vel_x;
-		position.x = App->render->camera.x / SCREEN_SIZE;
+		position.x = (App->render->camera.x / SCREEN_SIZE)+1;
 	}
 	else if (position.x >((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 16))
 	{
 		vel_x = -1 * vel_x;
+		position.x = (abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 17;
 	}
 
 	//y lim
@@ -321,15 +322,18 @@ void PowerUp::Move()
 	if (position.y < abs(App->render->camera.y) / SCREEN_SIZE)
 	{
 		vel_y = -1 * vel_y;
+		position.y = (abs(App->render->camera.y) / SCREEN_SIZE) + 1;
 	}
 	else if (position.y >(abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 16)
 	{
 		vel_y = -1 * vel_y;
+		position.y = (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 17;
 	}
 
 	position.y += vel_y;
 	position.x += vel_x;
-
+ 
+	// Perpetual Horizontal movement
 	if (App->render->camera.x >= 0 && App->render->camera.x <= 8800 * SCREEN_SIZE)
 	{
 		position.x += 1;
