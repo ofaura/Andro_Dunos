@@ -54,7 +54,7 @@ ModuleShield::ModuleShield() {
 	lvl1.loop = true;
 	lvl1.speed = 0.5f;
 
-
+	// ---- Animation for the TYPE-1 laser's shield (rotating)
 	rotation_lvl1[0].PushBack({ 0,0,9,16 });
 	rotation_lvl1[0].PushBack({ 11,0,9,16 });
 	rotation_lvl1[0].PushBack({ 22,0,9,16 });
@@ -235,10 +235,7 @@ update_status ModuleShield::Update() {
 				-	  -		-
 					- -	-	
 		
-		
 		*/
-
-
 		pos1_t1[0].x = App->player->position.x + give_position_x(RADIUS, 0.0);
 		pos1_t1[0].y = App->player->position.y + give_position_y(RADIUS, 0.0);
 		pos2_t1[0].x = App->player->position.x  + give_position_x(RADIUS, 180.0);
@@ -283,7 +280,6 @@ update_status ModuleShield::Update() {
 		position1.y = pos1_t1[circ].y;
 		position2.x = pos2_t1[circ].x;
 		position2.y = pos2_t1[circ].y;
-
 		break;
 
 		// ---- Stays on either side of the ship
