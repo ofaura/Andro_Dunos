@@ -4,6 +4,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
+#include "ModuleAudio.h"
 #include "Enemy.h"
 #include "Enemy_FirstEnemy.h"
 #include "Enemy_PowerUp.h"
@@ -35,6 +36,10 @@ bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
 	sprites = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
+
+	//Audios are loaded
+	small_enemy_death = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_small_explosion.wav");
+	medium_enemy_death = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_medium_explosion.wav");
 
 	return true;
 }
@@ -93,7 +98,8 @@ update_status ModuleEnemies::PostUpdate()
 bool ModuleEnemies::CleanUp()
 {
 	LOG("Freeing all enemies");
-
+	App->audio->UnLoadFx(medium_enemy_death);
+	App->audio->UnLoadFx(small_enemy_death);
 	App->textures->Unload(sprites);
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)

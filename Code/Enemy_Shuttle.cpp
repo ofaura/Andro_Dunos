@@ -4,7 +4,7 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "ModuleUserInterface.h"
-#include "ModuleSceneLevel5.h"
+#include "ModuleEnemies.h"
 #include "ModuleAudio.h"
 #include "SDL\include\SDL_timer.h"
 
@@ -94,7 +94,7 @@ void Enemy_Shuttle::Move()
 void Enemy_Shuttle::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
-	App->audio->PlayFx(App->level5->small_enemy_death);
+	App->audio->PlayFx(App->enemies->medium_enemy_death);
 
 	if (dead == false)
 	{

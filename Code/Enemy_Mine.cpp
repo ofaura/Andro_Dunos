@@ -4,7 +4,7 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "ModuleUserInterface.h"
-#include "ModuleSceneLevel5.h"
+#include "ModuleEnemies.h"
 #include "ModuleAudio.h"
 
 #include <time.h>
@@ -89,7 +89,7 @@ void Enemy_Mine::Move()
 void Enemy_Mine::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
-	App->audio->PlayFx(App->level5->small_enemy_death);
+	App->audio->PlayFx(App->enemies->small_enemy_death);
 
 	if (dead == false)
 	{

@@ -44,7 +44,8 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	//Score counter
+	uint small_enemy_death;
+	uint medium_enemy_death;
 
 	bool AddEnemy(ENEMY_TYPES type, int x, int y);
 

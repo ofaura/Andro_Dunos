@@ -49,10 +49,6 @@ bool ModuleSceneLevel5::Start()
 	meteorites_texture1 = App->textures->Load("Assets/Sprites/lvl5/Background/meteorites1.png");
 	meteorites_texture2 = App->textures->Load("Assets/Sprites/lvl5/Background/meteorites2.png");
 
-	//Audios are loaded
-	small_enemy_death = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_small_explosion.wav");
-	medium_enemy_death = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_medium_explosion.wav");
-
 	if (IsEnabled()) {
 		if (App->player->IsEnabled() == false) {
 			App->player->Enable();
@@ -336,8 +332,7 @@ update_status ModuleSceneLevel5::Update()
 bool ModuleSceneLevel5::CleanUp()
 {
 	// Remove all memory leaks
-	LOG("Unloading textures");
-	//App->audio->UnLoadFx(small_enemy_death);
+	LOG("Unloading textures");	
 	App->textures->Unload(meteorites_texture2);
 	App->textures->Unload(meteorites_texture1);
 	App->textures->Unload(background_texture);
