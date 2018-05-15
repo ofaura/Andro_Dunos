@@ -103,10 +103,10 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 2630, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 2645, 60);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1700, 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1600, 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1650, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1700, 220);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1750, 120);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1800, 220);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1850, 120);
 	
 	// Little turret
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 1750, 40);

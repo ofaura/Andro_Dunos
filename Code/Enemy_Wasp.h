@@ -2,18 +2,20 @@
 #define __ENEMY_WASP_H__
 
 #include "Enemy.h"
+#include "Path.h"
 
 class Enemy_Wasp : public Enemy
 {
 private:
 	float wave = -1.0f;
-	bool going_up = false;
-	bool still = false;
 	int original_y = 0;
+	int current_y = 0;
+
 	Animation fly;
+	Path path;
 
 	uint lastTimeShoot = 0, currentTime;
-	uint lastTimeUp = 0, lastTimeStill = 1000;
+	uint lastTimeChange = 0;
 
 public:
 

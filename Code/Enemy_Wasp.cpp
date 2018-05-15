@@ -13,6 +13,14 @@ Enemy_Wasp::Enemy_Wasp(int x, int y) : Enemy(x, y)
 {
 	fly.PushBack({ 199, 12, 22, 19 });
 	animation = &fly;
+		
+	path.PushBack({ 0.0f, -2.0f }, 30);
+	path.PushBack({ 0.0f, 0.0f }, 120);
+	path.PushBack({ 0.0f, 2.0f }, 30);
+	path.PushBack({ 0.0f, 0.0f }, 120);
+	path.PushBack({ 0.0f, -2.0f }, 30);
+	path.PushBack({ 0.0f, 0.0f }, 120);
+	path.PushBack({ 0.0f, 2.0f }, 30);
 
 	collider = App->collision->AddCollider({ 0, 0, 22, 19 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -21,26 +29,15 @@ Enemy_Wasp::Enemy_Wasp(int x, int y) : Enemy(x, y)
 
 void Enemy_Wasp::Move()
 {
-	currentTime = SDL_GetTicks();	
-
-	if (currentTime > lastTimeUp + 800) {
-		going_up = !going_up;
-		lastTimeUp = currentTime;
-	}
-
-	if (going_up) {
-		position.y -= 2;
-	}
-	else {
-		position.y += 2;
-	}	
+	currentTime = SDL_GetTicks();
 
 	if (currentTime > lastTimeShoot + 1200) // Shoots every 1.2 seconds
 	{
-		if(abs(position.x - App->player->position.x) < 200)
-			App->particles->AddParticle(App->particles->enemy_shot_yellow, position.x - 7, position.y + 4, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemy_shot_yellow, position.x - 7, position.y + 4, COLLIDER_ENEMY_SHOT);
 		lastTimeShoot = currentTime;
 	}
+
+	position.y = original_y + path.GetCurrentPosition().y;
 
 	collider->SetPos(position.x, position.y);
 }
