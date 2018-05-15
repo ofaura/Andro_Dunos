@@ -116,7 +116,7 @@ void Enemy_LittleTurretUp::Move()
 
 void Enemy_LittleTurretUp::OnCollision(Collider* collider)
 {
-	App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
+	App->particles->AddParticle(App->particles->enemy_explosion_alt, position.x, position.y, COLLIDER_NONE);
 	App->audio->PlayFx(App->enemies->small_enemy_death);
 
 	if (dead == false)

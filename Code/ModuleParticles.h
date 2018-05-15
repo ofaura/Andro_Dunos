@@ -79,6 +79,8 @@ public:
 	Particle explosionP1;
 	Particle explosionP2;
 	Particle enemy_explosion;
+	Particle enemy_explosion_alt;
+	Particle meteor_explosion;
 
 	Particle enemy_shot_blue;
 	Particle enemy_shot_yellow;

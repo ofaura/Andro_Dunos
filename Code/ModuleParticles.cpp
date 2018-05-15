@@ -381,6 +381,31 @@ bool ModuleParticles::Start()
 	enemy_explosion.anim.speed = 0.3f;
 	enemy_explosion.life = 500;
 
+	enemy_explosion_alt.anim.PushBack({ 7, 262, 8, 8 });
+	enemy_explosion_alt.anim.PushBack({ 17, 258, 13, 14 });
+	enemy_explosion_alt.anim.PushBack({ 33, 247, 25, 25 });
+	enemy_explosion_alt.anim.PushBack({ 63, 246, 27, 26 });
+	enemy_explosion_alt.anim.PushBack({ 93, 243, 30, 29 });
+	enemy_explosion_alt.anim.PushBack({ 7, 279, 29, 28 });
+	enemy_explosion_alt.anim.PushBack({ 40, 278, 29, 28 });
+	enemy_explosion_alt.anim.PushBack({ 73, 279, 28, 27 });
+	enemy_explosion_alt.anim.PushBack({ 103, 279, 29, 27 });
+	enemy_explosion_alt.anim.PushBack({ 7, 314, 29, 27 });
+	enemy_explosion_alt.anim.PushBack({ 40, 314, 28, 26 });
+	enemy_explosion_alt.anim.PushBack({ 73, 314, 26, 24});
+	enemy_explosion_alt.anim.PushBack({ 103, 314, 21, 21});
+	enemy_explosion_alt.anim.PushBack({ 7, 347, 17, 17});
+	enemy_explosion_alt.anim.PushBack({ 40, 347, 6, 6});
+
+	enemy_explosion_alt.anim.loop = false;
+	enemy_explosion_alt.anim.speed = 0.3f;
+	enemy_explosion_alt.life = 500;
+
+
+
+	// ---- Meteor Death Animation
+
+
 	return true;
 }
 
