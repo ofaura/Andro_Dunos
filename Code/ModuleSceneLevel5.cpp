@@ -115,7 +115,10 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 1835, 49);
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 1875, 38);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 2300, 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 2195, 181);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 2255, 167);
+	//App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 2195, 182);
+	//App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 2195, 182);
 
 	// Enemy Xwing
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2275, 130);
