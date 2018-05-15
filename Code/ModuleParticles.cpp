@@ -152,6 +152,40 @@ bool ModuleParticles::Start()
 	laser2_2.speed.x = -8;
 	laser2_2.life = 2000;
 
+	laser2_3a.anim.PushBack({ 23, 69, 10, 8 });
+	laser2_3a.anim.loop = false;
+	laser2_3a.speed.x = -8;
+	laser2_3a.speed.y = 5;
+	laser2_3a.life = 2000;
+
+	laser2_3b.anim.PushBack({ 23, 78, 10, 8 });
+	laser2_3b.anim.loop = false;
+	laser2_3b.speed.x = -8;
+	laser2_3b.speed.y = -5;
+	laser2_3b.life = 2000;
+	
+	laser2_4a.anim.PushBack({ 5, 37, 11, 8 });
+	laser2_4a.anim.loop = false;
+	laser2_4a.speed.x = -8;
+	laser2_4a.speed.y = 5;
+	laser2_4a.life = 2000;
+
+	laser2_4b.anim.PushBack({ 5, 50, 11, 8 });
+	laser2_4b.anim.loop = false;
+	laser2_4b.speed.x = -8;
+	laser2_4b.speed.y = -5;
+	laser2_4b.life = 2000;
+
+	laser2_5.anim.PushBack({ 3, 23, 15, 5 });
+	laser2_5.anim.loop = false;
+	laser2_5.speed.x = -8;
+	laser2_5.life = 2000;
+
+	laser2_6.anim.PushBack({ 3, 8, 15, 5 });
+	laser2_6.anim.loop = false;
+	laser2_6.speed.x = 8;
+	laser2_6.life = 2000;
+
 	laser3_1.anim.PushBack({ 16, 101, 32, 3 });
 	laser3_1.anim.loop = false;
 	laser3_1.speed.x = 8;

@@ -55,15 +55,21 @@ private:
 
 public:
 
-	Particle laser1; // 4
+	Particle laser1; // 1
 	Particle laser1_2;
 	Particle laser1_3;
-	Particle laser2_1; // 3
+	Particle laser2_1; // 2
 	Particle laser2_2;
-	Particle laser3_1; // 6
+	Particle laser2_3a;
+	Particle laser2_3b;
+	Particle laser2_4a;
+	Particle laser2_4b;
+	Particle laser2_5;
+	Particle laser2_6;
+	Particle laser3_1; // 3
 	Particle laser3_2;
 	Particle laser3_3;
-	Particle laser4_1; // 1
+	Particle laser4_1; // 4
 	Particle laser4_2;
 	Particle laser4_3;
 
