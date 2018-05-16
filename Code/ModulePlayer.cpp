@@ -128,6 +128,10 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::Update()
 {
 	current_time = SDL_GetTicks() - first_time;
+<<<<<<< HEAD
+=======
+	
+>>>>>>> aa170c81f3109ef3c213d161f66d20d146eba017
 	if (dead == true) 
 	{
 		if (current_time < 4000) 
@@ -145,7 +149,10 @@ update_status ModulePlayer::Update()
 			dead = false;
 		}
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> aa170c81f3109ef3c213d161f66d20d146eba017
 	int speed = 2;
 	if (lives >= 0)
 	{
