@@ -10,6 +10,7 @@ private:
 	Animation fly_left;
 	Animation fly_turn;
 	Animation fly_right;
+	Path path;
 
 	int original_x = 0;
 	int original_y = 0;

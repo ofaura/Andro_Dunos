@@ -36,8 +36,13 @@ Enemy_MissileThrower::Enemy_MissileThrower(int x, int y) : Enemy(x, y)
 
 	// Right
 	fly_right.PushBack({ 54, 151, 27, 18 });
-
 	animation = &fly_left;
+
+	// Path
+	path.PushBack({ 0.0f, -2.0f }, 30);
+	path.PushBack({ 0.0f, -2.0f }, 30);
+	path.PushBack({ 0.0f, 0.0f }, 120);
+	path.PushBack({ 0.0f, 2.0f }, 30);
 
 	collider = App->collision->AddCollider({ 0, 0, 27, 18 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
