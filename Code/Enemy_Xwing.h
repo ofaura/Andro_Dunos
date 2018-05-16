@@ -18,6 +18,7 @@ public:
 	virtual void OnCollision(Collider* collider) override;
 	void Move();
 	bool dead = false;
+	bool shot = false;
 	int score = 100;
 };
 

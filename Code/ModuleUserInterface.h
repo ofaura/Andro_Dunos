@@ -20,10 +20,10 @@ public:
 	
 	SDL_Texture* weaponHud = nullptr;
 	SDL_Texture* super = nullptr;
+	SDL_Texture* p2_message = nullptr;
 
 	int font_score = -1;
 	int type_score = -1;
-	int p2_title = -1;
 	int hud_characteristics = -1;
 	int highscore_font = -1;
 	int score1 = 0, score2 = 0;
@@ -35,6 +35,7 @@ public:
 	SDL_Rect HUD3;
 	SDL_Rect HUD4;
 	SDL_Rect Life1, Life2; // Lives remaining of p1 and p2
+	SDL_Rect Message; // Message of player 2
 
 	Animation beamCharger; // Showe while charging
 	Animation beamCharged; // Showed while charged

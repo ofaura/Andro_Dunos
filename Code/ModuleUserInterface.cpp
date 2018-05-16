@@ -47,6 +47,11 @@ ModuleUserInterface::ModuleUserInterface()
 	Life2.w = 7;
 	Life2.h = 7;
 
+	Message.x = 0;
+	Message.y = 2;
+	Message.w = 124;
+	Message.h = 11;
+
 	// Beam charger
 	beamNoCharged.PushBack({ 29, 28, 64, 6 });
 
@@ -223,11 +228,11 @@ bool ModuleUserInterface::Start()
 	LOG("Loading UI textures");
 	weaponHud = App->textures->Load("Assets/Sprites/UI/laser_types.png");
 	super = App->textures->Load("Assets/Sprites/UI/beam_charge.png");
+	p2_message = App->textures->Load("Assets/Sprites/UI/player2_start.png");
 
 	// The font is loaded
 	font_score = App->fonts->Load("Assets/Sprites/UI/Fonts/score_font.png", "1234567890P", 1);
 	type_score = App->fonts->Load("Assets/Sprites/UI/Fonts/type_font.png", "1234-TYPE ", 2);
-	p2_title = App->fonts->Load("Assets/Sprites/UI/Fonts/player2_start_font.png", "12BENOPRSTU", 1);
 	highscore_font = App->fonts->Load("Assets/Sprites/UI/Fonts/highscore_font.png", "1234567890HI- ", 2);
 	hud_characteristics = App->fonts->Load("Assets/Sprites/UI/Fonts/numbers_powerup.png", "012345678", 1);
 
@@ -314,7 +319,7 @@ update_status ModuleUserInterface::Update()
 
 	// Title remembering you can have a second player	
 	if (App->player2->IsEnabled() == false)
-		App->fonts->BlitText(180, 15, p2_title, "PRESS 2P BUTTON");
+		App->render->Blit(p2_message, 170, 18, &Message, 1, false);
 
 	// Weapon characteristics UI
 	if (activatedChange1 == true) {
@@ -436,7 +441,6 @@ bool ModuleUserInterface::CleanUp()
 
 	App->fonts->UnLoad(hud_characteristics);
 	App->fonts->UnLoad(highscore_font);
-	App->fonts->UnLoad(p2_title);
 	App->fonts->UnLoad(type_score);
 	App->fonts->UnLoad(font_score);
 

@@ -25,6 +25,12 @@ Enemy_Xwing::Enemy_Xwing(int x, int y) : Enemy(x, y)
 
 void Enemy_Xwing::Move()
 {
+	if ((position.x - App->player->position.x) < 100 && shot == false) {
+		App->particles->AddParticle(App->particles->enemy_shot_orange1d, position.x - 3, position.y + 2, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemy_shot_orange1d, position.x - 3, position.y + 18, COLLIDER_ENEMY_SHOT);
+		shot = true;
+	}
+
 	if (going_up)
 	{
 		if (wave > 1.0f)
