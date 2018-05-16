@@ -52,17 +52,7 @@ void Enemy_MissileThrower::Move()
 		position.x--;
 	}
 
-	/*currentTime = SDL_GetTicks();
-
-	if (currentTime > lastTime + 1000) //Fires a missile every second
-	{
-		App->particles->AddParticle(App->particles->enemy_missile1, position.x, position.y + 15, COLLIDER_ENEMY_SHOT);
-		App->particles->AddParticle(App->particles->enemy_missile2, position.x + 12, position.y + 14, COLLIDER_ENEMY_SHOT);
-		missileFired = true;
-		lastTime = currentTime;
-	}*/
-
-	if ((original_x - position.x) < 1500 && missileFired == false) //Fires a missile every second
+	if ((original_x - position.x) < 1500 && missileFired == false) //Fires a missile
 	{
 		App->particles->AddParticle(App->particles->enemy_missile1, position.x, position.y + 15, COLLIDER_ENEMY_SHOT);
 		App->particles->AddParticle(App->particles->enemy_missile2, position.x + 12, position.y + 14, COLLIDER_ENEMY_SHOT);
