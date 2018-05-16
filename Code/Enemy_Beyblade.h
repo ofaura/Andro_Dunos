@@ -2,7 +2,6 @@
 #define __ENEMY_BEYBLADE_H__
 
 #include "Enemy.h"
-#include "Path.h"
 
 class Enemy_Beyblade : public Enemy
 {

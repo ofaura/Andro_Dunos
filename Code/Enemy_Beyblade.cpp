@@ -67,13 +67,6 @@ Enemy_Beyblade::Enemy_Beyblade(int x, int y) : Enemy(x, y)
 	close.loop = false;
 	close.speed = 0.2f;
 
-	// Path
-	/*
-	path.PushBack({ 0.0f, -2.0f }, 30);
-	path.PushBack({ 0.0f, 0.0f }, 120);
-	path.PushBack({ 0.0f, 2.0f }, 30);
-	path.PushBack({ 0.0f, 0.0f }, 120);*/
-
 	collider = App->collision->AddCollider({ 0, 0, 18, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	animation = &appear;
@@ -109,7 +102,9 @@ void Enemy_Beyblade::Move()
 
 	// Movement
 	if (leaving == true) {
+		
 		animation = &appear;
+		
 		if (appear.Finished()) {
 			animation = &leave;
 			position.x += 3;
