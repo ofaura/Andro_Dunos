@@ -23,7 +23,10 @@ public:
 
 	virtual void OnCollision(Collider* collider) override;
 	void Move();
+
 	bool dead = false;
+	bool turned = false;
+
 	bool missileFired = false;
 	int score = 250;
 };

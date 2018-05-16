@@ -39,10 +39,10 @@ Enemy_MissileThrower::Enemy_MissileThrower(int x, int y) : Enemy(x, y)
 	animation = &fly_left;
 
 	// Path
-	path.PushBack({ 0.0f, -2.0f }, 30);
-	path.PushBack({ 0.0f, -2.0f }, 30);
-	path.PushBack({ 0.0f, 0.0f }, 120);
-	path.PushBack({ 0.0f, 2.0f }, 30);
+	path.PushBack({ -1.0f, 0.0f }, 70);
+	path.PushBack({ 0.0f, 0.0f }, 100);
+	path.PushBack({ -0.5f, -1.0f }, 50);
+	path.PushBack({ 2.0f, 0.0f }, 2000);
 
 	collider = App->collision->AddCollider({ 0, 0, 27, 18 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -53,16 +53,33 @@ Enemy_MissileThrower::Enemy_MissileThrower(int x, int y) : Enemy(x, y)
 
 void Enemy_MissileThrower::Move()
 {
-	if (missileFired == false) {
-		position.x--;
+	currentTime = SDL_GetTicks();
+
+	if (currentTime > lastTime + 1000 && missileFired == true) // Returns in 1.2 seconds
+	{
+		animation = &fly_turn;
 	}
 
-	if ((original_x - position.x) < 1500 && missileFired == false) //Fires a missile
+	if ((position.x - App->player->position.x) < 250 && missileFired == false) //Fires a missile
 	{
 		App->particles->AddParticle(App->particles->enemy_missile1, position.x, position.y + 15, COLLIDER_ENEMY_SHOT);
 		App->particles->AddParticle(App->particles->enemy_missile2, position.x + 12, position.y + 14, COLLIDER_ENEMY_SHOT);
-		missileFired = true;
+		missileFired = true; 
+		lastTime = currentTime;
 	}
+	
+	if ((position.x - App->player->position.x) > 100 && missileFired == true) {
+		if (fly_turn.Finished() == true) {
+			turned = true;
+		}
+	}
+
+	if (turned == true) {
+		animation = &fly_right;
+	}
+
+	position.x = original_x + path.GetCurrentPosition().x;
+	position.y = original_y + path.GetCurrentPosition().y;
 
 	collider->SetPos(position.x, position.y);
 }
