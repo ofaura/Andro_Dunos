@@ -67,6 +67,8 @@ public:
 	Particle laser3_1; // 3
 	Particle laser3_2;
 	Particle laser3_3;
+	Particle laser3_4;
+	Particle laser3_5;
 	Particle laser4_1; // 4
 	Particle laser4_2;
 	Particle laser4_3;
