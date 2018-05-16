@@ -80,8 +80,14 @@ public:
 	Particle enemy_explosion_alt;
 	Particle meteor_explosion;
 
-	Particle enemy_shot_blue;
 	Particle enemy_shot_yellow;
+
+	Particle enemy_shot_blue1;
+	Particle enemy_shot_blue2;
+	Particle enemy_shot_blue3;
+	Particle enemy_shot_blue4;
+	Particle enemy_shot_blue5;
+	Particle enemy_shot_blue6;
 
 	// Shoots of the little turrets
 	Particle enemy_shot_orange1u;

@@ -80,7 +80,12 @@ void Enemy_Beyblade::Move()
 	if (currentTime > lastTimeShoot + 1500 && animation == &open) // Shoots at 1.5 seconds
 	{
 		if (open.Finished() == true && shot == false) {
-			App->particles->AddParticle(App->particles->enemy_shot_yellow, position.x - 7, position.y + 4, COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(App->particles->enemy_shot_blue1, position.x + 10, position.y + 8, COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(App->particles->enemy_shot_blue2, position.x + 10, position.y + 8, COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(App->particles->enemy_shot_blue3, position.x + 10, position.y + 8, COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(App->particles->enemy_shot_blue4, position.x + 10, position.y + 8, COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(App->particles->enemy_shot_blue5, position.x + 10, position.y + 8, COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(App->particles->enemy_shot_blue6, position.x + 10, position.y + 8, COLLIDER_ENEMY_SHOT);
 			lastTimeShoot = currentTime;
 			animation = &close;
 			shot = true;

@@ -70,8 +70,6 @@ bool ModuleSceneLevel5::Start()
 	//Enemies ---
 	App->enemies->Enable();
 
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_BEYBLADE, 300, 120);
-
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 300, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 400, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 500, (SCREEN_HEIGHT / 2) - 20);
@@ -105,10 +103,10 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 2630, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 2645, 60);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1600, 180);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1650, 120);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1700, 220);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1750, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1400, 160);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1450, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1500, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1550, 100);
 	
 	// Little turret
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 1750, 40);
@@ -121,6 +119,11 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 2297, 176);
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 2353, 185);
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 2420, 186);
+
+	// Enemy Beyblade
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_BEYBLADE, 2100, 70);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_BEYBLADE, 2150, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_BEYBLADE, 2200, 140);
 
 	// Enemy Xwing
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2275, 130);

@@ -26,15 +26,6 @@ bool ModuleParticles::Start()
 	// Explosion particle
 
 	// Enemy shots
-	enemy_shot_blue.anim.PushBack({ 9, 115, 6, 8 });	
-	enemy_shot_blue.anim.PushBack({ 19, 116, 6, 6 });
-	enemy_shot_blue.anim.PushBack({ 29, 116, 8, 6 });
-	enemy_shot_blue.anim.PushBack({ 41, 116, 6, 6 });
-	enemy_shot_blue.anim.loop = true;
-	enemy_shot_blue.anim.speed = 0.2f;
-	enemy_shot_blue.speed.x -= 2;
-	enemy_shot_blue.life = 2000;
-
 	enemy_shot_yellow.anim.PushBack({ 328, 228, 8, 12 });
 	enemy_shot_yellow.anim.PushBack({ 356, 228, 12, 12 });
 	enemy_shot_yellow.anim.PushBack({ 388, 228, 14, 12 });
@@ -46,6 +37,64 @@ bool ModuleParticles::Start()
 	enemy_shot_yellow.anim.speed = 1.0f;
 	enemy_shot_yellow.speed.x -= 5;
 	enemy_shot_yellow.life = 2000;
+
+	enemy_shot_blue1.anim.PushBack({ 9, 115, 6, 8 });
+	enemy_shot_blue1.anim.PushBack({ 19, 116, 6, 6 });
+	enemy_shot_blue1.anim.PushBack({ 29, 116, 8, 6 });
+	enemy_shot_blue1.anim.PushBack({ 41, 116, 6, 6 });
+	enemy_shot_blue1.anim.loop = true;
+	enemy_shot_blue1.anim.speed = 0.2f;
+	enemy_shot_blue1.speed.x -= 2;
+	enemy_shot_blue1.speed.y -= 1;
+	enemy_shot_blue1.life = 2000;
+
+	enemy_shot_blue2.anim.PushBack({ 9, 115, 6, 8 });
+	enemy_shot_blue2.anim.PushBack({ 19, 116, 6, 6 });
+	enemy_shot_blue2.anim.PushBack({ 29, 116, 8, 6 });
+	enemy_shot_blue2.anim.PushBack({ 41, 116, 6, 6 });
+	enemy_shot_blue2.anim.loop = true;
+	enemy_shot_blue2.anim.speed = 0.2f;
+	enemy_shot_blue2.speed.x -= 2;
+	enemy_shot_blue2.life = 2000;
+
+	enemy_shot_blue3.anim.PushBack({ 9, 115, 6, 8 });
+	enemy_shot_blue3.anim.PushBack({ 19, 116, 6, 6 });
+	enemy_shot_blue3.anim.PushBack({ 29, 116, 8, 6 });
+	enemy_shot_blue3.anim.PushBack({ 41, 116, 6, 6 });
+	enemy_shot_blue3.anim.loop = true;
+	enemy_shot_blue3.anim.speed = 0.2f;
+	enemy_shot_blue3.speed.x -= 2;
+	enemy_shot_blue3.speed.y += 1;
+	enemy_shot_blue3.life = 2000;
+
+	enemy_shot_blue4.anim.PushBack({ 9, 115, 6, 8 });
+	enemy_shot_blue4.anim.PushBack({ 19, 116, 6, 6 });
+	enemy_shot_blue4.anim.PushBack({ 29, 116, 8, 6 });
+	enemy_shot_blue4.anim.PushBack({ 41, 116, 6, 6 });
+	enemy_shot_blue4.anim.loop = true;
+	enemy_shot_blue4.anim.speed = 0.2f;
+	enemy_shot_blue4.speed.x += 3;
+	enemy_shot_blue4.speed.y -= 1;
+	enemy_shot_blue4.life = 2000;
+
+	enemy_shot_blue5.anim.PushBack({ 9, 115, 6, 8 });
+	enemy_shot_blue5.anim.PushBack({ 19, 116, 6, 6 });
+	enemy_shot_blue5.anim.PushBack({ 29, 116, 8, 6 });
+	enemy_shot_blue5.anim.PushBack({ 41, 116, 6, 6 });
+	enemy_shot_blue5.anim.loop = true;
+	enemy_shot_blue5.anim.speed = 0.2f;
+	enemy_shot_blue5.speed.x += 3;
+	enemy_shot_blue5.life = 2000;
+
+	enemy_shot_blue6.anim.PushBack({ 9, 115, 6, 8 });
+	enemy_shot_blue6.anim.PushBack({ 19, 116, 6, 6 });
+	enemy_shot_blue6.anim.PushBack({ 29, 116, 8, 6 });
+	enemy_shot_blue6.anim.PushBack({ 41, 116, 6, 6 });
+	enemy_shot_blue6.anim.loop = true;
+	enemy_shot_blue6.anim.speed = 0.2f;
+	enemy_shot_blue6.speed.x += 3;
+	enemy_shot_blue6.speed.y += 1;
+	enemy_shot_blue6.life = 2000;
 	
 	enemy_shot_orange1u.anim.PushBack({ 280, 220, 6, 6 });
 	enemy_shot_orange1u.anim.PushBack({ 288, 220, 6, 6 });
