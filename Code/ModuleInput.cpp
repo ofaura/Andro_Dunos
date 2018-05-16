@@ -72,15 +72,74 @@ update_status ModuleInput::PreUpdate()
 	SDL_PumpEvents();
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
-	/*
-	buttons[ARROW_UP] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_UP);
-	buttons[ARROW_DOWN] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
-	buttons[ARROW_RIGHT] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
-	buttons[ARROW_LEFT] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
-	buttons[BUTTON_A] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A);
-	buttons[BUTTON_B] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_B);
-	buttons[BUTTON_START] = SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_START);
-	*/
+
+
+
+
+
+
+
+	//CONTROLLER INPUT
+	for (int i = 0; i < SDL_NumJoysticks(); ++i)
+	{
+		if (SDL_IsGameController(i))
+		{
+			if (i == 0)
+			{
+				if (SDL_IsGameController(i))
+				{
+					controller = SDL_GameControllerOpen(i);
+					if (SDL_GameControllerGetAttached(controller))
+					{
+						gamepadP1LAxisX = SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_LEFTX);
+						gamepadP1LAxisY = SDL_GameControllerGetAxis(controller, SDL_CONTROLLER_AXIS_LEFTY);
+						gamepadP1APressed = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_A);
+						gamepadP1BPressed = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_B);
+						gamepadP1StartPressed = SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_START);
+						gamepadP1con = true;
+					}
+					else
+					{
+						SDL_GameControllerClose(controller);
+						controller = nullptr;
+						gamepadP1con = false;
+					}
+				}
+			}
+			else if (i<1)
+			{
+				gamepadP2con = false;
+				SDL_GameControllerClose(controller2);
+				controller2 = nullptr;
+				gamepadP2con = false;
+			}
+			else if (i == 1 || i == 0 && gamepadP1con == false)
+			{
+				if (SDL_IsGameController(i))
+				{
+					controller2 = SDL_GameControllerOpen(i);
+					if (SDL_GameControllerGetAttached(controller2))
+					{
+						gamepadP2LAxisX = SDL_GameControllerGetAxis(controller2, SDL_CONTROLLER_AXIS_LEFTX);
+						gamepadP2LAxisY = SDL_GameControllerGetAxis(controller2, SDL_CONTROLLER_AXIS_LEFTY);
+						gamepadP2APressed = SDL_GameControllerGetButton(controller2, SDL_CONTROLLER_BUTTON_A);
+						gamepadP2BPressed = SDL_GameControllerGetButton(controller2, SDL_CONTROLLER_BUTTON_X);
+						gamepadP2StartPressed = SDL_GameControllerGetButton(controller2, SDL_CONTROLLER_BUTTON_START);
+						gamepadP2con = true;
+						break;
+					}
+					else
+					{
+						SDL_GameControllerClose(controller2);
+						controller2 = nullptr;
+						gamepadP2con = false;
+					}
+				}
+			}
+		}
+	}
+
+
 
 	for (int i = 0; i < MAX_KEYS; ++i)
 	{
@@ -99,25 +158,7 @@ update_status ModuleInput::PreUpdate()
 				keyboard[i] = KEY_IDLE;
 		}
 	}
-	/*
-	for (int i = 0; i < MAX_BUTTONS; ++i)
-	{
-		if (buttons[i] == 1)
-		{
-			if (gamepad[i] == KEY_IDLE)
-				gamepad[i] = KEY_DOWN;
-			else
-				gamepad[i] = KEY_REPEAT;
-		}
-		else
-		{
-			if (gamepad[i] == KEY_REPEAT || keyboard[i] == KEY_DOWN)
-				gamepad[i] = KEY_UP;
-			else
-				gamepad[i] = KEY_IDLE;
-		}
-	}
-	*/
+
 	if (keyboard[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
 

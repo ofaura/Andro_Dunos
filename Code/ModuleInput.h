@@ -42,8 +42,24 @@ public:
 public:
 	KEY_STATE keyboard[MAX_KEYS];
 	//KEY_STATE gamepad[MAX_BUTTONS];
+	//p1 controller
 	SDL_GameController* controller = nullptr;
+	bool gamepadP1con = false;
+	int gamepadP1LAxisX = 0;
+	int gamepadP1LAxisY = 0;
+	bool gamepadP1APressed = false;
+	bool gamepadP1BPressed = false;
+	bool gamepadP1StartPressed = false;
+	//p2 controller
 	SDL_GameController* controller2 = nullptr;
+	bool gamepadP2con = false;
+	int gamepadP2LAxisX = 0;
+	int gamepadP2LAxisY = 0;
+	bool gamepadP2APressed = false;
+	bool gamepadP2BPressed = false;
+	bool gamepadP2StartPressed = false;
+
+	//SDL_Joystick *joystick = SDL_JoystickOpen(0);
 
 	bool use_controller = false;
 	bool use_controller2 = false;
