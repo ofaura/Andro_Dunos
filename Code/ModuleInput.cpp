@@ -123,7 +123,7 @@ update_status ModuleInput::PreUpdate()
 						gamepadP2LAxisX = SDL_GameControllerGetAxis(controller2, SDL_CONTROLLER_AXIS_LEFTX);
 						gamepadP2LAxisY = SDL_GameControllerGetAxis(controller2, SDL_CONTROLLER_AXIS_LEFTY);
 						gamepadP2APressed = SDL_GameControllerGetButton(controller2, SDL_CONTROLLER_BUTTON_A);
-						gamepadP2BPressed = SDL_GameControllerGetButton(controller2, SDL_CONTROLLER_BUTTON_X);
+						gamepadP2BPressed = SDL_GameControllerGetButton(controller2, SDL_CONTROLLER_BUTTON_B);
 						gamepadP2StartPressed = SDL_GameControllerGetButton(controller2, SDL_CONTROLLER_BUTTON_START);
 						gamepadP2con = true;
 						break;

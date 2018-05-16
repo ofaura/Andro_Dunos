@@ -125,15 +125,28 @@ update_status ModulePlayer2::Update()
 		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_LEFT)) == 1)
 		{
 			position.x -= speed;
+		} else if (App->input->gamepadP2LAxisX < -6400) {
+			position.x -= speed;
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_RIGHT)) == 1)
 		{
 			position.x += speed;
 		}
+		else if (App->input->gamepadP2LAxisX > 6400) {
+			position.x += speed;
+		}
 
 		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_DOWN)) == 1)
 		{
+			position.y += speed;
+			if (current_animation != &down)
+			{
+				down.Reset();
+				current_animation = &down;
+			}
+		}
+		else if (App->input->gamepadP2LAxisY > 6400) {
 			position.y += speed;
 			if (current_animation != &down)
 			{
@@ -150,7 +163,17 @@ update_status ModulePlayer2::Update()
 				up.Reset();
 				current_animation = &up;
 			}
+		} 
+		else if (App->input->gamepadP2LAxisY < -6400) {
+			position.y -= speed;
+			if (current_animation != &down)
+			{
+				down.Reset();
+				current_animation = &down;
+			}
 		}
+
+
 
 		if (current_animation != nullptr) { // Determines animation of fire
 			if (current_animation->GetCurrentFrame().h == down1.h) {
@@ -174,6 +197,19 @@ update_status ModulePlayer2::Update()
 		}
 
 		// Change weapon type --------------------------------------
+		
+		
+		
+		if (App->input->gamepadP2BPressed == true && App->input->keyboard[SDL_SCANCODE_RSHIFT] == KEY_STATE::KEY_IDLE)
+		{
+			App->input->keyboard[SDL_SCANCODE_RSHIFT] = KEY_STATE::KEY_DOWN;
+		}
+		else if (App->input->gamepadP2BPressed == true)
+		{
+			App->input->keyboard[SDL_SCANCODE_RSHIFT] = KEY_STATE::KEY_REPEAT;
+		}
+		
+		
 		if (App->input->keyboard[SDL_SCANCODE_RSHIFT] == KEY_STATE::KEY_DOWN)
 		{
 			if (type >= 0 && type < 3)
@@ -186,6 +222,19 @@ update_status ModulePlayer2::Update()
 		}
 
 		// Laser shot --------------------------------------
+
+
+
+		if (App->input->gamepadP2APressed == true && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_IDLE)
+		{
+			App->input->keyboard[SDL_SCANCODE_RCTRL] = KEY_STATE::KEY_DOWN;
+		}
+		else if (App->input->gamepadP2APressed == true)
+		{
+			App->input->keyboard[SDL_SCANCODE_RCTRL] = KEY_STATE::KEY_REPEAT;
+		}
+
+
 
 		if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type == 0)
 		{
