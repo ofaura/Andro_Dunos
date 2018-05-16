@@ -15,9 +15,7 @@ private:
 	Animation close;
 	Animation leave;
 	Animation appear;
-
-	Path path;
-
+	
 	uint lastTimeShoot = 0, currentTime;
 
 public:
