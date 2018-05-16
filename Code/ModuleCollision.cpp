@@ -15,6 +15,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_WALL][COLLIDER_POWER_UP] = true;
 	matrix[COLLIDER_WALL][COLLIDER_SHIELD_1] = false;
 	matrix[COLLIDER_WALL][COLLIDER_SHIELD_2] = false;
+	matrix[COLLIDER_WALL][COLLIDER_NONE] = false;
 
 	matrix[COLLIDER_PLAYER][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER] = false;
@@ -25,6 +26,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_PLAYER][COLLIDER_POWER_UP] = true;
 	matrix[COLLIDER_PLAYER][COLLIDER_SHIELD_1] = false;
 	matrix[COLLIDER_PLAYER][COLLIDER_SHIELD_2] = false;
+	matrix[COLLIDER_PLAYER][COLLIDER_NONE] = false;
 
 	matrix[COLLIDER_PLAYER_2][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER_2][COLLIDER_PLAYER] = false;
@@ -35,6 +37,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_PLAYER_2][COLLIDER_POWER_UP] = true;
 	matrix[COLLIDER_PLAYER_2][COLLIDER_SHIELD_1] = false;
 	matrix[COLLIDER_PLAYER_2][COLLIDER_SHIELD_2] = false; 
+	matrix[COLLIDER_PLAYER_2][COLLIDER_NONE] = false;
 
 	matrix[COLLIDER_ENEMY][COLLIDER_WALL] = false;
 	matrix[COLLIDER_ENEMY][COLLIDER_PLAYER] = true;
@@ -46,6 +49,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_ENEMY][COLLIDER_POWER_UP] = false;
 	matrix[COLLIDER_ENEMY][COLLIDER_SHIELD_1] = true;
 	matrix[COLLIDER_ENEMY][COLLIDER_SHIELD_2] = true;
+	matrix[COLLIDER_ENEMY][COLLIDER_NONE] = false;
 
 
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_WALL] = true;
@@ -57,6 +61,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_POWER_UP] = false;
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_SHIELD_1] = false;
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_SHIELD_2] = false;
+	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_NONE] = false;
 
 	matrix[COLLIDER_PLAYER2_SHOT][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER2_SHOT][COLLIDER_PLAYER] = true;
@@ -67,6 +72,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_PLAYER2_SHOT][COLLIDER_POWER_UP] = false;
 	matrix[COLLIDER_PLAYER2_SHOT][COLLIDER_SHIELD_1] = false;
 	matrix[COLLIDER_PLAYER2_SHOT][COLLIDER_SHIELD_2] = false;
+	matrix[COLLIDER_PLAYER2_SHOT][COLLIDER_NONE] = false;
 
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_WALL] = true;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_PLAYER] = true;
@@ -78,6 +84,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_POWER_UP] = false;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_SHIELD_1] = true;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_SHIELD_2] = true;
+	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_NONE] = false;
 
 	matrix[COLLIDER_POWER_UP][COLLIDER_WALL] = false;
 	matrix[COLLIDER_POWER_UP][COLLIDER_PLAYER] = true;
@@ -89,6 +96,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_POWER_UP][COLLIDER_POWER_UP] = false;
 	matrix[COLLIDER_POWER_UP][COLLIDER_SHIELD_1] = false;
 	matrix[COLLIDER_POWER_UP][COLLIDER_SHIELD_2] = false;
+	matrix[COLLIDER_POWER_UP][COLLIDER_NONE] = true;//
 
 	matrix[COLLIDER_SHIELD_1][COLLIDER_WALL] = false;
 	matrix[COLLIDER_SHIELD_1][COLLIDER_PLAYER_2] = true;
@@ -98,6 +106,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_SHIELD_1][COLLIDER_POWER_UP] = false;
 	matrix[COLLIDER_SHIELD_1][COLLIDER_SHIELD_1] = false;
 	matrix[COLLIDER_SHIELD_1][COLLIDER_SHIELD_2] = false;
+	matrix[COLLIDER_SHIELD_1][COLLIDER_NONE] = false;
 
 	matrix[COLLIDER_SHIELD_2][COLLIDER_WALL] = false;
 	matrix[COLLIDER_SHIELD_2][COLLIDER_PLAYER_2] = true;
@@ -107,6 +116,18 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_SHIELD_2][COLLIDER_POWER_UP] = false;
 	matrix[COLLIDER_SHIELD_2][COLLIDER_SHIELD_1] = false;
 	matrix[COLLIDER_SHIELD_2][COLLIDER_SHIELD_2] = false;
+	matrix[COLLIDER_SHIELD_2][COLLIDER_NONE] = false;
+
+
+	matrix[COLLIDER_NONE][COLLIDER_WALL] = false;
+	matrix[COLLIDER_NONE][COLLIDER_PLAYER_2] = false;
+	matrix[COLLIDER_NONE][COLLIDER_ENEMY] = false;
+	matrix[COLLIDER_NONE][COLLIDER_PLAYER_SHOT] = false;
+	matrix[COLLIDER_NONE][COLLIDER_ENEMY_SHOT] = false;
+	matrix[COLLIDER_NONE][COLLIDER_POWER_UP] = true; //
+	matrix[COLLIDER_NONE][COLLIDER_SHIELD_1] = false;
+	matrix[COLLIDER_NONE][COLLIDER_SHIELD_2] = false;
+	matrix[COLLIDER_NONE][COLLIDER_NONE] = false;
 }
 
 // Destructor

@@ -346,13 +346,13 @@ void PowerUp::OnCollision(Collider* collider)
 
 		if (milliseconds < 412)
 		{
-			if ((collider->type == COLLIDER_PLAYER))
+			if ((collider->type == COLLIDER_PLAYER || collider->type == COLLIDER_NONE))
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->player->ShootPowerUpLevel++;
 
 			}
-			else if (collider->type == COLLIDER_PLAYER_2)
+			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->player2->ShootPowerUpLevel2++;
@@ -361,13 +361,13 @@ void PowerUp::OnCollision(Collider* collider)
 
 		else
 		{
-			if ((collider->type == COLLIDER_PLAYER))
+			if ((collider->type == COLLIDER_PLAYER || collider->type == COLLIDER_NONE))
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->player->ShootPowerUpLevel_2++;
 
 			}
-			else if (collider->type == COLLIDER_PLAYER_2)
+			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE)
 			{
 				App->audio->PlayFx(powerup_picked);
 				//App->player2->ShootPowerUpLevel2_2++;
@@ -380,13 +380,13 @@ void PowerUp::OnCollision(Collider* collider)
 	{
 		if (milliseconds < 412)
 		{
-			if ((collider->type == COLLIDER_PLAYER))
+			if ((collider->type == COLLIDER_PLAYER || collider->type == COLLIDER_NONE))
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->player->ShootPowerUpLevel_2++;
 
 			}
-			else if (collider->type == COLLIDER_PLAYER_2)
+			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE)
 			{
 				App->audio->PlayFx(powerup_picked);
 				//App->player2->ShootPowerUpLevel2_2++;
@@ -394,13 +394,13 @@ void PowerUp::OnCollision(Collider* collider)
 		}
 		else
 		{
-			if ((collider->type == COLLIDER_PLAYER))
+			if ((collider->type == COLLIDER_PLAYER || collider->type == COLLIDER_NONE))
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->player->Shield;
 
 			}
-			else if (collider->type == COLLIDER_PLAYER_2)
+			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->shield_p2->Enable();
@@ -414,13 +414,13 @@ void PowerUp::OnCollision(Collider* collider)
 	{
 		if (milliseconds < 412)
 		{
-			if ((collider->type == COLLIDER_PLAYER))
+			if ((collider->type == COLLIDER_PLAYER || collider->type == COLLIDER_NONE))
 			{
 				App->audio->PlayFx(powerup_picked);
 				// it's a homing missile, it ain't even started yet
 
 			}
-			else if (collider->type == COLLIDER_PLAYER_2)
+			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE)
 			{
 				App->audio->PlayFx(powerup_picked);
 				// it's a homing missile, it ain't even started yet
@@ -428,14 +428,14 @@ void PowerUp::OnCollision(Collider* collider)
 		}
 		else
 		{
-			if ((collider->type == COLLIDER_PLAYER))
+			if ((collider->type == COLLIDER_PLAYER || collider->type == COLLIDER_NONE))
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->shield->Enable();
 				App->player->Shield;
 
 			}
-			else if (collider->type == COLLIDER_PLAYER_2)
+			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE)
 			{
 				//App->shield_p2->Enable();
 				//App->player2->Shield2;
@@ -448,14 +448,14 @@ void PowerUp::OnCollision(Collider* collider)
 	{
 		if (milliseconds < 412)
 		{
-			if ((collider->type == COLLIDER_PLAYER))
+			if ((collider->type == COLLIDER_PLAYER || collider->type == COLLIDER_NONE))
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->shield->Enable();
 				App->player->Shield;
 
 			}
-			else if (collider->type == COLLIDER_PLAYER_2)
+			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE)
 			{
 				//App->shield_p2->Enable();
 				//App->player2->Shield2;
@@ -464,13 +464,13 @@ void PowerUp::OnCollision(Collider* collider)
 		}
 		else
 		{
-			if ((collider->type == COLLIDER_PLAYER))
+			if ((collider->type == COLLIDER_PLAYER || collider->type == COLLIDER_NONE))
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->player->ShootPowerUpLevel++;
 
 			}
-			else if (collider->type == COLLIDER_PLAYER_2)
+			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->player2->ShootPowerUpLevel2++;
