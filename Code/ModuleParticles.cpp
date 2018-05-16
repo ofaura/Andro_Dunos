@@ -357,7 +357,7 @@ bool ModuleParticles::Start()
 	laser3_1.anim.loop = false;
 	laser3_1.speed.x = 8;
 	laser3_1.life = 2000;
-
+	//
 	laser3_2.anim.PushBack({ 57, 35, 16, 18 });
 	laser3_2.anim.loop = false;
 	laser3_2.speed.x = 7;
@@ -381,6 +381,55 @@ bool ModuleParticles::Start()
 	laser3_5.speed.x = -5;
 	laser3_5.speed.y = 6;
 	laser3_5.life = 2000;
+	//
+	laser3_6.anim.PushBack({ 76, 2, 16, 22 });
+	laser3_6.anim.loop = false;
+	laser3_6.speed.x = 7;
+	laser3_6.speed.y = -6;
+	laser3_6.life = 2000;
+
+	laser3_7.anim.PushBack({ 76, 32, 16, 22 });
+	laser3_7.anim.loop = false;
+	laser3_7.speed.x = 7;
+	laser3_7.speed.y = 6;
+	laser3_7.life = 2000;
+
+	laser3_8.anim.PushBack({ 444, 10, 16, 22 });
+	laser3_8.anim.loop = false;
+	laser3_8.speed.x = -5;
+	laser3_8.speed.y = -6;
+	laser3_8.life = 2000;
+
+	laser3_9.anim.PushBack({ 444, 40, 16, 22 });
+	laser3_9.anim.loop = false;
+	laser3_9.speed.x = -5;
+	laser3_9.speed.y = 6;
+	laser3_9.life = 2000;
+	//
+	laser3_10.anim.PushBack({ 94, 0, 31, 31 });
+	laser3_10.anim.loop = false;
+	laser3_10.speed.x = 7;
+	laser3_10.speed.y = -6;
+	laser3_10.life = 2000;
+
+	laser3_11.anim.PushBack({ 94, 32, 31, 31 });
+	laser3_11.anim.loop = false;
+	laser3_11.speed.x = 7;
+	laser3_11.speed.y = 6;
+	laser3_11.life = 2000;
+
+	laser3_12.anim.PushBack({ 411, 0, 31, 31 });
+	laser3_12.anim.loop = false;
+	laser3_12.speed.x = -5;
+	laser3_12.speed.y = -6;
+	laser3_12.life = 2000;
+
+	laser3_13.anim.PushBack({ 411, 32, 31, 31 });
+	laser3_13.anim.loop = false;
+	laser3_13.speed.x = -5;
+	laser3_13.speed.y = 6;
+	laser3_13.life = 2000;
+
 
 	laser4_1.anim.PushBack({ 41, 11, 13, 1 });
 	laser4_1.anim.PushBack({ 41, 11, 13, 2 });
