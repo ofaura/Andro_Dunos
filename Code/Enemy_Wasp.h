@@ -7,15 +7,12 @@
 class Enemy_Wasp : public Enemy
 {
 private:
-	float wave = -1.0f;
 	int original_y = 0;
-	int current_y = 0;
 
 	Animation fly;
 	Path path;
 
 	uint lastTimeShoot = 0, currentTime;
-	uint lastTimeChange = 0;
 
 public:
 
