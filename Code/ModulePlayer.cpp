@@ -480,7 +480,7 @@ update_status ModulePlayer::Update()
 				}
 
 
-				else if (ShootPowerUpLevel == 5)
+				else if (ShootPowerUpLevel >= 5)
 				{
 					App->particles->AddParticle(App->particles->laser3_10, position.x + 2, position.y + -3, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->laser3_11, position.x + 2, position.y + 0, COLLIDER_PLAYER_SHOT);
