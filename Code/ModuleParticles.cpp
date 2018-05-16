@@ -370,15 +370,15 @@ bool ModuleParticles::Start()
 	laser3_3.speed.y = 6;
 	laser3_3.life = 2000;
 
-	laser3_4.anim.PushBack({ 57, 35, 16, 18 });
+	laser3_4.anim.PushBack({ 463, 49, 16, 18 });
 	laser3_4.anim.loop = false;
-	laser3_4.speed.x = 7;
+	laser3_4.speed.x = -5;
 	laser3_4.speed.y = -6;
 	laser3_4.life = 2000;
 
-	laser3_5.anim.PushBack({ 57, 60, 16, 18 });
+	laser3_5.anim.PushBack({ 463, 74, 16, 18 });
 	laser3_5.anim.loop = false;
-	laser3_5.speed.x = 7;
+	laser3_5.speed.x = -5;
 	laser3_5.speed.y = 6;
 	laser3_5.life = 2000;
 
