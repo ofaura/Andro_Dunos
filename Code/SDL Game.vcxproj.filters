@@ -158,6 +158,9 @@
     <ClInclude Include="Enemy_SpaceShip.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleEnemyBoss.h">
+      <Filter>Modules\Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -276,6 +279,9 @@
     </ClCompile>
     <ClCompile Include="Enemy_SpaceShip.cpp">
       <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEnemyBoss.cpp">
+      <Filter>Modules\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

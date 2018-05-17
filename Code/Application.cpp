@@ -13,6 +13,7 @@
 #include "ModuleStartMenu.h"
 #include "ModulePlayer2.h"
 #include "ModuleUserInterface.h"
+#include "ModuleEnemyBoss.h"
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
 #include "ModuleGameOver.h"
@@ -39,6 +40,7 @@ Application::Application()
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = player2 = new ModulePlayer2();
+	modules[i++] = boss = new ModuleEnemyBoss();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = user_interface = new ModuleUserInterface();
 	modules[i++] = fade = new ModuleFadeToBlack();
@@ -67,6 +69,7 @@ bool Application::Init()
 	game_over->Disable();
 	shield->Disable();
 	shield_p2->Disable();
+	boss->Disable();
 
 	collision->Disable();
 	user_interface->Disable();
