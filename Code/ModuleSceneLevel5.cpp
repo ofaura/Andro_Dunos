@@ -33,6 +33,42 @@ ModuleSceneLevel5::ModuleSceneLevel5()
 	meteorites2.y = 15;
 	meteorites2.w = 3766;
 	meteorites2.h = 224;
+	
+	// Scenario
+	pipeline1.x = 81;
+	pipeline1.y = 11;
+	pipeline1.w = 43;
+	pipeline1.h = 112;
+
+	pipeline2.x = 63;
+	pipeline2.y = 11;
+	pipeline2.w = 12;
+	pipeline2.h = 112;
+
+	pipeline3.x = 173;
+	pipeline3.y = 11;
+	pipeline3.w = 25;
+	pipeline3.h = 48;
+
+	pipeline4.x = 138;
+	pipeline4.y = 10;
+	pipeline4.w = 16;
+	pipeline4.h = 128;
+
+	trash1.x = 8;
+	trash1.y = 19;
+	trash1.w = 32;
+	trash1.h = 61;
+
+	trash2.x = 113;
+	trash2.y = 153;
+	trash2.w = 46;
+	trash2.h = 63;
+
+	pilar.x = 210;
+	pilar.y = 10;
+	pilar.w = 47;
+	pilar.h = 64;
 }
 
 ModuleSceneLevel5::~ModuleSceneLevel5()
@@ -48,6 +84,7 @@ bool ModuleSceneLevel5::Start()
 	background_texture = App->textures->Load("Assets/Sprites/lvl5/Background/background5.png");
 	meteorites_texture1 = App->textures->Load("Assets/Sprites/lvl5/Background/meteorites1.png");
 	meteorites_texture2 = App->textures->Load("Assets/Sprites/lvl5/Background/meteorites2.png");
+	scenario_texture = App->textures->Load("Assets/Sprites/lvl5/Background/Scenario.png");
 
 	if (IsEnabled()) {
 		if (App->player->IsEnabled() == false) {
@@ -63,7 +100,8 @@ bool ModuleSceneLevel5::Start()
 	App->user_interface->Enable();
 
 	// Reseting the camera to the start of the level
-	App->render->camera.x = App->render->camera.y = 0;
+	App->render->camera.x = 5600;
+	App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
 	App->render->camera.h = SCREEN_HEIGHT;
 
@@ -335,7 +373,21 @@ update_status ModuleSceneLevel5::Update()
 		App->player2->position.x += 1;
 	}
 
-	App->render->Blit(background_texture, ((background_pos_x) / 3.5), 20, &background, 0.5f, true);	
+	App->render->Blit(background_texture, ((background_pos_x) / 3.5), 20, &background, 0.5f, true);
+
+	// Details of the level
+	App->render->Blit(scenario_texture, 4858, background_pos_y, &pipeline1, 1.0f, true);
+	App->render->Blit(scenario_texture, 4873, 128, &pipeline2, 1.0f, true);
+	App->render->Blit(scenario_texture, 5113, 96, &pipeline1, 1.0f, true);
+	App->render->Blit(scenario_texture, 5098, 96, &pipeline2, 1.0f, true);
+	App->render->Blit(scenario_texture, 5113, 5, &trash1, 1.0f, true);
+	App->render->Blit(scenario_texture, 5513, background_pos_y, &pipeline2, 1.0f, true);
+	App->render->Blit(scenario_texture, 5570, 98, &trash2, 1.0f, true);
+	App->render->Blit(scenario_texture, 5600, background_pos_y, &pipeline3, 1.0f, true);
+	App->render->Blit(scenario_texture, 5915, 20, &pipeline3, 1.0f, true);
+	App->render->Blit(scenario_texture, 6265, 20, &pipeline4, 1.0f, true);
+
+	// Meteorites
 	App->render->Blit(meteorites_texture1, 1000, background_pos_y, &meteorites1, 1.0f, true);
 	App->render->Blit(meteorites_texture2, 3000, background_pos_y, &meteorites2, 1.0f, true);
 
@@ -346,7 +398,8 @@ update_status ModuleSceneLevel5::Update()
 bool ModuleSceneLevel5::CleanUp()
 {
 	// Remove all memory leaks
-	LOG("Unloading textures");	
+	LOG("Unloading textures");
+	App->textures->Unload(scenario_texture);
 	App->textures->Unload(meteorites_texture2);
 	App->textures->Unload(meteorites_texture1);
 	App->textures->Unload(background_texture);

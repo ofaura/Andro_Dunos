@@ -22,10 +22,21 @@ public:
 	SDL_Texture* background_texture = nullptr;
 	SDL_Texture* meteorites_texture1 = nullptr;
 	SDL_Texture* meteorites_texture2 = nullptr;
+	SDL_Texture* scenario_texture = nullptr;
 
 	SDL_Rect background;
 	SDL_Rect meteorites1;
 	SDL_Rect meteorites2;
+
+	// Scenario
+	SDL_Rect pipeline1;
+	SDL_Rect pipeline2;
+	SDL_Rect pipeline3;
+	SDL_Rect pipeline4;
+	SDL_Rect trash1;
+	SDL_Rect trash2;
+	SDL_Rect trash3;
+	SDL_Rect pilar;
 
 	int background_pos_x = 0;
 	int ground_pos_x = 0;
