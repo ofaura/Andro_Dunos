@@ -2,16 +2,13 @@
  #define __ENEMY_PIPELINER_H__
 
 #include "Enemy.h"
-#include "Path.h"
 
 class Enemy_Pipeliner : public Enemy
 {
 private:
 	int original_y = 0;
 	
-	Animation fly;
-	Path path;
-	
+	Animation fly;	
 	uint lastTimeShoot = 0, currentTime;
 	
 public:

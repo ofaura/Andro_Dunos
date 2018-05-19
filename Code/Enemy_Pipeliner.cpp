@@ -11,16 +11,12 @@
 
 Enemy_Pipeliner::Enemy_Pipeliner(int x, int y) : Enemy(x, y)
 {
-	fly.PushBack({ 150, 13, 16, 16 });
+	fly.PushBack({ 149, 12, 16, 16 });
 	animation = &fly;
-	
-		/*path.PushBack({ 0.0f, -2.0f }, 30);
-			+	path.PushBack({ 0.0f, 0.0f }, 120);
-			+	path.PushBack({ 0.0f, 2.0f }, 30);*/
 		
-		collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	
-		original_y = y;
+	original_y = y;
 }
 
 void Enemy_Pipeliner::Move()
