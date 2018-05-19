@@ -11,9 +11,13 @@
 
 Enemy_Pipeliner::Enemy_Pipeliner(int x, int y) : Enemy(x, y)
 {
-	fly.PushBack({ 149, 12, 16, 16 });
-	animation = &fly;
-		
+	idleForward.PushBack({ 149, 12, 16, 16 });
+	idleBackward.PushBack({ 149, 12, 16, 16 });
+	animation = &idleForward;	
+
+	path.PushBack({ 0.0f, -0.7f }, 55);
+	path.PushBack({ 0.0f, 0.7f }, 55);
+
 	collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	
 	original_y = y;
@@ -23,21 +27,21 @@ void Enemy_Pipeliner::Move()
 {
 	currentTime = SDL_GetTicks();
 	
-	if (currentTime > lastTimeShoot + 1200) // Shoots every 1.2 seconds
-		 {
-		App->particles->AddParticle(App->particles->enemy_shot_yellow, position.x - 7, position.y + 4, COLLIDER_ENEMY_SHOT);
+	if (currentTime > lastTimeShoot + 1000 && App->player->position.x <= position.x) // Shoots every second
+	{
+		animation = &idleForward;
+		App->particles->AddParticle(App->particles->enemy_shot_yellow1, position.x - 8, position.y + 4, COLLIDER_ENEMY_SHOT);
 		lastTimeShoot = currentTime;
 	}
+	/*else {
+		animation = &idleBackward;
+		App->particles->AddParticle(App->particles->enemy_shot_yellow2, position.x - 8, position.y + 4, COLLIDER_ENEMY_SHOT);
+		lastTimeShoot = currentTime;
+	}*/
 	
-	if (position.y > App->player->position.y) {
-		position.y--;		
-	}
-	else {
-		+position.y++;		
-	}	
-		//position.y = original_y + path.GetCurrentPosition().y;
+	position.y = original_y + path.GetCurrentPosition().y;
 		
-		collider->SetPos(position.x, position.y);
+	collider->SetPos(position.x, position.y);
 }
 
 void Enemy_Pipeliner::OnCollision(Collider* collider)

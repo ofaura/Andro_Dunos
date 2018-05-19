@@ -33,7 +33,7 @@ void Enemy_Wasp::Move()
 
 	if (currentTime > lastTimeShoot + 1200) // Shoots every 1.2 seconds
 	{
-		App->particles->AddParticle(App->particles->enemy_shot_yellow, position.x - 7, position.y + 4, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemy_shot_yellow1, position.x - 7, position.y + 4, COLLIDER_ENEMY_SHOT);
 		lastTimeShoot = currentTime;
 	}
 

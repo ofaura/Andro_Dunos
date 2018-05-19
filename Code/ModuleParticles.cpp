@@ -26,17 +26,17 @@ bool ModuleParticles::Start()
 	// Explosion particle
 
 	// Enemy shots
-	enemy_shot_yellow.anim.PushBack({ 328, 228, 8, 12 });
-	enemy_shot_yellow.anim.PushBack({ 356, 228, 12, 12 });
-	enemy_shot_yellow.anim.PushBack({ 388, 228, 14, 12 });
-	enemy_shot_yellow.anim.PushBack({ 356, 228, 12, 12 });
-	enemy_shot_yellow.anim.PushBack({ 328, 228, 8, 12 });
-	enemy_shot_yellow.anim.PushBack({ 302, 228, 6, 12 });
-	enemy_shot_yellow.anim.PushBack({ 266, 228, 16, 12 });
-	enemy_shot_yellow.anim.loop = false;
-	enemy_shot_yellow.anim.speed = 1.0f;
-	enemy_shot_yellow.speed.x -= 5;
-	enemy_shot_yellow.life = 2000;
+	enemy_shot_yellow1.anim.PushBack({ 328, 228, 8, 12 });
+	enemy_shot_yellow1.anim.PushBack({ 356, 228, 12, 12 });
+	enemy_shot_yellow1.anim.PushBack({ 388, 228, 14, 12 });
+	enemy_shot_yellow1.anim.PushBack({ 356, 228, 12, 12 });
+	enemy_shot_yellow1.anim.PushBack({ 328, 228, 8, 12 });
+	enemy_shot_yellow1.anim.PushBack({ 302, 228, 6, 12 });
+	enemy_shot_yellow1.anim.PushBack({ 266, 228, 16, 12 });
+	enemy_shot_yellow1.anim.loop = false;
+	enemy_shot_yellow1.anim.speed = 1.0f;
+	enemy_shot_yellow1.speed.x -= 5;
+	enemy_shot_yellow1.life = 2000;
 
 	enemy_shot_blue1.anim.PushBack({ 9, 115, 6, 8 });
 	enemy_shot_blue1.anim.PushBack({ 19, 116, 6, 6 });
