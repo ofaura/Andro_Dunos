@@ -9,6 +9,7 @@
 #include "Enemy_FirstEnemy.h"
 #include "Enemy_PowerUp.h"
 #include "Enemy_Shuttle.h"
+#include "Enemy_Pipeliner.h"
 #include "Enemy_MissileThrower.h"
 #include "Enemy_Spinner.h"
 #include "Enemy_Meteorite.h"
@@ -207,9 +208,14 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::ENEMY_XWING:
 			enemies[i] = new Enemy_Xwing(info.x, info.y);
 			break;
+
+		case ENEMY_TYPES::ENEMY_PIPELINER:
+			enemies[i] = new Enemy_Pipeliner(info.x, info.y);
+			break;
 		}
 	}
 }
+
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {

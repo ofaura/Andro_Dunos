@@ -164,6 +164,9 @@
     <ClInclude Include="Enemy_SmallSpinner.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_Pipeliner.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -287,6 +290,9 @@
       <Filter>Modules\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_SmallSpinner.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Pipeliner.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
