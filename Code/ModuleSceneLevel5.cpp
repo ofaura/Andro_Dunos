@@ -69,6 +69,16 @@ ModuleSceneLevel5::ModuleSceneLevel5()
 	pilar.y = 10;
 	pilar.w = 47;
 	pilar.h = 64;
+
+	rock1.x = 8;
+	rock1.y = 246;
+	rock1.w = 191;
+	rock1.h = 128;
+
+	rock2.x = 214;
+	rock2.y = 262;
+	rock2.w = 191;
+	rock2.h = 112;
 }
 
 ModuleSceneLevel5::~ModuleSceneLevel5()
@@ -100,7 +110,7 @@ bool ModuleSceneLevel5::Start()
 	App->user_interface->Enable();
 
 	// Reseting the camera to the start of the level
-	App->render->camera.x = 5600;
+	App->render->camera.x = 4000;
 	App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
 	App->render->camera.h = SCREEN_HEIGHT;
@@ -147,9 +157,9 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1500, 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1550, 100);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 4400, 160);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 4450, 100);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 4500, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 4425, 160);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 4465, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 4505, 100);
 
 	// Little turret
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 1750, 40);
@@ -376,6 +386,10 @@ update_status ModuleSceneLevel5::Update()
 	App->render->Blit(background_texture, ((background_pos_x) / 3.5), 20, &background, 0.5f, true);
 
 	// Details of the level
+	App->render->Blit(scenario_texture, 4313, 32, &pilar, 1.0f, true);
+	App->render->Blit(scenario_texture, 4227, 80, &rock1, 1.0f, true);
+	App->render->Blit(scenario_texture, 4589, 95, &pilar, 1.0f, true);
+	App->render->Blit(scenario_texture, 4535, background_pos_y, &rock2, 1.0f, true);
 	App->render->Blit(scenario_texture, 4858, background_pos_y, &pipeline1, 1.0f, true);
 	App->render->Blit(scenario_texture, 4873, 128, &pipeline2, 1.0f, true);
 	App->render->Blit(scenario_texture, 5113, 96, &pipeline1, 1.0f, true);
