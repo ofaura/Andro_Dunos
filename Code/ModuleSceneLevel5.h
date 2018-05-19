@@ -37,6 +37,8 @@ public:
 	SDL_Rect trash2;
 	SDL_Rect trash3;
 	SDL_Rect pilar;
+	SDL_Rect rock1;
+	SDL_Rect rock2;
 
 	int background_pos_x = 0;
 	int ground_pos_x = 0;
