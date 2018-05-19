@@ -115,7 +115,7 @@ bool ModuleSceneLevel5::Start()
 	App->user_interface->Enable();
 
 	// Reseting the camera to the start of the level
-	App->render->camera.x = 5300;
+	App->render->camera.x = 5900;
 	App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
 	App->render->camera.h = SCREEN_HEIGHT;
@@ -209,6 +209,7 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_PIPELINER, 5096, 178);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_PIPELINER, 5112, 145);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_PIPELINER, 5511, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_PIPELINER, 6265, 110);
 
 	// Meteorites
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 340, 20);
