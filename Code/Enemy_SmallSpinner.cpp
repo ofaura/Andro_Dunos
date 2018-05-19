@@ -9,8 +9,7 @@
 #include "SDL\include\SDL_timer.h"
 
 Enemy_SmallSpinner::Enemy_SmallSpinner(int x, int y) : Enemy(x, y)
-{
-	
+{	
 	spinning.PushBack({ 150, 455, 16, 16});
 	spinning.PushBack({ 179, 455, 16, 16 });
 	spinning.PushBack({ 208, 455, 16, 16 });
