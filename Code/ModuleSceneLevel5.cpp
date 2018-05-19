@@ -115,7 +115,8 @@ bool ModuleSceneLevel5::Start()
 	App->user_interface->Enable();
 
 	// Reseting the camera to the start of the level
-	App->render->camera.x = App->render->camera.y = 0;
+	App->render->camera.x = 3600;
+	App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
 	App->render->camera.h = SCREEN_HEIGHT;
 
@@ -177,6 +178,12 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 2353, 185);
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 2420, 186);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 3456, 190);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 3612, 197);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 3712, 190);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 3784, 173);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 3878, 193);
+
 	// Enemy Beyblade
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_BEYBLADE, 2100, 70);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_BEYBLADE, 2150, 100);
@@ -194,10 +201,10 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2525, 90);
 
 	// Enemy spinner
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2650, 100);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2750, 40);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2750, 160);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2850, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2750, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2850, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2850, 160);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2950, 100);
 
 	// Missile thrower
 	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 700, 100);
@@ -280,16 +287,17 @@ bool ModuleSceneLevel5::Start()
 	App->collision->AddCollider({ 2405, 49, 55, 22 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 2460, 49, 40, 10 }, COLLIDER_WALL);
 	
-	App->collision->AddCollider({ 3005, 218, 551, 6 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 3008, 208, 525, 10 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 3191, 201, 47, 7 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 3447, 201, 47, 7 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 3014, 203, 158, 5 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 3270, 203, 158, 5 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 3040, 192, 109, 11 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 3298, 192, 109, 11 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 3047, 186, 65, 6 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 3303, 186, 65, 6 }, COLLIDER_WALL);
+	// Start of the second half
+	App->collision->AddCollider({ 3438, 218, 551, 6 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3441, 208, 525, 10 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3624, 201, 47, 7 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3880, 201, 47, 7 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3447, 203, 158, 5 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3703, 203, 158, 5 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3473, 192, 109, 11 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3731, 192, 109, 11 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3480, 186, 65, 6 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3736, 186, 65, 6 }, COLLIDER_WALL);
 	
 	App->collision->AddCollider({ 4272, 0, 177, 6 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 4275, 6, 166, 18 }, COLLIDER_WALL);
