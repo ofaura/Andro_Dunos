@@ -65,6 +65,11 @@ ModuleSceneLevel5::ModuleSceneLevel5()
 	trash2.w = 46;
 	trash2.h = 63;
 
+	trash3.x = 16;
+	trash3.y = 153;
+	trash3.w = 48;
+	trash3.h = 48;
+
 	pilar.x = 210;
 	pilar.y = 10;
 	pilar.w = 47;
@@ -110,8 +115,7 @@ bool ModuleSceneLevel5::Start()
 	App->user_interface->Enable();
 
 	// Reseting the camera to the start of the level
-	App->render->camera.x = 4000;
-	App->render->camera.y = 0;
+	App->render->camera.x = App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
 	App->render->camera.h = SCREEN_HEIGHT;
 
@@ -395,8 +399,11 @@ update_status ModuleSceneLevel5::Update()
 	App->render->Blit(scenario_texture, 5113, 96, &pipeline1, 1.0f, true);
 	App->render->Blit(scenario_texture, 5098, 96, &pipeline2, 1.0f, true);
 	App->render->Blit(scenario_texture, 5113, 5, &trash1, 1.0f, true);
+	App->render->Blit(scenario_texture, 5321, 32, &trash3, 1.0f, true);
+	App->render->Blit(scenario_texture, 5371, 48, &trash2, 1.0f, true);
 	App->render->Blit(scenario_texture, 5513, background_pos_y, &pipeline2, 1.0f, true);
 	App->render->Blit(scenario_texture, 5570, 98, &trash2, 1.0f, true);
+	App->render->Blit(scenario_texture, 5703, 149, &trash3, 1.0f, true);
 	App->render->Blit(scenario_texture, 5600, background_pos_y, &pipeline3, 1.0f, true);
 	App->render->Blit(scenario_texture, 5915, 20, &pipeline3, 1.0f, true);
 	App->render->Blit(scenario_texture, 6265, 20, &pipeline4, 1.0f, true);
