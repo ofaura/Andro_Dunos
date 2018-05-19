@@ -55,8 +55,8 @@ public:
 
 	Particle laser1, laser1_2, laser1_3; // 1
 	Particle laser2_1, laser2_2, laser2_3a, laser2_3b, laser2_4a, laser2_4b, laser2_5, laser2_6; // 2
-	Particle laser3_1, laser3_2, laser3_3, laser3_4, laser3_5, laser3_6, laser3_7, laser3_8, laser3_9, laser3_10, laser3_11, laser3_12, laser3_13; // 3
-	Particle laser4_1, laser4_2, laser4_3; // 4
+	Particle laser3[13]; // 3
+	Particle laser4[13]; // 4
 
 	Particle missile1_1, missile1_2, missile1_3a, missile1_3b;
 	Particle missile2_1, missile2_2;

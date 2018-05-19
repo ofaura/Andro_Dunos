@@ -31,6 +31,7 @@ struct Collider
 	bool to_delete = false;
 	COLLIDER_TYPE type;
 	Module* callback = nullptr;
+	int damage;
 
 	Collider(SDL_Rect rectangle, COLLIDER_TYPE type, Module* callback = nullptr) :
 		rect(rectangle),

@@ -192,6 +192,7 @@ update_status ModuleCollision::PreUpdate()
 
 				if (matrix[c2->type][c1->type] && c2->callback)
 					c2->callback->OnCollision(c2, c1);
+
 			}
 		}
 	}
