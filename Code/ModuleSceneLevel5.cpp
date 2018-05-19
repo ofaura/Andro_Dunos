@@ -115,8 +115,7 @@ bool ModuleSceneLevel5::Start()
 	App->user_interface->Enable();
 
 	// Reseting the camera to the start of the level
-	App->render->camera.x = 3600;
-	App->render->camera.y = 0;
+	App->render->camera.x =	App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
 	App->render->camera.h = SCREEN_HEIGHT;
 
@@ -183,6 +182,12 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 3712, 190);
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 3784, 173);
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 3878, 193);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 4942, 190);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 4977, 172);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_DOWN, 5178, 195);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 6295, 202);
 
 	// Enemy Beyblade
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_BEYBLADE, 2100, 70);
