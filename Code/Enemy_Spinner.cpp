@@ -8,31 +8,21 @@
 
 Enemy_Spinner::Enemy_Spinner(int x, int y) : Enemy(x, y)
 {
-	//fly.PushBack({ 132, 42, 41, 36 });
-	//fly.PushBack({ 195, 42, 41, 36 });
-	//fly.PushBack({ 258, 44, 41, 36 });
-	//fly.PushBack({ 132, 89, 41, 36 });
-	//fly.PushBack({ 195, 89, 41, 36 });
-	//fly.PushBack({ 258, 90, 41, 36 });
-	//fly.PushBack({ 132, 131, 41, 36 });
-	//fly.PushBack({ 195, 129, 41, 36 });
-	//fly.PushBack({ 258, 129, 41, 36 });
-	//fly.PushBack({ 132, 169, 41, 36 });
-	//fly.PushBack({ 195, 168, 41, 36 });
-	//fly.PushBack({ 258, 168, 41, 36 });
-
-	fly.PushBack({ 150, 455, 16, 16 });
-	fly.PushBack({ 179, 455, 16, 16 });
-	fly.PushBack({ 208, 455, 16, 16 });
-	fly.PushBack({ 150, 475, 16, 16 });
-	fly.PushBack({ 179, 475, 16, 16 });
-	fly.PushBack({ 208, 475, 16, 16 });
+	fly.PushBack({ 132, 42, 41, 36 });
+	fly.PushBack({ 195, 42, 41, 36 });
+	fly.PushBack({ 258, 44, 41, 36 });
+	fly.PushBack({ 132, 89, 41, 36 });
+	fly.PushBack({ 195, 89, 41, 36 });
+	fly.PushBack({ 258, 90, 41, 36 });
+	fly.PushBack({ 132, 131, 41, 36 });
+	fly.PushBack({ 195, 129, 41, 36 });
+	fly.PushBack({ 258, 129, 41, 36 });
+	fly.PushBack({ 132, 169, 41, 36 });
+	fly.PushBack({ 195, 168, 41, 36 });
+	fly.PushBack({ 258, 168, 41, 36 });
 
 	fly.loop = true;
-	fly.speed = 0.5f;
-
-	//fly.loop = true;
-	//fly.speed = 0.3f;
+	fly.speed = 0.3f;
 
 	animation = &fly;
 
