@@ -364,110 +364,111 @@ bool ModuleParticles::Start()
 	laser2_6.anim.loop = false;
 	laser2_6.speed.x = 8;
 	laser2_6.life = 2000;
-
-	laser3_1.anim.PushBack({ 16, 101, 32, 3 });
-	laser3_1.anim.loop = false;
-	laser3_1.speed.x = 8;
-	laser3_1.life = 2000;
 	//
-	laser3_2.anim.PushBack({ 57, 35, 16, 18 });
-	laser3_2.anim.loop = false;
-	laser3_2.speed.x = 7;
-	laser3_2.speed.y = -6;
-	laser3_2.life = 2000;
+	laser3[0].anim.PushBack({ 16, 101, 32, 3 });
+	laser3[0].anim.loop = false;
+	laser3[0].speed.x = 8;
+	laser3[0].life = 2000;
+	
+	laser3[1].anim.PushBack({ 57, 35, 16, 18 });
+	laser3[1].anim.loop = false;
+	laser3[1].speed.x = 7;
+	laser3[1].speed.y = -6;
+	laser3[1].life = 2000;
 
-	laser3_3.anim.PushBack({ 57, 60, 16, 18 });
-	laser3_3.anim.loop = false;
-	laser3_3.speed.x = 7;
-	laser3_3.speed.y = 6;
-	laser3_3.life = 2000;
+	laser3[2].anim.PushBack({ 57, 60, 16, 18 });
+	laser3[2].anim.loop = false;
+	laser3[2].speed.x = 7;
+	laser3[2].speed.y = 6;
+	laser3[2].life = 2000;
 
-	laser3_4.anim.PushBack({ 463, 49, 16, 18 });
-	laser3_4.anim.loop = false;
-	laser3_4.speed.x = -5;
-	laser3_4.speed.y = -6;
-	laser3_4.life = 2000;
+	laser3[3].anim.PushBack({ 463, 49, 16, 18 });
+	laser3[3].anim.loop = false;
+	laser3[3].speed.x = -5;
+	laser3[3].speed.y = -6;
+	laser3[3].life = 2000;
 
-	laser3_5.anim.PushBack({ 463, 74, 16, 18 });
-	laser3_5.anim.loop = false;
-	laser3_5.speed.x = -5;
-	laser3_5.speed.y = 6;
-	laser3_5.life = 2000;
+	laser3[4].anim.PushBack({ 463, 74, 16, 18 });
+	laser3[4].anim.loop = false;
+	laser3[4].speed.x = -5;
+	laser3[4].speed.y = 6;
+	laser3[4].life = 2000;
 	//
-	laser3_6.anim.PushBack({ 76, 2, 16, 22 });
-	laser3_6.anim.loop = false;
-	laser3_6.speed.x = 7;
-	laser3_6.speed.y = -6;
-	laser3_6.life = 2000;
+	laser3[5].anim.PushBack({ 76, 2, 16, 22 });
+	laser3[5].anim.loop = false;
+	laser3[5].speed.x = 7;
+	laser3[5].speed.y = -6;
+	laser3[5].life = 2000;
 
-	laser3_7.anim.PushBack({ 76, 32, 16, 22 });
-	laser3_7.anim.loop = false;
-	laser3_7.speed.x = 7;
-	laser3_7.speed.y = 6;
-	laser3_7.life = 2000;
+	laser3[6].anim.PushBack({ 76, 32, 16, 22 });
+	laser3[6].anim.loop = false;
+	laser3[6].speed.x = 7;
+	laser3[6].speed.y = 6;
+	laser3[6].life = 2000;
 
-	laser3_8.anim.PushBack({ 444, 10, 16, 22 });
-	laser3_8.anim.loop = false;
-	laser3_8.speed.x = -5;
-	laser3_8.speed.y = -6;
-	laser3_8.life = 2000;
+	laser3[7].anim.PushBack({ 444, 10, 16, 22 });
+	laser3[7].anim.loop = false;
+	laser3[7].speed.x = -5;
+	laser3[7].speed.y = -6;
+	laser3[7].life = 2000;
 
-	laser3_9.anim.PushBack({ 444, 40, 16, 22 });
-	laser3_9.anim.loop = false;
-	laser3_9.speed.x = -5;
-	laser3_9.speed.y = 6;
-	laser3_9.life = 2000;
+	laser3[8].anim.PushBack({ 444, 40, 16, 22 });
+	laser3[8].anim.loop = false;
+	laser3[8].speed.x = -5;
+	laser3[8].speed.y = 6;
+	laser3[8].life = 2000;
 	//
-	laser3_10.anim.PushBack({ 94, 0, 31, 31 });
-	laser3_10.anim.loop = false;
-	laser3_10.speed.x = 7;
-	laser3_10.speed.y = -6;
-	laser3_10.life = 2000;
+	laser3[9].anim.PushBack({ 94, 0, 31, 31 });
+	laser3[9].anim.loop = false;
+	laser3[9].speed.x = 7;
+	laser3[9].speed.y = -6;
+	laser3[9].life = 2000;
 
-	laser3_11.anim.PushBack({ 94, 32, 31, 31 });
-	laser3_11.anim.loop = false;
-	laser3_11.speed.x = 7;
-	laser3_11.speed.y = 6;
-	laser3_11.life = 2000;
+	laser3[10].anim.PushBack({ 94, 32, 31, 31 });
+	laser3[10].anim.loop = false;
+	laser3[10].speed.x = 7;
+	laser3[10].speed.y = 6;
+	laser3[10].life = 2000;
 
-	laser3_12.anim.PushBack({ 411, 0, 31, 31 });
-	laser3_12.anim.loop = false;
-	laser3_12.speed.x = -5;
-	laser3_12.speed.y = -6;
-	laser3_12.life = 2000;
+	laser3[11].anim.PushBack({ 411, 0, 31, 31 });
+	laser3[11].anim.loop = false;
+	laser3[11].speed.x = -5;
+	laser3[11].speed.y = -6;
+	laser3[11].life = 2000;
 
-	laser3_13.anim.PushBack({ 411, 32, 31, 31 });
-	laser3_13.anim.loop = false;
-	laser3_13.speed.x = -5;
-	laser3_13.speed.y = 6;
-	laser3_13.life = 2000;
+	laser3[12].anim.PushBack({ 411, 32, 31, 31 });
+	laser3[12].anim.loop = false;
+	laser3[12].speed.x = -5;
+	laser3[12].speed.y = 6;
+	laser3[12].life = 2000;
+	//
 
+	laser3[16].life = 2000;
 
-	laser4_1.anim.PushBack({ 41, 11, 13, 1 });
-	laser4_1.anim.PushBack({ 41, 11, 13, 2 });
-	laser4_1.anim.PushBack({ 41, 23, 13, 6 });
-	laser4_1.anim.loop = false;
-	laser4_1.speed.x = 8;
-	laser4_1.anim.speed = 0.5f;
-	laser4_1.life = 2000;
+	laser4[0].anim.PushBack({ 41, 11, 13, 1 });
+	laser4[0].anim.PushBack({ 41, 11, 13, 2 });
+	laser4[0].anim.PushBack({ 41, 23, 13, 6 });
+	laser4[0].anim.loop = false;
+	laser4[0].speed.x = 8;
+	laser4[0].anim.speed = 0.5f;
+	laser4[0].life = 2000;
 
-	laser4_2.anim.PushBack({ 41, 11, 13, 1 });
-	laser4_2.anim.PushBack({ 41, 11, 13, 2 });
-	laser4_2.anim.PushBack({ 41, 23, 13, 6 });
-	laser4_2.anim.loop = false;
-	laser4_2.speed.x = 8;
-	laser4_2.speed.y = 1;
-	laser4_2.anim.speed = 0.5f;
-	laser4_2.life = 2000;
+	laser4[1].anim.PushBack({ 41, 11, 13, 1 });
+	laser4[1].anim.PushBack({ 41, 23, 13, 6 });
+	laser4[1].anim.loop = false;
+	laser4[1].speed.x = 8;
+	laser4[1].speed.y = 1;
+	laser4[1].anim.speed = 0.5f;
+	laser4[1].life = 2000;
 
-	laser4_3.anim.PushBack({ 41, 11, 13, 1 });
-	laser4_3.anim.PushBack({ 41, 11, 13, 2 });
-	laser4_3.anim.PushBack({ 41, 23, 13, 6 });
-	laser4_3.anim.loop = false;
-	laser4_3.speed.x = 8;
-	laser4_3.speed.y = -1;
-	laser4_3.anim.speed = 0.5f;
-	laser4_3.life = 2000;
+	laser4[2].anim.PushBack({ 41, 11, 13, 1 });
+	laser4[2].anim.PushBack({ 41, 11, 13, 2 });
+	laser4[2].anim.PushBack({ 41, 23, 13, 6 });
+	laser4[2].anim.loop = false;
+	laser4[2].speed.x = 8;
+	laser4[2].speed.y = -1;
+	laser4[2].anim.speed = 0.5f;
+	laser4[2].life = 2000;
 
 	//PLayer scond weapon	
 
@@ -700,16 +701,22 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 }
 
 // Every time a particle hits a wall it triggers an explosion particle
-void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
+void ModuleParticles::OnCollision(Collider* c1, Collider* c2) // add Collider* c2, if problems arise
 {
+
+	
+
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
+
+		
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
 			// Always destroy particles that collide
 			delete active[i];
 			active[i] = nullptr;
 			break;
+
 		}
 	}
 }
