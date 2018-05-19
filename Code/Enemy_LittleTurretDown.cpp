@@ -25,9 +25,9 @@ Enemy_LittleTurretDown::Enemy_LittleTurretDown(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 2, 14, 14 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 }
 
-float Enemy_LittleTurretDown::AngleCalculator() {
+int Enemy_LittleTurretDown::AngleCalculator() {
 
-	float angle = (atan2(App->player->position.y - position.y, position.x - App->player->position.x) * 180) / PI;
+	int angle = (atan2(App->player->position.y - position.y, position.x - App->player->position.x) * 180) / PI;
 	return angle;
 }
 

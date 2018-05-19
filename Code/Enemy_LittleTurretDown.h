@@ -28,7 +28,7 @@ public:
 
 	virtual void OnCollision(Collider* collider) override;
 	void Move();
-	float AngleCalculator();
+	int AngleCalculator();
 
 	bool turretShoot;
 	bool dead = false;
