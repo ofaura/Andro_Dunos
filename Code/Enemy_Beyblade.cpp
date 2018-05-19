@@ -13,18 +13,18 @@ Enemy_Beyblade::Enemy_Beyblade(int x, int y) : Enemy(x, y)
 {
 	// Animations
 	appear.PushBack({ 203, 300, 18, 25 });
-	appear.PushBack({ 144, 7, 18, 25 });
+	appear.PushBack({ 240, 7, 18, 25 });
 	appear.PushBack({ 203, 300, 18, 25 });
-	appear.PushBack({ 144, 7, 18, 25 });
+	appear.PushBack({ 240, 7, 18, 25 });
 	appear.PushBack({ 203, 300, 18, 25 });
-	appear.PushBack({ 144, 7, 18, 25 });
+	appear.PushBack({ 240, 7, 18, 25 });
 	appear.PushBack({ 203, 300, 18, 25 });
-	appear.PushBack({ 144, 7, 18, 25 });
+	appear.PushBack({ 240, 7, 18, 25 });
 	appear.loop = false;
 	appear.speed = 0.2f;
 
 	leave.PushBack({ 203, 300, 18, 25 });
-	leave.PushBack({ 144, 7, 18, 25 });
+	leave.PushBack({ 240, 7, 18, 25 });
 	leave.loop = false;
 	leave.speed = 0.2f;
 
@@ -46,7 +46,7 @@ Enemy_Beyblade::Enemy_Beyblade(int x, int y) : Enemy(x, y)
 	spin.PushBack({ 170, 300, 18, 25 });
 	spin.PushBack({ 203, 300, 18, 25 });
 	spin.PushBack({ 236, 300, 18, 25 });
-	open.loop = false;
+	spin.loop = false;
 	spin.speed = 0.7f;
 	
 	open.PushBack({ 170, 300, 18, 25 });
