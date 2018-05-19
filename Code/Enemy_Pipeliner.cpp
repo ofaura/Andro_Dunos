@@ -11,8 +11,8 @@
 
 Enemy_Pipeliner::Enemy_Pipeliner(int x, int y) : Enemy(x, y)
 {
-	idleForward.PushBack({ 149, 12, 16, 16 });
-	idleBackward.PushBack({ 149, 12, 16, 16 });
+	idleForward.PushBack({ 142, 18, 16, 16 });
+	idleBackward.PushBack({ 170, 18, 16, 16 });
 	animation = &idleForward;	
 
 	path.PushBack({ 0.0f, -0.7f }, 55);
@@ -33,11 +33,12 @@ void Enemy_Pipeliner::Move()
 		App->particles->AddParticle(App->particles->enemy_shot_yellow1, position.x - 8, position.y + 4, COLLIDER_ENEMY_SHOT);
 		lastTimeShoot = currentTime;
 	}
-	/*else {
+	else if (currentTime > lastTimeShoot + 1000 && App->player->position.x > position.x) // Shoots every second
+	{ 
 		animation = &idleBackward;
-		App->particles->AddParticle(App->particles->enemy_shot_yellow2, position.x - 8, position.y + 4, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemy_shot_yellow2, position.x + 8, position.y + 4, COLLIDER_ENEMY_SHOT);
 		lastTimeShoot = currentTime;
-	}*/
+	}
 	
 	position.y = original_y + path.GetCurrentPosition().y;
 		

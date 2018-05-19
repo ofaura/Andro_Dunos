@@ -36,7 +36,19 @@ bool ModuleParticles::Start()
 	enemy_shot_yellow1.anim.loop = false;
 	enemy_shot_yellow1.anim.speed = 1.0f;
 	enemy_shot_yellow1.speed.x -= 5;
-	enemy_shot_yellow1.life = 2000;
+	enemy_shot_yellow1.life = 2000;	
+
+	enemy_shot_yellow2.anim.PushBack({ 328, 228, 8, 12 });
+	enemy_shot_yellow2.anim.PushBack({ 356, 228, 12, 12 });
+	enemy_shot_yellow2.anim.PushBack({ 408, 228, 14, 12 });
+	enemy_shot_yellow2.anim.PushBack({ 356, 228, 12, 12 });
+	enemy_shot_yellow2.anim.PushBack({ 328, 228, 8, 12 });
+	enemy_shot_yellow2.anim.PushBack({ 302, 228, 6, 12 });
+	enemy_shot_yellow2.anim.PushBack({ 266, 228, 16, 12 });
+	enemy_shot_yellow2.anim.loop = false;
+	enemy_shot_yellow2.anim.speed = 1.0f;
+	enemy_shot_yellow2.speed.x += 6;
+	enemy_shot_yellow2.life = 2000;
 
 	enemy_shot_blue1.anim.PushBack({ 9, 115, 6, 8 });
 	enemy_shot_blue1.anim.PushBack({ 19, 116, 6, 6 });
