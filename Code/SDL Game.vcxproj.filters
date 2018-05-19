@@ -161,11 +161,7 @@
     <ClInclude Include="ModuleEnemyBoss.h">
       <Filter>Modules\Scenes</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Enemy_Pipeliner.h">
-=======
     <ClInclude Include="Enemy_SmallSpinner.h">
->>>>>>> 7cf5cf2026f290d0833912b5e8f4402f26fcff87
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
@@ -290,11 +286,7 @@
     <ClCompile Include="ModuleEnemyBoss.cpp">
       <Filter>Modules\Scenes</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Enemy_Pipeliner.cpp">
-=======
     <ClCompile Include="Enemy_SmallSpinner.cpp">
->>>>>>> 7cf5cf2026f290d0833912b5e8f4402f26fcff87
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
