@@ -48,6 +48,8 @@ Enemy_MissileThrower::Enemy_MissileThrower(int x, int y) : Enemy(x, y)
 
 	original_x = x;
 	original_y = y;
+	
+	HP = MISSILE_THROWER_HP;
 
 }
 

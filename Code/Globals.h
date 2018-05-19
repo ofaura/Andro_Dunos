@@ -34,5 +34,25 @@ typedef unsigned int uint;
 #define WIN_RESIZABLE 0
 #define REN_VSYNC 1
 
+#define BEYBLADE 5
+#define CIRCLE 5
+#define FIRST 5
+#define LITTLE_TURRET_DOWN_HP 5
+#define LITTLE_TURRET_UP_HP 5
+#define MISSILE_THROWER_HP 5
+#define PIPELINER_HP 5
+#define SHUTTLE_HP 5
+#define SMALL_SPINNER_HP 5
+#define SPACE_SHIP_HP 5
+#define SPINNER_HP 5
+#define WASP_HP 5
+#define XWING_HP 5
+
+
+
+
+
+
+
 
 #endif // __GLOBALS_H__

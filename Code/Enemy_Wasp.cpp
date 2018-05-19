@@ -25,6 +25,7 @@ Enemy_Wasp::Enemy_Wasp(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 22, 19 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
+	HP = WASP_HP;
 }
 
 void Enemy_Wasp::Move()

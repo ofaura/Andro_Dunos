@@ -27,6 +27,7 @@ Enemy_Spinner::Enemy_Spinner(int x, int y) : Enemy(x, y)
 	animation = &fly;
 
 	collider = App->collision->AddCollider({ 0, 0, 41, 36 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	HP = SPINNER_HP;
 }
 
 void Enemy_Spinner::Move()

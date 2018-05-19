@@ -37,6 +37,7 @@ Enemy_Meteorite::Enemy_Meteorite(int x, int y) : Enemy(x, y)
 	}
 
 	original_y = y;
+	HP = 0;
 }
 
 void Enemy_Meteorite::Move()

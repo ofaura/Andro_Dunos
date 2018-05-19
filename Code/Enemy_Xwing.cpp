@@ -21,6 +21,7 @@ Enemy_Xwing::Enemy_Xwing(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 25, 26 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
+	HP = XWING_HP;
 }
 
 void Enemy_Xwing::Move()

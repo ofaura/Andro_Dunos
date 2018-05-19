@@ -108,6 +108,7 @@ Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 20, 26 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
+	HP = 0;
 }
 
 void Enemy_PowerUp::Move()

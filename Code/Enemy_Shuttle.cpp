@@ -33,6 +33,7 @@ Enemy_Shuttle::Enemy_Shuttle(int x, int y) : Enemy(x, y)
 
 	original_y = y;
 	original_x = x;
+	HP = SHUTTLE_HP;
 }
 
 void Enemy_Shuttle::Move()

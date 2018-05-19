@@ -21,6 +21,7 @@ Enemy_Pipeliner::Enemy_Pipeliner(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	
 	original_y = y;
+	HP = PIPELINER_HP;
 }
 
 void Enemy_Pipeliner::Move()

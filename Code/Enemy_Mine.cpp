@@ -31,6 +31,8 @@ Enemy_Mine::Enemy_Mine(int x, int y) : Enemy(x, y)
 
 	original_y = y;
 	original_x = x;
+
+	HP = 0;
 }
 
 void Enemy_Mine::Move()

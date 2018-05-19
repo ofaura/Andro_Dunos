@@ -29,6 +29,7 @@ Enemy_FirstEnemy::Enemy_FirstEnemy(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 18, 17 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
+	HP = FIRST;
 }
 
 void Enemy_FirstEnemy::Move()

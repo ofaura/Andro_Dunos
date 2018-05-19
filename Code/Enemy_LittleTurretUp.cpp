@@ -23,6 +23,8 @@ Enemy_LittleTurretUp::Enemy_LittleTurretUp(int x, int y) : Enemy(x, y)
 	attack9.PushBack({ 111, 724, 15, 14 });
 
 	collider = App->collision->AddCollider({ 0, 0, 14, 14 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);	
+
+	HP = LITTLE_TURRET_UP_HP;
 }
 
 float Enemy_LittleTurretUp::AngleCalculator() {

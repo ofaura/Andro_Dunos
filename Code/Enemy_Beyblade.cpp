@@ -71,6 +71,7 @@ Enemy_Beyblade::Enemy_Beyblade(int x, int y) : Enemy(x, y)
 
 	animation = &appear;
 	original_y = y;
+	HP = BEYBLADE;
 }
 
 void Enemy_Beyblade::Move()
@@ -140,6 +141,7 @@ void Enemy_Beyblade::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
 	App->audio->PlayFx(App->enemies->medium_enemy_death);
+
 
 	if (dead == false)
 	{

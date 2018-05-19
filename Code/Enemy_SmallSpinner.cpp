@@ -19,7 +19,7 @@ Enemy_SmallSpinner::Enemy_SmallSpinner(int x, int y) : Enemy(x, y)
 
 	spinning.loop = true;
 	spinning.speed = 0.5f;
-
+	HP = SMALL_SPINNER_HP;
 
 }
 

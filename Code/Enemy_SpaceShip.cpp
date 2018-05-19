@@ -22,6 +22,7 @@ Enemy_SpaceShip::Enemy_SpaceShip(int x, int y) : Enemy(x, y)
 
 
 	original_y = y;
+	HP = SPACE_SHIP_HP;
 }
 
 void Enemy_SpaceShip::Move()
