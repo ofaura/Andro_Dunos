@@ -103,12 +103,11 @@ update_status ModulePlayer2::Update()
 	{
 		if (current_time < 4000) 
 		{
-			player->type = COLLIDER_NONE;
+			player->type = COLLIDER_NONE_PLAYER_2;
 			if (current_time < 750)
 			{
 				position.x++;
-			}
-				
+			}				
 		}
 
 		else 
@@ -338,9 +337,11 @@ update_status ModulePlayer2::Update()
 
 			if (GodMode == true)
 			{
-				player->to_delete = true;
+				if (player->type != COLLIDER_NONE_PLAYER_2) {
+					player->to_delete = true;
 
-				player = nullptr;
+					player = nullptr;
+				}
 			}
 			else if (GodMode == false)
 			{

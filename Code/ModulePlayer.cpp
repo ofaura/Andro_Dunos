@@ -630,7 +630,7 @@ update_status ModulePlayer::Update()
 				{
 					if (player->type != COLLIDER_NONE) {
 						player->to_delete = true;
-
+						
 						player = nullptr;
 					}
 				}

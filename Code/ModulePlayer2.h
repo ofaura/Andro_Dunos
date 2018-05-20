@@ -55,7 +55,7 @@ public:
 	bool activatedChange; //Tells if the player is changing of weapon
 
 	int lives = 2;
-	int ShootPowerUpLevel2 = 1;
+	int ShootPowerUpLevel2 = 1, ShootPowerUpLevel2_2 = 0, HomingMissile2 = 0, Shield2 = 0;
 
 	int current_time = 0;
 	int first_time = 0;

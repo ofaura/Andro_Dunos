@@ -370,7 +370,7 @@ void PowerUp::OnCollision(Collider* collider)
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
 				App->audio->PlayFx(powerup_picked);
-				//App->player2->ShootPowerUpLevel2_2++;
+				App->player2->ShootPowerUpLevel2_2++;
 			}
 		}
 
@@ -389,7 +389,7 @@ void PowerUp::OnCollision(Collider* collider)
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
 				App->audio->PlayFx(powerup_picked);
-				//App->player2->ShootPowerUpLevel2_2++;
+				App->player2->ShootPowerUpLevel2_2++;
 			}
 		}
 		else
@@ -397,14 +397,14 @@ void PowerUp::OnCollision(Collider* collider)
 			if ((collider->type == COLLIDER_PLAYER || collider->type == COLLIDER_NONE))
 			{
 				App->audio->PlayFx(powerup_picked);
-				App->player->Shield;
+				App->player->Shield++;
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->shield_p2->Enable();
-				//App->player2->Shield2;
+				App->player2->Shield2++;
 			}
 		}
 
@@ -432,13 +432,13 @@ void PowerUp::OnCollision(Collider* collider)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->shield->Enable();
-				App->player->Shield;
+				App->player->Shield++;
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
-				//App->shield_p2->Enable();
-				//App->player2->Shield2;
+				App->shield_p2->Enable();
+				App->player2->Shield2++;
 				App->audio->PlayFx(powerup_picked);
 			}
 		}
@@ -452,13 +452,13 @@ void PowerUp::OnCollision(Collider* collider)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->shield->Enable();
-				App->player->Shield;
+				App->player->Shield++;
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
-				//App->shield_p2->Enable();
-				//App->player2->Shield2;
+				App->shield_p2->Enable();
+				App->player2->Shield2++;
 				App->audio->PlayFx(powerup_picked);
 			}
 		}

@@ -103,7 +103,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_POWER_UP][COLLIDER_SHIELD_1] = false;
 	matrix[COLLIDER_POWER_UP][COLLIDER_SHIELD_2] = false;
 	matrix[COLLIDER_POWER_UP][COLLIDER_NONE] = true;//
-	matrix[COLLIDER_POWER_UP][COLLIDER_NONE_PLAYER_2] = false;
+	matrix[COLLIDER_POWER_UP][COLLIDER_NONE_PLAYER_2] = true;
 
 	matrix[COLLIDER_SHIELD_1][COLLIDER_WALL] = false;
 	matrix[COLLIDER_SHIELD_1][COLLIDER_PLAYER_2] = true;
