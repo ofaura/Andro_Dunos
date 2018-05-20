@@ -265,7 +265,7 @@ update_status ModulePlayer::Update()
 		}
 
 
-
+		ShootPowerUpLevel = 5;
 
 		t++;
 		//ShootPowerUpLevel = 5;
@@ -530,7 +530,7 @@ update_status ModulePlayer::Update()
 				if(ShootPowerUpLevel == 4)
 				{
 					App->particles->AddParticle(App->particles->laser4[6], position.x + 10, position.y + 9, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->laser4[7], position.x + 10, position.y + 11, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->laser4[7], position.x + 10, position.y + 9, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->laser4[8], position.x + 25, position.y + 9, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->laser4[9], position.x + 25, position.y + 9, COLLIDER_PLAYER_SHOT);
 					App->audio->PlayFx(laser4); // 49, 12
@@ -538,10 +538,11 @@ update_status ModulePlayer::Update()
 				if (ShootPowerUpLevel >= 5)
 				{
 
-					App->particles->AddParticle(App->particles->laser4[6], position.x + 10, position.y + 11, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->laser4[6], position.x + 10, position.y + 9, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->laser4[7], position.x + 10, position.y + 9, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->laser4[8], position.x + 25, position.y + 9, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->laser4[9], position.x + 25, position.y + 9, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->laser4[10], position.x + 40, position.y + 9, COLLIDER_PLAYER_SHOT);
 					App->audio->PlayFx(laser4); // 49, 12
 				}
 			}
