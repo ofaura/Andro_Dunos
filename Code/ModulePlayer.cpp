@@ -265,10 +265,7 @@ update_status ModulePlayer::Update()
 		}
 
 
-		ShootPowerUpLevel = 5;
-
 		t++;
-		//ShootPowerUpLevel = 5;
 
 		// TYPE-1, PRIMARY WEAP
 		if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN //|| (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A)) == 1

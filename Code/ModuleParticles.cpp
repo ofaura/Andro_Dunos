@@ -501,7 +501,6 @@ bool ModuleParticles::Start()
 	laser4[6].anim.PushBack({ 41, 11, 13, 1 });
 	laser4[6].anim.PushBack({ 41, 23, 13, 6 });
 	laser4[6].anim.PushBack({ 41, 38, 13, 8 });
-	//laser4[6].anim.PushBack({ 41, 49, 13, 12 });
 	laser4[6].anim.loop = false;
 	laser4[6].speed.x = 8;
 	laser4[6].speed.y = 2;
@@ -512,7 +511,6 @@ bool ModuleParticles::Start()
 	laser4[7].anim.PushBack({ 41, 11, 13, 2 });
 	laser4[7].anim.PushBack({ 41, 23, 13, 6 });
 	laser4[7].anim.PushBack({ 41, 38, 13, 8 });
-	//laser4[7].anim.PushBack({ 41, 49, 13, 12 });
 	laser4[7].anim.loop = false;
 	laser4[7].speed.x = 8;
 	laser4[7].speed.y = -2;
@@ -530,7 +528,6 @@ bool ModuleParticles::Start()
 	laser4[8].anim.PushBack({ 41, 49, 13, 12 });
 	laser4[8].anim.PushBack({ 41, 49, 13, 12 });
 	laser4[8].anim.PushBack({ 41, 49, 13, 12 });
-	//laser4[8].anim.PushBack({ 41, 64, 13, 14 });
 	laser4[8].anim.loop = false;
 	laser4[8].speed.x = 8;
 	laser4[8].speed.y = 1;
@@ -548,7 +545,6 @@ bool ModuleParticles::Start()
 	laser4[9].anim.PushBack({ 41, 49, 13, 12 });
 	laser4[9].anim.PushBack({ 41, 49, 13, 12 });
 	laser4[9].anim.PushBack({ 41, 49, 13, 12 });
-	//laser4[9].anim.PushBack({ 41, 64, 13, 14 });
 	laser4[9].anim.loop = false;
 	laser4[9].speed.x = 8;
 	laser4[9].speed.y = -1;
