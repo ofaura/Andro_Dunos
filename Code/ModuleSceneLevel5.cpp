@@ -225,17 +225,11 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 6125, 90);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 6150, 90);
 
-	// Enemy spinner up
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_UP, 450, -20);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_UP, 470, -20);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_UP, 490, -20);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_UP, 510, -20);
-
-	// Enemy spinner down
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_DOWN, 570, 240);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_DOWN, 590, 240);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_DOWN, 610, 240);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_DOWN, 630, 240);
+	// Enemy spinner
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2750, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2850, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2850, 160);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2950, 100);
 
 	// Missile thrower
 	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 700, 100);
