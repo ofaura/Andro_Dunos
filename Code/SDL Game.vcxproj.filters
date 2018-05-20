@@ -176,6 +176,12 @@
     <ClInclude Include="Enemy_SolarPanel.h">
       <Filter>Modules\Enemies\Tank Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_Spinner_Down.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Spinner_Up.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -306,6 +312,12 @@
     </ClCompile>
     <ClCompile Include="Enemy_SolarPanel.cpp">
       <Filter>Modules\Enemies\Tank Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Spinner_Down.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Spinner_Up.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

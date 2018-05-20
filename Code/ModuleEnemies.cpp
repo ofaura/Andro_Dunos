@@ -12,6 +12,8 @@
 #include "Enemy_Pipeliner.h"
 #include "Enemy_MissileThrower.h"
 #include "Enemy_Spinner.h"
+#include "Enemy_Spinner_Up.h"
+#include "Enemy_Spinner_Down.h"
 #include "Enemy_Meteorite.h"
 #include "Enemy_LittleTurretUp.h"
 #include "Enemy_LittleTurretDown.h"
@@ -196,6 +198,14 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 		case ENEMY_TYPES::ENEMY_SPINNER:
 			enemies[i] = new Enemy_Spinner(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::ENEMY_SPINNER_UP:
+			enemies[i] = new Enemy_Spinner_Up(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::ENEMY_SPINNER_DOWN:
+			enemies[i] = new Enemy_Spinner_Down(info.x, info.y);
 			break;
 
 		case ENEMY_TYPES::ENEMY_MINE:

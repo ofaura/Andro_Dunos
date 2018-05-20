@@ -81,6 +81,8 @@
     <ClInclude Include="Enemy_SolarPanel.h" />
     <ClInclude Include="Enemy_SpaceShip.h" />
     <ClInclude Include="Enemy_Spinner.h" />
+    <ClInclude Include="Enemy_Spinner_Down.h" />
+    <ClInclude Include="Enemy_Spinner_Up.h" />
     <ClInclude Include="Enemy_Wasp.h" />
     <ClInclude Include="Enemy_FirstEnemy.h" />
     <ClInclude Include="Enemy_LittleTurretUp.h" />
@@ -129,6 +131,8 @@
     <ClCompile Include="Enemy_SolarPanel.cpp" />
     <ClCompile Include="Enemy_SpaceShip.cpp" />
     <ClCompile Include="Enemy_Spinner.cpp" />
+    <ClCompile Include="Enemy_Spinner_Down.cpp" />
+    <ClCompile Include="Enemy_Spinner_Up.cpp" />
     <ClCompile Include="Enemy_Wasp.cpp" />
     <ClCompile Include="Enemy_FirstEnemy.cpp" />
     <ClCompile Include="Enemy_LittleTurretUp.cpp" />
