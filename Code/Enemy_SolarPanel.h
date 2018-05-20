@@ -7,7 +7,7 @@
 class Enemy_SolarPanel : public Enemy
 {
 private:
-	int original_y = 0;
+	int original_x = 0;
 
 	Animation fly;
 	Animation open;
@@ -22,6 +22,7 @@ public:
 	virtual void OnCollision(Collider* collider) override;
 	void Move();
 	bool dead = false;
+	bool shot = false;
 	int score = 8000;
 };
 

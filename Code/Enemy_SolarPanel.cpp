@@ -21,35 +21,37 @@ Enemy_SolarPanel::Enemy_SolarPanel(int x, int y) : Enemy(x, y)
 	open.PushBack({ 402, 159, 42, 82 });
 	open.PushBack({ 457, 159, 36, 82 });
 	open.PushBack({ 506, 159, 36, 82 });
-	open.loop = true;
-	open.speed = 0.3;
+	open.loop = false;
+	open.speed = 0.2;
 
-	path.PushBack({ 0.0f, -2.0f }, 30);
-	path.PushBack({ 0.0f, 0.0f }, 120);
-	path.PushBack({ 0.0f, 2.0f }, 30);
-	path.PushBack({ 0.0f, 0.0f }, 120);
-	path.PushBack({ 0.0f, -2.0f }, 30);
-	path.PushBack({ 0.0f, 0.0f }, 120);
-	path.PushBack({ 0.0f, 2.0f }, 30);
-
-	collider = App->collision->AddCollider({ 0, 0, 22, 19 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 36, 36 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	animation = &fly;
-	original_y = y;
+	original_x = x;
 }
 
 void Enemy_SolarPanel::Move()
 {
 	currentTime = SDL_GetTicks();
 
-	if (currentTime > lastTimeShoot + 1200) // Shoots every 1.2 seconds
+	if (currentTime > lastTimeShoot + 1000) // Shoots at one second
 	{
 		App->particles->AddParticle(App->particles->enemy_shot_yellow1, position.x - 7, position.y + 4, COLLIDER_ENEMY_SHOT);
 		lastTimeShoot = currentTime;
 	}
 
-	position.y = original_y + path.GetCurrentPosition().y;
+	if (position.x < original_x + 50) {
+		position.x += 3;
+	}
+	else {
+		animation = &open;
+	}
 
+	if (shot == true && currentTime > lastTimeShoot + 1000) {
+		animation = &fly;
+		position.x += 3;
+	}
+	
 	collider->SetPos(position.x, position.y);
 }
 

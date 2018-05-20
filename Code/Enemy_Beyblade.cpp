@@ -129,9 +129,9 @@ void Enemy_Beyblade::Move()
 		position.x++;
 	}
 
-	if (close.Finished() == true && leaving == false) {
-		animation = &spin; 
-		leaving = true;
+	if (close.Finished() == true && leaving == false && currentTime > lastTimeShoot + 1500) {		
+		leaving = true; 
+		animation = &spin;
 	}
 
 	collider->SetPos(position.x, position.y);
