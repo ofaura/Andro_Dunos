@@ -24,7 +24,7 @@ Enemy_SolarPanel::Enemy_SolarPanel(int x, int y) : Enemy(x, y)
 	open.loop = false;
 	open.speed = 0.2;
 
-	collider = App->collision->AddCollider({ 0, 0, 36, 36 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 45, 36, 36 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	animation = &fly;
 	original_x = x;
@@ -34,20 +34,21 @@ void Enemy_SolarPanel::Move()
 {
 	currentTime = SDL_GetTicks();
 
-	if (currentTime > lastTimeShoot + 1000) // Shoots at one second
+	if (open.Finished() == true && currentTime > lastTimeShoot + 500 && shot == false) // Shoots at one second
 	{
 		App->particles->AddParticle(App->particles->enemy_shot_yellow1, position.x - 7, position.y + 4, COLLIDER_ENEMY_SHOT);
 		lastTimeShoot = currentTime;
+		shot = true;
 	}
 
 	if (position.x < original_x + 50) {
 		position.x += 3;
 	}
-	else {
+	else if (shot == false) {
 		animation = &open;
 	}
 
-	if (shot == true && currentTime > lastTimeShoot + 1000) {
+	if (shot == true && currentTime > lastTimeShoot + 1800) {
 		animation = &fly;
 		position.x += 3;
 	}
