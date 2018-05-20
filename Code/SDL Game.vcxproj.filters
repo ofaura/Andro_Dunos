@@ -182,6 +182,9 @@
     <ClInclude Include="Enemy_Spinner_Up.h">
       <Filter>Modules\Enemies\Basic Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_GreenPlane.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -317,6 +320,9 @@
       <Filter>Modules\Enemies\Basic Enemies</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_Spinner_Up.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_GreenPlane.cpp">
       <Filter>Modules\Enemies\Basic Enemies</Filter>
     </ClCompile>
   </ItemGroup>
