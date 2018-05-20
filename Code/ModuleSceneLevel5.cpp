@@ -115,7 +115,7 @@ bool ModuleSceneLevel5::Start()
 	App->user_interface->Enable();
 
 	// Reseting the camera to the start of the level
-	App->render->camera.x =	App->render->camera.y = 0;
+	App->render->camera.x = App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
 	App->render->camera.h = SCREEN_HEIGHT;
 
@@ -154,6 +154,16 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 2615, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 2630, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 2645, 60);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 5800, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 5815, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 5830, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 5845, 90);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 5875, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 5890, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 5905, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SHUTTLE, 5920, 60);
 
 	// Enemy Wasp
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_WASP, 1400, 160);
@@ -204,6 +214,14 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2475, 90);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2500, 90);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 2525, 90);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 6000, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 6025, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 6050, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 6075, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 6100, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 6125, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_XWING, 6150, 90);
 
 	// Enemy spinner
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER, 2750, 100);
