@@ -59,7 +59,7 @@ public:
 	Particle laser4[13]; // 4
 
 	Particle missile1_1, missile1_2, missile1_3a, missile1_3b;
-	Particle missile2_1, missile2_2;
+	Particle missile2_1, missile2_2, missile2_3, missile2_4;
 
 	Particle explosionP1;
 	Particle explosionP2;

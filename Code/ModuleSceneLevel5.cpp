@@ -421,7 +421,7 @@ bool ModuleSceneLevel5::Start()
 	App->collision->AddCollider({ 6655, 164, 16, 7 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 6708, 185, 51, 99 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 6716, 178, 19, 7 }, COLLIDER_WALL);
-
+	
 	App->collision->AddCollider({ 6620, 182, 100, 7 }, COLLIDER_WALL);
 
 	//Audio ---
