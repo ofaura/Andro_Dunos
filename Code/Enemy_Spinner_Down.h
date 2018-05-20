@@ -11,7 +11,9 @@ private:
 	bool going_up = true;
 	int original_y = 0;
 	int original_x = 0;
-	uint lastTime = 0, currentTime;
+
+	uint lastTimeShoot = 0, currentTime;
+
 	bool curve = false;
 
 public:

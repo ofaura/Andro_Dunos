@@ -31,7 +31,7 @@ Enemy_SolarPanel::Enemy_SolarPanel(int x, int y) : Enemy(x, y)
 	close.loop = false;
 	close.speed = 0.2;
 
-	collider = App->collision->AddCollider({ 0, 45, 36, 36 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 36, 82 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	animation = &fly;
 	original_x = x;

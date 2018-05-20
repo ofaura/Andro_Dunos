@@ -6,6 +6,8 @@
 #include "ModuleEnemies.h"
 #include "ModuleAudio.h"
 
+#include "SDL\include\SDL_timer.h"
+
 Enemy_Spinner_Up::Enemy_Spinner_Up(int x, int y) : Enemy(x, y)
 {
 	fly.PushBack({ 150, 368, 22, 22 });
@@ -20,10 +22,8 @@ Enemy_Spinner_Up::Enemy_Spinner_Up(int x, int y) : Enemy(x, y)
 	fly.PushBack({ 179, 428, 22, 22 });
 	fly.PushBack({ 208, 428, 22, 22 });
 	fly.PushBack({ 237, 428, 22, 22 });
-
-
 	fly.loop = true;
-	fly.speed = 0.2f;
+	fly.speed = 0.4f;
 
 	animation = &fly;
 
@@ -36,6 +36,14 @@ Enemy_Spinner_Up::Enemy_Spinner_Up(int x, int y) : Enemy(x, y)
 
 void Enemy_Spinner_Up::Move()
 {
+	currentTime = SDL_GetTicks();
+
+	if (currentTime > lastTimeShoot + 1200 && original_x > position.x + 50) // Shoots every 1.2 seconds
+	{
+		App->particles->AddParticle(App->particles->enemy_shot_blue2, position.x - 2, position.y + 6, COLLIDER_ENEMY_SHOT);
+		lastTimeShoot = currentTime;
+	}
+	
 	if ((original_x - position.x) < 70)
 	{
 		position.y += 1;
