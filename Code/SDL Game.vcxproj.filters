@@ -27,6 +27,12 @@
     <Filter Include="Modules\Others">
       <UniqueIdentifier>{ebeb7c12-5d00-4434-a2a2-2accb5fd8b78}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Enemies\Basic Enemies">
+      <UniqueIdentifier>{7f8014ee-12e4-4736-b8e3-06bc618e3ca0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Enemies\Tank Enemies">
+      <UniqueIdentifier>{dade821e-0296-40c2-a483-651012862294}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MemLeaks.h">
@@ -48,12 +54,6 @@
       <Filter>Containers</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_FirstEnemy.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_PowerUp.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="PowerUp.h">
@@ -122,50 +122,59 @@
     <ClInclude Include="ModuleSceneLevel5.h">
       <Filter>Modules\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_Meteorite.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_Shuttle.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_Circle.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_MissileThrower.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_Wasp.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_Spinner.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_Mine.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_Xwing.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_LittleTurretUp.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_LittleTurretDown.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_Beyblade.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_SpaceShip.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleEnemyBoss.h">
       <Filter>Modules\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_SmallSpinner.h">
-      <Filter>Modules\Enemies</Filter>
+    <ClInclude Include="Enemy_Beyblade.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Circle.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_FirstEnemy.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_LittleTurretDown.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_LittleTurretUp.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Meteorite.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Mine.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_MissileThrower.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_Pipeliner.h">
-      <Filter>Modules\Enemies</Filter>
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_PowerUp.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Shuttle.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_SmallSpinner.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_SpaceShip.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Spinner.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Wasp.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Xwing.h">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_SolarPanel.h">
+      <Filter>Modules\Enemies\Tank Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -179,12 +188,6 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_FirstEnemy.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_PowerUp.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="PowerUp.cpp">
@@ -250,50 +253,59 @@
     <ClCompile Include="ModuleSceneLevel5.cpp">
       <Filter>Modules\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_Meteorite.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_Shuttle.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_Circle.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_MissileThrower.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_Wasp.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_Spinner.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_Mine.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_Xwing.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_LittleTurretUp.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_LittleTurretDown.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_Beyblade.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_SpaceShip.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleEnemyBoss.cpp">
       <Filter>Modules\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_SmallSpinner.cpp">
-      <Filter>Modules\Enemies</Filter>
+    <ClCompile Include="Enemy_Beyblade.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Circle.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_FirstEnemy.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_LittleTurretDown.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_LittleTurretUp.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Meteorite.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Mine.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_MissileThrower.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_Pipeliner.cpp">
-      <Filter>Modules\Enemies</Filter>
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_PowerUp.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Shuttle.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_SmallSpinner.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_SpaceShip.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Spinner.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Wasp.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Xwing.cpp">
+      <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_SolarPanel.cpp">
+      <Filter>Modules\Enemies\Tank Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

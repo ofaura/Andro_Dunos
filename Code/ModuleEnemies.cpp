@@ -15,6 +15,7 @@
 #include "Enemy_Meteorite.h"
 #include "Enemy_LittleTurretUp.h"
 #include "Enemy_LittleTurretDown.h"
+#include "Enemy_SolarPanel.h"
 #include "Enemy_Spaceship.h"
 #include "Enemy_Beyblade.h"
 #include "Enemy_Circle.h"
@@ -211,6 +212,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 		case ENEMY_TYPES::ENEMY_PIPELINER:
 			enemies[i] = new Enemy_Pipeliner(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::SOLAR_PANEL:
+			enemies[i] = new Enemy_SolarPanel(info.x, info.y);
 			break;
 		}
 	}
