@@ -11,6 +11,7 @@ private:
 
 	Animation fly;
 	Animation open;
+	Animation close;
 	Path path;
 
 	uint lastTimeShoot = 0, currentTime;
@@ -23,7 +24,8 @@ public:
 	void Move();
 	bool dead = false;
 	bool shot = false;
-	int score = 8000;
+	bool leaving = false;
+	int score = 800;
 };
 
 #endif // __ENEMY_SOLARPANEL_H__

@@ -24,6 +24,13 @@ Enemy_SolarPanel::Enemy_SolarPanel(int x, int y) : Enemy(x, y)
 	open.loop = false;
 	open.speed = 0.2;
 
+	close.PushBack({ 457, 159, 36, 82 });
+	close.PushBack({ 402, 159, 42, 82 });
+	close.PushBack({ 343, 159, 46, 82 });
+	close.PushBack({ 517, 44, 48, 82 });
+	close.loop = false;
+	close.speed = 0.2;
+
 	collider = App->collision->AddCollider({ 0, 45, 36, 36 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	animation = &fly;
@@ -48,7 +55,16 @@ void Enemy_SolarPanel::Move()
 		animation = &open;
 	}
 
-	if (shot == true && currentTime > lastTimeShoot + 1400) {
+	if (shot == true && currentTime > lastTimeShoot + 1400 && leaving == false) {
+		animation = &close;
+		position.x += 3;
+	}
+
+	if (close.Finished()) {
+		leaving = true;
+	}
+
+	if (leaving == true) {
 		animation = &fly;
 		position.x += 3;
 	}
