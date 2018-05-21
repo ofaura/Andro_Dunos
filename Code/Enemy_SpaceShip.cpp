@@ -3,53 +3,49 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
+#include "ModuleEnemies.h"
 #include "ModuleUserInterface.h"
 #include "ModuleAudio.h"
 
 Enemy_SpaceShip::Enemy_SpaceShip(int x, int y) : Enemy(x, y)
 {
-	death_sound = App->audio->LoadFx("Assets/Audio/enemy_small_explosion.wav");
-
 	fly.PushBack({ 150, 216, 29, 13 });
 	fly.PushBack({ 180, 215, 29, 16 });
-	fly.PushBack({ 210, 216, 29,17 });
+	fly.PushBack({ 210, 216, 29, 17 });
 	fly.PushBack({ 240, 216, 29, 14 });
 	fly.speed = 0.08f;
-
 	animation = &fly;
+
+	if (y > 100) {
+		path.PushBack({ -1.0f, 0.0f }, 100);
+		path.PushBack({ 1.3f, 1.3f }, 25);
+		path.PushBack({ -1.0f, 0.0f }, 2000);
+	}
+	else {
+		path.PushBack({ -1.0f, 0.0f }, 100);
+		path.PushBack({ 1.3f, -1.3f }, 25);
+		path.PushBack({ -1.0f, 0.0f }, 2000);
+	}
 
 	collider = App->collision->AddCollider({ 0, 0, 32, 17 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-
 	original_y = y;
+	original_x = x;
 	HP = SPACE_SHIP_HP;
 }
 
 void Enemy_SpaceShip::Move()
 {
-	if (going_up)
-	{
-		if (wave > 1.0f)
-			going_up = false;
-		else
-			wave += 0.05f;
-	}
-	else
-	{
-		if (wave < -1.0f)
-			going_up = true;
-		else
-			wave -= 0.05f;
-	}
+	position.y = original_y + path.GetCurrentPosition().y;
+	position.x = original_x + path.GetCurrentPosition().x;
 
-	position.y = int(float(original_y) + (10.0f * sinf(wave)));
-	position.x -= 2;
+	collider->SetPos(position.x, position.y);
 }
 
 void Enemy_SpaceShip::OnCollision(Collider* collider)
 {
 	App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
-	App->audio->PlayFx(death_sound);
+	App->audio->PlayFx(App->enemies->medium_enemy_death);
 
 	if (dead == false)
 	{
@@ -65,11 +61,4 @@ void Enemy_SpaceShip::OnCollision(Collider* collider)
 	}
 
 	dead = true;
-}
-
-bool Enemy_SpaceShip::CleanUp() {
-	LOG("Unloading spaceship enemy");
-	App->audio->UnLoadFx(death_sound);
-
-	return true;
 }

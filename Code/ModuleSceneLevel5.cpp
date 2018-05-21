@@ -122,6 +122,8 @@ bool ModuleSceneLevel5::Start()
 	//Enemies ---
 	App->enemies->Enable();	
 
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 250, 40);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::SOLAR_PANEL, 250, (SCREEN_HEIGHT / 2) - 20);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 300, (SCREEN_HEIGHT / 2) - 20);

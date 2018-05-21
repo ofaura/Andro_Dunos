@@ -9,7 +9,6 @@
 
 Enemy_FirstEnemy::Enemy_FirstEnemy(int x, int y) : Enemy(x, y)
 {
-
 	fly.PushBack({ 0,3,18,12 });
 	fly.PushBack({ 19,3,18,12 });
 	fly.PushBack({ 39,3,18,13 });

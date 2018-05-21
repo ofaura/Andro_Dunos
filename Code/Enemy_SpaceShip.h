@@ -2,16 +2,16 @@
 #define __ENEMY_SPACESHIP_H__
 
 #include "Enemy.h"
+#include "Path.h"
 
 class Enemy_SpaceShip : public Enemy
 {
 private:
-	float wave = -1.0f;
-	bool going_up = true;
 	int original_y = 0;
-	Animation fly;
+	int original_x = 0;
 
-	bool CleanUp();
+	Animation fly;
+	Path path;
 
 public:
 

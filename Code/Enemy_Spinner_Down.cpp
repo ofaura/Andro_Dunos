@@ -23,12 +23,11 @@ Enemy_Spinner_Down::Enemy_Spinner_Down(int x, int y) : Enemy(x, y)
 	fly.PushBack({ 208, 428, 22, 22 });
 	fly.PushBack({ 237, 428, 22, 22 });
 	fly.loop = true;
-	fly.speed = 0.4f;
+	fly.speed = 0.3f;
 
 	animation = &fly;
 
 	collider = App->collision->AddCollider({ 0, 0, 22, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
-	HP = SPINNER_HP;
 
 	original_x = position.x;
 	original_y = position.y;
