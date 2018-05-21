@@ -235,7 +235,6 @@ update_status ModulePlayer::Update()
 		}
 
 
-
 		if (App->input->keyboard[SDL_SCANCODE_E] == KEY_STATE::KEY_DOWN)
 		{
 			if (type >= 0 && type < 3)
@@ -253,8 +252,7 @@ update_status ModulePlayer::Update()
 
 		// shoot -------------------------------------- 
 
-
-
+		
 		if (App->input->gamepadP1APressed == true && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_IDLE)
 		{
 			App->input->keyboard[SDL_SCANCODE_SPACE] = KEY_STATE::KEY_DOWN;
@@ -652,6 +650,15 @@ update_status ModulePlayer::Update()
 	}	
 
 	// God mode
+	if (App->input->gamepadP1YPressed == true && App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_IDLE)
+	{
+		App->input->keyboard[SDL_SCANCODE_F5] = KEY_STATE::KEY_DOWN;
+	}
+	else if (App->input->gamepadP1YPressed == true)
+	{
+		App->input->keyboard[SDL_SCANCODE_F5] = KEY_STATE::KEY_REPEAT;
+	}
+
 	if (App->player->lives >= 0)
 	{
 		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)

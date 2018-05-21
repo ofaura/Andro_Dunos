@@ -49,6 +49,7 @@ public:
 	int gamepadP1LAxisY = 0;
 	bool gamepadP1APressed = false;
 	bool gamepadP1BPressed = false;
+	bool gamepadP1YPressed = false;
 	bool gamepadP1StartPressed = false;
 	//p2 controller
 	SDL_GameController* controller2 = nullptr;
@@ -57,6 +58,7 @@ public:
 	int gamepadP2LAxisY = 0;
 	bool gamepadP2APressed = false;
 	bool gamepadP2BPressed = false;
+	bool gamepadP2YPressed = false;
 	bool gamepadP2StartPressed = false;
 
 	//SDL_Joystick *joystick = SDL_JoystickOpen(0);

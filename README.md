@@ -1,4 +1,4 @@
-Andro Dunos v.0.7
+Andro Dunos v0.7.5
 
 GitHub: https://github.com/ofaura/Andro_Dunos
 
@@ -20,11 +20,13 @@ F8 - To enable player 2 |
 Controller gameplay (XBox controller):
 ---------------------------------------------
 
-	LEFT JOYSTICK - Move
+	LEFT JOYSTICK/GAMEPAD - Move
 
 	A - Shoot
 
-	B - Change weapon
+	B - Change weapon	
+	
+	Y - GodMode
 	
 	START - Go to next stage
 
