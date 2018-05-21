@@ -77,6 +77,7 @@
     <ClInclude Include="Enemy_GreenPlane.h" />
     <ClInclude Include="Enemy_LittleTurretDown.h" />
     <ClInclude Include="Enemy_Mine.h" />
+    <ClInclude Include="Enemy_Ninja_Ball.h" />
     <ClInclude Include="Enemy_Pipeliner.h" />
     <ClInclude Include="Enemy_SmallSpinner.h" />
     <ClInclude Include="Enemy_SolarPanel.h" />
@@ -128,6 +129,7 @@
     <ClCompile Include="Enemy_GreenPlane.cpp" />
     <ClCompile Include="Enemy_LittleTurretDown.cpp" />
     <ClCompile Include="Enemy_Mine.cpp" />
+    <ClCompile Include="Enemy_Ninja_Ball.cpp" />
     <ClCompile Include="Enemy_Pipeliner.cpp" />
     <ClCompile Include="Enemy_SmallSpinner.cpp" />
     <ClCompile Include="Enemy_SolarPanel.cpp" />

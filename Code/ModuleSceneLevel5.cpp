@@ -243,6 +243,10 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_DOWN, 610, 240);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_DOWN, 630, 240);
 
+	// Enemy ninja ball
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_NINJA_BALL, 500, 150);
+
+
 	// Missile thrower
 	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 700, 100);
 
