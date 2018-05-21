@@ -24,14 +24,17 @@
     <Filter Include="Modules\Media">
       <UniqueIdentifier>{71b8f79e-53aa-4141-903d-e61126c85918}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\Others">
-      <UniqueIdentifier>{ebeb7c12-5d00-4434-a2a2-2accb5fd8b78}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Modules\Enemies\Basic Enemies">
       <UniqueIdentifier>{7f8014ee-12e4-4736-b8e3-06bc618e3ca0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Modules\Enemies\Tank Enemies">
       <UniqueIdentifier>{dade821e-0296-40c2-a483-651012862294}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Weapons">
+      <UniqueIdentifier>{26262366-30eb-4567-8e05-2069dc194f7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Interactions">
+      <UniqueIdentifier>{ebeb7c12-5d00-4434-a2a2-2accb5fd8b78}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -98,26 +101,17 @@
     <ClInclude Include="ModuleFonts.h">
       <Filter>Modules\Media</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleShield.h">
-      <Filter>Modules\Others</Filter>
-    </ClInclude>
-    <ClInclude Include="Module.h">
-      <Filter>Modules\Others</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleCollision.h">
-      <Filter>Modules\Others</Filter>
+      <Filter>Modules\Interactions</Filter>
     </ClInclude>
     <ClInclude Include="ModuleEnemies.h">
-      <Filter>Modules\Others</Filter>
+      <Filter>Modules\Interactions</Filter>
     </ClInclude>
     <ClInclude Include="ModuleFadeToBlack.h">
-      <Filter>Modules\Others</Filter>
+      <Filter>Modules\Interactions</Filter>
     </ClInclude>
     <ClInclude Include="ModuleParticles.h">
-      <Filter>Modules\Others</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleShield_p2.h">
-      <Filter>Modules\Others</Filter>
+      <Filter>Modules\Interactions</Filter>
     </ClInclude>
     <ClInclude Include="ModuleSceneLevel5.h">
       <Filter>Modules\Scenes</Filter>
@@ -194,6 +188,15 @@
     <ClInclude Include="Enemy_NinjaBall.h">
       <Filter>Modules\Enemies\Basic Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleShield_p2.h">
+      <Filter>Modules\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleShield.h">
+      <Filter>Modules\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -251,22 +254,16 @@
       <Filter>Modules\Media</Filter>
     </ClCompile>
     <ClCompile Include="ModuleCollision.cpp">
-      <Filter>Modules\Others</Filter>
+      <Filter>Modules\Interactions</Filter>
     </ClCompile>
     <ClCompile Include="ModuleEnemies.cpp">
-      <Filter>Modules\Others</Filter>
+      <Filter>Modules\Interactions</Filter>
     </ClCompile>
     <ClCompile Include="ModuleFadeToBlack.cpp">
-      <Filter>Modules\Others</Filter>
+      <Filter>Modules\Interactions</Filter>
     </ClCompile>
     <ClCompile Include="ModuleParticles.cpp">
-      <Filter>Modules\Others</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleShield.cpp">
-      <Filter>Modules\Others</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleShield_p2.cpp">
-      <Filter>Modules\Others</Filter>
+      <Filter>Modules\Interactions</Filter>
     </ClCompile>
     <ClCompile Include="ModuleSceneLevel5.cpp">
       <Filter>Modules\Scenes</Filter>
@@ -342,6 +339,12 @@
     </ClCompile>
     <ClCompile Include="Enemy_NinjaBall.cpp">
       <Filter>Modules\Enemies\Basic Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleShield_p2.cpp">
+      <Filter>Modules\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleShield.cpp">
+      <Filter>Modules\Weapons</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
