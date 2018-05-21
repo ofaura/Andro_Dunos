@@ -505,7 +505,7 @@ update_status ModulePlayer::Update()
 
 				if (t > 100)
 				{
-					G_Shot = 1;
+					App->gravity_shot->Enable();
 					App->audio->PlayFx(laser1); //2 change
 					t = 0;
 				}
@@ -662,12 +662,6 @@ update_status ModulePlayer::Update()
 		// End: part of Type-1
 
 		// Shield
-		if (G_Shot != 0)
-		{
-			
-			App->gravity_shot->Enable();
-			
-		}
 		if (Shield != 0)
 		{
 

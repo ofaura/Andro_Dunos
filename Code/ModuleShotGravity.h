@@ -16,7 +16,7 @@ public:
 
 	void OnCollision(Collider* col_1);
 	bool Start();
-	update_status Update();
+	update_status Move();
 	bool CleanUp();
 
 public:

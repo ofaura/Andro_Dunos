@@ -12,15 +12,14 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 
-ModuleShotGravity::ModuleShotGravity()
-{
+ModuleShotGravity::ModuleShotGravity() {
 
 	// ---- Animation for the base od the shield
 	ani1.PushBack({ 386, 30, 8, 9 });
 	ani1.loop = true;
 	ani1.speed = 0.2f;
 	ani[0] = &ani1;
-										
+
 	ani2.PushBack({ 386, 15, 8, 9 });
 	ani2.loop = true;
 	ani2.speed = 0.2f;
@@ -46,12 +45,11 @@ bool ModuleShotGravity::Start() {
 	return ret;
 }
 
-update_status ModuleShotGravity::Update() {
+update_status ModuleShotGravity::Move() {
 
 	
 	position1.x = position1.x + 2;
 	position1.y = position1.y + up * (t_g * 2);
-
 
 	App->render->Blit(graphics, position1.x, position1.y, &(ani[0]->GetCurrentFrame()));
 	collider1->SetPos(position1.x, position1.y);
@@ -63,7 +61,7 @@ update_status ModuleShotGravity::Update() {
 void ModuleShotGravity::OnCollision(Collider* col_1)
 {
 
-	if ( col_1->type == COLLIDER_ENEMY)
+	if (col_1->type == COLLIDER_PLAYER_SHOT || (col_1->type == COLLIDER_PLAYER) || col_1->type == COLLIDER_PLAYER_2)
 	{
 		App->particles->AddParticle(App->particles->enemy_explosion, position1.x, position1.y);
 	}
