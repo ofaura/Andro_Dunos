@@ -234,7 +234,6 @@ update_status ModulePlayer2::Update()
 		}
 
 
-
 		if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type == 0)
 		{
 			if (ShootPowerUpLevel2 == 1) {
@@ -370,12 +369,7 @@ update_status ModulePlayer2::Update()
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	SDL_Rect fire = fire_current->GetCurrentFrame();
 
-	// Check player's lives	
-	if (App->player2->lives < 0)
-	{
-		App->fade->FadeToBlack(App->level5, App->game_over);
-	}
-
+	// Blitting the player
 	App->render->Blit(graphics, position.x, position.y, &r);
 	App->render->Blit(graphics, fire_position.x, fire_position.y, &fire);
 
@@ -414,10 +408,11 @@ void ModulePlayer2::OnCollision(Collider* col_1, Collider* col_2)
 			position.x = 1 + abs(App->render->camera.x) / SCREEN_SIZE;
 			position.y = (abs(App->render->camera.y) / SCREEN_SIZE) + (SCREEN_HEIGHT / 2);
 		}
+
+		// Check player's lives	
 		else
 		{
 			position.x = 0;
-
 			App->fade->FadeToBlack(App->level5, App->game_over);
 		}
 

@@ -420,7 +420,6 @@ update_status ModulePlayer::Update()
 					App->audio->PlayFx(laser2);
 				}
 
-
 			}
 
 			if (ShootPowerUpLevel_2 >= 1) // 
@@ -543,7 +542,6 @@ update_status ModulePlayer::Update()
 			}
 			
 		}
-
 
 		// Begin: Part of Type-1
 		if (t_ani >= 1 && t_ani < 16)
@@ -691,12 +689,6 @@ update_status ModulePlayer::Update()
 	SDL_Rect r = current_animation->GetCurrentFrame();
 	SDL_Rect fire = fire_current->GetCurrentFrame();
 
-	// Check player's lives	
-	if (App->player->lives < 0)
-	{
-		App->fade->FadeToBlack(App->level5, App->game_over);
-	}
-
 	// Blitting the player
 	App->render->Blit(graphics, position.x, position.y, &r);
 	App->render->Blit(graphics, fire_position.x, fire_position.y, &fire);
@@ -726,21 +718,23 @@ void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2)
 		|| (col_2->type == COLLIDER_ENEMY || col_1->type == COLLIDER_WALL))
 	{
 
+		App->particles->AddParticle(App->particles->explosionP1, position.x, position.y);
+
 		if (App->player->lives >= 0)
 		{
 			dead = true;
 			first_time = SDL_GetTicks();
-			App->player->lives--;
-			App->particles->AddParticle(App->particles->explosionP1, position.x, position.y);
 			App->audio->PlayFx(player_death);
+			App->player->lives--;
 
 			position.x = 1 + abs(App->render->camera.x) / SCREEN_SIZE;
 			position.y = (abs(App->render->camera.y) / SCREEN_SIZE) + (SCREEN_HEIGHT / 2);
 		}
-		else if (App->player->lives == 0)
+
+		// Check player's lives	
+		else
 		{
 			position.x = 0;
-			App->user_interface->Disable();
 			App->fade->FadeToBlack(App->level5, App->game_over);
 		}
 

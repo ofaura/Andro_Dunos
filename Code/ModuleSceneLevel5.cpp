@@ -115,14 +115,12 @@ bool ModuleSceneLevel5::Start()
 	App->user_interface->Enable();
 
 	// Reseting the camera to the start of the level
-	App->render->camera.x = App->render->camera.y = 0;
+	App->render->camera.x =	App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
 	App->render->camera.h = SCREEN_HEIGHT;
 
 	//Enemies ---
 	App->enemies->Enable();	
-
-	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_PLANE, 250, 40);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::SOLAR_PANEL, 250, (SCREEN_HEIGHT / 2) - 20);
 
@@ -247,6 +245,15 @@ bool ModuleSceneLevel5::Start()
 
 	// Missile thrower
 	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 700, 100);
+
+	// Green plane
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_PLANE, 5300, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_PLANE, 5320, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_PLANE, 5340, 140);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_PLANE, 5380, 170);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_PLANE, 5400, 170);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_PLANE, 5420, 170);
 
 	// Spaceship
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6205, 50);

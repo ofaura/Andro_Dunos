@@ -7,6 +7,8 @@
 #include "ModuleEnemies.h"
 #include "ModuleAudio.h"
 
+#include "SDL\include\SDL_timer.h"
+
 Enemy_GreenPlane::Enemy_GreenPlane(int x, int y) : Enemy(x, y)
 {
 	fly.PushBack({ 6, 641, 23, 17 });
@@ -23,10 +25,19 @@ Enemy_GreenPlane::Enemy_GreenPlane(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 23, 20 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
+	original_x = x;
 }
 
 void Enemy_GreenPlane::Move()
 {
+	currentTime = SDL_GetTicks();
+
+	if (currentTime > lastTimeShoot + 1500 && original_x > position.x + 50) // Shoots every 1.2 seconds
+	{
+		App->particles->AddParticle(App->particles->enemy_shot_blue1, position.x - 2, position.y + 6, COLLIDER_ENEMY_SHOT);
+		lastTimeShoot = currentTime;
+	}
+	
 	if (going_up)
 	{
 		if (wave > 0.5f)
