@@ -21,6 +21,7 @@
 #include "Enemy_GreenMissile2.h"
 #include "Enemy_GreenPlane.h"
 #include "Enemy_SolarPanel.h"
+#include "Enemy_Mechromancer.h"
 #include "Enemy_Spaceship.h"
 #include "Enemy_Beyblade.h"
 #include "Enemy_Circle.h"
@@ -232,6 +233,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 		case ENEMY_TYPES::SOLAR_PANEL:
 			enemies[i] = new Enemy_SolarPanel(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::ENEMY_MECHROMANCER:
+			enemies[i] = new Enemy_Mechromancer(info.x, info.y);
 			break;
 
 		case ENEMY_TYPES::GREEN_PLANE:
