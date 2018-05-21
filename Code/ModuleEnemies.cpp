@@ -29,6 +29,7 @@
 #include "Enemy_Wasp.h"
 #include "Enemy_Mine.h"
 #include "PowerUp.h"
+#include "Enemy_Ninja_Ball.h"
 
 #define SPAWN_MARGIN 25
 
@@ -243,6 +244,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 		case ENEMY_TYPES::GREEN_MISSILE2:
 			enemies[i] = new Enemy_GreenMissile2(info.x, info.y);
+
+		case ENEMY_TYPES::ENEMY_NINJA_BALL:
+			enemies[i] = new Enemy_Ninja_Ball(info.x, info.y);
 			break;
 		}
 	}
