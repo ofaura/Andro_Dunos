@@ -17,6 +17,8 @@
 #include "Enemy_Meteorite.h"
 #include "Enemy_LittleTurretUp.h"
 #include "Enemy_LittleTurretDown.h"
+#include "Enemy_GreenMissile1.h"
+#include "Enemy_GreenMissile2.h"
 #include "Enemy_GreenPlane.h"
 #include "Enemy_SolarPanel.h"
 #include "Enemy_Spaceship.h"
@@ -49,6 +51,7 @@ bool ModuleEnemies::Start()
 	//Audios are loaded
 	small_enemy_death = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_small_explosion.wav");
 	medium_enemy_death = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_medium_explosion.wav");
+	greenRocket = App->audio->LoadFx("Assets/Audio/Sound FX/greenRockets_launched.wav");
 
 	return true;
 }
@@ -107,6 +110,7 @@ update_status ModuleEnemies::PostUpdate()
 bool ModuleEnemies::CleanUp()
 {
 	LOG("Freeing all enemies");
+	App->audio->UnLoadFx(greenRocket);
 	App->audio->UnLoadFx(medium_enemy_death);
 	App->audio->UnLoadFx(small_enemy_death);
 	App->textures->Unload(sprites);
@@ -231,6 +235,14 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 		case ENEMY_TYPES::GREEN_PLANE:
 			enemies[i] = new Enemy_GreenPlane(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::GREEN_MISSILE1:
+			enemies[i] = new Enemy_GreenMissile1(info.x, info.y);
+			break;		
+
+		case ENEMY_TYPES::GREEN_MISSILE2:
+			enemies[i] = new Enemy_GreenMissile2(info.x, info.y);
 			break;
 		}
 	}

@@ -27,7 +27,9 @@ enum ENEMY_TYPES
 	ENEMY_BEYBLADE,
 	ENEMY_PIPELINER,
 	SOLAR_PANEL,
-	GREEN_PLANE
+	GREEN_PLANE,
+	GREEN_MISSILE1,
+	GREEN_MISSILE2
 };
 
 class Enemy;
@@ -54,6 +56,7 @@ public:
 
 	uint small_enemy_death;
 	uint medium_enemy_death;
+	uint greenRocket;
 
 	bool AddEnemy(ENEMY_TYPES type, int x, int y);
 

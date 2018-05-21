@@ -50,7 +50,6 @@ Enemy_MissileThrower::Enemy_MissileThrower(int x, int y) : Enemy(x, y)
 	original_y = y;
 	
 	HP = MISSILE_THROWER_HP;
-
 }
 
 void Enemy_MissileThrower::Move()
@@ -64,8 +63,10 @@ void Enemy_MissileThrower::Move()
 
 	if ((position.x - App->player->position.x) < 250 && missileFired == false) //Fires a missile
 	{
-		App->particles->AddParticle(App->particles->enemy_missile1, position.x, position.y + 15, COLLIDER_ENEMY_SHOT);
-		App->particles->AddParticle(App->particles->enemy_missile2, position.x + 12, position.y + 14, COLLIDER_ENEMY_SHOT);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_MISSILE1, position.x, position.y);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_MISSILE2, position.x + 14, position.y - 1);
+
+		App->audio->PlayFx(App->enemies->greenRocket);
 		missileFired = true; 
 		lastTime = currentTime;
 	}
