@@ -62,10 +62,10 @@ Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 	act[LEFT_UP] = &fly_5;
 
 	fly_6.PushBack({ 1,359,21,21 }); // 3rd turn
-	fly_6.PushBack({ 24,359,26,18 });
-	fly_6.PushBack({ 49,359,26,18 });
-	fly_6.PushBack({ 76,359,25,19 });
-	fly_6.PushBack({ 102,359,26,18 });
+	fly_6.PushBack({ 24,359,26,21 });
+	fly_6.PushBack({ 49,359,26,21 });
+	fly_6.PushBack({ 76,359,25,21 });
+	fly_6.PushBack({ 102,359,26,21 });
 	fly_6.PushBack({ 1,387,21,21 });
 	fly_6.PushBack({ 25,387,21,21 });
 	fly_6.PushBack({ 53,384,18,25 });
