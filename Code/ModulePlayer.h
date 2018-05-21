@@ -65,7 +65,8 @@ public:
 	uint player_death, type_change;
 	uint type = bullet_type::TYPE_1;
 	int lives = 2;
-	int ShootPowerUpLevel = 1, ShootPowerUpLevel_2 = 0, HomingMissile = 0, Shield = 0;
+	int ShootPowerUpLevel = 1, ShootPowerUpLevel_2 = 0, HomingMissile = 0, Shield = 0, G_Shot = 0;
+
 
 	int current_time = 0;
 	int first_time = 0;
