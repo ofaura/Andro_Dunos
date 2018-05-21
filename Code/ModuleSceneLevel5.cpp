@@ -122,7 +122,7 @@ bool ModuleSceneLevel5::Start()
 	//Enemies ---
 	App->enemies->Enable();	
 
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 250, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_PLANE, 250, 40);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::SOLAR_PANEL, 250, (SCREEN_HEIGHT / 2) - 20);
 
@@ -247,6 +247,19 @@ bool ModuleSceneLevel5::Start()
 
 	// Missile thrower
 	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 700, 100);
+
+	// Spaceship
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6205, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6220, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6235, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6250, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6265, 50);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6205, 160);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6220, 160);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6235, 160);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6250, 160);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6265, 160);
 
 	// Enemy in pipelines
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_PIPELINER, 4871, 200);

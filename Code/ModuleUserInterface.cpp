@@ -298,7 +298,7 @@ update_status ModuleUserInterface::Update()
 
 	// Printing weapons' HUD on the screen
 	if (activatedChange1 = true) {
-		if (currentTime1 - startTime1 <= 700) {
+		if (currentTime1 - startTime1 <= 1000) {
 
 			if (App->player->type == 0)
 				App->fonts->BlitText(8, 15, type_score, "TYPE-1");
