@@ -56,6 +56,7 @@ public:
 	uint missile1, missile2, missile3, missile4; // second weap of each type
 	Animation ani_miss_down, ani_miss_up;
 	Animation* missile[2];
+
 	int t, t_2, t_ani, ini_up, ini_down;
 	int  ini_up_prime, ini_down_prime, t_ani_prime;
 	bool enable_missile1;

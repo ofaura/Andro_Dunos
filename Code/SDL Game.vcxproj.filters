@@ -197,6 +197,9 @@
     <ClInclude Include="Module.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleShotGravity.h">
+      <Filter>Modules\Weapons</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -344,6 +347,9 @@
       <Filter>Modules\Weapons</Filter>
     </ClCompile>
     <ClCompile Include="ModuleShield.cpp">
+      <Filter>Modules\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleShotGravity.cpp">
       <Filter>Modules\Weapons</Filter>
     </ClCompile>
   </ItemGroup>

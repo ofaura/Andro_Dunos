@@ -443,14 +443,14 @@ void PowerUp::OnCollision(Collider* collider)
 			if ((collider->type == COLLIDER_PLAYER || collider->type == COLLIDER_NONE))
 			{
 				App->audio->PlayFx(powerup_picked);
-				App->shield->Enable();
+				//App->shield->Enable();
 				App->player->Shield++;
 				App->user_interface->score1 += score;
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
-				App->shield_p2->Enable();
+				//App->shield_p2->Enable();
 				App->player2->Shield2++;
 				App->audio->PlayFx(powerup_picked);
 				App->user_interface->score2 += score;
@@ -465,14 +465,14 @@ void PowerUp::OnCollision(Collider* collider)
 			if ((collider->type == COLLIDER_PLAYER || collider->type == COLLIDER_NONE))
 			{
 				App->audio->PlayFx(powerup_picked);
-				App->shield->Enable();
+				//App->shield->Enable();
 				App->player->Shield++;
 				App->user_interface->score1 += score;
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
-				App->shield_p2->Enable();
+				//App->shield_p2->Enable();
 				App->player2->Shield2++;
 				App->audio->PlayFx(powerup_picked);
 				App->user_interface->score2 += score;

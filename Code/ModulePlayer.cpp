@@ -16,6 +16,7 @@
 #include "ModuleBonus.h"
 #include "ModuleUserInterface.h"
 #include "ModuleShield.h"
+#include "ModuleShotGravity.h"
 
 ModulePlayer::ModulePlayer()
 {
@@ -495,8 +496,20 @@ update_status ModulePlayer::Update()
 
 			}
 
+			if (ShootPowerUpLevel_2 >= 1) // 
+			{
+				if (ShootPowerUpLevel_2 >= 2 && t > 100)
+				{
+					//App->audio->PlayFx(laser1);
+				}
 
-
+				if (t > 100)
+				{
+					App->gravity_shot->Enable();
+					App->audio->PlayFx(laser1); //2 change
+					t = 0;
+				}
+			}
 		}
 
 		// TYPE-4, PRIMARY WEAP
