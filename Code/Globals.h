@@ -48,11 +48,4 @@ typedef unsigned int uint;
 #define WASP_HP 5
 #define XWING_HP 5
 
-
-
-
-
-
-
-
 #endif // __GLOBALS_H__

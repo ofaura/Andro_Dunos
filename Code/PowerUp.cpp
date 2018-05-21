@@ -11,6 +11,7 @@
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
+#include "ModuleUserInterface.h"
 
 #include <cstdio>
 #include <cstdlib>
@@ -350,12 +351,14 @@ void PowerUp::OnCollision(Collider* collider)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->player->ShootPowerUpLevel++;
+				App->user_interface->score1 += score;
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->player2->ShootPowerUpLevel2++;
+				App->user_interface->score2 += score;
 			}
 		}
 
@@ -365,12 +368,14 @@ void PowerUp::OnCollision(Collider* collider)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->player->ShootPowerUpLevel_2++;
+				App->user_interface->score1 += score;
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->player2->ShootPowerUpLevel2_2++;
+				App->user_interface->score2 += score;
 			}
 		}
 
@@ -384,12 +389,14 @@ void PowerUp::OnCollision(Collider* collider)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->player->ShootPowerUpLevel_2++;
+				App->user_interface->score1 += score;
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->player2->ShootPowerUpLevel2_2++;
+				App->user_interface->score2 += score;
 			}
 		}
 		else
@@ -397,7 +404,9 @@ void PowerUp::OnCollision(Collider* collider)
 			if ((collider->type == COLLIDER_PLAYER || collider->type == COLLIDER_NONE))
 			{
 				App->audio->PlayFx(powerup_picked);
+				App->shield->Enable();
 				App->player->Shield++;
+				App->user_interface->score1 += score;
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
@@ -405,6 +414,7 @@ void PowerUp::OnCollision(Collider* collider)
 				App->audio->PlayFx(powerup_picked);
 				App->shield_p2->Enable();
 				App->player2->Shield2++;
+				App->user_interface->score2 += score;
 			}
 		}
 
@@ -417,12 +427,14 @@ void PowerUp::OnCollision(Collider* collider)
 			if ((collider->type == COLLIDER_PLAYER || collider->type == COLLIDER_NONE))
 			{
 				App->audio->PlayFx(powerup_picked);
+				App->user_interface->score1 += score;
 				// it's a homing missile, it ain't even started yet
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
 				App->audio->PlayFx(powerup_picked);
+				App->user_interface->score2 += score;
 				// it's a homing missile, it ain't even started yet
 			}
 		}
@@ -433,6 +445,7 @@ void PowerUp::OnCollision(Collider* collider)
 				App->audio->PlayFx(powerup_picked);
 				App->shield->Enable();
 				App->player->Shield++;
+				App->user_interface->score1 += score;
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
@@ -440,6 +453,7 @@ void PowerUp::OnCollision(Collider* collider)
 				App->shield_p2->Enable();
 				App->player2->Shield2++;
 				App->audio->PlayFx(powerup_picked);
+				App->user_interface->score2 += score;
 			}
 		}
 	}
@@ -453,6 +467,7 @@ void PowerUp::OnCollision(Collider* collider)
 				App->audio->PlayFx(powerup_picked);
 				App->shield->Enable();
 				App->player->Shield++;
+				App->user_interface->score1 += score;
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
@@ -460,6 +475,7 @@ void PowerUp::OnCollision(Collider* collider)
 				App->shield_p2->Enable();
 				App->player2->Shield2++;
 				App->audio->PlayFx(powerup_picked);
+				App->user_interface->score2 += score;
 			}
 		}
 		else
@@ -468,12 +484,14 @@ void PowerUp::OnCollision(Collider* collider)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->player->ShootPowerUpLevel++;
+				App->user_interface->score1 += score;
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->player2->ShootPowerUpLevel2++;
+				App->user_interface->score2 += score;
 			}
 		}
 	}

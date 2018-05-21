@@ -32,6 +32,8 @@ public:
 	bool S_B = false, B_M = false, M_U = false, U_S = false;
 	int random;
 	void Move();
+
+	int score = 500;
 };
 
 #endif // __POWERUP_H__
