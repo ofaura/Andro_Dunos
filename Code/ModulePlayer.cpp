@@ -568,14 +568,14 @@ update_status ModulePlayer::Update()
 					App->particles->AddParticle(App->particles->missile4[1], position.x + 8, position.y + 13, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->missile4[2], position.x + 3, position.y - 6, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->missile4[3], position.x + 3, position.y + 5, COLLIDER_PLAYER_SHOT);
-
+					App->audio->PlayFx(laser4);
 				}
 
 				if (t > 100)
 				{
 					App->particles->AddParticle(App->particles->missile4[0], position.x + 8, position.y + 1, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->missile4[1], position.x + 8, position.y + 13, COLLIDER_PLAYER_SHOT);
-					//App->audio->PlayFx(laser4);
+					App->audio->PlayFx(laser4);
 					t = 0;
 				}
 			}
