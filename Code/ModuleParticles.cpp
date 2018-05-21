@@ -528,6 +528,7 @@ bool ModuleParticles::Start()
 	laser4[8].anim.PushBack({ 41, 49, 13, 12 });
 	laser4[8].anim.PushBack({ 41, 49, 13, 12 });
 	laser4[8].anim.PushBack({ 41, 49, 13, 12 });
+	laser4[8].anim.PushBack({ 41, 64, 13, 14 });
 	laser4[8].anim.loop = false;
 	laser4[8].speed.x = 8;
 	laser4[8].speed.y = 1;
@@ -545,6 +546,7 @@ bool ModuleParticles::Start()
 	laser4[9].anim.PushBack({ 41, 49, 13, 12 });
 	laser4[9].anim.PushBack({ 41, 49, 13, 12 });
 	laser4[9].anim.PushBack({ 41, 49, 13, 12 });
+	laser4[9].anim.PushBack({ 41, 64, 13, 14 });
 	laser4[9].anim.loop = false;
 	laser4[9].speed.x = 8;
 	laser4[9].speed.y = -1;
@@ -567,6 +569,43 @@ bool ModuleParticles::Start()
 	laser4[10].speed.x = 8;
 	laser4[10].anim.speed = 0.75f;
 	laser4[10].life = 2000;
+
+	laser4[11].anim.PushBack({ 41, 11, 13, 1 });
+	laser4[11].anim.PushBack({ 41, 23, 13, 6 });
+	laser4[11].anim.PushBack({ 41, 23, 13, 6 });
+	laser4[11].anim.PushBack({ 41, 23, 13, 6 });
+	laser4[11].anim.PushBack({ 41, 38, 13, 8 });
+	laser4[11].anim.PushBack({ 41, 38, 13, 8 });
+	laser4[11].anim.PushBack({ 41, 38, 13, 8 });
+	laser4[11].anim.PushBack({ 41, 49, 13, 12 });
+	laser4[11].anim.PushBack({ 41, 49, 13, 12 });
+	laser4[11].anim.PushBack({ 41, 49, 13, 12 });
+	laser4[11].anim.PushBack({ 41, 49, 13, 12 });
+	laser4[11].anim.PushBack({ 41, 64, 13, 14 });
+	laser4[11].anim.loop = false;
+	laser4[11].speed.x = 8;
+	laser4[11].speed.y = 2;
+	laser4[11].anim.speed = 0.75f;
+	laser4[11].life = 2000;
+
+	laser4[12].anim.PushBack({ 41, 11, 13, 1 });
+	laser4[12].anim.PushBack({ 41, 23, 13, 6 });
+	laser4[12].anim.PushBack({ 41, 23, 13, 6 });
+	laser4[12].anim.PushBack({ 41, 23, 13, 6 });
+	laser4[12].anim.PushBack({ 41, 38, 13, 8 });
+	laser4[12].anim.PushBack({ 41, 38, 13, 8 });
+	laser4[12].anim.PushBack({ 41, 38, 13, 8 });
+	laser4[12].anim.PushBack({ 41, 49, 13, 12 });
+	laser4[12].anim.PushBack({ 41, 49, 13, 12 });
+	laser4[12].anim.PushBack({ 41, 49, 13, 12 });
+	laser4[12].anim.PushBack({ 41, 49, 13, 12 });
+	laser4[12].anim.PushBack({ 41, 64, 13, 14 });
+	laser4[12].anim.loop = false;
+	laser4[12].speed.x = 8;
+	laser4[12].speed.y = -2;
+	laser4[12].anim.speed = 0.75f;
+	laser4[12].life = 2000;
+
 
 	//PLayer scond weapon	
 
