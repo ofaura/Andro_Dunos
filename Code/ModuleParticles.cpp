@@ -284,6 +284,13 @@ bool ModuleParticles::Start()
 	enemy_shot_orange9d.speed.x += 2;
 	enemy_shot_orange9d.life = 2000;
 
+	big_shot.anim.PushBack({ 363, 192, 32, 14 });
+	big_shot.anim.PushBack({ 421, 192, 32, 14 });
+	big_shot.anim.loop = true;
+	big_shot.anim.speed = 0.5f;
+	big_shot.speed.x -= 3;
+	big_shot.life = 3000;
+
 	// Enemy missiles
 	enemy_missile1.anim.PushBack({ 264, 188, 15, 10 });
 	enemy_missile1.anim.PushBack({ 284, 188, 20, 10 });

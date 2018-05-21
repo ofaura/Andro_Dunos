@@ -11,8 +11,6 @@ private:
 	int original_y = 0;
 
 	Animation fly;
-	Animation open;
-	Animation close;
 	Path path;
 
 	uint lastTimeShoot = 0, currentTime;
