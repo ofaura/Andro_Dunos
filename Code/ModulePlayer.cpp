@@ -580,7 +580,8 @@ update_status ModulePlayer::Update()
 
 				if (t > 100)
 				{
-					//App->particles->AddParticle(App->particles->missile2_1, position.x + 5, position.y + 15, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->missile4[0], position.x + 8, position.y + 7, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->missile4[1], position.x + 8, position.y + 15, COLLIDER_PLAYER_SHOT);
 					//App->audio->PlayFx(laser4);
 					t = 0;
 				}
