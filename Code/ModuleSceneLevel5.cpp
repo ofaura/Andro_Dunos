@@ -115,7 +115,7 @@ bool ModuleSceneLevel5::Start()
 	App->user_interface->Enable();
 
 	// Reseting the camera to the start of the level
-	App->render->camera.x =	App->render->camera.y = 0;
+	App->render->camera.x = App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
 	App->render->camera.h = SCREEN_HEIGHT;
 
@@ -249,9 +249,6 @@ bool ModuleSceneLevel5::Start()
 	// Enemy ninja ball
 	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 500, 150);
 
-	// Missile thrower
-	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 700, 100);
-
 	// Green plane
 	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_PLANE, 5300, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_PLANE, 5320, 140);
@@ -260,6 +257,12 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_PLANE, 5380, 170);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_PLANE, 5400, 170);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_PLANE, 5420, 170);
+
+	// Missile thrower
+	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 5720, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 5760, 70);
+	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 5800, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 5840, 60);
 
 	// Spaceship
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6205, 50);

@@ -40,8 +40,8 @@ Enemy_MissileThrower::Enemy_MissileThrower(int x, int y) : Enemy(x, y)
 
 	// Path
 	path.PushBack({ -1.0f, 0.0f }, 70);
-	path.PushBack({ 0.0f, 0.0f }, 100);
-	path.PushBack({ -0.5f, -1.0f }, 50);
+	path.PushBack({ 0.0f, 0.0f }, 150);
+	path.PushBack({ -0.5f, -0.8f }, 50);
 	path.PushBack({ 2.0f, 0.0f }, 2000);
 
 	collider = App->collision->AddCollider({ 0, 0, 27, 18 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
@@ -56,12 +56,12 @@ void Enemy_MissileThrower::Move()
 {
 	currentTime = SDL_GetTicks();
 
-	if (currentTime > lastTime + 1000 && missileFired == true) // Returns in 1.2 seconds
+	if (currentTime > lastTime + 1500 && missileFired == true) // Returns in 1.2 seconds
 	{
 		animation = &fly_turn;
 	}
 
-	if ((position.x - App->player->position.x) < 250 && missileFired == false) //Fires a missile
+	if ((position.x - App->player->position.x) < 200 && missileFired == false) //Fires a missile
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_MISSILE1, position.x, position.y);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_MISSILE2, position.x + 14, position.y - 1);
