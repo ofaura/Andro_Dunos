@@ -57,7 +57,7 @@ public:
 	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, int up , int left, Uint32 delay = 0);
 
 	Animation g_shot;
-	Accel_Shot gravity_shot;
+	Accel_Shot gravity_shot, gravity_shot_2;
 
 private:
 

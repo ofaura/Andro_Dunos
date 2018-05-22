@@ -35,6 +35,11 @@ bool ModuleShotGravity::Start()
 	gravity_shot.anim.speed = 1.0f;
 	gravity_shot.life = 2000;
 
+	gravity_shot_2.anim.PushBack({ 386, 15, 8, 9 });
+	gravity_shot_2.anim.loop = false;
+	gravity_shot_2.anim.speed = 1.0f;
+	gravity_shot_2.life = 2000;
+
 	return true;
 }
 
@@ -158,23 +163,27 @@ bool Accel_Shot::Update()
 			ret = false;
 	
 	//
-	if ((1 * time_2)/2 >= 20)
+	if (type == GRAVITY_SHOT)
 	{
-		position.y += up*10;
-	}
-	else
-	{
-		position.y += 0.5 * (time_2 / 2)*up;
-	}
+		if ((1 * time_2) / 2 >= 20)
+		{
+			position.y += up * 10;
+		}
+		else
+		{
+			position.y += 0.5 * (time_2 / 2)*up;
+		}
 
-	if (left == -1)
-	{
-		position.x += left * 2;
+		if (left == -1)
+		{
+			position.x += left * 2;
+		}
+		else
+		{
+			position.x += left * 3;
+		}
 	}
-	else
-	{
-		position.x += left * 3;
-	}
+	else if (type == HOMING_MISSILE) {}
 
 	time++;
 
@@ -182,7 +191,6 @@ bool Accel_Shot::Update()
 	{
 		time_2++;
 	}
-
 	//
 
 	if (collider != nullptr)

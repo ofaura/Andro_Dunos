@@ -501,14 +501,14 @@ update_status ModulePlayer::Update()
 			{
 				if (ShootPowerUpLevel_2 >= 3 && t > 100)
 				{
-					App->accel_shot->AddShot(App->accel_shot->gravity_shot, position.x + 10, position.y + 5, GRAVITY_SHOT, -1, -1); // HOMING MISSILE
+					App->accel_shot->AddShot(App->accel_shot->gravity_shot_2, position.x + 10, position.y + 5, GRAVITY_SHOT, -1, -1); // HOMING MISSILE
 					App->accel_shot->AddShot(App->accel_shot->gravity_shot, position.x + 10, position.y + 5, GRAVITY_SHOT, 1, -1); // HOMING MISSILE
 					App->audio->PlayFx(laser1); //2 change
 				}
 
 				if (ShootPowerUpLevel_2 >= 2 && t > 100)
 				{
-				App->accel_shot->AddShot(App->accel_shot->gravity_shot, position.x, position.y + 5, GRAVITY_SHOT, -1, 1); // HOMING MISSILE
+				App->accel_shot->AddShot(App->accel_shot->gravity_shot_2, position.x, position.y + 5, GRAVITY_SHOT, -1, 1); // HOMING MISSILE
 				App->audio->PlayFx(laser1); //2 change
 				}
 
