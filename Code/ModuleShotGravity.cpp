@@ -116,6 +116,28 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 	}
 }
 
+void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay)
+{
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		if (active[i] == nullptr)
+		{
+			Accel_Shot* p = new Accel_Shot(particle);
+			p->born = SDL_GetTicks() + delay;
+			p->position.x = x;
+			p->position.y = y;
+			p->type = type;
+			// (Module*)App->enemies
+			if (type == GRAVITY_SHOT || type == HOMING_MISSILE)
+			{
+				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), COLLIDER_PLAYER_SHOT, this);
+			}
+			active[i] = p;
+			break;
+		}
+	}
+}
+
 // Every time a particle hits a wall it triggers an explosion particle
 void ModuleShotGravity::OnCollision(Collider* c1, Collider* c2) // add Collider* c2, if problems arise
 {
