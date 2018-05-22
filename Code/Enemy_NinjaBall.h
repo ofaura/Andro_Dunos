@@ -9,7 +9,9 @@ private:
 	float wave = -1.0f;
 	bool going_up = true;
 	int original_y = 0;
+	int original_x = 0;
 	Animation fly;
+	Animation nth;
 	Animation spawn;
 
 	uint lastTime = 0, currentTime;

@@ -11,6 +11,8 @@
 Enemy_NinjaBall::Enemy_NinjaBall(int x, int y) : Enemy(x, y)
 {
 
+	nth.PushBack({ 0,0,0,0 });
+
 	spawn.PushBack({ 180, 536, 28, 20 });
 	spawn.PushBack({ 216, 536, 28, 20 });
 	spawn.PushBack({ 251, 536, 28, 20 });
@@ -30,24 +32,36 @@ Enemy_NinjaBall::Enemy_NinjaBall(int x, int y) : Enemy(x, y)
 	fly.speed = 0.2f;
 	fly.loop = true;
 
-	animation = &spawn;
+	//animation = &spawn;
 
 	collider = App->collision->AddCollider({ 0, 0, 20, 20 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
+	original_x = x;
 	HP = FIRST;
 }
 
 void Enemy_NinjaBall::Move()
 {
 	currentTime = SDL_GetTicks();
+	if ((original_x - position.x) < 40)
+	{
+		animation = &nth;
+		position.x -= 1;
+		//lastTime = currentTime;
+	}
 
-	if (currentTime > lastTime + 800)
+	else if (currentTime < lastTime + 9000)
+	{
+		animation = &spawn;		
+	}
+
+	else
 	{
 		animation = &fly;
 		position.x -= 3;
-
 	}
+
 }
 
 void Enemy_NinjaBall::OnCollision(Collider* collider)
