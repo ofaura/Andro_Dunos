@@ -28,7 +28,7 @@ public:
 
 	uint boss_death;
 
-	bool introPlayed = false;
+	bool musicPlayed = false;
 
 	uint lastTime = 0, currentTime;
 

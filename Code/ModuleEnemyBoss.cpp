@@ -57,17 +57,18 @@ update_status ModuleEnemyBoss::Update()
 {
 	currentTime = SDL_GetTicks();
 
-	if (currentTime > lastTime + 9000 && introPlayed == false)
+	if (currentTime > lastTime + 9000 && musicPlayed == false)
 	{
 		App->audio->PlayMusic("Assets/Audio/Music/bossLoop.ogg", 0.0f); //Loop music
-		introPlayed = true;
+		musicPlayed = true;
 	}
 
 	current_animation = &NeoGeo;
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
 	// Draw everything --------------------------------------
-	//App->render->Blit(graphics, 44, 80, &r, 1);
+	App->render->Blit(graphics, 7395, 30, &upHalf, 1.0f, true);
+	App->render->Blit(graphics, 7393, 110, &downHalf, 1.0f, true);
 
 	return UPDATE_CONTINUE;
 }

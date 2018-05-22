@@ -33,7 +33,7 @@
     <Filter Include="Modules\Interactions">
       <UniqueIdentifier>{ebeb7c12-5d00-4434-a2a2-2accb5fd8b78}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\Scenes\Media">
+    <Filter Include="Modules\Media">
       <UniqueIdentifier>{71b8f79e-53aa-4141-903d-e61126c85918}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -84,22 +84,22 @@
       <Filter>Modules\Players</Filter>
     </ClInclude>
     <ClInclude Include="ModuleWindow.h">
-      <Filter>Modules\Scenes\Media</Filter>
+      <Filter>Modules\Media</Filter>
     </ClInclude>
     <ClInclude Include="ModuleTextures.h">
-      <Filter>Modules\Scenes\Media</Filter>
+      <Filter>Modules\Media</Filter>
     </ClInclude>
     <ClInclude Include="ModuleRender.h">
-      <Filter>Modules\Scenes\Media</Filter>
+      <Filter>Modules\Media</Filter>
     </ClInclude>
     <ClInclude Include="ModuleInput.h">
-      <Filter>Modules\Scenes\Media</Filter>
+      <Filter>Modules\Media</Filter>
     </ClInclude>
     <ClInclude Include="ModuleAudio.h">
-      <Filter>Modules\Scenes\Media</Filter>
+      <Filter>Modules\Media</Filter>
     </ClInclude>
     <ClInclude Include="ModuleFonts.h">
-      <Filter>Modules\Scenes\Media</Filter>
+      <Filter>Modules\Media</Filter>
     </ClInclude>
     <ClInclude Include="ModuleCollision.h">
       <Filter>Modules\Interactions</Filter>
@@ -242,22 +242,22 @@
       <Filter>Modules\Players</Filter>
     </ClCompile>
     <ClCompile Include="ModuleWindow.cpp">
-      <Filter>Modules\Scenes\Media</Filter>
+      <Filter>Modules\Media</Filter>
     </ClCompile>
     <ClCompile Include="ModuleTextures.cpp">
-      <Filter>Modules\Scenes\Media</Filter>
+      <Filter>Modules\Media</Filter>
     </ClCompile>
     <ClCompile Include="ModuleRender.cpp">
-      <Filter>Modules\Scenes\Media</Filter>
+      <Filter>Modules\Media</Filter>
     </ClCompile>
     <ClCompile Include="ModuleInput.cpp">
-      <Filter>Modules\Scenes\Media</Filter>
+      <Filter>Modules\Media</Filter>
     </ClCompile>
     <ClCompile Include="ModuleAudio.cpp">
-      <Filter>Modules\Scenes\Media</Filter>
+      <Filter>Modules\Media</Filter>
     </ClCompile>
     <ClCompile Include="ModuleFonts.cpp">
-      <Filter>Modules\Scenes\Media</Filter>
+      <Filter>Modules\Media</Filter>
     </ClCompile>
     <ClCompile Include="ModuleCollision.cpp">
       <Filter>Modules\Interactions</Filter>
