@@ -5,7 +5,9 @@
 #include "ModuleRender.h"
 
 Enemy::Enemy(int x, int y) : position(x, y)
-{}
+{
+	//type = OTHERS;
+}
 
 Enemy::~Enemy()
 {

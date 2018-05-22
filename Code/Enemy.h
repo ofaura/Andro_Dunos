@@ -7,6 +7,12 @@
 struct SDL_Texture;
 struct Collider;
 
+enum Enemy_Type
+{
+	POWER_UP = 0,
+	OTHERS
+};
+
 class Enemy
 {
 protected:
@@ -16,6 +22,7 @@ protected:
 public:
 	iPoint position;
 	int HP;
+	Enemy_Type type = OTHERS;
 
 public:
 	Enemy(int x, int y);

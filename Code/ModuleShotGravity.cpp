@@ -63,7 +63,6 @@ bool ModuleShotGravity::CleanUp()
 	LOG("Unloading particles");
 	App->textures->Unload(graphics);
 
-
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		if (active[i] != nullptr)
@@ -147,12 +146,12 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 
 			for (int counter = 0; counter < MAX_ENEMIES && p->target_aquired == false; counter++)
 			{
-				if (App->enemies->enemies[counter] != nullptr)
+				if (App->enemies->enemies[counter] != nullptr && App->enemies->enemies[counter]->type != POWER_UP)
 				{
 					if ((App->enemies->enemies[counter]->position.x >= abs(App->render->camera.x) / SCREEN_SIZE) &&
-						(App->enemies->enemies[counter]->position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH - 27))) &&
+						(App->enemies->enemies[counter]->position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH)) &&
 						(App->enemies->enemies[counter]->position.y >= abs(App->render->camera.y) / SCREEN_SIZE) &&
-						(App->enemies->enemies[counter]->position.y <= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 17))
+						(App->enemies->enemies[counter]->position.y <= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT))
 					{
 						p->enemy = App->enemies->enemies[counter];
 						p->target_aquired = true;
@@ -245,7 +244,26 @@ bool Accel_Shot::Update()
 		{
 			int dif_pos[2];
 			int vel[2];
+			
+			if (this->enemy == nullptr)
+			{
+				for (int counter = 0; counter < MAX_ENEMIES; counter++)
+				{
+					if (App->enemies->enemies[counter] != nullptr && App->enemies->enemies[counter]->type != POWER_UP)
+					{
+						if ((App->enemies->enemies[counter]->position.x >= abs(App->render->camera.x) / SCREEN_SIZE) &&
+							(App->enemies->enemies[counter]->position.x <= (((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH))) &&
+							(App->enemies->enemies[counter]->position.y >= abs(App->render->camera.y) / SCREEN_SIZE) &&
+							(App->enemies->enemies[counter]->position.y <= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT))
+						{
+							this->enemy = App->enemies->enemies[counter];
+							break;
+						}
+					}
+				}
+			}
 
+			// proces: start
 			dif_pos[x] = enemy->position.x - position.x;
 			dif_pos[y] = enemy->position.y - position.y;
 
@@ -256,6 +274,7 @@ bool Accel_Shot::Update()
 
 			position.x += vel[x];
 			position.y += vel[y];
+			// proces: end. velocity equations come from solving trigonometric problem on paper
 		}
 		else
 		{

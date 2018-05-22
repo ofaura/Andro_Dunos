@@ -33,6 +33,8 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 {
 	srand(time(NULL)); // doesn't let me do time(NULL)
 
+	type = POWER_UP;
+
 	powerup_picked = App->audio->LoadFx("Assets/Audio/Sound FX/powerup_picked.wav");
 	graphics = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
 	HP = -1;

@@ -269,10 +269,19 @@ update_status ModulePlayer::Update()
 		t++;
 		t_missile++;
 
+
 		// TYPE-1, PRIMARY WEAP
 		if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN //|| (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A)) == 1
 			|| App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT) /*|| (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A)) == 1)*/ && type == bullet_type::TYPE_1)
 		{
+			if (HomingMissile >= 1 && t_missile >= 100)
+			{
+				//App->accel_shot->AddShot(App->accel_shot->gravity_shot, position.x, position.y + 5, GRAVITY_SHOT, 1, 1);
+				//AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay);
+				App->accel_shot->AddShot(App->accel_shot->homing_missile, position.x, position.y, HOMING_MISSILE);
+				t_missile = 0;
+			}
+
 			if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) //|| (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A)) == 1)
 			{
 				if (ShootPowerUpLevel == 1) {
@@ -348,15 +357,6 @@ update_status ModulePlayer::Update()
 				t = 0;
 			}
 
-			//TYPE_1, HOMING MISSILE
-
-			if (HomingMissile >= 1 && t_missile >= 100)
-			{
-				//App->accel_shot->AddShot(App->accel_shot->gravity_shot, position.x, position.y + 5, GRAVITY_SHOT, 1, 1);
-				//AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay);
-				App->accel_shot->AddShot(App->accel_shot->homing_missile, position.x, position.y, HOMING_MISSILE);
-				t_missile = 0;
-			}
 
 		}
 
@@ -366,6 +366,14 @@ update_status ModulePlayer::Update()
 		{
 			if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) //|| (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A)) == 1)
 			{
+				if (HomingMissile >= 1 && t_missile >= 100)
+				{
+					//App->accel_shot->AddShot(App->accel_shot->gravity_shot, position.x, position.y + 5, GRAVITY_SHOT, 1, 1);
+					//AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay);
+					App->accel_shot->AddShot(App->accel_shot->homing_missile, position.x, position.y, HOMING_MISSILE);
+					t_missile = 0;
+				}
+
 				if (ShootPowerUpLevel == 1)
 				{
 					App->particles->AddParticle(App->particles->laser2_1, position.x + 15, position.y + 12, COLLIDER_PLAYER_SHOT);
@@ -469,6 +477,14 @@ update_status ModulePlayer::Update()
 		{
 			if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) //|| (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A)) == 1)
 			{
+				if (HomingMissile >= 1 && t_missile >= 100)
+				{
+					//App->accel_shot->AddShot(App->accel_shot->gravity_shot, position.x, position.y + 5, GRAVITY_SHOT, 1, 1);
+					//AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay);
+					App->accel_shot->AddShot(App->accel_shot->homing_missile, position.x, position.y, HOMING_MISSILE);
+					t_missile = 0;
+				}
+
 				if (ShootPowerUpLevel == 1) {
 					App->particles->AddParticle(App->particles->laser3[0], position.x + 19, position.y + 11, COLLIDER_PLAYER_SHOT);
 					App->audio->PlayFx(laser3);
@@ -536,6 +552,14 @@ update_status ModulePlayer::Update()
 		else if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN
 			|| App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT) /*|| (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A)) == 1)*/ && type == bullet_type::TYPE_4)
 		{
+			if (HomingMissile >= 1 && t_missile >= 100)
+			{
+				//App->accel_shot->AddShot(App->accel_shot->gravity_shot, position.x, position.y + 5, GRAVITY_SHOT, 1, 1);
+				//AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay);
+				App->accel_shot->AddShot(App->accel_shot->homing_missile, position.x, position.y, HOMING_MISSILE);
+				t_missile = 0;
+			}
+
 			if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) //|| (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A)) == 1)
 			{
 				if (ShootPowerUpLevel == 1) {

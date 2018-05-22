@@ -65,12 +65,13 @@ public:
 	Animation g_shot;
 	Accel_Shot gravity_shot, gravity_shot_2;
 	Accel_Shot homing_missile;
+	Accel_Shot* active[MAX_ACTIVE_PARTICLES];
 
 private:
 
 
 	SDL_Texture * graphics = nullptr;
 	SDL_Texture* enemy_death = nullptr;
-	Accel_Shot* active[MAX_ACTIVE_PARTICLES];
+
 };
 #endif // !_MODULE_SHIELD_
