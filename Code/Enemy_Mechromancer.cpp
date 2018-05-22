@@ -24,13 +24,7 @@ void Enemy_Mechromancer::Move()
 {
 	currentTime = SDL_GetTicks();
 
-	if (currentTime > lastTimeShoot + 3000 && shots >= 4) // Shoots every 3 seconds
-	{
-		App->particles->AddParticle(App->particles->enemy_shot_yellow1, position.x - 7, position.y + 4, COLLIDER_ENEMY_SHOT);
-		lastTimeShoot = currentTime;
-		shots++;
-	}
-	else if (currentTime > lastTimeShoot + 400) {
+	 if (currentTime > lastTimeShoot + 400 && pathCreated && original_x + 550 > position.x) {
 		App->particles->AddParticle(App->particles->big_shot, position.x, position.y + 15, COLLIDER_ENEMY_SHOT);
 		lastTimeShoot = currentTime;
 	}
@@ -58,6 +52,7 @@ void Enemy_Mechromancer::Move()
 		path.PushBack({ 3.0f, 0.0f }, 2000);
 		
 		pathCreated = true;
+		lastTimeShoot = currentTime + 2000;
 	}
 
 	if (pathCreated) {
