@@ -52,7 +52,7 @@ void Enemy_Mechromancer::Move()
 		path.PushBack({ 3.0f, 0.0f }, 2000);
 		
 		pathCreated = true;
-		lastTimeShoot = currentTime + 2000;
+		lastTimeShoot = currentTime + 3000;
 	}
 
 	if (pathCreated) {
