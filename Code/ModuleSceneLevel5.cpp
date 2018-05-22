@@ -116,15 +116,14 @@ bool ModuleSceneLevel5::Start()
 	App->user_interface->Enable();
 
 	// Reseting the camera to the start of the level
-	App->render->camera.x = 4000;
-	App->render->camera.y = 0;
+	App->render->camera.x = App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
 	App->render->camera.h = SCREEN_HEIGHT;
 
 	//Enemies ---
 	App->enemies->Enable();	
 
-	//App->enemies->AddEnemy(ENEMY_TYPES::SOLAR_PANEL, 250, (SCREEN_HEIGHT / 2) - 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::SOLAR_PANEL, 250, (SCREEN_HEIGHT / 2) - 20);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 300, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 400, (SCREEN_HEIGHT / 2) - 20);
