@@ -200,6 +200,9 @@
     <ClInclude Include="ModuleShotGravity.h">
       <Filter>Modules\Weapons</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_Mechromancer.h">
+      <Filter>Modules\Enemies\Tank Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -351,6 +354,9 @@
     </ClCompile>
     <ClCompile Include="ModuleShotGravity.cpp">
       <Filter>Modules\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Mechromancer.cpp">
+      <Filter>Modules\Enemies\Tank Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

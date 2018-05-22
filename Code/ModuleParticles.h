@@ -79,6 +79,8 @@ public:
 	Particle enemy_shot_blue5;
 	Particle enemy_shot_blue6;
 
+	Particle big_shot;
+
 	// Shoots of the little turrets
 	Particle enemy_shot_orange1u;
 	Particle enemy_shot_orange2u;
