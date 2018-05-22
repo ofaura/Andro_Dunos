@@ -162,10 +162,10 @@ bool Accel_Shot::Update()
 	}
 	else
 	{
-		position.y += 1 * (time_2 / 2);
+		position.y += 0.5 * (time_2 / 2);
 	}
 
-	position.x += 4;
+	position.x += 3;
 
 
 	time++;
