@@ -121,7 +121,7 @@ bool ModuleSceneLevel5::Start()
 
 	//Enemies ---
 	App->enemies->Enable();	
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MECHROMANCER, 250, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MECHROMANCER, 250, 30);
 	//App->enemies->AddEnemy(ENEMY_TYPES::SOLAR_PANEL, 250, (SCREEN_HEIGHT / 2) - 20);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 300, (SCREEN_HEIGHT / 2) - 20);
@@ -245,6 +245,11 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_DOWN, 590, 240);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_DOWN, 610, 240);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_DOWN, 630, 240);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_DOWN, 4890, 240);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_DOWN, 4910, 240);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_DOWN, 4930, 240);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_DOWN, 4950, 240);
 	
 	// Enemy ninja ball
 	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 500, 150);
@@ -265,14 +270,10 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::MISSILE_THROWER, 5840, 60);
 
 	// Spaceship
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6205, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6220, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6235, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6250, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6265, 50);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6205, 160);
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6220, 160);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6235, 160);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6250, 160);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPACESHIP, 6265, 160);

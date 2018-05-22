@@ -13,9 +13,10 @@ Enemy_Mechromancer::Enemy_Mechromancer(int x, int y) : Enemy(x, y)
 {
 	fly.PushBack({ 149, 637, 43, 44 });
 
-	path.PushBack({ 0.0f, -2.0f }, 30);
 	path.PushBack({ 0.0f, 0.0f }, 120);
-	path.PushBack({ 0.0f, 2.0f }, 30);
+	path.PushBack({ 0.0f, -1.0f }, 50);
+	path.PushBack({ 0.0f, 0.0f }, 50);
+	path.PushBack({ 0.0f, 2.0f }, 70);
 
 	collider = App->collision->AddCollider({ 0, 0, 43, 44 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -34,12 +35,13 @@ void Enemy_Mechromancer::Move()
 		lastTimeShoot = currentTime;
 		shots++;
 	}
-	else if (currentTime > lastTimeShoot + 2000) {
+	else if (currentTime > lastTimeShoot + 600) {
 		App->particles->AddParticle(App->particles->big_shot, position.x, position.y + 15, COLLIDER_ENEMY_SHOT);
 		lastTimeShoot = currentTime;
 	}
 
 	position.y = original_y + path.GetCurrentPosition().y;
+	position.x++;
 	collider->SetPos(position.x, position.y);
 }
 
