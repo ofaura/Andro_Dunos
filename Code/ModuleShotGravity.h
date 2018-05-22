@@ -6,6 +6,8 @@
 #include "Globals.h"
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
+#include "ModuleEnemies.h"
+#include "Enemy.h"
 #include "p2Point.h"
 
 #define MAX_ACTIVE_PARTICLES 1000
@@ -28,13 +30,15 @@ struct Accel_Shot
 	uint fx = 0;
 	iPoint position;
 	int damage;
-	int time, time_2;
+	int time_1, time_2;
 	int up = 1;
 	int left = 1;
 	Uint32 born = 0;
 	Uint32 life = 0;
 	bool fx_played = false;
 	Accel_Shot_Type type;
+	Enemy* enemy;
+	bool target_aquired;
 
 	Accel_Shot();
 	Accel_Shot(const Accel_Shot& p);
@@ -55,10 +59,12 @@ public:
 	void OnCollision(Collider* c1, Collider* c2);
 
 	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, int up , int left, Uint32 delay = 0);
-	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay);
+	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay = 0);
+
 
 	Animation g_shot;
 	Accel_Shot gravity_shot, gravity_shot_2;
+	Accel_Shot homing_missile;
 
 private:
 

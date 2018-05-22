@@ -11,9 +11,18 @@
 #include "ModulePlayer2.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
+#include "ModuleEnemies.h"
+#include "time.h"
+#include <stdio.h> 
+#include <stdlib.h> 
 
 #include "SDL/include/SDL_timer.h"
 
+enum Pos
+{
+	x = 0,
+	y
+};
 
 ModuleShotGravity::ModuleShotGravity()
 {
@@ -39,6 +48,11 @@ bool ModuleShotGravity::Start()
 	gravity_shot_2.anim.loop = false;
 	gravity_shot_2.anim.speed = 1.0f;
 	gravity_shot_2.life = 2000;
+
+	homing_missile.anim.PushBack({ 338, 15, 10, 9 });
+	homing_missile.anim.loop = false;
+	homing_missile.anim.speed = 1.0f;
+	homing_missile.life = 2000;
 
 	return true;
 }
@@ -118,15 +132,34 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 
 void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay)
 {
+	srand(time(NULL));
+
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		if (active[i] == nullptr)
 		{
 			Accel_Shot* p = new Accel_Shot(particle);
+			p->target_aquired = false;
 			p->born = SDL_GetTicks() + delay;
 			p->position.x = x;
 			p->position.y = y;
 			p->type = type;
+
+			for (int counter = 0; counter < MAX_ENEMIES && p->target_aquired == false; counter++)
+			{
+				if (App->enemies->enemies[counter] != nullptr)
+				{
+					if ((App->enemies->enemies[counter]->position.x >= abs(App->render->camera.x) / SCREEN_SIZE) &&
+						(App->enemies->enemies[counter]->position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH - 27))) &&
+						(App->enemies->enemies[counter]->position.y >= abs(App->render->camera.y) / SCREEN_SIZE) &&
+						(App->enemies->enemies[counter]->position.y <= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 17))
+					{
+						p->enemy = App->enemies->enemies[counter];
+						p->target_aquired = true;
+					}
+				}
+			}
+
 			// (Module*)App->enemies
 			if (type == GRAVITY_SHOT || type == HOMING_MISSILE)
 			{
@@ -162,7 +195,7 @@ Accel_Shot::Accel_Shot()
 
 Accel_Shot::Accel_Shot(const Accel_Shot& p) :
 	anim(p.anim), position(p.position),
-	fx(p.fx), born(p.born), life(p.life), time(0), time_2(2)
+	fx(p.fx), born(p.born), life(p.life), time_1(0), time_2(2)
 {}
 
 Accel_Shot::~Accel_Shot()
@@ -205,11 +238,35 @@ bool Accel_Shot::Update()
 			position.x += left * 3;
 		}
 	}
-	else if (type == HOMING_MISSILE) {}
 
-	time++;
+	else if (type == HOMING_MISSILE)
+	{
+		if (target_aquired == true)
+		{
+			int dif_pos[2];
+			int vel[2];
 
-	if (time >= 5)
+			dif_pos[x] = enemy->position.x - position.x;
+			dif_pos[y] = enemy->position.y - position.y;
+
+			int div = dif_pos[x] / dif_pos[y];
+
+			vel[y] = sqrt(pow (5, 2) / (1 + pow (div, 2)));
+			vel[x] = (div)*vel[y] + 1;
+
+			position.x += vel[x];
+			position.y += vel[y];
+		}
+		else
+		{
+			position.x += 1;
+			position.y += 2;
+		}
+	}
+
+	time_1++;
+
+	if (time_1 >= 5)
 	{
 		time_2++;
 	}

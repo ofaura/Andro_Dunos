@@ -58,6 +58,7 @@ public:
 	Animation* missile[2];
 
 	int t, t_2, t_ani, ini_up, ini_down;
+	int t_missile;
 	int  ini_up_prime, ini_down_prime, t_ani_prime;
 	bool enable_missile1;
 

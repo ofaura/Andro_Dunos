@@ -85,6 +85,7 @@ bool ModulePlayer::Start()
 	ini_up = 0;
 	ini_down_prime = 9;
 	ini_up_prime = 0;
+	t_missile = 0;
 	enable_missile1 = false;
 
 	ani_miss_down.PushBack({ 296, 61, 12, 8 });
@@ -266,6 +267,7 @@ update_status ModulePlayer::Update()
 
 
 		t++;
+		t_missile++;
 
 		// TYPE-1, PRIMARY WEAP
 		if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN //|| (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A)) == 1
@@ -346,6 +348,15 @@ update_status ModulePlayer::Update()
 				t = 0;
 			}
 
+			//TYPE_1, HOMING MISSILE
+
+			if (HomingMissile >= 1 && t_missile >= 100)
+			{
+				//App->accel_shot->AddShot(App->accel_shot->gravity_shot, position.x, position.y + 5, GRAVITY_SHOT, 1, 1);
+				//AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay);
+				App->accel_shot->AddShot(App->accel_shot->homing_missile, position.x, position.y, HOMING_MISSILE);
+				t_missile = 0;
+			}
 
 		}
 

@@ -37,7 +37,7 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 	graphics = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
 	HP = -1;
 	//random = rand() % 4;
-	random = 1;
+	random = 2;
 
 	if (random == 0)
 	{
@@ -405,7 +405,7 @@ void PowerUp::OnCollision(Collider* collider)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->shield->Enable();
-				App->player->Shield++;
+				//App->player->HomingMissile++;
 				App->user_interface->score1 += score;
 
 			}
@@ -413,7 +413,7 @@ void PowerUp::OnCollision(Collider* collider)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->shield_p2->Enable();
-				App->player2->Shield2++;
+				//App->player2->HomingMi;
 				App->user_interface->score2 += score;
 			}
 		}
@@ -428,6 +428,7 @@ void PowerUp::OnCollision(Collider* collider)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->user_interface->score1 += score;
+				//App->player->HomingMissile++;
 				// it's a homing missile, it ain't even started yet
 
 			}

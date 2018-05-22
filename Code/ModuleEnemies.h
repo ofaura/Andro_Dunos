@@ -61,6 +61,7 @@ public:
 	uint greenRocket;
 
 	bool AddEnemy(ENEMY_TYPES type, int x, int y);
+	Enemy* enemies[MAX_ENEMIES];
 
 private:
 
@@ -69,7 +70,7 @@ private:
 private:
 
 	EnemyInfo queue[MAX_ENEMIES];
-	Enemy* enemies[MAX_ENEMIES];
+
 	SDL_Texture* sprites;
 };
 

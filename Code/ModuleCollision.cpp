@@ -146,6 +146,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_NONE_PLAYER_2][COLLIDER_SHIELD_1] = false;
 	matrix[COLLIDER_NONE_PLAYER_2][COLLIDER_SHIELD_2] = false;
 	matrix[COLLIDER_NONE_PLAYER_2][COLLIDER_NONE] = false;
+
 }
 
 // Destructor
