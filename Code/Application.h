@@ -55,7 +55,7 @@ public:
 	ModuleGameOver* game_over;
 	ModuleFonts* fonts;
 	ModuleEnemyBoss* boss;
-	ModuleShotGravity* gravity_shot;
+	ModuleShotGravity* accel_shot;
 
 public:
 

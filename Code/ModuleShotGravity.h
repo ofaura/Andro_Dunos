@@ -4,34 +4,64 @@
 #include "Module.h"
 #include "Animation.h"
 #include "Globals.h"
+#include "ModuleParticles.h"
+#include "ModuleCollision.h"
+#include "p2Point.h"
 
-#define ROT_STEPS (8)
+#define MAX_ACTIVE_PARTICLES 1000
 
 struct SDL_Texture;
+struct Collider;
+enum COLLIDER_TYPE;
 
-class ModuleShotGravity : public Module {
+enum Accel_Shot_Type
+{
+	GRAVITY_SHOT = 0,
+	HOMING_MISSILE
+
+};
+
+struct Accel_Shot
+{
+	Collider* collider = nullptr;
+	Animation anim;
+	uint fx = 0;
+	iPoint position;
+	int damage;
+	int time;
+	Uint32 born = 0;
+	Uint32 life = 0;
+	bool fx_played = false;
+	Accel_Shot_Type type;
+
+	Accel_Shot();
+	Accel_Shot(const Accel_Shot& p);
+	~Accel_Shot();
+	bool Update();
+	bool go;
+};
+
+class ModuleShotGravity : public Module
+{
 public:
 	ModuleShotGravity();
 	~ModuleShotGravity();
 
-	void OnCollision(Collider* col_1);
 	bool Start();
-	update_status Move();
+	update_status Update();
 	bool CleanUp();
+	void OnCollision(Collider* c1, Collider* c2);
 
-public:
+	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay = 0);
+
+	Animation g_shot;
+	Accel_Shot gravity_shot;
+
+private:
+
+
 	SDL_Texture * graphics = nullptr;
-	int t_g;
-	int up;
-	Animation ani1, ani2;
-	Animation* ani[2];
-
-	Animation* current_lvl;
-	int timer;
-
-	Collider* collider1;
-
-	iPoint position1, position2;
+	SDL_Texture* enemy_death = nullptr;
+	Accel_Shot* active[MAX_ACTIVE_PARTICLES];
 };
-
 #endif // !_MODULE_SHIELD_

@@ -34,7 +34,7 @@ Application::Application()
 	modules[i++] = NeoGeo = new ModuleIntroNeoGeo();
 	modules[i++] = start_menu = new ModuleStartMenu();
 	modules[i++] = bonus = new ModuleBonus();
-	modules[i++] = gravity_shot = new ModuleShotGravity();
+	modules[i++] = accel_shot = new ModuleShotGravity();
 	modules[i++] = shield = new ModuleShield();
 	modules[i++] = shield_p2 = new ModuleShield_p2();
 	modules[i++] = audio = new ModuleAudio();
@@ -71,7 +71,7 @@ bool Application::Init()
 	game_over->Disable();
 	shield->Disable();
 	shield_p2->Disable();
-	gravity_shot->Disable();
+	accel_shot->Disable();
 	boss->Disable();
 
 	collision->Disable();

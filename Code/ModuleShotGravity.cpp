@@ -12,70 +12,163 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 
-ModuleShotGravity::ModuleShotGravity() {
+#include "SDL/include/SDL_timer.h"
 
-	// ---- Animation for the base od the shield
-	ani1.PushBack({ 386, 30, 8, 9 });
-	ani1.loop = true;
-	ani1.speed = 0.2f;
-	ani[0] = &ani1;
 
-	ani2.PushBack({ 386, 15, 8, 9 });
-	ani2.loop = true;
-	ani2.speed = 0.2f;
-	ani[1] = &ani2;
-}
-
-ModuleShotGravity::~ModuleShotGravity() {}
-
-bool ModuleShotGravity::Start() {
-	bool ret = true;
-
-	graphics = App->textures->Load("Assets/Sprites/Particles/particle.png"); //Loads shield image bank
-
-	if (graphics == nullptr) ret = false; //failsafe for wrong address
-	
-	t_g = 0;
-	position1.x = App->player->position.x;
-	position1.y = App->player->position.y;
-	// ---- Declares colliders for shield parts individually
-	collider1 = App->collision->AddCollider({ position1.x, position1.y, 14, 16 }, COLLIDER_SHIELD_1, this);
-	up = 1;
-
-	return ret;
-}
-
-update_status ModuleShotGravity::Move() {
-
-	
-	position1.x = position1.x + 2;
-	position1.y = position1.y + up * (t_g * 2);
-
-	App->render->Blit(graphics, position1.x, position1.y, &(ani[0]->GetCurrentFrame()));
-	collider1->SetPos(position1.x, position1.y);
-	t_g++;
-
-	return update_status::UPDATE_CONTINUE;
-}
-
-void ModuleShotGravity::OnCollision(Collider* col_1)
+ModuleShotGravity::ModuleShotGravity()
 {
-
-	if (col_1->type == COLLIDER_PLAYER_SHOT || (col_1->type == COLLIDER_PLAYER) || col_1->type == COLLIDER_PLAYER_2)
-	{
-		App->particles->AddParticle(App->particles->enemy_explosion, position1.x, position1.y);
-	}
-
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+		active[i] = nullptr;
 }
 
-bool ModuleShotGravity::CleanUp() {
+ModuleShotGravity::~ModuleShotGravity()
+{}
 
-	// Remove all memory leaks
-	LOG("Unloading shield");
-	App->textures->Unload(graphics);
-
-	//Get rid of colliders;
-	collider1 = nullptr;
+// Load assets
+bool ModuleShotGravity::Start()
+{
+	LOG("Loading particles");
+	graphics = App->textures->Load("Assets/Sprites/Particles/particles.png");
+	// Explosion particle
+	// Enemy shots
+	// shot.anim.PushBack({ 328, 228, 8, 12 });
 
 	return true;
+}
+
+// Unload assets
+bool ModuleShotGravity::CleanUp()
+{
+	LOG("Unloading particles");
+	App->textures->Unload(graphics);
+
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		if (active[i] != nullptr)
+		{
+			delete active[i];
+			active[i] = nullptr;
+		}
+	}
+
+	return true;
+}
+
+// Update: draw background
+update_status ModuleShotGravity::Update()
+{
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		Accel_Shot* p = active[i];
+
+		if (p == nullptr)
+			continue;
+
+		if (p->Update() == false)
+		{
+			delete p;
+			active[i] = nullptr;
+		}
+		else if (SDL_GetTicks() >= p->born)
+		{
+			App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+
+			if (p->fx_played == false)
+			{
+				p->fx_played = true;
+				//Play your fx here
+			}
+		}
+	}
+
+	return UPDATE_CONTINUE;
+}
+
+void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay)
+{
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		if (active[i] == nullptr)
+		{
+			Accel_Shot* p = new Accel_Shot(particle);
+			p->born = SDL_GetTicks() + delay;
+			p->position.x = x;
+			p->position.y = y;
+			p->type = type;
+			if (type != GRAVITY_SHOT || type != HOMING_MISSILE)
+				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), COLLIDER_PLAYER_SHOT, this);
+			active[i] = p;
+			break;
+		}
+	}
+}
+
+// Every time a particle hits a wall it triggers an explosion particle
+void ModuleShotGravity::OnCollision(Collider* c1, Collider* c2) // add Collider* c2, if problems arise
+{
+
+
+
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+
+
+		if (active[i] != nullptr && active[i]->collider == c1)
+		{
+			// Always destroy particles that collide
+			delete active[i];
+			active[i] = nullptr;
+			break;
+
+		}
+	}
+}
+
+
+Accel_Shot::Accel_Shot()
+{
+	position.SetToZero();
+}
+
+Accel_Shot::Accel_Shot(const Accel_Shot& p) :
+	anim(p.anim), position(p.position),
+	fx(p.fx), born(p.born), life(p.life), time(0)
+{}
+
+Accel_Shot::~Accel_Shot()
+{
+	if (collider != nullptr)
+		collider->to_delete = true;
+}
+
+bool Accel_Shot::Update()
+{
+	bool ret = true;
+
+	if (life > 0)
+	{
+		if ((SDL_GetTicks() - born) > life)
+			ret = false;
+	}
+	else
+		if (anim.Finished())
+			ret = false;
+	
+	if (type == GRAVITY_SHOT )
+	{
+		position.x += 2;
+		position.y += 2 * time;
+	}
+
+	else
+	{
+
+	}
+
+	if (collider != nullptr)
+		collider->SetPos(position.x, position.y);
+
+	time++;
+
+	return ret;
 }

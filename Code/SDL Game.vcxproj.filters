@@ -21,9 +21,6 @@
     <Filter Include="Modules\Scenes">
       <UniqueIdentifier>{33a861ca-28cc-4c57-9f68-7d41cf62bd1c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\Media">
-      <UniqueIdentifier>{71b8f79e-53aa-4141-903d-e61126c85918}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Modules\Enemies\Basic Enemies">
       <UniqueIdentifier>{7f8014ee-12e4-4736-b8e3-06bc618e3ca0}</UniqueIdentifier>
     </Filter>
@@ -35,6 +32,9 @@
     </Filter>
     <Filter Include="Modules\Interactions">
       <UniqueIdentifier>{ebeb7c12-5d00-4434-a2a2-2accb5fd8b78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Scenes\Media">
+      <UniqueIdentifier>{71b8f79e-53aa-4141-903d-e61126c85918}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -84,22 +84,22 @@
       <Filter>Modules\Players</Filter>
     </ClInclude>
     <ClInclude Include="ModuleWindow.h">
-      <Filter>Modules\Media</Filter>
+      <Filter>Modules\Scenes\Media</Filter>
     </ClInclude>
     <ClInclude Include="ModuleTextures.h">
-      <Filter>Modules\Media</Filter>
+      <Filter>Modules\Scenes\Media</Filter>
     </ClInclude>
     <ClInclude Include="ModuleRender.h">
-      <Filter>Modules\Media</Filter>
+      <Filter>Modules\Scenes\Media</Filter>
     </ClInclude>
     <ClInclude Include="ModuleInput.h">
-      <Filter>Modules\Media</Filter>
+      <Filter>Modules\Scenes\Media</Filter>
     </ClInclude>
     <ClInclude Include="ModuleAudio.h">
-      <Filter>Modules\Media</Filter>
+      <Filter>Modules\Scenes\Media</Filter>
     </ClInclude>
     <ClInclude Include="ModuleFonts.h">
-      <Filter>Modules\Media</Filter>
+      <Filter>Modules\Scenes\Media</Filter>
     </ClInclude>
     <ClInclude Include="ModuleCollision.h">
       <Filter>Modules\Interactions</Filter>
@@ -242,22 +242,22 @@
       <Filter>Modules\Players</Filter>
     </ClCompile>
     <ClCompile Include="ModuleWindow.cpp">
-      <Filter>Modules\Media</Filter>
+      <Filter>Modules\Scenes\Media</Filter>
     </ClCompile>
     <ClCompile Include="ModuleTextures.cpp">
-      <Filter>Modules\Media</Filter>
+      <Filter>Modules\Scenes\Media</Filter>
     </ClCompile>
     <ClCompile Include="ModuleRender.cpp">
-      <Filter>Modules\Media</Filter>
+      <Filter>Modules\Scenes\Media</Filter>
     </ClCompile>
     <ClCompile Include="ModuleInput.cpp">
-      <Filter>Modules\Media</Filter>
+      <Filter>Modules\Scenes\Media</Filter>
     </ClCompile>
     <ClCompile Include="ModuleAudio.cpp">
-      <Filter>Modules\Media</Filter>
+      <Filter>Modules\Scenes\Media</Filter>
     </ClCompile>
     <ClCompile Include="ModuleFonts.cpp">
-      <Filter>Modules\Media</Filter>
+      <Filter>Modules\Scenes\Media</Filter>
     </ClCompile>
     <ClCompile Include="ModuleCollision.cpp">
       <Filter>Modules\Interactions</Filter>

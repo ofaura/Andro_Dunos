@@ -17,6 +17,7 @@
 #include "ModuleUserInterface.h"
 #include "ModuleShield.h"
 #include "ModuleShotGravity.h"
+#include "ModuleShotGravity.h"
 
 ModulePlayer::ModulePlayer()
 {
@@ -498,14 +499,14 @@ update_status ModulePlayer::Update()
 
 			if (ShootPowerUpLevel_2 >= 1) // 
 			{
-				if (ShootPowerUpLevel_2 >= 2 && t > 100)
-				{
+				// (ShootPowerUpLevel_2 >= 2 && t > 100)
+				//{
 					//App->audio->PlayFx(laser1);
-				}
+				//}
 
 				if (t > 100)
 				{
-					App->gravity_shot->Enable();
+					App->accel_shot->AddShot(App->accel_shot->gravity_shot, position.x, position.y, GRAVITY_SHOT); // HOMING MISSILE
 					App->audio->PlayFx(laser1); //2 change
 					t = 0;
 				}
