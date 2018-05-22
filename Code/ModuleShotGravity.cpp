@@ -29,9 +29,11 @@ bool ModuleShotGravity::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("Assets/Sprites/Particles/particles.png");
-	// Explosion particle
-	// Enemy shots
-	// shot.anim.PushBack({ 328, 228, 8, 12 });
+	
+	gravity_shot.anim.PushBack({ 386, 30, 8, 9 });
+	gravity_shot.anim.loop = false;
+	gravity_shot.anim.speed = 1.0f;
+	gravity_shot.life = 2000;
 
 	return true;
 }
@@ -41,6 +43,7 @@ bool ModuleShotGravity::CleanUp()
 {
 	LOG("Unloading particles");
 	App->textures->Unload(graphics);
+
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -95,8 +98,11 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 			p->position.x = x;
 			p->position.y = y;
 			p->type = type;
-			if (type != GRAVITY_SHOT || type != HOMING_MISSILE)
+			// (Module*)App->enemies
+			if (type == GRAVITY_SHOT || type == HOMING_MISSILE)
+			{
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), COLLIDER_PLAYER_SHOT, this);
+			}
 			active[i] = p;
 			break;
 		}
@@ -106,13 +112,8 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 // Every time a particle hits a wall it triggers an explosion particle
 void ModuleShotGravity::OnCollision(Collider* c1, Collider* c2) // add Collider* c2, if problems arise
 {
-
-
-
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
-
-
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
 			// Always destroy particles that collide
@@ -154,21 +155,18 @@ bool Accel_Shot::Update()
 		if (anim.Finished())
 			ret = false;
 	
-	if (type == GRAVITY_SHOT )
-	{
-		position.x += 2;
-		position.y += 2 * time;
-	}
-
-	else
-	{
-
-	}
+	position.x += 3;
+	position.y += 2 * time_2;
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
 
 	time++;
+
+	if (time >= 10 )
+	{
+		time_2++;
+	}
 
 	return ret;
 }

@@ -71,7 +71,7 @@ bool Application::Init()
 	game_over->Disable();
 	shield->Disable();
 	shield_p2->Disable();
-	accel_shot->Disable();
+	//accel_shot->Disable();
 	boss->Disable();
 
 	collision->Disable();

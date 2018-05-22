@@ -877,20 +877,14 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 // Every time a particle hits a wall it triggers an explosion particle
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2) // add Collider* c2, if problems arise
 {
-
-	
-
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
-	{
-
-		
+	{	
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
 			// Always destroy particles that collide
 			delete active[i];
 			active[i] = nullptr;
 			break;
-
 		}
 	}
 }

@@ -28,7 +28,7 @@ struct Accel_Shot
 	uint fx = 0;
 	iPoint position;
 	int damage;
-	int time;
+	int time, time_2;
 	Uint32 born = 0;
 	Uint32 life = 0;
 	bool fx_played = false;

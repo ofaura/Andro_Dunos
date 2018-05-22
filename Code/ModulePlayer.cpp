@@ -504,7 +504,7 @@ update_status ModulePlayer::Update()
 					//App->audio->PlayFx(laser1);
 				//}
 
-				if (t > 100)
+				if (t > 100) //fdhsgdf
 				{
 					App->accel_shot->AddShot(App->accel_shot->gravity_shot, position.x, position.y, GRAVITY_SHOT); // HOMING MISSILE
 					App->audio->PlayFx(laser1); //2 change
