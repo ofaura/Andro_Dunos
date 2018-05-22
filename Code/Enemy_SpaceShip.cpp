@@ -17,12 +17,12 @@ Enemy_SpaceShip::Enemy_SpaceShip(int x, int y) : Enemy(x, y)
 	animation = &fly;
 
 	if (y > 100) {
-		path.PushBack({ -1.0f, 0.0f }, 60);
+		path.PushBack({ -1.0f, 0.0f }, 80);
 		path.PushBack({ 1.3f, 1.3f }, 25);
 		path.PushBack({ -1.0f, 0.0f }, 2000);
 	}
 	else {
-		path.PushBack({ -1.0f, 0.0f }, 60);
+		path.PushBack({ -1.0f, 0.0f }, 80);
 		path.PushBack({ 1.3f, -1.3f }, 25);
 		path.PushBack({ -1.0f, 0.0f }, 2000);
 	}

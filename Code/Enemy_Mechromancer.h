@@ -22,6 +22,7 @@ public:
 	virtual void OnCollision(Collider* collider) override;
 	void Move();
 	bool dead = false;
+	bool pathCreated = false;
 	uint shots = 0;
 	int score = 200;
 };

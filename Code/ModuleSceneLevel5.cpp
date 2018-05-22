@@ -121,7 +121,7 @@ bool ModuleSceneLevel5::Start()
 
 	//Enemies ---
 	App->enemies->Enable();	
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MECHROMANCER, 250, 30);
+
 	//App->enemies->AddEnemy(ENEMY_TYPES::SOLAR_PANEL, 250, (SCREEN_HEIGHT / 2) - 20);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 300, (SCREEN_HEIGHT / 2) - 20);
@@ -240,6 +240,11 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_UP, 490, -20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_UP, 510, -20);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_UP, 5650, -20);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_UP, 5670, -20);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_UP, 5690, -20);
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_UP, 5710, -20);
+
 	// Enemy spinner down
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_DOWN, 570, 240);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_SPINNER_DOWN, 590, 240);
@@ -285,6 +290,9 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_PIPELINER, 5112, 145);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_PIPELINER, 5511, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_PIPELINER, 6265, 110);
+
+	// Mechromancer
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MECHROMANCER, 6720, 90);
 
 	// Meteorites
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 340, 20);
