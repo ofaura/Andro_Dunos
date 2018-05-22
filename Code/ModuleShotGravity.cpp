@@ -133,7 +133,7 @@ Accel_Shot::Accel_Shot()
 
 Accel_Shot::Accel_Shot(const Accel_Shot& p) :
 	anim(p.anim), position(p.position),
-	fx(p.fx), born(p.born), life(p.life), time(0)
+	fx(p.fx), born(p.born), life(p.life), time(0), time_2(2)
 {}
 
 Accel_Shot::~Accel_Shot()
@@ -155,18 +155,36 @@ bool Accel_Shot::Update()
 		if (anim.Finished())
 			ret = false;
 	
-	position.x += 3;
-	position.y += 2 * time_2;
+	//
+	if ((1 * time_2)/2 >= 20)
+	{
+		position.y += 10;
+	}
+	else
+	{
+		position.y += 1 * (time_2 / 2);
+	}
 
-	if (collider != nullptr)
-		collider->SetPos(position.x, position.y);
+	position.x += 4;
+
 
 	time++;
 
-	if (time >= 10 )
+	if (time >= 5)
 	{
 		time_2++;
 	}
+
+	if (time >= 500)
+	{
+		time = 0;
+		time_2 = 0;
+	}
+
+	//
+
+	if (collider != nullptr)
+		collider->SetPos(position.x, position.y);
 
 	return ret;
 }
