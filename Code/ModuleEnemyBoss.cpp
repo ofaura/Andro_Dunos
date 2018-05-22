@@ -27,6 +27,12 @@ ModuleEnemyBoss::ModuleEnemyBoss()
 	core.y = 81;
 	core.w = 56;
 	core.h = 128;
+
+	lightTube.PushBack({ 87, 106, 45, 26 });
+	lightTube.PushBack({ 87, 140, 45, 26 });
+	lightTube.PushBack({ 87, 174, 45, 26 });
+	lightTube.loop = true;
+	lightTube.speed = 0.5f;
 	
 	//Hatchs
 	closingHatchs.PushBack({ 32, 329, 22, 152 });

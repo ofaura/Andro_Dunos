@@ -33,9 +33,12 @@ public:
 	Animation* animationCannonUp = nullptr;
 	Animation* animationCannonDown = nullptr;
 
+	//Red light
+	Animation lightTube;
+
 	SDL_Rect upHalf;
 	SDL_Rect downHalf;
-	SDL_Rect core;
+	SDL_Rect core; //Metal structure
 
 	uint boss_death;
 
