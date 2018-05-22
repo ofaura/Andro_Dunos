@@ -30,6 +30,7 @@ struct Accel_Shot
 	int damage;
 	int time, time_2;
 	int up = 1;
+	int left = 1;
 	Uint32 born = 0;
 	Uint32 life = 0;
 	bool fx_played = false;
@@ -53,7 +54,7 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay = 0);
+	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, int up , int left, Uint32 delay = 0);
 
 	Animation g_shot;
 	Accel_Shot gravity_shot;

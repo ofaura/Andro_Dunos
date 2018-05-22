@@ -87,7 +87,7 @@ update_status ModuleShotGravity::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay)
+void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, int up, int left, Uint32 delay)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -98,6 +98,8 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 			p->position.x = x;
 			p->position.y = y;
 			p->type = type;
+			p->up = up;
+			p->left = left;
 			// (Module*)App->enemies
 			if (type == GRAVITY_SHOT || type == HOMING_MISSILE)
 			{
@@ -158,27 +160,27 @@ bool Accel_Shot::Update()
 	//
 	if ((1 * time_2)/2 >= 20)
 	{
-		position.y += 10;
+		position.y += up*10;
 	}
 	else
 	{
-		position.y += 0.5 * (time_2 / 2);
+		position.y += 0.5 * (time_2 / 2)*up;
 	}
 
-	position.x += 3;
-
+	if (left == -1)
+	{
+		position.x += left * 2;
+	}
+	else
+	{
+		position.x += left * 3;
+	}
 
 	time++;
 
 	if (time >= 5)
 	{
 		time_2++;
-	}
-
-	if (time >= 500)
-	{
-		time = 0;
-		time_2 = 0;
 	}
 
 	//
