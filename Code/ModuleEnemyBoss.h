@@ -19,12 +19,23 @@ public:
 
 public:
 
-	SDL_Texture * graphics = nullptr;
-	Animation NeoGeo;
-	Animation* current_animation = nullptr;
+	SDL_Texture* graphics = nullptr;
+
+	// Hatchs animations
+	Animation closingHatchs;
+	Animation openingHatchs;
+	Animation* animationHatchs = nullptr;
+
+	// Cannon animations
+	Animation canonUp;
+	Animation canonDown;
+	Animation torpede;
+	Animation* animationCannonUp = nullptr;
+	Animation* animationCannonDown = nullptr;
 
 	SDL_Rect upHalf;
 	SDL_Rect downHalf;
+	SDL_Rect core;
 
 	uint boss_death;
 

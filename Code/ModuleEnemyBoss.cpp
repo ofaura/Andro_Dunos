@@ -11,7 +11,7 @@
 
 ModuleEnemyBoss::ModuleEnemyBoss()
 {
-	// Boss' meteorite
+	//Meteorite
 	upHalf.x = 226;
 	upHalf.y = 93;
 	upHalf.w = 84;
@@ -21,13 +21,31 @@ ModuleEnemyBoss::ModuleEnemyBoss()
 	downHalf.y = 84;
 	downHalf.w = 86;
 	downHalf.h = 111;
+
+	//Structure
+	core.x = 449;
+	core.y = 81;
+	core.w = 56;
+	core.h = 128;
 	
-	current_animation = NULL;
+	//Hatchs
+	closingHatchs.PushBack({ 32, 329, 22, 152 });
+	closingHatchs.PushBack({ 60, 329, 22, 152 });
+	closingHatchs.PushBack({ 88, 329, 22, 152 });
+	closingHatchs.PushBack({ 115, 329, 22, 152 });
+	closingHatchs.PushBack({ 141, 329, 22, 152 });
+	closingHatchs.PushBack({ 1, 329, 22, 152 });
+	closingHatchs.loop = false;
+	closingHatchs.speed = 0.15f;
 
-	NeoGeo.PushBack({ 0, 0, 227, 40 });
-
-	NeoGeo.loop = false;
-	NeoGeo.speed = 0.3f;
+	openingHatchs.PushBack({ 1, 329, 22, 152 });
+	openingHatchs.PushBack({ 141, 329, 22, 152 });
+	openingHatchs.PushBack({ 115, 329, 22, 152 });
+	openingHatchs.PushBack({ 88, 329, 22, 152 });
+	openingHatchs.PushBack({ 60, 329, 22, 152 });
+	openingHatchs.PushBack({ 32, 329, 22, 152 });
+	openingHatchs.loop = false;
+	openingHatchs.speed = 0.15f;
 }
 
 ModuleEnemyBoss::~ModuleEnemyBoss()
@@ -63,10 +81,12 @@ update_status ModuleEnemyBoss::Update()
 		musicPlayed = true;
 	}
 
-	current_animation = &NeoGeo;
-	SDL_Rect r = current_animation->GetCurrentFrame();
+	animationHatchs = &openingHatchs;
+
+	SDL_Rect hatchs = animationHatchs->GetCurrentFrame();
 
 	// Draw everything --------------------------------------
+	App->render->Blit(graphics, 7420, 50, &hatchs, 1.0f, true);
 	App->render->Blit(graphics, 7395, 30, &upHalf, 1.0f, true);
 	App->render->Blit(graphics, 7393, 110, &downHalf, 1.0f, true);
 
