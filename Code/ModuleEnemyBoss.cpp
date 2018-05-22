@@ -9,7 +9,6 @@
 #include "ModuleInput.h"
 #include "ModuleAudio.h"
 
-
 ModuleEnemyBoss::ModuleEnemyBoss()
 {
 	current_animation = NULL;
@@ -27,20 +26,37 @@ ModuleEnemyBoss::~ModuleEnemyBoss()
 bool ModuleEnemyBoss::Start()
 {
 	LOG("Loading music and textures");
-	//App->audio->PlayMusic("Assets/Audio/Music/neoGeo.ogg", 1.0f);
-	//graphics = App->textures->Load("Assets/Sprites/NeoGeo/neogeo.png");
+
+	//Textures are loaded
+	graphics = App->textures->Load("Assets/Sprites/Enemies/boss.png");
+
+	//Audios are loaded
+	boss_death = App->audio->LoadFx("Assets/Audio/Sound FX/boss_death.wav");
+
+	App->audio->PlayMusic("Assets/Audio/Music/bossIntro.ogg", 0.0f);
+
+	currentTime = SDL_GetTicks();
+	lastTime = currentTime;
+
 	return true;
 }
 
 // Update: draw background
 update_status ModuleEnemyBoss::Update()
-
 {
+	currentTime = SDL_GetTicks();
+
+	if (currentTime > lastTime + 9000 && introPlayed == false)
+	{
+		App->audio->PlayMusic("Assets/Audio/Music/bossLoop.ogg", 0.0f);
+		introPlayed = true;
+	}
+
 	current_animation = &NeoGeo;
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
 	// Draw everything --------------------------------------
-	App->render->Blit(graphics, 44, 80, &r, 1);
+	//App->render->Blit(graphics, 44, 80, &r, 1);
 
 	return UPDATE_CONTINUE;
 }
@@ -49,6 +65,8 @@ update_status ModuleEnemyBoss::Update()
 bool ModuleEnemyBoss::CleanUp()
 {
 	LOG("Unloading Neo Geo logo scene");
-	//App->textures->Unload(graphics);
+	App->audio->UnLoadFx(boss_death);
+	App->textures->Unload(graphics);
+
 	return true;
 }

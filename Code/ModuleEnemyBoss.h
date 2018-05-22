@@ -23,6 +23,12 @@ public:
 	Animation NeoGeo;
 	Animation* current_animation = nullptr;
 
+	uint boss_death;
+
+	bool introPlayed = false;
+
+	uint lastTime = 0, currentTime;
+
 };
 
 #endif // __MODULEENEMYBOSS_H__

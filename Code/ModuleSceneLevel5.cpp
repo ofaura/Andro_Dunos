@@ -13,6 +13,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
 #include "ModuleUserInterface.h"
+#include "ModuleEnemyBoss.h"
 #include "ModuleShield.h"
 #include "ModuleShield_p2.h"
 
@@ -115,7 +116,8 @@ bool ModuleSceneLevel5::Start()
 	App->user_interface->Enable();
 
 	// Reseting the camera to the start of the level
-	App->render->camera.x = App->render->camera.y = 0;
+	App->render->camera.x = 4000;
+	App->render->camera.y = 0;
 	App->render->camera.w = SCREEN_WIDTH;
 	App->render->camera.h = SCREEN_HEIGHT;
 
@@ -473,11 +475,16 @@ bool ModuleSceneLevel5::Start()
 // Update: draw background
 update_status ModuleSceneLevel5::Update()
 {
-	if (App->render->camera.x >= 0 && App->render->camera.x <= 8800 * SCREEN_SIZE)
+	 if (App->render->camera.x >= 0 && App->render->camera.x <= 7150 * SCREEN_SIZE)
 	{
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->player->position.x += 1;
 		App->player2->position.x += 1;
+	}
+	else {
+		if (App->boss->IsEnabled() == false) {
+			App->boss->Enable();
+		}
 	}
 
 	App->render->Blit(background_texture, ((background_pos_x) / 3.5), 20, &background, 0.5f, true);
@@ -524,6 +531,9 @@ bool ModuleSceneLevel5::CleanUp()
 	App->enemies->Disable();
 	App->collision->Disable();
 	App->player->Disable();
+
+	if (App->boss->IsEnabled() == true)
+		App->boss->Disable();	
 	
 	if(App->shield->IsEnabled() == true)
 		App->shield->Disable();
