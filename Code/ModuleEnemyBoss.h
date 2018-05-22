@@ -23,6 +23,9 @@ public:
 	Animation NeoGeo;
 	Animation* current_animation = nullptr;
 
+	SDL_Rect upHalf;
+	SDL_Rect downHalf;
+
 	uint boss_death;
 
 	bool introPlayed = false;

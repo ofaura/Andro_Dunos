@@ -11,6 +11,17 @@
 
 ModuleEnemyBoss::ModuleEnemyBoss()
 {
+	// Boss' meteorite
+	upHalf.x = 226;
+	upHalf.y = 93;
+	upHalf.w = 84;
+	upHalf.h = 107;
+
+	downHalf.x = 323;
+	downHalf.y = 84;
+	downHalf.w = 86;
+	downHalf.h = 111;
+	
 	current_animation = NULL;
 
 	NeoGeo.PushBack({ 0, 0, 227, 40 });
@@ -33,7 +44,7 @@ bool ModuleEnemyBoss::Start()
 	//Audios are loaded
 	boss_death = App->audio->LoadFx("Assets/Audio/Sound FX/boss_death.wav");
 
-	App->audio->PlayMusic("Assets/Audio/Music/bossIntro.ogg", 0.0f);
+	App->audio->PlayMusic("Assets/Audio/Music/bossIntro.ogg", 0.0f); //Intro music
 
 	currentTime = SDL_GetTicks();
 	lastTime = currentTime;
@@ -48,7 +59,7 @@ update_status ModuleEnemyBoss::Update()
 
 	if (currentTime > lastTime + 9000 && introPlayed == false)
 	{
-		App->audio->PlayMusic("Assets/Audio/Music/bossLoop.ogg", 0.0f);
+		App->audio->PlayMusic("Assets/Audio/Music/bossLoop.ogg", 0.0f); //Loop music
 		introPlayed = true;
 	}
 
