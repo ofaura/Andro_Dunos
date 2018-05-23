@@ -52,7 +52,7 @@ bool ModuleShotGravity::Start()
 	homing_missile.anim.PushBack({ 338, 15, 10, 9 });
 	homing_missile.anim.loop = false;
 	homing_missile.anim.speed = 1.0f;
-	homing_missile.life = 2000;
+	homing_missile.life = 1000;
 
 	return true;
 }
@@ -251,7 +251,7 @@ bool Accel_Shot::Update()
 					{
 						if ((App->enemies->enemies[counter]->position.x >= (abs(App->render->camera.x) / SCREEN_SIZE) + 15) &&
 							(App->enemies->enemies[counter]->position.x <= (((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 15))) &&
-							(App->enemies->enemies[counter]->position.y >= (abs(App->render->camera.y) / SCREEN_SIZE ) + 10) &&
+							(App->enemies->enemies[counter]->position.y >= (abs(App->render->camera.y) / SCREEN_SIZE) + 10) &&
 							(App->enemies->enemies[counter]->position.y <= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 10))
 						{
 							this->enemy = App->enemies->enemies[counter];
@@ -259,19 +259,21 @@ bool Accel_Shot::Update()
 						}
 					}
 				}
-
-				//position.x += 1;
-				//position.y += 2;
-
 			}
-
-			else
-			{
 				// proces: start
 
 				int dif_pos[2];
 				int vel[2];
 				int div;
+				int left_, down_;
+
+
+				if (enemy->position.x >= position.x) { left_ = 1; }
+				else { left_ = -1; }
+
+				if (enemy->position.y >= position.y) { down_ = 1; }
+				else { down_ = -1; }
+
 
 				dif_pos[x] = enemy->position.x - position.x;
 				dif_pos[y] = enemy->position.y - position.y;
@@ -279,13 +281,13 @@ bool Accel_Shot::Update()
 				if (dif_pos[y] == 0) { div = 0; }
 				else { div = abs(dif_pos[x] / dif_pos[y]); }
 
-				vel[y] = sqrt(pow(5, 2) / (1 + pow(div, 2)));
-				vel[x] = (div)*vel[y] + 1;
+				vel[y] = down_ * sqrt(pow(5, 2) / (1 + pow(div, 2)));
+				vel[x] = left_ * (div)*vel[y] + 1;
 
 				position.x += vel[x];
 				position.y += vel[y];
 				// proces: end. velocity equations come from solving trigonometric problem on paper
-			}
+
 
 		}
 		else
@@ -293,6 +295,7 @@ bool Accel_Shot::Update()
 			position.x += 1;
 			position.y += 2;
 		}
+
 	}
 
 	time_1++;
