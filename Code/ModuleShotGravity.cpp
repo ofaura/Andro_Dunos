@@ -148,8 +148,8 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 			{
 				if (App->enemies->enemies[counter] != nullptr && App->enemies->enemies[counter]->type != POWER_UP)
 				{
-					if ((App->enemies->enemies[counter]->position.x >= (abs(App->render->camera.x) / SCREEN_SIZE) + 15) &&
-						(App->enemies->enemies[counter]->position.x <= (((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 15))) &&
+					if ((App->enemies->enemies[counter]->position.x >= (abs(App->render->camera.x) / SCREEN_SIZE) + 40) &&
+						(App->enemies->enemies[counter]->position.x <= (((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 40))) &&
 						(App->enemies->enemies[counter]->position.y >= (abs(App->render->camera.y) / SCREEN_SIZE) + 10) &&
 						(App->enemies->enemies[counter]->position.y <= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 10))
 					{
@@ -243,14 +243,17 @@ bool Accel_Shot::Update()
 	{
 		if (target_aquired == true)
 		{			
-			if (this->enemy == nullptr)
+			if (this->enemy == nullptr || (this->enemy->position.x <= (abs(App->render->camera.x) / SCREEN_SIZE) + 5) &&
+				(this->enemy->position.x >= (((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 5))) &&
+				(this->enemy->position.y <= (abs(App->render->camera.y) / SCREEN_SIZE) + 10) &&
+				(this->enemy->position.y >= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 10))
 			{
 				for (int counter = 0; counter < MAX_ENEMIES; counter++)
 				{
 					if (App->enemies->enemies[counter] != nullptr && App->enemies->enemies[counter]->type != POWER_UP)
 					{
-						if ((App->enemies->enemies[counter]->position.x >= (abs(App->render->camera.x) / SCREEN_SIZE) + 15) &&
-							(App->enemies->enemies[counter]->position.x <= (((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 15))) &&
+						if ((App->enemies->enemies[counter]->position.x >= (abs(App->render->camera.x) / SCREEN_SIZE) + 40) &&
+							(App->enemies->enemies[counter]->position.x <= (((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 40))) &&
 							(App->enemies->enemies[counter]->position.y >= (abs(App->render->camera.y) / SCREEN_SIZE) + 10) &&
 							(App->enemies->enemies[counter]->position.y <= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 10))
 						{
