@@ -243,9 +243,9 @@ bool Accel_Shot::Update()
 	{
 		if (target_aquired == true)
 		{			
-			if (this->enemy == nullptr || (this->enemy->position.x <= (abs(App->render->camera.x) / SCREEN_SIZE) + 5) &&
-				(this->enemy->position.x >= (((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 5))) &&
-				(this->enemy->position.y <= (abs(App->render->camera.y) / SCREEN_SIZE) + 10) &&
+			if (this->enemy == nullptr || (this->enemy->position.x <= (abs(App->render->camera.x) / SCREEN_SIZE) + 5) ||
+				(this->enemy->position.x >= (((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 5))) ||
+				(this->enemy->position.y <= (abs(App->render->camera.y) / SCREEN_SIZE) + 10) ||
 				(this->enemy->position.y >= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 10))
 			{
 				for (int counter = 0; counter < MAX_ENEMIES; counter++)
@@ -281,14 +281,30 @@ bool Accel_Shot::Update()
 				dif_pos[x] = enemy->position.x - position.x;
 				dif_pos[y] = enemy->position.y - position.y;
 
-				if (dif_pos[y] == 0) { div = 0; }
-				else { div = abs(dif_pos[x] / dif_pos[y]); }
+				if (dif_pos[y] == 0)
+				{
+					div = 0;
+					vel[y] = 0;
+				}
 
-				vel[y] = down_ * sqrt(pow(5, 2) / (1 + pow(div, 2)));
-				vel[x] = left_ * (div)*vel[y] + 1;
+				else
+				{
+					div = abs(dif_pos[x] / dif_pos[y]);
+					vel[y] = down_ * sqrt(pow(5, 2) / (1 + pow(div, 2)));
+				}
 
-				position.x += vel[x];
-				position.y += vel[y];
+				vel[x] = (left_ * (div)*vel[y]) + 1;
+
+				if (vel[x] == 1 && vel[y] == 0)
+				{
+					position.x += 1;
+					position.y += 2;
+				}
+				else
+				{
+					position.x += vel[x];
+					position.y += vel[y];
+				}
 				// proces: end. velocity equations come from solving trigonometric problem on paper
 
 
