@@ -148,10 +148,10 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 			{
 				if (App->enemies->enemies[counter] != nullptr && App->enemies->enemies[counter]->type != POWER_UP)
 				{
-					if ((App->enemies->enemies[counter]->position.x >= abs(App->render->camera.x) / SCREEN_SIZE) &&
-						(App->enemies->enemies[counter]->position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH)) &&
-						(App->enemies->enemies[counter]->position.y >= abs(App->render->camera.y) / SCREEN_SIZE) &&
-						(App->enemies->enemies[counter]->position.y <= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT))
+					if ((App->enemies->enemies[counter]->position.x >= (abs(App->render->camera.x) / SCREEN_SIZE) + 15) &&
+						(App->enemies->enemies[counter]->position.x <= (((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 15))) &&
+						(App->enemies->enemies[counter]->position.y >= (abs(App->render->camera.y) / SCREEN_SIZE) + 10) &&
+						(App->enemies->enemies[counter]->position.y <= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 10))
 					{
 						p->enemy = App->enemies->enemies[counter];
 						p->target_aquired = true;
@@ -173,6 +173,7 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 // Every time a particle hits a wall it triggers an explosion particle
 void ModuleShotGravity::OnCollision(Collider* c1, Collider* c2) // add Collider* c2, if problems arise
 {
+
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		if (active[i] != nullptr && active[i]->collider == c1)
@@ -241,40 +242,51 @@ bool Accel_Shot::Update()
 	else if (type == HOMING_MISSILE)
 	{
 		if (target_aquired == true)
-		{
-			int dif_pos[2];
-			int vel[2];
-			
+		{			
 			if (this->enemy == nullptr)
 			{
 				for (int counter = 0; counter < MAX_ENEMIES; counter++)
 				{
 					if (App->enemies->enemies[counter] != nullptr && App->enemies->enemies[counter]->type != POWER_UP)
 					{
-						if ((App->enemies->enemies[counter]->position.x >= abs(App->render->camera.x) / SCREEN_SIZE) &&
-							(App->enemies->enemies[counter]->position.x <= (((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH))) &&
-							(App->enemies->enemies[counter]->position.y >= abs(App->render->camera.y) / SCREEN_SIZE) &&
-							(App->enemies->enemies[counter]->position.y <= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT))
+						if ((App->enemies->enemies[counter]->position.x >= (abs(App->render->camera.x) / SCREEN_SIZE) + 15) &&
+							(App->enemies->enemies[counter]->position.x <= (((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 15))) &&
+							(App->enemies->enemies[counter]->position.y >= (abs(App->render->camera.y) / SCREEN_SIZE ) + 10) &&
+							(App->enemies->enemies[counter]->position.y <= (abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 10))
 						{
 							this->enemy = App->enemies->enemies[counter];
 							break;
 						}
 					}
 				}
+
+				//position.x += 1;
+				//position.y += 2;
+
 			}
 
-			// proces: start
-			dif_pos[x] = enemy->position.x - position.x;
-			dif_pos[y] = enemy->position.y - position.y;
+			else
+			{
+				// proces: start
 
-			int div = dif_pos[x] / dif_pos[y];
+				int dif_pos[2];
+				int vel[2];
+				int div;
 
-			vel[y] = sqrt(pow (5, 2) / (1 + pow (div, 2)));
-			vel[x] = (div)*vel[y] + 1;
+				dif_pos[x] = enemy->position.x - position.x;
+				dif_pos[y] = enemy->position.y - position.y;
 
-			position.x += vel[x];
-			position.y += vel[y];
-			// proces: end. velocity equations come from solving trigonometric problem on paper
+				if (dif_pos[y] == 0) { div = 0; }
+				else { div = abs(dif_pos[x] / dif_pos[y]); }
+
+				vel[y] = sqrt(pow(5, 2) / (1 + pow(div, 2)));
+				vel[x] = (div)*vel[y] + 1;
+
+				position.x += vel[x];
+				position.y += vel[y];
+				// proces: end. velocity equations come from solving trigonometric problem on paper
+			}
+
 		}
 		else
 		{
