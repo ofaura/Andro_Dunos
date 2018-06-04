@@ -126,14 +126,18 @@ bool ModuleSceneLevel5::Start()
 
 	App->enemies->AddEnemy(ENEMY_TYPES::SOLAR_PANEL, 250, (SCREEN_HEIGHT / 2) - 20);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 300, (SCREEN_HEIGHT / 2) - 20);
+	// App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 300, (SCREEN_HEIGHT / 2) - 20);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_BALL, 350, (SCREEN_HEIGHT / 2) - 17);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 400, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 500, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 600, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 700, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 800, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 900, (SCREEN_HEIGHT / 2) - 20);
-	
+
+
 	// Mines
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 760, 120);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 800, 60);
@@ -340,6 +344,7 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 830, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 900, 90);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_METEORITE, 950, 120);
+
 
 	// Colliders ---
 	App->collision->Enable();

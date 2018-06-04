@@ -40,6 +40,7 @@ void Enemy_BlueShot::Move()
 		else
 			wave -= 0.05f;
 	}
+ 
 
 	position.y = int(float(original_y) + (20.0f * sinf(wave)));
 	position.x -= 1;

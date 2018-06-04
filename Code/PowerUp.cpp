@@ -256,7 +256,7 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 }
 
 void PowerUp::Draw(SDL_Texture* sprites)
-{
+{ 
 	if (milliseconds >= 0 && milliseconds < 400)
 	{
 		if (milliseconds >= 200 && milliseconds < 225)
