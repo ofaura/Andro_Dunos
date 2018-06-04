@@ -24,6 +24,7 @@ public:
 	void Move();
 	bool dead = false;
 	int score = 50;
+	int a = 0;
 };
 
 #endif // __ENEMY_NINJABALL_H__

@@ -7,6 +7,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleAudio.h"
 #include "SDL\include\SDL_timer.h"
+#include "ModuleRender.h"
 
 Enemy_NinjaBall::Enemy_NinjaBall(int x, int y) : Enemy(x, y)
 {
@@ -32,13 +33,15 @@ Enemy_NinjaBall::Enemy_NinjaBall(int x, int y) : Enemy(x, y)
 	fly.speed = 0.2f;
 	fly.loop = true;
 
-	//animation = &spawn;
+	
+	animation = &nth;
 
 	collider = App->collision->AddCollider({ 0, 0, 20, 20 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;
 	HP = FIRST;
+	
 }
 
 void Enemy_NinjaBall::Move()
@@ -48,10 +51,10 @@ void Enemy_NinjaBall::Move()
 	{
 		animation = &nth;
 		position.x -= 1;
-		lastTime = currentTime;
+		a = App->render->camera.x;
 	}
-
-	else if (currentTime < lastTime + 9000)
+	
+	else if (App->render->camera.x - a < 70)
 	{
 		animation = &spawn;		
 	}
@@ -61,7 +64,7 @@ void Enemy_NinjaBall::Move()
 		animation = &fly;
 		position.x -= 3;
 	}
-
+	//lastTime = currentTime;
 }
 
 void Enemy_NinjaBall::OnCollision(Collider* collider)
