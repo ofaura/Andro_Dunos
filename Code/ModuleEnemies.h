@@ -57,6 +57,7 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
+
 	uint small_enemy_death;
 	uint medium_enemy_death;
 	uint greenRocket;

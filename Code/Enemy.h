@@ -21,7 +21,7 @@ protected:
 
 public:
 	iPoint position;
-	int HP;
+	int HP = 3;
 	Enemy_Type type = OTHERS;
 
 public:

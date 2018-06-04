@@ -19,6 +19,7 @@ public:
 	
 	int time = 0, loop = 3;
 	int score = 100;
+	
 
 	Enemy_PowerUp(int x, int y);
 
