@@ -7,6 +7,7 @@
 #include "ModuleAudio.h"
 #include "Enemy.h"
 #include "Enemy_FirstEnemy.h"
+#include "Enemy_BlueShot.h"
 #include "Enemy_PowerUp.h"
 #include "Enemy_Shuttle.h"
 #include "Enemy_Pipeliner.h"
@@ -249,6 +250,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 		case ENEMY_TYPES::GREEN_MISSILE2:
 			enemies[i] = new Enemy_GreenMissile2(info.x, info.y);
+			break;
+
+		case ENEMY_TYPES::BLUE_SHOT:
+			enemies[i] = new Enemy_BlueShot(info.x, info.y);
 			break;
 
 		case ENEMY_TYPES::NINJA_BALL:

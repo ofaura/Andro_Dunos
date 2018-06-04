@@ -203,6 +203,9 @@
     <ClInclude Include="Enemy_Mechromancer.h">
       <Filter>Modules\Enemies\Tank Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_BlueShot.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -357,6 +360,9 @@
     </ClCompile>
     <ClCompile Include="Enemy_Mechromancer.cpp">
       <Filter>Modules\Enemies\Tank Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_BlueShot.cpp">
+      <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
