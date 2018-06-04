@@ -9,10 +9,10 @@
 
 Enemy_BlueShot::Enemy_BlueShot(int x, int y) : Enemy(x, y)
 {
-	fly.PushBack({ 9, 115, 6, 8 });
-	fly.PushBack({ 19, 116, 6, 6 });
-	fly.PushBack({ 29, 116, 8, 6 });
-	fly.PushBack({ 41, 116, 6, 6 });
+	fly.PushBack({ 158, 736, 5, 7 });
+	fly.PushBack({ 166, 736, 5, 6 });
+	fly.PushBack({ 174, 736, 7, 6 });
+	fly.PushBack({ 183, 736, 6, 6 });
 	fly.loop = true;
 	fly.speed = 0.2f;
 	

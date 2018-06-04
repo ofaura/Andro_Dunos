@@ -43,7 +43,16 @@ void Enemy_SolarPanel::Move()
 
 	if (open.Finished() == true && currentTime > lastTimeShoot + 3000 && shot == false) // Shoots at one second
 	{
-		App->particles->AddParticle(App->particles->enemy_shot_yellow1, position.x - 7, position.y + 4, COLLIDER_ENEMY_SHOT);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x - 10, position.y + 40);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x, position.y + 40);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x + 10, position.y + 40);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x + 20, position.y + 40);
+
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x - 10, position.y + 60);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x, position.y + 60);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x + 10, position.y + 60);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x + 20, position.y + 60);
+
 		lastTimeShoot = currentTime;
 		shot = true;
 	}
