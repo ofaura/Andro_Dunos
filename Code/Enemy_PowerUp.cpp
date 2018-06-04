@@ -24,6 +24,7 @@ enum ENEMY_POWERUP_ACT
 
 Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 {
+	HP = 3;
 	graphics = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
 
 	fly_1.PushBack({ 1,270,18,26 }); // left - iddle
@@ -252,11 +253,13 @@ void Enemy_PowerUp::OnCollision(Collider* collider)
 	{
 		App->user_interface->score1 += score;
 	}
-	if (collider->type == COLLIDER_PLAYER2_SHOT)
+	else if (collider->type == COLLIDER_PLAYER2_SHOT)
 	{
 		App->user_interface->score2 += score;
-	}	
+	}
 }
+
+
 
 bool Enemy_PowerUp::CleanUp() {
 	LOG("Unloading Powerup");

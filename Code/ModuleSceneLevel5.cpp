@@ -265,24 +265,24 @@ bool ModuleSceneLevel5::Start()
 	// Enemy ninja ball
 	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6450, 90);
 	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6465, 70);
-	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6480, 110);
-	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6495, 105);
+	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6480, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6500, 105);
 	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6510, 70);
-	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6525, 90);
-	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6540, 70);
-	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6555, 110);
-	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6570, 105);
-	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6585, 70);
-	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6600, 90);
-	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6615, 70);
-	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6630, 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6525, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6545, 55);
+	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6570, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6580, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6600, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6620, 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6615, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6630, 120);
 	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6645, 105);
-	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6660, 70);
-	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6675, 90);
-	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6690, 70);
-	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6705, 110);
-	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6720, 105);
-	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6735	, 70);
+	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6660, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6685, 95);
+	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6700, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6725, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6735, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::NINJA_BALL, 6770, 60);
 	
 	// Green plane
 	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_PLANE, 5300, 140);
