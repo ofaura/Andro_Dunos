@@ -48,7 +48,7 @@ void Enemy_NinjaBall::Move()
 	{
 		animation = &nth;
 		position.x -= 1;
-		//lastTime = currentTime;
+		lastTime = currentTime;
 	}
 
 	else if (currentTime < lastTime + 9000)
