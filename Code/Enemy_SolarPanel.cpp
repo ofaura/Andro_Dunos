@@ -57,10 +57,10 @@ void Enemy_SolarPanel::Move()
 		shot = true;
 	}
 
-	if (position.x < original_x + 50) {
-		position.x += 3;
+	if (position.x < original_x + 50 && App->player->position.x > position.x - 200) {
+		position.x += 2;
 	}
-	else if (shot == false) {
+	else if (shot == false && App->player->position.x > position.x - 200) {
 		animation = &open;
 	}
 
