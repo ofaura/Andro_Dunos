@@ -10,7 +10,8 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 
-#define TIME (10)
+#define TIME (100)
+#define DISTANCE (100)
 
 Enemy_GreenBall::Enemy_GreenBall(int x, int y) : Enemy(x, y)
 {
@@ -73,15 +74,13 @@ void Enemy_GreenBall::Move()
 	}
 
 	else  
-	{
-		position.x -= 1;
-		
+	{	
 		int x = abs(position.x - App->player->position.x);
 		int y = abs(position.y - App->player->position.y);
 
 		int diag = sqrt(x * x + y * y);
 
-		if (diag <= 20)
+		if (diag <= DISTANCE)
 		{
 			circle = true;
 		}
@@ -89,7 +88,7 @@ void Enemy_GreenBall::Move()
 
 	if (circle == true)
 	{
-		position.x = position.x - 2 * (PI / TIME)* sin( (angle * 2 * PI) / 360 ) + 1;
+		position.x = position.x - 2 * (PI / TIME)* sin( (angle * 2 * PI) / 360 ) + 1 /*plus 1 due to scrolling */;
 		position.y = position.y + 2 * (PI / TIME)* cos( (angle * 2 * PI) / 360 );
 
 		angle = angle - 10;
