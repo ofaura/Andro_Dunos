@@ -256,6 +256,21 @@ update_status ModulePlayer::Update()
 				type = 0;
 				App->audio->PlayFx(type_change);
 			}
+			switch (type)
+			{
+			case bullet_type::TYPE_1:
+				damage = 1;
+				break;
+			case bullet_type::TYPE_2:
+				damage = 1;
+				break;
+			case bullet_type::TYPE_3:
+				damage = 1;
+				break;
+			case bullet_type::TYPE_4:
+				damage = 1;
+				break;
+			}
 		}
 
 

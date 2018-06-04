@@ -5,6 +5,8 @@
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
+#include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "Enemy.h"
 #include "Enemy_FirstEnemy.h"
 #include "Enemy_BlueShot.h"
@@ -276,7 +278,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			enemies[i]->HP--;
+			enemies[i]->HP-=App->player->damage;
 			if (enemies[i]->HP <= 0)
 			{
 				enemies[i]->OnCollision(c2);
