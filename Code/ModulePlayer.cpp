@@ -134,8 +134,14 @@ update_status ModulePlayer::Update()
 
 	if (dead == true) 
 	{
+		if (current_time < 1000) {
+			respawning = true;
+		} else{
+			respawning = false;
+		}
 		if (current_time < 4000) 
 		{
+			
 			player->type = COLLIDER_NONE;
 			if (current_time < 750)
 			{
@@ -697,8 +703,8 @@ update_status ModulePlayer::Update()
 		}
 
 		// Player Idle position if not going up or down -------------------------------------
-		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE && ((SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN)) == 0) && (App->input->gamepadP1LAxisY < 6400 && App->input->gamepadP1LAxisY > -6400)
-			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && ((SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_UP)) == 0) && (App->input->gamepadP1LAxisX < 6400 && App->input->gamepadP1LAxisX > -6400))
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE && (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN)) == 0
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_UP)) == 0)
 		{
 		current_animation = &idle;
 		fire_current = &fire_idle;
@@ -706,15 +712,16 @@ update_status ModulePlayer::Update()
 
 		// Prevent Player from leaving bordrer -------------------------------------
 		//x lim
-		if (position.x <= abs(App->render->camera.x) / SCREEN_SIZE)
-		{
-			position.x = 1 + (abs(App->render->camera.x) / SCREEN_SIZE);
+		if (respawning == false) {
+			if (position.x <= abs(App->render->camera.x) / SCREEN_SIZE)
+			{
+				position.x = 1 + (abs(App->render->camera.x) / SCREEN_SIZE);
+			}
+			else if (position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH - 27)))
+			{
+				position.x = -1 + ((abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH - 27));
+			}
 		}
-		else if (position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH - 27)))
-		{
-			position.x = -1 + ((abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH - 27));
-		}
-
 		//y lim
 
 		if (position.y <= abs(App->render->camera.y) / SCREEN_SIZE)
@@ -807,7 +814,7 @@ void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2)
 			App->audio->PlayFx(player_death);
 			App->player->lives--;
 
-			position.x = 1 + abs(App->render->camera.x) / SCREEN_SIZE;
+			position.x = 1 + abs(App->render->camera.x) / SCREEN_SIZE - 30;
 			position.y = (abs(App->render->camera.y) / SCREEN_SIZE) + (SCREEN_HEIGHT / 2);
 		}
 

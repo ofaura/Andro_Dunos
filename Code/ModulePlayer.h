@@ -71,6 +71,7 @@ public:
 	int current_time = 0;
 	int first_time = 0;
 	bool dead = false;
+	bool respawning = false;
 	
 	uint y = 0;
 	Collider* player = nullptr;
