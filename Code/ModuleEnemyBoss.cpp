@@ -259,6 +259,29 @@ update_status ModuleEnemyBoss::Update()
 	return UPDATE_CONTINUE;
 }
 
+void ModuleEnemyBoss::OnCollision(Collider* col_1, Collider* col_2) {
+	
+	/*if (bossLife <= 0) {
+		App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
+		App->audio->PlayFx(App->enemies->small_enemy_death);
+
+		if (dead == false)
+		{
+
+			if (collider->type == COLLIDER_PLAYER_SHOT)
+			{
+				App->user_interface->score1 += bossScore;
+			}
+			if (collider->type == COLLIDER_PLAYER2_SHOT)
+			{
+				App->user_interface->score2 += bossScore;
+			}
+		}
+
+		dead = true;
+	}*/
+}
+
 // UnLoad assets
 bool ModuleEnemyBoss::CleanUp()
 {
