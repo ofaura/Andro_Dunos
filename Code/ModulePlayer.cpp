@@ -1096,15 +1096,12 @@ void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2)
 			}
 			collision = false;
 
+			if (lives == -1)
+			{
+				App->fade->FadeToBlack(App->level5, App->game_over);
+			}
 			position.x = 1 + abs(App->render->camera.x) / SCREEN_SIZE - 30;
 			position.y = (abs(App->render->camera.y) / SCREEN_SIZE) + (SCREEN_HEIGHT / 2);
-		}
-
-		// Check player's lives	
-		else
-		{
-			position.x = 0;
-			App->fade->FadeToBlack(App->level5, App->game_over);
 		}
 
 	}
