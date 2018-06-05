@@ -8,13 +8,6 @@
 struct SDL_Texture;
 struct Collider;
 
-enum bullet_type {
-	TYPE_1,
-	TYPE_2,
-	TYPE_3,
-	TYPE_4
-};
-
 class ModulePlayer2 : public Module
 {
 public:
@@ -26,11 +19,9 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* col_1, Collider* col_2);
 
-
 public:
 
 	SDL_Texture* graphics = nullptr;
-	SDL_Texture* missile_graphics = nullptr;
 	SDL_Texture* backflame = nullptr;
 
 	Animation* current_animation = nullptr;
@@ -61,17 +52,8 @@ public:
 
 	iPoint position, fire_position;
 	uint laser1, laser2, laser3, laser4;
-	uint missile1, missile2, missile3, missile4; // second weap of each type
-	Animation ani_miss_down, ani_miss_up;
-	Animation* missile[2];
 	uint player_death, type_change;
-	uint type = bullet_type::TYPE_1;
 	uint type = 0;
-
-	int t, t_2, t_ani, ini_up, ini_down;
-	int t_missile;
-	int  ini_up_prime, ini_down_prime, t_ani_prime;
-	bool enable_missile1;
 
 	Uint32 startTime = 0, currentTime;
 	bool activatedChange; //Tells if the player is changing of weapon
@@ -79,7 +61,6 @@ public:
 	int lives = 2;
 	int ShootPowerUpLevel2 = 1, ShootPowerUpLevel2_2 = 0, HomingMissile2 = 0, Shield2 = 0;
 
-	int damage_1 = 1, damage_2 = 1;
 	int current_time = 0;
 	int first_time = 0;
 	bool dead = false;
@@ -89,13 +70,6 @@ public:
 	uint y = 0;
 	Collider* player = nullptr;
 	bool GodMode = false;
-
-
-	bool respawning = false;
-	bool collision = true;
-
 };
 
 #endif
-
-
