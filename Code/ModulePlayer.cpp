@@ -42,6 +42,7 @@ ModulePlayer::ModulePlayer()
 	up.PushBack(up2);
 	up.loop = false;
 	up.speed = 0.1f;
+	
 	respawn_up.PushBack({ 94, 66, 27, 15 });
 	respawn_up.PushBack({ 0, 0, 0, 0 });
 	respawn_up.loop = true;

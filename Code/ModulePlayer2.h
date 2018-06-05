@@ -37,6 +37,10 @@ public:
 	char score_text[10];
 
 	Animation idle;
+	Animation respawn;
+	Animation respawn_up;
+	Animation respawn_down;
+
 	Animation up;
 	Animation down;
 
@@ -60,6 +64,8 @@ public:
 	int current_time = 0;
 	int first_time = 0;
 	bool dead = false;
+	bool respawning = false;
+	bool collision = true;
 
 	uint y = 0;
 	Collider* player = nullptr;

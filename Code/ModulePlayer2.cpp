@@ -23,6 +23,11 @@ ModulePlayer2::ModulePlayer2()
 
 	idle.PushBack({ 154, 108, 27, 17 });
 
+	respawn.PushBack({ 154, 108, 27, 17 });
+	respawn.PushBack({ 0, 0, 0, 0 });
+	respawn.speed = 0.1f;
+	respawn.loop = true;
+
 	fire_idle.PushBack({ 73 , 111, 12 , 10 });
 	fire_idle.PushBack({ 59, 111, 12, 10 });
 	fire_idle.PushBack({ 42, 111, 12, 10 });
@@ -34,6 +39,11 @@ ModulePlayer2::ModulePlayer2()
 	up.PushBack({ 154, 66, 27, 15 });
 	up.loop = false;
 	up.speed = 0.1f;
+
+	respawn_up.PushBack({ 94, 66, 27, 15 });
+	respawn_up.PushBack({ 0, 0, 0, 0 });
+	respawn_up.loop = true;
+	respawn_up.speed = 0.1f;
 
 	fire_up1.PushBack({ 73, 89, 5, 10 });
 	fire_up1.PushBack({ 59, 89, 8, 10 });
@@ -52,6 +62,11 @@ ModulePlayer2::ModulePlayer2()
 	down.PushBack({ 154, 153, 27, 17 });
 	down.loop = false;
 	down.speed = 0.1f;
+
+	respawn_down.PushBack({ 94, 153, 27, 17 });
+	respawn_down.PushBack({ 0, 0, 0, 0 });
+	respawn_down.loop = true;
+	respawn_down.speed = 0.1f;
 
 	fire_down1.PushBack({ 73, 138, 12, 8 });
 	fire_down1.PushBack({ 59, 138, 12, 8 });
@@ -99,8 +114,15 @@ bool ModulePlayer2::Start()
 update_status ModulePlayer2::Update()
 {
 	current_time = SDL_GetTicks() - first_time;
-	if (dead == true) 
+	if (dead == true && lives >= 0)
 	{
+		current_animation = &respawn;
+		if (current_time < 1000) {
+			respawning = true;
+		}
+		else {
+			respawning = false;
+		}
 		if (current_time < 4000) 
 		{
 			player->type = COLLIDER_NONE_PLAYER_2;
@@ -114,6 +136,7 @@ update_status ModulePlayer2::Update()
 		{
 			player->type = COLLIDER_PLAYER_2;
 			dead = false;
+			collision = true;
 		}
 	}
 	int speed = 2;
@@ -121,57 +144,95 @@ update_status ModulePlayer2::Update()
 	{
 
 		// Move Player --------------------------------------
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_LEFT)) == 1)
-		{
-			position.x -= speed;
-		} else if (App->input->gamepadP2LAxisX < -6400) {
-			position.x -= speed;
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_RIGHT)) == 1)
-		{
-			position.x += speed;
-		}
-		else if (App->input->gamepadP2LAxisX > 6400) {
-			position.x += speed;
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_DOWN)) == 1)
-		{
-			position.y += speed;
-			if (current_animation != &down)
+		if (respawning == false) {
+			if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_LEFT)) == 1)
 			{
-				down.Reset();
-				current_animation = &down;
+				position.x -= speed;
+			}
+			else if (App->input->gamepadP2LAxisX < -6400) {
+				position.x -= speed;
+			}
+
+			if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_RIGHT)) == 1)
+			{
+				position.x += speed;
+			}
+			else if (App->input->gamepadP2LAxisX > 6400) {
+				position.x += speed;
+			}
+
+			if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_DOWN)) == 1)
+			{
+				position.y += speed;
+				if (dead == false) {
+					if (current_animation != &down)
+					{
+						down.Reset();
+						current_animation = &down;
+					}
+				}
+				else if (dead == true) {
+					if (current_animation != &respawn_down)
+					{
+						respawn_down.Reset();
+						current_animation = &respawn_down;
+					}
+				}
+			}
+			else if (App->input->gamepadP2LAxisY > 6400) {
+				position.y += speed;
+				if (dead == false) {
+					if (current_animation != &down)
+					{
+						down.Reset();
+						current_animation = &down;
+					}
+				}
+				else if (dead == true) {
+					if (current_animation != &respawn_down)
+					{
+						respawn_down.Reset();
+						current_animation = &respawn_down;
+					}
+				}
+			}
+
+			if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_UP)) == 1)
+			{
+				position.y -= speed;
+				if (dead == false) {
+					if (current_animation != &up)
+					{
+						up.Reset();
+						current_animation = &up;
+					}
+				}
+				else if (dead == true) {
+					if (current_animation != &respawn_up)
+					{
+						respawn_up.Reset();
+						current_animation = &respawn_up;
+					}
+				}
+			}
+			else if (App->input->gamepadP2LAxisY < -6400) {
+				position.y -= speed;
+				if (dead == false) {
+					if (current_animation != &up)
+					{
+						up.Reset();
+						current_animation = &up;
+					}
+				}
+				else if (dead == true) {
+					if (current_animation != &respawn_up)
+					{
+						respawn_up.Reset();
+						current_animation = &respawn_up;
+					}
+				}
 			}
 		}
-		else if (App->input->gamepadP2LAxisY > 6400) {
-			position.y += speed;
-			if (current_animation != &down)
-			{
-				down.Reset();
-				current_animation = &down;
-			}
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_UP)) == 1)
-		{
-			position.y -= speed;
-			if (current_animation != &up)
-			{
-				up.Reset();
-				current_animation = &up;
-			}
-		} 
-		else if (App->input->gamepadP2LAxisY < -6400) {
-			position.y -= speed;
-			if (current_animation != &down)
-			{
-				down.Reset();
-				current_animation = &down;
-			}
-		}
-
 
 
 		if (current_animation != nullptr) { // Determines animation of fire
@@ -297,7 +358,8 @@ update_status ModulePlayer2::Update()
 
 		// Player Idle position if not going up or down -------------------------------------
 		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE && (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_UP)) == 0
-			&& App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE && (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_DOWN)) == 0)
+			&& App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE && (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_DOWN)) == 0 && dead == false
+			&& (App->input->gamepadP1LAxisY < 6400 && App->input->gamepadP1LAxisY > -6400) && (App->input->gamepadP1LAxisX < 6400 && App->input->gamepadP1LAxisX > -6400))
 		{
 			current_animation = &idle;
 			fire_current = &fire_idle;
@@ -305,13 +367,15 @@ update_status ModulePlayer2::Update()
 
 		// Prevent Player from leaving bordrer -------------------------------------
 		//x lim
-		if (position.x <= abs(App->render->camera.x) / SCREEN_SIZE)
-		{
-			position.x = 1 + (abs(App->render->camera.x) / SCREEN_SIZE);
-		}
-		else if (position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH - 27)))
-		{
-			position.x = -1 + ((abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH - 27));
+		if (respawning == false) {
+			if (position.x <= abs(App->render->camera.x) / SCREEN_SIZE)
+			{
+				position.x = 1 + (abs(App->render->camera.x) / SCREEN_SIZE);
+			}
+			else if (position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH - 27)))
+			{
+				position.x = -1 + ((abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH - 27));
+			}
 		}
 
 		//y lim
@@ -403,18 +467,17 @@ void ModulePlayer2::OnCollision(Collider* col_1, Collider* col_2)
 			dead = true;
 			first_time = SDL_GetTicks();
 			App->audio->PlayFx(player_death);
-			App->player2->lives--;
+			if (collision == true) {
+				App->player2->lives--;
+			}
+			collision = false;
 
-			position.x = 1 + abs(App->render->camera.x) / SCREEN_SIZE;
+			if (lives == -1)
+			{
+				App->fade->FadeToBlack(App->level5, App->game_over);
+			}
+			position.x = 1 + abs(App->render->camera.x) / SCREEN_SIZE -30;
 			position.y = (abs(App->render->camera.y) / SCREEN_SIZE) + (SCREEN_HEIGHT / 2);
 		}
-
-		// Check player's lives	
-		else
-		{
-			position.x = 0;
-			App->fade->FadeToBlack(App->level5, App->game_over);
-		}
-
 	}
 };
