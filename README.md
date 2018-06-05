@@ -20,5 +20,10 @@ to advance through levels and defeat the alien invaders of the Earth.
 
 <iframe width="740" height="590" src="https://www.youtube.com/watch?v=nvxHr527PE0" frameborder="0" allowfullscreen></iframe>
 </iframe>
+
+install.packages("vembedr")
+library("htmltools")
+library("vembedr")
+embed_url("http://www.youtube.com/watch?v=nvxHr527PE0")
 ### Download the Game
 
