@@ -42,7 +42,7 @@ Enemy_GreenBall::Enemy_GreenBall(int x, int y) : Enemy(x, y)
 
 	graphics = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
 
-	collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_x = x;
 	original_y = y;
@@ -68,12 +68,12 @@ void Enemy_GreenBall::Move()
 	position.x += 0;
 
 
-	if (position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE + (SCREEN_WIDTH / 2))))
+	if (circle == false && position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE + (SCREEN_WIDTH / 2))))
 	{
 		position.x += 1;
 	}
 
-	else  
+	else  if (circle == false)
 	{	
 		int x = abs(position.x - App->player->position.x);
 		int y = abs(position.y - App->player->position.y);
@@ -88,10 +88,10 @@ void Enemy_GreenBall::Move()
 
 	if (circle == true)
 	{
-		position.x = position.x - 2 * (PI / TIME)* sin( (angle * 2 * PI) / 360 ) + 1 /*plus 1 due to scrolling */;
-		position.y = position.y + 2 * (PI / TIME)* cos( (angle * 2 * PI) / 360 );
+		position.x = position.x + 2 *  sinf( (angle * 2 * PI) / 360 ) + 1 /*plus 1 due to scrolling */;
+		position.y = position.y + 2 *  cosf( (angle * 2 * PI) / 360 );
 
-		angle = angle - 10;
+		angle = angle - 5;
 
 		if (angle <= 0)
 		{
