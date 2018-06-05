@@ -305,7 +305,13 @@ update_status ModuleCollision::Update()
 		case COLLIDER_PLAYER_SHOT: // yellow
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
 			break;
+		case COLLIDER_PLAYER_SHOT_ALT: // yellow
+			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
+			break;
 		case COLLIDER_PLAYER2_SHOT: // yellow
+			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
+			break;
+		case COLLIDER_PLAYER2_SHOT_ALT: // yellow
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
 			break;
 		case COLLIDER_ENEMY_SHOT: // magenta

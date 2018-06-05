@@ -72,6 +72,36 @@ ModuleEnemyBoss::ModuleEnemyBoss()
 	closingHatch2.PushBack({ 32, 460, 22, 21 });
 	closingHatch2.loop = false;
 	closingHatch2.speed = 0.15f;
+
+	//Cannon up
+	idleUp.PushBack({ 168, 363, 48, 26 });
+
+	shootUp.PushBack({ 233, 363, 48, 26 });
+	shootUp.PushBack({ 297, 363, 48, 26 });
+	shootUp.PushBack({ 354, 363, 48, 26 });
+	shootUp.PushBack({ 412, 363, 48, 26 });
+	shootUp.PushBack({ 466, 363, 48, 26 });
+	shootUp.PushBack({ 412, 363, 48, 26 });
+	shootUp.PushBack({ 354, 363, 48, 26 });
+	shootUp.PushBack({ 297, 363, 48, 26 });
+	shootUp.PushBack({ 233, 363, 48, 26 });
+	shootUp.loop = false;
+	shootUp.speed = 0.15f;
+
+	//Cannon down
+	idleDown.PushBack({ 168, 421, 48, 26 });
+
+	shootDown.PushBack({ 233, 421, 48, 26 });
+	shootDown.PushBack({ 297, 421, 48, 26 });
+	shootDown.PushBack({ 354, 421, 48, 26 });
+	shootDown.PushBack({ 412, 421, 48, 26 });
+	shootDown.PushBack({ 466, 421, 48, 26 });
+	shootDown.PushBack({ 412, 421, 48, 26 });
+	shootDown.PushBack({ 354, 421, 48, 26 });
+	shootDown.PushBack({ 297, 421, 48, 26 });
+	shootDown.PushBack({ 233, 421, 48, 26 });
+	shootDown.loop = false;
+	shootDown.speed = 0.15f;
 }
 
 ModuleEnemyBoss::~ModuleEnemyBoss()
@@ -93,12 +123,19 @@ bool ModuleEnemyBoss::Start()
 	currentTime = SDL_GetTicks();
 	lastTime = currentTime;
 
+	//Animation pointers
 	animationHatch1 = &openingHatch1;
 	animationHatch2 = &openingHatch2;
 
+	animationCannonUp = &idleUp;
+	animationCannonDown = &idleDown;
+
+	animationLightTube = &lightTube;
+
 	//Initial position
-	positionX_uh = 7395;
+	positionX_uh = 7388;
 	positionY_uh = 20;
+	positionCoreY = 50;
 
 	positionY_dh = positionY_uh + 80;
 
@@ -129,19 +166,28 @@ update_status ModuleEnemyBoss::Update()
 	}
 
 	if (currentTime > lastTime + 4000) {
-		if(positionY_uh > - 20)
+		if(positionY_uh > - 25)
 			positionY_uh--;
 
-		if(positionY_dh < 150)
+		if(positionY_dh < 145)
 			positionY_dh++;
 	}
 
 	SDL_Rect hatch1 = animationHatch1->GetCurrentFrame();
 	SDL_Rect hatch2 = animationHatch2->GetCurrentFrame();
 
+	SDL_Rect cannon1 = animationCannonUp->GetCurrentFrame();
+	SDL_Rect cannon2 = animationCannonDown->GetCurrentFrame();
+
+	SDL_Rect tube = animationLightTube->GetCurrentFrame();
+
 	// Draw everything --------------------------------------
 	App->render->Blit(graphics, positionX_uh + 25, positionY_uh + 20, &hatch1, 1.0f, true);
 	App->render->Blit(graphics, positionX_uh + 25, positionY_dh + 71, &hatch2, 1.0f, true);
+	App->render->Blit(graphics, positionX_uh + 13, positionCoreY + 51, &tube, 1.0f, true);
+	App->render->Blit(graphics, positionX_uh + 27, positionCoreY, &core, 1.0f, true);
+	App->render->Blit(graphics, positionX_uh + 11, positionCoreY + 22, &cannon1, 1.0f, true);
+	App->render->Blit(graphics, positionX_uh + 11, positionCoreY + 80, &cannon2, 1.0f, true);
 	App->render->Blit(graphics, positionX_uh - 2, positionY_dh, &downHalf, 1.0f, true);
 	App->render->Blit(graphics, positionX_uh, positionY_uh, &upHalf, 1.0f, true);
 
