@@ -126,10 +126,12 @@ bool ModuleEnemyBoss::Start()
 	currentTime = SDL_GetTicks();
 	currentTimeMusic = SDL_GetTicks();
 	currentTimeShot = SDL_GetTicks();
+	currentTimeRing = SDL_GetTicks();
 
 	lastTime = currentTime;
 	lastTimeMusic = currentTimeMusic;
 	lastTimeShot = currentTimeShot;
+	lastTimeRing = currentTimeRing;
 
 	//Animation pointers
 	animationHatch1 = &openingHatch1;
@@ -156,6 +158,7 @@ update_status ModuleEnemyBoss::Update()
 	currentTime = SDL_GetTicks();
 	currentTimeMusic = SDL_GetTicks();
 	currentTimeShot = SDL_GetTicks();
+	currentTimeRing = SDL_GetTicks();
 
 	if (currentTimeMusic > lastTimeMusic + 9000 && musicPlayed == false)
 	{
@@ -227,6 +230,16 @@ update_status ModuleEnemyBoss::Update()
 		animationCannonDown = &idleDown;
 	}
 
+	//Ring shooting
+	if (currentTimeRing > lastTimeRing + 4000) {
+	App->particles->AddParticle(App->particles->ring1, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
+	App->particles->AddParticle(App->particles->ring2, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
+	App->particles->AddParticle(App->particles->ring3, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
+	App->particles->AddParticle(App->particles->ring4, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
+	App->particles->AddParticle(App->particles->ring5, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
+	lastTimeRing = currentTimeRing;
+	}
+
 	SDL_Rect hatch1 = animationHatch1->GetCurrentFrame();
 	SDL_Rect hatch2 = animationHatch2->GetCurrentFrame();
 
@@ -246,6 +259,29 @@ update_status ModuleEnemyBoss::Update()
 	App->render->Blit(graphics, positionX_uh, positionY_uh, &upHalf, 1.0f, true);
 
 	return UPDATE_CONTINUE;
+}
+
+void ModuleEnemyBoss::OnCollision(Collider* col_1, Collider* col_2) {
+	
+	/*if (bossLife <= 0) {
+		App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
+		App->audio->PlayFx(App->enemies->small_enemy_death);
+
+		if (dead == false)
+		{
+
+			if (collider->type == COLLIDER_PLAYER_SHOT)
+			{
+				App->user_interface->score1 += bossScore;
+			}
+			if (collider->type == COLLIDER_PLAYER2_SHOT)
+			{
+				App->user_interface->score2 += bossScore;
+			}
+		}
+
+		dead = true;
+	}*/
 }
 
 // UnLoad assets

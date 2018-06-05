@@ -15,6 +15,7 @@ public:
 
 	bool Start();
 	update_status Update();
+	void OnCollision(Collider* col_1, Collider* col_2);
 	bool CleanUp();
 
 public:
@@ -52,6 +53,7 @@ public:
 	bool enemiesAdded = false;
 	bool cannonShot = false;
 	bool going_back = false;
+	bool dead = false;
 
 	// Position of the upper half
 	int positionX_uh;
@@ -67,6 +69,12 @@ public:
 	uint lastTime = 0, currentTime;
 	uint lastTimeMusic = 0, currentTimeMusic;
 	uint lastTimeShot = 0, currentTimeShot;
+	uint lastTimeRing = 0, currentTimeRing;
+
+	int bossLife = 100;	
+	int bossScore = 40000;
+
+	Collider* boss = nullptr;
 
 };
 
