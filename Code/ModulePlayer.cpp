@@ -42,6 +42,10 @@ ModulePlayer::ModulePlayer()
 	up.PushBack(up2);
 	up.loop = false;
 	up.speed = 0.1f;
+	respawn_up.PushBack({ 94, 66, 27, 15 });
+	respawn_up.PushBack({ 0, 0, 0, 0 });
+	respawn_up.loop = true;
+	respawn_up.speed = 0.1f;
 
 	fire_up1.PushBack({ 73, 89, 5, 10});
 	fire_up1.PushBack({ 59, 89, 8, 10 });
@@ -56,10 +60,16 @@ ModulePlayer::ModulePlayer()
 	fire_up2.speed = 1.0f;
 
 	down.PushBack({ 94, 108, 27, 17 });
+	down.PushBack({ 0, 0, 0, 0 });
 	down.PushBack(down1);
 	down.PushBack(down2);
 	down.loop = false;
 	down.speed = 0.1f;
+
+	respawn_down.PushBack({ 94, 153, 27, 17 });
+	respawn_down.PushBack({ 0, 0, 0, 0 });
+	respawn_down.loop = true;
+	respawn_down.speed = 0.1f;
 
 	fire_down1.PushBack({ 73, 138, 12, 8 });
 	fire_down1.PushBack({ 59, 138, 12, 8 });
@@ -137,7 +147,7 @@ update_status ModulePlayer::Update()
 {
 	current_time = SDL_GetTicks() - first_time;
 
-	if (dead == true) 
+	if (dead == true && lives >= 0) 
 	{
 		current_animation = &respawn;
 		if (current_time < 1000) {
@@ -187,37 +197,75 @@ update_status ModulePlayer::Update()
 		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN)) == 1)
 		{
 			position.y += speed;
-			if (current_animation != &down)
-			{
-				down.Reset();
-				current_animation = &down;
+			if (dead == false) {
+				if (current_animation != &down)
+				{
+					down.Reset();
+					current_animation = &down;
+				}
+			}
+			else if (dead == true) {
+				if (current_animation != &respawn_down)
+				{
+					respawn_down.Reset();
+					current_animation = &respawn_down;
+				}
 			}
 		}
 		else if (App->input->gamepadP1LAxisY > 6400) {
 			position.y += speed;
-			if (current_animation != &down)
-			{
-				down.Reset();
-				current_animation = &down;
+			if (dead == false) {
+				if (current_animation != &down)
+				{
+					down.Reset();
+					current_animation = &down;
+				}
+			}
+			else if (dead == true) {
+				if (current_animation != &respawn_down)
+				{
+					respawn_down.Reset();
+					current_animation = &respawn_down;
+				}
 			}
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_UP)) == 1)
 		{
 			position.y -= speed;
-			if (current_animation != &up)
-			{
-				up.Reset();
-				current_animation = &up;
+			if (dead == false) {
+				if (current_animation != &up)
+					{
+						up.Reset();
+						current_animation = &up;
+					}
 			}
+			else if (dead == true) {
+				if (current_animation != &respawn_up)
+				{
+					respawn_up.Reset();
+					current_animation = &respawn_up;
+				}
+			}
+			
 		}
 		else if (App->input->gamepadP1LAxisY < -6400) {
 			position.y -= speed;
-			if (current_animation != &up)
-			{
-				up.Reset();
-				current_animation = &up;
+			if (dead == false) {
+				if (current_animation != &up)
+					{
+						up.Reset();
+						current_animation = &up;
+				}
 			}
+			else if (dead == true) {
+				if (current_animation != &respawn_up)
+				{
+					respawn_up.Reset();
+					current_animation = &respawn_up;
+				}
+			}
+			
 		}
 	}
 		if (current_animation != nullptr) { // Determines animation of fire

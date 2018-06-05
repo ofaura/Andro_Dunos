@@ -40,8 +40,11 @@ public:
 	SDL_Rect down1 = { 94, 131, 27, 16 };
 	SDL_Rect down2 = { 94, 153, 27, 17 };
 
+
 	Animation idle;
 	Animation respawn;
+	Animation respawn_up;
+	Animation respawn_down;
 	Animation up;
 	Animation down;
 
