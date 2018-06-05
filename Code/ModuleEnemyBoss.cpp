@@ -172,6 +172,8 @@ update_status ModuleEnemyBoss::Update()
 	}
 
 	if (HP > 0) {
+
+		//Hatchs animations
 		if (currentTime > lastTime + 2000 && enemiesAdded == false) {
 			App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINION, positionX_uh + 30, positionY_uh + 23);
 			App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINION, positionX_uh + 100, positionY_uh + 23);
@@ -182,6 +184,8 @@ update_status ModuleEnemyBoss::Update()
 		else if (currentTime > lastTime + 3000 && enemiesAdded == true) {
 			animationHatch1 = &closingHatch1;
 			animationHatch2 = &closingHatch2;
+			openingHatch1.Reset();
+			openingHatch2.Reset();
 		}
 
 		//Opening
@@ -196,6 +200,7 @@ update_status ModuleEnemyBoss::Update()
 				closing = false;
 			}
 		}
+		//Closing
 		else if (currentTime > lastTime + 15000 && opened == true) {
 			closing = true;
 
@@ -206,6 +211,11 @@ update_status ModuleEnemyBoss::Update()
 				positionY_dh--;
 			else {
 				opened = false;
+				enemiesAdded = false;
+				animationHatch1 = &openingHatch1;
+				animationHatch2 = &openingHatch2;
+				closingHatch1.Reset();
+				closingHatch2.Reset();
 				lastTime = currentTime;
 			}
 		}		
@@ -312,7 +322,7 @@ void ModuleEnemyBoss::OnCollision(Collider* collider1, Collider* collider2) {
 		}
 		dead = true;
 	}
-	else {
+	else if(collider1->type != COLLIDER_WALL && collider1->type != COLLIDER_WALL){
 		App->audio->PlayFx(App->enemies->enemy_hit);
 		HP--;
 	}
