@@ -43,6 +43,11 @@ public:
 	uint boss_death;
 
 	bool musicPlayed = false;
+	bool enemiesAdded = false;
+
+	// Position of the upper half
+	int positionX_uh;
+	int positionY_uh;
 
 	uint lastTime = 0, currentTime;
 
