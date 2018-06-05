@@ -130,7 +130,7 @@ bool ModuleSceneLevel5::Start()
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 300, (SCREEN_HEIGHT / 2 - 20));
 
-	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_BALL, 350, (SCREEN_HEIGHT / 2) - 17);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_BALL, 350, (SCREEN_HEIGHT / 2) - 17);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 400, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 500, (SCREEN_HEIGHT / 2) - 20);

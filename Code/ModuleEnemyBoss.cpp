@@ -72,7 +72,7 @@ ModuleEnemyBoss::ModuleEnemyBoss()
 	closingHatch2.PushBack({ 60, 460, 22, 21 });
 	closingHatch2.PushBack({ 32, 460, 22, 21 });
 	closingHatch2.loop = false;
-	closingHatch2.speed = 0.3f;
+	closingHatch2.speed = 0.15f;
 
 	//Cannon up
 	idleUp.PushBack({ 168, 363, 48, 26 });
@@ -142,7 +142,7 @@ bool ModuleEnemyBoss::Start()
 	positionX_uh = 7388;
 	positionY_uh = 20;
 	positionCoreY = 50;
-
+	positionLightX = positionX_uh + 13;
 	positionY_dh = positionY_uh + 80;
 
 	return true;
@@ -180,6 +180,22 @@ update_status ModuleEnemyBoss::Update()
 
 		if(positionY_dh < 145)
 			positionY_dh++;
+	}
+
+	//Light tube movement
+	if (going_back)
+	{
+		if (positionLightX < positionX_uh + 30)
+			positionLightX++;
+		else
+			going_back = false;
+	}
+	else
+	{
+		if (positionLightX > positionX_uh + 5)
+			positionLightX--;
+		else
+			going_back = true;
 	}
 
 	//Cannons shooting
@@ -220,7 +236,7 @@ update_status ModuleEnemyBoss::Update()
 	// Draw everything --------------------------------------
 	App->render->Blit(graphics, positionX_uh + 25, positionY_uh + 20, &hatch1, 1.0f, true);
 	App->render->Blit(graphics, positionX_uh + 25, positionY_dh + 71, &hatch2, 1.0f, true);
-	App->render->Blit(graphics, positionX_uh + 13, positionCoreY + 51, &tube, 1.0f, true);
+	App->render->Blit(graphics, positionLightX, positionCoreY + 51, &tube, 1.0f, true);
 	App->render->Blit(graphics, positionX_uh + 27, positionCoreY, &core, 1.0f, true);
 	App->render->Blit(graphics, positionX_uh + 11, positionCoreY + 22, &cannon1, 1.0f, true);
 	App->render->Blit(graphics, positionX_uh + 11, positionCoreY + 80, &cannon2, 1.0f, true);
