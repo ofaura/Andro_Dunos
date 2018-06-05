@@ -35,24 +35,43 @@ ModuleEnemyBoss::ModuleEnemyBoss()
 	lightTube.loop = true;
 	lightTube.speed = 0.5f;
 	
-	//Hatchs
-	openingHatchs.PushBack({ 32, 329, 22, 152 });
-	openingHatchs.PushBack({ 60, 329, 22, 152 });
-	openingHatchs.PushBack({ 88, 329, 22, 152 });
-	openingHatchs.PushBack({ 115, 329, 22, 152 });
-	openingHatchs.PushBack({ 141, 329, 22, 152 });
-	openingHatchs.PushBack({ 1, 329, 22, 152 });
-	openingHatchs.loop = false;
-	openingHatchs.speed = 0.15f;
+	//Hatch 1
+	openingHatch1.PushBack({ 32, 329, 22, 21 });
+	openingHatch1.PushBack({ 60, 329, 22, 21 });
+	openingHatch1.PushBack({ 88, 329, 22, 21 });
+	openingHatch1.PushBack({ 115, 329, 22, 21 });
+	openingHatch1.PushBack({ 141, 329, 22, 21 });
+	openingHatch1.PushBack({ 1, 329, 22, 21 });
+	openingHatch1.loop = false;
+	openingHatch1.speed = 0.15f;
 
-	closingHatchs.PushBack({ 1, 329, 22, 152 });
-	closingHatchs.PushBack({ 141, 329, 22, 152 });
-	closingHatchs.PushBack({ 115, 329, 22, 152 });
-	closingHatchs.PushBack({ 88, 329, 22, 152 });
-	closingHatchs.PushBack({ 60, 329, 22, 152 });
-	closingHatchs.PushBack({ 32, 329, 22, 152 });
-	closingHatchs.loop = false;
-	closingHatchs.speed = 0.15f;
+	closingHatch1.PushBack({ 1, 329, 22, 21 });
+	closingHatch1.PushBack({ 141, 329, 22, 21 });
+	closingHatch1.PushBack({ 115, 329, 22, 21 });
+	closingHatch1.PushBack({ 88, 329, 22, 21 });
+	closingHatch1.PushBack({ 60, 329, 22, 21 });
+	closingHatch1.PushBack({ 32, 329, 22, 21 });
+	closingHatch1.loop = false;
+	closingHatch1.speed = 0.15f;
+
+	//Hatch 2
+	openingHatch2.PushBack({ 32, 460, 22, 21 });
+	openingHatch2.PushBack({ 60, 460, 22, 21 });
+	openingHatch2.PushBack({ 88, 460, 22, 21 });
+	openingHatch2.PushBack({ 115, 460, 22, 21 });
+	openingHatch2.PushBack({ 141, 460, 22, 21 });
+	openingHatch2.PushBack({ 1, 460, 22, 21 });
+	openingHatch2.loop = false;
+	openingHatch2.speed = 0.15f;
+
+	closingHatch2.PushBack({ 1, 460, 22, 21 });
+	closingHatch2.PushBack({ 141, 460, 22, 21 });
+	closingHatch2.PushBack({ 115, 460, 22, 21 });
+	closingHatch2.PushBack({ 88, 460, 22, 21 });
+	closingHatch2.PushBack({ 60, 460, 22, 21 });
+	closingHatch2.PushBack({ 32, 460, 22, 21 });
+	closingHatch2.loop = false;
+	closingHatch2.speed = 0.15f;
 }
 
 ModuleEnemyBoss::~ModuleEnemyBoss()
@@ -74,11 +93,14 @@ bool ModuleEnemyBoss::Start()
 	currentTime = SDL_GetTicks();
 	lastTime = currentTime;
 
-	animationHatchs = &openingHatchs;
+	animationHatch1 = &openingHatch1;
+	animationHatch2 = &openingHatch2;
 
 	//Initial position
 	positionX_uh = 7395;
-	positionY_uh = 30;
+	positionY_uh = 20;
+
+	positionY_dh = positionY_uh + 80;
 
 	return true;
 }
@@ -101,16 +123,27 @@ update_status ModuleEnemyBoss::Update()
 		App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINION, positionX_uh + 100, positionY_uh + 152);		
 		enemiesAdded = true;
 	}
-	else if (currentTime > lastTime + 3000 &&enemiesAdded == true) {
-		animationHatchs = &closingHatchs;
+	else if (currentTime > lastTime + 3000 && enemiesAdded == true) {
+		animationHatch1 = &closingHatch1;
+		animationHatch2 = &closingHatch2;
 	}
 
-	SDL_Rect hatchs = animationHatchs->GetCurrentFrame();
+	if (currentTime > lastTime + 4000) {
+		if(positionY_uh > - 20)
+			positionY_uh--;
+
+		if(positionY_dh < 150)
+			positionY_dh++;
+	}
+
+	SDL_Rect hatch1 = animationHatch1->GetCurrentFrame();
+	SDL_Rect hatch2 = animationHatch2->GetCurrentFrame();
 
 	// Draw everything --------------------------------------
-	App->render->Blit(graphics, positionX_uh + 25, positionY_uh + 20, &hatchs, 1.0f, true);
+	App->render->Blit(graphics, positionX_uh + 25, positionY_uh + 20, &hatch1, 1.0f, true);
+	App->render->Blit(graphics, positionX_uh + 25, positionY_dh + 71, &hatch2, 1.0f, true);
 	App->render->Blit(graphics, positionX_uh, positionY_uh, &upHalf, 1.0f, true);
-	App->render->Blit(graphics, positionX_uh - 2, positionY_uh + 80, &downHalf, 1.0f, true);
+	App->render->Blit(graphics, positionX_uh - 2, positionY_dh, &downHalf, 1.0f, true);
 
 	return UPDATE_CONTINUE;
 }

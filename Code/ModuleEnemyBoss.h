@@ -22,9 +22,12 @@ public:
 	SDL_Texture* graphics = nullptr;
 
 	// Hatchs animations
-	Animation closingHatchs;
-	Animation openingHatchs;
-	Animation* animationHatchs = nullptr;
+	Animation closingHatch1;
+	Animation openingHatch1;
+	Animation closingHatch2;
+	Animation openingHatch2;
+	Animation* animationHatch1 = nullptr;
+	Animation* animationHatch2 = nullptr;
 
 	// Cannon animations
 	Animation canonUp;
@@ -48,6 +51,9 @@ public:
 	// Position of the upper half
 	int positionX_uh;
 	int positionY_uh;
+
+	//Position of the down half
+	int positionY_dh;
 
 	uint lastTime = 0, currentTime;
 	uint lastTimeMusic = 0, currentTimeMusic;
