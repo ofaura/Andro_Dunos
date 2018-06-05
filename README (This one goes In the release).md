@@ -80,5 +80,13 @@ v0.4.5 - Implemented enemies with simple movements. Added colliders to bullets a
 
 v0.5 - Enlarged screen. Added more enemies. Added lives to ships and explosion particles for death.
 
+v0.6 - Added new level map and a few enemies
+
+v0.7 - Added all enemies and map hitboxes
+
+v0.75 - Polished enemy animations and added boss
+
+v1.0 Final Release
+
 
 This game is licensed under the [MIT License](LICENSE).
