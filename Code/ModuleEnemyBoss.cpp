@@ -124,10 +124,12 @@ bool ModuleEnemyBoss::Start()
 	currentTime = SDL_GetTicks();
 	currentTimeMusic = SDL_GetTicks();
 	currentTimeShot = SDL_GetTicks();
+	currentTimeRing = SDL_GetTicks();
 
 	lastTime = currentTime;
 	lastTimeMusic = currentTimeMusic;
 	lastTimeShot = currentTimeShot;
+	lastTimeRing = currentTimeRing;
 
 	//Animation pointers
 	animationHatch1 = &openingHatch1;
@@ -154,6 +156,7 @@ update_status ModuleEnemyBoss::Update()
 	currentTime = SDL_GetTicks();
 	currentTimeMusic = SDL_GetTicks();
 	currentTimeShot = SDL_GetTicks();
+	currentTimeRing = SDL_GetTicks();
 
 	if (currentTimeMusic > lastTimeMusic + 9000 && musicPlayed == false)
 	{
@@ -223,6 +226,16 @@ update_status ModuleEnemyBoss::Update()
 	if (shootDown.Finished() == true) {
 		shootDown.Reset();
 		animationCannonDown = &idleDown;
+	}
+
+	//Ring shooting
+	if (currentTimeRing > lastTimeRing + 4000) {
+	App->particles->AddParticle(App->particles->ring1, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
+	App->particles->AddParticle(App->particles->ring2, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
+	App->particles->AddParticle(App->particles->ring3, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
+	App->particles->AddParticle(App->particles->ring4, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
+	App->particles->AddParticle(App->particles->ring5, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
+	lastTimeRing = currentTimeRing;
 	}
 
 	SDL_Rect hatch1 = animationHatch1->GetCurrentFrame();

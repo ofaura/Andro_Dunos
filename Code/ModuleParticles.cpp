@@ -46,6 +46,30 @@ bool ModuleParticles::Start()
 	torpedeFire.speed.x -= 3;
 	torpedeFire.life = 4000;
 
+	ring1.anim.PushBack({ 190, 394, 28, 28 });
+	ring1.speed.x -= 3;
+	ring1.speed.y -= 2;
+	ring1.life = 4000;
+
+	ring2.anim.PushBack({ 190, 394, 28, 28 });
+	ring2.speed.x -= 3;
+	ring2.speed.y -= 1;
+	ring2.life = 4000;
+
+	ring3.anim.PushBack({ 190, 394, 28, 28 });
+	ring3.speed.x -= 3;
+	ring3.life = 4000;
+
+	ring4.anim.PushBack({ 190, 394, 28, 28 });
+	ring4.speed.x -= 3;
+	ring4.speed.y += 1;
+	ring4.life = 4000;
+
+	ring5.anim.PushBack({ 190, 394, 28, 28 });
+	ring5.speed.x -= 3;
+	ring5.speed.y += 2;
+	ring5.life = 4000;
+
 	// Enemy shots
 	enemy_shot_yellow1.anim.PushBack({ 328, 228, 8, 12 });
 	enemy_shot_yellow1.anim.PushBack({ 356, 228, 12, 12 });

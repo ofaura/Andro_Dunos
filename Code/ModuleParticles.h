@@ -56,6 +56,12 @@ public:
 	Particle torpede;
 	Particle torpedeFire;
 
+	Particle ring1;
+	Particle ring2;
+	Particle ring3;
+	Particle ring4;
+	Particle ring5;
+
 	Particle laser1, laser1_2, laser1_3; // 1
 	Particle laser2_1, laser2_2, laser2_3a, laser2_3b, laser2_4a, laser2_4b, laser2_5, laser2_6; // 2
 	Particle laser3[13]; // 3

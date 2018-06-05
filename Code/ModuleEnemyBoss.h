@@ -67,6 +67,7 @@ public:
 	uint lastTime = 0, currentTime;
 	uint lastTimeMusic = 0, currentTimeMusic;
 	uint lastTimeShot = 0, currentTimeShot;
+	uint lastTimeRing = 0, currentTimeRing;
 
 };
 
