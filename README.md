@@ -24,3 +24,4 @@ to advance through levels and defeat the alien invaders of the Earth.
 
 ### Download the Game
 
+[Download the latest version here!](https://github.com/ofaura/Andro_Dunos/releases/tag/v.1.0)
