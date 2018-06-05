@@ -9,6 +9,7 @@
 #include "ModuleInput.h"
 #include "ModuleAudio.h"
 #include "ModuleEnemies.h"
+#include "ModuleParticles.h"
 
 ModuleEnemyBoss::ModuleEnemyBoss()
 {
@@ -71,35 +72,35 @@ ModuleEnemyBoss::ModuleEnemyBoss()
 	closingHatch2.PushBack({ 60, 460, 22, 21 });
 	closingHatch2.PushBack({ 32, 460, 22, 21 });
 	closingHatch2.loop = false;
-	closingHatch2.speed = 0.15f;
+	closingHatch2.speed = 0.3f;
 
 	//Cannon up
 	idleUp.PushBack({ 168, 363, 48, 26 });
 
-	shootUp.PushBack({ 233, 363, 48, 26 });
-	shootUp.PushBack({ 297, 363, 48, 26 });
-	shootUp.PushBack({ 354, 363, 48, 26 });
-	shootUp.PushBack({ 412, 363, 48, 26 });
-	shootUp.PushBack({ 466, 363, 48, 26 });
-	shootUp.PushBack({ 412, 363, 48, 26 });
-	shootUp.PushBack({ 354, 363, 48, 26 });
-	shootUp.PushBack({ 297, 363, 48, 26 });
-	shootUp.PushBack({ 233, 363, 48, 26 });
+	shootUp.PushBack({ 231, 363, 48, 26 });
+	shootUp.PushBack({ 293, 363, 48, 26 });
+	shootUp.PushBack({ 348, 363, 48, 26 });
+	shootUp.PushBack({ 404, 363, 48, 26 });
+	shootUp.PushBack({ 456, 363, 48, 26 });
+	shootUp.PushBack({ 404, 363, 48, 26 });
+	shootUp.PushBack({ 348, 363, 48, 26 });
+	shootUp.PushBack({ 293, 363, 48, 26 });
+	shootUp.PushBack({ 231, 363, 48, 26 });
 	shootUp.loop = false;
-	shootUp.speed = 0.15f;
+	shootUp.speed = 0.3f;
 
 	//Cannon down
 	idleDown.PushBack({ 168, 421, 48, 26 });
 
-	shootDown.PushBack({ 233, 421, 48, 26 });
-	shootDown.PushBack({ 297, 421, 48, 26 });
-	shootDown.PushBack({ 354, 421, 48, 26 });
-	shootDown.PushBack({ 412, 421, 48, 26 });
-	shootDown.PushBack({ 466, 421, 48, 26 });
-	shootDown.PushBack({ 412, 421, 48, 26 });
-	shootDown.PushBack({ 354, 421, 48, 26 });
-	shootDown.PushBack({ 297, 421, 48, 26 });
-	shootDown.PushBack({ 233, 421, 48, 26 });
+	shootDown.PushBack({ 231, 421, 48, 26 });
+	shootDown.PushBack({ 293, 421, 48, 26 });
+	shootDown.PushBack({ 348, 421, 48, 26 });
+	shootDown.PushBack({ 404, 421, 48, 26 });
+	shootDown.PushBack({ 456, 421, 48, 26 });
+	shootDown.PushBack({ 404, 421, 48, 26 });
+	shootDown.PushBack({ 348, 421, 48, 26 });
+	shootDown.PushBack({ 293, 421, 48, 26 });
+	shootDown.PushBack({ 231, 421, 48, 26 });
 	shootDown.loop = false;
 	shootDown.speed = 0.15f;
 }
@@ -121,7 +122,12 @@ bool ModuleEnemyBoss::Start()
 	App->audio->PlayMusic("Assets/Audio/Music/bossIntro.ogg", 0.0f); //Intro music
 
 	currentTime = SDL_GetTicks();
+	currentTimeMusic = SDL_GetTicks();
+	currentTimeShot = SDL_GetTicks();
+
 	lastTime = currentTime;
+	lastTimeMusic = currentTimeMusic;
+	lastTimeShot = currentTimeShot;
 
 	//Animation pointers
 	animationHatch1 = &openingHatch1;
@@ -146,8 +152,10 @@ bool ModuleEnemyBoss::Start()
 update_status ModuleEnemyBoss::Update()
 {
 	currentTime = SDL_GetTicks();
+	currentTimeMusic = SDL_GetTicks();
+	currentTimeShot = SDL_GetTicks();
 
-	if (currentTime > lastTime + 9000 && musicPlayed == false)
+	if (currentTimeMusic > lastTimeMusic + 9000 && musicPlayed == false)
 	{
 		App->audio->PlayMusic("Assets/Audio/Music/bossLoop.ogg", 0.0f); //Loop music
 		musicPlayed = true;
@@ -165,12 +173,38 @@ update_status ModuleEnemyBoss::Update()
 		animationHatch2 = &closingHatch2;
 	}
 
+	//Opening
 	if (currentTime > lastTime + 4000) {
 		if(positionY_uh > - 25)
 			positionY_uh--;
 
 		if(positionY_dh < 145)
 			positionY_dh++;
+	}
+
+	//Cannons shooting
+	if (currentTimeShot > lastTimeShot + 5300) {
+		animationCannonDown = &shootDown;
+		App->particles->AddParticle(App->particles->enemy_shot_yellow1, positionX_uh + 80, positionCoreY + 26, COLLIDER_ENEMY_SHOT);
+		lastTimeShot = currentTimeShot;
+		cannonShot = false;
+	}
+	else if (currentTimeShot > lastTimeShot + 5000) {
+		animationCannonUp = &shootUp;
+		if (cannonShot == false) {
+		App->particles->AddParticle(App->particles->enemy_shot_yellow1, positionX_uh + 80, positionCoreY + 84, COLLIDER_ENEMY_SHOT);
+		cannonShot = true;
+		}
+	}
+
+	if (shootUp.Finished() == true) {
+		shootUp.Reset();
+		animationCannonUp = &idleUp;
+	}
+
+	if (shootDown.Finished() == true) {
+		shootDown.Reset();
+		animationCannonDown = &idleDown;
 	}
 
 	SDL_Rect hatch1 = animationHatch1->GetCurrentFrame();

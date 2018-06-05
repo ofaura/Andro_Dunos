@@ -50,6 +50,7 @@ public:
 
 	bool musicPlayed = false;
 	bool enemiesAdded = false;
+	bool cannonShot = false;
 
 	// Position of the upper half
 	int positionX_uh;
@@ -63,6 +64,7 @@ public:
 
 	uint lastTime = 0, currentTime;
 	uint lastTimeMusic = 0, currentTimeMusic;
+	uint lastTimeShot = 0, currentTimeShot;
 
 };
 
