@@ -31,10 +31,10 @@ public:
 	Animation* current_animation = nullptr;
 	Animation* fire_current = nullptr;
 
-	SDL_Rect up1 = { 94, 87, 27, 15 };
-	SDL_Rect up2 = { 94, 66, 27, 15 };
-	SDL_Rect down1 = { 94, 131, 27, 16 };
-	SDL_Rect down2 = { 94, 153, 27, 17 };
+	SDL_Rect up1 = { 154, 87, 27, 15 };
+	SDL_Rect up2 = { 154, 66, 27, 15 };
+	SDL_Rect down1 = { 154, 131, 27, 16 };
+	SDL_Rect down2 = { 154, 153, 27, 17 };
 
 
 	Animation idle;

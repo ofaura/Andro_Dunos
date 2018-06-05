@@ -27,9 +27,9 @@ ModulePlayer2::ModulePlayer2()
 
 	current_animation = NULL;
 
-	idle.PushBack({ 94, 108, 27, 17 });
+	idle.PushBack({ 154, 108, 27, 17 });
 
-	respawn.PushBack({ 94, 108, 27, 17 });
+	respawn.PushBack({ 154, 108, 27, 17 });
 	respawn.PushBack({ 0, 0, 0, 0 });
 	respawn.speed = 0.1f;
 	respawn.loop = true;
@@ -40,13 +40,13 @@ ModulePlayer2::ModulePlayer2()
 	fire_idle.loop = true;
 	fire_idle.speed = 1.0f;
 
-	up.PushBack({ 94, 108, 27, 17 });
+	up.PushBack({ 154, 108, 27, 17 });
 	up.PushBack(up1);
 	up.PushBack(up2);
 	up.loop = false;
 	up.speed = 0.1f;
 
-	respawn_up.PushBack({ 94, 66, 27, 15 });
+	respawn_up.PushBack({ 154, 66, 27, 15 });
 	respawn_up.PushBack({ 0, 0, 0, 0 });
 	respawn_up.loop = true;
 	respawn_up.speed = 0.1f;
@@ -63,14 +63,14 @@ ModulePlayer2::ModulePlayer2()
 	fire_up2.loop = true;
 	fire_up2.speed = 1.0f;
 
-	down.PushBack({ 94, 108, 27, 17 });
+	down.PushBack({ 154, 108, 27, 17 });
 	down.PushBack({ 0, 0, 0, 0 });
 	down.PushBack(down1);
 	down.PushBack(down2);
 	down.loop = false;
 	down.speed = 0.1f;
 
-	respawn_down.PushBack({ 94, 153, 27, 17 });
+	respawn_down.PushBack({ 154, 153, 27, 17 });
 	respawn_down.PushBack({ 0, 0, 0, 0 });
 	respawn_down.loop = true;
 	respawn_down.speed = 0.1f;
