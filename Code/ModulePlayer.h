@@ -41,6 +41,7 @@ public:
 	SDL_Rect down2 = { 94, 153, 27, 17 };
 
 	Animation idle;
+	Animation respawn;
 	Animation up;
 	Animation down;
 

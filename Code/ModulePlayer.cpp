@@ -26,6 +26,11 @@ ModulePlayer::ModulePlayer()
 
 	idle.PushBack({ 94, 108, 27, 17 });
 
+	respawn.PushBack({ 94, 108, 27, 17 });
+	respawn.PushBack({ 0, 0, 0, 0 });
+	respawn.speed = 0.1f;
+	respawn.loop = true;
+
 	fire_idle.PushBack({ 73 , 111, 12 , 10 });
 	fire_idle.PushBack({ 59, 111, 12, 10 });
 	fire_idle.PushBack({ 42, 111, 12, 10 });
@@ -161,17 +166,20 @@ update_status ModulePlayer::Update()
 	{
 
 		// Move Player --------------------------------------
+	if(respawning==false){
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT)) == 1)
 		{
 			position.x -= speed;
-		} else if(App->input-> gamepadP1LAxisX < -6400 ){
+		}
+		else if (App->input->gamepadP1LAxisX < -6400) {
 			position.x -= speed;
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT || (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT)) == 1)
 		{
 			position.x += speed;
-		} else if (App->input->gamepadP1LAxisX > 6400) {
+		}
+		else if (App->input->gamepadP1LAxisX > 6400) {
 			position.x += speed;
 		}
 
@@ -210,6 +218,7 @@ update_status ModulePlayer::Update()
 				current_animation = &up;
 			}
 		}
+	}
 		if (current_animation != nullptr) { // Determines animation of fire
 			if (current_animation->GetCurrentFrame().h == down1.h) {
 				fire_current = &fire_down1;
@@ -719,7 +728,7 @@ update_status ModulePlayer::Update()
 
 		// Player Idle position if not going up or down -------------------------------------
 		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE && (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_DOWN)) == 0
-			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_UP)) == 0)
+			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_DPAD_UP)) == 0 && dead == false)
 		{
 		current_animation = &idle;
 		fire_current = &fire_idle;
