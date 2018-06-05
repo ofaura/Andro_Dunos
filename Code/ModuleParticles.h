@@ -89,6 +89,9 @@ public:
 	Particle enemy_shot_blue5;
 	Particle enemy_shot_blue6;
 
+	Particle beamShotUp;
+	Particle beamShotDown;
+
 	Particle big_shot;
 
 	// Shoots of the little turrets
