@@ -169,6 +169,7 @@ update_status ModulePlayer::Update()
 		{
 			player->type = COLLIDER_PLAYER;
 			dead = false;
+			collision = true;
 		}
 	}
 
@@ -883,10 +884,14 @@ void ModulePlayer::OnCollision(Collider* col_1, Collider* col_2)
 
 		if (App->player->lives >= 0)
 		{
+
 			dead = true;
 			first_time = SDL_GetTicks();
 			App->audio->PlayFx(player_death);
-			App->player->lives--;
+			if (collision == true) {
+				App->player->lives--;
+			}
+			collision = false;
 
 			position.x = 1 + abs(App->render->camera.x) / SCREEN_SIZE - 30;
 			position.y = (abs(App->render->camera.y) / SCREEN_SIZE) + (SCREEN_HEIGHT / 2);
