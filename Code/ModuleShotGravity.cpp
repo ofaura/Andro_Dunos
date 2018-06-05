@@ -241,26 +241,13 @@ bool Accel_Shot::Update()
 
 	else if (type == HOMING_MISSILE)
 	{
-			if (this->enemy == nullptr || (this->enemy->position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE) + 10)) ||
-				(this->enemy->position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 10)) ||
-				(this->enemy->position.y <= ((abs(App->render->camera.y) / SCREEN_SIZE) + 10)) ||
-				(this->enemy->position.y >= ((abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 10)))
+			if (enemy == nullptr || enemy->collider == nullptr)
 			{
-				for (int counter = 0; counter < MAX_ENEMIES; counter++)
-				{
-					if (App->enemies->enemies[counter] != nullptr && App->enemies->enemies[counter]->type != POWER_UP)
-					{
-						if ((App->enemies->enemies[counter]->position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE) + 40)) &&
-							(App->enemies->enemies[counter]->position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 40)) &&
-							(App->enemies->enemies[counter]->position.y >= ((abs(App->render->camera.y) / SCREEN_SIZE) + 10)) &&
-							(App->enemies->enemies[counter]->position.y <= ((abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 10)))
-						{
-							this->enemy = App->enemies->enemies[counter];
-							break;
-						}
-					}
-				}
+				position.x += 1;
+				position.y += 2;
 			}
+			else
+			{
 				// proces: start
 
 				int dif_pos[2];
@@ -304,6 +291,8 @@ bool Accel_Shot::Update()
 					position.y += vel[y];
 				}
 				// proces: end. the main velocity equations come from solving simple trigonometric problem on paper
+
+			}
 
 	}
 
