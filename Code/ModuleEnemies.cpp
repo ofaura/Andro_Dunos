@@ -321,6 +321,11 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					enemies[i]->HP -= App->player2->damage_2;
 				}
 			}
+
+			else if (c2->type == COLLIDER_SHIELD_1 || c2->type == COLLIDER_SHIELD_2)
+			{
+				enemies[i]->HP = -2;
+			}
 			if (enemies[i]->HP <= 0)
 			{
 				enemies[i]->OnCollision(c2);

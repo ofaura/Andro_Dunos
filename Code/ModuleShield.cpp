@@ -221,21 +221,6 @@ update_status ModuleShield::Update() {
 		// ---- Stays in front of ship
 	case bullet_type::TYPE_1:
 
-		//give_position_y(rad, angle_deg)
-		//give_position_x(rad, angle_deg)
-
-		/*
-					- -	-
-				-	  -		-
-			-		  -			-
-			-		  - 		-
-			--------------------- 0º/360º
-			-		  -			-
-			-		  -			-
-				-	  -		-
-					- -	-	
-		
-		*/
 		pos1_t1[0].x = App->player->position.x + give_position_x(RADIUS, 0.0);
 		pos1_t1[0].y = App->player->position.y + give_position_y(RADIUS, 0.0);
 		pos2_t1[0].x = App->player->position.x  + give_position_x(RADIUS, 180.0);
@@ -347,11 +332,7 @@ update_status ModuleShield::Update() {
 
 void ModuleShield::OnCollision(Collider* col_1, Collider* col_2) {
 	if (collider1 == col_1 || collider2 == col_1)
-		if (IsEnabled() && collider1->type != COLLIDER_TYPE::COLLIDER_WALL && collider2->type != COLLIDER_TYPE::COLLIDER_WALL
-			&& collider1->type != COLLIDER_TYPE::COLLIDER_PLAYER && collider1->type != COLLIDER_TYPE::COLLIDER_PLAYER_2
-			&& collider2->type != COLLIDER_TYPE::COLLIDER_PLAYER && collider2->type != COLLIDER_TYPE::COLLIDER_PLAYER_2
-			&& collider1->type != COLLIDER_TYPE::COLLIDER_PLAYER_SHOT && collider1->type != COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT
-			&& collider2->type != COLLIDER_TYPE::COLLIDER_PLAYER_SHOT && collider2->type != COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+		if (IsEnabled() && collider1->type == COLLIDER_TYPE::COLLIDER_ENEMY || collider2->type == COLLIDER_TYPE::COLLIDER_ENEMY) {
 			circ = 0;
 			collider1->to_delete = true;
 			collider2->to_delete = true;
