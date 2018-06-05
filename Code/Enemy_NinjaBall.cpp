@@ -11,7 +11,7 @@
 
 Enemy_NinjaBall::Enemy_NinjaBall(int x, int y) : Enemy(x, y)
 {
-
+	HP = 1;
 	nth.PushBack({ 0,0,0,0 });
 
 	spawn.PushBack({ 180, 536, 28, 20 });
