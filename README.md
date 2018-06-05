@@ -16,7 +16,7 @@ of these weapons and of enemy ship dropped power-ups, must shoot their way throu
 to advance through levels and defeat the alien invaders of the Earth.
 
 ***
-## Gameplay
+### Gameplay
 
 <iframe width="560" height="315" src="https://youtu.be/nvxHr527PE0" frameborder="0" allow="autoplay; encrypted-media" 
 allowfullscreen></iframe>
