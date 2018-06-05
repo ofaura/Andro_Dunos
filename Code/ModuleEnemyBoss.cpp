@@ -185,15 +185,30 @@ update_status ModuleEnemyBoss::Update()
 		}
 
 		//Opening
-		if (currentTime > lastTime + 4000) {
+		if (currentTime > lastTime + 4000 && opened == false) {
 			if (positionY_uh > -25)
 				positionY_uh--;
 
 			if (positionY_dh < 145)
 				positionY_dh++;
-			else 
+			else {
 				opened = true;
+				closing = false;
+			}
 		}
+		else if (currentTime > lastTime + 15000 && opened == true) {
+			closing = true;
+
+			if (positionY_uh < 20)
+				positionY_uh++;
+
+			if (positionY_dh > 100)
+				positionY_dh--;
+			else {
+				opened = false;
+				lastTime = currentTime;
+			}
+		}		
 
 		//Light tube movement
 		if (going_back)
@@ -212,14 +227,14 @@ update_status ModuleEnemyBoss::Update()
 		}
 
 		//Cannons shooting
-		if (currentTimeShot > lastTimeShot + 5300) {
+		if (currentTimeShot > lastTimeShot + 4300 && opened == true && closing == false) {
 			animationCannonDown = &shootDown;
 			App->particles->AddParticle(App->particles->torpede, positionX_uh + 60, positionCoreY + 83, COLLIDER_ENEMY_SHOT);
 			App->particles->AddParticle(App->particles->torpedeFire, positionX_uh + 100, positionCoreY + 83, COLLIDER_NONE);
 			lastTimeShot = currentTimeShot;
 			cannonShot = false;
 		}
-		else if (currentTimeShot > lastTimeShot + 5000) {
+		else if (currentTimeShot > lastTimeShot + 4000 && opened == true && closing == false) {
 			animationCannonUp = &shootUp;
 			if (cannonShot == false) {
 				App->particles->AddParticle(App->particles->torpede, positionX_uh + 60, positionCoreY + 29, COLLIDER_ENEMY_SHOT);
@@ -243,7 +258,7 @@ update_status ModuleEnemyBoss::Update()
 		underHalf->SetPos(positionX_uh - 2, positionY_dh + 15);
 
 		//Ring shooting
-		if (currentTimeRing > lastTimeRing + 4500) {
+		if (currentTimeRing > lastTimeRing + 3000 && opened == true && closing == false) {
 			App->particles->AddParticle(App->particles->ring1, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
 			App->particles->AddParticle(App->particles->ring2, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
 			App->particles->AddParticle(App->particles->ring3, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
