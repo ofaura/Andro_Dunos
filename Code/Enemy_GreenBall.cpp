@@ -11,7 +11,7 @@
 #include "ModuleAudio.h"
 
 #define TIME (100)
-#define DISTANCE (100)
+#define DISTANCE (70)
 
 Enemy_GreenBall::Enemy_GreenBall(int x, int y) : Enemy(x, y)
 {
@@ -73,25 +73,28 @@ void Enemy_GreenBall::Move()
 		position.x += 1;
 	}
 
-	else  if (circle == false)
-	{	
-		int x = abs(position.x - App->player->position.x);
-		int y = abs(position.y - App->player->position.y);
+	int x = abs(position.x - App->player->position.x);
+	int y = abs(position.y - App->player->position.y);
 
-		int diag = sqrt(x * x + y * y);
+	int diag = sqrt(x * x + y * y);
 
-		if (diag <= DISTANCE)
-		{
+	if (diag <= DISTANCE)
+	{
 			circle = true;
-		}
 	}
+
 
 	if (circle == true)
 	{
-		position.x = position.x + 2 *  sinf( (angle * 2 * PI) / 360 ) + 1 /*plus 1 due to scrolling */;
-		position.y = position.y + 2 *  cosf( (angle * 2 * PI) / 360 );
+
+
+		position.x = position.x + 3 *  sinf( (angle * 2 * PI) / 360 ) + 1 /*plus 1 due to scrolling */;
+		position.y = position.y + 3 *  cosf( (angle * 2 * PI) / 360 );
 
 		angle = angle - 5;
+
+
+
 
 		if (angle <= 0)
 		{
