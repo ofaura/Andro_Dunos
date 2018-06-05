@@ -17,9 +17,9 @@ class Enemy
 {
 protected:
 	Animation* animation = nullptr;
-	Collider* collider = nullptr;
 
 public:
+	Collider* collider = nullptr;
 	iPoint position;
 	int HP;
 	Enemy_Type type = OTHERS;

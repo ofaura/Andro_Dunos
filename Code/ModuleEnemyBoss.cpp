@@ -142,8 +142,8 @@ update_status ModuleEnemyBoss::Update()
 	// Draw everything --------------------------------------
 	App->render->Blit(graphics, positionX_uh + 25, positionY_uh + 20, &hatch1, 1.0f, true);
 	App->render->Blit(graphics, positionX_uh + 25, positionY_dh + 71, &hatch2, 1.0f, true);
-	App->render->Blit(graphics, positionX_uh, positionY_uh, &upHalf, 1.0f, true);
 	App->render->Blit(graphics, positionX_uh - 2, positionY_dh, &downHalf, 1.0f, true);
+	App->render->Blit(graphics, positionX_uh, positionY_uh, &upHalf, 1.0f, true);
 
 	return UPDATE_CONTINUE;
 }
