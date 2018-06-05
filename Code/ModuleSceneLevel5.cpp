@@ -521,6 +521,7 @@ update_status ModuleSceneLevel5::Update()
 	//Win condition
 	if (App->boss->dead)
 	{
+		App->boss->dead = false;
 		App->fade->FadeToBlack(App->level5, App->bonus, 1.0f);
 	}
 
