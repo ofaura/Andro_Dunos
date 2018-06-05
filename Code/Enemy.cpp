@@ -3,7 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
-
+#include "ModulePlayer.h"
 Enemy::Enemy(int x, int y) : position(x, y)
 {
 	//type = OTHERS;
@@ -33,7 +33,7 @@ void Enemy::Draw(SDL_Texture* sprites)
 
 void Enemy::OnCollision(Collider* collider)
 {
-	if (collider->type == COLLIDER_PLAYER_SHOT || (collider->type == COLLIDER_PLAYER) || collider->type == COLLIDER_PLAYER_2)
+	if (collider->type == COLLIDER_PLAYER_SHOT || (collider->type == COLLIDER_PLAYER) || collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_PLAYER_SHOT)
 	{
 		App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y);
 	}

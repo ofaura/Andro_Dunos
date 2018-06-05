@@ -556,7 +556,9 @@ bool ModuleSceneLevel5::CleanUp()
 	App->collision->CleanUp();
 
 	App->user_interface->Disable();
+	App->enemies->CleanUp();
 	App->enemies->Disable();
+	
 	App->collision->Disable();
 	App->player->Disable();
 
