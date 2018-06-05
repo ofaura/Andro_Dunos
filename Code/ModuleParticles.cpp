@@ -794,7 +794,13 @@ bool ModuleParticles::Start()
 	explosionP2.anim.speed = 0.3f;
 	explosionP2.life = 500;
 
-	// Enemy death
+	// Enemy death and hit
+	enemy_hit.anim.PushBack({ 153, 242, 32, 32 });
+
+	enemy_hit.anim.loop = false;
+	enemy_hit.anim.speed = 1.0f;
+	enemy_hit.life = 100;
+
 	enemy_explosion.anim.PushBack({ 130, 270, 4, 4 });
 	enemy_explosion.anim.PushBack({ 137, 262, 12, 12 });
 	enemy_explosion.anim.PushBack({ 153, 242, 32, 32 });

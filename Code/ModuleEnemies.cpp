@@ -292,7 +292,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			{
 				enemies[i]->HP -= App->player->damage_1;
 			}
-			if (c2->type == COLLIDER_PLAYER_SHOT_ALT || c2->type == COLLIDER_PLAYER2_SHOT_ALT)
+			else if (c2->type == COLLIDER_PLAYER_SHOT_ALT || c2->type == COLLIDER_PLAYER2_SHOT_ALT)
 			{
 				enemies[i]->HP -= App->player->damage_2;
 			}
@@ -302,6 +302,10 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				delete enemies[i];
 				enemies[i] = nullptr;
 				break;
+			}
+			else
+			{
+				App->particles->AddParticle(App->particles->enemy_hit, enemies[i]->position.x, enemies[i]->position.y, COLLIDER_NONE);
 			}
 		}
 	}

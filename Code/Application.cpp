@@ -37,8 +37,8 @@ Application::Application()
 	modules[i++] = shield = new ModuleShield();
 	modules[i++] = shield_p2 = new ModuleShield_p2();
 	modules[i++] = audio = new ModuleAudio();
-	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = enemies = new ModuleEnemies();
+	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = player2 = new ModulePlayer2();
 	modules[i++] = boss = new ModuleEnemyBoss();

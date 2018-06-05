@@ -75,6 +75,7 @@ public:
 	Particle explosionP1;
 	Particle explosionP2;
 	Particle enemy_explosion;
+	Particle enemy_hit;
 	Particle enemy_explosion_alt;
 	Particle meteor_explosion;
 
