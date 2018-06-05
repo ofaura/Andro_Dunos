@@ -30,14 +30,17 @@ public:
 	Animation* animationHatch2 = nullptr;
 
 	// Cannon animations
-	Animation canonUp;
-	Animation canonDown;
+	Animation idleUp;
+	Animation idleDown;
+	Animation shootUp;
+	Animation shootDown;
 	Animation torpede;
 	Animation* animationCannonUp = nullptr;
 	Animation* animationCannonDown = nullptr;
 
 	//Red light
 	Animation lightTube;
+	Animation* animationLightTube = nullptr;
 
 	SDL_Rect upHalf;
 	SDL_Rect downHalf;
@@ -54,6 +57,9 @@ public:
 
 	//Position of the down half
 	int positionY_dh;
+
+	//Position of the core
+	int positionCoreY;
 
 	uint lastTime = 0, currentTime;
 	uint lastTimeMusic = 0, currentTimeMusic;
