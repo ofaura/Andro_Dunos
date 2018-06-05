@@ -101,5 +101,5 @@ void Enemy_SolarPanel::OnCollision(Collider* collider)
 		}
 	}
 
-	dead = true;
+	//dead = true;
 }

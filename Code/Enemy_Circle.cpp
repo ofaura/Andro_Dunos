@@ -28,7 +28,7 @@ Enemy_Circle::Enemy_Circle(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 20, 19 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
-	HP = CIRCLE;
+	//HP = CIRCLE;
 }
 
 void Enemy_Circle::Move()

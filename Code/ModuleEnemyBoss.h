@@ -71,10 +71,11 @@ public:
 	uint lastTimeShot = 0, currentTimeShot;
 	uint lastTimeRing = 0, currentTimeRing;
 
-	int bossLife = 100;	
 	int bossScore = 40000;
 
 	Collider* boss = nullptr;
+
+	int HP;
 
 };
 
