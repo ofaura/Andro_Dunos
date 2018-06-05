@@ -1,8 +1,8 @@
-﻿### The Team
-* Management: [Òscar Faura](https://github.com/ofaura)
+﻿### The Team (From Left to Right)
 * Art/Design: [Jacobo Galofre](https://github.com/sherzock)
-* Programmer: [Sam Davidson](https://github.com/samuelkurtdavidson)
 * Programmer: [Gerard Albarran](https://github.com/GAPIntoTheGame)
+* Programmer: [Sam Davidson](https://github.com/samuelkurtdavidson)
+* Management: [Òscar Faura](https://github.com/ofaura)
 * QA: [Dani Lorenzo](https://github.com/DLorenzoLaguno17)
 
 ![Team photo https://github.com/ofaura/Andro_Dunos/blob/master/images/team.jpg?raw=true](https://github.com/ofaura/Andro_Dunos/blob/master/images/team.jpg?raw=true)
