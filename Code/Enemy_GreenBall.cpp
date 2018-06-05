@@ -46,6 +46,8 @@ Enemy_GreenBall::Enemy_GreenBall(int x, int y) : Enemy(x, y)
 
 	original_x = x;
 	original_y = y;
+
+	HP = GREEN_BALL_HP;
 }
 
 void Enemy_GreenBall::Draw(SDL_Texture* sprites)

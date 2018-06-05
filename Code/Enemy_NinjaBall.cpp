@@ -40,7 +40,7 @@ Enemy_NinjaBall::Enemy_NinjaBall(int x, int y) : Enemy(x, y)
 
 	original_y = y;
 	original_x = x;
-	HP = FIRST;
+	HP = NINJA_BALL_HP;
 	
 }
 

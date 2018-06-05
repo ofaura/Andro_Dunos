@@ -26,7 +26,9 @@ Enemy_GreenPlane::Enemy_GreenPlane(int x, int y) : Enemy(x, y)
 
 	original_y = y;
 	original_x = x;
+	HP = GREEN_PLANE_HP;
 }
+
 
 void Enemy_GreenPlane::Move()
 {

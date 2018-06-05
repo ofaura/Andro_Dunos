@@ -13,6 +13,8 @@
 
 ModuleEnemyBoss::ModuleEnemyBoss()
 {
+	HP = BOSS_HP;
+
 	//Meteorite
 	upHalf.x = 226;
 	upHalf.y = 93;

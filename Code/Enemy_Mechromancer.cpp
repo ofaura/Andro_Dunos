@@ -18,6 +18,7 @@ Enemy_Mechromancer::Enemy_Mechromancer(int x, int y) : Enemy(x, y)
 	animation = &fly;
 	original_x = x;
 	original_y = y;
+	HP = MECHROMANCER_HP;
 }
 
 void Enemy_Mechromancer::Move()

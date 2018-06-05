@@ -35,6 +35,8 @@ Enemy_SolarPanel::Enemy_SolarPanel(int x, int y) : Enemy(x, y)
 
 	animation = &fly;
 	original_x = x;
+
+	HP = SOLAR_PANEL_HP;
 }
 
 void Enemy_SolarPanel::Move()
