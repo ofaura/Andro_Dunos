@@ -60,6 +60,8 @@ bool ModuleEnemies::Start()
 	small_enemy_death = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_small_explosion.wav");
 	medium_enemy_death = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_medium_explosion.wav");
 	greenRocket = App->audio->LoadFx("Assets/Audio/Sound FX/greenRockets_launched.wav");
+	boss_death = App->audio->LoadFx("Assets/Audio/Sound FX/boss_death.wav");
+	enemy_hit = App->audio->LoadFx("Assets/Audio/Sound FX/enemy_hit.wav");
 
 	return true;
 }
@@ -118,6 +120,8 @@ update_status ModuleEnemies::PostUpdate()
 bool ModuleEnemies::CleanUp()
 {
 	LOG("Freeing all enemies");
+	App->audio->UnLoadFx(enemy_hit);
+	App->audio->UnLoadFx(boss_death);
 	App->audio->UnLoadFx(greenRocket);
 	App->audio->UnLoadFx(medium_enemy_death);
 	App->audio->UnLoadFx(small_enemy_death);

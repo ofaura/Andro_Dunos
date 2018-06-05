@@ -29,7 +29,7 @@ typedef unsigned int uint;
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 224
 #define WIN_FULLSCREEN 0
-#define WIN_FULLSCREEN_DESKTOP 0
+#define WIN_FULLSCREEN_DESKTOP 1
 #define WIN_BORDERLESS 0
 #define WIN_RESIZABLE 0
 #define REN_VSYNC 1
@@ -46,13 +46,13 @@ typedef unsigned int uint;
 #define WASP_HP 3
 #define XWING_HP 2
 #define MINION_HP 5
-#define MECHROMANCER_HP 25
+#define MECHROMANCER_HP 30
 #define NINJA_BALL_HP 1
 #define GREEN_PLANE_HP 2
 #define MINE_HP 1
 #define GREEN_BALL_HP 3
 #define SOLAR_PANEL_HP 25
 
-#define BOSS_HP 150;
+#define BOSS_HP 100;
 
 #endif // __GLOBALS_H__

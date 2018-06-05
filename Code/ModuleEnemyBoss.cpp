@@ -10,6 +10,7 @@
 #include "ModuleAudio.h"
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
+#include "ModuleUserInterface.h"
 
 ModuleEnemyBoss::ModuleEnemyBoss()
 {
@@ -149,6 +150,8 @@ bool ModuleEnemyBoss::Start()
 	positionLightX = positionX_uh + 13;
 	positionY_dh = positionY_uh + 80;
 
+	boss = App->collision->AddCollider({ positionX_uh + 20, positionCoreY, 30, 50 }, COLLIDER_ENEMY, this);
+
 	return true;
 }
 
@@ -166,122 +169,131 @@ update_status ModuleEnemyBoss::Update()
 		musicPlayed = true;
 	}
 
-	if (currentTime > lastTime + 2000 && enemiesAdded == false) {
-		App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINION, positionX_uh + 30, positionY_uh + 23);
-		App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINION, positionX_uh + 100, positionY_uh + 23);
-		App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINION, positionX_uh + 30, positionY_uh + 152);
-		App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINION, positionX_uh + 100, positionY_uh + 152);		
-		enemiesAdded = true;
-	}
-	else if (currentTime > lastTime + 3000 && enemiesAdded == true) {
-		animationHatch1 = &closingHatch1;
-		animationHatch2 = &closingHatch2;
-	}
-
-	//Opening
-	if (currentTime > lastTime + 4000) {
-		if(positionY_uh > - 25)
-			positionY_uh--;
-
-		if(positionY_dh < 145)
-			positionY_dh++;
-	}
-
-	//Light tube movement
-	if (going_back)
-	{
-		if (positionLightX < positionX_uh + 30)
-			positionLightX++;
-		else
-			going_back = false;
-	}
-	else
-	{
-		if (positionLightX > positionX_uh + 5)
-			positionLightX--;
-		else
-			going_back = true;
-	}
-
-	//Cannons shooting
-	if (currentTimeShot > lastTimeShot + 5300) {
-		animationCannonDown = &shootDown;
-		App->particles->AddParticle(App->particles->torpede, positionX_uh + 60, positionCoreY + 83, COLLIDER_ENEMY_SHOT);
-		App->particles->AddParticle(App->particles->torpedeFire, positionX_uh + 100, positionCoreY + 83, COLLIDER_NONE);
-		lastTimeShot = currentTimeShot;
-		cannonShot = false;
-	}
-	else if (currentTimeShot > lastTimeShot + 5000) {
-		animationCannonUp = &shootUp;
-		if (cannonShot == false) {
-		App->particles->AddParticle(App->particles->torpede, positionX_uh + 60, positionCoreY + 29, COLLIDER_ENEMY_SHOT);
-		App->particles->AddParticle(App->particles->torpedeFire, positionX_uh + 100, positionCoreY + 29, COLLIDER_NONE);
-		cannonShot = true;
+	if (HP > 0) {
+		if (currentTime > lastTime + 2000 && enemiesAdded == false) {
+			App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINION, positionX_uh + 30, positionY_uh + 23);
+			App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINION, positionX_uh + 100, positionY_uh + 23);
+			App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINION, positionX_uh + 30, positionY_uh + 152);
+			App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINION, positionX_uh + 100, positionY_uh + 152);
+			enemiesAdded = true;
 		}
+		else if (currentTime > lastTime + 3000 && enemiesAdded == true) {
+			animationHatch1 = &closingHatch1;
+			animationHatch2 = &closingHatch2;
+		}
+
+		//Opening
+		if (currentTime > lastTime + 4000) {
+			if (positionY_uh > -25)
+				positionY_uh--;
+
+			if (positionY_dh < 145)
+				positionY_dh++;
+		}
+
+		//Light tube movement
+		if (going_back)
+		{
+			if (positionLightX < positionX_uh + 30)
+				positionLightX++;
+			else
+				going_back = false;
+		}
+		else
+		{
+			if (positionLightX > positionX_uh + 5)
+				positionLightX--;
+			else
+				going_back = true;
+		}
+
+		//Cannons shooting
+		if (currentTimeShot > lastTimeShot + 5300) {
+			animationCannonDown = &shootDown;
+			App->particles->AddParticle(App->particles->torpede, positionX_uh + 60, positionCoreY + 83, COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(App->particles->torpedeFire, positionX_uh + 100, positionCoreY + 83, COLLIDER_NONE);
+			lastTimeShot = currentTimeShot;
+			cannonShot = false;
+		}
+		else if (currentTimeShot > lastTimeShot + 5000) {
+			animationCannonUp = &shootUp;
+			if (cannonShot == false) {
+				App->particles->AddParticle(App->particles->torpede, positionX_uh + 60, positionCoreY + 29, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->torpedeFire, positionX_uh + 100, positionCoreY + 29, COLLIDER_NONE);
+				cannonShot = true;
+			}
+		}
+
+		if (shootUp.Finished() == true) {
+			shootUp.Reset();
+			animationCannonUp = &idleUp;
+		}
+
+		if (shootDown.Finished() == true) {
+			shootDown.Reset();
+			animationCannonDown = &idleDown;
+		}
+
+		//Ring shooting
+		if (currentTimeRing > lastTimeRing + 4000) {
+			App->particles->AddParticle(App->particles->ring1, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(App->particles->ring2, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(App->particles->ring3, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(App->particles->ring4, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
+			App->particles->AddParticle(App->particles->ring5, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
+			lastTimeRing = currentTimeRing;
+		}
+		
+		SDL_Rect hatch1 = animationHatch1->GetCurrentFrame();
+		SDL_Rect hatch2 = animationHatch2->GetCurrentFrame();
+
+		SDL_Rect cannon1 = animationCannonUp->GetCurrentFrame();
+		SDL_Rect cannon2 = animationCannonDown->GetCurrentFrame();
+
+		SDL_Rect tube = animationLightTube->GetCurrentFrame();
+
+		// Draw everything --------------------------------------
+
+		App->render->Blit(graphics, positionX_uh + 25, positionY_uh + 20, &hatch1, 1.0f, true);
+		App->render->Blit(graphics, positionX_uh + 25, positionY_dh + 71, &hatch2, 1.0f, true);
+		App->render->Blit(graphics, positionLightX, positionCoreY + 51, &tube, 1.0f, true);
+		App->render->Blit(graphics, positionX_uh + 27, positionCoreY, &core, 1.0f, true);
+		App->render->Blit(graphics, positionX_uh + 11, positionCoreY + 22, &cannon1, 1.0f, true);
+		App->render->Blit(graphics, positionX_uh + 11, positionCoreY + 80, &cannon2, 1.0f, true);
+		App->render->Blit(graphics, positionX_uh - 2, positionY_dh, &downHalf, 1.0f, true);
+		App->render->Blit(graphics, positionX_uh, positionY_uh, &upHalf, 1.0f, true);
+		
 	}
-
-	if (shootUp.Finished() == true) {
-		shootUp.Reset();
-		animationCannonUp = &idleUp;
-	}
-
-	if (shootDown.Finished() == true) {
-		shootDown.Reset();
-		animationCannonDown = &idleDown;
-	}
-
-	//Ring shooting
-	if (currentTimeRing > lastTimeRing + 4000) {
-	App->particles->AddParticle(App->particles->ring1, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
-	App->particles->AddParticle(App->particles->ring2, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
-	App->particles->AddParticle(App->particles->ring3, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
-	App->particles->AddParticle(App->particles->ring4, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
-	App->particles->AddParticle(App->particles->ring5, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
-	lastTimeRing = currentTimeRing;
-	}
-
-	SDL_Rect hatch1 = animationHatch1->GetCurrentFrame();
-	SDL_Rect hatch2 = animationHatch2->GetCurrentFrame();
-
-	SDL_Rect cannon1 = animationCannonUp->GetCurrentFrame();
-	SDL_Rect cannon2 = animationCannonDown->GetCurrentFrame();
-
-	SDL_Rect tube = animationLightTube->GetCurrentFrame();
-
-	// Draw everything --------------------------------------
-	App->render->Blit(graphics, positionX_uh + 25, positionY_uh + 20, &hatch1, 1.0f, true);
-	App->render->Blit(graphics, positionX_uh + 25, positionY_dh + 71, &hatch2, 1.0f, true);
-	App->render->Blit(graphics, positionLightX, positionCoreY + 51, &tube, 1.0f, true);
-	App->render->Blit(graphics, positionX_uh + 27, positionCoreY, &core, 1.0f, true);
-	App->render->Blit(graphics, positionX_uh + 11, positionCoreY + 22, &cannon1, 1.0f, true);
-	App->render->Blit(graphics, positionX_uh + 11, positionCoreY + 80, &cannon2, 1.0f, true);
-	App->render->Blit(graphics, positionX_uh - 2, positionY_dh, &downHalf, 1.0f, true);
-	App->render->Blit(graphics, positionX_uh, positionY_uh, &upHalf, 1.0f, true);
 
 	return UPDATE_CONTINUE;
 }
 
-void ModuleEnemyBoss::OnCollision(Collider* col_1, Collider* col_2) {
+void ModuleEnemyBoss::OnCollision(Collider* collider1, Collider* collider2) {
 	
-	/*if (bossLife <= 0) {
-		App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
-		App->audio->PlayFx(App->enemies->small_enemy_death);
+	if (HP <= 0) {
+		//App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
+		App->audio->PlayFx(App->enemies->boss_death);
 
 		if (dead == false)
 		{
-
-			if (collider->type == COLLIDER_PLAYER_SHOT)
+			if ((collider1->type == COLLIDER_PLAYER_SHOT && collider2->type == COLLIDER_ENEMY)||
+				(collider2->type == COLLIDER_PLAYER_SHOT && collider1->type == COLLIDER_ENEMY))
 			{
 				App->user_interface->score1 += bossScore;
 			}
-			if (collider->type == COLLIDER_PLAYER2_SHOT)
+			if ((collider1->type == COLLIDER_PLAYER2_SHOT && collider2->type == COLLIDER_ENEMY) ||
+				(collider2->type == COLLIDER_PLAYER2_SHOT && collider1->type == COLLIDER_ENEMY))
 			{
 				App->user_interface->score2 += bossScore;
 			}
 		}
 
 		dead = true;
-	}*/
+	}
+	else {
+		App->audio->PlayFx(App->enemies->enemy_hit);
+		HP--;
+	}
 }
 
 // UnLoad assets
