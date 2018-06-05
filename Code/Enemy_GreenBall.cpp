@@ -93,9 +93,6 @@ void Enemy_GreenBall::Move()
 
 		angle = angle - 5;
 
-
-
-
 		if (angle <= 0)
 		{
 			angle = 360;

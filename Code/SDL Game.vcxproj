@@ -85,6 +85,7 @@
     <ClInclude Include="Enemy_Minion.h" />
     <ClInclude Include="Enemy_NinjaBall.h" />
     <ClInclude Include="Enemy_Pipeliner.h" />
+    <ClInclude Include="Enemy_Pixel.h" />
     <ClInclude Include="Enemy_SmallSpinner.h" />
     <ClInclude Include="Enemy_SolarPanel.h" />
     <ClInclude Include="Enemy_SpaceShip.h" />
@@ -144,6 +145,7 @@
     <ClCompile Include="Enemy_Minion.cpp" />
     <ClCompile Include="Enemy_NinjaBall.cpp" />
     <ClCompile Include="Enemy_Pipeliner.cpp" />
+    <ClCompile Include="Enemy_Pixel.cpp" />
     <ClCompile Include="Enemy_SmallSpinner.cpp" />
     <ClCompile Include="Enemy_SolarPanel.cpp" />
     <ClCompile Include="Enemy_SpaceShip.cpp" />

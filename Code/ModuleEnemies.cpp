@@ -15,6 +15,7 @@
 #include "Enemy_Pipeliner.h"
 #include "Enemy_MissileThrower.h"
 #include "Enemy_Spinner.h"
+#include "Enemy_Pixel.h"
 #include "Enemy_Spinner_Up.h"
 #include "Enemy_Spinner_Down.h"
 #include "Enemy_Meteorite.h"
@@ -271,6 +272,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::GREEN_BALL:
 			enemies[i] = new Enemy_GreenBall(info.x, info.y);
 			break;
+		
+		case ENEMY_TYPES::PIXEL:
+			enemies[i] = new Enemy_Pixel(info.x, info.y);
 		}
 	}
 }

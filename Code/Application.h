@@ -37,6 +37,7 @@ public:
 	ModuleWindow* window;
 	ModuleRender* render;
 	ModuleInput* input;
+	ModuleShotGravity* accel_shot;
 	ModuleTextures* textures;
 	ModuleIntroNeoGeo* NeoGeo;
 	ModuleSceneLevel5* level5;
@@ -55,7 +56,6 @@ public:
 	ModuleGameOver* game_over;
 	ModuleFonts* fonts;
 	ModuleEnemyBoss* boss;
-	ModuleShotGravity* accel_shot;
 
 public:
 

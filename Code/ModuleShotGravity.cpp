@@ -162,7 +162,7 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 			// (Module*)App->enemies
 			if (type == GRAVITY_SHOT || type == HOMING_MISSILE)
 			{
-				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), COLLIDER_PLAYER_SHOT, this);
+				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), COLLIDER_PLAYER2_SHOT_ALT, this);
 			}
 			active[i] = p;
 			break;
