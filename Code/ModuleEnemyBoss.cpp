@@ -95,9 +95,14 @@ update_status ModuleEnemyBoss::Update()
 	}
 
 	if (currentTime > lastTime + 2000 && enemiesAdded == false) {
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_MISSILE1, positionX_uh + 30, 150);
-		animationHatchs = &closingHatchs;
+		App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINION, positionX_uh + 30, positionY_uh + 23);
+		App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINION, positionX_uh + 100, positionY_uh + 23);
+		App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINION, positionX_uh + 30, positionY_uh + 152);
+		App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINION, positionX_uh + 100, positionY_uh + 152);		
 		enemiesAdded = true;
+	}
+	else if (currentTime > lastTime + 3000 &&enemiesAdded == true) {
+		animationHatchs = &closingHatchs;
 	}
 
 	SDL_Rect hatchs = animationHatchs->GetCurrentFrame();

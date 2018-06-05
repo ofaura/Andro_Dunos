@@ -11,21 +11,23 @@ Enemy_Minion::Enemy_Minion(int x, int y) : Enemy(x, y)
 {
 
 	if (y > 100) {
-		fly.PushBack({ 312, 287, 16, 16 });
-		fly.PushBack({ 343, 287, 16, 16 });
-		fly.PushBack({ 372, 287, 16, 16 });
-		fly.PushBack({ 403, 287, 16, 16 });
-		fly.speed = 0.2f;
-	}
-	else {
 		fly.PushBack({ 436, 287, 16, 16 });
 		fly.PushBack({ 467, 287, 16, 16 });
 		fly.PushBack({ 496, 287, 16, 16 });
 		fly.PushBack({ 527, 287, 16, 16 });
 		fly.speed = 0.2f;
 	}
+	else {
+		fly.PushBack({ 312, 287, 16, 16 });
+		fly.PushBack({ 343, 287, 16, 16 });
+		fly.PushBack({ 372, 287, 16, 16 });
+		fly.PushBack({ 403, 287, 16, 16 });
+		fly.speed = 0.2f;
+	}
 
-	path.PushBack({ -1.0f, 0.0f }, 2000);
+	path.PushBack({ -2.0f, 0.0f }, 90);
+	path.PushBack({ 0.0f, 0.0f }, 80);
+	path.PushBack({ -2.0f, 0.0f }, 8000);
 
 	animation = &fly;
 

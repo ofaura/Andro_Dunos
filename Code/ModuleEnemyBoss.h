@@ -50,6 +50,7 @@ public:
 	int positionY_uh;
 
 	uint lastTime = 0, currentTime;
+	uint lastTimeMusic = 0, currentTimeMusic;
 
 };
 
