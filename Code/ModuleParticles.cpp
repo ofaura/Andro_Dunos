@@ -18,8 +18,6 @@ ModuleParticles::ModuleParticles()
 ModuleParticles::~ModuleParticles()
 {}
 
-
-
 // Load assets
 bool ModuleParticles::Start()
 {
@@ -956,7 +954,6 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 		}
 	}
 }
-
 
 // Every time a particle hits a wall it triggers an explosion particle
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2) // add Collider* c2, if problems arise
