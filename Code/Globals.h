@@ -46,13 +46,13 @@ typedef unsigned int uint;
 #define WASP_HP 3
 #define XWING_HP 2
 #define MINION_HP 5
-#define MECHROMANCER_HP 30
+#define MECHROMANCER_HP 40
 #define NINJA_BALL_HP 1
 #define GREEN_PLANE_HP 2
 #define MINE_HP 1
 #define GREEN_BALL_HP 3
-#define SOLAR_PANEL_HP 25
+#define SOLAR_PANEL_HP 35
 
-#define BOSS_HP 100;
+#define BOSS_HP 125;
 
 #endif // __GLOBALS_H__
