@@ -322,17 +322,215 @@ update_status ModulePlayer::Update()
 			{
 			
 			case bullet_type::TYPE_1:
-				if (ShootPowerUpLevel)
-				damage = 2;
+				
+
+				if (ShootPowerUpLevel == 1)
+				{
+					damage_1 = 2;
+				}
+					
+				else if (ShootPowerUpLevel == 2)
+				{
+					damage_1 = 2;
+				}
+
+				else if (ShootPowerUpLevel == 3)
+				{
+					damage_1 = 3;
+				}
+
+				else if (ShootPowerUpLevel == 4)
+				{
+					damage_1 = 2;
+				}
+
+				else if (ShootPowerUpLevel == 5)
+				{
+					damage_1 = 4;
+				}
+
+				else if (ShootPowerUpLevel == 6)
+				{
+					damage_1 = 2;
+				}
+
+				else if (ShootPowerUpLevel >= 7)
+				{
+					damage_1 = 5;
+				}
+
+				//--------------------------------------
+
+				if (ShootPowerUpLevel_2 == 1)
+				{
+					damage_2 = 1;
+				}
+
+				else if (ShootPowerUpLevel_2 == 2)
+				{
+					damage_2 = 2;
+				}
+
+				else if (ShootPowerUpLevel_2 == 2)
+				{
+					damage_2 = 3;
+				}
+
 				break;
 			case bullet_type::TYPE_2:
-				damage = 1;
+
+				if (ShootPowerUpLevel == 1)
+				{
+					damage_1 = 2;
+				}
+
+				else if (ShootPowerUpLevel == 2)
+				{
+					damage_1 = 2;
+				}
+
+				else if (ShootPowerUpLevel == 3)
+				{
+					damage_1 = 3;
+				}
+
+				else if (ShootPowerUpLevel == 4)
+				{
+					damage_1 = 2;
+				}
+
+				else if (ShootPowerUpLevel == 5)
+				{
+					damage_1 = 4;
+				}
+
+				else if (ShootPowerUpLevel == 6)
+				{
+					damage_1 = 2;
+				}
+
+				else if (ShootPowerUpLevel >= 7)
+				{
+					damage_1 = 5;
+				}
+
+				//--------------------------------------
+
+				if (ShootPowerUpLevel_2 == 1)
+				{
+					damage_2 = 1;
+				}
+
+				else if (ShootPowerUpLevel_2 == 2)
+				{
+					damage_2 = 2;
+				}
+
+				else if (ShootPowerUpLevel_2 == 2)
+				{
+					damage_2 = 3;
+				}
+
 				break;
 			case bullet_type::TYPE_3:
-				damage = 3;
+
+				if (ShootPowerUpLevel == 1)
+				{
+					damage_1 = 2;
+				}
+
+				else if (ShootPowerUpLevel == 2)
+				{
+					damage_1 = 2;
+				}
+
+				else if (ShootPowerUpLevel == 3)
+				{
+					damage_1 = 3;
+				}
+
+				else if (ShootPowerUpLevel == 4)
+				{
+					damage_1 = 2;
+				}
+
+				else if (ShootPowerUpLevel >= 5)
+				{
+					damage_1 = 4;
+				}
+
+				//--------------------------------------
+
+				if (ShootPowerUpLevel_2 == 1)
+				{
+					damage_2 = 1;
+				}
+
+				else if (ShootPowerUpLevel_2 == 2)
+				{
+					damage_2 = 2;
+				}
+
+				else if (ShootPowerUpLevel_2 == 2)
+				{
+					damage_2 = 3;
+				}
+
 				break;
 			case bullet_type::TYPE_4:
-				damage = 5;
+
+				if (ShootPowerUpLevel == 1)
+				{
+					damage_1 = 2;
+				}
+
+				else if (ShootPowerUpLevel == 2)
+				{
+					damage_1 = 2;
+				}
+
+				else if (ShootPowerUpLevel == 3)
+				{
+					damage_1 = 3;
+				}
+
+				else if (ShootPowerUpLevel == 4)
+				{
+					damage_1 = 2;
+				}
+
+				else if (ShootPowerUpLevel == 5)
+				{
+					damage_1 = 4;
+				}
+
+				else if (ShootPowerUpLevel == 6)
+				{
+					damage_1 = 2;
+				}
+
+				else if (ShootPowerUpLevel >= 7)
+				{
+					damage_1 = 5;
+				}
+
+				//--------------------------------------
+
+				if (ShootPowerUpLevel_2 == 1)
+				{
+					damage_2 = 1;
+				}
+
+				else if (ShootPowerUpLevel_2 == 2)
+				{
+					damage_2 = 2;
+				}
+
+				else if (ShootPowerUpLevel_2 == 2)
+				{
+					damage_2 = 3;
+				}
+
 				break;
 			}
 		}

@@ -72,7 +72,7 @@ public:
 	int lives = 2;
 	int ShootPowerUpLevel = 1, ShootPowerUpLevel_2 = 0, HomingMissile = 0, Shield = 0;
 
-	int damage = 1;
+	int damage_1 = 1, damage_2 = 1;
 	int current_time = 0;
 	int first_time = 0;
 	bool dead = false;
