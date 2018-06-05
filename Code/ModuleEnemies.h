@@ -63,7 +63,9 @@ public:
 
 	uint small_enemy_death;
 	uint medium_enemy_death;
+	uint boss_death;
 	uint greenRocket;
+	uint enemy_hit;
 
 	bool AddEnemy(ENEMY_TYPES type, int x, int y);
 	Enemy* enemies[MAX_ENEMIES];

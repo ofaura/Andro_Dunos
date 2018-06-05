@@ -74,6 +74,8 @@ public:
 	int bossScore = 40000;
 
 	Collider* boss = nullptr;
+	Collider* upperHalf = nullptr;
+	Collider* underHalf = nullptr;
 
 	int HP;
 
