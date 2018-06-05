@@ -24,5 +24,6 @@ to advance through levels and defeat the alien invaders of the Earth.
 src="https://www.youtube.com/watch?v=nvxHr527PE0">
 </iframe>
 
+[![](http://img.youtube.com/vi/nvxHr527PE0/0.jpg)](http://www.youtube.com/watch?v=nvxHr527PE0 "")
 ### Download the Game
 
