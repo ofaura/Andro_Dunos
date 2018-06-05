@@ -139,6 +139,7 @@ update_status ModulePlayer::Update()
 
 	if (dead == true) 
 	{
+		current_animation = &respawn;
 		if (current_time < 1000) {
 			respawning = true;
 		} else{
