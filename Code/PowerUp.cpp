@@ -407,7 +407,7 @@ void PowerUp::OnCollision(Collider* collider)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->shield->Enable();
-				//App->player->HomingMissile++;
+				App->player->HomingMissile++;
 				App->user_interface->score1 += score;
 
 			}
@@ -415,7 +415,7 @@ void PowerUp::OnCollision(Collider* collider)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->shield_p2->Enable();
-				//App->player2->HomingMi;
+				App->player2->HomingMissile++;
 				App->user_interface->score2 += score;
 			}
 		}
@@ -438,6 +438,7 @@ void PowerUp::OnCollision(Collider* collider)
 			{
 				App->audio->PlayFx(powerup_picked);
 				App->user_interface->score2 += score;
+				App->player2->HomingMissile++;
 				// it's a homing missile, it ain't even started yet
 			}
 		}
