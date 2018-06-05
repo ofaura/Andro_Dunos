@@ -960,7 +960,7 @@ update_status ModulePlayer::Update()
 					
 					App->particles->AddParticle(App->particles->missile1_3a, position.x + 5, position.y + 20, COLLIDER_PLAYER_SHOT);
 					App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
-					missile[0]->Reset();
+					missile[0]->Reset();  
 
 					enable_missile1 = false;
 
