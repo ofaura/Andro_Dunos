@@ -294,11 +294,27 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			
 			if (c2->type == COLLIDER_PLAYER_SHOT || c2->type == COLLIDER_PLAYER2_SHOT)
 			{
-				enemies[i]->HP -= App->player->damage_1;
+				if (c2->type == COLLIDER_PLAYER_SHOT)
+				{
+					enemies[i]->HP -= App->player->damage_1;
+				}
+				
+				if (c2->type == COLLIDER_PLAYER2_SHOT)
+				{
+					enemies[i]->HP -= App->player2->damage_1;
+				}
 			}
 			else if (c2->type == COLLIDER_PLAYER_SHOT_ALT || c2->type == COLLIDER_PLAYER2_SHOT_ALT)
 			{
-				enemies[i]->HP -= App->player->damage_2;
+				if (c2->type == COLLIDER_PLAYER_SHOT_ALT)
+				{
+					enemies[i]->HP -= App->player->damage_2;
+				}
+
+				if (c2->type == COLLIDER_PLAYER2_SHOT_ALT)
+				{
+					enemies[i]->HP -= App->player2->damage_2;
+				}
 			}
 			if (enemies[i]->HP <= 0)
 			{

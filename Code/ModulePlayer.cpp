@@ -327,7 +327,7 @@ update_status ModulePlayer::Update()
 
 				if (ShootPowerUpLevel == 1)
 				{
-					damage_1 = 2;
+					damage_1 = 1;
 				}
 					
 				else if (ShootPowerUpLevel == 2)
@@ -1013,7 +1013,7 @@ update_status ModulePlayer::Update()
 		}
 	}	
 
-	// God mode
+
 	if (App->input->gamepadP1YPressed == true && App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_IDLE)
 	{
 		App->input->keyboard[SDL_SCANCODE_F5] = KEY_STATE::KEY_DOWN;
@@ -1023,6 +1023,7 @@ update_status ModulePlayer::Update()
 		App->input->keyboard[SDL_SCANCODE_F5] = KEY_STATE::KEY_REPEAT;
 	}
 
+	// God mode
 	if (App->player->lives >= 0)
 	{
 		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_DOWN)

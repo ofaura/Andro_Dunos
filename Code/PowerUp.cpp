@@ -359,7 +359,7 @@ void PowerUp::OnCollision(Collider* collider)
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
 				App->audio->PlayFx(powerup_picked);
-				App->player2->ShootPowerUpLevel2++;
+				App->player2->ShootPowerUpLevel++;
 				App->user_interface->score2 += score;
 			}
 		}
@@ -376,7 +376,7 @@ void PowerUp::OnCollision(Collider* collider)
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
 				App->audio->PlayFx(powerup_picked);
-				App->player2->ShootPowerUpLevel2_2++;
+				App->player2->ShootPowerUpLevel_2++;
 				App->user_interface->score2 += score;
 			}
 		}
@@ -397,7 +397,7 @@ void PowerUp::OnCollision(Collider* collider)
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
 				App->audio->PlayFx(powerup_picked);
-				App->player2->ShootPowerUpLevel2_2++;
+				App->player2->ShootPowerUpLevel_2++;
 				App->user_interface->score2 += score;
 			}
 		}
@@ -493,7 +493,7 @@ void PowerUp::OnCollision(Collider* collider)
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
 				App->audio->PlayFx(powerup_picked);
-				App->player2->ShootPowerUpLevel2++;
+				App->player2->ShootPowerUpLevel++;
 				App->user_interface->score2 += score;
 			}
 		}
