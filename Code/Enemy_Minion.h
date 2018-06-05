@@ -13,6 +13,8 @@ private:
 	Animation fly;
 	Path path;
 
+	uint lastTimeShoot = 0, currentTime;
+
 public:
 
 	Enemy_Minion(int x, int y);
@@ -20,6 +22,9 @@ public:
 
 	void Move();
 	int score = 150;
+
+	bool shot = false;
+	bool getTime = false;
 };
 
-#endif // __ENEMY_SPACESHIP_H__
+#endif // __ENEMY_MINION_H__

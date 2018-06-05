@@ -18,6 +18,8 @@ to advance through levels and defeat the alien invaders of the Earth.
 ***
 ### Gameplay
 
-<iframe width="740" height="590" src="https://www.youtube.com/watch?v=nvxHr527PE0" frameborder="0" allowfullscreen></iframe>
+<iframe width="420" height="345" src="https://www.youtube.com/watch?v=nvxHr527PE0">
+</iframe>
 
-https://github.com/ofaura/Andro_Dunos
+### Download the Game
+

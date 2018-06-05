@@ -179,7 +179,9 @@ update_status ModulePlayer2::Update()
 
 	int speed = 2;
 	
-	
+	ShootPowerUpLevel = 8;
+
+
 	////////////////////// BIG CHUNK: START /////////////////////////////
 
 	if (lives >= 0)
@@ -619,7 +621,7 @@ update_status ModulePlayer2::Update()
 					App->particles->AddParticle(App->particles->laser1_2, position.x + 23, position.y - 7, COLLIDER_PLAYER_SHOT);
 					App->audio->PlayFx(laser1);
 				}
-				else if (ShootPowerUpLevel == 7)
+				else if (ShootPowerUpLevel >= 7)
 				{
 					App->particles->AddParticle(App->particles->laser1_3, position.x + 23, position.y + 25, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->laser1_3, position.x + 32, position.y + 13, COLLIDER_PLAYER_SHOT);
@@ -714,7 +716,7 @@ update_status ModulePlayer2::Update()
 					App->particles->AddParticle(App->particles->laser2_1, position.x + 7, position.y + 15, COLLIDER_PLAYER_SHOT);
 					App->audio->PlayFx(laser2);
 				}
-				else if (ShootPowerUpLevel == 7)
+				else if (ShootPowerUpLevel >= 7)
 				{
 					App->particles->AddParticle(App->particles->laser2_4a, position.x, position.y + 6, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->laser2_4b, position.x, position.y + 8, COLLIDER_PLAYER_SHOT);
