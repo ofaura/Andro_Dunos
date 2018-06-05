@@ -347,11 +347,11 @@ update_status ModuleShield::Update() {
 
 void ModuleShield::OnCollision(Collider* col_1, Collider* col_2) {
 	if (collider1 == col_1 || collider2 == col_1)
-		if (IsEnabled() && collider1->type != COLLIDER_TYPE::COLLIDER_WALL || collider2->type != COLLIDER_TYPE::COLLIDER_WALL
-			|| collider1->type != COLLIDER_TYPE::COLLIDER_PLAYER || collider1->type != COLLIDER_TYPE::COLLIDER_PLAYER_2
-			|| collider2->type != COLLIDER_TYPE::COLLIDER_PLAYER || collider2->type != COLLIDER_TYPE::COLLIDER_PLAYER_2
-			|| collider1->type != COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || collider1->type != COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT
-			|| collider2->type != COLLIDER_TYPE::COLLIDER_PLAYER_SHOT || collider2->type != COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
+		if (IsEnabled() && collider1->type != COLLIDER_TYPE::COLLIDER_WALL && collider2->type != COLLIDER_TYPE::COLLIDER_WALL
+			&& collider1->type != COLLIDER_TYPE::COLLIDER_PLAYER && collider1->type != COLLIDER_TYPE::COLLIDER_PLAYER_2
+			&& collider2->type != COLLIDER_TYPE::COLLIDER_PLAYER && collider2->type != COLLIDER_TYPE::COLLIDER_PLAYER_2
+			&& collider1->type != COLLIDER_TYPE::COLLIDER_PLAYER_SHOT && collider1->type != COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT
+			&& collider2->type != COLLIDER_TYPE::COLLIDER_PLAYER_SHOT && collider2->type != COLLIDER_TYPE::COLLIDER_PLAYER2_SHOT) {
 			circ = 0;
 			collider1->to_delete = true;
 			collider2->to_delete = true;

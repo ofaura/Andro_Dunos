@@ -16,7 +16,8 @@ of these weapons and of enemy ship dropped power-ups, must shoot their way throu
 to advance through levels and defeat the alien invaders of the Earth.
 
 ***
+### Gameplay
 
-[![txt](https://github.com/ofaura/Andro_Dunos/blob/master/images/trailer%20Andro%20Dunos%20(1).mp4)]
+<iframe width="740" height="590" src="https://www.youtube.com/watch?v=nvxHr527PE0" frameborder="0" allowfullscreen></iframe>
 
 https://github.com/ofaura/Andro_Dunos
