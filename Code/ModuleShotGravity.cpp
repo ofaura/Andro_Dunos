@@ -149,9 +149,8 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 				if (App->enemies->enemies[counter] != nullptr && App->enemies->enemies[counter]->type != POWER_UP)
 				{
 					if ((App->enemies->enemies[counter]->position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE) + 40)) &&
-						(App->enemies->enemies[counter]->position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 40)) &&
-						(App->enemies->enemies[counter]->position.y >= ((abs(App->render->camera.y) / SCREEN_SIZE) + 10)) &&
-						(App->enemies->enemies[counter]->position.y <= ((abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 10)))
+						(App->enemies->enemies[counter]->position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH)))
+
 					{
 						p->enemy = App->enemies->enemies[counter];
 						//p->target_aquired = true;

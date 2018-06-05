@@ -11,8 +11,6 @@
 #include "Enemy_Pixel.h"
 #include "ModuleAudio.h"
 
-#define TIME (100)
-#define DISTANCE (70)
 
 Enemy_Pixel::Enemy_Pixel(int x, int y) : Enemy(x, y)
 {
@@ -21,14 +19,14 @@ Enemy_Pixel::Enemy_Pixel(int x, int y) : Enemy(x, y)
 
 	collider = App->collision->AddCollider({ 0, 0, 1, 1 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	
-	original_x = (App->render->camera.x / SCREEN_SIZE) + SCREEN_WIDTH; //abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH;
+	original_x = (App->render->camera.x / SCREEN_SIZE) + SCREEN_WIDTH - 1; //abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH;
 	original_y = (App->render->camera.y / SCREEN_SIZE) + (SCREEN_HEIGHT / 2);
-
+	HP = 1;
 }
 
 void Enemy_Pixel::Move()
 {
-	position.x = (App->render->camera.x / SCREEN_SIZE) + SCREEN_WIDTH; //abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH;
+	position.x = (App->render->camera.x / SCREEN_SIZE) + SCREEN_WIDTH - 1; //abs(App->render->camera.x) / SCREEN_SIZE + SCREEN_WIDTH;
 	position.y = (App->render->camera.y / SCREEN_SIZE) + (SCREEN_HEIGHT / 2);
 }
 
@@ -44,8 +42,10 @@ void Enemy_Pixel::OnCollision(Collider* collider)
 {
 		if (collider->type == COLLIDER_PLAYER_SHOT)
 		{
+			App->enemies->AddEnemy(ENEMY_TYPES::PIXEL, position.x, position.y);
 		}
 		if (collider->type == COLLIDER_PLAYER2_SHOT)
 		{
+			App->enemies->AddEnemy(ENEMY_TYPES::PIXEL, position.x, position.y);
 		}
 }
