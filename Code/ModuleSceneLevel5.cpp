@@ -515,6 +515,12 @@ update_status ModuleSceneLevel5::Update()
 		}
 	}
 
+	/*if (App->boss->dead == true) {
+		if (App->boss->IsEnabled() == true) {
+			App->boss->Disable();
+		}
+	}*/
+
 	App->render->Blit(background_texture, ((background_pos_x) / 3.5), 20, &background, 0.5f, true);
 
 	// Details of the level

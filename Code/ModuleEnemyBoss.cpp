@@ -150,7 +150,7 @@ bool ModuleEnemyBoss::Start()
 	positionLightX = positionX_uh + 13;
 	positionY_dh = positionY_uh + 80;
 
-	boss = App->collision->AddCollider({ positionX_uh + 20, positionCoreY, 30, 50 }, COLLIDER_ENEMY, this);
+	boss = App->collision->AddCollider({ positionX_uh + 11, positionCoreY + 23, 140, 80 }, COLLIDER_ENEMY, this);
 
 	return true;
 }
@@ -287,7 +287,6 @@ void ModuleEnemyBoss::OnCollision(Collider* collider1, Collider* collider2) {
 				App->user_interface->score2 += bossScore;
 			}
 		}
-
 		dead = true;
 	}
 	else {
