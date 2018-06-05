@@ -214,6 +214,10 @@ bool ModuleSceneLevel5::Start()
 
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 6295, 202);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::SOLAR_PANEL, 2580, 150);
+	App->enemies->AddEnemy(ENEMY_TYPES::SOLAR_PANEL, 2650, 70);
+
+
 	// Enemy Beyblade
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_BEYBLADE, 2100, 70);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_BEYBLADE, 2150, 100);
