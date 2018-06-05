@@ -7,6 +7,8 @@
 
 #define ROT_STEPS (8)
 
+
+
 struct SDL_Texture;
 
 class ModuleShield : public Module{
