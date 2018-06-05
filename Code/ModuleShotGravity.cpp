@@ -154,7 +154,7 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 						(App->enemies->enemies[counter]->position.y <= ((abs(App->render->camera.y) / SCREEN_SIZE) + SCREEN_HEIGHT - 10)))
 					{
 						p->enemy = App->enemies->enemies[counter];
-						p->target_aquired = true;
+						//p->target_aquired = true;
 					}
 				}
 			}
@@ -241,8 +241,6 @@ bool Accel_Shot::Update()
 
 	else if (type == HOMING_MISSILE)
 	{
-		if (target_aquired == true)
-		{			
 			if (this->enemy == nullptr || (this->enemy->position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE) + 10)) ||
 				(this->enemy->position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH - 10)) ||
 				(this->enemy->position.y <= ((abs(App->render->camera.y) / SCREEN_SIZE) + 10)) ||
@@ -305,15 +303,7 @@ bool Accel_Shot::Update()
 					position.x += vel[x];
 					position.y += vel[y];
 				}
-				// proces: end. velocity equations come from solving trigonometric problem on paper
-
-
-		}
-		else
-		{
-			position.x += 1;
-			position.y += 2;
-		}
+				// proces: end. the main velocity equations come from solving simple trigonometric problem on paper
 
 	}
 
