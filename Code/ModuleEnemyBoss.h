@@ -54,6 +54,7 @@ public:
 	bool cannonShot = false;
 	bool going_back = false;
 	bool dead = false;
+	bool opened = false;
 
 	// Position of the upper half
 	int positionX_uh;

@@ -151,6 +151,8 @@ bool ModuleEnemyBoss::Start()
 	positionY_dh = positionY_uh + 80;
 
 	boss = App->collision->AddCollider({ positionX_uh + 11, positionCoreY + 23, 140, 80 }, COLLIDER_ENEMY, this);
+	upperHalf = App->collision->AddCollider({ positionX_uh - 2, positionY_uh, 10, 95 }, COLLIDER_WALL, this);
+	underHalf = App->collision->AddCollider({ positionX_uh - 2, positionY_dh + 15, 10, 95 }, COLLIDER_WALL, this);
 
 	return true;
 }
@@ -189,6 +191,8 @@ update_status ModuleEnemyBoss::Update()
 
 			if (positionY_dh < 145)
 				positionY_dh++;
+			else 
+				opened = true;
 		}
 
 		//Light tube movement
@@ -234,8 +238,12 @@ update_status ModuleEnemyBoss::Update()
 			animationCannonDown = &idleDown;
 		}
 
+		//Colliders update
+		upperHalf->SetPos(positionX_uh - 2, positionY_uh);
+		underHalf->SetPos(positionX_uh - 2, positionY_dh + 15);
+
 		//Ring shooting
-		if (currentTimeRing > lastTimeRing + 4000) {
+		if (currentTimeRing > lastTimeRing + 4500) {
 			App->particles->AddParticle(App->particles->ring1, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
 			App->particles->AddParticle(App->particles->ring2, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
 			App->particles->AddParticle(App->particles->ring3, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
