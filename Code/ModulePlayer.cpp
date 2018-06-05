@@ -131,8 +131,6 @@ bool ModulePlayer::Start()
 	player_death = App->audio->LoadFx("Assets/Audio/Sound FX/player_death.wav");
 	type_change = App->audio->LoadFx("Assets/Audio/Sound FX/type_change.wav");
 
-	lives = 2; // adding more lives 'cause I can't use f1 on laptop, Gerard... 2 is original
-
 	position.x = 0;
 	position.y = SCREEN_HEIGHT / 2;
 	App->render->camera.x = 0;
