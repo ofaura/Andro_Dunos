@@ -17,6 +17,6 @@ to advance through levels and defeat the alien invaders of the Earth.
 
 ***
 
-[![txt](https://github.com/ofaura/Andro_Dunos/blob/master/images/androdun.png?raw=true)](https://github.com/ofaura/Andro_Dunos/blob/master/images/trailer%20Andro%20Dunos%20(1).mp4)
+[![txt](https://github.com/ofaura/Andro_Dunos/blob/master/images/trailer%20Andro%20Dunos%20(1).mp4)]
 
 https://github.com/ofaura/Andro_Dunos
