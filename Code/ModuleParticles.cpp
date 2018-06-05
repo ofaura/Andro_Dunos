@@ -330,6 +330,36 @@ bool ModuleParticles::Start()
 	enemy_shot_orange9d.anim.speed = 0.5f;
 	enemy_shot_orange9d.speed.x += 2;
 	enemy_shot_orange9d.life = 2000;
+	
+	beamShotUp.anim.PushBack({ 29, 465, 14, 14 });
+	beamShotUp.anim.PushBack({ 52, 466, 12, 12 });
+	beamShotUp.anim.PushBack({ 73, 466, 12, 12 });
+	beamShotUp.anim.PushBack({ 93, 466, 12, 12 });
+	beamShotUp.anim.PushBack({ 115, 467, 12, 12 });
+	beamShotUp.anim.PushBack({ 140, 467, 8, 30 });
+	beamShotUp.anim.PushBack({ 160, 467, 8, 30 });
+	beamShotUp.anim.PushBack({ 180, 466, 8, 46 });
+	beamShotUp.anim.PushBack({ 200, 467, 8, 46 });
+	beamShotUp.anim.PushBack({ 217, 467, 8, 62 });
+	beamShotUp.anim.loop = false;
+	beamShotUp.anim.speed = 0.5f;
+	beamShotUp.speed.y += 4;
+	beamShotUp.life = 3000;
+
+	beamShotDown.anim.PushBack({ 252, 522, 14, 14 });
+	beamShotDown.anim.PushBack({ 275, 523, 12, 12 });
+	beamShotDown.anim.PushBack({ 296, 523, 12, 12 });
+	beamShotDown.anim.PushBack({ 317, 523, 12, 12 });
+	beamShotDown.anim.PushBack({ 338, 522, 12, 12 });
+	beamShotDown.anim.PushBack({ 363, 504, 8, 30 });
+	beamShotDown.anim.PushBack({ 383, 504, 8, 30 });
+	beamShotDown.anim.PushBack({ 403, 488, 8, 46 });
+	beamShotDown.anim.PushBack({ 423, 488, 8, 46 });
+	beamShotDown.anim.PushBack({ 440, 472, 8, 62 });
+	beamShotDown.anim.loop = false;
+	beamShotDown.anim.speed = 0.5f;
+	beamShotDown.speed.y -= 4;
+	beamShotDown.life = 3000;
 
 	big_shot.anim.PushBack({ 363, 192, 32, 14 });
 	big_shot.anim.PushBack({ 421, 192, 32, 14 });

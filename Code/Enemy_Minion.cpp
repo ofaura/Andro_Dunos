@@ -7,6 +7,9 @@
 #include "ModuleUserInterface.h"
 #include "ModuleAudio.h"
 
+#include "SDL\include\SDL_timer.h"
+
+
 Enemy_Minion::Enemy_Minion(int x, int y) : Enemy(x, y)
 {
 
@@ -40,6 +43,24 @@ Enemy_Minion::Enemy_Minion(int x, int y) : Enemy(x, y)
 
 void Enemy_Minion::Move()
 {
+	currentTime = SDL_GetTicks();
+
+	if (getTime == false) {
+		lastTimeShoot = currentTime;
+		getTime = true;
+	}
+
+	if (currentTime > lastTimeShoot + 2000 && shot == false)
+	{
+		if(position.y > 100)
+			App->particles->AddParticle(App->particles->beamShotDown, position.x + 3, position.y + 4, COLLIDER_ENEMY_SHOT);
+		else
+			App->particles->AddParticle(App->particles->beamShotUp, position.x + 3, position.y - 4, COLLIDER_ENEMY_SHOT);
+
+		shot = true;
+		lastTimeShoot = currentTime;
+	}
+
 	position.x = original_x + path.GetCurrentPosition().x;
 
 	collider->SetPos(position.x, position.y);
