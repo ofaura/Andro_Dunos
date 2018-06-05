@@ -19,7 +19,6 @@ public:
 
 	virtual void OnCollision(Collider* collider) override;
 	void Move();
-	bool dead = false;
 };
 
 #endif // __ENEMY_GREENMISSILE1_H__

@@ -196,37 +196,6 @@ void Enemy_PowerUp::Move()
 			position.x -= 1;
 		}
 
-		/*
-		//Up
-		if (App->render->camera.x >= 7150 * SCREEN_SIZE && App->render->camera.x <= 7200 * SCREEN_SIZE && App->render->camera.y >= 0)
-		{
-			position.y -= 1;
-		}
-
-		// Diagonal up
-		else if (App->render->camera.x >= 4005 * SCREEN_SIZE && App->render->camera.x < 4130 * SCREEN_SIZE || App->render->camera.x >= 5074 * SCREEN_SIZE && App->render->camera.x < 5290 * SCREEN_SIZE)
-		{
-			position.y -= 1;
-			position.x += 1;
-		}
-
-		// Diagonal down
-		else if (App->render->camera.y >= 96 * SCREEN_SIZE && App->render->camera.x >= 4530 * SCREEN_SIZE && App->render->camera.y < 224 * SCREEN_SIZE ||
-			App->render->camera.x >= 6125 * SCREEN_SIZE && App->render->camera.x < 6262 * SCREEN_SIZE)
-		{
-			position.y += 1;
-			position.x += 1;
-		}
-
-		//Down
-		else if (App->render->camera.x >= 2921 * SCREEN_SIZE && App->render->camera.x <= 2971 * SCREEN_SIZE && App->render->camera.y < 224 * SCREEN_SIZE)
-		{
-			position.y += 1;
-		}
-
-		//Horizontal
-		else 
-		*/
 		if (App->render->camera.x >= 0 && App->render->camera.x <= 8800 * SCREEN_SIZE)
 		{
 			position.x += 1;

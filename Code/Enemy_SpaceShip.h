@@ -21,7 +21,6 @@ public:
 	uint death_sound;
 
 	void Move();
-	bool dead = false;
 	int score = 150;
 };
 

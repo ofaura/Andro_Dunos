@@ -31,7 +31,6 @@ public:
 	int AngleCalculator();
 
 	bool turretShoot;
-	bool dead = false;
 	int score = 200;
 };
 

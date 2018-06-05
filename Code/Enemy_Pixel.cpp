@@ -40,12 +40,12 @@ bool Enemy_Pixel::CleanUp() {
 
 void Enemy_Pixel::OnCollision(Collider* collider)
 {
-		if (collider->type == COLLIDER_PLAYER_SHOT)
-		{
-			App->enemies->AddEnemy(ENEMY_TYPES::PIXEL, position.x, position.y);
-		}
-		if (collider->type == COLLIDER_PLAYER2_SHOT)
-		{
-			App->enemies->AddEnemy(ENEMY_TYPES::PIXEL, position.x, position.y);
-		}
+	if (collider->type == COLLIDER_PLAYER_SHOT)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::PIXEL, position.x, position.y);
+	}
+	if (collider->type == COLLIDER_PLAYER2_SHOT)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::PIXEL, position.x, position.y);
+	}
 }

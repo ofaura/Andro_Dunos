@@ -119,9 +119,6 @@ void Enemy_LittleTurretDown::OnCollision(Collider* collider)
 	App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
 	App->audio->PlayFx(App->enemies->small_enemy_death);
 
-	if (dead == false)
-	{
-
 		if (collider->type == COLLIDER_PLAYER_SHOT)
 		{
 			App->user_interface->score1 += score;
@@ -130,7 +127,4 @@ void Enemy_LittleTurretDown::OnCollision(Collider* collider)
 		{
 			App->user_interface->score2 += score;
 		}
-	}
-
-	dead = true;
 }
