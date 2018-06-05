@@ -8,6 +8,7 @@
 #include "ModuleStartMenu.h"
 #include "ModuleInput.h"
 #include "ModuleAudio.h"
+#include "ModuleEnemies.h"
 
 ModuleEnemyBoss::ModuleEnemyBoss()
 {
@@ -35,23 +36,23 @@ ModuleEnemyBoss::ModuleEnemyBoss()
 	lightTube.speed = 0.5f;
 	
 	//Hatchs
-	closingHatchs.PushBack({ 32, 329, 22, 152 });
-	closingHatchs.PushBack({ 60, 329, 22, 152 });
-	closingHatchs.PushBack({ 88, 329, 22, 152 });
-	closingHatchs.PushBack({ 115, 329, 22, 152 });
-	closingHatchs.PushBack({ 141, 329, 22, 152 });
-	closingHatchs.PushBack({ 1, 329, 22, 152 });
-	closingHatchs.loop = false;
-	closingHatchs.speed = 0.15f;
-
-	openingHatchs.PushBack({ 1, 329, 22, 152 });
-	openingHatchs.PushBack({ 141, 329, 22, 152 });
-	openingHatchs.PushBack({ 115, 329, 22, 152 });
-	openingHatchs.PushBack({ 88, 329, 22, 152 });
-	openingHatchs.PushBack({ 60, 329, 22, 152 });
 	openingHatchs.PushBack({ 32, 329, 22, 152 });
+	openingHatchs.PushBack({ 60, 329, 22, 152 });
+	openingHatchs.PushBack({ 88, 329, 22, 152 });
+	openingHatchs.PushBack({ 115, 329, 22, 152 });
+	openingHatchs.PushBack({ 141, 329, 22, 152 });
+	openingHatchs.PushBack({ 1, 329, 22, 152 });
 	openingHatchs.loop = false;
 	openingHatchs.speed = 0.15f;
+
+	closingHatchs.PushBack({ 1, 329, 22, 152 });
+	closingHatchs.PushBack({ 141, 329, 22, 152 });
+	closingHatchs.PushBack({ 115, 329, 22, 152 });
+	closingHatchs.PushBack({ 88, 329, 22, 152 });
+	closingHatchs.PushBack({ 60, 329, 22, 152 });
+	closingHatchs.PushBack({ 32, 329, 22, 152 });
+	closingHatchs.loop = false;
+	closingHatchs.speed = 0.15f;
 }
 
 ModuleEnemyBoss::~ModuleEnemyBoss()
@@ -73,6 +74,12 @@ bool ModuleEnemyBoss::Start()
 	currentTime = SDL_GetTicks();
 	lastTime = currentTime;
 
+	animationHatchs = &openingHatchs;
+
+	//Initial position
+	positionX_uh = 7395;
+	positionY_uh = 30;
+
 	return true;
 }
 
@@ -87,14 +94,18 @@ update_status ModuleEnemyBoss::Update()
 		musicPlayed = true;
 	}
 
-	animationHatchs = &openingHatchs;
+	if (currentTime > lastTime + 2000 && enemiesAdded == false) {
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_MISSILE1, positionX_uh + 30, 150);
+		animationHatchs = &closingHatchs;
+		enemiesAdded = true;
+	}
 
 	SDL_Rect hatchs = animationHatchs->GetCurrentFrame();
 
 	// Draw everything --------------------------------------
-	App->render->Blit(graphics, 7420, 50, &hatchs, 1.0f, true);
-	App->render->Blit(graphics, 7395, 30, &upHalf, 1.0f, true);
-	App->render->Blit(graphics, 7393, 110, &downHalf, 1.0f, true);
+	App->render->Blit(graphics, positionX_uh + 25, positionY_uh + 20, &hatchs, 1.0f, true);
+	App->render->Blit(graphics, positionX_uh, positionY_uh, &upHalf, 1.0f, true);
+	App->render->Blit(graphics, positionX_uh - 2, positionY_uh + 80, &downHalf, 1.0f, true);
 
 	return UPDATE_CONTINUE;
 }
