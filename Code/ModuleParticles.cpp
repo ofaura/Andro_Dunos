@@ -25,6 +25,27 @@ bool ModuleParticles::Start()
 	graphics = App->textures->Load("Assets/Sprites/Particles/particles.png");
 	// Explosion particle
 
+	//Boss shots
+	torpede.anim.PushBack({ 14, 402, 32, 15 });
+	torpede.anim.PushBack({ 54, 402, 32, 15 });
+	torpede.anim.PushBack({ 94, 402, 32, 15 });
+	torpede.anim.PushBack({ 134, 402, 32, 15 });
+	torpede.anim.loop = true;
+	torpede.anim.speed = 0.3f;
+	torpede.speed.x -= 3;
+	torpede.life = 4000;
+	
+	torpedeFire.anim.PushBack({ 408, 401, 16, 16 });
+	torpedeFire.anim.PushBack({ 385, 401, 16, 16 });
+	torpedeFire.anim.PushBack({ 360, 401, 16, 16 });
+	torpedeFire.anim.PushBack({ 332, 401, 16, 16 });
+	torpedeFire.anim.PushBack({ 305, 401, 16, 16 });
+	torpedeFire.anim.PushBack({ 279, 401, 16, 16 });
+	torpedeFire.anim.loop = true;
+	torpedeFire.anim.speed = 0.3f;
+	torpedeFire.speed.x -= 3;
+	torpedeFire.life = 4000;
+
 	// Enemy shots
 	enemy_shot_yellow1.anim.PushBack({ 328, 228, 8, 12 });
 	enemy_shot_yellow1.anim.PushBack({ 356, 228, 12, 12 });

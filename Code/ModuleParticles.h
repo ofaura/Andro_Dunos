@@ -53,6 +53,9 @@ private:
 
 public:
 
+	Particle torpede;
+	Particle torpedeFire;
+
 	Particle laser1, laser1_2, laser1_3; // 1
 	Particle laser2_1, laser2_2, laser2_3a, laser2_3b, laser2_4a, laser2_4b, laser2_5, laser2_6; // 2
 	Particle laser3[13]; // 3

@@ -185,14 +185,16 @@ update_status ModuleEnemyBoss::Update()
 	//Cannons shooting
 	if (currentTimeShot > lastTimeShot + 5300) {
 		animationCannonDown = &shootDown;
-		App->particles->AddParticle(App->particles->enemy_shot_yellow1, positionX_uh + 80, positionCoreY + 26, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->torpede, positionX_uh + 60, positionCoreY + 83, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->torpedeFire, positionX_uh + 100, positionCoreY + 83, COLLIDER_NONE);
 		lastTimeShot = currentTimeShot;
 		cannonShot = false;
 	}
 	else if (currentTimeShot > lastTimeShot + 5000) {
 		animationCannonUp = &shootUp;
 		if (cannonShot == false) {
-		App->particles->AddParticle(App->particles->enemy_shot_yellow1, positionX_uh + 80, positionCoreY + 84, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->torpede, positionX_uh + 60, positionCoreY + 29, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->torpedeFire, positionX_uh + 100, positionCoreY + 29, COLLIDER_NONE);
 		cannonShot = true;
 		}
 	}
