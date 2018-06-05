@@ -45,15 +45,17 @@ void Enemy_SolarPanel::Move()
 
 	if (open.Finished() == true && currentTime > lastTimeShoot + 3000 && shot == false) // Shoots at one second
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x - 10, position.y + 40);
-		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x, position.y + 40);
-		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x + 10, position.y + 40);
-		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x + 20, position.y + 40);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x + 40, position.y + 4);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x + 30, position.y + 10);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x + 22, position.y + 18);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x + 16, position.y + 28);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x + 12, position.y + 40);
 
-		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x - 10, position.y + 60);
-		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x, position.y + 60);
-		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x + 10, position.y + 60);
-		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOT, position.x + 20, position.y + 60);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOTDOWN, position.x + 12, position.y + 42);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOTDOWN, position.x + 16, position.y + 54);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOTDOWN, position.x + 22, position.y + 64);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOTDOWN, position.x + 30, position.y + 72);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_SHOTDOWN, position.x + 40, position.y + 78);
 
 		lastTimeShoot = currentTime;
 		shot = true;

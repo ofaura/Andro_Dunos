@@ -1,5 +1,5 @@
 #include "Application.h"
-#include "Enemy_BlueShot.h"
+#include "Enemy_BlueshotDown.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModuleUserInterface.h"
@@ -7,7 +7,7 @@
 #include "ModulePlayer.h"
 #include "ModuleAudio.h"
 
-Enemy_BlueShot::Enemy_BlueShot(int x, int y) : Enemy(x, y)
+Enemy_BlueshotDown::Enemy_BlueshotDown(int x, int y) : Enemy(x, y)
 {
 	fly.PushBack({ 158, 736, 5, 7 });
 	fly.PushBack({ 166, 736, 5, 6 });
@@ -16,9 +16,9 @@ Enemy_BlueShot::Enemy_BlueShot(int x, int y) : Enemy(x, y)
 	fly.loop = true;
 	fly.speed = 0.2f;
 
-	path.PushBack({ -0.5f, -0.3f }, 50);
-	
-	
+	path.PushBack({ -0.5f, 0.3f }, 50);
+
+
 	animation = &fly;
 
 	collider = App->collision->AddCollider({ 0, 0, 8, 8 }, COLLIDER_TYPE::COLLIDER_ENEMY_SHOT, (Module*)App->enemies);
@@ -27,7 +27,7 @@ Enemy_BlueShot::Enemy_BlueShot(int x, int y) : Enemy(x, y)
 	original_y = y;
 }
 
-void Enemy_BlueShot::Move()
+void Enemy_BlueshotDown::Move()
 {
 	position.x = original_x + path.GetCurrentPosition().x;
 	position.y = original_y + path.GetCurrentPosition().y;
@@ -35,7 +35,7 @@ void Enemy_BlueShot::Move()
 	collider->SetPos(position.x, position.y);
 }
 
-void Enemy_BlueShot::OnCollision(Collider* collider)
+void Enemy_BlueshotDown::OnCollision(Collider* collider)
 {
 
 }
