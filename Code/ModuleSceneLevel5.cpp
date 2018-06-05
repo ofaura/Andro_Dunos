@@ -128,16 +128,12 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_BALL, 500, (SCREEN_HEIGHT / 2) - 20);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 300, (SCREEN_HEIGHT / 2 - 20));
-
-	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_BALL, 350, (SCREEN_HEIGHT / 2) - 17);
-
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 400, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 500, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 600, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 700, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 800, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 900, (SCREEN_HEIGHT / 2) - 20);
-
 
 	// Mines
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 760, 120);
@@ -211,10 +207,10 @@ bool ModuleSceneLevel5::Start()
 
 	App->enemies->AddEnemy(ENEMY_TYPES::LITTLE_TURRET_UP, 6295, 202);
 
+	// Enemy Solar Panel
 	App->enemies->AddEnemy(ENEMY_TYPES::SOLAR_PANEL, 2580, 150);
 	App->enemies->AddEnemy(ENEMY_TYPES::SOLAR_PANEL, 2650, 70);
-
-
+	
 	// Enemy Beyblade
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_BEYBLADE, 2100, 70);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_BEYBLADE, 2150, 100);
