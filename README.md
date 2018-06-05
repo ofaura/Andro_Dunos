@@ -18,8 +18,8 @@ to advance through levels and defeat the alien invaders of the Earth.
 ***
 ### Gameplay
 
-<iframe width="420" height="345" src="https://www.youtube.com/watch?v=nvxHr527PE0">
-</iframe>
-
+<figure class="video_container">
+  <iframe src="https://www.youtube.com/watch?v=nvxHr527PE0" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
 ### Download the Game
 
