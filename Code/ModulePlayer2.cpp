@@ -178,9 +178,6 @@ update_status ModulePlayer2::Update()
 
 
 	int speed = 2;
-	
-	ShootPowerUpLevel = 8;
-
 
 	////////////////////// BIG CHUNK: START /////////////////////////////
 
@@ -1097,7 +1094,10 @@ void ModulePlayer2::OnCollision(Collider* col_1, Collider* col_2)
 		if (App->player2->lives >= 0)
 		{
 			dead = true;
+			App->player->dead = true;
+
 			first_time = SDL_GetTicks();
+
 			App->audio->PlayFx(player_death);
 			if (collision == true) {
 				App->player2->lives--;
