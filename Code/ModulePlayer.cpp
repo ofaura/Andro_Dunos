@@ -138,6 +138,9 @@ bool ModulePlayer::Start()
 	App->level5->ground_pos_x = 0;
 	type = 0;
 
+	lives = 2;
+
+
 	player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
 	return true;
 }
