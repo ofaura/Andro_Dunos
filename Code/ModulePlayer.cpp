@@ -25,6 +25,7 @@ ModulePlayer::ModulePlayer()
 	
 
 	idle.PushBack({ 94, 108, 27, 17 });
+	lives = 2;
 
 	respawn.PushBack({ 94, 108, 27, 17 });
 	respawn.PushBack({ 0, 0, 0, 0 });
