@@ -123,7 +123,7 @@ bool ModuleSceneLevel5::Start()
 	//Enemies ---
 	App->enemies->Enable();	
 
-	App->enemies->AddEnemy(ENEMY_TYPES::PIXEL, 500, (SCREEN_HEIGHT / 2) - 20);
+	//App->enemies->AddEnemy(ENEMY_TYPES::PIXEL, 500, (SCREEN_HEIGHT / 2) - 20);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_BALL, 500, (SCREEN_HEIGHT / 2) - 20);
 

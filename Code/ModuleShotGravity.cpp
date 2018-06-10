@@ -52,7 +52,7 @@ bool ModuleShotGravity::Start()
 	homing_missile.anim.PushBack({ 338, 15, 10, 9 });
 	homing_missile.anim.loop = false;
 	homing_missile.anim.speed = 1.0f;
-	homing_missile.life = 1000;
+	homing_missile.life = 9000;
 
 	return true;
 }
@@ -132,6 +132,7 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay)
 {
 	srand(time(NULL));
+	bool check = false;
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -144,6 +145,7 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 			p->position.y = y;
 			p->type = type;
 
+
 			for (int counter = 0; counter < MAX_ENEMIES && p->target_aquired == false; counter++)
 			{
 				if (App->enemies->enemies[counter] != nullptr && App->enemies->enemies[counter]->type != POWER_UP)
@@ -153,9 +155,15 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 
 					{
 						p->enemy = App->enemies->enemies[counter];
+						check = true;
 						//p->target_aquired = true;
 					}
 				}
+			}
+
+			if (check == false)
+			{
+				p->enemy = nullptr;
 			}
 
 			// (Module*)App->enemies
@@ -166,6 +174,9 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 			active[i] = p;
 			break;
 		}
+
+
+		
 	}
 }
 
@@ -240,7 +251,8 @@ bool Accel_Shot::Update()
 
 	else if (type == HOMING_MISSILE)
 	{
-			if (enemy == nullptr || enemy->collider == nullptr)
+			if (enemy == nullptr || (position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE) + 15)) &&
+				(position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH)))
 			{
 				position.x += 1;
 				position.y += 2;
