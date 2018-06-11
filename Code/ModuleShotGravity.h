@@ -19,7 +19,8 @@ enum COLLIDER_TYPE;
 enum Accel_Shot_Type
 {
 	GRAVITY_SHOT = 0,
-	HOMING_MISSILE
+	HOMING_MISSILE,
+	POS_SHOT
 
 };
 
@@ -28,7 +29,7 @@ struct Accel_Shot
 	Collider* collider = nullptr;
 	Animation anim;
 	uint fx = 0;
-	iPoint position;
+	iPoint position, vel_;
 	int damage;
 	int time_1, time_2;
 	int up = 1;
@@ -38,7 +39,7 @@ struct Accel_Shot
 	bool fx_played = false;
 	Accel_Shot_Type type;
 	Enemy* enemy;
-	bool target_aquired;
+	bool target_aquired, done;
 
 	Accel_Shot();
 	Accel_Shot(const Accel_Shot& p);
@@ -58,6 +59,8 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
+
+	void AddShot_(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay = 0);
 	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, int up , int left, Uint32 delay = 0);
 	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay = 0);
 
@@ -66,6 +69,8 @@ public:
 	Accel_Shot gravity_shot, gravity_shot_2;
 	Accel_Shot homing_missile;
 	Accel_Shot* active[MAX_ACTIVE_PARTICLES];
+
+	Accel_Shot enemy_shot_orange;
 
 private:
 

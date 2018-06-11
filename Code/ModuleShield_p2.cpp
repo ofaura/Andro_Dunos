@@ -37,7 +37,7 @@ int give_position_x_(int radius, float angle_deg) // preparations for later
 ModuleShield_p2::ModuleShield_p2() {
 
 	circ = 0;
-
+	HP = 3;
 	// ---- Animation for the base od the shield
 	base_anim.PushBack({ 0, 0, 9, 16 });
 	base_anim.PushBack({ 11, 0, 9, 16 });
@@ -132,7 +132,7 @@ ModuleShield_p2::~ModuleShield_p2() {}
 
 bool ModuleShield_p2::Start() {
 	bool ret = true;
-
+	HP = 3;
 	graphics = App->textures->Load("Assets/Sprites/player/shield.png"); //Loads shield image bank
 
 	if (graphics == nullptr) ret = false; //failsafe for wrong address

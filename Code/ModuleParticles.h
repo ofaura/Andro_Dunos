@@ -24,6 +24,7 @@ struct Particle
 	Uint32 born = 0;
 	Uint32 life = 0;
 	bool fx_played = false;
+	int done;
 
 	Particle();
 	Particle(const Particle& p);
