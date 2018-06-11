@@ -251,7 +251,7 @@ bool Accel_Shot::Update()
 
 	else if (type == HOMING_MISSILE)
 	{
-			if (enemy == nullptr || (position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE) + 15)) &&
+			if (enemy == nullptr || (position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE))) &&
 				(position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH)))
 			{
 				position.x += 1;
