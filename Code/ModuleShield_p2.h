@@ -18,7 +18,6 @@ class ModuleShield_p2 : public Module {
 		bool Start();
 		update_status Update();
 		bool CleanUp();
-		int HP;
 
 	public:
 		SDL_Texture * graphics = nullptr;

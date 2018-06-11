@@ -35,7 +35,6 @@ int give_position_x(int radius, float angle_deg) // preparations for later
 ModuleShield::ModuleShield() {
 
 	circ = 0;
-	HP = 3;
 
 	// ---- Animation for the base od the shield
 	base_anim.PushBack({ 0, 0, 9, 16 });
@@ -147,8 +146,6 @@ ModuleShield::~ModuleShield() {}
 
 bool ModuleShield::Start() {
 	bool ret = true;
-
-	
 
 	graphics = App->textures->Load("Assets/Sprites/player/shield.png"); //Loads shield image bank
 
@@ -273,24 +270,24 @@ update_status ModuleShield::Update() {
 		// ---- Stays on either side of the ship
 	case bullet_type::TYPE_2:
 		position1.x = App->player->position.x + 5;
-		position1.y = App->player->position.y - 18;
+		position1.y = App->player->position.y - 15;
 		position2.x = App->player->position.x + 5;
-		position2.y = App->player->position.y + 20;
+		position2.y = App->player->position.y + 17;
 		break;
 
 		// ---- Stays in front of ship
 	case bullet_type::TYPE_3:
-		position1.x = App->player->position.x + 31;
+		position1.x = App->player->position.x + 29;
 		position1.y = App->player->position.y - 8;
-		position2.x = App->player->position.x + 31;
+		position2.x = App->player->position.x + 29;
 		position2.y = App->player->position.y + 10;
 		break;
 
 		// ---- Stays behind ship
 	case bullet_type::TYPE_4:
-		position1.x = App->player->position.x - 19;
+		position1.x = App->player->position.x - 16;
 		position1.y = App->player->position.y - 8;
-		position2.x = App->player->position.x - 19;
+		position2.x = App->player->position.x - 16;
 		position2.y = App->player->position.y + 10;
 		break;
 	}
@@ -333,20 +330,17 @@ update_status ModuleShield::Update() {
 	return update_status::UPDATE_CONTINUE;
 }
 
-void ModuleShield::OnCollision(Collider* col_1, Collider* col_2)
-
-{
-	HP--;
-	if (IsEnabled() && HP <= 0)
-	{
-		circ = 0;
-		HP = 3;
-		collider1->to_delete = true;	
-		collider2->to_delete = true;
-		collider1 = nullptr;
-		collider2 = nullptr;
-		Disable();
+void ModuleShield::OnCollision(Collider* col_1, Collider* col_2) {
+	if (collider1 == col_1 || collider2 == col_1)
+		if (IsEnabled() && collider1->type == COLLIDER_TYPE::COLLIDER_ENEMY || collider2->type == COLLIDER_TYPE::COLLIDER_ENEMY) {
+			circ = 0;
+			collider1->to_delete = true;
+			collider2->to_delete = true;
+			collider1 = nullptr;
+			collider2 = nullptr;
+			Disable();
 		}
+	
 }
 
 bool ModuleShield::CleanUp() {

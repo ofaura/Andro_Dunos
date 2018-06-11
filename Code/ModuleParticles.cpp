@@ -153,6 +153,93 @@ bool ModuleParticles::Start()
 	enemy_shot_blue6.speed.y += 1;
 	enemy_shot_blue6.life = 2000;
 	
+	enemy_shot_orange1u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange1u.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange1u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange1u.anim.PushBack({ 296, 220, 6, 6 });
+	enemy_shot_orange1u.anim.loop = true;
+	enemy_shot_orange1u.anim.speed = 0.5f;
+	enemy_shot_orange1u.speed.x -= 2;
+	enemy_shot_orange1u.life = 2000;
+
+	enemy_shot_orange2u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange2u.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange2u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange2u.anim.PushBack({ 296, 220, 6, 6 });
+	enemy_shot_orange2u.anim.loop = true;
+	enemy_shot_orange2u.anim.speed = 0.5f;
+	enemy_shot_orange2u.speed.x -= 2;
+	enemy_shot_orange2u.speed.y += 1;
+	enemy_shot_orange2u.life = 2000;
+
+	enemy_shot_orange3u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange3u.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange3u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange3u.anim.PushBack({ 296, 220, 6, 6 });
+	enemy_shot_orange3u.anim.loop = true;
+	enemy_shot_orange3u.anim.speed = 0.5f;
+	enemy_shot_orange3u.speed.x -= 2;
+	enemy_shot_orange3u.speed.y += 2;
+	enemy_shot_orange3u.life = 2000;
+
+	enemy_shot_orange4u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange4u.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange4u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange4u.anim.PushBack({ 296, 220, 6, 6 });
+	enemy_shot_orange4u.anim.loop = true;
+	enemy_shot_orange4u.anim.speed = 0.5f;
+	enemy_shot_orange4u.speed.x -= 1;
+	enemy_shot_orange4u.speed.y += 2;
+	enemy_shot_orange4u.life = 2000;
+
+	enemy_shot_orange5u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange5u.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange5u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange5u.anim.PushBack({ 296, 220, 6, 6 });
+	enemy_shot_orange5u.anim.loop = true;
+	enemy_shot_orange5u.anim.speed = 0.5f;
+	enemy_shot_orange5u.speed.y += 2;
+	enemy_shot_orange5u.life = 2000;
+
+	enemy_shot_orange6u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange6u.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange6u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange6u.anim.PushBack({ 296, 220, 6, 6 });
+	enemy_shot_orange6u.anim.loop = true;
+	enemy_shot_orange6u.anim.speed = 0.5f;
+	enemy_shot_orange6u.speed.x += 1;
+	enemy_shot_orange6u.speed.y += 2;
+	enemy_shot_orange6u.life = 2000;
+
+	enemy_shot_orange7u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange7u.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange7u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange7u.anim.PushBack({ 296, 220, 6, 6 });
+	enemy_shot_orange7u.anim.loop = true;
+	enemy_shot_orange7u.anim.speed = 0.5f;
+	enemy_shot_orange7u.speed.x += 2;
+	enemy_shot_orange7u.speed.y += 2;
+	enemy_shot_orange7u.life = 2000;
+
+	enemy_shot_orange8u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange8u.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange8u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange8u.anim.PushBack({ 296, 220, 6, 6 });
+	enemy_shot_orange8u.anim.loop = true;
+	enemy_shot_orange8u.anim.speed = 0.5f;
+	enemy_shot_orange8u.speed.x += 2;
+	enemy_shot_orange8u.speed.y += 1;
+	enemy_shot_orange8u.life = 2000;
+
+	enemy_shot_orange9u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange9u.anim.PushBack({ 288, 220, 6, 6 });
+	enemy_shot_orange9u.anim.PushBack({ 280, 220, 6, 6 });
+	enemy_shot_orange9u.anim.PushBack({ 296, 220, 6, 6 });
+	enemy_shot_orange9u.anim.loop = true;
+	enemy_shot_orange9u.anim.speed = 0.5f;
+	enemy_shot_orange9u.speed.x += 2;
+	enemy_shot_orange9u.life = 2000;
+
 	//-----------------------------------------------------------------------------
 
 	enemy_shot_orange1d.anim.PushBack({ 280, 220, 6, 6 });

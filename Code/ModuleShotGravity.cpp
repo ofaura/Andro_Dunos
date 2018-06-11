@@ -54,14 +54,6 @@ bool ModuleShotGravity::Start()
 	homing_missile.anim.speed = 1.0f;
 	homing_missile.life = 9000;
 
-	enemy_shot_orange.anim.PushBack({ 280, 220, 6, 6 });
-	enemy_shot_orange.anim.PushBack({ 288, 220, 6, 6 });
-	enemy_shot_orange.anim.PushBack({ 280, 220, 6, 6 });
-	enemy_shot_orange.anim.PushBack({ 296, 220, 6, 6 });
-	enemy_shot_orange.anim.loop = true;
-	enemy_shot_orange.anim.speed = 0.5f;
-	enemy_shot_orange.life = 2000;
-
 	return true;
 }
 
@@ -113,29 +105,6 @@ update_status ModuleShotGravity::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModuleShotGravity::AddShot_(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay)
-{
-	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
-	{
-		if (active[i] == nullptr)
-		{
-			Accel_Shot* p = new Accel_Shot(particle);
-			p->born = SDL_GetTicks() + delay;
-			p->position.x = x;
-			p->position.y = y;
-			p->type = type;
-			p->done = false;
-			// (Module*)App->enemies
-			if (type == POS_SHOT)
-			{
-				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), COLLIDER_ENEMY_SHOT , this);
-			}
-			active[i] = p;
-			break;
-		}
-	}
-}
-
 void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, int up, int left, Uint32 delay)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
@@ -150,7 +119,7 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 			p->up = up;
 			p->left = left;
 			// (Module*)App->enemies
-			if (type == GRAVITY_SHOT)
+			if (type == GRAVITY_SHOT || type == HOMING_MISSILE)
 			{
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), COLLIDER_PLAYER_SHOT, this);
 			}
@@ -198,7 +167,7 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 			}
 
 			// (Module*)App->enemies
-			if (type == HOMING_MISSILE)
+			if (type == GRAVITY_SHOT || type == HOMING_MISSILE)
 			{
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), COLLIDER_PLAYER2_SHOT_ALT, this);
 			}
@@ -282,7 +251,7 @@ bool Accel_Shot::Update()
 
 	else if (type == HOMING_MISSILE)
 	{
-			if (enemy == nullptr || (position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE) + 40)) &&
+			if (enemy == nullptr || (position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE) + 15)) &&
 				(position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH)))
 			{
 				position.x += 1;
@@ -305,8 +274,8 @@ bool Accel_Shot::Update()
 				else { down_ = -1; }
 
 
-				dif_pos[x] = abs(enemy->position.x - position.x);
-				dif_pos[y] = abs(enemy->position.y - position.y);
+				dif_pos[x] = enemy->position.x - position.x;
+				dif_pos[y] = enemy->position.y - position.y;
 
 				if (dif_pos[y] == 0)
 				{
@@ -322,64 +291,21 @@ bool Accel_Shot::Update()
 
 				vel[x] = (left_ * (div)*vel[y]) + 1;
 
-					position.x += vel[x] + 1;
+				if (vel[x] == 1 && vel[y] == 0)
+				{
+					position.x += 1;
+					position.y += 2;
+				}
+				else
+				{
+					position.x += vel[x];
 					position.y += vel[y];
-
+				}
 				// proces: end. the main velocity equations come from solving simple trigonometric problem on paper
 
 			}
 
 	}
-
-	else if (type == POS_SHOT)
-	{
-		if (done == false)
-		{
-			int dif_pos[2];
-			int vel[2];
-			int div;
-			int left_, down_;
-
-
-			if (App->player->position.x >= position.x) { left_ = +1; }
-			else { left_ = -1; }
-
-			if (App->player->position.y >= position.y) { down_ = 1; }
-			else { down_ = -1; }
-
-
-			dif_pos[x] = App->player->position.x - position.x;
-			dif_pos[y] = App->player->position.y - position.y;
-
-			if (dif_pos[y] == 0)
-			{
-				div = 0;
-				vel[y] = 0;
-			}
-
-			else
-			{
-				div = abs(dif_pos[x] / dif_pos[y]);
-				vel[y] = down_ * sqrt(pow(2, 2) / (1 + pow(div, 2)));
-			}
-
-			vel[x] = (left_ * (div)*vel[y]);
-
-			vel_.x = vel[x];
-			vel_.y = vel[y];
-		}
-
-		position.x = position.x + vel_.x + 1;
-		position.y = position.y + vel_.y;
-
-		if (done == false)
-		{
-			done = true;
-		}
-	}
-
-
-
 
 	time_1++;
 
