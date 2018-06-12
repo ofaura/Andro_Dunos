@@ -58,8 +58,8 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, int up , int left, Uint32 delay = 0);
-	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay = 0);
+	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, int up , int left, COLLIDER_TYPE collider_type, Uint32 delay = 0);
+	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, COLLIDER_TYPE collider_type, Uint32 delay = 0);
 
 
 	Animation g_shot;

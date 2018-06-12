@@ -105,7 +105,7 @@ update_status ModuleShotGravity::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, int up, int left, Uint32 delay)
+void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, int up, int left, COLLIDER_TYPE collider_type, Uint32 delay)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -121,7 +121,7 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 			// (Module*)App->enemies
 			if (type == GRAVITY_SHOT || type == HOMING_MISSILE)
 			{
-				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), COLLIDER_PLAYER_SHOT, this);
+				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			}
 			active[i] = p;
 			break;
@@ -129,7 +129,7 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 	}
 }
 
-void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay)
+void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, COLLIDER_TYPE collider_type, Uint32 delay)
 {
 	srand(time(NULL));
 	bool check = false;
@@ -169,7 +169,7 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 			// (Module*)App->enemies
 			if (type == GRAVITY_SHOT || type == HOMING_MISSILE)
 			{
-				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), COLLIDER_PLAYER2_SHOT_ALT, this);
+				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			}
 			active[i] = p;
 			break;

@@ -562,7 +562,7 @@ update_status ModulePlayer::Update()
 			{
 				//App->accel_shot->AddShot(App->accel_shot->gravity_shot, position.x, position.y + 5, GRAVITY_SHOT, 1, 1);
 				//AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay);
-				App->accel_shot->AddShot(App->accel_shot->homing_missile, position.x + 5, position.y + 5, HOMING_MISSILE);
+				App->accel_shot->AddShot(App->accel_shot->homing_missile, position.x + 5, position.y + 5, HOMING_MISSILE, COLLIDER_PLAYER_SHOT_ALT);
 				t_missile = 0;
 			}
 		}
@@ -731,22 +731,22 @@ update_status ModulePlayer::Update()
 
 				if (ShootPowerUpLevel_2 >= 3 && t > 100)
 				{
-					App->particles->AddParticle(App->particles->missile2_4, position.x + 5, position.y - 3, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->missile2_3, position.x + 5, position.y + 15, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->missile2_4, position.x + 5, position.y - 3, COLLIDER_PLAYER_SHOT_ALT);
+					App->particles->AddParticle(App->particles->missile2_3, position.x + 5, position.y + 15, COLLIDER_PLAYER_SHOT_ALT);
 					App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
 
 				}
 
 				if (ShootPowerUpLevel_2 >= 2 && t > 100)
 				{
-					App->particles->AddParticle(App->particles->missile2_2, position.x + 5, position.y - 3, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->missile2_2, position.x + 5, position.y - 3, COLLIDER_PLAYER_SHOT_ALT);
 					App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
 
 				}
 
 				if (t > 100)
 				{
-					App->particles->AddParticle(App->particles->missile2_1, position.x + 5, position.y + 15, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->missile2_1, position.x + 5, position.y + 15, COLLIDER_PLAYER_SHOT_ALT);
 					App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
 					t = 0;
 				}
@@ -803,20 +803,20 @@ update_status ModulePlayer::Update()
 			{
 				if (ShootPowerUpLevel_2 >= 3 && t > 100)
 				{
-					App->accel_shot->AddShot(App->accel_shot->gravity_shot_2, position.x + 10, position.y + 5, GRAVITY_SHOT, -1, -1); // HOMING MISSILE
-					App->accel_shot->AddShot(App->accel_shot->gravity_shot, position.x + 10, position.y + 5, GRAVITY_SHOT, 1, -1); // HOMING MISSILE
+					App->accel_shot->AddShot(App->accel_shot->gravity_shot_2, position.x + 10, position.y + 5, GRAVITY_SHOT, -1, -1, COLLIDER_PLAYER_SHOT_ALT); // HOMING MISSILE
+					App->accel_shot->AddShot(App->accel_shot->gravity_shot, position.x + 10, position.y + 5, GRAVITY_SHOT, 1, -1, COLLIDER_PLAYER_SHOT_ALT); // HOMING MISSILE
 					App->audio->PlayFx(laser1); //2 change
 				}
 
 				if (ShootPowerUpLevel_2 >= 2 && t > 100)
 				{
-				App->accel_shot->AddShot(App->accel_shot->gravity_shot_2, position.x, position.y + 5, GRAVITY_SHOT, -1, 1); // HOMING MISSILE
+				App->accel_shot->AddShot(App->accel_shot->gravity_shot_2, position.x, position.y + 5, GRAVITY_SHOT, -1, 1, COLLIDER_PLAYER_SHOT_ALT); // HOMING MISSILE
 				App->audio->PlayFx(laser1); //2 change
 				}
 
-				if (t > 100) //fdhsgdf
+				if (t > 100) //
 				{
-					App->accel_shot->AddShot(App->accel_shot->gravity_shot, position.x, position.y + 5, GRAVITY_SHOT, 1, 1); // could also be: HOMING MISSILE
+					App->accel_shot->AddShot(App->accel_shot->gravity_shot, position.x, position.y + 5, GRAVITY_SHOT, 1, 1, COLLIDER_PLAYER_SHOT_ALT); // could also be: HOMING MISSILE
 					App->audio->PlayFx(laser1); //2 change
 					t = 0;
 				}
@@ -889,17 +889,17 @@ update_status ModulePlayer::Update()
 			{
 				if (ShootPowerUpLevel_2 >= 2 && t > 100)
 				{
-					App->particles->AddParticle(App->particles->missile4[0], position.x + 8, position.y + 1, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->missile4[1], position.x + 8, position.y + 13, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->missile4[2], position.x + 3, position.y - 6, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->missile4[3], position.x + 3, position.y + 5, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->missile4[0], position.x + 8, position.y + 1, COLLIDER_PLAYER_SHOT_ALT);
+					App->particles->AddParticle(App->particles->missile4[1], position.x + 8, position.y + 13, COLLIDER_PLAYER_SHOT_ALT);
+					App->particles->AddParticle(App->particles->missile4[2], position.x + 3, position.y - 6, COLLIDER_PLAYER_SHOT_ALT);
+					App->particles->AddParticle(App->particles->missile4[3], position.x + 3, position.y + 5, COLLIDER_PLAYER_SHOT_ALT);
 					App->audio->PlayFx(laser4);
 				}
 
 				if (t > 100)
 				{
-					App->particles->AddParticle(App->particles->missile4[0], position.x + 8, position.y + 1, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->missile4[1], position.x + 8, position.y + 13, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->missile4[0], position.x + 8, position.y + 1, COLLIDER_PLAYER_SHOT_ALT);
+					App->particles->AddParticle(App->particles->missile4[1], position.x + 8, position.y + 13, COLLIDER_PLAYER_SHOT_ALT);
 					App->audio->PlayFx(laser4);
 					t = 0;
 				}
@@ -924,12 +924,12 @@ update_status ModulePlayer::Update()
 		{
 			if (ShootPowerUpLevel_2 >= 2)
 			{
-				App->particles->AddParticle(App->particles->missile1_2, position.x + 5, position.y - 7, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->missile1_2, position.x + 5, position.y - 7, COLLIDER_PLAYER_SHOT_ALT);
 				App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
 				missile[1]->Reset();
 				ini_up = 0;
 			}
-			App->particles->AddParticle(App->particles->missile1_1, position.x + 5, position.y + 20, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->missile1_1, position.x + 5, position.y + 20, COLLIDER_PLAYER_SHOT_ALT);
 			App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
 			missile[0]->Reset();
 			ini_down = 9;
@@ -954,12 +954,12 @@ update_status ModulePlayer::Update()
 				else if (t_2 >= 35)
 				{
 
-					App->particles->AddParticle(App->particles->missile1_3b, position.x + 5, position.y - 7, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->missile1_3b, position.x + 5, position.y - 7, COLLIDER_PLAYER_SHOT_ALT);
 					App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
 					missile[1]->Reset();
 					
 					
-					App->particles->AddParticle(App->particles->missile1_3a, position.x + 5, position.y + 20, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->missile1_3a, position.x + 5, position.y + 20, COLLIDER_PLAYER_SHOT_ALT);
 					App->audio->PlayFx(laser1); // missile1, meanwhile laser1 SFX
 					missile[0]->Reset();  
 
