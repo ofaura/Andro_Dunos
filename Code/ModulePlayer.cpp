@@ -16,8 +16,8 @@
 #include "ModuleBonus.h"
 #include "ModuleUserInterface.h"
 #include "ModuleShield.h"
-#include "ModuleShotGravity.h"
-#include "ModuleShotGravity.h"
+#include "ModuleNonParticleShot.h"
+
 
 ModulePlayer::ModulePlayer()
 {

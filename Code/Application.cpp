@@ -20,7 +20,7 @@
 #include "ModuleFonts.h"
 #include "ModuleShield.h"
 #include "ModuleShield_p2.h"
-#include "ModuleShotGravity.h"
+#include "ModuleNonParticleShot.h"
 
 Application::Application()
 {

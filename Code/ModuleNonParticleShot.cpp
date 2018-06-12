@@ -2,7 +2,7 @@
 #include "p2Point.h"
 #include "Globals.h"
 #include "Application.h"
-#include "ModuleShotGravity.h"
+#include "ModuleNonParticleShot.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleParticles.h"

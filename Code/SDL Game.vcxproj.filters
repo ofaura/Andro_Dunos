@@ -197,9 +197,6 @@
     <ClInclude Include="Module.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleShotGravity.h">
-      <Filter>Modules\Weapons</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy_Mechromancer.h">
       <Filter>Modules\Enemies\Tank Enemies</Filter>
     </ClInclude>
@@ -217,6 +214,9 @@
     </ClInclude>
     <ClInclude Include="Enemy_BlueshotDown.h">
       <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleNonParticleShot.h">
+      <Filter>Modules\Weapons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -367,9 +367,6 @@
     <ClCompile Include="ModuleShield.cpp">
       <Filter>Modules\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleShotGravity.cpp">
-      <Filter>Modules\Weapons</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy_Mechromancer.cpp">
       <Filter>Modules\Enemies\Tank Enemies</Filter>
     </ClCompile>
@@ -387,6 +384,9 @@
     </ClCompile>
     <ClCompile Include="Enemy_BlueshotDown.cpp">
       <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleNonParticleShot.cpp">
+      <Filter>Modules\Weapons</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
