@@ -52,7 +52,7 @@ bool ModuleShotGravity::Start()
 	homing_missile.anim.PushBack({ 338, 15, 10, 9 });
 	homing_missile.anim.loop = false;
 	homing_missile.anim.speed = 1.0f;
-	homing_missile.life = 9000;
+	homing_missile.life = 2500;
 
 	return true;
 }
@@ -119,7 +119,7 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 			p->up = up;
 			p->left = left;
 			// (Module*)App->enemies
-			if (type == GRAVITY_SHOT || type == HOMING_MISSILE)
+			if (type == GRAVITY_SHOT || type == ULTIMATE)
 			{
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			}
@@ -167,7 +167,7 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 			}
 
 			// (Module*)App->enemies
-			if (type == GRAVITY_SHOT || type == HOMING_MISSILE)
+			if (type == HOMING_MISSILE)
 			{
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			}

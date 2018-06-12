@@ -563,6 +563,14 @@ update_status ModulePlayer::Update()
 				//App->accel_shot->AddShot(App->accel_shot->gravity_shot, position.x, position.y + 5, GRAVITY_SHOT, 1, 1);
 				//AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, Uint32 delay);
 				App->accel_shot->AddShot(App->accel_shot->homing_missile, position.x + 5, position.y + 5, HOMING_MISSILE, COLLIDER_PLAYER_SHOT_ALT);
+				App->particles->AddParticle(App->particles->ultimates[0][0], position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->ultimates[0][1], position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->ultimates[0][2], position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->ultimates[0][3], position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->ultimates[0][4], position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->ultimates[0][5], position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->ultimates[0][6], position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
+
 				t_missile = 0;
 			}
 		}
@@ -1051,6 +1059,10 @@ update_status ModulePlayer::Update()
 		{
 			player->SetPos(position.x, position.y);
 		}
+	}
+	else
+	{
+		player->SetPos(position.x, position.y - 200);
 	}
 
 	// Draw everything --------------------------------------

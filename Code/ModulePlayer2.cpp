@@ -1056,6 +1056,10 @@ update_status ModulePlayer2::Update()
 		{
 			player->SetPos(position.x, position.y);
 		}
+		else
+		{
+			player->SetPos(position.x, position.y - 200);
+		}
 	}
 
 	// Draw everything --------------------------------------

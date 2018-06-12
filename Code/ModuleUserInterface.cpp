@@ -358,6 +358,7 @@ update_status ModuleUserInterface::Update()
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT) {
 		if (beamCharger.Finished()) {
 			App->render->Blit(super, 72, 25, &(beamCharged.GetCurrentFrame()), 1, false);
+			// to add ultimate here
 		}
 		else {
 			App->render->Blit(super, 72, 25, &(beamCharger.GetCurrentFrame()), 1, false);
@@ -428,6 +429,8 @@ update_status ModuleUserInterface::Update()
 		if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_REPEAT) {
 			if (beamCharger2.Finished()) {
 				App->render->Blit(super, 249, 25, &(beamCharged2.GetCurrentFrame()), 1, false);
+				// to add ultimate p2 here
+
 			}
 			else {
 				App->render->Blit(super, 249, 25, &(beamCharger2.GetCurrentFrame()), 1, false);

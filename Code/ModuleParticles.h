@@ -115,6 +115,8 @@ public:
 	Particle enemy_shot_orange8d;
 	Particle enemy_shot_orange9d;
 
+	Particle ultimates[3][10]; // first [] indicares weapon type, second [] indicates which of the "attacks" it is refering to
+
 	Particle enemy_missile1;
 	Particle enemy_missile2;
 };

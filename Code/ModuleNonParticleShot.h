@@ -19,7 +19,8 @@ enum COLLIDER_TYPE;
 enum Accel_Shot_Type
 {
 	GRAVITY_SHOT = 0,
-	HOMING_MISSILE
+	HOMING_MISSILE,
+	ULTIMATE
 
 };
 
