@@ -577,15 +577,15 @@ update_status ModulePlayer::Update()
 				break;
 
 			case bullet_type::TYPE_2:
+				if (t_ultimate >= 12)
+				{
+					t_ultimate = 0;
+				}
 				if (t_ultimate == 0)
 				{
 					App->accel_shot->AddUltimate(position.x, position.y, ULTIMATE_2, COLLIDER_ULTIMATES);
 					turn_ultimate[2]--;
 					turn_ulti = turn_ultimate[2];
-				}
-				if (t_ultimate >= 5)
-				{
-					t_ultimate = 0;
 				}
 				break;
 
