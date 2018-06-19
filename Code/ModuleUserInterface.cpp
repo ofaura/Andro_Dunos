@@ -12,6 +12,7 @@
 #include "ModuleUserInterface.h"
 #include "ModulePlayer.h"
 #include "ModulePlayer2.h"
+#include "ModuleNonParticleShot.h"
 
 #include <stdio.h>
 
@@ -355,9 +356,10 @@ update_status ModuleUserInterface::Update()
 		App->render->Blit(weaponHud, 24, 25, &Life1, 1, false);
 
 	// Beam charger
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT) {
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT && App->player->ShootPowerUpLevel >= 2) {
 		if (beamCharger.Finished()) {
 			App->render->Blit(super, 72, 25, &(beamCharged.GetCurrentFrame()), 1, false);
+			App->accel_shot->AddUltimate(App->player->position.x, App->player->position.y, ULTIMATE_2, COLLIDER_PLAYER_SHOT_ALT); // ultimate damge pending, colliders need a lot of polishing for damage output & health
 			// to add ultimate here
 		}
 		else {
@@ -430,7 +432,6 @@ update_status ModuleUserInterface::Update()
 			if (beamCharger2.Finished()) {
 				App->render->Blit(super, 249, 25, &(beamCharged2.GetCurrentFrame()), 1, false);
 				// to add ultimate p2 here
-
 			}
 			else {
 				App->render->Blit(super, 249, 25, &(beamCharger2.GetCurrentFrame()), 1, false);

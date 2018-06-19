@@ -25,8 +25,13 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* col_1, Collider* col_2);
+	uint type_ulti;
 
 public:
+
+	bool enable_ultimate;
+	int turn_ultimate[4], turn_ulti;
+	int t_ultimate;
 
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* missile_graphics = nullptr;

@@ -103,6 +103,9 @@ bool ModulePlayer::Start()
 	ini_up_prime = 0;
 	t_missile = 0;
 	enable_missile1 = false;
+	enable_ultimate = false;
+	turn_ultimate[2] = 3;
+	t_ultimate = -1;
 
 	ani_miss_down.PushBack({ 296, 61, 12, 8 });
 	ani_miss_down.PushBack({ 297, 105, 12, 9 });
@@ -553,6 +556,58 @@ update_status ModulePlayer::Update()
 
 		t++;
 		t_missile++;
+
+
+		//Ultimate
+		if (ShootPowerUpLevel >= 2 && App->user_interface->beamCharger.Finished() == true)
+		{
+			enable_ultimate = true;
+			ShootPowerUpLevel--;
+			type_ulti = type;
+			t_ultimate++;
+		}
+
+		if (enable_ultimate == true)
+		{
+
+			switch (type_ulti)
+			{
+			case bullet_type::TYPE_1:
+
+				break;
+
+			case bullet_type::TYPE_2:
+				if (t_ultimate == 0)
+				{
+					App->accel_shot->AddUltimate(position.x, position.y, ULTIMATE_2, COLLIDER_ULTIMATES);
+					turn_ultimate[2]--;
+					turn_ulti = turn_ultimate[2];
+				}
+				if (t_ultimate >= 5)
+				{
+					t_ultimate = 0;
+				}
+				break;
+
+			case bullet_type::TYPE_3:
+
+				break;
+
+			case bullet_type::TYPE_4:
+
+				break;
+
+			}
+
+			t_ultimate++;
+
+			if (turn_ulti <= 0)
+			{
+				enable_ultimate = false;
+				t_ultimate = -1;
+			}
+
+		}
 
 		// Homing Missile
 		if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN //|| (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A)) == 1
