@@ -20,7 +20,10 @@ enum Accel_Shot_Type
 {
 	GRAVITY_SHOT = 0,
 	HOMING_MISSILE,
-	ULTIMATE
+	ULTIMATE_1,
+	ULTIMATE_2,
+	ULTIMATE_3,
+	ULTIMATE_4
 
 };
 
@@ -59,6 +62,7 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
+	void AddUltimate(int x, int y, Accel_Shot_Type type, COLLIDER_TYPE collider_type);
 	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, int up , int left, COLLIDER_TYPE collider_type, Uint32 delay = 0);
 	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, COLLIDER_TYPE collider_type, Uint32 delay = 0);
 

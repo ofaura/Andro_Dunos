@@ -29,70 +29,70 @@ bool ModuleParticles::Start()
 	// Ultimate attack
 
 	// U-2
-	ultimates[0][0].anim.PushBack({ 369, 142, 14, 26}); // Back
-	ultimates[0][0].anim.PushBack({ 384, 142, 23, 23 });
-	ultimates[0][0].anim.PushBack({ 363, 171, 26, 14 });
-	ultimates[0][0].anim.PushBack({ 408, 142, 23, 23 });
+	ultimates[0][0].anim.PushBack({ 363, 141, 27, 27 }); // Back
+	ultimates[0][0].anim.PushBack({ 417, 141, 27, 27 });
+	ultimates[0][0].anim.PushBack({ 444, 141, 27, 27 });
+	ultimates[0][0].anim.PushBack({ 390, 141, 27, 27 });
 	ultimates[0][0].anim.loop = true;
 	ultimates[0][0].anim.speed = 1.0f;
 	ultimates[0][0].speed.x = -3; // |V| = 4
 	ultimates[0][0].speed.y = 0;
 	ultimates[0][0].life = 2500;
 
-	ultimates[0][1].anim.PushBack({ 369, 142, 14, 26 }); // Front, Down
-	ultimates[0][1].anim.PushBack({ 384, 142, 23, 23 });
-	ultimates[0][1].anim.PushBack({ 363, 171, 26, 14 });
-	ultimates[0][1].anim.PushBack({ 408, 142, 23, 23 });
+	ultimates[0][1].anim.PushBack({ 363, 141, 27, 27 }); // Front, Down
+	ultimates[0][1].anim.PushBack({ 417, 141, 27, 27 });
+	ultimates[0][1].anim.PushBack({ 444, 141, 27, 27 });
+	ultimates[0][1].anim.PushBack({ 390, 141, 27, 27 });
 	ultimates[0][1].anim.loop = true;
 	ultimates[0][1].anim.speed = 1.0f;
 	ultimates[0][1].speed.x = 5; // |V| = 4
 	ultimates[0][1].speed.y = 2;
 	ultimates[0][1].life = 2500;
 
-	ultimates[0][2].anim.PushBack({ 369, 142, 14, 26 }); // Front, Up
-	ultimates[0][2].anim.PushBack({ 384, 142, 23, 23 });
-	ultimates[0][2].anim.PushBack({ 363, 171, 26, 14 });
-	ultimates[0][2].anim.PushBack({ 408, 142, 23, 23 });
+	ultimates[0][2].anim.PushBack({ 363, 141, 27, 27 }); // Front, Up
+	ultimates[0][2].anim.PushBack({ 417, 141, 27, 27 });
+	ultimates[0][2].anim.PushBack({ 444, 141, 27, 27 });
+	ultimates[0][2].anim.PushBack({ 390, 141, 27, 27 });
 	ultimates[0][2].anim.loop = true;
 	ultimates[0][2].anim.speed = 1.0f;
 	ultimates[0][2].speed.x = 5; // |V| = 4
 	ultimates[0][2].speed.y = -2;
 	ultimates[0][2].life = 2500;
 
-	ultimates[0][0].anim.PushBack({ 369, 142, 14, 26 }); // Back, Down
-	ultimates[0][0].anim.PushBack({ 384, 142, 23, 23 });
-	ultimates[0][0].anim.PushBack({ 363, 171, 26, 14 });
-	ultimates[0][0].anim.PushBack({ 408, 142, 23, 23 });
+	ultimates[0][3].anim.PushBack({ 363, 141, 27, 27 }); // Back, Down
+	ultimates[0][3].anim.PushBack({ 417, 141, 27, 27 });
+	ultimates[0][3].anim.PushBack({ 444, 141, 27, 27 });
+	ultimates[0][3].anim.PushBack({ 390, 141, 27, 27 });
 	ultimates[0][3].anim.loop = true;
 	ultimates[0][3].anim.speed = 1.0f;
 	ultimates[0][3].speed.x = -3; // |V| = 4
 	ultimates[0][3].speed.y = 2;
 	ultimates[0][3].life = 2500;
 
-	ultimates[0][4].anim.PushBack({ 369, 142, 14, 26 }); // Back, Up
-	ultimates[0][4].anim.PushBack({ 384, 142, 23, 23 });
-	ultimates[0][4].anim.PushBack({ 363, 171, 26, 14 });
-	ultimates[0][4].anim.PushBack({ 408, 142, 23, 23 });
+	ultimates[0][4].anim.PushBack({ 363, 141, 27, 27 }); // Back, Up
+	ultimates[0][4].anim.PushBack({ 417, 141, 27, 27 });
+	ultimates[0][4].anim.PushBack({ 444, 141, 27, 27 });
+	ultimates[0][4].anim.PushBack({ 390, 141, 27, 27 });
 	ultimates[0][4].anim.loop = true;
 	ultimates[0][4].anim.speed = 1.0f;
 	ultimates[0][4].speed.x = -3; // |V| = 4
 	ultimates[0][4].speed.y = -2;
 	ultimates[0][4].life = 2500;
 
-	ultimates[0][5].anim.PushBack({ 369, 142, 14, 26 }); // Back, Downest
-	ultimates[0][5].anim.PushBack({ 384, 142, 23, 23 });
-	ultimates[0][5].anim.PushBack({ 363, 171, 26, 14 });
-	ultimates[0][5].anim.PushBack({ 408, 142, 23, 23 });
+	ultimates[0][5].anim.PushBack({ 363, 141, 27, 27 }); // Back, Downest
+	ultimates[0][5].anim.PushBack({ 417, 141, 27, 27 });
+	ultimates[0][5].anim.PushBack({ 444, 141, 27, 27 });
+	ultimates[0][5].anim.PushBack({ 390, 141, 27, 27 });
 	ultimates[0][5].anim.loop = true;
 	ultimates[0][5].anim.speed = 1.0f;
 	ultimates[0][5].speed.x = -3; // |V| = 4
 	ultimates[0][5].speed.y = 3;
 	ultimates[0][5].life = 2500;
 
-	ultimates[0][6].anim.PushBack({ 369, 142, 14, 26 }); // Back, Upest
-	ultimates[0][6].anim.PushBack({ 384, 142, 23, 23 });
-	ultimates[0][6].anim.PushBack({ 363, 171, 26, 14 });
-	ultimates[0][6].anim.PushBack({ 408, 142, 23, 23 });
+	ultimates[0][6].anim.PushBack({ 363, 141, 27, 27 }); // Back, Upest
+	ultimates[0][6].anim.PushBack({ 417, 141, 27, 27 });
+	ultimates[0][6].anim.PushBack({ 444, 141, 27, 27 });
+	ultimates[0][6].anim.PushBack({ 390, 141, 27, 27 });
 	ultimates[0][6].anim.loop = true;
 	ultimates[0][6].anim.speed = 1.0f;
 	ultimates[0][6].speed.x = -3; // |V| = 4

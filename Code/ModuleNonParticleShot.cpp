@@ -105,6 +105,18 @@ update_status ModuleShotGravity::Update()
 	return UPDATE_CONTINUE;
 }
 
+
+/*
+App->particles->AddParticle(App->particles->ultimates[0][0], position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
+App->particles->AddParticle(App->particles->ultimates[0][1], position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
+App->particles->AddParticle(App->particles->ultimates[0][2], position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
+App->particles->AddParticle(App->particles->ultimates[0][3], position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
+App->particles->AddParticle(App->particles->ultimates[0][4], position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
+App->particles->AddParticle(App->particles->ultimates[0][5], position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
+App->particles->AddParticle(App->particles->ultimates[0][6], position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
+*/
+
+
 void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, int up, int left, COLLIDER_TYPE collider_type, Uint32 delay)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
@@ -119,13 +131,41 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 			p->up = up;
 			p->left = left;
 			// (Module*)App->enemies
-			if (type == GRAVITY_SHOT || type == ULTIMATE)
+			if (type == GRAVITY_SHOT)
 			{
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			}
 			active[i] = p;
 			break;
 		}
+	}
+}
+
+void ModuleShotGravity::AddUltimate(int x, int y, Accel_Shot_Type type, COLLIDER_TYPE collider_type)
+{
+	switch (type)
+	{
+	case ULTIMATE_1:
+
+		break;
+
+	case ULTIMATE_2:
+		App->particles->AddParticle(App->particles->ultimates[0][0], x + 25, y + 15, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->ultimates[0][1], x + 25, y + 15, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->ultimates[0][2], x + 25, y + 15, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->ultimates[0][3], x + 25, y + 15, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->ultimates[0][4], x + 25, y + 15, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->ultimates[0][5], x + 25, y + 15, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->ultimates[0][6], x + 25, y + 15, COLLIDER_PLAYER_SHOT);
+		break;
+
+	case ULTIMATE_3:
+
+		break;
+
+	case ULTIMATE_4:
+
+		break;
 	}
 }
 
@@ -138,45 +178,42 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 	{
 		if (active[i] == nullptr)
 		{
-			Accel_Shot* p = new Accel_Shot(particle);
-			p->target_aquired = false;
-			p->born = SDL_GetTicks() + delay;
-			p->position.x = x;
-			p->position.y = y;
-			p->type = type;
+				Accel_Shot* p = new Accel_Shot(particle);
+				p->target_aquired = false;
+				p->born = SDL_GetTicks() + delay;
+				p->position.x = x;
+				p->position.y = y;
+				p->type = type;
 
 
-			for (int counter = 0; counter < MAX_ENEMIES && p->target_aquired == false; counter++)
-			{
-				if (App->enemies->enemies[counter] != nullptr && App->enemies->enemies[counter]->type != POWER_UP)
+				for (int counter = 0; counter < MAX_ENEMIES && p->target_aquired == false; counter++)
 				{
-					if ((App->enemies->enemies[counter]->position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE) + 40)) &&
-						(App->enemies->enemies[counter]->position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH)))
-
+					if (App->enemies->enemies[counter] != nullptr && App->enemies->enemies[counter]->type != POWER_UP)
 					{
-						p->enemy = App->enemies->enemies[counter];
-						check = true;
-						//p->target_aquired = true;
+						if ((App->enemies->enemies[counter]->position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE) + 40)) &&
+							(App->enemies->enemies[counter]->position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH)))
+
+						{
+							p->enemy = App->enemies->enemies[counter];
+							check = true;
+							//p->target_aquired = true;
+						}
 					}
 				}
-			}
 
-			if (check == false)
-			{
-				p->enemy = nullptr;
-			}
+				if (check == false)
+				{
+					p->enemy = nullptr;
+				}
 
-			// (Module*)App->enemies
-			if (type == HOMING_MISSILE)
-			{
+				// (Module*)App->enemies
+
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
-			}
-			active[i] = p;
-			break;
+
+				active[i] = p;
+				break;
+
 		}
-
-
-		
 	}
 }
 
