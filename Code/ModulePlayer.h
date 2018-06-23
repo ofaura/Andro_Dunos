@@ -30,7 +30,8 @@ public:
 public:
 
 	bool enable_ultimate;
-	int turn_ultimate[4], turn_ulti;
+	int turn_ultimate[4];
+	int turn_ulti;
 	int t_ultimate;
 
 	SDL_Texture* graphics = nullptr;

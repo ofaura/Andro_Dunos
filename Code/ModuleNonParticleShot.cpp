@@ -150,13 +150,13 @@ void ModuleShotGravity::AddUltimate(int x, int y, Accel_Shot_Type type, COLLIDER
 		break;
 
 	case ULTIMATE_2:
-		App->particles->AddParticle(App->particles->ultimates[0][0], x + 25, y + 15, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->ultimates[0][1], x + 25, y + 15, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->ultimates[0][2], x + 25, y + 15, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->ultimates[0][3], x + 25, y + 15, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->ultimates[0][4], x + 25, y + 15, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->ultimates[0][5], x + 25, y + 15, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->ultimates[0][6], x + 25, y + 15, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->ultimates[0][0], x + 10, y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->ultimates[0][1], x + 10, y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->ultimates[0][2], x + 10, y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->ultimates[0][3], x + 10, y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->ultimates[0][4], x + 10, y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->ultimates[0][5], x + 10, y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->ultimates[0][6], x + 10, y, COLLIDER_PLAYER_SHOT);
 		break;
 
 	case ULTIMATE_3:
