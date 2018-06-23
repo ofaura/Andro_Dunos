@@ -15,7 +15,6 @@ ModuleGameOver::ModuleGameOver()
 	_background.y = 90;
 	_background.w = SCREEN_WIDTH;
 	_background.h = SCREEN_HEIGHT;
-
 }
 
 ModuleGameOver::~ModuleGameOver()

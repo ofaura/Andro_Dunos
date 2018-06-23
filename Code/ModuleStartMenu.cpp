@@ -5,6 +5,7 @@
 #include "ModuleStartMenu.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleUserInterface.h"
 #include "ModuleSceneLevel5.h"
 #include "ModuleInput.h"
 #include "ModuleAudio.h"
@@ -12,7 +13,6 @@
 
 ModuleStartMenu::ModuleStartMenu()
 {
-
 	_background.x = 0;
 	_background.y = 0;
 	_background.w = 340;
@@ -32,7 +32,6 @@ ModuleStartMenu::ModuleStartMenu()
 	_visco.y = 116;
 	_visco.w = 167;
 	_visco.h = 15;
-
 }
 
 ModuleStartMenu::~ModuleStartMenu()
@@ -41,6 +40,9 @@ ModuleStartMenu::~ModuleStartMenu()
 // Load assets
 bool ModuleStartMenu::Start()
 {
+	App->user_interface->score1 = 0;
+	App->user_interface->score2 = 0;
+
 	LOG("Loading textures");
 	background = App->textures->Load("Assets/Sprites/StartMenu/background.png");
 	logo = App->textures->Load("Assets/Sprites/StartMenu/logo.png");
