@@ -121,7 +121,7 @@ bool ModulePlayer::Start()
 
 	missile[1] = &ani_miss_up;
 
-	ShootPowerUpLevel = 1; // Primary Weap
+	ShootPowerUpLevel = 6; // Primary Weap
 	ShootPowerUpLevel_2 = 0; // Secondary Weap
 	HomingMissile = 0; // Selfevident
 	Shield = 0; // Selfevident

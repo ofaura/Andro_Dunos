@@ -29,11 +29,6 @@ public:
 
 public:
 
-	bool enable_ultimate;
-	int turn_ultimate[4];
-	int turn_ulti;
-	int t_ultimate;
-
 	SDL_Texture* graphics = nullptr;
 	SDL_Texture* missile_graphics = nullptr;
 	SDL_Texture* backflame = nullptr;
@@ -71,7 +66,10 @@ public:
 	int t_missile;
 	int  ini_up_prime, ini_down_prime, t_ani_prime;
 	bool enable_missile1;
-
+	bool enable_ultimate;
+	int turn_ultimate[4];
+	int turn_ulti;
+	int t_ultimate;
 
 	uint player_death, type_change;
 	uint type = bullet_type::TYPE_1;
