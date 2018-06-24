@@ -1087,28 +1087,17 @@ update_status ModulePlayer::Update()
 
 				if (GodMode == true)
 				{
-					if (player->type != COLLIDER_NONE) {
-						player->to_delete = true;
-						
-						player = nullptr;
-					}
+					player->type = COLLIDER_NONE;
 				}
 				else if (GodMode == false)
 				{
-					GodMode = false;
-					player = App->collision->AddCollider({ position.x, position.y, 27, 17 }, COLLIDER_PLAYER, this);
+					//GodMode = false;
+					player->type = COLLIDER_PLAYER;
 				}
 		}
 
 	// Update collider position to player position
-	if (GodMode == false)
-		{
 			player->SetPos(position.x, position.y);
-		}
-	}
-	else
-	{
-		player->SetPos(position.x, position.y - 200);
 	}
 
 	// Draw everything --------------------------------------
