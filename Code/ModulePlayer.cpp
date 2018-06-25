@@ -583,7 +583,7 @@ update_status ModulePlayer::Update()
 				break;
 
 			case bullet_type::TYPE_2:
-				if (t_ultimate[0] >= 20)
+				if (t_ultimate[0] >= 9)
 				{
 					t_ultimate[0] = 0;
 					App->accel_shot->AddUltimate(position.x, position.y, ULTIMATE_2, COLLIDER_ULTIMATES);
