@@ -67,9 +67,10 @@ public:
 	int  ini_up_prime, ini_down_prime, t_ani_prime;
 	bool enable_missile1;
 	bool enable_ultimate;
-	int turn_ultimate[4];
+	int turn_ultimate[4][2];
 	int turn_ulti;
-	int t_ultimate;
+	int t_ultimate[2];
+	int ulti_x, ulti_y;
 
 	uint player_death, type_change;
 	uint type = bullet_type::TYPE_1;

@@ -143,6 +143,7 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 
 void ModuleShotGravity::AddUltimate(int x, int y, Accel_Shot_Type type, COLLIDER_TYPE collider_type)
 {
+
 	switch (type)
 	{
 	case ULTIMATE_1:
@@ -150,13 +151,13 @@ void ModuleShotGravity::AddUltimate(int x, int y, Accel_Shot_Type type, COLLIDER
 		break;
 
 	case ULTIMATE_2:
-		App->particles->AddParticle(App->particles->ultimates[0][0], x + 10, y, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->ultimates[0][1], x + 10, y, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->ultimates[0][2], x + 10, y, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->ultimates[0][3], x + 10, y, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->ultimates[0][4], x + 10, y, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->ultimates[0][5], x + 10, y, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->ultimates[0][6], x + 10, y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->ultimates[0][0], x + 10, y, collider_type);
+		App->particles->AddParticle(App->particles->ultimates[0][1], x + 10, y, collider_type);
+		App->particles->AddParticle(App->particles->ultimates[0][2], x + 10, y, collider_type);
+		App->particles->AddParticle(App->particles->ultimates[0][3], x + 10, y, collider_type);
+		App->particles->AddParticle(App->particles->ultimates[0][4], x + 10, y, collider_type);
+		App->particles->AddParticle(App->particles->ultimates[0][5], x + 10, y, collider_type);
+		App->particles->AddParticle(App->particles->ultimates[0][6], x + 10, y, collider_type);
 		break;
 
 	case ULTIMATE_3:
@@ -165,8 +166,76 @@ void ModuleShotGravity::AddUltimate(int x, int y, Accel_Shot_Type type, COLLIDER
 
 	case ULTIMATE_4:
 
+		if (stage == 10)
+		{ 
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 25, y, collider_type);
+		}
+		
+		else if (stage == 9)
+		{
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 60, y - 15, collider_type); // x = x_prev + 35, y = y_prev + 15;
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 60, y + 15, collider_type);
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 60, y, collider_type);
+		}
+
+		else if (stage == 8)
+		{
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 95, y - 30, collider_type); // x = x_prev + 35; // x = x_prev + 35, y = y_prev + 15;
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 95, y + 30, collider_type);
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 95, y, collider_type);
+		}
+
+		else if (stage == 7)
+		{
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 130, y - 40, collider_type); // x = x_prev + 35; // x = x_prev + 35, y = y_prev + 15;
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 130, y + 40, collider_type);
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 130, y, collider_type);
+		}
+
+		else if (stage == 6)
+		{
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 165, y - 50, collider_type); // x = x_prev + 35; // x = x_prev + 35, y = y_prev + 15;
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 165, y + 50, collider_type);
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 165, y, collider_type);
+		}
+
+		else if (stage == 5)
+		{
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 200, y - 60, collider_type); // x = x_prev + 35; // x = x_prev + 35, y = y_prev + 15;
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 200, y + 60, collider_type);
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 200, y, collider_type);
+		}
+
+		else if (stage == 4)
+		{
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 235, y - 70, collider_type); // x = x_prev + 35; // x = x_prev + 35, y = y_prev + 15;
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 235, y + 70, collider_type);
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 235, y, collider_type);
+		}
+
+		else if (stage == 3)
+		{
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 270, y - 80, collider_type); // x = x_prev + 35; // x = x_prev + 35, y = y_prev + 15;
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 270, y + 80, collider_type);
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 270, y, collider_type);
+		}
+
+		else if (stage == 2)
+		{
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 305, y - 90, collider_type); // x = x_prev + 35; // x = x_prev + 35, y = y_prev + 15;
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 305, y + 90, collider_type);
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 305, y, collider_type);
+		}
+
+		else if (stage == 1)
+		{
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 340, y - 100, collider_type); // x = x_prev + 35; // x = x_prev + 35, y = y_prev + 15;
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 340, y + 100, collider_type);
+			App->particles->AddParticle(App->particles->ultimates[1][0], x + 340, y, collider_type);
+		}
 		break;
 	}
+
 }
 
 void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, COLLIDER_TYPE collider_type, Uint32 delay)

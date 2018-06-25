@@ -99,6 +99,25 @@ bool ModuleParticles::Start()
 	ultimates[0][6].speed.y = -3;
 	ultimates[0][6].life = 2500;
 
+	//
+
+	ultimates[1][0].anim.PushBack({ 5, 630, 30, 30 }); // Front
+	ultimates[1][0].anim.PushBack({ 5, 630, 30, 30 });
+	ultimates[1][0].anim.PushBack({ 35, 630, 30, 30 });
+	ultimates[1][0].anim.PushBack({ 35, 630, 30, 30 });
+	ultimates[1][0].anim.PushBack({ 65, 630, 30, 30 });
+	ultimates[1][0].anim.PushBack({ 65, 630, 30, 30 });
+	ultimates[1][0].anim.PushBack({ 95, 630, 30, 30 });
+	ultimates[1][0].anim.PushBack({ 95, 630, 30, 30 });
+	ultimates[1][0].anim.PushBack({ 125, 630, 30, 30 });
+	ultimates[1][0].anim.PushBack({ 155, 630, 30, 30 });
+	ultimates[1][0].anim.PushBack({ 185, 630, 30, 30 });
+	ultimates[1][0].anim.loop = false;
+	ultimates[1][0].anim.speed = 0.75f;
+	ultimates[1][0].speed.x = 1; // |V| = 4
+	ultimates[1][0].speed.y = 0;
+	ultimates[1][0].life = 250;
+
 	//Boss shots
 
 	torpede.anim.PushBack({ 14, 402, 32, 15 });

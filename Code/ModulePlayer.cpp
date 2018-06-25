@@ -104,8 +104,11 @@ bool ModulePlayer::Start()
 	t_missile = 0;
 	enable_missile1 = false;
 	enable_ultimate = false;
-	turn_ultimate[2] = 3;
-	t_ultimate = -1;
+	turn_ultimate[1][0] = 3;
+	turn_ultimate[2][0] = 10;
+	turn_ultimate[2][1] = 2;
+	t_ultimate[0] = -1;
+	t_ultimate[1] = -1;
 
 	ani_miss_down.PushBack({ 296, 61, 12, 8 });
 	ani_miss_down.PushBack({ 297, 105, 12, 9 });
@@ -121,7 +124,7 @@ bool ModulePlayer::Start()
 
 	missile[1] = &ani_miss_up;
 
-	ShootPowerUpLevel = 6; // Primary Weap
+	ShootPowerUpLevel = 1; // Primary Weap
 	ShootPowerUpLevel_2 = 0; // Secondary Weap
 	HomingMissile = 0; // Selfevident
 	Shield = 0; // Selfevident
@@ -564,7 +567,10 @@ update_status ModulePlayer::Update()
 			enable_ultimate = true;
 			ShootPowerUpLevel--;
 			type_ulti = type;
-			t_ultimate++;
+			ulti_x = position.x;
+			ulti_y = position.y;
+			//t_ultimate[0]++;
+			//t_ultimate[1]++;
 		}
 
 		if (enable_ultimate == true)
@@ -577,22 +583,20 @@ update_status ModulePlayer::Update()
 				break;
 
 			case bullet_type::TYPE_2:
-				if (t_ultimate >= 20)
+				if (t_ultimate[0] >= 20)
 				{
-					t_ultimate = 0;
+					t_ultimate[0] = 0;
 					App->accel_shot->AddUltimate(position.x, position.y, ULTIMATE_2, COLLIDER_ULTIMATES);
-					turn_ultimate[2]--;
+					turn_ultimate[1][0]--;
 				}
 
-				t_ultimate++;
+				t_ultimate[0]++;
 
-				if (turn_ultimate[2] <= 0)
+				if (turn_ultimate[1][0] <= 0)
 				{
 					enable_ultimate = false;
-					t_ultimate = -1;
-					turn_ultimate[2] = 3;
-
-
+					t_ultimate[0] = -1;
+					turn_ultimate[1][0] = 3;
 				}
 
 				break;
@@ -603,10 +607,98 @@ update_status ModulePlayer::Update()
 
 			case bullet_type::TYPE_4:
 
+				if (t_ultimate[0] >= 2)
+				{
+					t_ultimate[0] = 0;
+
+					switch (turn_ultimate[2][0])
+					{
+					case 1:
+						App->accel_shot->stage = 1;
+						App->accel_shot->AddUltimate(ulti_x, ulti_y, ULTIMATE_4, COLLIDER_ULTIMATES);
+						break;
+
+					case 2:
+						App->accel_shot->stage = 2;
+						App->accel_shot->AddUltimate(ulti_x, ulti_y, ULTIMATE_4, COLLIDER_ULTIMATES);
+						break;
+					
+					case 3:
+						App->accel_shot->stage = 3;
+						App->accel_shot->AddUltimate(ulti_x, ulti_y, ULTIMATE_4, COLLIDER_ULTIMATES);
+						break;
+
+					case 4:
+						App->accel_shot->stage = 4;
+						App->accel_shot->AddUltimate(ulti_x, ulti_y, ULTIMATE_4, COLLIDER_ULTIMATES);
+						break;
+
+					case 5:
+						App->accel_shot->stage = 5;
+						App->accel_shot->AddUltimate(ulti_x, ulti_y, ULTIMATE_4, COLLIDER_ULTIMATES);
+						break;
+
+					case 6:
+						App->accel_shot->stage = 6;
+						App->accel_shot->AddUltimate(ulti_x, ulti_y, ULTIMATE_4, COLLIDER_ULTIMATES);
+						break;
+
+					case 7:
+						App->accel_shot->stage = 7;
+						App->accel_shot->AddUltimate(ulti_x, ulti_y, ULTIMATE_4, COLLIDER_ULTIMATES);
+						break;
+
+					case 8:
+						App->accel_shot->stage = 8;
+						App->accel_shot->AddUltimate(ulti_x, ulti_y, ULTIMATE_4, COLLIDER_ULTIMATES);
+						break;
+
+					case 9:
+						App->accel_shot->stage = 9;
+						App->accel_shot->AddUltimate(ulti_x, ulti_y, ULTIMATE_4, COLLIDER_ULTIMATES);
+						break;
+
+					case 10:
+						App->accel_shot->stage = 10;
+						App->accel_shot->AddUltimate(ulti_x, ulti_y, ULTIMATE_4, COLLIDER_ULTIMATES);
+						break;
+					}
+					
+					turn_ultimate[2][0]--;
+				}
+
+				t_ultimate[0]++;
+
+				if (turn_ultimate[2][0] <= 0)
+				{
+					t_ultimate[0] = -1;
+					t_ultimate[1]++;
+
+					if (t_ultimate[1] >= 10)
+					{
+						ulti_x = position.x;
+						ulti_y = position.y;
+						turn_ultimate[2][0] = 10;
+						turn_ultimate[2][1]--;
+						t_ultimate[1] = -1;
+					}
+				}
+
+				if (turn_ultimate[2][1] <= 0)
+				{
+					enable_ultimate = false;
+					t_ultimate[0] = -1;
+					t_ultimate[0] = -1;
+					turn_ultimate[2][1] = 2;
+					turn_ultimate[2][0] = 10;
+				}
 				break;
 
 			}
 		}
+
+		// player->type = COLLIDER_NONE; ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+		//ShootPowerUpLevel = 6;
 
 		// Homing Missile
 		if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN //|| (SDL_GameControllerGetButton(App->input->controller, SDL_CONTROLLER_BUTTON_A)) == 1

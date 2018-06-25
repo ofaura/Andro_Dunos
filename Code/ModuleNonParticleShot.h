@@ -66,7 +66,7 @@ public:
 	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, int up , int left, COLLIDER_TYPE collider_type, Uint32 delay = 0);
 	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, COLLIDER_TYPE collider_type, Uint32 delay = 0);
 
-
+	int stage;
 	Animation g_shot;
 	Accel_Shot gravity_shot, gravity_shot_2;
 	Accel_Shot homing_missile;
