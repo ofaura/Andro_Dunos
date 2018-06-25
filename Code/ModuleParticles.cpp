@@ -28,14 +28,14 @@ bool ModuleParticles::Start()
 
 	// Ultimate attack
 
-	// U-2
+	// Ulti 2
 	ultimates[0][0].anim.PushBack({ 501, 115, 28, 28 }); // Back
 	ultimates[0][0].anim.PushBack({ 529, 115, 28, 28 });
 	ultimates[0][0].anim.PushBack({ 557, 115, 28, 28 });
 	ultimates[0][0].anim.PushBack({ 585, 115, 28, 28 });
 	ultimates[0][0].anim.loop = true;
 	ultimates[0][0].anim.speed = 1.0f;
-	ultimates[0][0].speed.x = -5; // |V| = 4
+	ultimates[0][0].speed.x = -5;
 	ultimates[0][0].speed.y = 0;
 	ultimates[0][0].life = 2500;
 
@@ -45,7 +45,7 @@ bool ModuleParticles::Start()
 	ultimates[0][1].anim.PushBack({ 585, 115, 28, 28 });
 	ultimates[0][1].anim.loop = true;
 	ultimates[0][1].anim.speed = 1.0f;
-	ultimates[0][1].speed.x = 7; // |V| = 4
+	ultimates[0][1].speed.x = 7;
 	ultimates[0][1].speed.y = 3;
 	ultimates[0][1].life = 2500;
 
@@ -55,7 +55,7 @@ bool ModuleParticles::Start()
 	ultimates[0][2].anim.PushBack({ 585, 115, 28, 28 });
 	ultimates[0][2].anim.loop = true;
 	ultimates[0][2].anim.speed = 1.0f;
-	ultimates[0][2].speed.x = 7; // |V| = 4
+	ultimates[0][2].speed.x = 7;
 	ultimates[0][2].speed.y = -3;
 	ultimates[0][2].life = 2500;
 
@@ -65,7 +65,7 @@ bool ModuleParticles::Start()
 	ultimates[0][3].anim.PushBack({ 585, 115, 28, 28 });
 	ultimates[0][3].anim.loop = true;
 	ultimates[0][3].anim.speed = 1.0f;
-	ultimates[0][3].speed.x = -5; // |V| = 4
+	ultimates[0][3].speed.x = -5;
 	ultimates[0][3].speed.y = 3;
 	ultimates[0][3].life = 2500;
 
@@ -75,7 +75,7 @@ bool ModuleParticles::Start()
 	ultimates[0][4].anim.PushBack({ 585, 115, 28, 28 });
 	ultimates[0][4].anim.loop = true;
 	ultimates[0][4].anim.speed = 1.0f;
-	ultimates[0][4].speed.x = -5; // |V| = 4
+	ultimates[0][4].speed.x = -5;
 	ultimates[0][4].speed.y = -3;
 	ultimates[0][4].life = 2500;
 
@@ -85,7 +85,7 @@ bool ModuleParticles::Start()
 	ultimates[0][5].anim.PushBack({ 585, 115, 28, 28 });
 	ultimates[0][5].anim.loop = true;
 	ultimates[0][5].anim.speed = 1.0f;
-	ultimates[0][5].speed.x = -5; // |V| = 4
+	ultimates[0][5].speed.x = -5;
 	ultimates[0][5].speed.y = 4;
 	ultimates[0][5].life = 2500;
 
@@ -95,11 +95,11 @@ bool ModuleParticles::Start()
 	ultimates[0][6].anim.PushBack({ 585, 115, 28, 28 });
 	ultimates[0][6].anim.loop = true;
 	ultimates[0][6].anim.speed = 1.0f;
-	ultimates[0][6].speed.x = -5; // |V| = 4
+	ultimates[0][6].speed.x = -5;
 	ultimates[0][6].speed.y = -4;
 	ultimates[0][6].life = 2500;
 
-	//
+	// Ulti 4
 
 	ultimates[1][0].anim.PushBack({ 5, 630, 30, 30 }); // Front
 	ultimates[1][0].anim.PushBack({ 5, 630, 30, 30 });
@@ -114,9 +114,31 @@ bool ModuleParticles::Start()
 	ultimates[1][0].anim.PushBack({ 185, 630, 30, 30 });
 	ultimates[1][0].anim.loop = false;
 	ultimates[1][0].anim.speed = 0.75f;
-	ultimates[1][0].speed.x = 1; // |V| = 4
+	ultimates[1][0].speed.x = 1;
 	ultimates[1][0].speed.y = 0;
 	ultimates[1][0].life = 250;
+
+	// Ulti 1
+
+	ultimates[2][0].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
+	ultimates[2][0].anim.loop = false;
+	ultimates[2][0].speed.x = 1;
+	ultimates[2][0].speed.y = 2;
+	ultimates[2][0].life = 250;
+
+	ultimates[2][1].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
+	ultimates[2][1].anim.loop = false;
+	ultimates[2][1].speed.x = 1;
+	ultimates[2][1].speed.y = -2;
+	ultimates[2][1].life = 250;
+
+	ultimates[2][2].anim.PushBack({ 514, 25, 63, 18 }); // Shot
+	ultimates[2][2].anim.PushBack({ 577, 25, 63, 18 });
+	ultimates[2][2].anim.loop = true;
+	ultimates[2][2].anim.speed = 1.25f;
+	ultimates[2][2].speed.x = 5;
+	ultimates[2][2].speed.y = 0;
+	ultimates[2][2].life = 250;
 
 	//Boss shots
 
