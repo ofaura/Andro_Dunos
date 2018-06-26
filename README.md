@@ -1,11 +1,19 @@
 ﻿### The Team (From Left to Right)
-* Art/Design: [Jacobo Galofre](https://github.com/sherzock)
-* Programmer: [Gerard Albarran](https://github.com/GAPIntoTheGame)
-* Programmer: [Sam Davidson](https://github.com/samuelkurtdavidson)
-* Management: [Òscar Faura](https://github.com/ofaura)
-* QA: [Dani Lorenzo](https://github.com/DLorenzoLaguno17)
+* [Jacobo Galofre](https://github.com/sherzock)
+* [Gerard Albarran](https://github.com/GAPIntoTheGame)
+* [Sam Davidson](https://github.com/samuelkurtdavidson)
+* [Òscar Faura](https://github.com/ofaura)
+* [Dani Lorenzo](https://github.com/DLorenzoLaguno17)
+
 
 ![Team photo https://github.com/ofaura/Andro_Dunos/blob/master/images/team.jpg?raw=true](https://github.com/ofaura/Andro_Dunos/blob/master/images/team.jpg?raw=true)
+
+
+### Friendly Neighborhood Notice
+
+This game is a one level recreation of the original Andro Dunos. It has been developed by 5 first year students at the UPC as a project,
+it is not and never will be intended for commertial use (Being a recreation and all). The game uses existing assets: In other words, we only worried about coding and QA.
+Since it has been coded by first year students, criticism is welcomed and even encouraged! Provided it is constructive criticism.
 
 ### The Game
 
@@ -16,12 +24,38 @@ of these weapons and of enemy ship dropped power-ups, must shoot their way throu
 to advance through levels and defeat the alien invaders of the Earth.
 
 ***
-### Gameplay
+
+### Game Rules:
+
+	1. Both players have three lives.
+	2. You win if you manage to survive the whole level without dying.
+	3. If one of the two players die, the game is over.
+
+Press ESC or click on the red cross to close the application.
+
+### Gameplay Video
 
 <!-- blank line -->
 <iframe width="560" height="315" src="https://www.youtube.com/embed/nvxHr527PE0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 <!-- blank line -->
 
+
 ### Download the Game
 
 [Download the latest version here!](https://github.com/ofaura/Andro_Dunos/releases/tag/v.1.0)
+Andro Dunos v0.7.5
+
+---------------------------------------------
+CHANGELIST:
+
+v0.1 - Added a moving screen with music. No ship.
+
+v0.2 - Implemented FadeToBlack along with user controls and parallax movement in map, loads 4 different screens
+
+v0.3 - Implemented animations and player 2 with animations as well as bullet particles for all 4 bullet types, improvements to parallax
+
+v0.4 - Implemented collisions to players 1 and 2 as well as the floor
+
+v0.4.5 - Implemented enemies with simple movements. Added colliders to bullets and enemies as well as death screen instead of restarting game directly
+
+v0.5 - Enlarged screen. Added more enemies. Added lives to ships and explosion particles for death.
