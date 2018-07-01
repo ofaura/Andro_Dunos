@@ -201,7 +201,7 @@ update_status ModuleEnemyBoss::Update()
 			}
 		}
 		//Closing
-		else if (currentTime > lastTime + 15000 && opened == true) {
+		else if (currentTime > lastTime + 17000 && opened == true) {
 			closing = true;
 
 			if (positionY_uh < 20)
@@ -230,6 +230,7 @@ update_status ModuleEnemyBoss::Update()
 				if (positionY_uh > -60) {
 					positionY_uh--;
 					positionY_dh--;
+					positionCoreY--;
 				}
 				else
 					going_up = false;
@@ -239,6 +240,7 @@ update_status ModuleEnemyBoss::Update()
 				if (positionY_uh < 40) {
 					positionY_uh++;
 					positionY_dh++;
+					positionCoreY++;
 				}
 				else
 					going_up = true;
@@ -267,14 +269,14 @@ update_status ModuleEnemyBoss::Update()
 		}
 
 		//Cannons shooting
-		if (currentTimeShot > lastTimeShot + 4300 && opened == true && closing == false) {
+		if (currentTimeShot > lastTimeShot + 1700 && opened == true && closing == false) {
 			animationCannonDown = &shootDown;
 			App->particles->AddParticle(App->particles->torpede, positionX_uh + 60, positionCoreY + 83, COLLIDER_ENEMY_SHOT);
 			App->particles->AddParticle(App->particles->torpedeFire, positionX_uh + 100, positionCoreY + 83, COLLIDER_NONE);
 			lastTimeShot = currentTimeShot;
 			cannonShot = false;
 		}
-		else if (currentTimeShot > lastTimeShot + 4000 && opened == true && closing == false) {
+		else if (currentTimeShot > lastTimeShot + 1400 && opened == true && closing == false) {
 			animationCannonUp = &shootUp;
 			if (cannonShot == false) {
 				App->particles->AddParticle(App->particles->torpede, positionX_uh + 60, positionCoreY + 29, COLLIDER_ENEMY_SHOT);
@@ -298,7 +300,7 @@ update_status ModuleEnemyBoss::Update()
 		underHalf->SetPos(positionX_uh - 2, positionY_dh + 15);
 
 		//Ring shooting
-		if (currentTimeRing > lastTimeRing + 3000 && opened == true && closing == false) {
+		if (currentTimeRing > lastTimeRing + 2500 && movementEnabled == true && closing == false) {
 			App->particles->AddParticle(App->particles->ring1, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
 			App->particles->AddParticle(App->particles->ring2, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
 			App->particles->AddParticle(App->particles->ring3, positionLightX - 10, positionCoreY + 55, COLLIDER_ENEMY_SHOT);
@@ -316,7 +318,6 @@ update_status ModuleEnemyBoss::Update()
 		SDL_Rect tube = animationLightTube->GetCurrentFrame();
 
 		// Draw everything --------------------------------------
-
 		App->render->Blit(graphics, positionX_uh + 25, positionY_uh + 20, &hatch1, 1.0f, true);
 		App->render->Blit(graphics, positionX_uh + 25, positionY_dh + 71, &hatch2, 1.0f, true);
 		App->render->Blit(graphics, positionLightX, positionCoreY + 51, &tube, 1.0f, true);
