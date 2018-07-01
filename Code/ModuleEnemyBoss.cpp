@@ -189,15 +189,15 @@ update_status ModuleEnemyBoss::Update()
 		}
 
 		//Opening
-		if (currentTime > lastTime + 4000 && opened == false) {
+		if (currentTime > lastTime + 4000 && opened == false && movementEnabled == false) {
 			if (positionY_uh > -25)
 				positionY_uh--;
 
 			if (positionY_dh < 145)
 				positionY_dh++;
 			else {
-				opened = true;
 				closing = false;
+				movementEnabled = true;
 			}
 		}
 		//Closing
@@ -209,7 +209,9 @@ update_status ModuleEnemyBoss::Update()
 
 			if (positionY_dh > 100)
 				positionY_dh--;
+
 			else {
+				going_up = true;
 				opened = false;
 				enemiesAdded = false;
 				animationHatch1 = &openingHatch1;
@@ -219,6 +221,34 @@ update_status ModuleEnemyBoss::Update()
 				lastTime = currentTime;
 			}
 		}		
+
+		//Up and down movement
+		if (currentTime > lastTime + 5000 && movementEnabled == true) {
+
+			if (going_up)
+			{
+				if (positionY_uh > -60) {
+					positionY_uh--;
+					positionY_dh--;
+				}
+				else
+					going_up = false;
+			}
+			else
+			{
+				if (positionY_uh < 40) {
+					positionY_uh++;
+					positionY_dh++;
+				}
+				else
+					going_up = true;
+			}
+		}
+
+		if (currentTime > lastTime + 12900 && opened == false) {
+			opened = true;
+			movementEnabled = false;
+		}
 
 		//Light tube movement
 		if (going_back)

@@ -56,6 +56,8 @@ public:
 	bool dead = false;
 	bool opened = false;
 	bool closing = false;
+	bool going_up = true;
+	bool movementEnabled = false;
 
 	// Position of the upper half
 	int positionX_uh;
