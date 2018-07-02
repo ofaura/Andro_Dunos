@@ -54,6 +54,77 @@ bool ModuleShotGravity::Start()
 	homing_missile.anim.speed = 1.0f;
 	homing_missile.life = 2500;
 
+
+	ultimates[0][0].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Down
+	ultimates[0][0].anim.loop = false;
+	ultimates[0][0].speed.x = 1;
+	ultimates[0][0].speed.y = 2;
+	ultimates[0][0].life = 250;
+	ultimates[0][0].stage = 1;
+
+	ultimates[0][1].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
+	ultimates[0][1].anim.loop = false;
+	ultimates[0][1].speed.x = 1;
+	ultimates[0][1].speed.y = -2;
+	ultimates[0][1].life = 250;
+	ultimates[0][1].stage = 1;
+
+	ultimates[1][0].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Down
+	ultimates[1][0].anim.loop = false;
+	ultimates[1][0].speed.x = 1;
+	ultimates[1][0].speed.y = 2;
+	ultimates[1][0].life = 250;
+	ultimates[1][0].stage = 2;
+
+	ultimates[1][1].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
+	ultimates[1][1].anim.loop = false;
+	ultimates[1][1].speed.x = 1;
+	ultimates[1][1].speed.y = -2;
+	ultimates[1][1].life = 250;
+	ultimates[1][1].stage = 2;
+
+	ultimates[0][0].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Down
+	ultimates[0][0].anim.loop = false;
+	ultimates[0][0].speed.x = 1;
+	ultimates[0][0].speed.y = 2;
+	ultimates[0][0].life = 250;
+	ultimates[0][0].stage = 3;
+
+	ultimates[0][1].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
+	ultimates[0][1].anim.loop = false;
+	ultimates[0][1].speed.x = 1;
+	ultimates[0][1].speed.y = -2;
+	ultimates[0][1].life = 250;
+	ultimates[0][1].stage = 3;
+
+	ultimates[0][0].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Down
+	ultimates[0][0].anim.loop = false;
+	ultimates[0][0].speed.x = 1;
+	ultimates[0][0].speed.y = 2;
+	ultimates[0][0].life = 250;
+	ultimates[0][0].stage = 4;
+
+	ultimates[0][1].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
+	ultimates[0][1].anim.loop = false;
+	ultimates[0][1].speed.x = 1;
+	ultimates[0][1].speed.y = -2;
+	ultimates[0][1].life = 250;
+	ultimates[0][1].stage = 4;
+
+	ultimates[0][0].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Down
+	ultimates[0][0].anim.loop = false;
+	ultimates[0][0].speed.x = 1;
+	ultimates[0][0].speed.y = 2;
+	ultimates[0][0].life = 250;
+	ultimates[0][0].stage = 5;
+
+	ultimates[0][1].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
+	ultimates[0][1].anim.loop = false;
+	ultimates[0][1].speed.x = 1;
+	ultimates[0][1].speed.y = -2;
+	ultimates[0][1].life = 250;
+	ultimates[0][1].stage = 5;
+
 	return true;
 }
 
@@ -116,7 +187,6 @@ App->particles->AddParticle(App->particles->ultimates[0][5], position.x + 25, po
 App->particles->AddParticle(App->particles->ultimates[0][6], position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
 */
 
-
 void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, int up, int left, COLLIDER_TYPE collider_type, Uint32 delay)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
@@ -130,11 +200,9 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 			p->type = type;
 			p->up = up;
 			p->left = left;
+			p->collider_type = collider_type;
 			// (Module*)App->enemies
-			if (type == GRAVITY_SHOT)
-			{
-				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
-			}
+			p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			active[i] = p;
 			break;
 		}
@@ -374,10 +442,10 @@ bool Accel_Shot::Update()
 
 
 				if (enemy->position.x >= position.x) { left_ = 1; }
-				else { left_ = -1; }
+				else if (enemy->position.x <= position.x) { left_ = -1; }
 
 				if (enemy->position.y >= position.y) { down_ = 1; }
-				else { down_ = -1; }
+				else if (enemy->position.y <= position.y) { down_ = -1; }
 
 
 				dif_pos[x] = enemy->position.x - position.x;
@@ -385,17 +453,18 @@ bool Accel_Shot::Update()
 
 				if (dif_pos[y] == 0)
 				{
-					div = 0;
 					vel[y] = 0;
+					vel[x] = 5 + 1;
 				}
 
 				else
 				{
 					div = abs(dif_pos[x] / dif_pos[y]);
 					vel[y] = down_ * sqrt(pow(5, 2) / (1 + pow(div, 2)));
+					vel[x] = (left_ * (div)*vel[y]) + 1;
 				}
 
-				vel[x] = (left_ * (div)*vel[y]) + 1;
+				
 
 				if (vel[x] == 1 && vel[y] == 0)
 				{
@@ -411,13 +480,71 @@ bool Accel_Shot::Update()
 
 			}
 
+			time_1++;
+
+			if (time_1 >= 5)
+			{
+				time_2++;
+			}
 	}
 
-	time_1++;
-
-	if (time_1 >= 5)
+	else if (type == ULTIMATE_1)
 	{
-		time_2++;
+		switch (stage)
+		{
+		case 1:
+			if (time_1 == 5)
+			{
+				App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+				ret = false;
+			}
+
+			break;
+
+		case 2:
+
+			if (time_1 == 20)
+			{
+				App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+				ret = false;
+			}
+
+			break;
+
+		case 3:
+
+			if (time_1 == 40)
+			{
+				App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+				ret = false;
+			}
+
+			break;
+
+		case 4:
+
+			if (time_1 == 25)
+			{
+				App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+				ret = false;
+			}
+
+			break;
+
+		case 5:
+
+			if (time_1 == 45)
+			{
+				App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+				ret = false;
+			}
+
+			break;
+		}
+		
+		time_1++;
+		position.x += speed.x;
+		position.y += speed.y;
 	}
 	//
 

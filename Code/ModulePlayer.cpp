@@ -107,6 +107,7 @@ bool ModulePlayer::Start()
 	turn_ultimate[1][0] = 3;
 	turn_ultimate[2][0] = 10;
 	turn_ultimate[2][1] = 2;
+	turn_ultimate[0][0] = 1;
 	t_ultimate[0] = -1;
 	t_ultimate[1] = -1;
 
@@ -124,7 +125,7 @@ bool ModulePlayer::Start()
 
 	missile[1] = &ani_miss_up;
 
-	ShootPowerUpLevel = 1; // Primary Weap
+	ShootPowerUpLevel = 2; // Primary Weap
 	ShootPowerUpLevel_2 = 0; // Secondary Weap
 	HomingMissile = 0; // Selfevident
 	Shield = 0; // Selfevident
@@ -560,7 +561,7 @@ update_status ModulePlayer::Update()
 		t++;
 		t_missile++;
 
-
+		//ShootPowerUpLevel = 3;
 		//Ultimate
 		if (ShootPowerUpLevel >= 2 && App->user_interface->beamCharger.Finished() == true)
 		{
@@ -579,7 +580,47 @@ update_status ModulePlayer::Update()
 			switch (type_ulti)
 			{
 			case bullet_type::TYPE_1:
+				
+				if (turn_ultimate[0][0] == 1 || turn_ultimate[0][0] == 3 || turn_ultimate[0][0] == 6)
+				{
 
+					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x + 30, position.y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x + 30, position.y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+
+					App->accel_shot->AddUltimate(position.x, position.y, ULTIMATE_1, COLLIDER_ULTIMATES);
+
+				}
+				else if (turn_ultimate[0][0] == 2)
+				{
+
+					App->accel_shot->AddShot(App->accel_shot->ultimates[1][0], position.x, position.y, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					App->accel_shot->AddShot(App->accel_shot->ultimates[1][1], position.x, position.y, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+
+				}
+				else if (turn_ultimate[0][0] == 4 || turn_ultimate[0][0] == 7)
+				{
+
+					App->accel_shot->AddShot(App->accel_shot->ultimates[2][0], position.x, position.y, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					App->accel_shot->AddShot(App->accel_shot->ultimates[2][1], position.x, position.y, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+
+				}
+				else if (turn_ultimate[0][0] == 5 || turn_ultimate[0][0] == 8)
+				{
+
+					App->accel_shot->AddShot(App->accel_shot->ultimates[3][0], position.x, position.y, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					App->accel_shot->AddShot(App->accel_shot->ultimates[3][1], position.x, position.y, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+
+				}
+
+				turn_ultimate[0][0]++;
+
+				if (turn_ultimate[0][0] >= 9)
+				{
+					App->accel_shot->AddShot(App->accel_shot->ultimates[1][0], position.x, position.y, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					App->accel_shot->AddShot(App->accel_shot->ultimates[1][1], position.x, position.y, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					
+					turn_ultimate[0][0] == 1;
+				}
 				break;
 
 			case bullet_type::TYPE_2:
@@ -665,6 +706,7 @@ update_status ModulePlayer::Update()
 					}
 					
 					turn_ultimate[2][0]--;
+
 				}
 
 				t_ultimate[0]++;
@@ -707,8 +749,7 @@ update_status ModulePlayer::Update()
 			if (HomingMissile >= 1 && t_missile >= 100)
 			{
 				App->accel_shot->AddShot(App->accel_shot->homing_missile, position.x + 5, position.y + 5, HOMING_MISSILE, COLLIDER_PLAYER_SHOT_ALT);
-				App->accel_shot->AddUltimate(position.x, position.y, ULTIMATE_2, COLLIDER_PLAYER_SHOT_ALT); // ultimate damge pending, colliders need a lot of polishing for damage output & health
-
+				
 				t_missile = 0;
 			}
 		}

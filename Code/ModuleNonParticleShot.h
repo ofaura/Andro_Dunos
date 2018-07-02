@@ -33,6 +33,7 @@ struct Accel_Shot
 	Animation anim;
 	uint fx = 0;
 	iPoint position;
+	iPoint speed;
 	int damage;
 	int time_1, time_2;
 	int up = 1;
@@ -40,7 +41,9 @@ struct Accel_Shot
 	Uint32 born = 0;
 	Uint32 life = 0;
 	bool fx_played = false;
+	int stage;
 	Accel_Shot_Type type;
+	COLLIDER_TYPE collider_type;
 	Enemy* enemy;
 	bool target_aquired;
 
@@ -66,10 +69,11 @@ public:
 	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, int up , int left, COLLIDER_TYPE collider_type, Uint32 delay = 0);
 	void AddShot(const Accel_Shot& particle, int x, int y, Accel_Shot_Type type, COLLIDER_TYPE collider_type, Uint32 delay = 0);
 
+	bool center;
 	int stage;
 	Animation g_shot;
 	Accel_Shot gravity_shot, gravity_shot_2;
-	Accel_Shot homing_missile;
+	Accel_Shot homing_missile, ultimates[5][2], ultimates_;
 	Accel_Shot* active[MAX_ACTIVE_PARTICLES];
 
 private:

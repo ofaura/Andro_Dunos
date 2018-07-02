@@ -39,7 +39,7 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 	graphics = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
 	HP = -1;
 	random = rand() % 4;
-	random = 0;
+	random = 2;
 
 	if (random == 0)
 	{
