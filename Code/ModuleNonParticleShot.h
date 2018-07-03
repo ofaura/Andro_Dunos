@@ -35,7 +35,7 @@ struct Accel_Shot
 	iPoint position;
 	iPoint speed;
 	int damage;
-	int time_1, time_2;
+	int time_1 = 0, time_2 = 0;
 	int up = 1;
 	int left = 1;
 	Uint32 born = 0;

@@ -65,11 +65,11 @@ public:
 	int t, t_2, t_ani, ini_up, ini_down;
 	int t_missile;
 	int  ini_up_prime, ini_down_prime, t_ani_prime;
-	bool enable_missile1;
+	bool enable_missile1, allow;
 	bool enable_ultimate;
 	int turn_ultimate[4][2];
 	int turn_ulti;
-	int t_ultimate[2];
+	int t_ultimate[3];
 	int ulti_x, ulti_y;
 
 	uint player_death, type_change;

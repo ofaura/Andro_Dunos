@@ -18,6 +18,8 @@
 
 #include "SDL/include/SDL_timer.h"
 
+#define SPEED (4)
+
 enum Pos
 {
 	x = 0,
@@ -58,73 +60,75 @@ bool ModuleShotGravity::Start()
 	ultimates[0][0].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Down
 	ultimates[0][0].anim.loop = false;
 	ultimates[0][0].speed.x = 1;
-	ultimates[0][0].speed.y = 2;
-	ultimates[0][0].life = 250;
+	ultimates[0][0].speed.y = SPEED;
+	ultimates[0][0].life = 1000;
 	ultimates[0][0].stage = 1;
 
 	ultimates[0][1].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
 	ultimates[0][1].anim.loop = false;
 	ultimates[0][1].speed.x = 1;
-	ultimates[0][1].speed.y = -2;
-	ultimates[0][1].life = 250;
+	ultimates[0][1].speed.y = -1 * SPEED;
+	ultimates[0][1].life = 1000;
 	ultimates[0][1].stage = 1;
 
+
+	/*
 	ultimates[1][0].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Down
 	ultimates[1][0].anim.loop = false;
 	ultimates[1][0].speed.x = 1;
-	ultimates[1][0].speed.y = 2;
-	ultimates[1][0].life = 250;
+	ultimates[1][0].speed.y = SPEED;
+	ultimates[1][0].life = 500;
 	ultimates[1][0].stage = 2;
 
 	ultimates[1][1].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
 	ultimates[1][1].anim.loop = false;
 	ultimates[1][1].speed.x = 1;
-	ultimates[1][1].speed.y = -2;
+	ultimates[1][1].speed.y = -1 * SPEED;
 	ultimates[1][1].life = 250;
 	ultimates[1][1].stage = 2;
 
-	ultimates[0][0].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Down
-	ultimates[0][0].anim.loop = false;
-	ultimates[0][0].speed.x = 1;
-	ultimates[0][0].speed.y = 2;
-	ultimates[0][0].life = 250;
-	ultimates[0][0].stage = 3;
+	ultimates[2][0].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Down
+	ultimates[2][0].anim.loop = false;
+	ultimates[2][0].speed.x = 1;
+	ultimates[2][0].speed.y = SPEED;
+	ultimates[2][0].life = 250;
+	ultimates[2][0].stage = 3;
 
-	ultimates[0][1].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
-	ultimates[0][1].anim.loop = false;
-	ultimates[0][1].speed.x = 1;
-	ultimates[0][1].speed.y = -2;
-	ultimates[0][1].life = 250;
-	ultimates[0][1].stage = 3;
+	ultimates[2][1].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
+	ultimates[2][1].anim.loop = false;
+	ultimates[2][1].speed.x = 1;
+	ultimates[2][1].speed.y = -1 * SPEED;
+	ultimates[2][1].life = 250;
+	ultimates[2][1].stage = 3;
 
-	ultimates[0][0].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Down
-	ultimates[0][0].anim.loop = false;
-	ultimates[0][0].speed.x = 1;
-	ultimates[0][0].speed.y = 2;
-	ultimates[0][0].life = 250;
-	ultimates[0][0].stage = 4;
+	ultimates[3][0].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Down
+	ultimates[3][0].anim.loop = false;
+	ultimates[3][0].speed.x = 1;
+	ultimates[3][0].speed.y = SPEED;
+	ultimates[3][0].life = 250;
+	ultimates[3][0].stage = 4;
 
-	ultimates[0][1].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
-	ultimates[0][1].anim.loop = false;
-	ultimates[0][1].speed.x = 1;
-	ultimates[0][1].speed.y = -2;
-	ultimates[0][1].life = 250;
-	ultimates[0][1].stage = 4;
+	ultimates[3][1].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
+	ultimates[3][1].anim.loop = false;
+	ultimates[3][1].speed.x = 1;
+	ultimates[3][1].speed.y = -1 * SPEED;
+	ultimates[3][1].life = 250;
+	ultimates[3][1].stage = 4;
 
-	ultimates[0][0].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Down
-	ultimates[0][0].anim.loop = false;
-	ultimates[0][0].speed.x = 1;
-	ultimates[0][0].speed.y = 2;
-	ultimates[0][0].life = 250;
-	ultimates[0][0].stage = 5;
+	ultimates[4][0].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Down
+	ultimates[4][0].anim.loop = false;
+	ultimates[4][0].speed.x = 1;
+	ultimates[4][0].speed.y = SPEED;
+	ultimates[4][0].life = 250;
+	ultimates[4][0].stage = 5;
 
-	ultimates[0][1].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
-	ultimates[0][1].anim.loop = false;
-	ultimates[0][1].speed.x = 1;
-	ultimates[0][1].speed.y = -2;
-	ultimates[0][1].life = 250;
-	ultimates[0][1].stage = 5;
-
+	ultimates[4][1].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
+	ultimates[4][1].anim.loop = false;
+	ultimates[4][1].speed.x = 1;
+	ultimates[4][1].speed.y = -1 * SPEED;
+	ultimates[4][1].life = 250;
+	ultimates[4][1].stage = 5;
+	*/
 	return true;
 }
 
@@ -379,7 +383,7 @@ Accel_Shot::Accel_Shot()
 
 Accel_Shot::Accel_Shot(const Accel_Shot& p) :
 	anim(p.anim), position(p.position),
-	fx(p.fx), born(p.born), life(p.life), time_1(0), time_2(2)
+	fx(p.fx), born(p.born), life(p.life), time_1(0), time_2(0), speed(p.speed)
 {}
 
 Accel_Shot::~Accel_Shot()
@@ -425,8 +429,8 @@ bool Accel_Shot::Update()
 
 	else if (type == HOMING_MISSILE)
 	{
-			if (enemy == nullptr || (position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE))) &&
-				(position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH)))
+			if (enemy == nullptr || (enemy->position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE) + 40)) &&
+				(enemy->position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH)))
 			{
 				position.x += 1;
 				position.y += 2;
@@ -490,63 +494,161 @@ bool Accel_Shot::Update()
 
 	else if (type == ULTIMATE_1)
 	{
-		switch (stage)
+		if (collider_type == COLLIDER_ULTIMATES)
 		{
-		case 1:
-			if (time_1 == 5)
+			if (App->player->turn_ultimate[0][0] == 1 || App->player->turn_ultimate[0][0] == 3)
 			{
-				App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
-				ret = false;
+				if (abs(App->player->ulti_y - position.y) >= 8) // dis
+				{
+					if (App->player->ulti_y - position.y > 0)
+					{
+						App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, position.y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					}
+					else
+					{
+						App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, position.y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					}
+
+					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+					ret = false;
+					App->player->turn_ultimate[0][0]++;
+				}
+			}
+			else if (App->player->turn_ultimate[0][0] == 2)
+			{
+				if (abs(App->player->ulti_y - position.y) >= 30) // dis
+				{
+					if (App->player->ulti_y - position.y > 0)
+					{
+						App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], App->player->ulti_y + 30, App->player->ulti_y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES); // x = 30, y = +- 5;
+					}
+					else
+					{
+						App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], App->player->ulti_y + 30, App->player->ulti_y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					}
+
+					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+					ret = false;
+					App->player->turn_ultimate[0][0]++;
+				}
+			}
+			else if (App->player->turn_ultimate[0][0] == 4)
+			{
+				if (abs(App->player->ulti_y - position.y) >= 52) // dis
+				{
+					if (App->player->ulti_y - position.y > 0)
+					{
+						App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], App->player->ulti_y + 30, App->player->ulti_y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES); // x = 30, y = +- 5;
+					}
+					else
+					{
+						App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], App->player->ulti_y + 30, App->player->ulti_y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					}
+
+					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+					ret = false;
+					App->player->turn_ultimate[0][0]++;
+				}
+			}
+			else if (App->player->turn_ultimate[0][0] == 5)
+			{
+				if (abs(App->player->ulti_y - position.y) >= 30) // dis
+				{
+					if (App->player->ulti_y - position.y > 0)
+					{
+						App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, position.y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					}
+					else
+					{
+						App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, position.y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					}
+
+					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+					ret = false;
+					App->player->turn_ultimate[0][0]++;
+				}
 			}
 
-			break;
-
-		case 2:
-
-			if (time_1 == 20)
+			else if (App->player->turn_ultimate[0][0] == 6)
 			{
-				App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
-				ret = false;
+				if (abs(App->player->ulti_y - position.y) >= 8) // dis
+				{
+					if (App->player->ulti_y - position.y > 0)
+					{
+						App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, position.y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					}
+					else
+					{
+						App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, position.y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					}
+
+					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+					ret = false;
+					App->player->turn_ultimate[0][0]++;
+				}
 			}
 
-			break;
-
-		case 3:
-
-			if (time_1 == 40)
+			else if (App->player->turn_ultimate[0][0] == 7)
 			{
-				App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
-				ret = false;
+				if (abs(App->player->ulti_y - position.y) >= 52) // dis
+				{
+					if (App->player->ulti_y - position.y > 0)
+					{
+						App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], App->player->ulti_y + 30, App->player->ulti_y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES); // x = 30, y = +- 5;
+					}
+					else
+					{
+						App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], App->player->ulti_y + 30, App->player->ulti_y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					}
+
+					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+					ret = false;
+					App->player->turn_ultimate[0][0]++;
+				}
 			}
 
-			break;
-
-		case 4:
-
-			if (time_1 == 25)
+			else if (App->player->turn_ultimate[0][0] == 8)
 			{
-				App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
-				ret = false;
+				if (abs(App->player->ulti_y - position.y) >= 30) // dis
+				{
+					if (App->player->ulti_y - position.y > 0)
+					{
+						App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, position.y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					}
+					else
+					{
+						App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, position.y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					}
+
+					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+					ret = false;
+					App->player->turn_ultimate[0][0]++;
+				}
 			}
 
-			break;
-
-		case 5:
-
-			if (time_1 == 45)
+			if (App->player->turn_ultimate[0][0] >= 9)
 			{
-				App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
-				ret = false;
+				if (abs(App->player->ulti_y - position.y) >= 52) // dis
+				{
+					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 18, position.y, collider_type);
+					ret = false;
+					App->player->turn_ultimate[0][0] = 1;
+					App->player->enable_ultimate = false;
+				}
 			}
 
-			break;
+		}
+		else if (collider_type == COLLIDER_ULTIMATES_P2)
+		{
+		
 		}
 		
-		time_1++;
+		//App->player->ulti_x++;
+		//App->player2->ulti_x, do it when it exists
 		position.x += speed.x;
 		position.y += speed.y;
 	}
-	//
+	
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);

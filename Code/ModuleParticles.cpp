@@ -123,22 +123,22 @@ bool ModuleParticles::Start()
 	ultimates[2][0].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
 	ultimates[2][0].anim.loop = false;
 	ultimates[2][0].speed.x = 1;
-	ultimates[2][0].speed.y = 2;
+	ultimates[2][0].speed.y = 5;
 	ultimates[2][0].life = 250;
 
 	ultimates[2][1].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
 	ultimates[2][1].anim.loop = false;
 	ultimates[2][1].speed.x = 1;
-	ultimates[2][1].speed.y = -2;
+	ultimates[2][1].speed.y = -5;
 	ultimates[2][1].life = 250;
 
 	ultimates[2][2].anim.PushBack({ 514, 25, 63, 18 }); // Shot
 	ultimates[2][2].anim.PushBack({ 577, 25, 63, 18 });
 	ultimates[2][2].anim.loop = true;
-	ultimates[2][2].anim.speed = 1.25f;
-	ultimates[2][2].speed.x = 5;
+	ultimates[2][2].anim.speed = 0.75f;
+	ultimates[2][2].speed.x = 7;
 	ultimates[2][2].speed.y = 0;
-	ultimates[2][2].life = 250;
+	ultimates[2][2].life = 1000;
 
 	//Boss shots
 
