@@ -10,7 +10,7 @@
 #include "Enemy.h"
 #include "p2Point.h"
 
-#define MAX_ACTIVE_PARTICLES 1000
+#define MAX_ACTIVE_PARTICLES 250
 
 struct SDL_Texture;
 struct Collider;

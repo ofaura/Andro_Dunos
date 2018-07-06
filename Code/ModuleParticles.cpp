@@ -136,7 +136,7 @@ bool ModuleParticles::Start()
 	ultimates[2][2].anim.PushBack({ 577, 25, 63, 18 });
 	ultimates[2][2].anim.loop = true;
 	ultimates[2][2].anim.speed = 0.75f;
-	ultimates[2][2].speed.x = 7;
+	ultimates[2][2].speed.x = 9;
 	ultimates[2][2].speed.y = 0;
 	ultimates[2][2].life = 1000;
 

@@ -453,8 +453,8 @@ bool Accel_Shot::Update()
 				else if (enemy->position.y <= position.y) { down_ = -1; }
 
 
-				dif_pos[x] = enemy->position.x - position.x;
-				dif_pos[y] = enemy->position.y - position.y;
+				dif_pos[x] = abs(enemy->position.x) - abs(position.x);
+				dif_pos[y] = abs(enemy->position.y) - abs(position.y);
 
 				if (dif_pos[y] == 0)
 				{
@@ -499,101 +499,231 @@ bool Accel_Shot::Update()
 		{
 			if (App->player->turn_ultimate[0][0] == 1 || App->player->turn_ultimate[0][0] == 3)
 			{
-				if (abs(App->player->ulti_y - position.y) >= 8) // dis
+				if (abs(App->player->ulti_y) - abs(position.y) >= 10) // dis
 				{
+					for (int counter = 0; counter < MAX_ACTIVE_PARTICLES; counter++)
+					{
+						if (App->accel_shot->active[counter] != nullptr)
+						{
+							if (App->accel_shot->active[counter]->type == ULTIMATE_1 && App->accel_shot->active[counter] != this)
+							{
+								delete App->accel_shot->active[counter];
+								App->accel_shot->active[counter] = nullptr;
+								break;
+							}
+						}
 
-					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, position.y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
-					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, position.y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					}
 
+					App->player->turn_ultimate[0][0]++;
+					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, App->player->ulti_y - 12, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, App->player->ulti_y + 12, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
 
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y + 20, collider_type);
+
 					ret = false;
-					App->player->turn_ultimate[0][0]++;
+					
 				}
 			}
 			else if (App->player->turn_ultimate[0][0] == 2)
 			{
-				if (abs(App->player->ulti_y - position.y) >= 40) // dis
+				if (abs(App->player->ulti_y) - abs(position.y) >= 30) // dis
 				{
-					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], App->player->ulti_x + 30, App->player->ulti_y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES); // x = 30, y = +- 5;
-					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], App->player->ulti_x + 30, App->player->ulti_y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					for (int counter = 0; counter < MAX_ACTIVE_PARTICLES; counter++)
+					{
+						if (App->accel_shot->active[counter] != nullptr)
+						{
+							if (App->accel_shot->active[counter]->type == ULTIMATE_1 && App->accel_shot->active[counter] != this)
+							{
+								delete App->accel_shot->active[counter];
+								App->accel_shot->active[counter] = nullptr;
+								break;
+							}
+						}
+
+					}
+
+					App->player->turn_ultimate[0][0]++;
+					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, App->player->ulti_y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES); // x = 30, y = +- 5;
+					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, App->player->ulti_y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
 
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y + 60, collider_type);
+
 					ret = false;
-					App->player->turn_ultimate[0][0]++;
+					
 				}
 			}
 			else if (App->player->turn_ultimate[0][0] == 4)
 			{
-				if (abs(App->player->ulti_y - position.y) >= 72) // dis
+				if (abs(App->player->ulti_y) - abs(position.y) >= 52) // dis
 				{
-					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], App->player->ulti_x + 30, App->player->ulti_y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES); // x = 30, y = +- 5;
-					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], App->player->ulti_x + 30, App->player->ulti_y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					for (int counter = 0; counter < MAX_ACTIVE_PARTICLES; counter++)
+					{
+						if (App->accel_shot->active[counter] != nullptr)
+						{
+							if (App->accel_shot->active[counter]->type == ULTIMATE_1 && App->accel_shot->active[counter] != this)
+							{
+								delete App->accel_shot->active[counter];
+								App->accel_shot->active[counter] = nullptr;
+								break;
+							}
+						}
+
+					}
+
+					App->player->turn_ultimate[0][0]++;
+					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, App->player->ulti_y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES); // x = 30, y = +- 5;
+					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, App->player->ulti_y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
 
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y + 104, collider_type);
+
 					ret = false;
-					App->player->turn_ultimate[0][0]++;
+					
 				}
 			}
 			else if (App->player->turn_ultimate[0][0] == 5)
 			{
-				if (abs(App->player->ulti_y - position.y) >= 30) // dis
+				if (abs(App->player->ulti_y) - abs(position.y) >= 30) // dis
 				{
-					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, position.y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
-					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, position.y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					for (int counter = 0; counter < MAX_ACTIVE_PARTICLES; counter++)
+					{
+						if (App->accel_shot->active[counter] != nullptr)
+						{
+							if (App->accel_shot->active[counter]->type == ULTIMATE_1 && App->accel_shot->active[counter] != this)
+							{
+								delete App->accel_shot->active[counter];
+								App->accel_shot->active[counter] = nullptr;
+								break;
+							}
+						}
+
+					}
+
+					App->player->turn_ultimate[0][0]++;
+					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, App->player->ulti_y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, App->player->ulti_y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
 
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y + 60, collider_type);
+
 					ret = false;
-					App->player->turn_ultimate[0][0]++;
+					
 				}
 			}
 
 			else if (App->player->turn_ultimate[0][0] == 6)
 			{
-				if (abs(App->player->ulti_y - position.y) >= 8) // dis
+				if (abs(App->player->ulti_y) - abs(position.y) >= 10) // dis
 				{
-					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, position.y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
-					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, position.y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					for (int counter = 0; counter < MAX_ACTIVE_PARTICLES; counter++)
+					{
+						if (App->accel_shot->active[counter] != nullptr)
+						{
+							if (App->accel_shot->active[counter]->type == ULTIMATE_1 && App->accel_shot->active[counter] != this)
+							{
+								delete App->accel_shot->active[counter];
+								App->accel_shot->active[counter] = nullptr;
+								break;
+							}
+						}
+
+					}
+
+					App->player->turn_ultimate[0][0]++;
+					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, App->player->ulti_y - 12, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, App->player->ulti_y + 12, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
 
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y + 20, collider_type);
+
 					ret = false;
-					App->player->turn_ultimate[0][0]++;
+					
 				}
 			}
 
 			else if (App->player->turn_ultimate[0][0] == 7)
 			{
-				if (abs(App->player->ulti_y - position.y) >= 52) // dis
+				if (abs(App->player->ulti_y) - abs(position.y) >= 52) // dis
 				{
-					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], App->player->ulti_x + 30, App->player->ulti_y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES); // x = 30, y = +- 5;
-					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], App->player->ulti_x + 30, App->player->ulti_y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					for (int counter = 0; counter < MAX_ACTIVE_PARTICLES; counter++)
+					{
+						if (App->accel_shot->active[counter] != nullptr)
+						{
+							if (App->accel_shot->active[counter]->type == ULTIMATE_1 && App->accel_shot->active[counter] != this)
+							{
+								delete App->accel_shot->active[counter];
+								App->accel_shot->active[counter] = nullptr;
+								break;
+							}
+						}
+
+					}
+
+					App->player->turn_ultimate[0][0]++;
+					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, App->player->ulti_y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES); // x = 30, y = +- 5;
+					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, App->player->ulti_y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
 
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y + 104, collider_type);
+
 					ret = false;
-					App->player->turn_ultimate[0][0]++;
+					
 				}
 			}
 
 			else if (App->player->turn_ultimate[0][0] == 8)
 			{
-				if (abs(App->player->ulti_y - position.y) >= 30) // dis
+				if (abs(App->player->ulti_y) - abs(position.y) >= 30) // dis
 				{
+					for (int counter = 0; counter < MAX_ACTIVE_PARTICLES; counter++)
+					{
+						if (App->accel_shot->active[counter] != nullptr)
+						{
+							if (App->accel_shot->active[counter]->type == ULTIMATE_1 && App->accel_shot->active[counter] != this)
+							{
+								delete App->accel_shot->active[counter];
+								App->accel_shot->active[counter] = nullptr;
+								break;
+							}
+						}
 
-					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, position.y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
-					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, position.y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					}
+
+					App->player->turn_ultimate[0][0]++;
+					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, App->player->ulti_y - 32, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, App->player->ulti_y + 32, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
 
 
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y + 60, collider_type);
 					ret = false;
-					App->player->turn_ultimate[0][0]++;
+					
 				}
 			}
 
 			if (App->player->turn_ultimate[0][0] >= 9)
 			{
-				if (abs(App->player->ulti_y - position.y) >= 52) // dis
+				if (abs(App->player->ulti_y) - abs(position.y) >= 52) // dis
 				{
-					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 18, position.y, collider_type);
+					for (int counter = 0; counter < MAX_ACTIVE_PARTICLES; counter++)
+					{
+						if (App->accel_shot->active[counter] != nullptr)
+						{
+							if (App->accel_shot->active[counter]->type == ULTIMATE_1 && App->accel_shot->active[counter] != this)
+							{
+								delete App->accel_shot->active[counter];
+								App->accel_shot->active[counter] = nullptr;
+								break;
+							}
+						}
+
+					}
+
+					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
+					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y + 104, collider_type);
 					ret = false;
 					App->player->turn_ultimate[0][0] = 10;
 				}
