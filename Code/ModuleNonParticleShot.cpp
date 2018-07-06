@@ -519,6 +519,9 @@ bool Accel_Shot::Update()
 					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, App->player->ulti_y - 12, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
 					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, App->player->ulti_y + 12, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
 
+					App->particles->AddParticle(App->particles->ultimates[2][0], position.x, App->player->ulti_y + 32, collider_type);
+					App->particles->AddParticle(App->particles->ultimates[2][1], position.x, App->player->ulti_y - 32, collider_type);
+
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y + 20, collider_type);
 
@@ -547,6 +550,9 @@ bool Accel_Shot::Update()
 					App->player->turn_ultimate[0][0]++;
 					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, App->player->ulti_y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES); // x = 30, y = +- 5;
 					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, App->player->ulti_y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+
+					App->particles->AddParticle(App->particles->ultimates[2][0], position.x, App->player->ulti_y + 32, collider_type);
+					App->particles->AddParticle(App->particles->ultimates[2][1], position.x, App->player->ulti_y - 32, collider_type);
 
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y + 60, collider_type);
@@ -577,6 +583,9 @@ bool Accel_Shot::Update()
 					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, App->player->ulti_y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES); // x = 30, y = +- 5;
 					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, App->player->ulti_y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
 
+					App->particles->AddParticle(App->particles->ultimates[2][0], position.x, App->player->ulti_y + 32, collider_type);
+					App->particles->AddParticle(App->particles->ultimates[2][1], position.x, App->player->ulti_y - 32, collider_type);
+
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y + 104, collider_type);
 
@@ -605,6 +614,9 @@ bool Accel_Shot::Update()
 					App->player->turn_ultimate[0][0]++;
 					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, App->player->ulti_y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
 					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, App->player->ulti_y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+
+					App->particles->AddParticle(App->particles->ultimates[2][0], position.x, App->player->ulti_y + 32, collider_type);
+					App->particles->AddParticle(App->particles->ultimates[2][1], position.x, App->player->ulti_y - 32, collider_type);
 
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y + 60, collider_type);
@@ -636,6 +648,9 @@ bool Accel_Shot::Update()
 					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, App->player->ulti_y - 12, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
 					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, App->player->ulti_y + 12, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
 
+					App->particles->AddParticle(App->particles->ultimates[2][0], position.x, App->player->ulti_y + 32, collider_type);
+					App->particles->AddParticle(App->particles->ultimates[2][1], position.x, App->player->ulti_y - 32, collider_type);
+
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y + 20, collider_type);
 
@@ -665,6 +680,9 @@ bool Accel_Shot::Update()
 					App->player->turn_ultimate[0][0]++;
 					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, App->player->ulti_y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES); // x = 30, y = +- 5;
 					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, App->player->ulti_y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+
+					App->particles->AddParticle(App->particles->ultimates[2][0], position.x, App->player->ulti_y + 32, collider_type);
+					App->particles->AddParticle(App->particles->ultimates[2][1], position.x, App->player->ulti_y - 32, collider_type);
 
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y + 104, collider_type);
@@ -696,6 +714,8 @@ bool Accel_Shot::Update()
 					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x, App->player->ulti_y - 32, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
 					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x, App->player->ulti_y + 32, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
 
+					App->particles->AddParticle(App->particles->ultimates[2][0], position.x, App->player->ulti_y + 32, collider_type);
+					App->particles->AddParticle(App->particles->ultimates[2][1], position.x, App->player->ulti_y - 32, collider_type);
 
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y, collider_type);
 					App->particles->AddParticle(App->particles->ultimates[2][2], position.x + 8, position.y + 60, collider_type);

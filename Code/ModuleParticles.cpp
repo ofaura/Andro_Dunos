@@ -123,14 +123,14 @@ bool ModuleParticles::Start()
 	ultimates[2][0].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
 	ultimates[2][0].anim.loop = false;
 	ultimates[2][0].speed.x = 1;
-	ultimates[2][0].speed.y = 5;
-	ultimates[2][0].life = 250;
+	ultimates[2][0].speed.y = 3;
+	ultimates[2][0].life = 150;
 
 	ultimates[2][1].anim.PushBack({ 496, 25, 18, 18 }); // Ball, Up
 	ultimates[2][1].anim.loop = false;
 	ultimates[2][1].speed.x = 1;
-	ultimates[2][1].speed.y = -5;
-	ultimates[2][1].life = 250;
+	ultimates[2][1].speed.y = -3;
+	ultimates[2][1].life = 150;
 
 	ultimates[2][2].anim.PushBack({ 514, 25, 63, 18 }); // Shot
 	ultimates[2][2].anim.PushBack({ 577, 25, 63, 18 });

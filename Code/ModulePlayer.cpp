@@ -593,66 +593,8 @@ update_status ModulePlayer::Update()
 				//t_ultimate[3]++;
 
 				turn_ultimate[0][0] = 1;
-				App->accel_shot->AddUltimate(ulti_x, ulti_y, ULTIMATE_1, COLLIDER_ULTIMATES);
+				App->accel_shot->AddUltimate(ulti_x + 28, ulti_y, ULTIMATE_1, COLLIDER_ULTIMATES);
 				enable_ultimate = false;
-				/*if (turn_ultimate[0][0] == 1 || turn_ultimate[0][0] == 3 || turn_ultimate[0][0] == 6)
-				{
-					App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], position.x + 30, position.y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
-					App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], position.x + 30, position.y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
-					
-					t_ultimate[3] = -1;
-					turn_ultimate[0][0]++;
-				}
-				else if (turn_ultimate[0][0] == 2)
-				{
-					if (t_ultimate[3] == 10)
-					{
-						App->accel_shot->AddShot(App->accel_shot->ultimates[1][0], position.x + 30, position.y, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
-						App->accel_shot->AddShot(App->accel_shot->ultimates[1][1], position.x + 30, position.y, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
-
-						t_ultimate[3] = -1;
-						turn_ultimate[0][0]++;
-					}
-				}
-				else if (turn_ultimate[0][0] == 4 || turn_ultimate[0][0] == 7)
-				{
-					if (t_ultimate[3] == 40)
-					{
-						App->accel_shot->AddShot(App->accel_shot->ultimates[2][0], position.x + 30, position.y, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
-						App->accel_shot->AddShot(App->accel_shot->ultimates[2][1], position.x + 30, position.y, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
-
-						t_ultimate[3] = -1;
-						turn_ultimate[0][0]++;
-					}
-
-				}
-				else if (turn_ultimate[0][0] == 5 || turn_ultimate[0][0] == 8)
-				{
-					if (t_ultimate[3] == 25)
-					{
-						App->accel_shot->AddShot(App->accel_shot->ultimates[3][0], position.x + 30, position.y, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
-						App->accel_shot->AddShot(App->accel_shot->ultimates[3][1], position.x + 30, position.y, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
-
-						t_ultimate[3] = -1;
-						turn_ultimate[0][0]++;
-					}
-
-				}
-
-				if (turn_ultimate[0][0] >= 9)
-				{
-					if (t_ultimate[3] == 45)
-					{
-						App->accel_shot->AddShot(App->accel_shot->ultimates[1][0], position.x + 30, position.y, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
-						App->accel_shot->AddShot(App->accel_shot->ultimates[1][1], position.x + 30, position.y, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
-
-						t_ultimate[3] = -1;
-
-						turn_ultimate[0][0] = 1;
-						enable_ultimate = false;
-					}
-
-				}*/
 				
 				break;
 
