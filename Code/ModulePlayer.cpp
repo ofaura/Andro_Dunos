@@ -582,7 +582,7 @@ update_status ModulePlayer::Update()
 			//t_ultimate[0]++;
 			//t_ultimate[1]++;
 		}
-
+		ulti_x++;
 		if (enable_ultimate == true)
 		{
 
@@ -592,8 +592,8 @@ update_status ModulePlayer::Update()
 				
 				//t_ultimate[3]++;
 
-				App->accel_shot->AddShot(App->accel_shot->ultimates[0][0], ulti_x + 30, ulti_y - 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
-				App->accel_shot->AddShot(App->accel_shot->ultimates[0][1], ulti_x + 30, ulti_y + 5, ULTIMATE_1, 1, 1, COLLIDER_ULTIMATES);
+				turn_ultimate[0][0] = 1;
+				App->accel_shot->AddUltimate(ulti_x, ulti_y, ULTIMATE_1, COLLIDER_ULTIMATES);
 				enable_ultimate = false;
 				/*if (turn_ultimate[0][0] == 1 || turn_ultimate[0][0] == 3 || turn_ultimate[0][0] == 6)
 				{
@@ -654,7 +654,6 @@ update_status ModulePlayer::Update()
 
 				}*/
 				
-
 				break;
 
 			case bullet_type::TYPE_2:
@@ -681,7 +680,7 @@ update_status ModulePlayer::Update()
 				break;
 
 			case bullet_type::TYPE_4:
-
+				ulti_x--;
 				if (t_ultimate[0] >= 2)
 				{
 					t_ultimate[0] = 0;

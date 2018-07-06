@@ -388,6 +388,12 @@ update_status ModuleCollision::Update()
 		case COLLIDER_SHIELD_2: //white
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
 			break;
+		case COLLIDER_ULTIMATES: // yellow
+			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
+			break;
+		case COLLIDER_ULTIMATES_P2: // yellow
+			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
+			break;
 		}
 	}
 
