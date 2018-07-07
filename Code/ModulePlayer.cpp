@@ -107,6 +107,7 @@ bool ModulePlayer::Start()
 	turn_ultimate[1][0] = 3;
 	turn_ultimate[2][0] = 10;
 	turn_ultimate[2][1] = 2;
+	turn_ultimate[3][0] = 4;
 	turn_ultimate[0][0] = 1;
 	t_ultimate[0] = -1;
 	t_ultimate[1] = -1;
@@ -619,6 +620,59 @@ update_status ModulePlayer::Update()
 
 			case bullet_type::TYPE_3:
 
+				t_ultimate[0]++;
+				
+				if (t_ultimate[0] == 0)
+				{
+					App->particles->AddParticle(App->particles->ultimates[3][0], position.x + 14 - 209, position.y + 8 - 209, COLLIDER_ULTIMATES);
+				}
+
+				else if (t_ultimate[0] == 10)
+				{
+					App->particles->AddParticle(App->particles->ultimates[3][1], position.x + 14 - 209, position.y + 8 - 209, COLLIDER_ULTIMATES);
+				}
+
+				else if (t_ultimate[0] == 20)
+				{
+					App->particles->AddParticle(App->particles->ultimates[3][2], position.x + 14 - 209, position.y + 8 - 209, COLLIDER_ULTIMATES);
+				}
+
+				else if (t_ultimate[0] == 30)
+				{
+					App->particles->AddParticle(App->particles->ultimates[3][3], position.x + 14 - 209, position.y + 8 - 209, COLLIDER_ULTIMATES);
+				}
+
+				else if (t_ultimate[0] == 40)
+				{
+					App->particles->AddParticle(App->particles->ultimates[3][4], position.x + 14 - 209, position.y + 8 - 209, COLLIDER_ULTIMATES);
+				}
+
+				else if (t_ultimate[0] == 50)
+				{
+					App->particles->AddParticle(App->particles->ultimates[3][5], position.x + 14 - 209, position.y + 8 - 209, COLLIDER_ULTIMATES);
+				}
+
+				else if (t_ultimate[0] == 60)
+				{
+					App->particles->AddParticle(App->particles->ultimates[3][6], position.x + 14 - 209, position.y + 8 - 209, COLLIDER_ULTIMATES);
+				}
+
+				else if (t_ultimate[0] == 70)
+				{
+					App->particles->AddParticle(App->particles->ultimates[3][7], position.x + 14 - 209, position.y + 8 - 209, COLLIDER_ULTIMATES);
+					
+					turn_ultimate[3][0]--;
+
+					if (turn_ultimate[3][0] == 0)
+					{
+						enable_ultimate = false;
+						turn_ultimate[3][0] = 4;
+						t_ultimate[0] = -1;
+					}
+
+					t_ultimate[0] = -10;
+				}
+
 				break;
 
 			case bullet_type::TYPE_4:
@@ -705,7 +759,7 @@ update_status ModulePlayer::Update()
 				{
 					enable_ultimate = false;
 					t_ultimate[0] = -1;
-					t_ultimate[0] = -1;
+					t_ultimate[1] = -1;
 					turn_ultimate[2][1] = 2;
 					turn_ultimate[2][0] = 10;
 				}

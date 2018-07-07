@@ -140,6 +140,80 @@ bool ModuleParticles::Start()
 	ultimates[2][2].speed.y = 0;
 	ultimates[2][2].life = 1000;
 
+	// Ulti 3
+
+	ultimates[3][0].anim.PushBack({ 0, 666, 418, 418 }); //
+	ultimates[3][0].anim.PushBack({ 1000, 0, 418, 418 }); 
+	ultimates[3][0].anim.PushBack({ 1000, 0, 418, 418 });
+	ultimates[3][0].anim.loop = false;
+	ultimates[3][0].anim.speed = 0.15f;
+	ultimates[3][0].speed.x = 1;
+	ultimates[3][0].speed.y = 0;
+	ultimates[3][0].life = 100;
+
+	ultimates[3][1].anim.PushBack({ 418, 666, 418, 418 });
+	ultimates[3][1].anim.PushBack({ 1000, 0, 418, 418 });
+	ultimates[3][1].anim.PushBack({ 1000, 0, 418, 418 });
+	ultimates[3][1].anim.loop = false;
+	ultimates[3][1].anim.speed = 0.15f;
+	ultimates[3][1].speed.x = 1;
+	ultimates[3][1].speed.y = 0;
+	ultimates[3][1].life = 100;
+
+	ultimates[3][2].anim.PushBack({ 836, 666, 418, 418 });
+	ultimates[3][2].anim.PushBack({ 1000, 0, 418, 418 });
+	ultimates[3][2].anim.PushBack({ 1000, 0, 418, 418 });
+	ultimates[3][2].anim.loop = false;
+	ultimates[3][2].anim.speed = 0.15f;
+	ultimates[3][2].speed.x = 1;
+	ultimates[3][2].speed.y = 0;
+	ultimates[3][2].life = 100;
+
+	ultimates[3][3].anim.PushBack({ 1254, 666, 418, 418 });
+	ultimates[3][3].anim.PushBack({ 1000, 0, 418, 418 });
+	ultimates[3][3].anim.PushBack({ 1000, 0, 418, 418 });
+	ultimates[3][3].anim.loop = false;
+	ultimates[3][3].anim.speed = 0.15f;
+	ultimates[3][3].speed.x = 1;
+	ultimates[3][3].speed.y = 0;
+	ultimates[3][3].life = 100;
+
+	ultimates[3][4].anim.PushBack({ 1672, 666, 418, 418 });
+	ultimates[3][4].anim.PushBack({ 1000, 0, 418, 418 });
+	ultimates[3][4].anim.PushBack({ 1000, 0, 418, 418 });
+	ultimates[3][4].anim.loop = false;
+	ultimates[3][4].anim.speed = 0.15f;
+	ultimates[3][4].speed.x = 1;
+	ultimates[3][4].speed.y = 0;
+	ultimates[3][4].life = 100;
+
+	ultimates[3][5].anim.PushBack({ 0, 1084, 418, 418 });
+	ultimates[3][5].anim.PushBack({ 1000, 0, 418, 418 });
+	ultimates[3][5].anim.PushBack({ 1000, 0, 418, 418 });
+	ultimates[3][5].anim.loop = false;
+	ultimates[3][5].anim.speed = 0.15f;
+	ultimates[3][5].speed.x = 1;
+	ultimates[3][5].speed.y = 0;
+	ultimates[3][5].life = 100;
+
+	ultimates[3][6].anim.PushBack({ 418, 1084, 418, 418 });
+	ultimates[3][6].anim.PushBack({ 1000, 0, 418, 418 });
+	ultimates[3][6].anim.PushBack({ 1000, 0, 418, 418 });
+	ultimates[3][6].anim.loop = false;
+	ultimates[3][6].anim.speed = 0.15f;
+	ultimates[3][6].speed.x = 1;
+	ultimates[3][6].speed.y = 0;
+	ultimates[3][6].life = 100;
+
+	ultimates[3][7].anim.PushBack({ 836, 1084, 418, 418 });
+	ultimates[3][7].anim.PushBack({ 1000, 0, 418, 418 });
+	ultimates[3][7].anim.PushBack({ 1000, 0, 418, 418 });
+	ultimates[3][7].anim.loop = false;
+	ultimates[3][7].anim.speed = 0.15f;
+	ultimates[3][7].speed.x = 1;
+	ultimates[3][7].speed.y = 0;
+	ultimates[3][7].life = 100;
+
 	//Boss shots
 
 	torpede.anim.PushBack({ 14, 402, 32, 15 });

@@ -125,6 +125,7 @@ bool ModuleSceneLevel5::Start()
 
 	//App->enemies->AddEnemy(ENEMY_TYPES::PIXEL, 500, (SCREEN_HEIGHT / 2) - 20);
 
+	/*
 	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_BALL, 500, (SCREEN_HEIGHT / 2) - 20);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 300, (SCREEN_HEIGHT / 2 - 20));
@@ -135,7 +136,7 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 4675, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 5550, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 6425, (SCREEN_HEIGHT / 2) - 20);
-
+	*/
 	// Mines
 	/*App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 760, 120);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 800, 60);
@@ -352,7 +353,7 @@ bool ModuleSceneLevel5::Start()
 	App->collision->Enable();
 
 	// Meteorite 1
-	App->collision->AddCollider({ 1028, 86, 38, 6 }, COLLIDER_WALL);	
+	/*App->collision->AddCollider({ 1028, 86, 38, 6 }, COLLIDER_WALL);	
 	App->collision->AddCollider({ 1013, 92, 67, 20 }, COLLIDER_WALL);	
 	App->collision->AddCollider({ 1005, 112, 78, 20 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 1012, 132, 60, 5 }, COLLIDER_WALL);	
@@ -491,7 +492,7 @@ bool ModuleSceneLevel5::Start()
 	App->collision->AddCollider({ 6716, 178, 19, 7 }, COLLIDER_WALL);
 	
 	App->collision->AddCollider({ 6620, 182, 100, 7 }, COLLIDER_WALL);
-
+	*/
 	//Audio ---
 	App->audio->PlayMusic("Assets/Audio/Music/level5.ogg", 1.0f);
 
