@@ -39,7 +39,7 @@ PowerUp::PowerUp(int x, int y) : Enemy(x, y)
 	graphics = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
 	HP = -1;
 	random = rand() % 4;
-	random = 2;
+	random = 3;
 
 	if (random == 0)
 	{
@@ -448,14 +448,14 @@ void PowerUp::OnCollision(Collider* collider)
 			{
 				App->audio->PlayFx(powerup_picked);
 				//App->shield->Enable();
-				App->player->Shield++;
+				App->player->Shield = 5;
 				App->user_interface->score1 += score;
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
 				//App->shield_p2->Enable();
-				App->player2->Shield2++;
+				App->player2->Shield2 = 5;
 				App->audio->PlayFx(powerup_picked);
 				App->user_interface->score2 += score;
 			}
@@ -470,14 +470,14 @@ void PowerUp::OnCollision(Collider* collider)
 			{
 				App->audio->PlayFx(powerup_picked);
 				//App->shield->Enable();
-				App->player->Shield++;
+				App->player->Shield = 5;
 				App->user_interface->score1 += score;
 
 			}
 			else if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_NONE_PLAYER_2)
 			{
 				//App->shield_p2->Enable();
-				App->player2->Shield2++;
+				App->player2->Shield2 = 5;
 				App->audio->PlayFx(powerup_picked);
 				App->user_interface->score2 += score;
 			}

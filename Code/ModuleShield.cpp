@@ -332,13 +332,17 @@ update_status ModuleShield::Update() {
 
 void ModuleShield::OnCollision(Collider* col_1, Collider* col_2) {
 	if (collider1 == col_1 || collider2 == col_1)
-		if (IsEnabled() && collider1->type == COLLIDER_TYPE::COLLIDER_ENEMY || collider2->type == COLLIDER_TYPE::COLLIDER_ENEMY) {
-			circ = 0;
-			collider1->to_delete = true;
-			collider2->to_delete = true;
-			collider1 = nullptr;
-			collider2 = nullptr;
-			Disable();
+		if (IsEnabled()) {
+			App->player->Shield--;
+			if (App->player->Shield == 0)
+			{
+				circ = 0;
+				collider1->to_delete = true;
+				collider2->to_delete = true;
+				collider1 = nullptr;
+				collider2 = nullptr;
+				Disable();
+			}
 		}
 	
 }
