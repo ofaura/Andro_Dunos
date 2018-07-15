@@ -324,8 +324,14 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 
 			else if (c2->type == COLLIDER_SHIELD_1 || c2->type == COLLIDER_SHIELD_2)
 			{
-				enemies[i]->HP = -2;
+				enemies[i]->HP = enemies[i]->HP - 2;
 			}
+
+			else if (c2->type == COLLIDER_ULTIMATES || c2->type == COLLIDER_ULTIMATES_P2)
+			{
+				enemies[i]->HP = enemies[i]->HP - 20;
+			}
+
 			if (enemies[i]->HP <= 0)
 			{
 				enemies[i]->OnCollision(c2);

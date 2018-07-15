@@ -1150,7 +1150,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2) // add Collider* c
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{	
-		if (active[i] != nullptr && active[i]->collider == c1)
+		if (active[i] != nullptr && active[i]->collider == c1 && c1->type != COLLIDER_ULTIMATES && c1->type != COLLIDER_ULTIMATES_P2)
 		{
 			// Always destroy particles that collide
 			delete active[i];

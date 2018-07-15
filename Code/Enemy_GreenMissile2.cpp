@@ -36,5 +36,15 @@ void Enemy_GreenMissile2::Move()
 
 void Enemy_GreenMissile2::OnCollision(Collider* collider)
 {
+	App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
+	App->audio->PlayFx(App->enemies->medium_enemy_death);
 
+	if (collider->type == COLLIDER_PLAYER_SHOT || collider->type == COLLIDER_PLAYER_SHOT_ALT || collider->type == COLLIDER_ULTIMATES)
+	{
+
+	}
+	if (collider->type == COLLIDER_PLAYER2_SHOT || collider->type == COLLIDER_PLAYER2_SHOT_ALT || collider->type == COLLIDER_ULTIMATES_P2)
+	{
+
+	}
 }

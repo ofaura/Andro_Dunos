@@ -51,12 +51,12 @@ void Enemy_Pipeliner::OnCollision(Collider* collider)
 	App->particles->AddParticle(App->particles->enemy_explosion, position.x, position.y, COLLIDER_NONE);
 	App->audio->PlayFx(App->enemies->medium_enemy_death);
 
-		if (collider->type == COLLIDER_PLAYER_SHOT)
-		{
+	if (collider->type == COLLIDER_PLAYER_SHOT || collider->type == COLLIDER_PLAYER_SHOT_ALT || collider->type == COLLIDER_ULTIMATES)
+	{
 		App->user_interface->score1 += score;
-		}
-		if (collider->type == COLLIDER_PLAYER2_SHOT)
-		{
+	}
+	if (collider->type == COLLIDER_PLAYER2_SHOT || collider->type == COLLIDER_PLAYER2_SHOT_ALT || collider->type == COLLIDER_ULTIMATES_P2)
+	{
 		App->user_interface->score2 += score;
-		}
+	}
 }
