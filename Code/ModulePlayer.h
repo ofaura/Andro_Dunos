@@ -25,7 +25,6 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* col_1, Collider* col_2);
-	uint type_ulti;
 
 public:
 
@@ -74,6 +73,7 @@ public:
 
 	uint player_death, type_change;
 	uint type = bullet_type::TYPE_1;
+	uint type_ulti;
 	int lives = 2;
 	int ShootPowerUpLevel = 1, ShootPowerUpLevel_2 = 0, HomingMissile = 0, Shield = 0;
 

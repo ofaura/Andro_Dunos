@@ -56,7 +56,7 @@ public:
 	Animation ani_miss_down, ani_miss_up;
 	Animation* missile[2];
 	uint player_death, type_change;
-	uint type = bullet_type::TYPE_1;
+
 
 	int t, t_2, t_ani, ini_up, ini_down;
 	int t_missile;
@@ -68,7 +68,8 @@ public:
 
 	int lives = 2;
 	int ShootPowerUpLevel = 1, ShootPowerUpLevel_2 = 0, HomingMissile = 0, Shield2 = 0;
-
+	uint type = bullet_type::TYPE_1;
+	uint type_ulti;
 	int damage_1 = 1, damage_2 = 1;
 	int current_time = 0;
 	int first_time = 0;

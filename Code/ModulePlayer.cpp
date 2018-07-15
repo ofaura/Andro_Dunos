@@ -565,6 +565,7 @@ update_status ModulePlayer::Update()
 		t_missile++;
 
 		ShootPowerUpLevel = 3;
+
 		//Ultimate
 		if (ShootPowerUpLevel >= 2 && App->user_interface->beamCharger.Finished() == true)
 		{
