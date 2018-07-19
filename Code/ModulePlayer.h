@@ -60,6 +60,7 @@ public:
 	uint missile1, missile2, missile3, missile4; // second weap of each type
 	Animation ani_miss_down, ani_miss_up;
 	Animation* missile[2];
+	uint player_death, type_change;
 
 	int t, t_2, t_ani, ini_up, ini_down;
 	int t_missile;
@@ -71,7 +72,7 @@ public:
 	int t_ultimate[3];
 	int ulti_x, ulti_y;
 
-	uint player_death, type_change;
+
 	uint type = bullet_type::TYPE_1;
 	uint type_ulti;
 	int lives = 2;

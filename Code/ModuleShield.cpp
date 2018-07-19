@@ -319,7 +319,23 @@ update_status ModuleShield::Update() {
 		}
 	}
 
-	else
+	else if (App->player->type == bullet_type::TYPE_2)
+	{
+		App->render->Blit(graphics, position1.x, position1.y, &base);
+		App->render->Blit(graphics, position2.x, position2.y, &base);
+		App->render->Blit(graphics, position1.x + 8, position1.y + 1, &light);
+		App->render->Blit(graphics, position2.x + 8, position2.y + 1, &light);
+	}
+
+	else if (App->player->type == bullet_type::TYPE_3)
+	{
+		App->render->Blit(graphics, position1.x, position1.y, &base);
+		App->render->Blit(graphics, position2.x, position2.y, &base);
+		App->render->Blit(graphics, position1.x + 8, position1.y + 1, &light);
+		App->render->Blit(graphics, position2.x + 8, position2.y + 1, &light);
+	}
+
+	else if (App->player->type == bullet_type::TYPE_4)
 	{
 		App->render->Blit(graphics, position1.x, position1.y, &base);
 		App->render->Blit(graphics, position2.x, position2.y, &base);

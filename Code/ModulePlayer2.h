@@ -52,37 +52,41 @@ public:
 
 	iPoint position, fire_position;
 	uint laser1, laser2, laser3, laser4;
+
 	uint missile1, missile2, missile3, missile4; // second weap of each type
 	Animation ani_miss_down, ani_miss_up;
 	Animation* missile[2];
 	uint player_death, type_change;
 
-
 	int t, t_2, t_ani, ini_up, ini_down;
 	int t_missile;
 	int  ini_up_prime, ini_down_prime, t_ani_prime;
-	bool enable_missile1;
+	bool enable_missile1, allow;
+	bool enable_ultimate;
+	int turn_ultimate[4][2];
+	int turn_ulti;
+	int t_ultimate[3];
+	int ulti_x, ulti_y;
+
 
 	Uint32 startTime = 0, currentTime;
 	bool activatedChange; //Tells if the player is changing of weapon
 
-	int lives = 2;
-	int ShootPowerUpLevel = 1, ShootPowerUpLevel_2 = 0, HomingMissile = 0, Shield2 = 0;
 	uint type = bullet_type::TYPE_1;
 	uint type_ulti;
+	int lives = 2;
+	int ShootPowerUpLevel = 1, ShootPowerUpLevel_2 = 0, HomingMissile = 0, Shield2 = 0;
+
 	int damage_1 = 1, damage_2 = 1;
 	int current_time = 0;
 	int first_time = 0;
 	bool dead = false;
-public:
-	uint y = 0;
-	Collider* player = nullptr;
-	bool GodMode = false;
-
-
 	bool respawning = false;
 	bool collision = true;
 
+	uint y = 0;
+	Collider* player = nullptr;
+	bool GodMode = false;
 };
 
 #endif
