@@ -22,6 +22,10 @@ public:
 	bool CleanUp();
 
 public:
+	Animation base_anim_2, lvl1_behind;
+	Animation* current_base;
+
+
 	SDL_Texture* graphics = nullptr;
 
 	Animation base_anim, lvl1, lvl2, lvl3;

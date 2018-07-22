@@ -36,6 +36,24 @@ ModuleShield::ModuleShield() {
 
 	circ = 0;
 
+	base_anim_2.PushBack({ 72, 16, 9, 16 });
+	base_anim_2.PushBack({ 84, 16, 9, 16 });
+	base_anim_2.PushBack({ 95, 16, 9, 16 });
+	base_anim_2.PushBack({ 106, 16, 9, 16 });
+	base_anim_2.PushBack({ 117, 16, 9, 16 });
+	base_anim_2.PushBack({ 128, 16, 9, 16 });
+	base_anim_2.loop = true;
+	base_anim_2.speed = 0.2f;
+
+	lvl1_behind.PushBack({ 124, 0, 6, 14 });
+	lvl1_behind.PushBack({ 132, 0, 6, 14 });
+	lvl1_behind.PushBack({ 124, 0, 6, 14 });
+	lvl1_behind.PushBack({ 0, 45, 6, 14 });
+	lvl1_behind.loop = true;
+	lvl1_behind.speed = 0.5f;
+
+
+
 	// ---- Animation for the base od the shield
 	base_anim.PushBack({ 0, 0, 9, 16 });
 	base_anim.PushBack({ 11, 0, 9, 16 });
@@ -142,7 +160,11 @@ ModuleShield::ModuleShield() {
 	//lvl3.speed = 0.5f;
 }
 
-ModuleShield::~ModuleShield() {}
+ModuleShield::~ModuleShield() 
+{
+	delete current_lvl;
+	delete current_base;
+}
 
 bool ModuleShield::Start() {
 	bool ret = true;
@@ -213,7 +235,7 @@ update_status ModuleShield::Update() {
 	else if (life == 2)	current_lvl = &lvl2;
 	else if (life == 3)	current_lvl = &lvl3;
 */
-	current_lvl = &lvl1;
+	
 
 	// ---- Keeps realtive position to the ship
 	switch (App->player->type) {
@@ -265,14 +287,23 @@ update_status ModuleShield::Update() {
 		position1.y = pos1_t1[circ].y;
 		position2.x = pos2_t1[circ].x;
 		position2.y = pos2_t1[circ].y;
+		
+		current_lvl = &lvl1;
+		current_base = &base_anim;
+
+
 		break;
 
 		// ---- Stays on either side of the ship
 	case bullet_type::TYPE_2:
 		position1.x = App->player->position.x + 5;
-		position1.y = App->player->position.y - 15;
+		position1.y = App->player->position.y - 17;
 		position2.x = App->player->position.x + 5;
-		position2.y = App->player->position.y + 17;
+		position2.y = App->player->position.y + 19;
+
+		current_lvl = &lvl1;
+		current_base = &base_anim;
+
 		break;
 
 		// ---- Stays in front of ship
@@ -281,6 +312,10 @@ update_status ModuleShield::Update() {
 		position1.y = App->player->position.y - 8;
 		position2.x = App->player->position.x + 29;
 		position2.y = App->player->position.y + 10;
+
+		current_lvl = &lvl1;
+		current_base = &base_anim;
+
 		break;
 
 		// ---- Stays behind ship
@@ -289,6 +324,11 @@ update_status ModuleShield::Update() {
 		position1.y = App->player->position.y - 8;
 		position2.x = App->player->position.x - 16;
 		position2.y = App->player->position.y + 10;
+
+		current_lvl = &lvl1_behind;
+		current_base = &base_anim_2;
+
+
 		break;
 	}
 
@@ -296,7 +336,7 @@ update_status ModuleShield::Update() {
 	collider1->SetPos(position1.x, position1.y);
 	collider2->SetPos(position2.x, position2.y);
 
-	SDL_Rect base = base_anim.GetCurrentFrame();
+	SDL_Rect base = current_base->GetCurrentFrame();
 	SDL_Rect light = current_lvl->GetCurrentFrame();
 
 	timer++;
@@ -319,7 +359,7 @@ update_status ModuleShield::Update() {
 		}
 	}
 
-	else if (App->player->type == bullet_type::TYPE_2)
+	else if (App->player->type == bullet_type::TYPE_2) // side (up, down)
 	{
 		App->render->Blit(graphics, position1.x, position1.y, &base);
 		App->render->Blit(graphics, position2.x, position2.y, &base);
@@ -327,7 +367,7 @@ update_status ModuleShield::Update() {
 		App->render->Blit(graphics, position2.x + 8, position2.y + 1, &light);
 	}
 
-	else if (App->player->type == bullet_type::TYPE_3)
+	else if (App->player->type == bullet_type::TYPE_3) // front
 	{
 		App->render->Blit(graphics, position1.x, position1.y, &base);
 		App->render->Blit(graphics, position2.x, position2.y, &base);
@@ -335,12 +375,12 @@ update_status ModuleShield::Update() {
 		App->render->Blit(graphics, position2.x + 8, position2.y + 1, &light);
 	}
 
-	else if (App->player->type == bullet_type::TYPE_4)
+	else if (App->player->type == bullet_type::TYPE_4) // behind
 	{
 		App->render->Blit(graphics, position1.x, position1.y, &base);
 		App->render->Blit(graphics, position2.x, position2.y, &base);
-		App->render->Blit(graphics, position1.x + 8, position1.y + 1, &light);
-		App->render->Blit(graphics, position2.x + 8, position2.y + 1, &light);
+		App->render->Blit(graphics, position1.x - 7, position1.y + 1, &light);
+		App->render->Blit(graphics, position2.x - 7, position2.y + 1, &light);
 	}
 
 	return update_status::UPDATE_CONTINUE;
@@ -372,6 +412,8 @@ bool ModuleShield::CleanUp() {
 	//Get rid of colliders;
 	collider1 = nullptr;
 	collider2 = nullptr;
+	current_lvl = nullptr;
+	current_base = nullptr;
 
-	return true;
+ 	return true;
 }
