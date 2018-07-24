@@ -73,10 +73,12 @@ ModuleShield::ModuleShield() {
 	lvl1.speed = 0.5f;
 
 	// ---- Animation for the TYPE-1 laser's shield (rotating)
-	rotation_lvl1[0].PushBack({ 240, 7, 17, 16 });
-	rotation_lvl1[0].PushBack({ 280, 6, 16, 17 });
-	rotation_lvl1[0].PushBack({ 260, 7, 17, 16 });
-	rotation_lvl1[0].PushBack({ 299, 6, 16, 17 });
+	rotation_lvl1[0].PushBack({ 0,0,9,16 });
+	rotation_lvl1[0].PushBack({ 11,0,9,16 });
+	rotation_lvl1[0].PushBack({ 22,0,9,16 });
+	rotation_lvl1[0].PushBack({ 33,0,9,16 });
+	rotation_lvl1[0].PushBack({ 44,0,9,16 });
+	rotation_lvl1[0].PushBack({ 57,0,9,16 });
 	rotation_lvl1[0].loop = true;
 	rotation_lvl1[0].speed = 0.25f;
 
@@ -135,11 +137,27 @@ ModuleShield::ModuleShield() {
 	rotation_lvl1[7].loop = true;
 	rotation_lvl1[7].speed = 0.25f;
 
-	for (int counter = 0; counter < ROT_STEPS; counter++) // write ROT_ANIM instead once animation for rotation is fully ready
+	for (int counter = 0; counter < ROT_STEPS; counter++)
 	{
 		rotation_level[counter] = rotation_lvl1[counter];
 	}
 
+
+	//// ---- Animation for lvl2 LaserShield (Yellow)
+	//lvl2.PushBack({ 46, 18, 5, 14 });
+	//lvl2.PushBack({ 30, 18, 5, 14 });
+	//lvl2.PushBack({ 36, 18, 5, 14 });
+	//lvl2.PushBack({ 30, 18, 5, 14 });
+	//lvl2.loop = true;
+	//lvl2.speed = 0.5f;
+
+	//// ---- Animation for lvl3 LaserShield (Green)
+	//lvl3.PushBack({ 46, 18, 5, 14 });
+	//lvl3.PushBack({ 15, 18, 5, 14 });
+	//lvl3.PushBack({ 22, 18, 5, 14 });
+	//lvl3.PushBack({ 15, 18, 5, 14 });
+	//lvl3.loop = true;
+	//lvl3.speed = 0.5f;
 }
 
 ModuleShield::~ModuleShield() 
@@ -327,7 +345,7 @@ update_status ModuleShield::Update() {
 	if(App->player->type == bullet_type::TYPE_1)
 	{
 		App->render->Blit(graphics, position1.x, position1.y, &rotation_level[0].GetCurrentFrame());
-		App->render->Blit(graphics, position2.x, position2.y, &rotation_level[0].GetCurrentFrame());
+		App->render->Blit(graphics, position2.x, position2.y, &rotation_level[1].GetCurrentFrame());
 
 		if (timer >= 3)
 		{
