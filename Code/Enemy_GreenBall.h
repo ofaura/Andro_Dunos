@@ -11,6 +11,7 @@ private:
 	int original_y = 0;
 	bool circle;
 	int angle;
+	int fix_y, fix_x;
 
 	float wave = -1.0f;
 	bool going_up = true;

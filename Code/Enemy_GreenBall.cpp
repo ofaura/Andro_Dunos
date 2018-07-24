@@ -38,7 +38,7 @@ Enemy_GreenBall::Enemy_GreenBall(int x, int y) : Enemy(x, y)
 
 
 	circle = false;
-	angle = 360;
+	angle = 0;
 
 	graphics = App->textures->Load("Assets/Sprites/Enemies/enemies.png");
 
@@ -65,11 +65,6 @@ void Enemy_GreenBall::Draw(SDL_Texture* sprites)
 
 void Enemy_GreenBall::Move()
 {
-
-	
-	position.x += 0;
-
-
 	if (circle == false && position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE + (SCREEN_WIDTH / 2))))
 	{
 		position.x += 1;
@@ -82,23 +77,27 @@ void Enemy_GreenBall::Move()
 
 	if (diag <= DISTANCE)
 	{
-			circle = true;
+		circle = true;
 	}
 
-
+	if (circle == false)
+	{
+		fix_y = position.y;
+		fix_x = position.x;
+	}
 	if (circle == true)
 	{
+		fix_x = fix_x + 1;	
+		position.x = int((fix_x-30) + 30 * float(cosf(float(1 * angle * 2 * float(PI / 360))))) + 1;
+		position.y = int(fix_y + 30 * float(sinf(float(1 * angle * 2 * float(PI / 360)))));
+		angle = angle + 5;
 
-
-		position.x = position.x + 3 *  sinf( (angle * 2 * PI) / 360 ) + 1 /*plus 1 due to scrolling */;
-		position.y = position.y + 3 *  cosf( (angle * 2 * PI) / 360 );
-
-		angle = angle - 5;
-
-		if (angle <= 0)
+		if (angle >= 360)
 		{
-			angle = 360;
+			angle = 0;
 			circle = false;
+			position.y = fix_y;
+			position.x = fix_x;
 		}
 	}
 

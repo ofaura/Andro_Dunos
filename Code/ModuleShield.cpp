@@ -177,6 +177,9 @@ ModuleShield::~ModuleShield()
 {
 	delete current_lvl;
 	delete current_base;
+	delete collider1;
+	delete collider2;
+	delete graphics;
 }
 
 bool ModuleShield::Start() {
@@ -437,10 +440,12 @@ bool ModuleShield::CleanUp() {
 	App->textures->Unload(graphics);
 
 	//Get rid of colliders;
+
 	collider1 = nullptr;
 	collider2 = nullptr;
 	current_lvl = nullptr;
 	current_base = nullptr;
+	graphics = nullptr;
 
  	return true;
 }
