@@ -23,6 +23,7 @@ public:
 
 public:
 	Animation base_anim_2, lvl1_behind;
+	Animation base_anim_3[2], lvl1_sides[2];
 	Animation* current_base;
 
 

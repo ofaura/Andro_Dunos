@@ -52,6 +52,37 @@ ModuleShield::ModuleShield() {
 	lvl1_behind.loop = true;
 	lvl1_behind.speed = 0.5f;
 
+	base_anim_3[0].PushBack({ 3, 42, 16, 9 });
+	base_anim_3[0].PushBack({ 3, 54, 16, 9 });
+	base_anim_3[0].PushBack({ 3, 65, 16, 9 });
+	base_anim_3[0].PushBack({ 3, 76, 16, 9 });
+	base_anim_3[0].PushBack({ 3, 87, 16, 9 });
+	base_anim_3[0].PushBack({ 3, 98, 16, 9 });
+	base_anim_3[0].loop = true;
+	base_anim_3[0].speed = 0.2f;
+
+	lvl1_sides[0].PushBack({ 21, 94, 14, 6 });
+	lvl1_sides[0].PushBack({ 21, 102, 14, 6 });
+	lvl1_sides[0].PushBack({ 21, 94, 14, 6 });
+	lvl1_sides[0].PushBack({ 0, 45, 1, 1 });
+	lvl1_sides[0].loop = true;
+	lvl1_sides[0].speed = 0.5f;
+
+	base_anim_3[1].PushBack({ 56, 102, 16, 9 });
+	base_anim_3[1].PushBack({ 56, 89, 16, 9 });
+	base_anim_3[1].PushBack({ 56, 78, 16, 9 });
+	base_anim_3[1].PushBack({ 56, 67, 16, 9 });
+	base_anim_3[1].PushBack({ 56, 56, 16, 9 });
+	base_anim_3[1].PushBack({ 56, 45, 16, 9 });
+	base_anim_3[1].loop = true;
+	base_anim_3[1].speed = 0.2f;
+
+	lvl1_sides[1].PushBack({ 40, 52, 14, 6 });
+	lvl1_sides[1].PushBack({ 40, 45, 14, 6 });
+	lvl1_sides[1].PushBack({ 40, 52, 14, 6 });
+	lvl1_sides[1].PushBack({ 0, 45, 1, 1 });
+	lvl1_sides[1].loop = true;
+	lvl1_sides[1].speed = 0.5f;
 
 
 	// ---- Animation for the base od the shield
@@ -182,7 +213,7 @@ bool ModuleShield::Start() {
 		position1.x = App->player->position.x + 5;
 		position1.y = App->player->position.y - 19;
 		position2.x = App->player->position.x + 5;
-		position2.y = App->player->position.y + 21;
+		position2.y = App->player->position.y + 27;
 		break;
 
 		// ---- Stays in front of ship
@@ -279,9 +310,9 @@ update_status ModuleShield::Update() {
 		// ---- Stays on either side of the ship
 	case bullet_type::TYPE_2:
 		position1.x = App->player->position.x + 5;
-		position1.y = App->player->position.y - 19;
+		position1.y = App->player->position.y - 19;		
 		position2.x = App->player->position.x + 5;
-		position2.y = App->player->position.y + 21;
+		position2.y = App->player->position.y + 27;
 
 		current_lvl = &lvl1;
 		current_base = &base_anim;
@@ -318,8 +349,22 @@ update_status ModuleShield::Update() {
 	collider1->SetPos(position1.x, position1.y);
 	collider2->SetPos(position2.x, position2.y);
 
-	SDL_Rect base = current_base->GetCurrentFrame();
-	SDL_Rect light = current_lvl->GetCurrentFrame();
+	SDL_Rect base, base_2;
+	SDL_Rect light, light_2;
+
+	if (App->player->type == bullet_type::TYPE_2)
+	{
+		base = base_anim_3[0].GetCurrentFrame();
+		base_2 = base_anim_3[1].GetCurrentFrame();
+
+		light = lvl1_sides[0].GetCurrentFrame();
+		light_2 = lvl1_sides[1].GetCurrentFrame();
+	}
+	else
+	{
+		base = current_base->GetCurrentFrame();
+		light = current_lvl->GetCurrentFrame();
+	}
 
 	timer++;
 
@@ -344,9 +389,9 @@ update_status ModuleShield::Update() {
 	else if (App->player->type == bullet_type::TYPE_2) // side (up, down)
 	{
 		App->render->Blit(graphics, position1.x, position1.y, &base);
-		App->render->Blit(graphics, position2.x, position2.y, &base);
-		App->render->Blit(graphics, position1.x + 8, position1.y + 1, &light);
-		App->render->Blit(graphics, position2.x + 8, position2.y + 1, &light);
+		App->render->Blit(graphics, position2.x, position2.y, &base_2);
+		App->render->Blit(graphics, position1.x + 1, position1.y - 5, &light);
+		App->render->Blit(graphics, position2.x + 1, position2.y + 8, &light_2);
 	}
 
 	else if (App->player->type == bullet_type::TYPE_3) // front
