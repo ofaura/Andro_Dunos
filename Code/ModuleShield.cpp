@@ -198,9 +198,9 @@ bool ModuleShield::Start() {
 		// ---- Stays on either side of the ship
 	case bullet_type::TYPE_2:
 		position1.x = App->player->position.x + 5;
-		position1.y = App->player->position.y - 8;
+		position1.y = App->player->position.y - 19;
 		position2.x = App->player->position.x + 5;
-		position2.y = App->player->position.y + 10;
+		position2.y = App->player->position.y + 21;
 		break;
 
 		// ---- Stays in front of ship
@@ -213,9 +213,9 @@ bool ModuleShield::Start() {
 
 		// ---- Stays behind ship
 	case bullet_type::TYPE_4:
-		position1.x = App->player->position.x + 29;
+		position1.x = App->player->position.x - 16;
 		position1.y = App->player->position.y - 8;
-		position2.x = App->player->position.x + 29;
+		position2.x = App->player->position.x - 16;
 		position2.y = App->player->position.y + 10;
 		break;
 	}
@@ -297,9 +297,9 @@ update_status ModuleShield::Update() {
 		// ---- Stays on either side of the ship
 	case bullet_type::TYPE_2:
 		position1.x = App->player->position.x + 5;
-		position1.y = App->player->position.y - 17;
+		position1.y = App->player->position.y - 19;
 		position2.x = App->player->position.x + 5;
-		position2.y = App->player->position.y + 19;
+		position2.y = App->player->position.y + 21;
 
 		current_lvl = &lvl1;
 		current_base = &base_anim;
@@ -379,8 +379,8 @@ update_status ModuleShield::Update() {
 	{
 		App->render->Blit(graphics, position1.x, position1.y, &base);
 		App->render->Blit(graphics, position2.x, position2.y, &base);
-		App->render->Blit(graphics, position1.x - 7, position1.y + 1, &light);
-		App->render->Blit(graphics, position2.x - 7, position2.y + 1, &light);
+		App->render->Blit(graphics, position1.x - 5, position1.y + 1, &light);
+		App->render->Blit(graphics, position2.x - 5, position2.y + 1, &light);
 	}
 
 	return update_status::UPDATE_CONTINUE;
