@@ -426,6 +426,8 @@ bool Accel_Shot::Update()
 		{
 			position.x += left * 3;
 		}
+
+		time_2++;
 	}
 
 	else if (type == HOMING_MISSILE)

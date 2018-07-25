@@ -348,15 +348,14 @@ update_status ModuleShield::Update() {
 		break;
 	}
 
-	// ---- Updates colliders
-	collider1->SetPos(position1.x, position1.y);
-	collider2->SetPos(position2.x, position2.y);
-
 	SDL_Rect base, base_2;
 	SDL_Rect light, light_2;
 
 	if (App->player->type == bullet_type::TYPE_2)
 	{
+		collider1->SetPos(position1.x + 1, position1.y - 5);
+		collider2->SetPos(position2.x + 1, position2.y);
+
 		base = base_anim_3[0].GetCurrentFrame();
 		base_2 = base_anim_3[1].GetCurrentFrame();
 
@@ -367,6 +366,8 @@ update_status ModuleShield::Update() {
 	{
 		base = current_base->GetCurrentFrame();
 		light = current_lvl->GetCurrentFrame();
+		collider1->SetPos(position1.x, position1.y);
+		collider2->SetPos(position2.x, position2.y);
 	}
 
 	timer++;

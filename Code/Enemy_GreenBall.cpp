@@ -85,7 +85,7 @@ void Enemy_GreenBall::Move()
 		fix_y = position.y;
 		fix_x = position.x;
 	}
-	if (circle == true)
+	else
 	{
 		fix_x = fix_x + 1;	
 		position.x = int((fix_x-30) + 30 * float(cosf(float(1 * angle * 2 * float(PI / 360))))) + 1;
