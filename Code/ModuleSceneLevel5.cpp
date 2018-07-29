@@ -126,7 +126,7 @@ bool ModuleSceneLevel5::Start()
 	//App->enemies->AddEnemy(ENEMY_TYPES::PIXEL, 500, (SCREEN_HEIGHT / 2) - 20);
 
 	
-	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_BALL, 500, (SCREEN_HEIGHT / 2) - 20);
+	
 	
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 300, (SCREEN_HEIGHT / 2 - 20));
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 1175, (SCREEN_HEIGHT / 2) - 20);
@@ -137,6 +137,16 @@ bool ModuleSceneLevel5::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 5550, (SCREEN_HEIGHT / 2) - 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_POWERUP, 6425, (SCREEN_HEIGHT / 2) - 20);
 	
+	// Rotating Green Ball
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_BALL, 500, (SCREEN_HEIGHT / 2) - 20);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_BALL, 1000, (SCREEN_HEIGHT / 2) - 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_BALL, 1500, (SCREEN_HEIGHT / 2) - 20);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_BALL, 2000, (SCREEN_HEIGHT / 2) - 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_BALL, 2500, (SCREEN_HEIGHT / 2) - 20);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_BALL, 3000, (SCREEN_HEIGHT / 2) - 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_BALL, 3500, (SCREEN_HEIGHT / 2) - 20);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_BALL, 4000, (SCREEN_HEIGHT / 2) - 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_BALL, 4500, (SCREEN_HEIGHT / 2) - 20);
 	
 	// Mines
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMY_MINE, 760, 120);

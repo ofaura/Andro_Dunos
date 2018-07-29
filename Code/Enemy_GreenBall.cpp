@@ -65,9 +65,10 @@ void Enemy_GreenBall::Draw(SDL_Texture* sprites)
 
 void Enemy_GreenBall::Move()
 {
-	if (circle == false && position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE + (SCREEN_WIDTH / 2))))
+	if (position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE + (SCREEN_WIDTH / 2))))
 	{
 		position.x += 1;
+		fix_x += 1;
 	}
 
 	int x = abs(position.x - App->player->position.x);
@@ -86,9 +87,8 @@ void Enemy_GreenBall::Move()
 		fix_x = position.x;
 	}
 	else
-	{
-		fix_x = fix_x + 1;	
-		position.x = int((fix_x-30) + 30 * float(cosf(float(1 * angle * 2 * float(PI / 360))))) + 1;
+	{	
+		position.x = int((fix_x-30) + 30 * float(cosf(float(1 * angle * 2 * float(PI / 360)))));
 		position.y = int(fix_y + 30 * float(sinf(float(1 * angle * 2 * float(PI / 360)))));
 		angle = angle + 5;
 
