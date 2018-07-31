@@ -332,16 +332,18 @@ void ModuleShotGravity::AddShot(const Accel_Shot& particle, int x, int y, Accel_
 				{
 					if (App->enemies->enemies[counter] != nullptr && App->enemies->enemies[counter]->type != POWER_UP)
 					{
-						if ((App->enemies->enemies[counter]->position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE) + 40)) &&
+						if ((App->enemies->enemies[counter]->position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE))) &&
 							(App->enemies->enemies[counter]->position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH)))
 
 						{
 							p->enemy = App->enemies->enemies[counter];
 							check = true;
-							//p->target_aquired = true;
+							p->target_aquired = true;
 						}
 					}
 				}
+
+				p->target_aquired = false;
 
 				if (check == false)
 				{
@@ -432,7 +434,7 @@ bool Accel_Shot::Update()
 
 	else if (type == HOMING_MISSILE)
 	{
-			if (enemy == nullptr || (enemy->position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE) + 40)) &&
+			if (enemy == nullptr || (enemy->position.x <= ((abs(App->render->camera.x) / SCREEN_SIZE))) &&
 				(enemy->position.x >= ((abs(App->render->camera.x) / SCREEN_SIZE) + SCREEN_WIDTH)))
 			{
 				position.x += 1;
@@ -461,18 +463,16 @@ bool Accel_Shot::Update()
 				if (dif_pos[y] == 0)
 				{
 					vel[y] = 0;
-					vel[x] = 5 + 1;
+					vel[x] = 3 + 1;
 				}
-
 				else
 				{
 					div = abs(dif_pos[x] / dif_pos[y]);
-					vel[y] = down_ * sqrt(pow(5, 2) / (1 + pow(div, 2)));
+					vel[y] = down_ * sqrt(pow(3, 2) / (1 + pow(div, 2)));
 					vel[x] = (left_ * (div)*vel[y]) + 1;
 				}
 
 				
-
 				if (vel[x] == 1 && vel[y] == 0)
 				{
 					position.x += 1;

@@ -34,16 +34,16 @@ Application::Application()
 	modules[i++] = NeoGeo = new ModuleIntroNeoGeo();
 	modules[i++] = start_menu = new ModuleStartMenu();
 	modules[i++] = bonus = new ModuleBonus();
-	modules[i++] = shield = new ModuleShield();
 	modules[i++] = shield_p2 = new ModuleShield_p2();
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = accel_shot = new ModuleShotGravity();
+	modules[i++] = shield = new ModuleShield();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = player2 = new ModulePlayer2();
 	modules[i++] = boss = new ModuleEnemyBoss();
 	modules[i++] = collision = new ModuleCollision();
-	modules[i++] = accel_shot = new ModuleShotGravity();
 	modules[i++] = user_interface = new ModuleUserInterface();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = game_over = new ModuleGameOver();
