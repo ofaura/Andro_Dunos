@@ -174,7 +174,10 @@ update_status ModuleInput::PreUpdate()
 
 	if (App->input->keyboard[SDL_SCANCODE_F8]){
 		if (App->level5->IsEnabled())
-			App->player2->Enable();
+		{
+			//App->player2->Enable();
+		}
+			
 	}
 	
 	if (keyboard[SDL_SCANCODE_F7]) {
@@ -186,7 +189,7 @@ update_status ModuleInput::PreUpdate()
 	{
 		App->fade->FadeToBlack(App->level5, App->bonus);
 	}
-
+	
 	// Autolose key
 	if (App->input->keyboard[SDL_SCANCODE_F3])
 	{

@@ -57,3 +57,5 @@ WHAT IS LEFT FOR 1.0 RELEASE (CURRENT BUILD 0.9):
 - Add "Blinking" animation every time an enemy takes a hit but doesn't die
 
 - Polish Homing missile
+
+- Add some sound Effects that are missing
