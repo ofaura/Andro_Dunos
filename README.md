@@ -59,3 +59,5 @@ WHAT IS LEFT FOR 1.0 RELEASE (CURRENT BUILD 0.9):
 - Polish Homing missile
 
 - Add some sound Effects that are missing
+
+- Polish the UI
