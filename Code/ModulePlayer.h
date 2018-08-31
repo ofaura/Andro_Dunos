@@ -71,7 +71,7 @@ public:
 	int turn_ulti;
 	int t_ultimate[3];
 	int ulti_x, ulti_y;
-
+	bool fuckup_player_2;
 
 	uint type = bullet_type::TYPE_1;
 	uint type_ulti;

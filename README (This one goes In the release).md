@@ -1,4 +1,6 @@
-Andro Dunos v0.7.5
+Andro Dunos v0.9
+
+PLAYER 2 CURRENTLY DISABLED
 
 GitHub: https://github.com/ofaura/Andro_Dunos
 
@@ -46,7 +48,7 @@ PLAYER 1:
 
 	E - Change weapon type
 
-PLAYER 2:
+PLAYER 2: CURRENTLY DISABLED
 
 	UP - Move up
 
@@ -85,6 +87,8 @@ v0.6 - Added new level map and a few enemies
 v0.7 - Added all enemies and map hitboxes
 
 v0.75 - Polished enemy animations and added boss
+
+v0.9 - Fixed all issues with hitboxes and collision and added ultimate attacks
 
 v1.0 Final Release
 

@@ -91,6 +91,8 @@ ModulePlayer::~ModulePlayer()
 // Load assets
 bool ModulePlayer::Start()
 {
+	fuckup_player_2 = true;
+
 	LOG("Loading player textures");
 	graphics = App->textures->Load("Assets/Sprites/player/ships.png"); // arcade version
 	missile_graphics = App->textures->Load("Assets/Sprites/Particles/particles.png");
@@ -1240,6 +1242,7 @@ update_status ModulePlayer::Update()
 	{
 		App->input->keyboard[SDL_SCANCODE_F5] = KEY_STATE::KEY_REPEAT;
 	}
+	
 
 	// God mode
 	if (App->player->lives >= 0)
@@ -1270,6 +1273,7 @@ update_status ModulePlayer::Update()
 	// Blitting the player
 	App->render->Blit(graphics, position.x, position.y, &r);
 	App->render->Blit(graphics, fire_position.x, fire_position.y, &fire);
+
 
 	return UPDATE_CONTINUE;
 }

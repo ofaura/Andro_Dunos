@@ -46,16 +46,14 @@ Press ESC or click on the red cross to close the application.
 Andro Dunos v0.7.5
 
 ---------------------------------------------
-CHANGELIST:
+WHAT IS LEFT FOR 1.0 RELEASE (CURRENT BUILD 0.9):
 
-v0.1 - Added a moving screen with music. No ship.
+- Finish Player_2 (Currently disabled to avoid issues)
 
-v0.2 - Implemented FadeToBlack along with user controls and parallax movement in map, loads 4 different screens
+- Balance Player's Attacks with Enemy Health
 
-v0.3 - Implemented animations and player 2 with animations as well as bullet particles for all 4 bullet types, improvements to parallax
+- Add Ultimate animation for Player
 
-v0.4 - Implemented collisions to players 1 and 2 as well as the floor
+- Add "Blinking" animation every time an enemy takes a hit but doesn't die
 
-v0.4.5 - Implemented enemies with simple movements. Added colliders to bullets and enemies as well as death screen instead of restarting game directly
-
-v0.5 - Enlarged screen. Added more enemies. Added lives to ships and explosion particles for death.
+- Polish Homing missile
