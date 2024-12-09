@@ -42,8 +42,8 @@ Press ESC or click on the red cross to close the application.
 
 ### Download the Game
 
-[Download the latest version here!](https://github.com/ofaura/Andro_Dunos/releases/tag/v.1.0)
-Andro Dunos v0.7.5
+[Download the latest version here!](https://github.com/ofaura/Andro_Dunos/releases/tag/v0.9)
+Andro Dunos v0.9
 
 ---------------------------------------------
 WHAT IS LEFT FOR 1.0 RELEASE (CURRENT BUILD 0.9):
