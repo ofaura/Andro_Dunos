@@ -1,6 +1,6 @@
 ﻿### The Team (From Left to Right)
 * [Jacobo Galofre](https://github.com/sherzock)
-* [Gerard Albarran](https://github.com/GAPIntoTheGame)
+* [Gerard Albarran](https://github.com/GerAlPin)
 * [Sam Davidson](https://github.com/samuelkurtdavidson)
 * [Òscar Faura](https://github.com/ofaura)
 * [Dani Lorenzo](https://github.com/DLorenzoLaguno17)
